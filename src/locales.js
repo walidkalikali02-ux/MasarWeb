@@ -24,6 +24,40 @@ const locales = {
         step1: 'أدخل عنوان الموقع في الحقل أعلاه',
         step2: 'نقوم بجلب الصفحة نيابة عنك بشكل آمن',
         step3: 'تصفح المحتوى بأمان وخصوصية تامة',
+        
+        why_use_title: 'لماذا تستخدم أداة البروكسي؟',
+        why_use_items: [
+            { title: 'تجاوز الحجب الجغرافي', desc: 'الوصول إلى المحتوى والمواقع المحجوبة في منطقتك بسهولة.' },
+            { title: 'حماية الهوية', desc: 'إخفاء عنوان IP الخاص بك ومنع المواقع من تتبع موقعك الجغرافي.' },
+            { title: 'التصفح المجهول', desc: 'تصفح الإنترنت دون ترك أي أثر رقمي على جهازك أو الشبكة.' },
+            { title: 'تجاوز الرقابة', desc: 'تخطي قيود الشبكة في العمل أو المدرسة أو الأماكن العامة.' }
+        ],
+
+        how_proxy_works_title: 'كيف يعمل Web Proxy؟',
+        how_proxy_works_desc: 'يعمل البروكسي كوسيط رقمي بين جهازك والإنترنت. عندما تطلب زيارة موقع ما، يمر طلبك أولاً عبر خوادمنا المشفرة، التي تقوم بجلب المحتوى نيابة عنك ثم إرساله إليك. هذا يضمن أن الموقع المستهدف يرى عنوان خوادمنا فقط ولا يمكنه معرفة هويتك الحقيقية أو موقعك.',
+
+        security_privacy_title: 'الأمان والخصوصية',
+        security_privacy_items: [
+            { icon: '🔒', title: 'تشفير SSL كامل', desc: 'نستخدم تقنيات تشفير متقدمة لحماية بياناتك من المتلصصين.' },
+            { icon: '🚫', title: 'لا سجلات (No Logs)', desc: 'نحن لا نقوم بتخزين أي سجلات لنشاطك أو بياناتك الشخصية.' },
+            { icon: '🍪', title: 'حذف تلقائي للكوكيز', desc: 'يتم مسح جميع ملفات تعريف الارتباط تلقائياً بمجرد إغلاق الجلسة.' }
+        ],
+
+        use_cases_title: 'حالات الاستخدام',
+        use_cases_items: [
+            'مشاهدة محتوى الفيديو غير المتاح في بلدك',
+            'التحقق من ظهور موقعك من دول مختلفة',
+            'البحث عن المعلومات بحرية وخصوصية',
+            'حماية الخصوصية عند استخدام شبكات Wi-Fi العامة'
+        ],
+
+        faq_title: 'الأسئلة الشائعة',
+        faq_items: [
+            { q: 'هل خدمة MasarWeb مجانية؟', a: 'نعم، الخدمة مجانية بالكامل ولا تتطلب أي تسجيل أو اشتراك.' },
+            { q: 'هل يمكنني مشاهدة يوتيوب؟', a: 'نعم، تدعم خوادمنا بث الفيديو بجودة عالية من يوتيوب وغيره.' },
+            { q: 'هل بياناتي آمنة؟', a: 'بالتأكيد. جميع الاتصالات مشفرة، ولا نحتفظ بأي سجلات لنشاطك.' },
+            { q: 'لماذا الموقع بطيء أحياناً؟', a: 'قد يحدث بطء بسبب الضغط على الخادم أو سرعة المصدر الأصلي، لكننا نسعى دائماً لتوفير أسرع اتصال ممكن.' }
+        ],
         popular_sites_title: 'مواقع شائعة',
         copyright: '© 2026 MasarWeb - جميع الحقوق محفوظة',
         terms: 'شروط الاستخدام',
@@ -133,6 +167,40 @@ const locales = {
         step1: 'Enter the URL in the field above',
         step2: 'We securely fetch the page on your behalf',
         step3: 'Browse content safely and privately',
+
+        why_use_title: 'Why use a Proxy?',
+        why_use_items: [
+            { title: 'Bypass Geo-Restrictions', desc: 'Access blocked content and websites in your region easily.' },
+            { title: 'Protect Identity', desc: 'Hide your IP address and prevent websites from tracking your location.' },
+            { title: 'Anonymous Browsing', desc: 'Browse the internet without leaving digital footprints on your device or network.' },
+            { title: 'Bypass Censorship', desc: 'Get around network restrictions at work, school, or public places.' }
+        ],
+
+        how_proxy_works_title: 'How Web Proxy Works?',
+        how_proxy_works_desc: 'A proxy acts as a digital intermediary between your device and the internet. When you request a site, your request goes through our encrypted servers first, which fetch the content for you and send it back. This ensures the target site sees only our server address, keeping your real identity and location hidden.',
+
+        security_privacy_title: 'Security and Privacy',
+        security_privacy_items: [
+            { icon: '🔒', title: 'Full SSL Encryption', desc: 'We use advanced encryption to protect your data from snoopers.' },
+            { icon: '🚫', title: 'No Logs Policy', desc: 'We do not store any logs of your activity or personal data.' },
+            { icon: '🍪', title: 'Auto Cookie Deletion', desc: 'All cookies are automatically cleared once you close the session.' }
+        ],
+
+        use_cases_title: 'Use Cases',
+        use_cases_items: [
+            'Watch video content unavailable in your country',
+            'Check how your website appears from different countries',
+            'Research information freely and privately',
+            'Protect privacy when using public Wi-Fi networks'
+        ],
+
+        faq_title: 'Frequently Asked Questions',
+        faq_items: [
+            { q: 'Is MasarWeb free?', a: 'Yes, the service is completely free and requires no registration or subscription.' },
+            { q: 'Can I watch YouTube?', a: 'Yes, our servers support high-quality video streaming from YouTube and others.' },
+            { q: 'Is my data safe?', a: 'Absolutely. All connections are encrypted, and we keep no logs of your activity.' },
+            { q: 'Why is it slow sometimes?', a: 'Slowness can occur due to server load or the source site speed, but we always strive for the fastest connection.' }
+        ],
         popular_sites_title: 'Popular Sites',
         copyright: '© 2026 MasarWeb - All Rights Reserved',
         terms: 'Terms of Use',

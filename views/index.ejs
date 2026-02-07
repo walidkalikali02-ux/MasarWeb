@@ -104,6 +104,72 @@
                 </div>
             </div>
 
+            <% if (t.why_use_title) { %>
+            <div class="info-section why-use">
+                <h2><%= t.why_use_title %></h2>
+                <div class="info-grid">
+                    <% t.why_use_items.forEach(function(item) { %>
+                        <div class="info-card">
+                            <h3><%= item.title %></h3>
+                            <p><%= item.desc %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+            <% } %>
+
+            <% if (t.how_proxy_works_title) { %>
+            <div class="info-section how-proxy-works">
+                <h2><%= t.how_proxy_works_title %></h2>
+                <div class="text-content">
+                    <p><%= t.how_proxy_works_desc %></p>
+                </div>
+            </div>
+            <% } %>
+
+            <% if (t.security_privacy_title) { %>
+            <div class="info-section security-privacy">
+                <h2><%= t.security_privacy_title %></h2>
+                <div class="security-grid">
+                    <% t.security_privacy_items.forEach(function(item) { %>
+                        <div class="security-card">
+                            <div class="security-icon"><%= item.icon %></div>
+                            <h3><%= item.title %></h3>
+                            <p><%= item.desc %></p>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+            <% } %>
+
+            <% if (t.use_cases_title) { %>
+            <div class="info-section use-cases">
+                <h2><%= t.use_cases_title %></h2>
+                <ul class="use-cases-list">
+                    <% t.use_cases_items.forEach(function(item) { %>
+                        <li>
+                            <span class="check-icon">✓</span>
+                            <span><%= item %></span>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+            <% } %>
+
+            <% if (t.faq_title) { %>
+            <div class="info-section faq-section">
+                <h2><%= t.faq_title %></h2>
+                <div class="faq-grid">
+                    <% t.faq_items.forEach(function(item) { %>
+                        <div class="faq-item">
+                            <div class="faq-question"><%= item.q %></div>
+                            <div class="faq-answer"><%= item.a %></div>
+                        </div>
+                    <% }); %>
+                </div>
+            </div>
+            <% } %>
+
             <div class="popular-sites">
                 <h2><%= t.popular_sites_title %></h2>
                 <div class="sites-grid">
