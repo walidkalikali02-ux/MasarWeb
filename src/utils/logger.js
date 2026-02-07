@@ -22,14 +22,18 @@ const fileFormat = winston.format.combine(
 );
 
 // Create logger instance
-const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
-  defaultMeta: { service: 'arabic-web-proxy' },
-  transports: [
-    // Console transport
-    new winston.transports.Console({
-      format: consoleFormat
-    }),
+const isVercel = process.env.VERCEL || process.env.vercel;
+
+const transports = [
+  // Console transport
+  new winston.transports.Console({
+    format: consoleFormat
+  })
+];
+
+// Add file transports only if NOT on Vercel
+if (!isVercel) {
+  transports.push(
     // Error log file
     new winston.transports.File({
       filename: path.join(__dirname, '../../logs/error.log'),
@@ -45,21 +49,37 @@ const logger = winston.createLogger({
       maxsize: 50 * 1024 * 1024, // 50MB
       maxFiles: 10
     })
-  ]
+  );
+}
+
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  defaultMeta: { service: 'arabic-web-proxy' },
+  transports: transports
 });
 
 // Create a separate audit logger for security events
-const auditLogger = winston.createLogger({
-  level: 'info',
-  defaultMeta: { service: 'arabic-web-proxy-audit' },
-  transports: [
+const auditTransports = [
+  new winston.transports.Console({
+    format: consoleFormat
+  })
+];
+
+if (!isVercel) {
+  auditTransports.push(
     new winston.transports.File({
       filename: path.join(__dirname, '../../logs/audit.log'),
       format: fileFormat,
       maxsize: 50 * 1024 * 1024,
       maxFiles: 10
     })
-  ]
+  );
+}
+
+const auditLogger = winston.createLogger({
+  level: 'info',
+  defaultMeta: { service: 'arabic-web-proxy-audit' },
+  transports: auditTransports
 });
 
 // Helper function to anonymize IP addresses
