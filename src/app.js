@@ -108,6 +108,11 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Static Pages
+app.get('/support', (req, res) => res.render('support'));
+app.get('/terms', (req, res) => res.render('terms'));
+app.get('/privacy', (req, res) => res.render('privacy'));
+
 // Proxy routes (main functionality)
 app.use('/', proxyRouter);
 

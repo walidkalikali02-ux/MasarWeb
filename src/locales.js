@@ -66,6 +66,39 @@ const locales = {
             access_denied: 'الوصول مرفوض',
             blocked_site: 'موقع محظور',
             blocked_access: 'الوصول إلى هذا الموقع محظور'
+        },
+        nav_home: 'الرئيسية',
+        nav_support: 'دعم المستخدم',
+        nav_terms: 'شروط الاستخدام',
+        nav_privacy: 'سياسة الخصوصية',
+        support_page: {
+            title: 'دعم المستخدم',
+            desc: 'نحن هنا لمساعدتك. اتصل بنا إذا كان لديك أي مشاكل.',
+            contact_info: 'معلومات الاتصال',
+            form_name: 'الاسم',
+            form_email: 'البريد الإلكتروني',
+            form_message: 'الرسالة',
+            form_send: 'إرسال الرسالة'
+        },
+        terms_page: {
+            title: 'شروط الاستخدام',
+            last_updated: 'آخر تحديث: فبراير 2026',
+            intro_title: 'مقدمة',
+            intro_text: 'مرحبًا بك في MasarWeb. باستخدام خدمتنا، فإنك توافق على هذه الشروط.',
+            usage_title: 'الاستخدام المقبول',
+            usage_text: 'أنت توافق على عدم استخدام خدمتنا لأي أنشطة غير قانونية.',
+            disclaimer_title: 'إخلاء المسؤولية',
+            disclaimer_text: 'يتم توفير الخدمة "كما هي" دون أي ضمانات من أي نوع.'
+        },
+        privacy_page: {
+            title: 'سياسة الخصوصية',
+            last_updated: 'آخر تحديث: فبراير 2026',
+            collection_title: 'جمع المعلومات',
+            collection_text: 'نحن لا نقوم بتخزين سجلات نشاط التصفح الخاص بك.',
+            usage_title: 'كيف نستخدم المعلومات',
+            usage_text: 'نستخدم البيانات المؤقتة فقط لتسهيل جلسة التصفح الخاصة بك.',
+            cookies_title: 'ملفات تعريف الارتباط',
+            cookies_text: 'نستخدم ملفات تعريف الارتباط فقط لإدارة الجلسة وتفضيلات اللغة.'
         }
     },
     en: {
@@ -135,6 +168,39 @@ const locales = {
             access_denied: 'Access denied',
             blocked_site: 'Blocked Site',
             blocked_access: 'Access to this site is blocked'
+        },
+        nav_home: 'Home',
+        nav_support: 'User Support',
+        nav_terms: 'Terms of Use',
+        nav_privacy: 'Privacy Policy',
+        support_page: {
+            title: 'User Support',
+            desc: 'We are here to help you. Contact us if you have any issues.',
+            contact_info: 'Contact Information',
+            form_name: 'Name',
+            form_email: 'Email',
+            form_message: 'Message',
+            form_send: 'Send Message'
+        },
+        terms_page: {
+            title: 'Terms of Use',
+            last_updated: 'Last Updated: February 2026',
+            intro_title: 'Introduction',
+            intro_text: 'Welcome to MasarWeb. By using our service, you agree to these terms.',
+            usage_title: 'Acceptable Use',
+            usage_text: 'You agree not to use our service for any illegal activities.',
+            disclaimer_title: 'Disclaimer',
+            disclaimer_text: 'The service is provided "as is" without warranties of any kind.'
+        },
+        privacy_page: {
+            title: 'Privacy Policy',
+            last_updated: 'Last Updated: February 2026',
+            collection_title: 'Information Collection',
+            collection_text: 'We do not store logs of your browsing activity.',
+            usage_title: 'How We Use Information',
+            usage_text: 'We use temporary data only to facilitate your browsing session.',
+            cookies_title: 'Cookies',
+            cookies_text: 'We use cookies only for session management and language preferences.'
         }
     },
     es: {
@@ -204,6 +270,39 @@ const locales = {
             access_denied: 'Acceso denegado',
             blocked_site: 'Sitio bloqueado',
             blocked_access: 'El acceso a este sitio está bloqueado'
+        },
+        nav_home: 'Inicio',
+        nav_support: 'Soporte al Usuario',
+        nav_terms: 'Términos de Uso',
+        nav_privacy: 'Política de Privacidad',
+        support_page: {
+            title: 'Soporte al Usuario',
+            desc: 'Estamos aquí para ayudarte. Contáctanos si tienes algún problema.',
+            contact_info: 'Información de Contacto',
+            form_name: 'Nombre',
+            form_email: 'Correo electrónico',
+            form_message: 'Mensaje',
+            form_send: 'Enviar Mensaje'
+        },
+        terms_page: {
+            title: 'Términos de Uso',
+            last_updated: 'Última actualización: Febrero 2026',
+            intro_title: 'Introducción',
+            intro_text: 'Bienvenido a MasarWeb. Al usar nuestro servicio, aceptas estos términos.',
+            usage_title: 'Uso Aceptable',
+            usage_text: 'Aceptas no usar nuestro servicio para actividades ilegales.',
+            disclaimer_title: 'Descargo de responsabilidad',
+            disclaimer_text: 'El servicio se proporciona "tal cual" sin garantías de ningún tipo.'
+        },
+        privacy_page: {
+            title: 'Política de Privacidad',
+            last_updated: 'Última actualización: Febrero 2026',
+            collection_title: 'Recopilación de Información',
+            collection_text: 'No almacenamos registros de tu actividad de navegación.',
+            usage_title: 'Cómo usamos la información',
+            usage_text: 'Usamos datos temporales solo para facilitar tu sesión de navegación.',
+            cookies_title: 'Cookies',
+            cookies_text: 'Usamos cookies solo para la gestión de sesiones y preferencias de idioma.'
         }
     },
     fr: {
@@ -273,6 +372,39 @@ const locales = {
             access_denied: 'Accès refusé',
             blocked_site: 'Site bloqué',
             blocked_access: 'L\'accès à ce site est bloqué'
+        },
+        nav_home: 'Accueil',
+        nav_support: 'Support Utilisateur',
+        nav_terms: 'Conditions d\'utilisation',
+        nav_privacy: 'Politique de Confidentialité',
+        support_page: {
+            title: 'Support Utilisateur',
+            desc: 'Nous sommes là pour vous aider. Contactez-nous si vous avez des problèmes.',
+            contact_info: 'Informations de Contact',
+            form_name: 'Nom',
+            form_email: 'E-mail',
+            form_message: 'Message',
+            form_send: 'Envoyer le message'
+        },
+        terms_page: {
+            title: 'Conditions d\'utilisation',
+            last_updated: 'Dernière mise à jour : Février 2026',
+            intro_title: 'Introduction',
+            intro_text: 'Bienvenue sur MasarWeb. En utilisant notre service, vous acceptez ces conditions.',
+            usage_title: 'Utilisation Acceptable',
+            usage_text: 'Vous acceptez de ne pas utiliser notre service pour des activités illégales.',
+            disclaimer_title: 'Avis de non-responsabilité',
+            disclaimer_text: 'Le service est fourni "tel quel" sans garantie d\'aucune sorte.'
+        },
+        privacy_page: {
+            title: 'Politique de Confidentialité',
+            last_updated: 'Dernière mise à jour : Février 2026',
+            collection_title: 'Collecte d\'informations',
+            collection_text: 'Nous ne stockons pas les journaux de votre activité de navigation.',
+            usage_title: 'Comment nous utilisons les informations',
+            usage_text: 'Nous utilisons des données temporaires uniquement pour faciliter votre session.',
+            cookies_title: 'Cookies',
+            cookies_text: 'Nous utilisons des cookies uniquement pour la gestion de session et la langue.'
         }
     },
     zh: {
@@ -342,6 +474,39 @@ const locales = {
             access_denied: '访问被拒绝',
             blocked_site: '受阻网站',
             blocked_access: '访问此网站被阻止'
+        },
+        nav_home: '首页',
+        nav_support: '用户支持',
+        nav_terms: '使用条款',
+        nav_privacy: '隐私政策',
+        support_page: {
+            title: '用户支持',
+            desc: '我们在这里为您提供帮助。如果有任何问题，请联系我们。',
+            contact_info: '联系信息',
+            form_name: '姓名',
+            form_email: '电子邮件',
+            form_message: '留言',
+            form_send: '发送留言'
+        },
+        terms_page: {
+            title: '使用条款',
+            last_updated: '最后更新：2026年2月',
+            intro_title: '简介',
+            intro_text: '欢迎使用 MasarWeb。使用我们的服务即表示您同意这些条款。',
+            usage_title: '可接受的使用',
+            usage_text: '您同意不将我们的服务用于任何非法活动。',
+            disclaimer_title: '免责声明',
+            disclaimer_text: '服务按“原样”提供，不提供任何形式的保证。'
+        },
+        privacy_page: {
+            title: '隐私政策',
+            last_updated: '最后更新：2026年2月',
+            collection_title: '信息收集',
+            collection_text: '我们不存储您的浏览活动日志。',
+            usage_title: '我们如何使用信息',
+            usage_text: '我们仅使用临时数据来促进您的浏览会话。',
+            cookies_title: 'Cookies',
+            cookies_text: '我们仅将 cookies 用于会话管理和语言偏好。'
         }
     },
     hi: {
@@ -411,6 +576,39 @@ const locales = {
             access_denied: 'एक्सेस अस्वीकृत',
             blocked_site: 'अवरुद्ध साइट',
             blocked_access: 'इस साइट तक पहुंच अवरुद्ध है'
+        },
+        nav_home: 'होम',
+        nav_support: 'उपयोगकर्ता समर्थन',
+        nav_terms: 'उपयोग की शर्तें',
+        nav_privacy: 'गोपनीयता नीति',
+        support_page: {
+            title: 'उपयोगकर्ता समर्थन',
+            desc: 'हम आपकी मदद के लिए यहाँ हैं। यदि आपको कोई समस्या है तो हमसे संपर्क करें।',
+            contact_info: 'संपर्क जानकारी',
+            form_name: 'नाम',
+            form_email: 'ईमेल',
+            form_message: 'संदेश',
+            form_send: 'संदेश भेजें'
+        },
+        terms_page: {
+            title: 'उपयोग की शर्तें',
+            last_updated: 'अंतिम अपडेट: फरवरी 2026',
+            intro_title: 'परिचय',
+            intro_text: 'MasarWeb में आपका स्वागत है। हमारी सेवा का उपयोग करके, आप इन शर्तों से सहमत होते हैं।',
+            usage_title: 'स्वीकार्य उपयोग',
+            usage_text: 'आप हमारी सेवा का उपयोग किसी भी अवैध गतिविधि के लिए नहीं करने के लिए सहमत हैं।',
+            disclaimer_title: 'अस्वीकरण',
+            disclaimer_text: 'सेवा "जैसी है" वैसी ही प्रदान की जाती है, बिना किसी भी प्रकार की वारंटी के।'
+        },
+        privacy_page: {
+            title: 'गोपनीयता नीति',
+            last_updated: 'अंतिम अपडेट: फरवरी 2026',
+            collection_title: 'जानकारी संग्रह',
+            collection_text: 'हम आपकी ब्राउज़िंग गतिविधि के लॉग संग्रहीत नहीं करते हैं।',
+            usage_title: 'हम जानकारी का उपयोग कैसे करते हैं',
+            usage_text: 'हम केवल आपके ब्राउज़िंग सत्र को सुविधाजनक बनाने के लिए अस्थायी डेटा का उपयोग करते हैं।',
+            cookies_title: 'कुकीज़',
+            cookies_text: 'हम कुकीज़ का उपयोग केवल सत्र प्रबंधन और भाषा प्राथमिकताओं के लिए करते हैं।'
         }
     },
     pt: {
@@ -480,6 +678,39 @@ const locales = {
             access_denied: 'Acesso negado',
             blocked_site: 'Site bloqueado',
             blocked_access: 'O acesso a este site está bloqueado'
+        },
+        nav_home: 'Início',
+        nav_support: 'Suporte ao Usuário',
+        nav_terms: 'Termos de Uso',
+        nav_privacy: 'Política de Privacidade',
+        support_page: {
+            title: 'Suporte ao Usuário',
+            desc: 'Estamos aqui para ajudar. Entre em contato conosco se tiver algum problema.',
+            contact_info: 'Informações de Contato',
+            form_name: 'Nome',
+            form_email: 'E-mail',
+            form_message: 'Mensagem',
+            form_send: 'Enviar Mensagem'
+        },
+        terms_page: {
+            title: 'Termos de Uso',
+            last_updated: 'Última atualização: Fevereiro 2026',
+            intro_title: 'Introdução',
+            intro_text: 'Bem-vindo ao MasarWeb. Ao usar nosso serviço, você concorda com estes termos.',
+            usage_title: 'Uso Aceitável',
+            usage_text: 'Você concorda em não usar nosso serviço para atividades ilegais.',
+            disclaimer_title: 'Isenção de responsabilidade',
+            disclaimer_text: 'O serviço é fornecido "como está" sem garantias de qualquer tipo.'
+        },
+        privacy_page: {
+            title: 'Política de Privacidade',
+            last_updated: 'Última atualização: Fevereiro 2026',
+            collection_title: 'Coleta de Informações',
+            collection_text: 'Não armazenamos registros de sua atividade de navegação.',
+            usage_title: 'Como usamos as informações',
+            usage_text: 'Usamos dados temporários apenas para facilitar sua sessão de navegação.',
+            cookies_title: 'Cookies',
+            cookies_text: 'Usamos cookies apenas para gerenciamento de sessão e preferências de idioma.'
         }
     },
     ru: {
@@ -549,6 +780,39 @@ const locales = {
             access_denied: 'Доступ запрещен',
             blocked_site: 'Заблокированный сайт',
             blocked_access: 'Доступ к этому сайту заблокирован'
+        },
+        nav_home: 'Главная',
+        nav_support: 'Поддержка пользователей',
+        nav_terms: 'Условия использования',
+        nav_privacy: 'Политика конфиденциальности',
+        support_page: {
+            title: 'Поддержка пользователей',
+            desc: 'Мы здесь, чтобы помочь вам. Свяжитесь с нами, если у вас возникли проблемы.',
+            contact_info: 'Контактная информация',
+            form_name: 'Имя',
+            form_email: 'Электронная почта',
+            form_message: 'Сообщение',
+            form_send: 'Отправить сообщение'
+        },
+        terms_page: {
+            title: 'Условия использования',
+            last_updated: 'Последнее обновление: Февраль 2026',
+            intro_title: 'Введение',
+            intro_text: 'Добро пожаловать в MasarWeb. Используя наш сервис, вы соглашаетесь с этими условиями.',
+            usage_title: 'Допустимое использование',
+            usage_text: 'Вы соглашаетесь не использовать наш сервис для каких-либо незаконных действий.',
+            disclaimer_title: 'Отказ от ответственности',
+            disclaimer_text: 'Сервис предоставляется «как есть» без каких-либо гарантий.'
+        },
+        privacy_page: {
+            title: 'Политика конфиденциальности',
+            last_updated: 'Последнее обновление: Февраль 2026',
+            collection_title: 'Сбор информации',
+            collection_text: 'Мы не храним журналы вашей активности просмотра.',
+            usage_title: 'Как мы используем информацию',
+            usage_text: 'Мы используем временные данные только для облегчения вашей сессии просмотра.',
+            cookies_title: 'Cookies',
+            cookies_text: 'Мы используем файлы cookie только для управления сеансом и языковых настроек.'
         }
     },
     de: {
@@ -618,6 +882,39 @@ const locales = {
             access_denied: 'Zugriff verweigert',
             blocked_site: 'Gesperrte Seite',
             blocked_access: 'Der Zugriff auf diese Seite ist gesperrt'
+        },
+        nav_home: 'Startseite',
+        nav_support: 'Benutzersupport',
+        nav_terms: 'Nutzungsbedingungen',
+        nav_privacy: 'Datenschutzrichtlinie',
+        support_page: {
+            title: 'Benutzersupport',
+            desc: 'Wir sind hier, um Ihnen zu helfen. Kontaktieren Sie uns, wenn Sie Probleme haben.',
+            contact_info: 'Kontaktinformationen',
+            form_name: 'Name',
+            form_email: 'E-Mail',
+            form_message: 'Nachricht',
+            form_send: 'Nachricht senden'
+        },
+        terms_page: {
+            title: 'Nutzungsbedingungen',
+            last_updated: 'Letzte Aktualisierung: Februar 2026',
+            intro_title: 'Einführung',
+            intro_text: 'Willkommen bei MasarWeb. Durch die Nutzung unseres Dienstes stimmen Sie diesen Bedingungen zu.',
+            usage_title: 'Akzeptable Nutzung',
+            usage_text: 'Sie stimmen zu, unseren Dienst nicht für illegale Aktivitäten zu nutzen.',
+            disclaimer_title: 'Haftungsausschluss',
+            disclaimer_text: 'Der Dienst wird "wie besehen" ohne jegliche Garantie bereitgestellt.'
+        },
+        privacy_page: {
+            title: 'Datenschutzrichtlinie',
+            last_updated: 'Letzte Aktualisierung: Februar 2026',
+            collection_title: 'Informationssammlung',
+            collection_text: 'Wir speichern keine Protokolle Ihrer Surfaktivitäten.',
+            usage_title: 'Wie wir Informationen verwenden',
+            usage_text: 'Wir verwenden temporäre Daten nur, um Ihre Surfsitzung zu erleichtern.',
+            cookies_title: 'Cookies',
+            cookies_text: 'Wir verwenden Cookies nur für Sitzungsmanagement und Spracheinstellungen.'
         }
     },
     tr: {
@@ -687,6 +984,39 @@ const locales = {
             access_denied: 'Erişim reddedildi',
             blocked_site: 'Engellenen site',
             blocked_access: 'Bu siteye erişim engellendi'
+        },
+        nav_home: 'Ana Sayfa',
+        nav_support: 'Kullanıcı Desteği',
+        nav_terms: 'Kullanım Şartları',
+        nav_privacy: 'Gizlilik Politikası',
+        support_page: {
+            title: 'Kullanıcı Desteği',
+            desc: 'Size yardım etmek için buradayız. Herhangi bir sorununuz varsa bizimle iletişime geçin.',
+            contact_info: 'İletişim Bilgileri',
+            form_name: 'İsim',
+            form_email: 'E-posta',
+            form_message: 'Mesaj',
+            form_send: 'Mesaj Gönder'
+        },
+        terms_page: {
+            title: 'Kullanım Şartları',
+            last_updated: 'Son Güncelleme: Şubat 2026',
+            intro_title: 'Giriş',
+            intro_text: 'MasarWeb\'e hoş geldiniz. Hizmetimizi kullanarak bu şartları kabul etmiş olursunuz.',
+            usage_title: 'Kabul Edilebilir Kullanım',
+            usage_text: 'Hizmetimizi yasa dışı faaliyetler için kullanmamayı kabul ediyorsunuz.',
+            disclaimer_title: 'Feragatname',
+            disclaimer_text: 'Hizmet, herhangi bir garanti olmaksızın "olduğu gibi" sağlanır.'
+        },
+        privacy_page: {
+            title: 'Gizlilik Politikası',
+            last_updated: 'Son Güncelleme: Şubat 2026',
+            collection_title: 'Bilgi Toplama',
+            collection_text: 'Gezinme etkinliğinizin günlüklerini saklamıyoruz.',
+            usage_title: 'Bilgileri Nasıl Kullanıyoruz',
+            usage_text: 'Geçici verileri yalnızca gezinme oturumunuzu kolaylaştırmak için kullanıyoruz.',
+            cookies_title: 'Çerezler',
+            cookies_text: 'Çerezleri yalnızca oturum yönetimi ve dil tercihleri için kullanıyoruz.'
         }
     }
 };

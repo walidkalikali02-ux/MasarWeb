@@ -143,10 +143,12 @@
             <div class="footer-content">
                 <p><%= t.copyright %></p>
                 <div class="footer-links">
-                <a href="#" onclick="alert('<%= t.alert_terms %>')"><%= t.terms %></a>
-                <span>|</span>
-                <a href="#" onclick="alert('<%= t.alert_privacy %>')"><%= t.privacy %></a>
-            </div>
+                    <a href="/support"><%= t.nav_support %></a>
+                    <span>|</span>
+                    <a href="/terms"><%= t.nav_terms %></a>
+                    <span>|</span>
+                    <a href="/privacy"><%= t.nav_privacy %></a>
+                </div>
             </div>
         </footer>
     </div>
