@@ -438,6 +438,14 @@ body {
     text-align: center;
 }
 
+.footer-description {
+    max-width: 600px;
+    margin: 0 auto 20px;
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
 .footer-nav {
     display: flex;
     justify-content: center;

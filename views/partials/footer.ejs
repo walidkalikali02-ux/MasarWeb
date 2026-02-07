@@ -1,5 +1,8 @@
 <footer class="main-footer">
     <div class="footer-content">
+        <% if (t.description) { %>
+            <p class="footer-description"><%= t.description %></p>
+        <% } %>
         <div class="footer-nav">
             <a href="/"><%= t.nav_home %></a>
             <a href="/support"><%= t.nav_support %></a>
