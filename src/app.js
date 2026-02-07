@@ -152,14 +152,16 @@ app.use((req, res) => {
   }
 });
 
-// Start server
-const server = app.listen(PORT, () => {
-  logger.info(`MasarWeb running on port ${PORT}`);
-  logger.info(`Environment: ${config.isProduction ? 'production' : 'development'}`);
-  logger.info(`WebSocket proxy: ${config.features.websockets ? 'enabled' : 'disabled'}`);
-});
+// Start server if running directly
+if (require.main === module) {
+  const server = app.listen(PORT, () => {
+    logger.info(`MasarWeb running on port ${PORT}`);
+    logger.info(`Environment: ${config.isProduction ? 'production' : 'development'}`);
+    logger.info(`WebSocket proxy: ${config.features.websockets ? 'enabled' : 'disabled'}`);
+  });
 
-// Initialize WebSocket proxy
-setupWebSocketProxy(server);
+  // Initialize WebSocket proxy
+  setupWebSocketProxy(server);
+}
 
 module.exports = app;
