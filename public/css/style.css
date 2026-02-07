@@ -337,12 +337,6 @@ body {
     width: auto;
 }
 
-.logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
 .nav-links {
     display: flex;
     gap: 25px;
