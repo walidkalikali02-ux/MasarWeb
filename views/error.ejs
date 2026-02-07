@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="error-page">
+    <div class="container">
+        <div class="error-container">
+            <div class="error-code">
+                <span class="error-digit"><%= code.toString()[0] || '5' %></span>
+                <span class="error-digit"><%= code.toString()[1] || '0' %></span>
+                <span class="error-digit"><%= code.toString()[2] || '0' %></span>
+            </div>
+            
+            <div class="error-icon">
+                <% if (code === 404) { %>
+                    🔍
+                <% } else if (code === 403) { %>
+                    🚫
+                <% } else if (code === 429) { %>
+                    ⏱️
+                <% } else if (code === 502 || code === 503) { %>
+                    🔌
+                <% } else { %>
+                    ⚠️
+                <% } %>
+            </div>
+            
+            <h1 class="error-title">
+                <% if (code === 404) { %>
+                    <%= t.error.title_404 %>
+                <% } else if (code === 403) { %>
+                    <%= t.error.title_403 %>
+                <% } else if (code === 429) { %>
+                    <%= t.error.title_429 %>
+                <% } else if (code === 502) { %>
+                    <%= t.error.title_502 %>
+                <% } else if (code === 503) { %>
+                    <%= t.error.title_503 %>
+                <% } else { %>
+                    <%= t.error.title_generic %>
+                <% } %>
+            </h1>
+            
+            <p class="error-message"><%= error %></p>
+            
+            <div class="error-actions">
+                <a href="/" class="btn btn-primary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    <%= t.error.back_home %>
+                </a>
+                
+                <button onclick="history.back()" class="btn btn-secondary">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="m12 19-7-7 7-7"/>
+                        <path d="M19 12H5"/>
+                    </svg>
+                    <%= t.error.back %>
+                </button>
+            </div>
+            
+            <div class="error-help">
+                <h3><%= t.error.suggestions_title %></h3>
+                <ul>
+                    <li><%= t.error.suggestion_1 %></li>
+                    <li><%= t.error.suggestion_2 %></li>
+                    <li><%= t.error.suggestion_3 %></li>
+                    <li><%= t.error.suggestion_4 %></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+        }
+        
+        .error-container {
+            text-align: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        .error-code {
+            font-size: 8rem;
+            font-weight: 700;
+            color: #1a237e;
+            line-height: 1;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 4px 4px 0 rgba(0,0,0,0.1);
+        }
+        
+        .error-digit {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .error-digit:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+        
+        .error-digit:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+        
+        .error-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .error-message {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .error-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: #1a237e;
+            color: white;
+            box-shadow: 0 4px 15px rgba(26, 35, 126, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #283593;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(26, 35, 126, 0.4);
+        }
+        
+        .btn-secondary {
+            background: #f5f5f5;
+            color: #333;
+        }
+        
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+        
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .error-help {
+            text-align: right;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            border-right: 4px solid #1a237e;
+        }
+        
+        /* RTL support for help section */
+        html[dir="ltr"] .error-help {
+            text-align: left;
+            border-right: none;
+            border-left: 4px solid #1a237e;
+        }
+        
+        .error-help h3 {
+            color: #333;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .error-help ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .error-help li {
+            color: #666;
+            margin-bottom: 10px;
+            padding-right: 20px;
+            position: relative;
+        }
+        
+        html[dir="ltr"] .error-help li {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+        
+        .error-help li::before {
+            content: "•";
+            color: #1a237e;
+            position: absolute;
+            right: 0;
+            font-weight: bold;
+        }
+        
+        html[dir="ltr"] .error-help li::before {
+            right: auto;
+            left: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 480px) {
+            .error-code { font-size: 6rem; }
+            .error-actions { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</body>
+</html>

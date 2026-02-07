@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="<%= t.tagline %>">
+    <title><%= t.title %></title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
+</head>
+<body class="homepage">
+    <div class="container">
+        <div class="lang-switcher">
+            <a href="?lang=ar" class="lang-btn <%= currentLang === 'ar' ? 'active' : '' %>">العربية</a>
+            <a href="?lang=en" class="lang-btn <%= currentLang === 'en' ? 'active' : '' %>">English</a>
+            <a href="?lang=es" class="lang-btn <%= currentLang === 'es' ? 'active' : '' %>">Español</a>
+            <a href="?lang=fr" class="lang-btn <%= currentLang === 'fr' ? 'active' : '' %>">Français</a>
+        </div>
+
+        <header class="main-header">
+            <div class="logo">
+                <!-- <span class="logo-icon">🌐</span> -->
+                <!-- <h1><%= t.title %></h1> -->
+                <img src="/static/images/logo.svg" alt="<%= t.title %>" class="main-logo">
+            </div>
+            <p class="tagline"><%= t.tagline %></p>
+        </header>
+
+        <main class="main-content">
+            <div class="search-container">
+                <form action="/browse" method="POST" class="url-form">
+                    <div class="input-group">
+                        <input 
+                            type="url" 
+                            name="url" 
+                            id="url-input"
+                            class="url-input"
+                            placeholder="<%= t.placeholder %>"
+                            value="<%= currentUrl || '' %>"
+                            autocomplete="off"
+                            required
+                        >
+                        <button type="submit" class="browse-btn">
+                            <span><%= t.browse %></span>
+                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="error-message">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                        <span><%= error %></span>
+                    </div>
+                <% } %>
+            </div>
+
+            <div class="features">
+                <h2><%= t.features_title %></h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <h3><%= t.privacy_title %></h3>
+                        <p><%= t.privacy_desc %></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3><%= t.speed_title %></h3>
+                        <p><%= t.speed_desc %></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🛡️</div>
+                        <h3><%= t.protection_title %></h3>
+                        <p><%= t.protection_desc %></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3><%= t.devices_title %></h3>
+                        <p><%= t.devices_desc %></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔐</div>
+                        <h3><%= t.encryption_title %></h3>
+                        <p><%= t.encryption_desc %></p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌍</div>
+                        <h3><%= t.support_title %></h3>
+                        <p><%= t.support_desc %></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="how-it-works">
+                <h2><%= t.how_it_works_title %></h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <p><%= t.step1 %></p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <p><%= t.step2 %></p>
+                    </div>
+                    <div class="step-arrow">→</div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <p><%= t.step3 %></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="popular-sites">
+                <h2><%= t.popular_sites_title %></h2>
+                <div class="sites-grid">
+                    <% if (t.popular_sites && t.popular_sites.length > 0) { %>
+                        <% t.popular_sites.forEach(function(site) { %>
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('url-input').value='<%= site.url %>'; document.querySelector('.url-form').submit();" class="site-btn">
+                                <span><%= site.icon %></span> <%= site.name %>
+                            </a>
+                        <% }); %>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+
+        <footer class="main-footer">
+            <div class="footer-content">
+                <p><%= t.copyright %></p>
+                <div class="footer-links">
+                <a href="#" onclick="alert('<%= t.alert_terms %>')"><%= t.terms %></a>
+                <span>|</span>
+                <a href="#" onclick="alert('<%= t.alert_privacy %>')"><%= t.privacy %></a>
+            </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Auto-focus on input
+        document.getElementById('url-input').focus();
+        
+        // Handle form submission
+        document.querySelector('.url-form').addEventListener('submit', function(e) {
+            const input = document.getElementById('url-input');
+            if (!input.value.trim()) {
+                e.preventDefault();
+                input.focus();
+            }
+        });
+    </script>
+</body>
+</html>

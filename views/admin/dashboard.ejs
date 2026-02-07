@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/static/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="admin-page">
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <span class="logo-icon">⚙️</span>
+                <h2>لوحة الإدارة</h2>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="#overview" class="nav-link active" onclick="showSection('overview')">
+                    <span>📊</span> نظرة عامة
+                </a>
+                <a href="#security" class="nav-link" onclick="showSection('security')">
+                    <span>🔒</span> الأمان
+                </a>
+                <a href="#sessions" class="nav-link" onclick="showSection('sessions')">
+                    <span>👥</span> الجلسات
+                </a>
+                <a href="#settings" class="nav-link" onclick="showSection('settings')">
+                    <span>⚙️</span> الإعدادات
+                </a>
+                <a href="/" class="nav-link">
+                    <span>🏠</span> العودة للموقع
+                </a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>لوحة التحكم</h1>
+                <div class="header-actions">
+                    <span class="status-badge online">● النظام يعمل</span>
+                    <button onclick="refreshStats()" class="refresh-btn">
+                        <span>🔄</span> تحديث
+                    </button>
+                </div>
+            </header>
+
+            <!-- Overview Section -->
+            <section id="overview" class="section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon uptime">⏱️</div>
+                        <div class="stat-info">
+                            <h3>وقت التشغيل</h3>
+                            <p class="stat-value" id="uptime"><%= Math.floor(stats.uptime / 3600) %> ساعة</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon memory">💾</div>
+                        <div class="stat-info">
+                            <h3>استخدام الذاكرة</h3>
+                            <p class="stat-value" id="memory"><%= Math.round(stats.memory.heapUsed / 1024 / 1024) %> MB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon sessions">👥</div>
+                        <div class="stat-info">
+                            <h3>الجلسات النشطة</h3>
+                            <p class="stat-value" id="sessions-count"><%= stats.cookies.sessions %></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon cookies">🍪</div>
+                        <div class="stat-info">
+                            <h3>إجمالي ملفات التعريف</h3>
+                            <p class="stat-value" id="cookies-count"><%= stats.cookies.totalCookies %></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon blocked">🚫</div>
+                        <div class="stat-info">
+                            <h3>عناوين IP المحظورة</h3>
+                            <p class="stat-value" id="blocked-ips"><%= stats.security.blockedIPs %></p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon domains">🌐</div>
+                        <div class="stat-info">
+                            <h3>النطاقات المحظورة</h3>
+                            <p class="stat-value" id="blocked-domains"><%= stats.security.blockedDomains %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="features-status">
+                    <h3>حالة الميزات</h3>
+                    <div class="features-grid">
+                        <div class="feature-item <%= stats.features.websockets ? 'enabled' : 'disabled' %>">
+                            <span class="feature-status"><%= stats.features.websockets ? '✅' : '❌' %></span>
+                            <span>WebSockets</span>
+                        </div>
+                        <div class="feature-item <%= stats.features.mediaStreaming ? 'enabled' : 'disabled' %>">
+                            <span class="feature-status"><%= stats.features.mediaStreaming ? '✅' : '❌' %></span>
+                            <span>بث الوسائط</span>
+                        </div>
+                        <div class="feature-item <%= stats.features.javascriptRewrite ? 'enabled' : 'disabled' %>">
+                            <span class="feature-status"><%= stats.features.javascriptRewrite ? '✅' : '❌' %></span>
+                            <span>إعادة كتابة JS</span>
+                        </div>
+                        <div class="feature-item <%= stats.features.cookieSync ? 'enabled' : 'disabled' %>">
+                            <span class="feature-status"><%= stats.features.cookieSync ? '✅' : '❌' %></span>
+                            <span>مزامنة ملفات التعريف</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Section -->
+            <section id="security" class="section">
+                <div class="section-grid">
+                    <div class="panel">
+                        <h3>العناوين المحظورة</h3>
+                        <div class="ip-management">
+                            <form onsubmit="return blockIP(event)">
+                                <div class="form-group">
+                                    <input type="text" id="block-ip-input" placeholder="أدخل عنوان IP" required>
+                                    <input type="text" id="block-reason-input" placeholder="السبب (اختياري)">
+                                    <button type="submit" class="btn btn-danger">حظر</button>
+                                </div>
+                            </form>
+                            
+                            <div class="list-container">
+                                <h4>القائمة الحالية:</h4>
+                                <ul id="blocked-ips-list" class="item-list">
+                                    <% blockedIPs.forEach(function(ip) { %>
+                                        <li>
+                                            <span><%= ip %></span>
+                                            <button onclick="unblockIP('<%= ip %>')" class="btn btn-small">إلغاء الحظر</button>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>النطاقات المحظورة</h3>
+                        <div class="domain-management">
+                            <form onsubmit="return blockDomain(event)">
+                                <div class="form-group">
+                                    <input type="text" id="block-domain-input" placeholder="أدخل النطاق (مثال: example.com)" required>
+                                    <button type="submit" class="btn btn-danger">حظر</button>
+                                </div>
+                            </form>
+                            
+                            <div class="list-container">
+                                <h4>القائمة الحالية:</h4>
+                                <ul id="blocked-domains-list" class="item-list">
+                                    <% blockedDomains.forEach(function(domain) { %>
+                                        <li>
+                                            <span><%= domain %></span>
+                                            <button onclick="unblockDomain('<%= domain %>')" class="btn btn-small">إلغاء الحظر</button>
+                                        </li>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sessions Section -->
+            <section id="sessions" class="section">
+                <div class="panel">
+                    <h3>إدارة الجلسات</h3>
+                    <div class="sessions-info">
+                        <div class="info-row">
+                            <span>الجلسات النشطة:</span>
+                            <strong id="active-sessions"><%= stats.cookies.sessions %></strong>
+                        </div>
+                        <div class="info-row">
+                            <span>إجمالي ملفات التعريف:</span>
+                            <strong id="total-cookies"><%= stats.cookies.totalCookies %></strong>
+                        </div>
+                    </div>
+                    <button onclick="clearAllSessions()" class="btn btn-danger">
+                        <span>🗑️</span> مسح جميع الجلسات
+                    </button>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="section">
+                <div class="section-grid">
+                    <div class="panel">
+                        <h3>إعدادات الميزات</h3>
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <label>WebSockets</label>
+                                <button onclick="toggleFeature('websockets')" class="toggle-btn <%= stats.features.websockets ? 'on' : 'off' %>">
+                                    <%= stats.features.websockets ? 'مفعّل' : 'معطّل' %>
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <label>بث الوسائط</label>
+                                <button onclick="toggleFeature('mediaStreaming')" class="toggle-btn <%= stats.features.mediaStreaming ? 'on' : 'off' %>">
+                                    <%= stats.features.mediaStreaming ? 'مفعّل' : 'معطّل' %>
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <label>إعادة كتابة JavaScript</label>
+                                <button onclick="toggleFeature('javascriptRewrite')" class="toggle-btn <%= stats.features.javascriptRewrite ? 'on' : 'off' %>">
+                                    <%= stats.features.javascriptRewrite ? 'مفعّل' : 'معطّل' %>
+                                </button>
+                            </div>
+                            <div class="setting-item">
+                                <label>مزامنة ملفات التعريف</label>
+                                <button onclick="toggleFeature('cookieSync')" class="toggle-btn <%= stats.features.cookieSync ? 'on' : 'off' %>">
+                                    <%= stats.features.cookieSync ? 'مفعّل' : 'معطّل' %>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <h3>معلومات النظام</h3>
+                        <div class="system-info">
+                            <div class="info-row">
+                                <span>إصدار Node.js:</span>
+                                <strong><%= stats.nodeVersion %></strong>
+                            </div>
+                            <div class="info-row">
+                                <span>نطاقات IP الخاصة المحمية:</span>
+                                <strong><%= stats.security.privateRanges %></strong>
+                            </div>
+                            <div class="info-row">
+                                <span>نقاط نهاية البيانات الوصفية المحظورة:</span>
+                                <strong><%= stats.security.metadataEndpoints %></strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Section navigation
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Refresh stats
+        async function refreshStats() {
+            try {
+                const response = await fetch('/admin/api/stats');
+                const data = await response.json();
+                
+                document.getElementById('uptime').textContent = Math.floor(data.uptime / 3600) + ' ساعة';
+                document.getElementById('memory').textContent = Math.round(data.memory.heapUsed / 1024 / 1024) + ' MB';
+                document.getElementById('sessions-count').textContent = data.connections.sessions;
+                document.getElementById('cookies-count').textContent = data.connections.cookies;
+                document.getElementById('blocked-ips').textContent = data.security.blockedIPs;
+                document.getElementById('blocked-domains').textContent = data.security.blockedDomains;
+                
+                alert('تم تحديث الإحصائيات');
+            } catch (error) {
+                alert('خطأ في تحديث الإحصائيات');
+            }
+        }
+
+        // Block IP
+        async function blockIP(event) {
+            event.preventDefault();
+            const ip = document.getElementById('block-ip-input').value;
+            const reason = document.getElementById('block-reason-input').value;
+            
+            try {
+                const response = await fetch('/admin/api/block-ip', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ip, reason })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    alert('تم حظر العنوان بنجاح');
+                    location.reload();
+                } else {
+                    alert(data.error || 'حدث خطأ');
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال');
+            }
+            return false;
+        }
+
+        // Unblock IP
+        async function unblockIP(ip) {
+            if (!confirm('هل أنت متأكد من إلغاء حظر ' + ip + '؟')) return;
+            
+            try {
+                const response = await fetch('/admin/api/unblock-ip', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ip })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    alert('تم إلغاء الحظر بنجاح');
+                    location.reload();
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال');
+            }
+        }
+
+        // Block domain
+        async function blockDomain(event) {
+            event.preventDefault();
+            const domain = document.getElementById('block-domain-input').value;
+            
+            try {
+                const response = await fetch('/admin/api/block-domain', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ domain })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    alert('تم حظر النطاق بنجاح');
+                    location.reload();
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال');
+            }
+            return false;
+        }
+
+        // Unblock domain
+        async function unblockDomain(domain) {
+            if (!confirm('هل أنت متأكد من إلغاء حظر ' + domain + '؟')) return;
+            
+            try {
+                const response = await fetch('/admin/api/unblock-domain', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ domain })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    alert('تم إلغاء الحظر بنجاح');
+                    location.reload();
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال');
+            }
+        }
+
+        // Toggle feature
+        async function toggleFeature(feature) {
+            const btn = event.target;
+            const currentState = btn.classList.contains('on');
+            
+            try {
+                const response = await fetch('/admin/api/toggle-feature', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ feature, enabled: !currentState })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    location.reload();
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال');
+            }
+        }
+
+        // Clear all sessions
+        async function clearAllSessions() {
+            if (!confirm('هل أنت متأكد من مسح جميع الجلسات؟')) return;
+            
+            try {
+                const response = await fetch('/admin/api/clear-sessions', {
+                    method: 'POST'
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    alert('تم مسح جميع الجلسات');
+                    location.reload();
+                }
+            } catch (error) {
+                alert('خطأ في الاتصال');
+            }
+        }
+
+        // Auto refresh every 30 seconds
+        setInterval(refreshStats, 30000);
+    </script>
+</body>
+</html>
