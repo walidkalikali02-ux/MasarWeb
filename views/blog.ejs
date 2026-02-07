@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('partials/head', { pageTitle: t.blog_title || 'Blog' }) %>
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title"><%= t.blog_title || 'Blog' %></h1>
+            
+            <div class="blog-grid">
+                <% articles.forEach(function(article) { %>
+                    <article class="blog-card">
+                        <div class="blog-card-content">
+                            <span class="blog-date"><%= article.date %></span>
+                            <h2><a href="/blog/<%= article.slug %>"><%= article.title %></a></h2>
+                            <p><%= article.excerpt %></p>
+                            <a href="/blog/<%= article.slug %>" class="read-more"><%= t.read_more || 'Read More' %> &rarr;</a>
+                        </div>
+                    </article>
+                <% }); %>
+            </div>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

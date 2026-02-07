@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('partials/head', { pageTitle: article.title }) %>
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="single-article">
+                <header class="article-header">
+                    <a href="/blog" class="back-link">&larr; <%= t.back_to_blog || 'Back to Blog' %></a>
+                    <h1 class="article-title"><%= article.title %></h1>
+                    <div class="article-meta">
+                        <span class="date"><i class="far fa-calendar-alt"></i> <%= article.date %></span>
+                    </div>
+                </header>
+                
+                <div class="article-body">
+                    <%- article.content %>
+                </div>
+
+                <div class="article-footer">
+                    <a href="/" class="cta-button"><%= t.start_browsing || 'Start Browsing Now' %></a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

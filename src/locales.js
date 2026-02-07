@@ -109,9 +109,14 @@ const locales = {
             blocked_access: 'الوصول إلى هذا الموقع محظور'
         },
         nav_home: 'الرئيسية',
+        nav_blog: 'المدونة',
         nav_support: 'دعم المستخدم',
         nav_terms: 'شروط الاستخدام',
         nav_privacy: 'سياسة الخصوصية',
+        blog_title: 'مدونة MasarWeb',
+        read_more: 'اقرأ المزيد',
+        back_to_blog: 'العودة للمدونة',
+        start_browsing: 'ابدأ التصفح الآن',
         support_page: {
             title: 'دعم المستخدم',
             desc: 'نحن هنا لمساعدتك. اتصل بنا إذا كان لديك أي مشاكل.',
@@ -246,9 +251,14 @@ const locales = {
             blocked_access: 'Access to this site is blocked'
         },
         nav_home: 'Home',
+        nav_blog: 'Blog',
         nav_support: 'User Support',
         nav_terms: 'Terms of Use',
         nav_privacy: 'Privacy Policy',
+        blog_title: 'MasarWeb Blog',
+        read_more: 'Read More',
+        back_to_blog: 'Back to Blog',
+        start_browsing: 'Start Browsing Now',
         support_page: {
             title: 'User Support',
             desc: 'We are here to help you. Contact us if you have any issues.',

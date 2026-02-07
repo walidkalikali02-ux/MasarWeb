@@ -6,6 +6,7 @@
         
         <div class="nav-links">
             <a href="/" class="<%= currentUrl === '/' ? 'active' : '' %>"><%= t.nav_home %></a>
+            <a href="/blog" class="<%= currentUrl && currentUrl.startsWith('/blog') ? 'active' : '' %>"><%= t.nav_blog || 'Blog' %></a>
             <a href="/support" class="<%= currentUrl === '/support' ? 'active' : '' %>"><%= t.nav_support %></a>
             <a href="/terms" class="<%= currentUrl === '/terms' ? 'active' : '' %>"><%= t.nav_terms %></a>
             <a href="/privacy" class="<%= currentUrl === '/privacy' ? 'active' : '' %>"><%= t.nav_privacy %></a>

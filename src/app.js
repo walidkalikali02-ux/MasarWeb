@@ -20,6 +20,7 @@ const { logger } = require('./utils/logger');
 const { config } = require('./utils/config');
 const { setupWebSocketProxy } = require('./proxy/websocketHandler');
 const locales = require('./locales');
+const articles = require('./data/articles');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -113,6 +114,23 @@ app.get('/health', (req, res) => {
 app.get('/support', (req, res) => res.render('support'));
 app.get('/terms', (req, res) => res.render('terms'));
 app.get('/privacy', (req, res) => res.render('privacy'));
+
+// Blog Routes
+app.get('/blog', (req, res) => {
+    res.render('blog', { articles });
+});
+
+app.get('/blog/:slug', (req, res) => {
+    const article = articles.find(a => a.slug === req.params.slug);
+    if (!article) {
+        return res.status(404).render('error', {
+            title: 'Not Found',
+            error: 'Article not found',
+            code: 404
+        });
+    }
+    res.render('article', { article });
+});
 
 // Proxy routes (main functionality)
 app.use('/', proxyRouter);
