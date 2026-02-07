@@ -1,33 +1,12 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%= t.tagline %>">
-    <title><%= t.title %></title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
-</head>
+<%- include('partials/head') %>
 <body class="homepage">
-    <div class="container">
-        <div class="lang-switcher">
-            <a href="?lang=ar" class="lang-btn <%= currentLang === 'ar' ? 'active' : '' %>">العربية</a>
-            <a href="?lang=en" class="lang-btn <%= currentLang === 'en' ? 'active' : '' %>">English</a>
-            <a href="?lang=es" class="lang-btn <%= currentLang === 'es' ? 'active' : '' %>">Español</a>
-            <a href="?lang=fr" class="lang-btn <%= currentLang === 'fr' ? 'active' : '' %>">Français</a>
-            <a href="?lang=zh" class="lang-btn <%= currentLang === 'zh' ? 'active' : '' %>">中文</a>
-            <a href="?lang=hi" class="lang-btn <%= currentLang === 'hi' ? 'active' : '' %>">हिन्दी</a>
-            <a href="?lang=pt" class="lang-btn <%= currentLang === 'pt' ? 'active' : '' %>">Português</a>
-            <a href="?lang=ru" class="lang-btn <%= currentLang === 'ru' ? 'active' : '' %>">Русский</a>
-            <a href="?lang=de" class="lang-btn <%= currentLang === 'de' ? 'active' : '' %>">Deutsch</a>
-            <a href="?lang=tr" class="lang-btn <%= currentLang === 'tr' ? 'active' : '' %>">Türkçe</a>
-        </div>
+    <%- include('partials/navbar') %>
 
+    <div class="container">
         <header class="main-header">
             <div class="logo">
-                <!-- <span class="logo-icon">🌐</span> -->
-                <!-- <h1><%= t.title %></h1> -->
                 <img src="/static/images/logo.svg" alt="<%= t.title %>" class="main-logo">
             </div>
             <p class="tagline"><%= t.tagline %></p>
@@ -138,20 +117,9 @@
                 </div>
             </div>
         </main>
-
-        <footer class="main-footer">
-            <div class="footer-content">
-                <p><%= t.copyright %></p>
-                <div class="footer-links">
-                    <a href="/support"><%= t.nav_support %></a>
-                    <span>|</span>
-                    <a href="/terms"><%= t.nav_terms %></a>
-                    <span>|</span>
-                    <a href="/privacy"><%= t.nav_privacy %></a>
-                </div>
-            </div>
-        </footer>
     </div>
+
+    <%- include('partials/footer') %>
 
     <script>
         // Auto-focus on input

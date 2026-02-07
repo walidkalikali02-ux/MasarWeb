@@ -1,33 +1,10 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= t.privacy_page.title %> - <%= t.title %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
+<%- include('partials/head', { pageTitle: t.privacy_page.title + ' - ' + t.title }) %>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <i class="fas fa-shield-alt"></i>
-                <h1>MasarWeb</h1>
-            </div>
-            <div class="lang-switcher">
-                <a href="?lang=ar" class="lang-btn <%= currentLang === 'ar' ? 'active' : '' %>">العربية</a>
-                <a href="?lang=en" class="lang-btn <%= currentLang === 'en' ? 'active' : '' %>">English</a>
-                <a href="?lang=es" class="lang-btn <%= currentLang === 'es' ? 'active' : '' %>">Español</a>
-                <a href="?lang=fr" class="lang-btn <%= currentLang === 'fr' ? 'active' : '' %>">Français</a>
-                <a href="?lang=zh" class="lang-btn <%= currentLang === 'zh' ? 'active' : '' %>">中文</a>
-                <a href="?lang=hi" class="lang-btn <%= currentLang === 'hi' ? 'active' : '' %>">हिन्दी</a>
-                <a href="?lang=pt" class="lang-btn <%= currentLang === 'pt' ? 'active' : '' %>">Português</a>
-                <a href="?lang=ru" class="lang-btn <%= currentLang === 'ru' ? 'active' : '' %>">Русский</a>
-                <a href="?lang=de" class="lang-btn <%= currentLang === 'de' ? 'active' : '' %>">Deutsch</a>
-                <a href="?lang=tr" class="lang-btn <%= currentLang === 'tr' ? 'active' : '' %>">Türkçe</a>
-            </div>
-        </header>
+    <%- include('partials/navbar') %>
 
+    <div class="container">
         <main class="content-page">
             <h2><%= t.privacy_page.title %></h2>
             <p class="last-updated"><%= t.privacy_page.last_updated %></p>
@@ -49,16 +26,8 @@
             
             <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> <%= t.error.back_home %></a>
         </main>
-
-        <footer>
-            <div class="footer-links">
-                <a href="/"><%= t.nav_home %></a>
-                <a href="/support"><%= t.nav_support %></a>
-                <a href="/terms"><%= t.nav_terms %></a>
-                <a href="/privacy"><%= t.nav_privacy %></a>
-            </div>
-            <p><%= t.copyright %></p>
-        </footer>
     </div>
+
+    <%- include('partials/footer') %>
 </body>
 </html>

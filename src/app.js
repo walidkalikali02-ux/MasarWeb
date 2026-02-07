@@ -85,6 +85,7 @@ app.use((req, res, next) => {
   req.lang = lang;
   res.locals.t = locales[lang];
   res.locals.currentLang = lang;
+  res.locals.currentUrl = req.path;
   res.locals.dir = locales[lang].dir;
   next();
 });
