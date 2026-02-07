@@ -9,3 +9,38 @@
         <p class="copyright"><%= t.copyright %></p>
     </div>
 </footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const langBtn = document.getElementById('langBtn');
+        const langMenu = document.getElementById('langMenu');
+        
+        if (langBtn && langMenu) {
+            // Toggle menu
+            langBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                langMenu.classList.toggle('show');
+                langBtn.setAttribute('aria-expanded', langMenu.classList.contains('show'));
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+                    langMenu.classList.remove('show');
+                    langBtn.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Preserve query parameters when switching language
+            const langLinks = langMenu.querySelectorAll('a');
+            langLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const lang = this.getAttribute('data-lang');
+                    const url = new URL(window.location.href);
+                    url.searchParams.set('lang', lang);
+                    this.href = url.toString();
+                });
+            });
+        }
+    });
+</script>

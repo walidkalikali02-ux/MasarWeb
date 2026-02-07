@@ -12,21 +12,21 @@
         </div>
 
         <div class="lang-dropdown">
-            <button class="lang-btn-toggle" onclick="this.nextElementSibling.classList.toggle('show')">
+            <button class="lang-btn-toggle" id="langBtn" aria-expanded="false" aria-label="Select Language">
                 <i class="fas fa-globe"></i> 
                 <span><%= currentLang.toUpperCase() %></span>
             </button>
-            <div class="lang-menu">
-                <a href="?lang=ar" class="<%= currentLang === 'ar' ? 'active' : '' %>">العربية</a>
-                <a href="?lang=en" class="<%= currentLang === 'en' ? 'active' : '' %>">English</a>
-                <a href="?lang=es" class="<%= currentLang === 'es' ? 'active' : '' %>">Español</a>
-                <a href="?lang=fr" class="<%= currentLang === 'fr' ? 'active' : '' %>">Français</a>
-                <a href="?lang=zh" class="<%= currentLang === 'zh' ? 'active' : '' %>">中文</a>
-                <a href="?lang=hi" class="<%= currentLang === 'hi' ? 'active' : '' %>">हिन्दी</a>
-                <a href="?lang=pt" class="<%= currentLang === 'pt' ? 'active' : '' %>">Português</a>
-                <a href="?lang=ru" class="<%= currentLang === 'ru' ? 'active' : '' %>">Русский</a>
-                <a href="?lang=de" class="<%= currentLang === 'de' ? 'active' : '' %>">Deutsch</a>
-                <a href="?lang=tr" class="<%= currentLang === 'tr' ? 'active' : '' %>">Türkçe</a>
+            <div class="lang-menu" id="langMenu">
+                <a href="?lang=ar" class="<%= currentLang === 'ar' ? 'active' : '' %>" data-lang="ar">العربية</a>
+                <a href="?lang=en" class="<%= currentLang === 'en' ? 'active' : '' %>" data-lang="en">English</a>
+                <a href="?lang=es" class="<%= currentLang === 'es' ? 'active' : '' %>" data-lang="es">Español</a>
+                <a href="?lang=fr" class="<%= currentLang === 'fr' ? 'active' : '' %>" data-lang="fr">Français</a>
+                <a href="?lang=zh" class="<%= currentLang === 'zh' ? 'active' : '' %>" data-lang="zh">中文</a>
+                <a href="?lang=hi" class="<%= currentLang === 'hi' ? 'active' : '' %>" data-lang="hi">हिन्दी</a>
+                <a href="?lang=pt" class="<%= currentLang === 'pt' ? 'active' : '' %>" data-lang="pt">Português</a>
+                <a href="?lang=ru" class="<%= currentLang === 'ru' ? 'active' : '' %>" data-lang="ru">Русский</a>
+                <a href="?lang=de" class="<%= currentLang === 'de' ? 'active' : '' %>" data-lang="de">Deutsch</a>
+                <a href="?lang=tr" class="<%= currentLang === 'tr' ? 'active' : '' %>" data-lang="tr">Türkçe</a>
             </div>
         </div>
     </div>
