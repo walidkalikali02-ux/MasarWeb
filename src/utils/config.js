@@ -78,6 +78,10 @@ const config = {
     cookieSync: process.env.ENABLE_COOKIE_SYNC !== 'false',
   },
   
+  // Supabase settings
+  supabaseUrl: process.env.SUPABASE_URL,
+  supabaseKey: process.env.SUPABASE_ANON_KEY,
+
   // Admin settings
   adminUsername: process.env.ADMIN_USERNAME || 'admin',
   adminPassword: process.env.ADMIN_PASSWORD || 'admin123',
