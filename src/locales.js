@@ -30,12 +30,18 @@ const locales = {
         alert_terms: 'سيتم إضافة شروط الاستخدام قريبًا',
         alert_privacy: 'سيتم إضافة سياسة الخصوصية قريبًا',
         popular_sites: [
+            { name: 'جوجل', url: 'https://www.google.com.sa', icon: '🔍' },
+            { name: 'يوتيوب', url: 'https://www.youtube.com', icon: '▶️' },
             { name: 'ويكيبيديا', url: 'https://ar.wikipedia.org', icon: '📚' },
-            { name: 'بي بي سي', url: 'https://www.bbc.com/arabic', icon: '📰' },
             { name: 'الجزيرة', url: 'https://www.aljazeera.net', icon: '📺' },
-            { name: 'ريديت', url: 'https://www.reddit.com', icon: '💬' },
-            { name: 'جيت هب', url: 'https://github.com', icon: '💻' },
-            { name: 'ستاك أوفر فلو', url: 'https://stackoverflow.com', icon: '❓' }
+            { name: 'العربية', url: 'https://www.alarabiya.net', icon: '📰' },
+            { name: 'كووورة', url: 'https://www.kooora.com', icon: '⚽' },
+            { name: 'موضوع', url: 'https://mawdoo3.com', icon: '📖' },
+            { name: 'اليوم السابع', url: 'https://www.youm7.com', icon: '🗞️' },
+            { name: 'سبق', url: 'https://sabq.org', icon: '📱' },
+            { name: 'بي بي سي', url: 'https://www.bbc.com/arabic', icon: '🌍' },
+            { name: 'فيسبوك', url: 'https://ar-ar.facebook.com', icon: '👥' },
+            { name: 'تويتر', url: 'https://twitter.com', icon: '🐦' }
         ],
         error: {
             title_generic: 'حدث خطأ',
