@@ -4381,6 +4381,256 @@ tail -f /var/log/squid/access.log | awk '$4 ~ /^[45]/'
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-and-icmp-protocol',
+        slug: 'proxy-and-icmp-protocol',
+        title: 'البروكسي وبروتوكول ICMP',
+        excerpt: 'لماذا لا يعمل Ping عبر البروكسي؟ فهم حدود بروتوكول HTTP وكيفية تشخيص الاتصال.',
+        date: '2026-05-30',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    من أكثر المواقف إرباكاً للمبتدئين في الشبكات: "الإنترنت يعمل في المتصفح، لكن أمر <code>ping google.com</code> يفشل!".
+                    السبب يكمن في الفرق الجوهري بين <a href="/blog/how-web-proxy-works-step-by-step">HTTP Proxy</a> وبروتوكول ICMP.
+                </p>
+
+                <h2>البروكسي لا يفهم Ping</h2>
+                <p>
+                    الـ Web Proxy مصمم للتعامل مع بروتوكولات التطبيقات (Layer 7) مثل HTTP و FTP.
+                    بينما Ping يعتمد على ICMP (Layer 3). البروكسي لا يقوم بتمرير حزم ICMP.
+                    لذلك، وجود بروكسي لا يعني أن جهازك لديه "بوابة افتراضية" (Gateway) للإنترنت، بل لديه فقط "وسيط" لجلب صفحات الويب.
+                </p>
+
+                <h2>كيفية التشخيص بدون Ping</h2>
+                <p>
+                    إذا كنت خلف بروكسي وتريد اختبار الاتصال، لا تستخدم Ping. استخدم أدوات تدعم HTTP Tunneling:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# Don't use this:
+ping www.google.com
+
+# Use curl via proxy instead:
+curl -x http://proxy.company.local:3128 -I https://www.google.com
+                    </code></pre>
+                </div>
+
+                <h2>الأمان و ICMP</h2>
+                <p>
+                    تمنع العديد من <a href="/blog/proxy-vs-firewall-comparison">جدران الحماية</a> بروتوكول ICMP تماماً لمنع استكشاف الشبكة (Network Scanning).
+                    الاعتماد على البروكسي فقط للوصول للويب يعزز هذا الأمان، حيث لا يوجد مسار مباشر لأي بروتوكول آخر.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-multi-wan-environment',
+        slug: 'web-proxy-multi-wan-environment',
+        title: 'Web Proxy في بيئة Multi-WAN',
+        excerpt: 'كيفية استخدام Squid لتوزيع الحمل بين خطوط إنترنت متعددة (Load Balancing) وتحقيق التوافر العالي.',
+        date: '2026-05-31',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في الشركات التي تعتمد على الإنترنت، خط واحد لا يكفي.
+                    نستخدم خطوطاً متعددة (Multi-WAN) لزيادة السرعة وضمان عدم انقطاع الخدمة.
+                    كيف يمكن للبروكسي الاستفادة من هذه الخطوط بذكاء؟
+                </p>
+
+                <h2>توجيه الحركة (Source-Based Routing)</h2>
+                <p>
+                    يمكن لـ Squid اختيار خط الإنترنت الصادر بناءً على من يقوم بالطلب.
+                    مثلاً: المدراء يستخدمون خط الألياف الضوئية السريع، والموظفون يستخدمون خط DSL العادي.
+                </p>
+
+                <h3>إعداد tcp_outgoing_address</h3>
+                <p>
+                    في ملف إعدادات Squid، نربط <a href="/blog/squid-proxy-acl-configuration">ACLs</a> بعناوين IP الخاصة بواجهات الشبكة المختلفة:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# Define WAN IPs
+acl managers src 192.168.1.0/24
+acl staff src 192.168.2.0/24
+
+# Route Managers to Fiber (WAN1)
+tcp_outgoing_address 203.0.113.10 managers
+
+# Route Staff to DSL (WAN2)
+tcp_outgoing_address 198.51.100.20 staff
+                    </code></pre>
+                </div>
+
+                <h2>Failover</h2>
+                <p>
+                    للأسف، Squid وحده لا يقوم بـ Failover تلقائي إذا انقطع أحد الخطوط.
+                    يجب دمج هذا مع أدوات نظام التشغيل مثل Linux IP Route أو استخدام <a href="/blog/proxy-role-in-sd-wan">SD-WAN</a> أو Load Balancers أمام البروكسي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-market-research-use-cases',
+        slug: 'proxy-market-research-use-cases',
+        title: 'كيف يستخدم المسوقون Web Proxy في أبحاث السوق',
+        excerpt: 'لماذا يحتاج المسوقون إلى تغيير عناوين IP؟ استراتيجيات جمع البيانات وتحليل المنافسين.',
+        date: '2026-06-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسي ليس فقط لمدراء الشبكات والهاكرز.
+                    إنه أداة أساسية في ترسانة المسوق الرقمي (Digital Marketer).
+                    كيف يمكنك معرفة سعر منتج منافس في دولة أخرى إذا كان الموقع يحولك تلقائياً لعملة بلدك؟
+                </p>
+
+                <h2>التحقق من الإعلانات (Ad Verification)</h2>
+                <p>
+                    تستخدم الشركات البروكسي للتأكد من أن إعلاناتهم تظهر في الأماكن الصحيحة (Geotargeting) وأن الناشرين لا يقومون بالاحتيال.
+                    بواسطة <a href="/blog/best-android-proxy-apps">تغيير الموقع الجغرافي</a>، يمكن للمسوق رؤية الإعلان "بعيون" مستخدم في لندن أو طوكيو.
+                </p>
+
+                <h2>مراقبة الأسعار (Price Monitoring)</h2>
+                <p>
+                    مواقع التجارة الإلكترونية وتذاكر الطيران تغير الأسعار بناءً على مكانك (Dynamic Pricing).
+                    تستخدم أدوات <a href="/blog/monitoring-network-issues-via-proxy">الذكاء التنافسي</a> شبكات من البروكسيات السكنية (Residential Proxies) لجمع الأسعار الحقيقية دون أن يتم كشفها أو حظرها.
+                </p>
+
+                <h2>SEO وتحليل نتائج البحث</h2>
+                <p>
+                    نتائج Google تختلف جذرياً من مدينة لأخرى.
+                    لتحليل ترتيب الكلمات المفتاحية بدقة، يجب استخدام بروكسي محلي يحاكي مستخدماً حقيقياً في المنطقة المستهدفة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-competitor-ad-monitoring',
+        slug: 'proxy-competitor-ad-monitoring',
+        title: 'مراقبة الإعلانات المنافسة عبر بروكسي',
+        excerpt: 'كيف تتجسس الشركات المشروعة على إعلانات منافسيها؟ دور البروكسي في كشف استراتيجيات التسويق المخفية.',
+        date: '2026-06-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في عالم التسويق الرقمي، المعرفة هي القوة.
+                    الشركات تنفق الملايين على الإعلانات، ولكن هل تعلم ماذا يفعل منافسوك؟
+                    قد يطلق المنافس حملة إعلانية شرسة في "جدة" فقط، وأنت في "الرياض" لا تراها.
+                    هنا يأتي دور <a href="/blog/proxy-market-research-use-cases">أبحاث السوق</a> باستخدام البروكسي.
+                </p>
+
+                <h2>رؤية ما يراه العميل</h2>
+                <p>
+                    منصات الإعلانات مثل Google Ads و Facebook Ads تعتمد بشدة على الاستهداف الجغرافي.
+                    لترى إعلانات المنافسين في دولة أو مدينة أخرى، يجب أن "تكون" هناك رقمياً.
+                    استخدام بروكسي بعنوان IP محلي يسمح لك برصد الرسائل التسويقية، العروض الخاصة، والصفحات المقصودة (Landing Pages) التي يستخدمها المنافسون.
+                </p>
+
+                <h2>تجنب الحظر وكشف الهوية</h2>
+                <p>
+                    إذا قمت بفحص موقع المنافس بشكل متكرر من نفس الـ IP (عنوان مكتبك)، قد يكتشف المنافس ذلك ويقوم بحظرك، أو الأسوأ: يعرض لك بيانات مضللة (Cloaking).
+                    لذلك، تعتمد أدوات Ad Intelligence على تدوير عناوين IP (IP Rotation) باستخدام <a href="/blog/residential-vs-datacenter-proxies">بروكسيات سكنية</a> لتبدو كزوار حقيقيين عشوائيين.
+                </p>
+
+                <h3>مثال برمجي: تدوير البروكسي</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">
+import requests
+import random
+
+proxies_list = [
+    'http://user:pass@us-res-proxy.provider.com:8000',
+    'http://user:pass@uk-res-proxy.provider.com:8000',
+    'http://user:pass@sa-res-proxy.provider.com:8000'
+]
+
+def check_competitor_site(url):
+    proxy = {'http': random.choice(proxies_list), 'https': random.choice(proxies_list)}
+    try:
+        response = requests.get(url, proxies=proxy, timeout=10)
+        print(f"Status from {proxy['http']}: {response.status_code}")
+    except:
+        print("Proxy failed, trying another...")
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-search-result-analysis-geo',
+        slug: 'proxy-search-result-analysis-geo',
+        title: 'Web Proxy لتحليل نتائج البحث في مناطق مختلفة',
+        excerpt: 'تحسين محركات البحث (SEO) المحلي يتطلب عيوناً في كل مكان. كيف تستخدم البروكسي لتتبع ترتيب موقعك عالمياً؟',
+        date: '2026-06-03',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما تبحث عن "أفضل مطعم بيتزا" في Google، النتائج تعتمد كلياً على موقعك الجغرافي.
+                    بالنسبة لخبراء SEO، هذا كابوس. كيف يمكنني وأنا في دبي التأكد من أن موقعي يظهر في النتيجة الأولى للعملاء في القاهرة؟
+                    الحل البسيط والفعال هو استخدام Web Proxy.
+                </p>
+
+                <h2>دقة نتائج البحث (SERP Accuracy)</h2>
+                <p>
+                    محركات البحث تستخدم عنوان IP لتخصيص النتائج.
+                    تغيير إعدادات المتصفح أو استخدام وضع التصفح المتخفي لا يكفي لتغيير موقعك الجغرافي الحقيقي.
+                    البروكسي يقوم بتغيير عنوان IP الصادر، مما يجبر Google على إظهار النتائج المخصصة لتلك المنطقة.
+                </p>
+
+                <h2>أتمتة تتبع الترتيب (Rank Tracking Automation)</h2>
+                <p>
+                    أدوات SEO الشهيرة (مثل Ahrefs و SEMrush) تقوم بملايين عمليات البحث يومياً لفحص ترتيب الكلمات المفتاحية.
+                    للقيام بذلك دون أن يتم حظرهم بواسطة Google (الذي يكره الروبوتات)، يستخدمون شبكات ضخمة من البروكسيات.
+                    هذا يشبه مبدأ <a href="/blog/how-web-proxy-works-step-by-step">عمل البروكسي</a> كوسيط، ولكن على نطاق صناعي.
+                </p>
+
+                <h3>استخدام cURL للفحص اليدوي</h3>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+# فحص النتائج كما تظهر لمستخدم في الولايات المتحدة
+curl -x http://us-proxy.example.com:3128 \
+     -H "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)" \
+     "https://www.google.com/search?q=best+vpn&gl=us"
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-tracking-ppc-campaigns',
+        slug: 'proxy-tracking-ppc-campaigns',
+        title: 'كيف يساعد البروكسي في تتبع حملات PPC',
+        excerpt: 'حماية ميزانيتك الإعلانية من النقرات الاحتيالية والتأكد من ظهور إعلانات الدفع مقابل النقرة بشكل صحيح.',
+        date: '2026-06-04',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إعلانات الدفع مقابل النقرة (PPC) مكلفة. كل نقرة تحسب عليك دولارات.
+                    لكن ماذا لو كانت تلك النقرات وهمية؟ أو ماذا لو كنت تدفع مقابل إعلان لا يظهر أصلاً للجمهور المستهدف؟
+                    البروكسي يلعب دوراً مزدوجاً هنا: كأداة للتحقق (Verification) وكأداة للحماية (Protection).
+                </p>
+
+                <h2>التحقق من صحة الروابط (Link Validation)</h2>
+                <p>
+                    للتأكد من أن الروابط في إعلاناتك تعمل بشكل صحيح في جميع البلدان المستهدفة، وللتأكد من أنها لا تؤدي إلى صفحات خطأ (404) أو صفحات محظورة،
+                    يمكن استخدام سكريبتات تمر عبر بروكسيات متنوعة لفحص "صحة" الإعلان بشكل دوري.
+                </p>
+
+                <h2>كشف الاحتيال في النقرات (Click Fraud)</h2>
+                <p>
+                    من جانب آخر، إذا كنت تدير شبكة إعلانية، فأنت بحاجة لكشف الروبوتات التي تنقر على الإعلانات لاستنزاف ميزانية المنافسين.
+                    تحليل عناوين IP القادمة عبر <a href="/blog/proxy-reporting-analytics">سجلات البروكسي العكسي</a> (Reverse Proxy Logs) يساعد في تحديد الأنماط المشبوهة،
+                    مثل مئات النقرات من نفس نطاق IP (Subnet) في وقت قصير.
+                </p>
+
+                <h2>التحقق من التزام الشركاء (Affiliate Compliance)</h2>
+                <p>
+                    في التسويق بالعمولة، قد يقوم بعض الشركاء بوضع إعلاناتك في مواقع غير لائقة أو مخالفة للشروط.
+                    قد يخفون هذه الصفحات عنك (Geo-cloaking) بحيث تظهر لك صفحة سليمة وللجمهور صفحة مخالفة.
+                    البروكسي يسمح لك بزيارة روابط الشركاء من مواقع عشوائية لكشف هذا التلاعب.
+                </p>
+            </div>
+        `
     }
 ];
 
