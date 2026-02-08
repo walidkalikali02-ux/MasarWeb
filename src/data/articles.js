@@ -3892,6 +3892,121 @@ delay_access 1 allow vlan_guests
                 </p>
             </div>
         `
+    },
+    {
+        id: 'web-proxy-quality-of-service-qos',
+        slug: 'web-proxy-quality-of-service-qos',
+        title: 'Web Proxy و Quality of Service (QoS)',
+        excerpt: 'كيفية استخدام البروكسي لوسم حزم البيانات (DSCP Marking) وضمان جودة الخدمة للتطبيقات الحساسة.',
+        date: '2026-05-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    جودة الخدمة (QoS) هي العمود الفقري لشبكات الشركات الحديثة.
+                    بينما يتعامل الراوتر مع الأولويات، يمكن للبروكسي أن يلعب دوراً حيوياً في تحديد نوع حركة المرور بدقة عالية (Layer 7) ووسمها (Marking) قبل إرسالها للشبكة.
+                </p>
+
+                <h2>تحديد الأولويات في Squid (QoS Flows)</h2>
+                <p>
+                    يمكن لـ Squid التعرف على محتوى الفيديو أو الاجتماعات ووسم حزم IP الخاصة بها بقيمة TOS/DSCP معينة.
+                    هذا يسمح للراوترات في الطريق بإعطاء أولوية لهذه البيانات.
+                </p>
+
+                <h3>إعداد TOS Marking في Squid</h3>
+                <div class="code-block">
+                    <pre><code>
+# Define critical applications
+acl zoom_meeting dstdomain .zoom.us
+acl youtube_video dstdomain .youtube.com
+
+# Mark Zoom packets with DSCP 46 (High Priority / EF)
+qos_flows mark 0x2E zoom_meeting
+
+# Mark YouTube packets with DSCP 10 (Low Priority / AF11)
+qos_flows mark 0x0A youtube_video
+                    </code></pre>
+                </div>
+
+                <h2>التكامل مع Delay Pools</h2>
+                <p>
+                    بينما يقوم QoS بتسريع البيانات المهمة، تقوم <a href="/blog/squid-proxy-delay-pools">Delay Pools</a> بإبطاء البيانات غير المهمة.
+                    الجمع بين الاثنين يعطي تحكماً كاملاً في <a href="/blog/corporate-bandwidth-management">إدارة النطاق الترددي</a>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-role-in-sd-wan',
+        slug: 'proxy-role-in-sd-wan',
+        title: 'دور البروكسي في شبكات SD-WAN',
+        excerpt: 'كيف يساهم البروكسي في تأمين الخروج المباشر للإنترنت (Local Breakout) في بيئات SD-WAN.',
+        date: '2026-05-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تقنية SD-WAN غيرت مفهوم الشبكات الواسعة، حيث انتقلنا من الاعتماد الكلي على MPLS إلى استخدام الإنترنت المباشر (Direct Internet Access - DIA).
+                    ولكن كيف نؤمن هذا الاتصال المباشر من الفروع؟ هنا يأتي دور "البروكسي السحابي" أو البروكسي المحلي.
+                </p>
+
+                <h2>Local Internet Breakout</h2>
+                <p>
+                    بدلاً من إرسال كل حركة تصفح الموظفين إلى المركز الرئيسي (Backhaul) لفحصها، يقوم جهاز SD-WAN بتوجيه حركة الويب (HTTP/HTTPS) إلى بروكسي محلي أو سحابي (SWG).
+                    هذا يقلل الضغط على خطوط الربط المكلفة ويحسن تجربة المستخدم.
+                </p>
+
+                <h2>تكامل البروكسي مع SD-WAN</h2>
+                <p>
+                    معظم حلول SD-WAN (مثل Fortinet, Cisco Viptela) تدعم توجيه الحركة تلقائياً لبروتوكول <a href="/blog/web-proxy-wan-optimization">ICAP</a> أو استخدام "Service Chaining" لتمرير البيانات عبر بروكسي أمني قبل الخروج للإنترنت.
+                </p>
+
+                <h3>الفوائد الأمنية</h3>
+                <ul>
+                    <li>فحص SSL/TLS في الفرع نفسه.</li>
+                    <li>تطبيق سياسات موحدة مركزياً.</li>
+                    <li>منع البرمجيات الخبيثة قبل دخولها لشبكة الفرع.</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-vpn-integration-corporate',
+        slug: 'proxy-vpn-integration-corporate',
+        title: 'بروكسي و VPN: التكامل في الشبكات المؤسسية',
+        excerpt: 'الفرق بين Proxy و VPN، وكيفية استخدامهما معاً لتوفير أقصى درجات الأمان والخصوصية.',
+        date: '2026-05-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    كثيراً ما يتم الخلط بين <a href="/blog/proxy-vs-vpn-privacy">Proxy و VPN</a>، لكن في بيئات العمل، نحن نستخدم الاثنين معاً في تكامل دقيق.
+                    أحدهما لتشفير النفق (Tunneling) والآخر لفحص المحتوى (Inspection).
+                </p>
+
+                <h2>سيناريو 1: Proxy over VPN</h2>
+                <p>
+                    يقوم الموظف بالاتصال بـ VPN الشركة أولاً. بعد إنشاء النفق الآمن، يتم إعداد المتصفح لاستخدام البروكسي الداخلي للشركة.
+                    هذا يضمن أن الموظف "عن بعد" يخضع لنفس سياسات الأمان والحماية التي يخضع لها الموظف داخل المكتب.
+                </p>
+
+                <h2>سيناريو 2: VPN over Proxy</h2>
+                <p>
+                    في بعض الشبكات المقيدة جداً، قد يتم حظر منافذ VPN (مثل UDP 1194).
+                    يمكن لبروتوكول OpenVPN العمل عبر منفذ TCP 443 والمرور من خلال HTTP Proxy باستخدام طريقة <code>CONNECT</code>.
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# OpenVPN Config for connecting via Proxy
+http-proxy 192.168.1.50 3128
+http-proxy-option CUSTOM-HEADER "X-Company-ID: 12345"
+                    </code></pre>
+                </div>
+
+                <h2>Split Tunneling</h2>
+                <p>
+                    لتقليل الضغط على VPN، نستخدم البروكسي لتحديد ما يمر عبر النفق (بيانات داخلية) وما يذهب للإنترنت مباشرة (يوتيوب، فيسبوك).
+                    هذا يتكامل مع <a href="/blog/pac-file-configuration-guide">ملفات PAC</a> لتوجيه ذكي.
+                </p>
+            </div>
+        `
     }
 ];
 
