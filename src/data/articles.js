@@ -5274,6 +5274,281 @@ delay_access 1 allow slow_users
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-user-behavior-analysis-international',
+        slug: 'proxy-user-behavior-analysis-international',
+        title: 'بروكسي لتحليل سلوك المستخدمين في الأسواق الدولية',
+        excerpt: 'لماذا يتصرف المستخدم في اليابان بشكل مختلف عن المستخدم في البرازيل؟ وكيف تستخدم البروكسي لفهم هذه الفروق الدقيقة؟',
+        date: '2026-06-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الأرقام لا تكذب، لكنها لا تخبرك بالقصة كاملة.
+                    قد يظهر لك Google Analytics أن معدل الارتداد (Bounce Rate) مرتفع في ألمانيا. لكن لماذا؟
+                    هل هو بسبب المحتوى؟ أم أن نافذة "الموافقة على ملفات تعريف الارتباط" (Cookie Consent) تغطي الشاشة ولا يمكن إغلاقها؟
+                    محاكاة زيارة المستخدم المحلي باستخدام Web Proxy هي الطريقة الوحيدة لرؤية ما يراه وتحليل سلوكه بدقة.
+                </p>
+
+                <h2>اختبار أدوات التتبع (Analytics Debugging)</h2>
+                <p>
+                    أدوات مثل Google Tag Manager قد تعمل بقواعد مختلفة بناءً على الموقع (Geotargeting Triggers).
+                    للتأكد من أن الـ Tags الصحيحة يتم تفعيلها للمستخدمين في مناطق معينة (مثلاً: تفعيل تتبع التحويل فقط في الدول التي تشحن لها)،
+                    يجب عليك تصفح الموقع عبر <a href="/blog/residential-vs-datacenter-proxies">بروكسي سكني</a> في تلك الدولة وفحص الـ Data Layer.
+                </p>
+
+                <h2>الامتثال للخصوصية (Privacy Compliance)</h2>
+                <p>
+                    قوانين مثل GDPR في أوروبا تفرض قيوداً صارمة على تتبع السلوك.
+                    يجب أن تتأكد أن أدواتك (Hotjar, Clarity) تحترم هذه القوانين.
+                    استخدم بروكسي فرنسي أو ألماني وتأكد من أن أدوات التتبع لا تعمل إلا بعد الحصول على الموافقة الصريحة.
+                    هذا يحميك من غرامات باهظة.
+                </p>
+
+                <h2>تحليل الخرائط الحرارية (Heatmaps) في سياق محلي</h2>
+                <p>
+                    سلوك التصفح يختلف ثقافياً. في بعض الدول، يفضل المستخدمون القراءة المفصلة (Long-form content)، بينما في دول أخرى يفضلون الفيديو.
+                    استخدام البروكسي للوصول إلى المحتوى المخصص لكل منطقة يسمح لك بمقارنة تجربتك مع بيانات الخرائط الحرارية وفهم "لماذا" لا يضغط المستخدمون على الزر الأحمر.
+                </p>
+
+                <h3>مثال: التحقق من Google Analytics عبر Python</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">
+import requests
+
+def check_analytics_tag(url, proxy, tag_id):
+    proxies = {"http": proxy, "https": proxy}
+    try:
+        response = requests.get(url, proxies=proxies, timeout=10)
+        if tag_id in response.text:
+            print("Analytics Tag Found!")
+        else:
+            print("Warning: Tag missing for this region.")
+    except:
+        print("Connection failed")
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'build-simple-proxy-nodejs',
+        slug: 'build-simple-proxy-nodejs',
+        title: 'بناء خادم بروكسي بسيط باستخدام Node.js',
+        excerpt: 'هل تريد فهم كيف يعمل البروكسي من الداخل؟ سنقوم ببناء Web Proxy بسيط من الصفر باستخدام Node.js في أقل من 50 سطراً.',
+        date: '2026-06-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    أفضل طريقة لفهم أي تقنية هي بناؤها بنفسك.
+                    في هذا الدليل، سنبتعد عن الحلول الجاهزة مثل <a href="/blog/squid-proxy-review">Squid</a> وسنقوم بكتابة كود لبروكسي بسيط باستخدام JavaScript.
+                    هذا المشروع سيساعدك على فهم كيفية معالجة طلبات HTTP وكيفية تمرير البيانات بين العميل والخادم.
+                </p>
+
+                <h2>المتطلبات الأساسية</h2>
+                <p>
+                    ستحتاج فقط إلى تثبيت Node.js على جهازك. سنستخدم مكتبة <code>http</code> المدمجة، ولن نحتاج لأي مكتبات خارجية (Dependencies) معقدة، مما يجعل البروكسي خفيفاً وسريعاً.
+                </p>
+
+                <h2>خطوات بناء البروكسي</h2>
+                <p>
+                    فكرة البروكسي بسيطة: استلام الطلب من المتصفح، إرساله إلى الخادم الهدف، ثم إعادة الرد إلى المتصفح.
+                    سنقوم بإنشاء خادم يستمع على المنفذ 8080.
+                </p>
+
+                <h3>الكود الكامل (proxy.js)</h3>
+                <div class="code-block">
+                    <pre><code class="language-javascript">
+const http = require('http');
+const net = require('net');
+const url = require('url');
+
+// إنشاء خادم HTTP
+const server = http.createServer((clientReq, clientRes) => {
+    const reqUrl = url.parse(clientReq.url);
+    
+    const options = {
+        hostname: reqUrl.hostname,
+        port: reqUrl.port || 80,
+        path: reqUrl.path,
+        method: clientReq.method,
+        headers: clientReq.headers
+    };
+
+    // توجيه الطلب للخادم الهدف
+    const proxyReq = http.request(options, (proxyRes) => {
+        clientRes.writeHead(proxyRes.statusCode, proxyRes.headers);
+        proxyRes.pipe(clientRes, { end: true });
+    });
+
+    clientReq.pipe(proxyReq, { end: true });
+
+    proxyReq.on('error', (e) => {
+        console.log(\`Error: \${e.message}\`);
+        clientRes.end();
+    });
+});
+
+// دعم HTTPS (CONNECT Method)
+server.on('connect', (req, clientSocket, head) => {
+    const { port, hostname } = url.parse(\`//\${req.url}\`, false, true);
+    
+    const serverSocket = net.connect(port || 443, hostname, () => {
+        clientSocket.write('HTTP/1.1 200 Connection Established\\r\\n' +
+                        'Proxy-agent: Node.js-Proxy\\r\\n' +
+                        '\\r\\n');
+        serverSocket.write(head);
+        serverSocket.pipe(clientSocket);
+        clientSocket.pipe(serverSocket);
+    });
+});
+
+server.listen(8080, () => {
+    console.log('Proxy running on port 8080');
+});
+                    </code></pre>
+                </div>
+
+                <h2>كيفية الاستخدام</h2>
+                <p>
+                    بعد تشغيل الكود بـ <code>node proxy.js</code>، قم بضبط إعدادات المتصفح لاستخدام <code>localhost:8080</code> كبروكسي.
+                    ستلاحظ أن جميع طلباتك تمر عبر هذا السكريبت البسيط. يمكنك الآن إضافة ميزات مثل تسجيل الطلبات (Logging) أو حظر مواقع معينة بسهولة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'selenium-proxy-automation',
+        slug: 'selenium-proxy-automation',
+        title: 'أتمتة مهام المتصفح باستخدام Selenium و Proxy',
+        excerpt: 'الأتمتة توفر الوقت، لكن الحظر يضيع الجهود. كيف تدمج البروكسي مع سكربتات Selenium لتجنب كشف البوتات؟',
+        date: '2026-06-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    أدوات الأتمتة مثل Selenium قوية جداً لاختبار المواقع أو جمع البيانات.
+                    لكن استخدامها من عنوان IP واحد وبشكل متكرر يؤدي للحظر السريع.
+                    الحل هو دمج <a href="/blog/residential-vs-datacenter-proxies">Residential Proxies</a> في كود الأتمتة لتوزيع الطلبات والظهور كمستخدمين متعددين.
+                </p>
+
+                <h2>إعداد البروكسي في Chrome WebDriver</h2>
+                <p>
+                    لا يدعم Selenium تغيير البروكسي أثناء التشغيل (Runtime) بسهولة، لذلك يجب ضبطه عند بدء الجلسة.
+                    إليك كيفية القيام بذلك باستخدام Python.
+                </p>
+
+                <h3>كود Python مع Selenium</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+import time
+
+PROXY = "123.45.67.89:8080"  # ضع عنوان البروكسي هنا
+
+chrome_options = Options()
+chrome_options.add_argument(f'--proxy-server={PROXY}')
+
+# خيارات إضافية لتجنب الكشف
+chrome_options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)...")
+
+driver = webdriver.Chrome(options=chrome_options)
+
+try:
+    driver.get("https://whatismyipaddress.com")
+    time.sleep(5)
+    print("Page Title:", driver.title)
+finally:
+    driver.quit()
+                    </code></pre>
+                </div>
+
+                <h2>التعامل مع البروكسي الذي يتطلب مصادقة (Auth)</h2>
+                <p>
+                    متصفح Chrome لا يدعم تمرير اسم المستخدم وكلمة المرور للبروكسي عبر سطر الأوامر مباشرة.
+                    لحل هذه المشكلة، نستخدم إضافة (Extension) صغيرة يتم إنشاؤها ديناميكياً لحقن بيانات الاعتماد، أو نستخدم أدوات مثل <code>selenium-wire</code> التي تسهل هذه العملية بشكل كبير.
+                </p>
+
+                <h2>نصائح لتجنب الحظر</h2>
+                <p>
+                    <ul>
+                        <li>قم بتدوير الـ User-Agent مع كل جلسة جديدة.</li>
+                        <li>استخدم تأخيرات عشوائية (Random Delays) بين الإجراءات.</li>
+                        <li>لا تعتمد على البروكسيات المجانية؛ فهي غالباً ما تكون محظورة بالفعل (Blacklisted).</li>
+                    </ul>
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'python-requests-proxy-guide',
+        slug: 'python-requests-proxy-guide',
+        title: 'دليل استخدام البروكسي مع مكتبة Python Requests',
+        excerpt: 'مكتبة Requests هي عصب جمع البيانات في Python. تعلم الطرق المتقدمة لاستخدام البروكسي، التدوير، والتعامل مع الأخطاء.',
+        date: '2026-06-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عند بناء أدوات <a href="/blog/proxy-data-collection-marketers">جمع البيانات</a> (Web Scraping)، تعتبر مكتبة <code>requests</code> في Python هي الخيار الأول لسهولتها.
+                    لكن بمجرد أن تبدأ في إرسال آلاف الطلبات، ستحتاج لإدارة البروكسيات بذكاء لضمان استمرارية العمل.
+                </p>
+
+                <h2>الإعداد الأساسي (Basic Configuration)</h2>
+                <p>
+                    يمكنك تمرير قاموس (Dictionary) يحتوي على إعدادات البروكسي لبروتوكولي HTTP و HTTPS.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python">
+import requests
+
+proxies = {
+    "http": "http://user:pass@10.10.1.10:3128",
+    "https": "http://user:pass@10.10.1.10:1080",
+}
+
+try:
+    response = requests.get("https://api.ipify.org?format=json", proxies=proxies, timeout=5)
+    print(response.json())
+except requests.exceptions.ProxyError:
+    print("فشل الاتصال بالبروكسي")
+                    </code></pre>
+                </div>
+
+                <h2>تدوير البروكسي (Proxy Rotation)</h2>
+                <p>
+                    للاستفادة القصوى، لا تستخدم بروكسي واحد لكل الطلبات. قم بإنشاء قائمة (List) وقم باختيار بروكسي عشوائي لكل طلب.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python">
+import random
+import requests
+
+proxy_list = [
+    "http://ip1:port",
+    "http://ip2:port",
+    "http://ip3:port"
+]
+
+for i in range(10):
+    proxy = {"http": random.choice(proxy_list), "https": random.choice(proxy_list)}
+    try:
+        r = requests.get("https://site.com", proxies=proxy)
+        print(f"Request {i} success")
+    except:
+        print(f"Request {i} failed, trying another proxy...")
+                    </code></pre>
+                </div>
+
+                <h2>جلسات (Sessions) والبروكسي</h2>
+                <p>
+                    إذا كنت تستخدم <code>requests.Session()</code> للحفاظ على الكوكيز، يمكنك ضبط البروكسي للجلسة بأكملها مرة واحدة:
+                    <code>session.proxies.update(proxies)</code>.
+                    هذا مفيد جداً عند التعامل مع المواقع التي تتطلب تسجيل دخول.
+                </p>
+            </div>
+        `
     }
 ];
 
