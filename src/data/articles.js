@@ -2952,6 +2952,122 @@ cache_peer parent-proxy.hq.local parent 3128 0 no-query default</code></pre>
                 </p>
             </div>
         `
+    },
+    {
+        id: 'burp-suite-security-proxy',
+        slug: 'burp-suite-security-proxy',
+        title: 'Burp Suite كأداة بروكسي لاختبار الأمان',
+        excerpt: 'الأداة رقم 1 عالمياً لاختبار اختراق تطبيقات الويب. كيف تستخدم Burp Proxy لاكتشاف الثغرات الأمنية؟',
+        date: '2026-03-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بينما يركز المطورون على أدوات مثل <a href="/blog/charles-proxy-guide">Charles</a> و <a href="/blog/review-fiddler-proxy-development">Fiddler</a> لتصحيح الأخطاء، يركز خبراء الأمن السيبراني على <strong>Burp Suite</strong>.
+                    إنها ليست مجرد بروكسي، بل منصة متكاملة لاختبار الاختراق (Penetration Testing).
+                </p>
+
+                <h2>الاعتراض والتعديل (Intercept)</h2>
+                <p>
+                    الميزة الأساسية في Burp Proxy هي القدرة على إيقاف الطلب (Request) قبل خروجه من المتصفح، التعديل عليه، ثم إرساله للسيرفر.
+                    هذا يسمح لك باختبار كيفية تفاعل السيرفر مع البيانات غير المتوقعة (مثل حقن SQL أو XSS).
+                </p>
+
+                <h2>أدوات Burp الأساسية</h2>
+                <ul>
+                    <li><strong>Proxy:</strong> يعترض حركة المرور بين المتصفح والسيرفر.</li>
+                    <li><strong>Repeater:</strong> يسمح لك بإعادة إرسال طلب واحد عدة مرات مع تغيير بسيط في كل مرة (يدوي).</li>
+                    <li><strong>Intruder:</strong> يقوم بأتمتة الهجمات (مثل تجربة 1000 كلمة مرور مختلفة على نموذج تسجيل الدخول).</li>
+                </ul>
+
+                <h2>تثبيت الشهادة (CA Certificate)</h2>
+                <p>
+                    مثل أي أداة "Man-in-the-Middle"، يحتاج Burp لتثبيت شهادته الخاصة في المتصفح لفك تشفير HTTPS.
+                    بدون ذلك، لن ترى سوى البيانات المشفرة. راجع دليلنا حول <a href="/blog/setup-proxy-authentication">إعداد المصادقة والأمان</a> لفهم المبدأ.
+                </p>
+
+                <h2>إصدار المجتمع (Community) مقابل المحترفين (Pro)</h2>
+                <p>
+                    النسخة المجانية تحتوي على البروكسي والـ Repeater، لكنها تفتقر للماسح الآلي (Scanner) والـ Intruder السريع.
+                    للمبتدئين، النسخة المجانية كافية جداً لفهم آلية عمل الويب.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'mitmproxy-open-source-review',
+        slug: 'mitmproxy-open-source-review',
+        title: 'مراجعة mitmproxy: بروكسي مفتوح المصدر',
+        excerpt: 'البروكسي المفضل لمحبي سطر الأوامر (CLI) و Python. خفيف، قوي، وقابل للبرمجة بالكامل.',
+        date: '2026-03-30',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كنت تكره الواجهات الرسومية (GUI) وتفضل الشاشة السوداء، فإن <strong>mitmproxy</strong> هو خيارك الأمثل.
+                    أداة مفتوحة المصدر مكتوبة بلغة Python، تمنحك قوة هائلة في حزمة صغيرة.
+                </p>
+
+                <h2>واجهات متعددة</h2>
+                <ul>
+                    <li><strong>mitmproxy:</strong> واجهة سطر أوامر تفاعلية (TUI) تشبه Vim.</li>
+                    <li><strong>mitmweb:</strong> واجهة ويب بسيطة (لمن يحتاج رؤية بصرية).</li>
+                    <li><strong>mitmdump:</strong> أداة صامتة لحفظ حركة المرور (تشبه tcpdump) للمعالجة لاحقاً.</li>
+                </ul>
+
+                <h2>قوة السكربتات (Scripting)</h2>
+                <p>
+                    هنا تكمن القوة الحقيقية. يمكنك كتابة سكربت Python بسيط لتعديل حركة المرور ديناميكياً.
+                    <br>
+                    مثال: "غيّر الـ User-Agent في كل الطلبات ليكون iPhone بدلاً من Chrome".
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# مثال بسيط لسكربت mitmproxy
+def request(flow):
+    flow.request.headers["User-Agent"] = "MitmProxy/1.0"
+                    </code></pre>
+                </div>
+
+                <h2>مقارنة مع الأدوات الأخرى</h2>
+                <p>
+                    بينما يوفر <a href="/blog/squid-proxy-review">Squid</a> حلاً للمؤسسات، يركز mitmproxy على المطورين والباحثين الأمنيين.
+                    إنه أخف من Burp وأكثر مرونة من Charles في البيئات المؤتمتة (CI/CD pipelines).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxyman-macos-ios-development',
+        slug: 'proxyman-macos-ios-development',
+        title: 'أداة Proxyman لتطوير تطبيقات macOS و iOS',
+        excerpt: 'اللاعب الجديد الذي يهدد عرش Charles Proxy. واجهة عصرية وميزات حصرية لمطوري Apple.',
+        date: '2026-04-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    لسنوات طويلة، كان <a href="/blog/charles-proxy-guide">Charles Proxy</a> هو الملك غير المتوج على macOS.
+                    لكن واجهته القديمة (Java Swing) كانت عائقاً. هنا جاء <strong>Proxyman</strong>، تطبيق Native مكتوب بـ Swift، سريع وجميل.
+                </p>
+
+                <h2>لماذا Proxyman؟</h2>
+                <p>
+                    السهولة هي المفتاح. إعداد SSL Proxying على محاكي iOS (Simulator) يتم بضغطة زر واحدة، بينما كان يتطلب خطوات يدوية معقدة في السابق.
+                    كما أنه يتيح لك رؤية محتوى JSON بشكل منسق وجميل تلقائياً.
+                </p>
+
+                <h2>ميزات حصرية</h2>
+                <ul>
+                    <li><strong>Multiple Tabs:</strong> يمكنك فتح عدة جلسات أو طلبات في تبويبات مختلفة.</li>
+                    <li><strong>Scripting:</strong> يستخدم JavaScript للتعديل على الطلبات (أسهل للكثيرين من Python في mitmproxy).</li>
+                    <li><strong>Atlantis:</strong> مكتبة iOS صغيرة يمكنك دمجها في تطبيقك لتلتقط حركة المرور حتى بدون إعداد بروكسي واي فاي!</li>
+                </ul>
+
+                <h2>Proxyman vs Charles</h2>
+                <p>
+                    إذا كنت مطور iOS/macOS، فإن Proxyman يقدم تجربة مستخدم (UX) أفضل بكثير.
+                    أما Charles فلا يزال يتفوق في بعض الميزات المتقدمة جداً ودعمه القديم للبروتوكولات النادرة (مثل SOCKS بأشكال معينة) ودعمه لمنصات أخرى مثل Windows/Linux بشكل أفضل (حيث أن Proxyman على Windows لا يزال حديثاً).
+                </p>
+            </div>
+        `
     }
 ];
 
