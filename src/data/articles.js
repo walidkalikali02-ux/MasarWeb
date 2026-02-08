@@ -4007,6 +4007,266 @@ http-proxy-option CUSTOM-HEADER "X-Company-ID: 12345"
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-impact-network-latency',
+        slug: 'proxy-impact-network-latency',
+        title: 'كيف يؤثر البروكسي على Latency في الشبكة',
+        excerpt: 'تحليل دقيق لتأثير البروكسي على زمن الاستجابة: متى يسرع الشبكة ومتى يبطئها؟',
+        date: '2026-05-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هناك اعتقاد شائع بأن البروكسي يبطئ الإنترنت. هذا صحيح جزئياً إذا كان البروكسي ضعيفاً، ولكن البروكسي الجيد يمكنه تسريع التصفح بشكل ملحوظ.
+                    دعونا نحلل معادلة الـ Latency (زمن الاستجابة).
+                </p>
+
+                <h2>متى يزيد البروكسي الـ Latency؟</h2>
+                <p>
+                    تضيف كل خطوة معالجة وقتاً إضافياً.
+                    <ul>
+                        <li><strong>DNS Lookup:</strong> إذا كان البروكسي بطيئاً في حل أسماء النطاقات.</li>
+                        <li><strong>Content Inspection:</strong> فحص الفيروسات (Antivirus) وتحليل SSL يستهلك وقتاً (CPU Overhead).</li>
+                        <li><strong>Connection Setup:</strong> إنشاء اتصال TCP إضافي بين العميل والبروكسي.</li>
+                    </ul>
+                </p>
+
+                <h2>متى يقلل البروكسي الـ Latency؟</h2>
+                <p>
+                    هنا تكمن قوة <a href="/blog/squid-caching-guide">Caching Proxy</a>:
+                    <ul>
+                        <li><strong>Cache Hits:</strong> إذا كان الملف مخزناً محلياً، يتم تسليمه في < 1ms بدلاً من 200ms من السيرفر البعيد.</li>
+                        <li><strong>DNS Caching:</strong> يحتفظ البروكسي بذاكرة DNS ضخمة لخدمة آلاف المستخدمين.</li>
+                        <li><strong>Connection Reuse:</strong> يستخدم البروكسي اتصالات مفتوحة مسبقاً (Keep-Alive) مع السيرفرات الشائعة.</li>
+                    </ul>
+                </p>
+
+                <h2>قياس الـ Latency</h2>
+                <p>
+                    يمكنك استخدام أداة <code>curl</code> لقياس الفرق:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# Without Proxy
+time curl -w "%{time_total}\n" -o /dev/null -s http://example.com/file.zip
+
+# With Proxy
+time curl -x http://proxy:3128 -w "%{time_total}\n" -o /dev/null -s http://example.com/file.zip
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-ipv4-vs-ipv6',
+        slug: 'web-proxy-ipv4-vs-ipv6',
+        title: 'Web Proxy و IPv4 مقابل IPv6',
+        excerpt: 'كيف يعمل البروكسي كجسر بين شبكات IPv4 القديمة وشبكات IPv6 الحديثة (Dual Stack).',
+        date: '2026-05-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    العالم ينتقل ببطء إلى IPv6، ولكن معظم الشبكات الداخلية (LAN) لا تزال تعمل بـ IPv4.
+                    كيف يمكن للأجهزة القديمة الوصول إلى مواقع تدعم IPv6 فقط؟ الحل هو البروكسي.
+                </p>
+
+                <h2>البروكسي كبوابة للتحول (Gateway)</h2>
+                <p>
+                    يمكن للبروكسي أن يعمل بنمط <strong>Dual Stack</strong>، حيث يمتلك عنوان IPv4 وعنوان IPv6.
+                    <ul>
+                        <li><strong>IPv4 Client to IPv6 Server:</strong> يتصل العميل بالبروكسي عبر IPv4، ويقوم البروكسي بجلب المحتوى من السيرفر عبر IPv6.</li>
+                        <li><strong>IPv6 Client to IPv4 Server:</strong> العكس صحيح.</li>
+                    </ul>
+                </p>
+
+                <h2>إعداد Squid لدعم IPv6</h2>
+                <p>
+                    تفعيل IPv6 في Squid بسيط جداً، فقط تأكد من أن السيرفر لديه اتصال IPv6 وأن DNS يعمل بشكل صحيح.
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# squid.conf
+http_port 3128
+dns_v4_first off  # Prefer IPv6 if available
+                    </code></pre>
+                </div>
+
+                <p>
+                    هذا الدور يجعل البروكسي أداة حيوية في استراتيجية الانتقال، مما يسمح للمؤسسات بتأجيل ترقية بنيتها التحتية الداخلية مع البقاء متصلة بالعالم الحديث.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-security-public-wifi',
+        slug: 'proxy-security-public-wifi',
+        title: 'البروكسي في شبكات الواي فاي العامة',
+        excerpt: 'لماذا يجب عليك استخدام بروكسي أو VPN عند الاتصال بشبكات المقاهي والمطارات.',
+        date: '2026-05-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    شبكات الواي فاي العامة (Public Wi-Fi) هي بيئة خصبة للمخترفين.
+                    هجمات "الرجل في المنتصف" (MITM) وسرقة الجلسات (Session Hijacking) شائعة جداً.
+                    كيف يحميك البروكسي؟
+                </p>
+
+                <h2>المخاطر بدون حماية</h2>
+                <p>
+                    عندما تتصل بشبكة مفتوحة، يمكن لأي شخص على نفس الشبكة استخدام أدوات مثل Wireshark لرؤية حزم البيانات غير المشفرة (HTTP).
+                    حتى مع HTTPS، يمكنهم رؤية النطاقات التي تزورها (DNS Leaks).
+                </p>
+
+                <h2>البروكسي المشفر (HTTPS Proxy)</h2>
+                <p>
+                    استخدام بروكسي عادي (HTTP) لا يكفي لأنه لا يشفر الاتصال بينك وبين البروكسي.
+                    الحل هو استخدام <strong>HTTPS Proxy</strong> أو نفق SSH (SOCKS5).
+                </p>
+
+                <h3>إعداد نفق SSH سريع (SOCKS Proxy)</h3>
+                <p>
+                    إذا كان لديك سيرفر في المنزل أو السحابة، يمكنك تحويله لبروكسي آمن في ثوانٍ:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# On your laptop (Mac/Linux)
+ssh -D 8080 -f -C -q -N user@my-secure-server.com
+                    </code></pre>
+                </div>
+                <p>
+                    الآن، اضبط متصفحك لاستخدام SOCKS5 Proxy على <code>127.0.0.1:8080</code>.
+                    كل بياناتك ستمر عبر نفق مشفر (SSH Tunnel) لا يستطيع صاحب المقهى اختراقه.
+                    للموبايل، تطبيقات مثل <a href="/blog/best-android-proxy-apps">Shadowsocks</a> تقوم بنفس المهمة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-impact-on-network-latency',
+        slug: 'proxy-impact-on-network-latency',
+        title: 'كيف يؤثر البروكسي على Latency في الشبكة',
+        excerpt: 'هل يبطئ البروكسي الإنترنت أم يسرعه؟ تحليل مفصل لتأثير المعالجة والتخزين المؤقت على زمن الاستجابة.',
+        date: '2026-05-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    السؤال الأزلي لمهندسي الشبكات: "هل إضافة <a href="/blog/why-companies-need-web-proxy">Web Proxy</a> ستزيد من بطء الشبكة؟"
+                    الإجابة قصيرة هي "نعم ولا". البروكسي يضيف خطوة إضافية (Hop)، ولكنه قد يلغي خطوات أخرى.
+                </p>
+
+                <h2>مصادر التأخير (Latency Sources)</h2>
+                <ul>
+                    <li><strong>Processing Delay:</strong> الوقت الذي يستغرقه البروكسي لفحص الترويسات (Headers) وتطبيق قواعد <a href="/blog/squid-proxy-acl-configuration">ACLs</a>.</li>
+                    <li><strong>Disk I/O:</strong> قراءة الكائنات من القرص الصلب (إذا لم تكن في الذاكرة RAM).</li>
+                    <li><strong>DNS Lookup:</strong> البروكسي يقوم بحل أسماء النطاقات نيابة عن العميل.</li>
+                </ul>
+
+                <h2>كيف يقلل البروكسي من Latency؟</h2>
+                <p>
+                    رغم الخطوات الإضافية، يمكن للبروكسي تقليل الزمن الكلي عبر:
+                </p>
+                <ol>
+                    <li><strong>Caching:</strong> تقديم المحتوى من الشبكة المحلية (0ms تقريباً) بدلاً من جلبه من الخادم الأصلي (100ms+).</li>
+                    <li><strong>Connection Pooling:</strong> إعادة استخدام اتصالات TCP المفتوحة مع الخوادم لتقليل وقت المصافحة (Handshake).</li>
+                    <li><strong>DNS Caching:</strong> تخزين نتائج DNS محلياً لتقليل الاستعلامات الخارجية.</li>
+                </ol>
+
+                <h3>قياس الأداء</h3>
+                <p>
+                    استخدم أداة <code>squidclient</code> لمراقبة زمن الاستجابة:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+squidclient -h localhost -p 3128 mgr:info | grep 'Median Service Times'
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-ipv4-vs-ipv6',
+        slug: 'web-proxy-ipv4-vs-ipv6',
+        title: 'Web Proxy و IPv4 مقابل IPv6',
+        excerpt: 'دور البروكسي كبوابة عبور (Gateway) بين شبكات IPv4 القديمة وشبكات IPv6 الحديثة.',
+        date: '2026-05-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    مع نفاذ عناوين IPv4، ينتقل العالم ببطء إلى IPv6.
+                    لكن ماذا لو كانت شبكتك الداخلية تدعم IPv6 فقط (للتحديث) بينما معظم الإنترنت لا يزال IPv4؟
+                    أو العكس؟ هنا يعمل البروكسي كمترجم.
+                </p>
+
+                <h2>البروكسي كبوابة (Dual Stack Gateway)</h2>
+                <p>
+                    يمكن لـ Squid العمل في وضع "Dual Stack"، حيث يستقبل الطلبات من العملاء ببروتوكول معين، ويجلب البيانات من الإنترنت ببروتوكول آخر.
+                </p>
+
+                <h3>سيناريو: عملاء IPv6 للوصول لمواقع IPv4</h3>
+                <p>
+                    في هذا السيناريو، الشبكة الداخلية (LAN) تعمل بـ IPv6 بالكامل (لتبسيط الإدارة).
+                    يقوم البروكسي باستلام الطلب عبر IPv6، ثم يستخدم عنوانه الخارجي (IPv4) لجلب الموقع القديم.
+                </p>
+
+                <h3>تكوين Squid لدعم IPv6</h3>
+                <div class="code-block">
+                    <pre><code>
+# Listen on both IPv4 and IPv6
+http_port 3128
+http_port [::]:3128
+
+# Prefer IPv6 for outgoing connections (Happy Eyeballs)
+dns_v4_first off
+                    </code></pre>
+                </div>
+
+                <p>
+                    هذا يلغي الحاجة لتقنيات معقدة مثل NAT64/DNS64 في كثير من الأحيان، ويجعل الانتقال لـ IPv6 أكثر سلاسة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-security-public-wifi',
+        slug: 'proxy-security-public-wifi',
+        title: 'البروكسي في شبكات الواي فاي العامة',
+        excerpt: 'لماذا يعتبر استخدام بروكسي شخصي أو VPN ضرورياً عند الاتصال بشبكات المقاهي والمطارات.',
+        date: '2026-05-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    شبكات الواي فاي العامة (Public Wi-Fi) هي بيئة خصبة للمتسللين.
+                    هجمات "الرجل في المنتصف" (MITM) وسرقة الجلسات (Session Hijacking) شائعة جداً.
+                    كيف يحميك البروكسي؟
+                </p>
+
+                <h2>تشفير الحركة (HTTPS Proxy)</h2>
+                <p>
+                    عند استخدام <a href="/blog/setup-proxy-authentication">بروكسي آمن</a> يدعم HTTPS، فإن الاتصال بين جهازك والبروكسي يكون مشفراً.
+                    حتى لو كان المتسلل يراقب شبكة المقهى، لن يرى سوى بيانات مشفرة تذهب لخادمك الخاص.
+                </p>
+
+                <h2>مقارنة مع VPN</h2>
+                <p>
+                    الـ <a href="/blog/proxy-vpn-integration-corporate">VPN</a> يقوم بتشفير كل حركة الجهاز، بينما البروكسي يشفر المتصفح فقط.
+                    للإعداد السريع والخفيف، البروكسي (خاصة Shadowsocks أو SOCKS5 over SSH) يعتبر خياراً ممتازاً لأنه أقل استهلاكاً للبطارية من VPN ولا يحتاج لتنصيب برامج معقدة.
+                </p>
+
+                <h3>إعداد نفق SSH كبروكسي سريع</h3>
+                <p>
+                    إذا كان لديك خادم Linux في المنزل أو السحابة، يمكنك تحويله لبروكسي SOCKS5 في ثوانٍ:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# On your laptop (Mac/Linux/Windows WSL)
+ssh -D 8080 -N user@your-server-ip
+                    </code></pre>
+                </div>
+                <p>
+                    ثم اضبط المتصفح لاستخدام SOCKS5 Proxy على <code>localhost:8080</code>. الآن تصفحك آمن تماماً!
+                </p>
+            </div>
+        `
     }
 ];
 
