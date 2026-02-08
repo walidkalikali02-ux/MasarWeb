@@ -1055,6 +1055,140 @@ http_access allow localnet</code></pre>
                 </p>
             </div>
         `
+    },
+    {
+        id: 'setup-proxy-corporate-environment',
+        slug: 'setup-proxy-corporate-environment',
+        title: 'كيفية إعداد بروكسي في بيئة شركة',
+        excerpt: 'إدارة مركزية، أمان محسن، وتحكم كامل. دليلك لبناء بنية تحتية للبروكسي تخدم مئات الموظفين.',
+        date: '2026-02-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في الشبكات المنزلية، قد يكون البروكسي خياراً للخصوصية. أما في الشركات، فهو <strong>ضرورة</strong>.
+                    الشركات تحتاج إلى البروكسي ليس فقط لتسريع التصفح (Caching)، بل لأسباب قانونية وأمنية مثل تصفية المحتوى، منع البرمجيات الخبيثة، ومراقبة استخدام الإنترنت.
+                    هنا نستعرض المكونات الأساسية لبنية تحتية ناجحة.
+                </p>
+                
+                <h2>لماذا يختلف بروكسي الشركات؟</h2>
+                <ul>
+                    <li><strong>المركزية:</strong> لا يمكنك الذهاب لكل مكتب لإعداد المتصفح يدوياً.</li>
+                    <li><strong>المصادقة:</strong> يجب معرفة "من" يتصفح "ماذا" (Integration with Active Directory/LDAP).</li>
+                    <li><strong>التوافر العالي (High Availability):</strong> توقف البروكسي يعني توقف العمل.</li>
+                </ul>
+
+                <h2>الخطوة 1: اختيار الهيكلية (Topology)</h2>
+                <p>
+                    أفضل ممارسة هي استخدام <strong>Explicit Proxy</strong> مع ملف <strong>PAC</strong>.
+                    الخيار الآخر هو <strong>Transparent Proxy</strong> (اعتراض المرور)، وهو أسهل في الإعداد المبدئي لكنه يواجه مشاكل مع HTTPS وشهادات SSL.
+                </p>
+
+                <h2>الخطوة 2: المصادقة (Authentication)</h2>
+                <p>
+                    في بيئة Windows، الخيار الأفضل هو دمج Squid مع <strong>Active Directory</strong> باستخدام Kerberos أو NTLM.
+                    هذا يسمح للموظفين بالتصفح باستخدام حساباتهم الحالية دون إدخال كلمة مرور مرة أخرى (Single Sign-On).
+                </p>
+
+                <h2>الخطوة 3: التقارير</h2>
+                <p>
+                    المدير سيطلب تقريراً شهرياً. أدوات مثل <strong>SARG</strong> أو <strong>SquidAnalyzer</strong> تحول ملفات السجل (Logs) المعقدة إلى رسوم بيانية وتقارير HTML سهلة القراءة توضح أكثر المواقع زيارة وأكثر المستخدمين استهلاكاً للباندويث.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'setup-pac-file-proxy',
+        slug: 'setup-pac-file-proxy',
+        title: 'إعداد PAC File لتكوين البروكسي تلقائيًا',
+        excerpt: 'وداعاً للإعداد اليدوي على كل جهاز! تعلم كيف تكتب ملف PAC ذكي يوجه حركة المرور تلقائياً.',
+        date: '2026-02-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    ملف التكوين التلقائي للبروكسي (Proxy Auto-Configuration - PAC) هو ملف نصي بسيط مكتوب بلغة JavaScript.
+                    يحتوي على دالة واحدة تسمى <code>FindProxyForURL</code> تقرر المتصفحات من خلالها: هل أستخدم البروكسي لهذا الرابط؟ أم أتصل مباشرة؟
+                </p>
+
+                <h2>بنية ملف PAC الأساسية</h2>
+                <p>
+                    أنشئ ملفاً باسم <code>proxy.pac</code> وضع فيه الكود التالي:
+                </p>
+                <pre><code class="language-javascript">function FindProxyForURL(url, host) {
+    // 1. إذا كان الرابط محلياً (Intranet)، لا تستخدم البروكسي
+    if (isPlainHostName(host) || dnsDomainIs(host, ".mycompany.local")) {
+        return "DIRECT";
+    }
+
+    // 2. لنطاقات معينة، استخدم بروكسي خاص
+    if (shExpMatch(host, "*.secure-bank.com")) {
+        return "PROXY secure-proxy.mycompany.com:8080";
+    }
+
+    // 3. لباقي الإنترنت، استخدم البروكسي الرئيسي، وإذا فشل استخدم الاحتياطي
+    return "PROXY proxy1.mycompany.com:8080; PROXY proxy2.mycompany.com:8080; DIRECT";
+}</code></pre>
+
+                <h2>كيفية نشره</h2>
+                <p>
+                    ارفع الملف على خادم ويب داخلي (Web Server) يمكن لجميع الأجهزة الوصول إليه.
+                    مثلاً: <code>http://wpad.mycompany.local/proxy.pac</code>.
+                    تأكد من أن خادم الويب يرسل نوع المحتوى (MIME Type) الصحيح:
+                    <code>application/x-ns-proxy-autoconfig</code>.
+                </p>
+
+                <h2>نصيحة ذهبية</h2>
+                <p>
+                    اختبر ملف PAC دائماً قبل نشره. خطأ صغير في بناء الجملة (Syntax Error) قد يقطع الإنترنت عن الشركة بأكملها!
+                    استخدم أدوات مثل <a href="#">PAC Parser</a> للتأكد من صحة الكود.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'configure-wpad-proxy-discovery',
+        slug: 'configure-wpad-proxy-discovery',
+        title: 'كيفية تكوين WPAD لاكتشاف البروكسي تلقائيًا',
+        excerpt: 'السحر الحقيقي في إدارة الشبكات. اجعل المتصفحات تكتشف البروكسي وتتصل به دون أي تدخل منك.',
+        date: '2026-02-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بروتوكول اكتشاف البروكسي التلقائي (Web Proxy Auto-Discovery - WPAD) هو الطريقة التي تجعل خيار "Automatically detect settings" في المتصفحات يعمل.
+                    بدلاً من كتابة عنوان ملف PAC يدوياً، يبحث المتصفح عنه بنفسه.
+                </p>
+
+                <h2>كيف يعمل WPAD؟</h2>
+                <p>
+                    المتصفح يحاول تخمين مكان ملف PAC بطريقتين رئيسيتين، بالترتيب:
+                </p>
+                <ol>
+                    <li><strong>عبر DHCP:</strong> يطلب المتصفح الخيار رقم 252 من خادم DHCP.</li>
+                    <li><strong>عبر DNS:</strong> يحاول المتصفح الاتصال بـ <code>http://wpad/wpad.dat</code>.</li>
+                </ol>
+
+                <h2>الطريقة 1: إعداد DNS (الأسهل والأكثر شيوعاً)</h2>
+                <p>
+                    1. أنشئ سجلاً من نوع <strong>A Record</strong> في خادم DNS الداخلي باسم <code>wpad</code> يشير إلى عنوان خادم الويب الذي يستضيف الملف.
+                    <br>
+                    2. تأكد من أن ملف PAC متاح باسم <code>wpad.dat</code> (وليس فقط proxy.pac) على المسار الرئيسي (Root).
+                    <br>
+                    3. مثال للرابط النهائي الذي يبحث عنه المتصفح: <code>http://wpad.mycompany.local/wpad.dat</code>.
+                </p>
+
+                <h2>الطريقة 2: إعداد DHCP</h2>
+                <p>
+                    في خادم DHCP (مثل Windows Server DHCP)، أضف خياراً جديداً (Option 252).
+                    القيمة يجب أن تكون الرابط الكامل للملف:
+                    <code>http://server-address/proxy.pac</code>.
+                    هذه الطريقة أسرع وأكثر أماناً، لكن دعمها متفاوت بين المتصفحات وأنظمة التشغيل.
+                </p>
+
+                <h2>تحذير أمني</h2>
+                <p>
+                    تأكد من حجز اسم النطاق <code>wpad</code> في شبكتك. إذا لم تفعل، وقام شخص ما بتوصيل جهاز واسماه wpad، قد يتمكن من اعتراض حركة مرور الشبكة بالكامل (Man-in-the-Middle)!
+                </p>
+            </div>
+        `
     }
 ];
 
