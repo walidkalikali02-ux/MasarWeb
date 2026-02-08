@@ -3534,6 +3534,120 @@ time curl -x http://user:pass@proxy_ip:port -I https://www.google.com
                 </p>
             </div>
         `
+    },
+    {
+        id: 'web-proxy-modern-network-architecture',
+        slug: 'web-proxy-modern-network-architecture',
+        title: 'دور Web Proxy في بنية الشبكات الحديثة',
+        excerpt: 'لم يعد البروكسي مجرد "مسرع للإنترنت". كيف تحول إلى حجر الزاوية في هندسة Zero Trust و SASE؟',
+        date: '2026-04-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في التسعينات، كان الهدف الرئيسي للبروكسي هو توفير الباندويث عبر الكاش.
+                    اليوم، مع سرعات الألياف الضوئية، تغير الدور تماماً. أصبح البروكسي هو "نقطة التفتيش الجمركي" الذكية في بنية الشبكات الحديثة.
+                </p>
+
+                <h2>من القلعة إلى السحابة (SASE)</h2>
+                <p>
+                    في السابق، كنا نضع البروكسي في غرفة الخوادم (Data Center).
+                    الآن، مع مفهوم <strong>SASE (Secure Access Service Edge)</strong>، انتقل البروكسي إلى السحابة.
+                    أدوات مثل <a href="/blog/zscaler-cloud-proxy-guide">Zscaler</a> و Cloudflare Gateway هي في الأساس "بروكسيات عملاقة" موزعة حول العالم.
+                </p>
+
+                <h2>البروكسي ونموذج Zero Trust</h2>
+                <p>
+                    مبدأ "لا تثق بأحد، تحقق من الجميع". البروكسي يلعب دوراً محورياً هنا:
+                    <br>
+                    1. <strong>التحقق من الهوية:</strong> التكامل مع SSO (كما شرحنا في <a href="/blog/setup-proxy-authentication">المصادقة</a>).
+                    <br>
+                    2. <strong>التحقق من الجهاز:</strong> هل الجهاز محدث وخالٍ من الفيروسات؟
+                    <br>
+                    3. <strong>التحقق من الوجهة:</strong> هل الموقع مسموح به؟
+                </p>
+
+                <h2>Service Mesh</h2>
+                <p>
+                    داخل مراكز البيانات الحديثة (Kubernetes)، نستخدم "Micro-proxies" مثل <a href="/blog/envoy-proxy-next-generation">Envoy</a> لتنظيم الاتصال بين الخدمات، وهو ما يسمى بـ Service Mesh.
+                    هنا البروكسي لا يحمي المستخدم من الإنترنت، بل يحمي الخدمات من بعضها البعض!
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-osi-model-interaction',
+        slug: 'proxy-osi-model-interaction',
+        title: 'كيف يتفاعل البروكسي مع طبقات نموذج OSI',
+        excerpt: 'فهم الفرق بين Layer 4 Proxy و Layer 7 Proxy هو المفتاح لتصميم شبكة فعالة. شرح مبسط للمهندسين.',
+        date: '2026-04-29',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نموذج OSI يقسم الشبكة إلى 7 طبقات. البروكسي يمكن أن يعمل في طبقات مختلفة، وكل طبقة لها استخداماتها ومميزاتها.
+                </p>
+
+                <h2>Layer 4 Proxy (Transport Layer)</h2>
+                <p>
+                    <strong>الأمثلة:</strong> HAProxy (TCP mode)، Nginx (Stream module).
+                    <br>
+                    <strong>كيف يعمل؟</strong> يتعامل مع عناوين IP وأرقام البورتات (Ports) فقط. لا يفهم محتوى البيانات.
+                    <br>
+                    <strong>الميزة:</strong> سرعة خيالية.
+                    <br>
+                    <strong>العيب:</strong> لا يمكنه القيام بـ Caching أو تصفية الروابط (URL Filtering).
+                </p>
+
+                <h2>Layer 7 Proxy (Application Layer)</h2>
+                <p>
+                    <strong>الأمثلة:</strong> <a href="/blog/squid-proxy-review">Squid</a>، Apache Traffic Server.
+                    <br>
+                    <strong>كيف يعمل؟</strong> يفهم بروتوكول HTTP تماماً. يقرأ الـ Headers، والـ Cookies، والـ Payload.
+                    <br>
+                    <strong>الميزة:</strong> ذكاء عالي (توجيه بناءً على الـ Host header، حماية WAF).
+                    <br>
+                    <strong>العيب:</strong> يستهلك موارد أكثر من Layer 4 لأنه يفك تشفير البيانات ويعيد تغليفها.
+                </p>
+
+                <h2>SOCKS Proxy (Layer 5 - Session)</h2>
+                <p>
+                    كما ناقشنا في <a href="/blog/socks5-vs-http-proxy">مقال SOCKS5</a>، هو يقف في المنتصف. أذكى من Layer 4 قليلاً لكنه لا يتدخل في المحتوى مثل Layer 7.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-tcp-ip-communication',
+        slug: 'web-proxy-tcp-ip-communication',
+        title: 'Web Proxy و TCP/IP: فهم التواصل',
+        excerpt: 'ماذا يحدث فعلياً للـ Packets عندما تعبر البروكسي؟ تحليل لعملية Three-way Handshake المزدوجة.',
+        date: '2026-05-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في الاتصال المباشر، يتم إنشاء اتصال TCP واحد بين جهازك والسيرفر.
+                    لكن عند وجود بروكسي، تتغير اللعبة تماماً. يتم "كسر" الاتصال إلى نصفين.
+                </p>
+
+                <h2>الاتصال المزدوج (Split Connection)</h2>
+                <p>
+                    1. <strong>العميل -> البروكسي:</strong> جهازك يقوم بعمل SYN/SYN-ACK/ACK مع البروكسي.
+                    <br>
+                    2. <strong>البروكسي -> السيرفر:</strong> البروكسي يقوم بإنشاء اتصال جديد تماماً مع السيرفر الهدف.
+                </p>
+
+                <h2>لماذا هذا مهم؟</h2>
+                <ul>
+                    <li><strong>TCP Optimization:</strong> يمكن للبروكسي استخدام خوارزميات TCP حديثة (مثل BBR) للاتصال بالسيرفر، حتى لو كان جهاز العميل قديماً (Windows XP مثلاً).</li>
+                    <li><strong>Connection Pooling:</strong> البروكسي يبقي الاتصال مع السيرفر مفتوحاً (Keep-Alive) ليعيد استخدامه لعميل آخر، مما يوفر وقت المصافحة (Handshake).</li>
+                </ul>
+
+                <h2>مشكلة IP المصدر (Source IP)</h2>
+                <p>
+                    بالنسبة للسيرفر، الطلب قادم من البروكسي، وضاع عنوان IP الخاص بالعميل.
+                    الحل هو ترويسة <code>X-Forwarded-For</code> التي يضيفها البروكسي (مثل <a href="/blog/haproxy-guide-installation">HAProxy</a>) ليخبر السيرفر بالعنوان الأصلي.
+                </p>
+            </div>
+        `
     }
 ];
 
