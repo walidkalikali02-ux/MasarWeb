@@ -5549,6 +5549,194 @@ for i in range(10):
                 </p>
             </div>
         `
+    },
+    {
+        id: 'puppeteer-proxy-automation',
+        slug: 'puppeteer-proxy-automation',
+        title: 'التحكم في Chrome Headless باستخدام Puppeteer و Proxy',
+        excerpt: 'مكتبة Puppeteer تمنحك سيطرة كاملة على Chrome. تعلم كيفية إعداد البروكسي والمصادقة لتجاوز الحجب أثناء الأتمتة.',
+        date: '2026-06-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بينما يعتبر Selenium أداة ممتازة، يفضل العديد من مطوري JavaScript استخدام <a href="https://pptr.dev/" target="_blank">Puppeteer</a> للتحكم في متصفح Chrome.
+                    فهي أسرع، وتوفر تكاملاً أعمق مع أدوات التطوير (DevTools).
+                    في هذا المقال، سنشرح كيفية دمج <a href="/blog/residential-vs-datacenter-proxies">البروكسي السكني</a> مع Puppeteer.
+                </p>
+
+                <h2>إعداد البروكسي عند التشغيل</h2>
+                <p>
+                    يتم تمرير إعدادات البروكسي عبر مصفوفة <code>args</code> عند إطلاق المتصفح.
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-javascript">
+const puppeteer = require('puppeteer');
+
+(async () => {
+    const proxy = '123.45.67.89:8080';
+    
+    const browser = await puppeteer.launch({
+        headless: false,
+        args: [
+            \`--proxy-server=\${proxy}\`,
+            // تجاوز أخطاء شهادات HTTPS إذا لزم الأمر
+            '--ignore-certificate-errors' 
+        ]
+    });
+
+    const page = await browser.newPage();
+    
+    // التعامل مع المصادقة (Username/Password)
+    await page.authenticate({
+        username: 'myuser',
+        password: 'mypassword'
+    });
+
+    await page.goto('https://whatismyipaddress.com');
+    
+    // أخذ لقطة شاشة للتأكد
+    await page.screenshot({ path: 'proxy_test.png' });
+
+    await browser.close();
+})();
+                    </code></pre>
+                </div>
+
+                <h2>تجنب الكشف (Anti-Detection)</h2>
+                <p>
+                    مثل Selenium، المواقع قد تكتشف أنك تستخدم Puppeteer.
+                    يُنصح باستخدام مكتبة <code>puppeteer-extra</code> وإضافة <code>puppeteer-extra-plugin-stealth</code> لإخفاء بصمة الأتمتة.
+                </p>
+
+                <h2>تغيير البروكسي ديناميكياً</h2>
+                <p>
+                    بشكل افتراضي، لا يدعم Puppeteer تغيير البروكسي للصفحة دون إعادة تشغيل المتصفح.
+                    إذا كنت بحاجة لتدوير البروكسي (Rotation) لكل طلب، يفضل استخدام خدمة <a href="/blog/python-requests-proxy-guide">Back-connect Proxy</a> التي تقوم بالتدوير تلقائياً من جانب المزود، بحيث يبقى إعدادك ثابتاً ولكن الـ IP الخارجي يتغير.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'scrapy-rotating-proxies-guide',
+        slug: 'scrapy-rotating-proxies-guide',
+        title: 'بناء عناكب زحف قوية باستخدام Scrapy و Rotating Proxies',
+        excerpt: 'إطار عمل Scrapy هو الأقوى لجمع البيانات الضخمة. كيف تقوم بإعداد تدوير البروكسي (IP Rotation) لتجنب الحظر أثناء الزحف؟',
+        date: '2026-06-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما تحتاج لجمع ملايين الصفحات، السكربتات البسيطة لن تكفي. أنت بحاجة لـ Scrapy.
+                    ولكن السرعة العالية لـ Scrapy تجعلها سهلة الكشف والحظر.
+                    الحل هو استخدام Middleware مخصص لتدوير البروكسيات مع كل طلب.
+                </p>
+
+                <h2>تثبيت مكتبة التدوير</h2>
+                <p>
+                    بدلاً من كتابة الكود من الصفر، سنستخدم مكتبة <code>scrapy-rotating-proxies</code> الشهيرة.
+                    <br><code>pip install scrapy-rotating-proxies</code>
+                </p>
+
+                <h2>تعديل ملف الإعدادات (settings.py)</h2>
+                <p>
+                    أضف البروكسيات وقم بتفعيل الـ Middleware في ملف إعدادات مشروعك:
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-python">
+# settings.py
+
+ROTATING_PROXY_LIST = [
+    'proxy1.com:8000',
+    'proxy2.com:8031',
+    'user:pass@proxy3.com:8080',
+]
+
+# تفعيل الـ Middleware
+DOWNLOADER_MIDDLEWARES = {
+    'rotating_proxies.middlewares.RotatingProxyMiddleware': 610,
+    'rotating_proxies.middlewares.BanDetectionMiddleware': 620,
+}
+
+# إعدادات كشف الحظر (Ban Detection)
+# إذا واجه الزاحف هذه الأكواد أو النصوص، سيقوم بتغيير البروكسي وإعادة المحاولة
+ROTATING_PROXY_BAN_POLICY = 'rotating_proxies.policy.BanDetectionPolicy'
+                    </code></pre>
+                </div>
+
+                <h2>استراتيجيات الزحف الذكي</h2>
+                <p>
+                    <ul>
+                        <li><strong>Concurrency:</strong> لا ترفع عدد الطلبات المتزامنة (CONCURRENT_REQUESTS) كثيراً إذا كان عدد البروكسيات لديك محدوداً.</li>
+                        <li><strong>Auto-Throttle:</strong> فعل إضافة <code>AUTOTHROTTLE_ENABLED</code> لجعل Scrapy يبطئ السرعة تلقائياً إذا زاد زمن استجابة الخادم.</li>
+                        <li><strong>User-Agent:</strong> استخدم <a href="/blog/web-proxy-backlink-monitoring">User-Agent Rotation</a> جنباً إلى جنب مع البروكسي.</li>
+                    </ul>
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'docker-container-proxy-setup',
+        slug: 'docker-container-proxy-setup',
+        title: 'إعداد البروكسي داخل حاويات Docker',
+        excerpt: 'في بيئات الشركات، غالباً ما تكون الخوادم خلف جدار حماية. كيف تجعل حاويات Docker تتصل بالإنترنت عبر البروكسي؟',
+        date: '2026-06-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    أحد أكبر التحديات في بيئات التطوير المؤسسية (Enterprise) هو تشغيل <a href="/blog/enterprise-proxy-solutions">Docker</a> خلف Corporate Proxy.
+                    إذا لم تقم بالإعداد الصحيح، ستفشل أوامر <code>docker pull</code> ولن تتمكن الحاويات من تحديث الحزم.
+                </p>
+
+                <h2>إعداد البروكسي لخدمة Docker (Daemon)</h2>
+                <p>
+                    لكي يتمكن Docker نفسه من سحب الصور (Images)، يجب إنشاء ملف إعداد للخدمة.
+                    <br>مسار الملف (Linux): <code>/etc/systemd/system/docker.service.d/http-proxy.conf</code>
+                </p>
+
+                <div class="code-block">
+                    <pre><code class="language-ini">
+[Service]
+Environment="HTTP_PROXY=http://proxy.example.com:8080"
+Environment="HTTPS_PROXY=http://proxy.example.com:8080"
+Environment="NO_PROXY=localhost,127.0.0.1,docker-registry.local"
+                    </code></pre>
+                </div>
+                <p>بعد ذلك، أعد تحميل الخدمة: <code>systemctl daemon-reload && systemctl restart docker</code>.</p>
+
+                <h2>إعداد البروكسي داخل الحاويات (Containers)</h2>
+                <p>
+                    لكي تستطيع التطبيقات <em>داخل</em> الحاوية الوصول للإنترنت (مثلاً <code>apt-get update</code>)، يمكنك تمرير المتغيرات أثناء التشغيل أو إعدادها في <code>~/.docker/config.json</code> لتكون افتراضية.
+                </p>
+
+                <h3>الطريقة اليدوية (Docker Run)</h3>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+docker run -e HTTP_PROXY=http://proxy.example.com:8080 \
+           -e HTTPS_PROXY=http://proxy.example.com:8080 \
+           ubuntu apt-get update
+                    </code></pre>
+                </div>
+
+                <h3>الطريقة الدائمة (User Config)</h3>
+                <p>
+                    قم بتعديل <code>~/.docker/config.json</code>:
+                </p>
+                <div class="code-block">
+                    <pre><code class="language-json">
+{
+ "proxies": {
+   "default": {
+     "httpProxy": "http://proxy.example.com:8080",
+     "httpsProxy": "http://proxy.example.com:8080",
+     "noProxy": "localhost,127.0.0.1"
+   }
+ }
+}
+                    </code></pre>
+                </div>
+            </div>
+        `
     }
 ];
 
