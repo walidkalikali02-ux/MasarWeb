@@ -5737,6 +5737,145 @@ docker run -e HTTP_PROXY=http://proxy.example.com:8080 \
                 </div>
             </div>
         `
+    },
+    {
+        id: 'postman-proxy-api-testing',
+        slug: 'postman-proxy-api-testing',
+        title: 'اختبار واجهات برمجة التطبيقات (API) باستخدام Postman و Proxy',
+        excerpt: 'Postman ليس مجرد مرسل طلبات. تعلم كيفية استخدامه كبروكسي لالتقاط حركة البيانات وفحص واجهات برمجة التطبيقات.',
+        date: '2026-06-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عند تطوير تطبيقات الجوال أو الواجهات الخلفية (Backend)، غالباً ما تحتاج لرؤية ما يحدث "تحت الغطاء".
+                    أداة Postman توفر ميزة "Capture Requests" التي تحول جهازك إلى <a href="/blog/charles-proxy-guide">HTTP Proxy</a> لالتقاط وتحليل الطلبات الصادرة من أي جهاز على الشبكة.
+                </p>
+
+                <h2>إعداد Postman كخادم بروكسي</h2>
+                <p>
+                    لالتقاط حركة البيانات من هاتف جوال مثلاً:
+                    <ol>
+                        <li>افتح Postman واضغط على أيقونة الستالايت (Capture Requests) في الشريط السفلي.</li>
+                        <li>فعل خيار <strong>Enable Proxy</strong> وحدد المنفذ (مثلاً 5555).</li>
+                        <li>اذهب لإعدادات الواي فاي في هاتفك، وقم بتعيين البروكسي اليدوي إلى IP جهاز الكمبيوتر ومنفذ 5555.</li>
+                    </ol>
+                    الآن، أي تطبيق تفتحه على الهاتف ستظهر طلباته داخل Postman مباشرة للتحليل.
+                </p>
+
+                <h2>إرسال الطلبات عبر بروكسي خارجي</h2>
+                <p>
+                    إذا كنت تختبر API مقيد جغرافياً (Geo-restricted)، يمكنك إعداد Postman لتوجيه طلباته عبر بروكسي في دولة أخرى.
+                </p>
+                <div class="code-block">
+                    <pre><code>
+Settings -> Proxy:
+☑ Add a custom proxy configuration
+Proxy Type: HTTP / HTTPS
+Proxy Server: 123.45.67.89
+Port: 8080
+Proxy Auth: On (Username/Password)
+                    </code></pre>
+                </div>
+
+                <h2>تجاوز مشاكل SSL (SSL Verification)</h2>
+                <p>
+                    في بيئات التطوير (Staging)، غالباً ما نستخدم شهادات موقعة ذاتياً (Self-signed).
+                    تأكد من تعطيل خيار "SSL certificate verification" في إعدادات Postman لتجنب أخطاء الاتصال عند العمل خلف <a href="/blog/corporate-proxy-setup">بروكسي الشركة</a>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'jmeter-distributed-load-testing',
+        slug: 'jmeter-distributed-load-testing',
+        title: 'اختبار التحمل الموزع (Distributed Load Testing) باستخدام JMeter و Proxy',
+        excerpt: 'إسقاط الخادم يتطلب أكثر من جهاز واحد. كيف تستخدم شبكة من البروكسيات لمحاكاة هجوم ضخم أو ضغط مستخدمين حقيقي؟',
+        date: '2026-06-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    اختبار التحمل (Load Testing) من عنوان IP واحد غير واقعي، وغالباً ما يتم حظره بواسطة جدران الحماية (WAF) قبل أن يصل الخادم لحدوده القصوى.
+                    لمحاكاة حركة مرور حقيقية قادمة من آلاف المستخدمين حول العالم، يجب دمج Apache JMeter مع قائمة من البروكسيات الدوارة.
+                </p>
+
+                <h2>لماذا البروكسي ضروري في اختبار التحمل؟</h2>
+                <p>
+                    <ul>
+                        <li><strong>تجاوز Rate Limiting:</strong> الخوادم تحدد عدد الطلبات المسموحة لكل IP. توزيع الحمل يمنع هذا الحظر.</li>
+                        <li><strong>المحاكاة الجغرافية:</strong> اختبار سرعة استجابة الـ CDN للمستخدمين في آسيا وأوروبا وأمريكا في آن واحد.</li>
+                    </ul>
+                </p>
+
+                <h2>إعداد البروكسي في JMeter</h2>
+                <p>
+                    يمكنك تشغيل JMeter مع إعدادات البروكسي عبر سطر الأوامر:
+                </p>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+jmeter -H my.proxy.server -P 8000 -u username -a password -n -t test.jmx
+                    </code></pre>
+                </div>
+
+                <h2>استخدام قائمة بروكسيات (CSV Data Set Config)</h2>
+                <p>
+                    لإعداد متقدم، يمكنك قراءة قائمة بروكسيات من ملف CSV واستخدامها داخل الـ HTTP Request Sampler.
+                    هذا يتطلب استخدام "Java Request" أو تعديل خصائص النظام ديناميكياً، وهو ما يفعله المحترفون لمحاكاة <a href="/blog/proxy-simulate-network-speeds">ظروف الشبكة المختلفة</a> بدقة متناهية.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'curl-proxy-mastery',
+        slug: 'curl-proxy-mastery',
+        title: 'احتراف استخدام cURL مع البروكسي: دليل المطورين',
+        excerpt: 'أداة cURL هي سكين الجيش السويسري للويب. تعلم كل الأوامر المتعلقة بالبروكسي لتشخيص مشاكل الشبكة كالمحترفين.',
+        date: '2026-06-29',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في عالم الخوادم، لا توجد متصفحات. أداة <code>curl</code> هي صديقك المفضل لفحص الاتصال.
+                    سواء كنت تحاول الوصول لخدمة خلف جدار حماية أو تفحص رؤوس الاستجابة، فهم خيارات البروكسي في cURL أمر إلزامي.
+                </p>
+
+                <h2>الأمر الأساسي (The -x Flag)</h2>
+                <p>
+                    الخيار <code>-x</code> (أو <code>--proxy</code>) هو المفتاح.
+                </p>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+# Basic HTTP Proxy
+curl -x http://10.10.1.10:3128 http://example.com
+
+# Proxy with Authentication
+curl -x http://user:pass@10.10.1.10:3128 http://example.com
+
+# SOCKS5 Proxy (Common for Tor/SSH)
+curl -x socks5://127.0.0.1:9050 http://check.torproject.org
+                    </code></pre>
+                </div>
+
+                <h2>تجاهل أخطاء الشهادات (-k)</h2>
+                <p>
+                    عند استخدام <a href="/blog/charles-proxy-guide">Man-in-the-Middle Proxy</a> لفحص التشفير، ستواجه أخطاء SSL.
+                    استخدم <code>-k</code> أو <code>--insecure</code> لتجاهل هذه الأخطاء وإكمال الطلب.
+                    <br><code>curl -k -x http://localhost:8888 https://google.com</code>
+                </p>
+
+                <h2>تتبع التفاصيل (-v)</h2>
+                <p>
+                    لفهم عملية المصافحة (Handshake) مع البروكسي، استخدم الوضع التفصيلي (Verbose):
+                    <br><code>curl -v -x http://proxy.com:8080 http://example.com</code>
+                    <br>ستري سطوراً تبدأ بـ <code>CONNECT</code> وهي توضح كيف يقوم cURL بطلب نفق اتصال آمن من البروكسي.
+                </p>
+
+                <h2>متغيرات البيئة (Environment Variables)</h2>
+                <p>
+                    بدلاً من كتابة البروكسي كل مرة، يمكنك ضبطه في الـ Shell:
+                    <br><code>export http_proxy="http://proxy:port"</code>
+                    <br>cURL والعديد من الأدوات الأخرى ستحترم هذا المتغير تلقائياً.
+                </p>
+            </div>
+        `
     }
 ];
 
