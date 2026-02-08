@@ -2314,6 +2314,204 @@ delay_access 1 allow heavy_files</code></pre>
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-healthcare-hipaa-compliance',
+        slug: 'proxy-healthcare-hipaa-compliance',
+        title: 'بروكسي للمؤسسات الصحية: متطلبات HIPAA',
+        excerpt: 'حماية بيانات المرضى (PHI) ليست خياراً بل قانوناً. كيف تضبط إعدادات البروكسي لتجنب انتهاكات HIPAA الكارثية؟',
+        date: '2026-03-15',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في القطاع الصحي، الخطأ ممنوع. قانون HIPAA (قانون قابلية نقل التأمين الصحي والمساءلة) يفرض معايير صارمة جداً لحماية المعلومات الصحية المحمية (PHI).
+                    أي تسريب لبيانات مريض قد يعني غرامات بالملايين وسجن للمسؤولين.
+                    الويب بروكسي هو حارس البوابة الذي يضمن أن الموظفين (أطباء، ممرضين، إداريين) يستخدمون الإنترنت بطريقة لا تعرض هذه البيانات للخطر.
+                </p>
+
+                <h2>1. تشفير كل شيء (SSL/TLS Inspection)</h2>
+                <p>
+                    معظم التسريبات تحدث عبر قنوات مشفرة (HTTPS).
+                    للامتثال لـ HIPAA، يجب عليك "فك تشفير" الحركة لفحصها، ثم إعادة تشفيرها.
+                    هذا يسمح لك برؤية ما إذا كان أحدهم يرفع ملف "Patient_Records.xlsx" إلى Google Drive الشخصي.
+                    لكن احذر! يجب استثناء المواقع البنكية والخاصة جداً من الفحص للحفاظ على خصوصية الموظف، كما شرحنا في <a href="/blog/proxy-gdpr-compliance">مقال GDPR</a>.
+                </p>
+
+                <h2>2. سجلات التدقيق (Audit Logs)</h2>
+                <p>
+                    قانون HIPAA يتطلب معرفة "من فعل ماذا ومتى".
+                    يجب أن يسجل البروكسي:
+                </p>
+                <ul>
+                    <li>اسم المستخدم (عبر التكامل مع Active Directory).</li>
+                    <li>الوقت والتاريخ بدقة.</li>
+                    <li>الموقع الذي تمت زيارته.</li>
+                    <li>حجم البيانات المنقولة.</li>
+                </ul>
+                <p>
+                    هذه السجلات يجب أن تحفظ في مكان آمن ومشفر لمدة لا تقل عن 6 سنوات (حسب متطلبات الولاية/الدولة).
+                </p>
+
+                <h2>3. منع رفع البيانات (Upload Restrictions)</h2>
+                <p>
+                    المستشفيات مليئة بأجهزة الكمبيوتر التي يسهل الوصول إليها.
+                    يجب إعداد البروكسي لمنع طرق HTTP POST و PUT على مواقع مشاركة الملفات، البريد الإلكتروني الشخصي، ووسائل التواصل الاجتماعي.
+                    استخدم <a href="/blog/prevent-data-leakage-via-proxy">حلول DLP</a> المدمجة مع البروكسي لفحص المحتوى بحثاً عن كلمات مثل "تشخيص"، "علاج"، أو أرقام الضمان الاجتماعي.
+                </p>
+
+                <h2>4. التحكم في الوصول حسب الدور (Role-Based Access)</h2>
+                <p>
+                    الطبيب يحتاج الوصول لمواقع الأبحاث الطبية، لكن موظف الاستقبال قد لا يحتاج للإنترنت أصلاً (أو يحتاج لموقع حجز المواعيد فقط).
+                    أنشئ مجموعات (ACLs) صارمة:
+                </p>
+                <pre><code class="language-bash"># في Squid Proxy
+acl doctors src 192.168.1.0/24
+acl reception src 192.168.2.0/24
+
+http_access allow doctors
+http_access allow reception appointment_sites
+http_access deny reception all</code></pre>
+
+                <h2>الخلاصة</h2>
+                <p>
+                    البروكسي في المستشفيات ليس لتقييد الحرية، بل لحماية الأرواح والخصوصية.
+                    تأكد من مراجعة سياساتك بانتظام مع مسؤول الامتثال (Compliance Officer).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'choose-right-proxy-business-size',
+        slug: 'choose-right-proxy-business-size',
+        title: 'كيف تختار بروكسي مناسب لحجم شركتك',
+        excerpt: 'من الشركات الناشئة إلى المؤسسات العملاقة، ليس كل بروكسي يناسب الجميع. دليل اختيار الحل الأمثل لميزانيتك واحتياجاتك.',
+        date: '2026-03-16',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    سوق البروكسي مليء بالخيارات: أجهزة (Appliances)، برمجيات (Software)، وحلول سحابية (Cloud).
+                    اختيار الحل الخاطئ قد يعني إما دفع أموال طائلة على ميزات لا تحتاجها، أو انهيار الشبكة لأن الحل "أضعف" من حمل العمل.
+                    إليك كيف تختار بذكاء.
+                </p>
+
+                <h2>1. الشركات الصغيرة (SMBs) - أقل من 100 مستخدم</h2>
+                <p>
+                    <strong>الاحتياجات:</strong> توفير التكاليف، سهولة الإدارة، ميزات أساسية (Caching, Filtering).
+                    <br>
+                    <strong>الحل الأمثل:</strong> برمجيات مفتوحة المصدر.
+                </p>
+                <ul>
+                    <li><strong>Squid Proxy:</strong> مجاني، قوي، ويعمل على أي خادم Linux رخيص. انظر <a href="/blog/install-squid-proxy-linux">طريقة التثبيت</a>.</li>
+                    <li><strong>pfSense:</strong> جدار ناري مع حزمة Squid، خيار ممتاز لدمج الوظائف في جهاز واحد.</li>
+                </ul>
+
+                <h2>2. الشركات المتوسطة - 100 إلى 1000 مستخدم</h2>
+                <p>
+                    <strong>الاحتياجات:</strong> دعم فني، تكامل مع Active Directory، تقارير جيدة، فحص HTTPS.
+                    <br>
+                    <strong>الحل الأمثل:</strong> أجهزة مخصصة (Virtual Appliances) أو حلول تجارية متوسطة.
+                </p>
+                <ul>
+                    <li>يمكن استخدام نسخة تجارية من البروكسيات مثل <strong>GFI WebMonitor</strong>.</li>
+                    <li>أو خادم Squid قوي مع واجهة إدارة مثل <strong>Webmin</strong> وأدوات تحليل سجلات متقدمة.</li>
+                    <li>يجب الاهتمام بـ <a href="/blog/manage-bandwidth-corporate-proxy">إدارة النطاق الترددي</a> لضمان جودة الاتصال.</li>
+                </ul>
+
+                <h2>3. المؤسسات الكبيرة (Enterprise) - +1000 مستخدم</h2>
+                <p>
+                    <strong>الاحتياجات:</strong> توفر عالي (High Availability)، توازن أحمال (Load Balancing)، حماية متقدمة من التهديدات (ATP)، ودعم للفروع.
+                    <br>
+                    <strong>الحل الأمثل:</strong> Hardware Appliances أو Cloud Proxy.
+                </p>
+                <ul>
+                    <li><strong>Hardware:</strong> مثل Symantec (Blue Coat سابقاً) أو Forcepoint. قوية جداً لكنها باهظة الثمن وصعبة الصيانة.</li>
+                    <li><strong>Cloud (SASE):</strong> مثل Zscaler أو Netskope. هذا هو التوجه الحديث، حيث لا تحتاج لشراء أجهزة، وتقوم بتوجيه الحركة للسحابة. هذا مفيد جداً في <a href="/blog/enterprise-proxy-solutions-review">بيئات المؤسسات</a>.</li>
+                </ul>
+
+                <h2>جدول المقارنة السريع</h2>
+                <table border="1" style="width:100%; border-collapse: collapse; margin: 20px 0;">
+                    <tr style="background-color: #f2f2f2;">
+                        <th style="padding: 10px;">المعيار</th>
+                        <th style="padding: 10px;">Open Source</th>
+                        <th style="padding: 10px;">Appliance</th>
+                        <th style="padding: 10px;">Cloud</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">التكلفة</td>
+                        <td style="padding: 10px;">منخفضة (تتطلب وقت)</td>
+                        <td style="padding: 10px;">عالية (CAPEX)</td>
+                        <td style="padding: 10px;">متوسطة/عالية (OPEX)</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">سهولة التنفيذ</td>
+                        <td style="padding: 10px;">صعبة</td>
+                        <td style="padding: 10px;">متوسطة</td>
+                        <td style="padding: 10px;">سهلة جداً</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">SSL Inspection</td>
+                        <td style="padding: 10px;">يستهلك موارد الخادم</td>
+                        <td style="padding: 10px;">Hardware Acceleration</td>
+                        <td style="padding: 10px;">ممتاز (Scale)</td>
+                    </tr>
+                </table>
+            </div>
+        `
+    },
+    {
+        id: 'setup-proxy-multi-branch-company',
+        slug: 'setup-proxy-multi-branch-company',
+        title: 'إعداد بروكسي لفروع الشركة المتعددة',
+        excerpt: 'هل لديك فروع في مدن مختلفة؟ هل يجب أن تمرر كل الحركة عبر المركز الرئيسي أم تجعلها تخرج محلياً؟ استراتيجيات الربط الفعال.',
+        date: '2026-03-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تحدي الشبكات الأكبر لمديري الـ IT هو التعامل مع الفروع (Branches).
+                    هل نجبر الفرع الصغير في "جدة" على إرسال كل طلبات الويب عبر VPN إلى المركز الرئيسي في "الرياض" ليتم فحصها؟ أم نسمح لهم بالخروج للإنترنت مباشرة؟
+                    كل خيار له ثمنه.
+                </p>
+
+                <h2>النموذج 1: المركزية (Backhauling)</h2>
+                <p>
+                    في هذا النموذج، يتم توجيه كل حركة المرور من الفروع عبر شبكة MPLS أو VPN Site-to-Site إلى المركز الرئيسي (Data Center).
+                    <br>
+                    <strong>المميزات:</strong> سياسة أمنية موحدة، نقطة خروج واحدة يسهل مراقبتها.
+                    <br>
+                    <strong>العيوب:</strong> بطء شديد (Latency)، استهلاك ضخم للباندويث في المركز الرئيسي، تجربة مستخدم سيئة (تخيل مشاهدة يوتيوب عبر VPN!).
+                </p>
+
+                <h2>النموذج 2: الخروج المحلي المباشر (Direct Internet Access - DIA)</h2>
+                <p>
+                    كل فرع لديه خط إنترنت خاص وبروكسي محلي خاص به.
+                    <br>
+                    <strong>المميزات:</strong> سرعة عالية، عدم الضغط على المركز الرئيسي.
+                    <br>
+                    <strong>العيوب:</strong> كابوس في الإدارة! تحتاج لتحديث السياسات على 50 بروكسي في 50 فرع.
+                    يمكن حل مشكلة الإدارة باستخدام أدوات إدارة مركزية (Central Management) أو <a href="/blog/configure-wpad-proxy-discovery">WPAD</a> لتوزيع الإعدادات.
+                </p>
+
+                <h2>النموذج 3: الهجين (Hybrid / Cloud Proxy)</h2>
+                <p>
+                    هذا هو الحل الأمثل حالياً. الفروع تخرج للإنترنت مباشرة (DIA)، لكن لا تستخدم بروكسي محلي (Hardware)، بل تستخدم "بروكسي سحابي".
+                    السياسات تُدار مركزياً في السحابة وتطبق على جميع الفروع فوراً.
+                </p>
+
+                <h2>كيفية تطبيق التسلسل الهرمي (Hierarchical Caching)</h2>
+                <p>
+                    إذا اخترت وضع بروكسي في كل فرع، يمكنك ربطهم ببروكسي "أب" (Parent Proxy) في المركز الرئيسي.
+                    الفروع تخزن الكاش المحلي، وإذا لم تجد الملف، تطلبه من الأب بدلاً من الإنترنت، مما يوفر الباندويث الدولي.
+                    راجع مقال <a href="/blog/configure-chained-proxy-squid">Chained Proxy</a> للتفاصيل التقنية.
+                </p>
+                <pre><code class="language-bash"># إعدادات في بروكسي الفرع (Child)
+cache_peer parent-proxy.hq.local parent 3128 0 no-query default</code></pre>
+
+                <h2>نصيحة ذهبية</h2>
+                <p>
+                    استخدم ملفات PAC (Proxy Auto-Config) بذكاء. يمكنك كتابة دالة JavaScript في ملف PAC تجعل المتصفح يختار البروكسي الأقرب له جغرافياً بناءً على عنوان IP الخاص بالجهاز.
+                </p>
+            </div>
+        `
     }
 ];
 
