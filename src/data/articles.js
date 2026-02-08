@@ -3068,6 +3068,124 @@ def request(flow):
                 </p>
             </div>
         `
+    },
+    {
+        id: 'best-chrome-proxy-extensions-2025',
+        slug: 'best-chrome-proxy-extensions-2025',
+        title: 'أفضل إضافات البروكسي لمتصفح Chrome',
+        excerpt: 'كيف تدير إعدادات البروكسي في Chrome بذكاء؟ مراجعة لأدوات SwitchyOmega و Proxy Switcher.',
+        date: '2026-04-03',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تغيير إعدادات البروكسي من إعدادات النظام (System Settings) في كل مرة تريد فيها تصفح موقع محجوب أو اختبار خادم جديد هو أمر مرهق.
+                    لحسن الحظ، يوفر متجر Chrome إضافات قوية لإدارة هذه العملية بضغطة زر.
+                </p>
+
+                <h2>1. Proxy SwitchyOmega (الخيار الأول للمحترفين)</h2>
+                <p>
+                    هذه الإضافة هي المعيار الذهبي. تسمح لك بإنشاء "ملفات تعريف" (Profiles) متعددة.
+                    مثلاً: "ملف للعمل" يستخدم بروكسي الشركة، و "ملف للمنزل" يستخدم الاتصال المباشر.
+                    <br>
+                    أقوى ميزة هي <strong>Auto Switch</strong>: يمكنك إنشاء قواعد تقول "استخدم بروكسي الشركة فقط إذا كان الرابط يحتوي على intranet.com".
+                </p>
+
+                <h2>2. FoxyProxy Standard</h2>
+                <p>
+                    على الرغم من شهرته في Firefox، إلا أن نسخته على Chrome قوية جداً.
+                    يتميز بدعمه المتقدم لبروكسيات SOCKS5 وتعامله الذكي مع الـ DNS (لمنع تسرب DNS).
+                    راجع مقالنا عن <a href="/blog/socks5-vs-http-proxy">الفرق بين SOCKS5 و HTTP</a> لتعرف متى تستخدمه.
+                </p>
+
+                <h2>3. إضافات الـ VPN المجانية (تحذير)</h2>
+                <p>
+                    العديد من الإضافات التي تسوق نفسها كـ VPN هي في الحقيقة مجرد Secure HTTP Proxy.
+                    بينما هي مفيدة لفك الحجب البسيط، لا تعتمد عليها في الخصوصية المطلقة، حيث يمكن لمزود الخدمة رؤية كل ما تتصفحه.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'best-firefox-proxy-extensions',
+        slug: 'best-firefox-proxy-extensions',
+        title: 'أفضل إضافات البروكسي لمتصفح Firefox',
+        excerpt: 'لماذا يعتبر Firefox المتصفح المفضل لخبراء الخصوصية؟ وكيف تعززه بإضافات مثل FoxyProxy و Multi-Account Containers.',
+        date: '2026-04-05',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يتميز Firefox عن Chrome بميزة قاتلة: <strong>إعدادات بروكسي مستقلة</strong>.
+                    يمكنك ضبط Firefox لاستخدام بروكسي معين دون أن يتأثر باقي نظام التشغيل، وهو ما يجعله مثالياً للمطورين ومختبري الاختراق.
+                </p>
+
+                <h2>1. FoxyProxy Standard (الملك هنا)</h2>
+                <p>
+                    في بيئة Firefox، FoxyProxy هو الأفضل بلا منازع.
+                    يتيح لك تلوين المتصفح بناءً على البروكسي المستخدم (مثلاً، شريط أحمر عند استخدام بروكسي Tor، وشريط أزرق لبروكسي الشركة).
+                    هذا يمنع الأخطاء الكارثية (مثل فتح حساب بنكي وأنت متصل ببروكسي غير آمن).
+                </p>
+
+                <h2>2. Firefox Multi-Account Containers</h2>
+                <p>
+                    هذه ليست إضافة بروكسي بحتة، لكن يمكن ربطها ببروكسي!
+                    يمكنك جعل "حاوية العمل" تتصل دائماً عبر <a href="/blog/enterprise-proxy-solutions-review">بروكسي المؤسسة</a>، بينما "حاوية الترفيه" تتصل مباشرة بالإنترنت.
+                    هذا العزل التام (Cookies + Proxy) غير موجود بهذه السهولة في أي متصفح آخر.
+                </p>
+
+                <h2>3. SmartProxy</h2>
+                <p>
+                    بديل خفيف وسريع لـ FoxyProxy، يركز على سهولة الاستخدام للمبتدئين الذين يريدون فقط التبديل بين البروكسيات بنقرة واحدة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'free-vs-paid-proxy-comparison',
+        slug: 'free-vs-paid-proxy-comparison',
+        title: 'مقارنة بين أدوات البروكسي المجانية والمدفوعة',
+        excerpt: 'هل يكفي Squid لمؤسستك؟ أم تحتاج لحلول مثل Blue Coat و Zscaler؟ مقارنة التكلفة مقابل المميزات.',
+        date: '2026-04-07',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما يقرر مدير تقنية المعلومات (IT Manager) تطبيق نظام بروكسي، يواجه السؤال الأزلي:
+                    "هل نستخدم حلاً مفتوح المصدر (Open Source) ونوفر المال، أم نشتري حلاً تجارياً (Commercial) ونشتري راحة البال؟"
+                </p>
+
+                <h2>1. الحلول المجانية (Open Source)</h2>
+                <p>
+                    <strong>أمثلة:</strong> <a href="/blog/squid-proxy-review">Squid</a>, Nginx, HAProxy.
+                    <br>
+                    <strong>المزايا:</strong> مجانية تماماً، مرونة لا نهائية، مجتمع داعم قوي.
+                    <br>
+                    <strong>العيوب:</strong> لا يوجد دعم فني رسمي (تعتمد على نفسك أو الاستشاريين)، واجهة سطر أوامر (CLI) صعبة للمبتدئين، وتصنيف المواقع (URL Filtering) يتطلب قوائم خارجية تحتاج تحديثاً مستمراً.
+                </p>
+
+                <h2>2. الحلول التجارية (Commercial Appliances)</h2>
+                <p>
+                    <strong>أمثلة:</strong> Symantec (Blue Coat سابقاً)، McAfee Web Gateway.
+                    <br>
+                    <strong>المزايا:</strong> "ركب وشغل"، دعم فني 24/7، تحديثات فورية لقواعد البيانات الأمنية (Threat Intelligence)، وتقارير إدارية جاهزة.
+                    <br>
+                    <strong>العيوب:</strong> تكلفة عالية جداً (Hardware + License)، وقد تكون "صندوقاً أسود" لا يمكنك تعديل كل شيء فيه.
+                </p>
+
+                <h2>3. الحلول السحابية (Cloud Proxy / SWG)</h2>
+                <p>
+                    <strong>أمثلة:</strong> Zscaler, Cloudflare Gateway.
+                    <br>
+                    <strong>المزايا:</strong> لا حاجة لشراء سيرفرات، حماية للموظفين داخل وخارج الشركة (كما ناقشنا في <a href="/blog/proxy-remote-work-security">العمل عن بعد</a>).
+                    <br>
+                    <strong>العيوب:</strong> بياناتك تمر عبر طرف ثالث، وتكلفة اشتراك دورية (OpEx vs CapEx).
+                </p>
+
+                <h2>الحكم النهائي</h2>
+                <p>
+                    للشركات الصغيرة والمتوسطة ذات الميزانية المحدودة أو الخبرة التقنية العالية: <strong>Squid + pfSense</strong> هو الخيار الأذكى.
+                    للبنوك والمؤسسات الضخمة التي لا تحتمل توقف الخدمة: <strong>الحلول التجارية أو السحابية</strong> هي الاستثمار الآمن.
+                </p>
+            </div>
+        `
     }
 ];
 
