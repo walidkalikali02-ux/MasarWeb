@@ -4267,6 +4267,120 @@ ssh -D 8080 -N user@your-server-ip
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-impact-packet-loss',
+        slug: 'proxy-impact-packet-loss',
+        title: 'تأثير البروكسي على Packet Loss',
+        excerpt: 'كيف يمكن للبروكسي أن يخفف من تأثير فقدان الحزم (Packet Loss) في الشبكات غير المستقرة.',
+        date: '2026-05-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    فقدان الحزم (Packet Loss) هو كابوس تطبيقات الوقت الحقيقي، لكن بالنسبة لتصفح الويب، يمكن للبروكسي أن يلعب دور "ممتص الصدمات".
+                    عندما يكون الاتصال بالإنترنت غير مستقر، يقوم البروكسي بإدارة إعادة الإرسال (Retransmission) نيابة عن العميل.
+                </p>
+
+                <h2>TCP Buffering</h2>
+                <p>
+                    يقوم البروكسي بإنشاء اتصالين منفصلين: واحد مع العميل (LAN) وواحد مع الخادم (WAN).
+                    إذا كان خط WAN يعاني من فقدان حزم، يقوم البروكسي بإعادة طلب البيانات المفقودة من الخادم.
+                    في هذه الأثناء، يبقى الاتصال مع العميل في الشبكة المحلية مستقراً وسريعاً، مما يمنع المتصفح من إظهار رسالة "Connection Timed Out" بسرعة.
+                </p>
+
+                <h2>متى يصبح البروكسي المشكلة؟</h2>
+                <p>
+                    إذا كان البروكسي نفسه يعاني من حمل زائد (Overload) في المعالج أو الذاكرة، فقد يبدأ هو بإسقاط الحزم (Dropping Packets).
+                    راجع مقال <a href="/blog/proxy-impact-on-network-latency">تأثير البروكسي على Latency</a> لفهم كيفية ضبط الأداء.
+                </p>
+
+                <h3>تشخيص المشكلة</h3>
+                <p>
+                    ابحث في سجلات Squid عن رموز الخطأ التي تشير لقطع الاتصال:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+grep "TCP_SWAPFAIL" /var/log/squid/access.log
+grep "ERR_READ_ERROR" /var/log/squid/access.log
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-and-nat-interaction',
+        slug: 'web-proxy-and-nat-interaction',
+        title: 'Web Proxy و Network Address Translation',
+        excerpt: 'العلاقة التكافلية بين البروكسي و NAT: كيف يعملان معاً لإخفاء طوبولوجيا الشبكة الداخلية.',
+        date: '2026-05-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بينما ناقشنا سابقاً <a href="/blog/proxy-vs-nat-network-difference">الفرق بين البروكسي و NAT</a>، سنتحدث اليوم عن كيفية عملهما معاً.
+                    في معظم الشبكات، يعمل البروكسي خلف جهاز NAT (جدار حماية أو راوتر).
+                </p>
+
+                <h2>Source NAT (SNAT) وسلوك البروكسي</h2>
+                <p>
+                    عندما يخرج البروكسي للإنترنت، يتم ترجمة عنوانه الداخلي (Private IP) إلى عنوان عام (Public IP) بواسطة NAT.
+                    الخوادم الخارجية ترى فقط عنوان الـ Public IP الخاص بالشركة.
+                    هذا يعني أن البروكسي يوفر طبقة إضافية من الخصوصية: لا يمكن للمواقع الخارجية معرفة عنوان IP الداخلي للموظف (Client Internal IP) إلا إذا سربها البروكسي عبر ترويسة <code>X-Forwarded-For</code>.
+                </p>
+
+                <h2>إعداد Transparent Proxy مع NAT</h2>
+                <p>
+                    لإجبار الحركة على المرور عبر البروكسي دون إعدادات المتصفح، نستخدم قواعد <a href="/blog/transparent-proxy-guide">DNAT (Destination NAT)</a> على الراوتر:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# Redirect HTTP traffic to Proxy port 3128
+iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 3128
+                    </code></pre>
+                </div>
+
+                <p>
+                    هذا "الاعتراض" (Interception) هو جوهر عمل البروكسي الشفاف، ويعتمد كلياً على قدرة NAT على تغيير وجهة الحزم.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'monitoring-network-issues-via-proxy',
+        slug: 'monitoring-network-issues-via-proxy',
+        title: 'كيفية رصد مشاكل الشبكة عبر البروكسي',
+        excerpt: 'استخدام سجلات البروكسي كأداة تشخيص مركزية لاكتشاف أعطال الإنترنت وبطء المواقع.',
+        date: '2026-05-29',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسي ليس مجرد بوابة، بل هو "نقطة مراقبة" (Vantage Point) مثالية.
+                    بدلاً من فحص كل جهاز كمبيوتر، يمكنك معرفة حالة الشبكة بالكامل من خلال تحليل سجلات البروكسي.
+                </p>
+
+                <h2>تحليل رموز الحالة (HTTP Status Codes)</h2>
+                <ul>
+                    <li><strong>503 Service Unavailable:</strong> قد تعني أن خط الإنترنت ممتلئ أو أن DNS يفشل.</li>
+                    <li><strong>504 Gateway Timeout:</strong> الخادم البعيد لا يستجيب، أو هناك بطء شديد في الشبكة الخارجية.</li>
+                    <li><strong>407 Proxy Authentication Required:</strong> مشاكل في التواصل مع خادم <a href="/blog/setup-proxy-authentication">Active Directory/LDAP</a>.</li>
+                </ul>
+
+                <h2>استخدام Access Log للتشخيص</h2>
+                <p>
+                    يمكنك مراقبة السجل بشكل مباشر (Real-time) لاكتشاف المشاكل فور حدوثها:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# Watch for errors in real-time
+tail -f /var/log/squid/access.log | awk '$4 ~ /^[45]/'
+                    </code></pre>
+                </div>
+
+                <p>
+                    إذا رأيت ارتفاعاً مفاجئاً في الرموز 5xx، فهذا مؤشر قوي على وجود مشكلة عامة في اتصال الإنترنت الخاص بالمؤسسة، وليس في جهاز مستخدم معين.
+                    راجع مقال <a href="/blog/squid-proxy-log-analysis">تحليل سجلات Squid</a> للمزيد من التفاصيل.
+                </p>
+            </div>
+        `
     }
 ];
 
