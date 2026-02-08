@@ -3755,6 +3755,143 @@ time curl -x http://user:pass@proxy_ip:port -I https://www.google.com
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-dhcp-wpad-integration',
+        slug: 'proxy-dhcp-wpad-integration',
+        title: 'كيف يعمل البروكسي مع DHCP',
+        excerpt: 'كيفية توزيع إعدادات البروكسي تلقائياً باستخدام خيار DHCP Option 252 وبروتوكول WPAD.',
+        date: '2026-05-18',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في الشبكات الكبيرة، لا أحد يقوم بضبط إعدادات البروكسي يدوياً على آلاف الأجهزة.
+                    بدلاً من ذلك، نستخدم بروتوكول <a href="/blog/proxy-auto-discovery-wpad-guide">WPAD</a> (Web Proxy Auto-Discovery).
+                    أحد أهم طرق عمل WPAD هو التكامل مع خادم DHCP.
+                </p>
+
+                <h2>DHCP Option 252</h2>
+                <p>
+                    عندما يتصل جهاز بالشبكة، يطلب عنوان IP من خادم DHCP.
+                    يمكن لخادم DHCP أن يرسل معلومات إضافية (Options). الخيار رقم 252 مخصص لإخبار المتصفح بمكان ملف <code>wpad.dat</code> أو <code>proxy.pac</code>.
+                </p>
+
+                <h3>إعداد DHCP في Windows Server</h3>
+                <p>
+                    لإعداد هذا الخيار في بيئة Windows:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+1. Open DHCP Console.
+2. Right-click IPv4 -> Set Predefined Options.
+3. Add -> Name: WPAD, Code: 252, Type: String.
+4. Value: http://wpad.company.local/wpad.dat
+                    </code></pre>
+                </div>
+
+                <h3>إعداد DHCP في Linux (ISC DHCP)</h3>
+                <p>
+                    في ملف <code>dhcpd.conf</code>، نضيف التالي:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+option wpad-url code 252 = text;
+option wpad-url "http://192.168.1.10/wpad.dat";
+                    </code></pre>
+                </div>
+
+                <h2>المفاضلة بين DHCP و DNS</h2>
+                <p>
+                    المتصفحات عادة تبحث عن البروكسي عبر DHCP أولاً، ثم عبر DNS (بالبحث عن نطاق <code>wpad</code>).
+                    استخدام DHCP أسرع وأكثر أماناً لأنه يمنع هجمات انتحال اسم النطاق، ولكنه يتطلب وصولاً لصلاحيات إدارة خادم DHCP.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-arp-relationship-lan',
+        slug: 'proxy-arp-relationship-lan',
+        title: 'بروكسي و ARP: العلاقة في الشبكة المحلية',
+        excerpt: 'فهم دور بروتوكول ARP في توجيه الحركة للبروكسي الشفاف ومخاطر ARP Spoofing.',
+        date: '2026-05-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في إعدادات <a href="/blog/transparent-proxy-guide">البروكسي الشفاف (Transparent Proxy)</a>، لا يعرف المستخدم أن هناك بروكسي.
+                    لكن كيف تصل البيانات إلى البروكسي بدلاً من الراوتر؟ هنا يأتي دور ARP (Address Resolution Protocol).
+                </p>
+
+                <h2>كيف تصل البيانات للبروكسي؟</h2>
+                <p>
+                    في الوضع الطبيعي، يرسل الجهاز البيانات إلى عنوان MAC الخاص بالبوابة الافتراضية (Gateway).
+                    إذا كان البروكسي هو البوابة الافتراضية، فإن جدول ARP في جهاز المستخدم سيربط عنوان IP للبوابة بعنوان MAC الخاص بسيرفر البروكسي.
+                </p>
+
+                <h2>Proxy ARP</h2>
+                <p>
+                    هي تقنية يقوم فيها جهاز (مثل البروكسي أو الراوتر) بالرد على طلبات ARP الموجهة لعنوان IP آخر.
+                    هذا مفيد في تقسيم الشبكات دون تغيير أقنعة الشبكة (Subnet Masks)، لكنه قد يسبب فوضى إذا لم يُضبط بدقة.
+                </p>
+
+                <h2>مخاطر ARP Spoofing</h2>
+                <p>
+                    يمكن للمهاجمين استخدام "تسميم ARP" (ARP Poisoning) لإجبار أجهزة الشبكة على إرسال الحركة عبر أجهزتهم، مما يجعلهم "بروكسي غير شرعي".
+                    يجب تفعيل ميزات مثل <strong>Dynamic ARP Inspection (DAI)</strong> في السويتشات لمنع ذلك وحماية <a href="/blog/proxy-security-best-practices">أمن الشبكة</a>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-configuration-vlan-segmentation',
+        slug: 'proxy-configuration-vlan-segmentation',
+        title: 'تكوين بروكسي في شبكات VLAN',
+        excerpt: 'كيفية إعداد Squid Proxy للتعامل مع شبكات VLAN متعددة وتطبيق سياسات مختلفة لكل قسم.',
+        date: '2026-05-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تقسيم الشبكة إلى شبكات ظاهرية (VLANs) هو ممارسة أساسية في <a href="/blog/enterprise-proxy-solutions-review">المؤسسات</a>.
+                    مثلاً: VLAN 10 للمالية، VLAN 20 للمهندسين، VLAN 30 للضيوف.
+                    كيف نجعل البروكسي يتعامل معهم بسياسات مختلفة؟
+                </p>
+
+                <h2>توجيه VLANs إلى البروكسي</h2>
+                <p>
+                    يجب أن يكون البروكسي متصلاً بمنفذ Trunk أو أن يكون له واجهة (Interface) في كل VLAN، أو أن يقوم الراوتر (Router-on-a-Stick) بتوجيه الحركة إليه.
+                </p>
+
+                <h2>إعداد Squid لشبكات متعددة</h2>
+                <p>
+                    نستخدم <a href="/blog/squid-proxy-acl-configuration">ACLs</a> للتمييز بين الشبكات بناءً على نطاق IP (Subnet):
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# Define VLAN Subnets
+acl vlan_finance src 10.0.10.0/24
+acl vlan_engineers src 10.0.20.0/24
+acl vlan_guests src 10.0.30.0/24
+
+# Policies
+# Finance: No social media, high priority
+deny_info ERR_ACCESS_DENIED_FINANCE vlan_finance
+http_access deny vlan_finance social_media
+
+# Engineers: Full access except dangerous sites
+http_access allow vlan_engineers
+
+# Guests: Limited bandwidth, no streaming
+delay_pools 1
+delay_class 1 1
+delay_parameters 1 500000/500000  # Limit to 500KB/s
+delay_access 1 allow vlan_guests
+                    </code></pre>
+                </div>
+
+                <p>
+                    هذا التقسيم يضمن أن سياسات الأمان تطبق بدقة حسب وظيفة القسم، وليس "مقاس واحد للجميع".
+                </p>
+            </div>
+        `
     }
 ];
 
