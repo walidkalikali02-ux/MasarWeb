@@ -3319,6 +3319,107 @@ labels:
                 </p>
             </div>
         `
+    },
+    {
+        id: 'privoxy-content-filtering-review',
+        slug: 'privoxy-content-filtering-review',
+        title: 'مراجعة Privoxy لتصفية المحتوى',
+        excerpt: 'حارس الخصوصية الشخصي. كيف تستخدم Privoxy لمنع الإعلانات وتعديل صفحات الويب قبل وصولها إليك؟',
+        date: '2026-04-15',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في عالم مليء بتتبع المستخدمين والإعلانات المزعجة، يبرز <strong>Privoxy</strong> كفارس نبيل.
+                    إنه "Non-Caching Web Proxy" يركز بشكل أساسي على الخصوصية وتعديل محتوى صفحات الويب.
+                    على عكس <a href="/blog/squid-proxy-review">Squid</a> الذي يركز على التخزين المؤقت، يركز Privoxy على "تنظيف" الإنترنت.
+                </p>
+
+                <h2>كيف يعمل؟</h2>
+                <p>
+                    يقف Privoxy بين متصفحك والإنترنت. عندما تطلب صفحة، يقوم Privoxy بفحصها، إزالة الإعلانات، منع ملفات تعريف الارتباط (Cookies) التجسسية، وحتى تعديل كود HTML للصفحة لإزالة العناصر غير المرغوبة، ثم يسلمك الصفحة "النظيفة".
+                </p>
+
+                <h2>قوة ملفات الإعداد (Actions Files)</h2>
+                <p>
+                    يعتمد Privoxy على ملفات تسمى Actions. يمكنك كتابة قواعد دقيقة جداً:
+                </p>
+                <div class="code-block">
+                    <pre><code>
+# مثال: منع الصور من موقع معين
+{+block{No nasty images.}}
+.ad-server.com/images/
+                    </code></pre>
+                </div>
+
+                <h2>التكامل مع Tor</h2>
+                <p>
+                    غالباً ما يتم استخدام Privoxy مع شبكة Tor.
+                    بما أن Tor هو SOCKS Proxy والعديد من المتصفحات القديمة كانت تدعم HTTP Proxy فقط، كان Privoxy يلعب دور "المترجم" بينهما، بالإضافة إلى طبقة حماية إضافية لمنع تسرب البيانات (DNS Leaks).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'polipo-lightweight-proxy',
+        slug: 'polipo-lightweight-proxy',
+        title: 'أداة Polipo: بروكسي خفيف الوزن',
+        excerpt: 'الخيار الأمثل للأجهزة القديمة والموارد المحدودة. هل لا يزال Polipo يستحق الاستخدام في 2026؟',
+        date: '2026-04-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كان لديك راوتر منزلي صغير وتريد تشغيل كاش بروكسي عليه، فإن Squid قد يكون ثقيلاً جداً.
+                    هنا يأتي دور <strong>Polipo</strong>. إنه بروكسي صغير، سريع، ويستهلك ذاكرة (RAM) لا تذكر.
+                </p>
+
+                <h2>المميزات الرئيسية</h2>
+                <ul>
+                    <li><strong>HTTP/1.1 Pipelining:</strong> كان Polipo سباقاً في دعم هذه الميزة لتسريع تصفح الويب عبر اتصالات بطيئة.</li>
+                    <li><strong>التخزين المؤقت الذكي:</strong> مصمم للعمل بكفاءة حتى مع ذاكرة صغيرة جداً.</li>
+                    <li><strong>SOCKS Support:</strong> يمكنه التحدث مع SOCKS Parent Proxy (مثل Tor).</li>
+                </ul>
+
+                <h2>الوضع الحالي (Deprecated؟)</h2>
+                <p>
+                    للاسف، توقف تطوير Polipo النشط منذ فترة.
+                    لكنه لا يزال مستخدماً في توزيعات Linux المخصصة للأجهزة المضمنة (Embedded Systems) مثل OpenWrt.
+                    إذا كنت تبحث عن بديل حديث وخفيف، قد يكون <a href="/blog/mitmproxy-open-source-review">mitmproxy</a> أو Tinyproxy خيارات أفضل، لكن Polipo يظل درسًا رائعًا في هندسة البرمجيات الفعالة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'wingate-proxy-server-review',
+        slug: 'wingate-proxy-server-review',
+        title: 'WinGate Proxy Server: مراجعة شاملة',
+        excerpt: 'الأسطورة التي عرفها جيل التسعينات لمشاركة الإنترنت. كيف تطور WinGate ليصبح بوابة أمان متكاملة؟',
+        date: '2026-04-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    قبل انتشار الراوترات المنزلية الرخيصة، كان الحل الوحيد لمشاركة خط إنترنت واحد بين عدة أجهزة كمبيوتر هو استخدام جهاز كمبيوتر كـ "بوابة" (Gateway).
+                    وكان <strong>WinGate</strong> هو الملك في هذا المجال على نظام Windows.
+                </p>
+
+                <h2>أكثر من مجرد مشاركة إنترنت</h2>
+                <p>
+                    اليوم، تطور WinGate ليصبح حلاً أمنياً متكاملاً للمؤسسات الصغيرة والمتوسطة التي تعتمد على Windows.
+                    يوفر ميزات لا تجدها بسهولة في <a href="/blog/ccproxy-review-management">CCProxy</a>.
+                </p>
+
+                <h2>الميزات البارزة</h2>
+                <ul>
+                    <li><strong>تحكم في الوصول (Access Control):</strong> التكامل التام مع Active Directory لتحديد من يمكنه تصفح ماذا.</li>
+                    <li><strong>فحص الفيروسات (Antivirus):</strong> يمكنه فحص حركة المرور (HTTP/FTP/POP3) بحثاً عن الفيروسات قبل وصولها للمستخدم (باستخدام Kaspersky engine).</li>
+                    <li><strong>دعم VPN:</strong> يحتوي على سيرفر VPN مدمج لتوصيل الفروع أو الموظفين عن بعد، مما يجعله بديلاً لبعض حلول <a href="/blog/proxy-remote-work-security">العمل عن بعد</a> المعقدة.</li>
+                </ul>
+
+                <h2>الخلاصة</h2>
+                <p>
+                    إذا كانت بنيتك التحتية تعتمد بالكامل على Microsoft وتخاف من شاشة Linux السوداء، فإن WinGate هو خيارك الآمن والقوي، وإن كان مدفوع الثمن.
+                </p>
+            </div>
+        `
     }
 ];
 
