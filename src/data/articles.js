@@ -3186,6 +3186,139 @@ def request(flow):
                 </p>
             </div>
         `
+    },
+    {
+        id: 'haproxy-guide-installation',
+        slug: 'haproxy-guide-installation',
+        title: 'أداة HAProxy: شرح وتثبيت',
+        excerpt: 'العملاق الذي يقف خلف أكبر مواقع العالم. كيف تستخدم HAProxy لتوزيع الأحمال وضمان توافر الخدمة؟',
+        date: '2026-04-09',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما نتحدث عن "توزيع الأحمال" (Load Balancing) عالي الأداء، فإن الاسم الأول الذي يتبادر للذهن هو <strong>HAProxy</strong>.
+                    يستخدمه عمالقة مثل Twitter و GitHub و Stack Overflow لمعالجة ملايين الطلبات في الثانية.
+                </p>
+
+                <h2>ما هو HAProxy؟</h2>
+                <p>
+                    هو برنامج مفتوح المصدر يوفر موازنة أحمال (Load Balancer) وبروكسي عكسي (Reverse Proxy) لتطبيقات TCP و HTTP.
+                    يتميز بالسرعة الخارقة واستهلاك الموارد المنخفض جداً.
+                </p>
+
+                <h2>المفاهيم الأساسية</h2>
+                <ul>
+                    <li><strong>Frontend:</strong> يستقبل الطلبات من العملاء (يحدد البورت والبروتوكول).</li>
+                    <li><strong>Backend:</strong> مجموعة السيرفرات التي يتم توجيه الطلبات إليها.</li>
+                    <li><strong>ACLs:</strong> قواعد مرنة جداً لتوجيه الحركة (مثلاً: توجيه طلبات /api إلى سيرفرات مختلفة عن /static).</li>
+                </ul>
+
+                <h2>مثال تكوين بسيط (haproxy.cfg)</h2>
+                <div class="code-block">
+                    <pre><code>
+frontend http_front
+    bind *:80
+    acl url_api path_beg /api
+    use_backend api_servers if url_api
+    default_backend web_servers
+
+backend web_servers
+    balance roundrobin
+    server web1 10.0.0.1:80 check
+    server web2 10.0.0.2:80 check
+
+backend api_servers
+    server api1 10.0.0.3:8080 check
+                    </code></pre>
+                </div>
+
+                <h2>HAProxy vs Nginx</h2>
+                <p>
+                    بينما <a href="/blog/nginx-reverse-proxy-guide">Nginx</a> هو ويب سيرفر شامل يمكنه عمل Load Balancing، فإن HAProxy متخصص فقط في الـ Proxying.
+                    هذا يجعله يتفوق في الخوارزميات المعقدة لتوزيع الأحمال والمراقبة الدقيقة لحالة السيرفرات (Health Checks).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'traefik-modern-reverse-proxy',
+        slug: 'traefik-modern-reverse-proxy',
+        title: 'Traefik كبروكسي عكسي حديث',
+        excerpt: 'البروكسي الذي "يعمل فقط" مع Docker و Kubernetes. لماذا يعشقه مطورو DevOps؟',
+        date: '2026-04-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في عصر الحاويات (Containers) والخدمات المصغرة (Microservices)، أصبحت الطرق التقليدية لإعداد البروكسي (كتابة ملفات config يدوياً) مملة وغير عملية.
+                    هنا يأتي <strong>Traefik</strong>: البروكسي الذكي الذي يكتشف خدماتك تلقائياً.
+                </p>
+
+                <h2>سحر الاكتشاف التلقائي (Auto Discovery)</h2>
+                <p>
+                    تخيل أنك أطلقت 5 حاويات Docker جديدة. مع Nginx أو HAProxy، يجب أن تذهب وتعدل ملف الإعدادات وتعمل Reload.
+                    مع Traefik، هو يستمع لـ Docker API، يرى الحاويات الجديدة، ويقوم بتوجيه الحركة إليها فوراً ودون تدخل منك!
+                </p>
+
+                <h2>لوحة التحكم (Dashboard)</h2>
+                <p>
+                    يأتي Traefik مع لوحة تحكم ويب أنيقة تعرض لك حالة كل الخدمات (Services) والموجهات (Routers) والبروتوكولات المستخدمة في الوقت الفعلي.
+                </p>
+
+                <h2>مثال مع Docker Compose</h2>
+                <p>
+                    كل ما تحتاجه هو إضافة "Labels" لحاويتك، وTraefik سيفهم الباقي.
+                </p>
+                <div class="code-block">
+                    <pre><code>
+labels:
+  - "traefik.enable=true"
+  - "traefik.http.routers.myapp.rule=Host(\`myapp.localhost\`)"
+                    </code></pre>
+                </div>
+
+                <h2>متى تستخدمه؟</h2>
+                <p>
+                    إذا كانت بنيتك التحتية تعتمد بشكل كبير على Docker أو Kubernetes، فإن Traefik هو الخيار الأسهل والأسرع.
+                    أما للبيئات التقليدية (سيرفرات ثابتة)، قد يكون <a href="/blog/haproxy-guide-installation">HAProxy</a> أو Nginx خياراً أبسط.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'envoy-proxy-next-generation',
+        slug: 'envoy-proxy-next-generation',
+        title: 'Envoy Proxy: الجيل الجديد من البروكسي',
+        excerpt: 'تم بناؤه في Lyft ليحل مشاكل الخدمات المصغرة المعقدة. ما هو Service Mesh وكيف يعمل Envoy؟',
+        date: '2026-04-13',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما تتعقد شبكة الخدمات المصغرة (Microservices) وتصبح لدينا مئات الخدمات تتحدث مع بعضها، يصبح تتبع الأخطاء كابوساً.
+                    <strong>Envoy Proxy</strong> صمم ليكون "Sidecar": أي أنه يرافق كل خدمة ويدير اتصالاتها.
+                </p>
+
+                <h2>نمط Sidecar Proxy</h2>
+                <p>
+                    بدلاً من وجود بروكسي واحد عملاق في المنتصف، نضع Envoy صغيراً بجانب كل تطبيق.
+                    التطبيق يتحدث مع Envoy المحلي، وEnvoy يتحدث مع العالم.
+                    هذا يشكل ما يسمى بـ <strong>Service Mesh</strong> (مثل Istio).
+                </p>
+
+                <h2>لماذا Envoy؟</h2>
+                <ul>
+                    <li><strong>أداء عالي (C++):</strong> سريع جداً ولا يؤثر على زمن الاستجابة.</li>
+                    <li><strong>دعم gRPC:</strong> يدعم بروتوكولات التواصل الحديثة من الدرجة الأولى.</li>
+                    <li><strong>قابلية المراقبة (Observability):</strong> يصدر كمية هائلة من المقاييس (Metrics) التي تساعدك على فهم ما يحدث في شبكتك بدقة.</li>
+                </ul>
+
+                <h2>Envoy vs Traefik vs HAProxy</h2>
+                <p>
+                    <a href="/blog/traefik-modern-reverse-proxy">Traefik</a> ممتاز كـ Ingress (بوابة دخول) للكتلة (Cluster).
+                    <a href="/blog/haproxy-guide-installation">HAProxy</a> ملك الـ Edge Load Balancing.
+                    أما <strong>Envoy</strong> فهو الملك داخل الـ Cluster (Service-to-Service communication).
+                </p>
+            </div>
+        `
     }
 ];
 
