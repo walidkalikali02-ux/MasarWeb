@@ -1189,6 +1189,223 @@ http_access allow localnet</code></pre>
                 </p>
             </div>
         `
+    },
+    {
+        id: 'setup-proxy-authentication',
+        slug: 'setup-proxy-authentication',
+        title: 'إعداد بروكسي مع مصادقة (Authentication)',
+        excerpt: 'حماية خادمك من الاستخدام غير المصرح به أمر بالغ الأهمية. تعرف على طرق المصادقة المختلفة وكيفية تنفيذها.',
+        date: '2026-02-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تحدثنا سابقاً عن <a href="/blog/install-squid-proxy-linux">تثبيت Squid Proxy على Linux</a>، ولكن تركه مفتوحاً للجميع (Open Relay) هو دعوة للكارثة.
+                    يمكن لأي شخص استخدام عنوان IP الخاص بك لأنشطة غير قانونية، أو استنزاف موارد الخادم.
+                    في هذا المقال المفصل، سنغوص في أعماق تأمين البروكسي باستخدام أنظمة المصادقة (Authentication Schemes).
+                </p>
+
+                <h2>لماذا المصادقة ضرورية؟</h2>
+                <p>
+                    المصادقة ليست مجرد "اسم مستخدم وكلمة مرور". إنها الطبقة الأولى في استراتيجية "الدفاع في العمق" (Defense in Depth).
+                    بدون مصادقة، أنت تعتمد فقط على عناوين IP (ACLs)، وهو ما قد يكون كافياً في <a href="/blog/setup-web-proxy-home-network">الشبكة المنزلية</a>، ولكن ليس في بيئة العمل أو الخوادم العامة.
+                </p>
+
+                <h2>أنواع المصادقة في Squid</h2>
+                <p>
+                    يدعم Squid عدة طرق، منها:
+                </p>
+                <ul>
+                    <li><strong>Basic Auth:</strong> الأبسط والأكثر شيوعاً. يرسل كلمة المرور بتشفير base64 (سهل الفك)، لذا يفضل استخدامه مع HTTPS أو في شبكات موثوقة.</li>
+                    <li><strong>Digest Auth:</strong> أكثر أماناً، حيث لا يتم إرسال كلمة المرور عبر الشبكة، بل يتم إرسال "هضم" (Hash).</li>
+                    <li><strong>NTLM / Kerberos:</strong> كما ذكرنا في مقال <a href="/blog/setup-proxy-corporate-environment">بروكسي الشركات</a>، هذه هي الطريقة المثلى لبيئات Windows Active Directory.</li>
+                </ul>
+
+                <h2>التطبيق العملي: إعداد Basic Auth</h2>
+                <p>
+                    سنستخدم أداة <code>htpasswd</code> المساعدة لإنشاء ملف كلمات المرور.
+                </p>
+
+                <h3>1. تثبيت الأدوات اللازمة</h3>
+                <pre><code class="language-bash">sudo apt update
+sudo apt install apache2-utils squid -y</code></pre>
+
+                <h3>2. إنشاء ملف المستخدمين</h3>
+                <p>
+                    سنقوم بإنشاء ملف مخفي في مسار إعدادات Squid.
+                </p>
+                <pre><code class="language-bash">sudo htpasswd -c /etc/squid/passwords user1</code></pre>
+                <p>
+                    سيطلب منك إدخال كلمة المرور للمستخدم <code>user1</code>. لإضافة مستخدم آخر لاحقاً، احذف الخيار <code>-c</code> (Create).
+                </p>
+
+                <h3>3. تكوين Squid</h3>
+                <p>
+                    افتح ملف التكوين <code>/etc/squid/squid.conf</code> وأضف السطور التالية في البداية (قبل أي قواعد <code>http_access</code> أخرى):
+                </p>
+                <pre><code class="language-bash"># تعريف برنامج المصادقة
+auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwords
+auth_param basic children 5
+auth_param basic realm Welcome to MasarWeb Secure Proxy
+auth_param basic credentialsttl 2 hours
+
+# تعريف قائمة التحكم بالوصول (ACL)
+acl authenticated_users proxy_auth REQUIRED
+
+# تطبيق القاعدة
+http_access allow authenticated_users
+http_access deny all</code></pre>
+
+                <h2>التحقق من العمل</h2>
+                <p>
+                    بعد إعادة تشغيل الخدمة (<code>sudo systemctl restart squid</code>)، حاول تصفح الإنترنت.
+                    سيظهر لك المتصفح نافذة منبثقة تطلب اسم المستخدم وكلمة المرور.
+                    هذا يعمل على جميع المتصفحات التي شرحناها سابقاً: <a href="/blog/how-to-setup-web-proxy-chrome">Chrome</a> و <a href="/blog/setup-proxy-firefox-step-by-step">Firefox</a>.
+                </p>
+
+                <h2>نصائح أمنية إضافية</h2>
+                <ul>
+                    <li>غير المنفذ الافتراضي 3128 لتقليل عمليات المسح العشوائي (Port Scanning).</li>
+                    <li>استخدم <strong>Fail2Ban</strong> لحظر عناوين IP التي تحاول تخمين كلمات المرور بشكل متكرر (Brute-force attacks).</li>
+                    <li>راقب السجلات بانتظام: <code>tail -f /var/log/squid/access.log</code>.</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'configure-proxy-group-policy-windows',
+        slug: 'configure-proxy-group-policy-windows',
+        title: 'كيفية تكوين بروكسي عبر Group Policy في Windows',
+        excerpt: 'تحكم في إعدادات آلاف الأجهزة بضغطة زر. شرح مفصل لاستخدام GPO لنشر إعدادات البروكسي.',
+        date: '2026-02-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كنت تدير شبكة تحتوي على عشرات أو مئات أجهزة الكمبيوتر، فإن إعداد البروكسي يدوياً كما شرحنا في <a href="/blog/setup-web-proxy-windows-10-11">دليل Windows 10/11</a> هو ضرب من الجنون.
+                    الحل الذكي والاحترافي هو استخدام <strong>Group Policy Object (GPO)</strong>.
+                    تسمح لك GPO بفرض إعدادات معينة على جميع الأجهزة المتصلة بالنطاق (Domain)، ومنع المستخدمين من تغييرها.
+                </p>
+
+                <h2>المتطلبات الأساسية</h2>
+                <ul>
+                    <li>خادم Windows Server (2016, 2019, أو 2022) يعمل كـ Domain Controller.</li>
+                    <li>أجهزة عميلة (Clients) متصلة بالدومين.</li>
+                    <li>صلاحيات Domain Admin.</li>
+                </ul>
+
+                <h2>الطريقة 1: إعدادات Internet Explorer (التقليدية)</h2>
+                <p>
+                    رغم أن IE قد انتهى، إلا أن إعداداته لا تزال تؤثر على النظام وتطبيقات مثل Chrome و Edge.
+                </p>
+                <ol>
+                    <li>افتح <strong>Group Policy Management Console (gpmc.msc)</strong>.</li>
+                    <li>أنشئ GPO جديد باسم "Proxy Settings" واربطه بالوحدة التنظيمية (OU) التي تحتوي على أجهزة المستخدمين.</li>
+                    <li>اضغط بالزر الأيمن واختر <strong>Edit</strong>.</li>
+                    <li>انتقل إلى المسار:
+                        <br><code>User Configuration > Preferences > Control Panel Settings > Internet Settings</code>.</li>
+                    <li>اضغط بالزر الأيمن > New > Internet Explorer 10.</li>
+                    <li>في تبويب <strong>Connections</strong>، اضغط على <strong>LAN Settings</strong>.</li>
+                    <li>فعل خيار "Use a proxy server for your LAN" وأدخل عنوان IP والمنفذ.</li>
+                    <li><strong>ملاحظة هامة:</strong> اضغط F5 (يتحول الخط إلى الأخضر) لتفعيل الإعداد، وإلا لن يتم تطبيقه!</li>
+                </ol>
+
+                <h2>الطريقة 2: استخدام سجل النظام (Registry) - الطريقة الحديثة</h2>
+                <p>
+                    لضمان توافق أكبر ومنع المستخدمين من التلاعب، يمكننا حقن قيم في الريجستري مباشرة.
+                    انتقل في محرر GPO إلى:
+                    <br><code>User Configuration > Preferences > Windows Settings > Registry</code>.
+                </p>
+                <p>
+                    أضف القيم التالية في المسار <code>HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings</code>:
+                </p>
+                <ul>
+                    <li><strong>ProxyEnable</strong> (REG_DWORD): القيمة 1</li>
+                    <li><strong>ProxyServer</strong> (REG_SZ): القيمة <code>192.168.1.10:3128</code></li>
+                    <li><strong>ProxyOverride</strong> (REG_SZ): القيمة <code>&lt;local&gt;</code> (لتجاوز العناوين المحلية).</li>
+                </ul>
+
+                <h2>نشر ملف PAC عبر GPO</h2>
+                <p>
+                    إذا كنت تفضل استخدام التكوين التلقائي الذي شرحناه في <a href="/blog/setup-pac-file-proxy">مقال ملف PAC</a>، يمكنك ذلك أيضاً.
+                    بدلاً من تفعيل "Proxy Server"، فعل خيار "Use automatic configuration script" وضع رابط ملف PAC الخاص بك.
+                </p>
+
+                <h2>التحقق من التطبيق</h2>
+                <p>
+                    على جهاز العميل (Client Machine)، افتح موجه الأوامر (CMD) واكتب:
+                </p>
+                <pre><code class="language-cmd">gpupdate /force</code></pre>
+                <p>
+                    ثم تأكد من الإعدادات في المتصفح. ستلاحظ غالباً أن الخيارات أصبحت "رمادية" (Grayed out)، مما يعني أن المستخدم لا يستطيع تغييرها، وهو المطلوب تماماً في <a href="/blog/setup-proxy-corporate-environment">بيئات الشركات</a>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'setup-web-proxy-raspberry-pi',
+        slug: 'setup-web-proxy-raspberry-pi',
+        title: 'إعداد Web Proxy على Raspberry Pi',
+        excerpt: 'مشروع منزلي ممتع ومفيد! حول جهازك الصغير إلى حارس بوابة لشبكتك المنزلية وحظر الإعلانات.',
+        date: '2026-02-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    جهاز Raspberry Pi هو كمبيوتر صغير بحجم بطاقة الائتمان، لكنه يمتلك قوة كافية ليكون خادم شبكة متكامل.
+                    أحد أفضل المشاريع التي يمكنك تنفيذها عليه هو تحويله إلى خادم بروكسي لحظر الإعلانات، تسريع التصفح، وزيادة الخصوصية لجميع أجهزة منزلك.
+                    سنستخدم هنا <strong>Squid</strong> مع بعض التحسينات لتقليل الكتابة على بطاقة الذاكرة (SD Card).
+                </p>
+
+                <h2>لماذا Raspberry Pi؟</h2>
+                <ul>
+                    <li><strong>توفير الطاقة:</strong> يستهلك كهرباء أقل بكثير من ترك كمبيوتر عادي يعمل 24/7.</li>
+                    <li><strong>السعر:</strong> تكلفته منخفضة جداً مقارنة بالخوادم الاحترافية.</li>
+                    <li><strong>الهدوء:</strong> لا يصدر ضجيجاً (Fanless غالباً).</li>
+                </ul>
+
+                <h2>الخطوة 1: تجهيز النظام</h2>
+                <p>
+                    افترض أنك قمت بتثبيت نظام Raspberry Pi OS (المبني على Debian). ابدأ بتحديث الحزم:
+                </p>
+                <pre><code class="language-bash">sudo apt update && sudo apt upgrade -y</code></pre>
+
+                <h2>الخطوة 2: تثبيت Squid</h2>
+                <p>
+                    الخطوات مشابهة جداً لما قمنا به في <a href="/blog/setup-web-proxy-ubuntu-server">دليل Ubuntu Server</a>، لكن مع مراعاة موارد Pi المحدودة.
+                </p>
+                <pre><code class="language-bash">sudo apt install squid -y</code></pre>
+
+                <h2>الخطوة 3: تحسين الأداء لبطاقة SD</h2>
+                <p>
+                    بطاقات الذاكرة (SD Cards) لها عمر افتراضي محدود في عمليات الكتابة. خادم البروكسي يكتب الكثير من ملفات الكاش (Cache).
+                    لحل هذه المشكلة، سنقوم بتعطيل الكاش على القرص والاعتماد على الرام (RAM) فقط، أو استخدام ذاكرة USB خارجية.
+                </p>
+                <p>
+                    لتعطيل الكاش على القرص، افتح <code>/etc/squid/squid.conf</code> وأضف:
+                </p>
+                <pre><code class="language-bash">cache deny all</code></pre>
+                <p>
+                    هذا يحول Squid إلى بروكسي للتحكم والمراقبة فقط، دون تخزين صفحات.
+                    إذا كنت تريد التخزين، يفضل وصل قرص HDD/SSD خارجي وتغيير مسار <code>cache_dir</code> إليه.
+                </p>
+
+                <h2>الخطوة 4: حظر الإعلانات (Ad-Blocking)</h2>
+                <p>
+                    يمكننا دمج Squid مع قوائم حظر لتحويله إلى "Pi-hole" بدائي.
+                    أنشئ ملفاً للنطاقات المحظورة:
+                </p>
+                <pre><code class="language-bash">sudo nano /etc/squid/ad_block.txt</code></pre>
+                <p>
+                    أضف النطاقات التي تريد حظرها (مثل <code>.doubleclick.net</code>). ثم في ملف الإعدادات:
+                </p>
+                <pre><code class="language-bash">acl ads dstdom_regex "/etc/squid/ad_block.txt"
+http_access deny ads</code></pre>
+
+                <h2>الخطوة 5: توصيل الأجهزة</h2>
+                <p>
+                    الآن، اذهب إلى إعدادات Wi-Fi في هاتفك <a href="/blog/setup-proxy-android">Android</a> أو <a href="/blog/setup-web-proxy-iphone-ipad">iPhone</a>، وقم بإدخال عنوان IP الخاص بالـ Raspberry Pi (مثلاً 192.168.1.50) والمنفذ 3128.
+                    استمتع بتصفح أسرع وأكثر تحكماً!
+                </p>
+            </div>
+        `
     }
 ];
 
