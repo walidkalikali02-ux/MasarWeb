@@ -824,6 +824,237 @@ sudo systemctl reload nginx</code></pre>
                 </p>
             </div>
         `
+    },
+    {
+        id: 'how-to-setup-apache-reverse-proxy',
+        slug: 'how-to-setup-apache-reverse-proxy',
+        title: 'كيفية تكوين Apache كـ Reverse Proxy',
+        excerpt: 'تعلم كيف تجعل خادم Apache العريق يعمل كواجهة أمامية قوية لتطبيقاتك، ويوفر الحماية وتوزيع الحمل.',
+        date: '2026-02-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    خادم Apache HTTP هو أحد أقدم وأشهر خوادم الويب في العالم.
+                    على الرغم من صعود Nginx، لا يزال Apache يتمتع بشعبية هائلة بفضل مرونته ووحداته (Modules) القوية.
+                    إحدى أهم هذه الميزات هي استخدامه كـ <strong>Reverse Proxy</strong>، حيث يستقبل طلبات المستخدمين ويمررها إلى خوادم خلفية (مثل تطبيق Node.js أو Python) ويعيد الرد للمستخدم.
+                </p>
+
+                <h2>الخطوة 1: تفعيل الوحدات المطلوبة</h2>
+                <p>
+                    لتحويل Apache إلى بروكسي، يجب تفعيل بعض الوحدات التي لا تكون مفعلة افتراضياً.
+                    على نظام Ubuntu/Debian، استخدم الأوامر التالية:
+                </p>
+                <pre><code class="language-bash">sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_balancer
+sudo a2enmod lbmethod_byrequests</code></pre>
+                <p>
+                    ثم أعد تشغيل Apache لتطبيق التغييرات:
+                </p>
+                <pre><code class="language-bash">sudo systemctl restart apache2</code></pre>
+
+                <h2>الخطوة 2: إعداد Virtual Host</h2>
+                <p>
+                    الآن سنقوم بإنشاء ملف إعداد لموقعك. لنفترض أنك تريد توجيه الطلبات القادمة إلى <code>myapp.com</code> إلى تطبيق يعمل محلياً على المنفذ 3000.
+                </p>
+                <p>
+                    أنشئ ملف الإعداد:
+                </p>
+                <pre><code class="language-bash">sudo nano /etc/apache2/sites-available/myapp.conf</code></pre>
+
+                <p>
+                    أضف المحتوى التالي:
+                </p>
+                <pre><code class="language-apache">&lt;VirtualHost *:80&gt;
+    ServerName myapp.com
+    ServerAdmin webmaster@localhost
+
+    # إعدادات البروكسي
+    ProxyPreserveHost On
+    ProxyPass / http://localhost:3000/
+    ProxyPassReverse / http://localhost:3000/
+
+    # ملفات السجلات (اختياري لكن مفيد)
+    ErrorLog \${APACHE_LOG_DIR}/myapp_error.log
+    CustomLog \${APACHE_LOG_DIR}/myapp_access.log combined
+&lt;/VirtualHost&gt;</code></pre>
+
+                <h3>ماذا تعني هذه الأسطر؟</h3>
+                <ul>
+                    <li><strong>ProxyPreserveHost On:</strong> يخبر Apache بتمرير رأس الـ Host الأصلي إلى التطبيق الخلفي (مهم جداً للتوجيه الصحيح).</li>
+                    <li><strong>ProxyPass:</strong> يوجه كل الطلبات من <code>/</code> إلى <code>http://localhost:3000/</code>.</li>
+                    <li><strong>ProxyPassReverse:</strong> يعدل الترويسات في ردود الخادم الخلفي لضمان بقاء المستخدم على نفس النطاق.</li>
+                </ul>
+
+                <h2>الخطوة 3: تفعيل الموقع</h2>
+                <p>
+                    الآن قم بتفعيل ملف الإعداد الذي أنشأته:
+                </p>
+                <pre><code class="language-bash">sudo a2ensite myapp.conf
+sudo systemctl reload apache2</code></pre>
+
+                <h2>دعم WebSocket (مهم لـ MasarWeb)</h2>
+                <p>
+                    إذا كان تطبيقك يستخدم WebSockets (مثل تطبيقنا هنا)، ستحتاج لتفعيل وحدة إضافية تسمى <code>proxy_wstunnel</code>:
+                </p>
+                <pre><code class="language-bash">sudo a2enmod proxy_wstunnel
+sudo systemctl restart apache2</code></pre>
+                <p>
+                    ثم أضف سطراً إضافياً في ملف الإعداد قبل <code>ProxyPass /</code>:
+                </p>
+                <pre><code class="language-apache">ProxyPass /ws ws://localhost:3000/ws</code></pre>
+            </div>
+        `
+    },
+    {
+        id: 'setup-web-proxy-ubuntu-server',
+        slug: 'setup-web-proxy-ubuntu-server',
+        title: 'إعداد Web Proxy على Ubuntu Server',
+        excerpt: 'دليل شامل لتحويل خادم Ubuntu إلى بوابة إنترنت آمنة باستخدام Dante SOCKS Server.',
+        date: '2026-02-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظام Ubuntu Server هو الخيار الأول للكثيرين عند إعداد الخوادم.
+                    في هذا المقال، سنبتعد قليلاً عن HTTP Proxy (مثل Squid) ونتعلم كيفية إعداد <strong>SOCKS5 Proxy</strong> باستخدام برنامج خفيف وقوي يسمى <strong>Dante</strong>.
+                    بروكسي SOCKS5 يتميز بمرونته وقدرته على التعامل مع مختلف أنواع الزيارات (تصفح، تورنت، ألعاب).
+                </p>
+
+                <h2>1. تثبيت Dante Server</h2>
+                <p>
+                    الحزمة في مخازن Ubuntu تسمى <code>dante-server</code>.
+                </p>
+                <pre><code class="language-bash">sudo apt update
+sudo apt install dante-server -y</code></pre>
+
+                <h2>2. إعداد ملف التكوين</h2>
+                <p>
+                    الملف الافتراضي معقد ومليء بالتعليقات. لنحذفه وننشئ واحداً جديداً ونظيفاً.
+                </p>
+                <pre><code class="language-bash">sudo mv /etc/danted.conf /etc/danted.conf.bak
+sudo nano /etc/danted.conf</code></pre>
+
+                <p>
+                    انسخ وألصق الإعدادات التالية (مع تعديل اسم واجهة الشبكة إذا لزم الأمر):
+                </p>
+                <pre><code class="language-bash">logoutput: syslog
+user.privileged: root
+user.unprivileged: nobody
+
+# المنفذ الذي سيعمل عليه البروكسي (الافتراضي 1080)
+internal: 0.0.0.0 port = 1080
+
+# واجهة الشبكة الخارجية (تأكد من اسمها باستخدام أمر ip a، غالباً eth0 أو ens3)
+external: eth0
+
+# طريقة المصادقة (نستخدم اسم مستخدم وكلمة مرور النظام)
+socksmethod: username
+clientmethod: none
+
+user.libwrap: nobody
+
+client pass {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: error connect disconnect
+}
+
+socks pass {
+    from: 0.0.0.0/0 to: 0.0.0.0/0
+    log: error connect disconnect
+}</code></pre>
+
+                <h2>3. إنشاء مستخدم للبروكسي</h2>
+                <p>
+                    بما أننا اخترنا <code>socksmethod: username</code>، فإن Dante سيستخدم مستخدمي نظام Linux للمصادقة.
+                    لإنشاء مستخدم خاص بالبروكسي فقط (بدون صلاحية دخول للشيل):
+                </p>
+                <pre><code class="language-bash">sudo useradd -r -s /bin/false proxyuser
+sudo passwd proxyuser</code></pre>
+                <p>
+                    سيطلب منك إدخال كلمة المرور الجديدة لهذا المستخدم.
+                </p>
+
+                <h2>4. فتح الجدار الناري (UFW)</h2>
+                <p>
+                    إذا كان UFW مفعلاً، يجب السماح بالاتصال عبر المنفذ 1080:
+                </p>
+                <pre><code class="language-bash">sudo ufw allow 1080/tcp</code></pre>
+
+                <h2>5. التشغيل والاختبار</h2>
+                <p>
+                    ابدأ الخدمة وتأكد من عملها:
+                </p>
+                <pre><code class="language-bash">sudo systemctl restart danted
+sudo systemctl status danted</code></pre>
+                <p>
+                    الآن يمكنك استخدام عنوان IP الخادم والمنفذ 1080 واسم المستخدم وكلمة المرور في إعدادات متصفحك أو تيليجرام.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'setup-proxy-centos-rhel',
+        slug: 'setup-proxy-centos-rhel',
+        title: 'تكوين بروكسي على CentOS/RHEL',
+        excerpt: 'لمستخدمي توزيعات Red Hat. خطوات تثبيت وإعداد Squid Proxy على CentOS 7/8 و AlmaLinux.',
+        date: '2026-02-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    توزيعات CentOS و RHEL (والبدائل الحديثة مثل AlmaLinux و Rocky Linux) هي المعيار الذهبي في بيئات الشركات (Enterprise).
+                    إعداد خادم بروكسي في هذه البيئات يتطلب خطوات دقيقة واهتماماً خاصاً بـ <strong>SELinux</strong> والجدار الناري <strong>firewalld</strong>.
+                    سنقوم هنا بتثبيت Squid Proxy.
+                </p>
+
+                <h2>1. التثبيت</h2>
+                <p>
+                    على عكس Ubuntu (الذي يستخدم apt)، هنا نستخدم <code>yum</code> أو <code>dnf</code>.
+                </p>
+                <pre><code class="language-bash">sudo dnf install squid -y</code></pre>
+                <p>
+                    ثم نقوم بتفعيل الخدمة لتعمل عند بدء التشغيل:
+                </p>
+                <pre><code class="language-bash">sudo systemctl enable --now squid</code></pre>
+
+                <h2>2. إعداد Firewalld</h2>
+                <p>
+                    نظام CentOS يأتي مع جدار ناري صارم. يجب فتح منفذ Squid (الافتراضي 3128).
+                </p>
+                <pre><code class="language-bash">sudo firewall-cmd --permanent --add-service=squid
+sudo firewall-cmd --reload</code></pre>
+                <p>
+                    إذا كنت قد غيرت المنفذ إلى رقم آخر (مثلاً 8080)، استخدم:
+                </p>
+                <pre><code class="language-bash">sudo firewall-cmd --permanent --add-port=8080/tcp
+sudo firewall-cmd --reload</code></pre>
+
+                <h2>3. إعداد SELinux (هام جداً!)</h2>
+                <p>
+                    هذه الخطوة يغفل عنها الكثيرون وتسبب مشاكل لا حصر لها.
+                    نظام SELinux قد يمنع Squid من العمل بشكل صحيح إذا غيرت المنفذ الافتراضي.
+                    إذا قررت استخدام منفذ غير قياسي، يجب إخبار SELinux بذلك:
+                </p>
+                <pre><code class="language-bash">sudo semanage port -a -t squid_port_t -p tcp 8080</code></pre>
+
+                <h2>4. تكوين Squid الأساسي</h2>
+                <p>
+                    ملف الإعدادات يقع في نفس المسار المعتاد: <code>/etc/squid/squid.conf</code>.
+                    افتحه وعدل <code>http_access</code> للسماح لشبكتك:
+                </p>
+                <pre><code class="language-bash">sudo nano /etc/squid/squid.conf</code></pre>
+                <p>
+                    أضف السطر التالي قبل <code>http_access deny all</code>:
+                </p>
+                <pre><code class="language-bash">acl localnet src 10.0.0.0/8    # مثال لشبكتك الداخلية
+http_access allow localnet</code></pre>
+
+                <h2>5. إعادة التشغيل</h2>
+                <pre><code class="language-bash">sudo systemctl restart squid</code></pre>
+                <p>
+                    خادمك الآن جاهز للعمل في بيئة مؤسسية مستقرة وآمنة.
+                </p>
+            </div>
+        `
     }
 ];
 
