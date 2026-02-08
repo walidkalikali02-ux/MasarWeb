@@ -604,6 +604,226 @@ const articles = [
                 </p>
             </div>
         `
+    },
+    {
+        id: 'how-to-setup-proxy-on-router',
+        slug: 'how-to-setup-proxy-on-router',
+        title: 'كيفية إعداد بروكسي على جهاز الراوتر',
+        excerpt: 'احمِ جميع أجهزتك دفعة واحدة. تعلم كيفية إعداد البروكسي مباشرة على الراوتر لتغطية منزلك أو مكتبك بالكامل.',
+        date: '2026-02-16',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هل سئمت من إعداد البروكسي على كل هاتف وكمبيوتر وجهاز لوحي في منزلك بشكل منفرد؟
+                    الحل الذكي هو إعداد البروكسي على "المصدر": جهاز التوجيه (Router) الخاص بك.
+                    بمجرد تفعيله هناك، سيمر اتصال أي جهاز مرتبط بشبكتك (حتى الثلاجة الذكية!) عبر هذا البروكسي تلقائياً.
+                </p>
+
+                <h2>متطلبات أساسية</h2>
+                <p>
+                    للأسف، لا تدعم جميع أجهزة الراوتر المنزلية (خاصة التي توفرها شركات الاتصالات) ميزة البروكسي (Proxy Client) بشكل افتراضي.
+                    عادةً ستحتاج إلى:
+                </p>
+                <ul>
+                    <li>راوتر متطور (مثل ASUS, TP-Link الفئات العليا).</li>
+                    <li>أو راوتر يدعم أنظمة معدلة مثل <strong>DD-WRT</strong> أو <strong>OpenWrt</strong>.</li>
+                </ul>
+
+                <h2>الخطوات العامة (لأجهزة ASUS كمثال)</h2>
+                <p>
+                    تعتبر أجهزة ASUS من الأفضل في دعم هذه الميزات عبر واجهة ASUSWRT.
+                </p>
+
+                <h3>1. الدخول إلى صفحة الراوتر</h3>
+                <p>
+                    افتح المتصفح واكتب عنوان IP الراوتر (غالباً <code>192.168.1.1</code> أو <code>router.asus.com</code>). أدخل اسم المستخدم وكلمة المرور.
+                </p>
+
+                <h3>2. الذهاب إلى قسم WAN</h3>
+                <p>
+                    من القائمة الجانبية، اختر <strong>WAN</strong>.
+                    ابحث عن تبويب أو قسم يسمى <strong>Internet Connection</strong> أو في بعض الموديلات الحديثة قد يكون هناك قسم خاص للـ <strong>VPN/Proxy</strong>.
+                </p>
+
+                <h3>3. إعداد البروكسي</h3>
+                <p>
+                    إذا كان جهازك يدعم البروكسي مباشرة، ستجد خيارات لإدخال:
+                </p>
+                <ul>
+                    <li><strong>Proxy Server:</strong> عنوان الـ IP.</li>
+                    <li><strong>Port:</strong> المنفذ.</li>
+                </ul>
+                <p>
+                    لكن، في الغالب الأعم، تدعم الراوترات بروتوكولات VPN (مثل OpenVPN أو WireGuard) أكثر من البروكسي العادي.
+                    إذا كان هدفك هو الخصوصية الشاملة، فإن إعداد VPN على الراوتر هو الخيار الأقوى والأكثر شيوعاً.
+                </p>
+
+                <h2>استخدام DD-WRT أو OpenWrt</h2>
+                <p>
+                    إذا قمت بتثبيت نظام مفتوح المصدر مثل DD-WRT على راوترك، فإن الخيارات تصبح لا نهائية.
+                </p>
+                <ol>
+                    <li>انتقل إلى <strong>Services</strong> ثم <strong>Adblocking/Proxy</strong> (قد تختلف التسمية).</li>
+                    <li>يمكنك تفعيل <strong>Transparent Proxy</strong> ليقوم الراوتر باعتراض كل طلبات الويب وتوجيهها عبر البروكسي دون إعداد أي شيء على الأجهزة المتصلة.</li>
+                </ol>
+
+                <h2>المميزات والعيوب</h2>
+                <h3>المميزات:</h3>
+                <ul>
+                    <li>حماية شاملة لكل الأجهزة (حتى تلك التي لا تدعم البروكسي مثل أجهزة التلفاز الذكية).</li>
+                    <li>إعداد لمرة واحدة فقط.</li>
+                </ul>
+                <h3>العيوب:</h3>
+                <ul>
+                    <li>قد يبطئ سرعة الإنترنت للشبكة بالكامل إذا كان البروكسي بطيئاً.</li>
+                    <li>يصعب استثناء جهاز معين (مثلاً إذا أردت اللعب بسرعة كاملة على الـ PS5).</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'install-squid-proxy-linux',
+        slug: 'install-squid-proxy-linux',
+        title: 'تثبيت Squid Proxy على خادم Linux',
+        excerpt: 'دليل للمحترفين ومديري الأنظمة. خطوات تثبيت وتكوين Squid، أشهر خادم كاش وبروكسي مفتوح المصدر.',
+        date: '2026-02-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كنت تريد إنشاء خادم بروكسي خاص بك بدلاً من استئجار خدمة، فإن <strong>Squid</strong> هو الملك المتوج في هذا المجال.
+                    Squid هو خادم تخزين مؤقت (Caching Proxy) قوي جداً، يستخدمه مزودو الإنترنت والشركات الكبرى لتسريع الويب وتوفير الباندويث.
+                    في هذا الدليل، سنقوم بتثبيته على خادم Ubuntu.
+                </p>
+
+                <h2>الخطوة 1: التثبيت</h2>
+                <p>
+                    افتح التيرمينال واتصل بخادمك، ثم نفذ الأوامر التالية:
+                </p>
+                <pre><code class="language-bash">sudo apt update
+sudo apt install squid -y</code></pre>
+                <p>
+                    بعد التثبيت، سيعمل Squid تلقائياً. يمكنك التأكد من حالته بالأمر:
+                </p>
+                <pre><code class="language-bash">sudo systemctl status squid</code></pre>
+
+                <h2>الخطوة 2: ضبط الإعدادات الأساسية</h2>
+                <p>
+                    ملف الإعدادات الرئيسي يقع في <code>/etc/squid/squid.conf</code>.
+                    قبل التعديل، لنأخذ نسخة احتياطية:
+                </p>
+                <pre><code class="language-bash">sudo cp /etc/squid/squid.conf /etc/squid/squid.conf.original
+sudo nano /etc/squid/squid.conf</code></pre>
+
+                <h3>السماح بالاتصال (ACL)</h3>
+                <p>
+                    بشكل افتراضي، يرفض Squid الاتصالات الخارجية. ابحث عن السطر <code>http_access deny all</code> وقم بتغييره للسماح لعنوان IP الخاص بك فقط (للأمان):
+                </p>
+                <pre><code class="language-bash">acl my_ip src 192.168.1.50  # ضع عنوان IP جهازك هنا
+http_access allow my_ip</code></pre>
+                <p>
+                    أو يمكنك السماح للجميع (خطر أمني!) بتغييرها إلى <code>http_access allow all</code>.
+                </p>
+
+                <h3>تغيير المنفذ</h3>
+                <p>
+                    المنفذ الافتراضي هو 3128. يمكنك تغييره بالبحث عن:
+                </p>
+                <pre><code class="language-bash">http_port 3128</code></pre>
+
+                <h2>الخطوة 3: حماية البروكسي بكلمة مرور</h2>
+                <p>
+                    لمنع الغرباء من استخدام خادمك، يجب إعداد مصادقة.
+                    سنحتاج لأداة <code>apache2-utils</code>:
+                </p>
+                <pre><code class="language-bash">sudo apt install apache2-utils -y
+sudo htpasswd -c /etc/squid/passwd myusername</code></pre>
+                <p>
+                    ثم أضف هذه السطور في ملف الإعدادات <code>squid.conf</code>:
+                </p>
+                <pre><code class="language-bash">auth_param basic program /usr/lib/squid/basic_ncsa_auth /etc/squid/passwd
+auth_param basic realm My Private Proxy
+acl authenticated proxy_auth REQUIRED
+http_access allow authenticated</code></pre>
+
+                <h2>الخطوة 4: إعادة التشغيل</h2>
+                <p>
+                    احفظ الملف واخرج، ثم أعد تشغيل الخدمة:
+                </p>
+                <pre><code class="language-bash">sudo systemctl restart squid</code></pre>
+                <p>
+                    مبروك! لديك الآن خادم بروكسي خاص بك جاهز للاستخدام.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'setup-proxy-nginx',
+        slug: 'setup-proxy-nginx',
+        title: 'إعداد بروكسي باستخدام Nginx',
+        excerpt: 'ليس مجرد خادم ويب! تعلم كيفية تحويل Nginx إلى Forward Proxy بسيط وسريع.',
+        date: '2026-02-18',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الجميع يعرف <strong>Nginx</strong> كخادم ويب وموازن أحمال (Load Balancer) وخادم وكيل عكسي (Reverse Proxy) شهير.
+                    لكن، هل تعلم أنه يمكن استخدامه أيضاً كـ <strong>Forward Proxy</strong> لتصفح الإنترنت؟
+                    على الرغم من أنه ليس متخصصاً مثل Squid، إلا أنه خيار ممتاز إذا كنت تريد شيئاً خفيفاً وسريعاً ولديك خبرة مسبقة مع Nginx.
+                </p>
+
+                <h2>ملاحظة هامة</h2>
+                <p>
+                    بشكل افتراضي، Nginx لا يدعم بروتوكول <code>CONNECT</code> الخاص بـ HTTPS بشكل كامل في النسخة المجانية كـ Forward Proxy.
+                    لذلك، هذه الطريقة تعمل بشكل ممتاز مع HTTP، ولكن للمواقع المشفرة HTTPS، ستحتاج عادةً إلى إعادة ترجمة Nginx مع وحدة إضافية (Module) تسمى <code>ngx_http_proxy_connect_module</code>.
+                </p>
+
+                <h2>إعداد Reverse Proxy (الاستخدام الأكثر شيوعاً)</h2>
+                <p>
+                    سنشرح هنا الاستخدام الذي يبرع فيه Nginx: وضع خادم وسيط أمام تطبيقك لحمايته. هذا يسمى Reverse Proxy.
+                </p>
+
+                <h3>مثال عملي: توجيه الطلبات لتطبيق Node.js</h3>
+                <p>
+                    افترض أن لديك تطبيق MasarWeb يعمل على المنفذ 3000، وتريد الوصول إليه عبر المنفذ 80 (الويب العادي).
+                </p>
+                <p>
+                    افتح ملف إعداد الموقع:
+                </p>
+                <pre><code class="language-bash">sudo nano /etc/nginx/sites-available/default</code></pre>
+
+                <p>
+                    عدل القسم <code>location /</code> ليصبح كالتالي:
+                </p>
+                <pre><code class="language-nginx">server {
+    listen 80;
+    server_name example.com;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}</code></pre>
+
+                <h3>شرح الإعدادات:</h3>
+                <ul>
+                    <li><strong>proxy_pass:</strong> يوجه الطلب إلى تطبيقك الداخلي.</li>
+                    <li><strong>proxy_set_header:</strong> يمرر معلومات مهمة (مثل الهوست الأصلي) إلى التطبيق، حتى يعرف التطبيق من أين جاء الطلب.</li>
+                    <li><strong>Upgrade/Connection:</strong> ضرورية لدعم تطبيقات الـ WebSocket (مثل MasarWeb).</li>
+                </ul>
+
+                <p>
+                    بعد الحفظ، اختبر الإعدادات وأعد التشغيل:
+                </p>
+                <pre><code class="language-bash">sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+                <p>
+                    الآن تطبيقك محمي خلف Nginx، الذي يمكنه التعامل مع التشفير (SSL) وضغط الملفات وتوزيع الحمل بكفاءة عالية.
+                </p>
+            </div>
+        `
     }
 ];
 
