@@ -4758,6 +4758,148 @@ curl -x http://de-proxy.example.com:3128 \
                 </p>
             </div>
         `
+    },
+    {
+        id: 'proxy-data-collection-marketers',
+        slug: 'proxy-data-collection-marketers',
+        title: 'كيف يستخدم المسوقون البروكسي لجمع البيانات',
+        excerpt: 'البيانات هي وقود التسويق الحديث. كيف تبني بنية تحتية لجمع البيانات الضخمة (Big Data) دون مواجهة الحظر؟',
+        date: '2026-06-08',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في عصر البيانات الضخمة، المسوق الذي يمتلك أفضل البيانات هو الذي يفوز.
+                    لكن جمع هذه البيانات (Web Scraping) ليس سهلاً. المواقع تضع عقبات (CAPTCHAs, IP Bans).
+                    البروكسي هو الأداة التي تحول عملية "جمع البيانات" من عملية يدوية شاقة إلى خط إنتاج آلي وسريع.
+                </p>
+
+                <h2>أنواع البيانات التي يجمعها المسوقون</h2>
+                <ul>
+                    <li><strong>بيانات المنتجات:</strong> الأسعار، المخزون، والمواصفات من مواقع المنافسين.</li>
+                    <li><strong>بيانات العملاء:</strong> المراجعات (Reviews) والتعليقات لفهم مشاعر الجمهور (Sentiment Analysis).</li>
+                    <li><strong>بيانات الاتجاهات (Trends):</strong> الكلمات الأكثر بحثاً والمواضيع الرائجة.</li>
+                </ul>
+
+                <h2>التحديات التقنية وحلها بالبروكسي</h2>
+                <p>
+                    عندما تحاول سحب بيانات 10,000 منتج، سيرفرك سيقوم بـ 10,000 طلب في دقائق.
+                    هذا السلوك يصرخ "أنا روبوت!".
+                    الحل هو توزيع هذه الطلبات عبر 1,000 <a href="/blog/residential-vs-datacenter-proxies">عنوان IP سكني</a> مختلف.
+                    بهذه الطريقة، يبدو الأمر وكأن 1,000 مستخدم عادي يتصفحون الموقع ببطء، مما يخدع أنظمة الحماية.
+                </p>
+
+                <h3>كود Python بسيط لجمع البيانات مع بروكسي</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">
+import requests
+from bs4 import BeautifulSoup
+
+def scrape_product(url, proxy_url):
+    proxies = {
+        "http": proxy_url,
+        "https": proxy_url,
+    }
+    try:
+        # انتحال شخصية متصفح حقيقي
+        headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)...'}
+        response = requests.get(url, proxies=proxies, headers=headers, timeout=5)
+        
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.content, 'html.parser')
+            title = soup.find('h1').text
+            price = soup.find('span', class_='price').text
+            return {'title': title, 'price': price}
+    except Exception as e:
+        print(f"Error with proxy {proxy_url}: {e}")
+        return None
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-competitive-intelligence-tools',
+        slug: 'proxy-competitive-intelligence-tools',
+        title: 'Web Proxy وأدوات Competitive Intelligence',
+        excerpt: 'كيف تعمل أدوات مثل SimilarWeb و SEMrush؟ الغوص في البنية التحتية التي تشغل أدوات الذكاء التنافسي.',
+        date: '2026-06-09',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هل تساءلت يوماً كيف تعرف أداة مثل SimilarWeb عدد زوار موقع منافسك؟
+                    أو كيف تعرف SEMrush الكلمات المفتاحية التي يشتريها منافسك في الإعلانات؟
+                    السر يكمن في شبكة عالمية من مصادر البيانات، والبروكسي هو العمود الفقري لهذه الشبكة.
+                </p>
+
+                <h2>مصادر البيانات (Data Sources)</h2>
+                <p>
+                    تعتمد هذه الأدوات على مصادر متعددة، أهمها:
+                    1. <strong>الزحف المباشر (Direct Crawling):</strong> روبوتات تجوب الويب وتفهرس المحتوى. تحتاج لبروكسيات لتجنب الحظر.
+                    2. <strong>بيانات اللوحة (Panel Data):</strong> بيانات مجهولة المصدر من إضافات المتصفح (Browser Extensions) التي يثبتها ملايين المستخدمين. هذه الإضافات تعمل أحياناً كـ "بروكسي بشري" يمرر بيانات التصفح للتحليل.
+                </p>
+
+                <h2>مراقبة التغييرات (Change Monitoring)</h2>
+                <p>
+                    المنافسة شرسة. إذا قام منافسك بتغيير عنوان الصفحة الرئيسية (Headline) أو زر الدعوة لاتخاذ إجراء (CTA)، تريد أن تعرف فوراً.
+                    تستخدم أدوات <a href="/blog/proxy-competitor-price-monitoring">مراقبة المنافسين</a> بروكسيات لزيارة مواقع المنافسين بشكل دوري (مثلاً كل ساعة) ومقارنة نسخة الصفحة الحالية بالنسخة السابقة (Diff Check).
+                </p>
+
+                <h2>دور البروكسي العكسي (Reverse Proxy) في الحماية</h2>
+                <p>
+                    من ناحية أخرى، الشركات التي لا تريد أن يتم "تجسس" عليها تستخدم <a href="/blog/what-is-reverse-proxy">Reverse Proxy</a> متطور لكشف وتمييز حركة المرور القادمة من أدوات الذكاء التنافسي وحظرها، في لعبة قط وفأر مستمرة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-ab-testing-geo',
+        slug: 'proxy-ab-testing-geo',
+        title: 'استخدام البروكسي لاختبار A/B من مواقع مختلفة',
+        excerpt: 'اختبار A/B ليس مجرد تغيير ألوان الأزرار. كيف تختبر تجارب مستخدم مختلفة لمناطق جغرافية مختلفة بدقة؟',
+        date: '2026-06-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في اختبار A/B، نقسم الزوار إلى مجموعتين: مجموعة ترى النسخة "أ" ومجموعة ترى النسخة "ب".
+                    لكن ماذا لو كانت النسخة "ب" مخصصة فقط لزوار "ألمانيا"؟
+                    كيف تتأكد، وأنت مطور في "الهند"، أن كود التوجيه الجغرافي (Geo-Routing) يعمل، وأن النسخة الألمانية تظهر بشكل صحيح؟
+                </p>
+
+                <h2>التحقق من التجزئة (Segmentation Verification)</h2>
+                <p>
+                    أخطاء التجزئة شائعة. قد يخطئ الكود ويصنف زوار النمسا كألمان، أو العكس.
+                    باستخدام Web Proxy، يمكنك "تزييف" موقعك لتكون في برلين مرة، وفي فيينا مرة أخرى، والتحقق من أنك تقع في الـ Segment الصحيح للتجربة.
+                </p>
+
+                <h2>اختبار المحتوى الديناميكي (Dynamic Content)</h2>
+                <p>
+                    تطبيقات الويب الحديثة (SPA) تقوم بتحميل المحتوى بناءً على الموقع.
+                    قد يظهر زر "اشتر الآن" في دولة، وزر "اتصل بنا" في دولة أخرى بسبب القيود القانونية.
+                    البروكسي يسمح لفريق ضمان الجودة (QA) بكتابة اختبارات أتمتة (Automated Tests) باستخدام Selenium أو Cypress تمر عبر بروكسيات مختلفة للتحقق من كل السيناريوهات.
+                </p>
+
+                <h3>مثال Selenium مع بروكسي</h3>
+                <div class="code-block">
+                    <pre><code class="language-python">
+from selenium import webdriver
+
+# إعداد البروكسي لمتصفح Chrome
+PROXY = "fr-proxy.example.com:3128"
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument(f'--proxy-server={PROXY}')
+
+driver = webdriver.Chrome(options=chrome_options)
+
+# الآن المتصفح "يعتقد" أنه في فرنسا
+driver.get("https://www.myshop.com")
+
+# تحقق من ظهور العملة باليورو
+price_element = driver.find_element(By.CLASS_NAME, "currency")
+assert "€" in price_element.text
+                    </code></pre>
+                </div>
+            </div>
+        `
     }
 ];
 
