@@ -2821,6 +2821,137 @@ cache_peer parent-proxy.hq.local parent 3128 0 no-query default</code></pre>
                 </p>
             </div>
         `
+    },
+    {
+        id: 'review-ccproxy-management',
+        slug: 'review-ccproxy-management',
+        title: 'مراجعة CCProxy لإدارة البروكسي',
+        excerpt: 'الحل الأسهل لمستخدمي Windows. هل تبحث عن إعداد بروكسي في 5 دقائق بدون أوامر Linux المعقدة؟',
+        date: '2026-03-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كنت مدير شبكة في مدرسة أو شركة صغيرة وتستخدم Windows، فإن كلمة "Linux" قد تسبب لك الصداع.
+                    أنت تريد برنامجاً بواجهة رسومية (GUI)، تضغط Next -> Next -> Finish، ويعمل كل شيء.
+                    برنامج CCProxy هو هذا الحل.
+                </p>
+
+                <h2>سهولة الاستخدام</h2>
+                <p>
+                    أكبر ميزة لـ CCProxy هي سهولته.
+                    يمكنك إنشاء حسابات للمستخدمين، وتحديد السرعة (Bandwidth Control)، وفلترة المواقع (Web Filtering) بضغطة زر.
+                    لا حاجة لتعديل ملفات نصية ولا حفظ أوامر معقدة.
+                </p>
+
+                <h2>الميزات الرئيسية</h2>
+                <ul>
+                    <li><strong>دعم البروتوكولات:</strong> يدعم HTTP, FTP, SOCKS, Telnet, HTTPS.</li>
+                    <li><strong>التحكم في الوصول:</strong> يمكنك السماح بالدخول بناءً على عنوان IP، عنوان MAC، أو اسم المستخدم وكلمة المرور.</li>
+                    <li><strong>الجدولة الزمنية:</strong> قطع الإنترنت عن الموظفين بعد ساعات الدوام تلقائياً.</li>
+                </ul>
+
+                <h2>العيوب</h2>
+                <p>
+                    CCProxy ليس مجانياً تماماً. النسخة المجانية تدعم 3 مستخدمين فقط.
+                    كما أنه يعمل على Windows فقط، مما يجعله أقل استقراراً وأماناً من حلول Linux مثل <a href="/blog/install-squid-proxy-linux">Squid</a> في البيئات الكبيرة.
+                </p>
+
+                <h2>الخلاصة</h2>
+                <p>
+                    للمكاتب الصغيرة والمدارس التي لا تملك خبير Linux، يعتبر CCProxy منقذاً حقيقياً.
+                    لكن إذا كبرت الشبكة، ستضطر للانتقال لحل أكثر قوة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'charles-proxy-developers-guide',
+        slug: 'charles-proxy-developers-guide',
+        title: 'أداة Charles Proxy: دليل شامل للمطورين',
+        excerpt: 'ليست مجرد بروكسي، بل مجهر للمطورين. كيف تستخدم Charles لفحص طلبات API واكتشاف الأخطاء في تطبيقاتك؟',
+        date: '2026-03-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    كمطور تطبيقات (Mobile/Web)، أنت تقضي نصف وقتك تتساءل: "لماذا عاد الـ API بـ Error 500؟" أو "ماذا أرسل التطبيق للسيرفر؟".
+                    أداة Charles Proxy هي عينك التي ترى ما لا يراه المتصفح.
+                    هي تعمل كـ "رجل في المنتصف" (Man-in-the-Middle) بين جهازك والإنترنت.
+                </p>
+
+                <h2>ميزات تهم المطورين</h2>
+                <h3>1. SSL Proxying</h3>
+                <p>
+                    تستطيع Charles فك تشفير HTTPS. هذا ضروري جداً لأن معظم الـ APIs اليوم مشفرة.
+                    يجب عليك تثبيت "شهادة Charles الجذرية" (Root Certificate) على المحاكي (Simulator) أو الهاتف لتعمل.
+                </p>
+
+                <h3>2. Bandwidth Throttling</h3>
+                <p>
+                    كيف سيعمل تطبيقك على شبكة 3G بطيئة؟
+                    بدلاً من الذهاب لمنطقة نائية للتجربة، يمكنك استخدام Charles لمحاكاة اتصال بطيء أو غير مستقر (Packet Loss) وأنت في مكتبك المكيف.
+                </p>
+
+                <h3>3. Breakpoints</h3>
+                <p>
+                    ميزة سحرية! يمكنك إيقاف الطلب "قبل" أن يذهب للسيرفر، وتعديل البيانات المرسلة.
+                    أو إيقاف الاستجابة "قبل" أن تصل للتطبيق، وتغيير الـ JSON لتختبر كيف يتعامل تطبيقك مع بيانات غريبة أو خاطئة.
+                </p>
+
+                <h3>4. Repeat / Load Testing</h3>
+                <p>
+                    يمكنك إعادة إرسال نفس الطلب 100 مرة للتأكد من أن السيرفر يتحمل الضغط، أو لإعادة إنتاج خطأ نادر (Bug Reproduction).
+                </p>
+
+                <h2>نصيحة</h2>
+                <p>
+                    Charles برنامج مدفوع، لكنه يستحق كل فلس للمحترفين.
+                    إذا كنت تبحث عن بديل مجاني، جرب <a href="/blog/fiddler-proxy-review">Fiddler</a> أو <a href="/blog/mitmproxy-open-source">mitmproxy</a>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'review-fiddler-proxy-development',
+        slug: 'review-fiddler-proxy-development',
+        title: 'مراجعة Fiddler كأداة بروكسي للتطوير',
+        excerpt: 'الأداة المفضلة لمطوري .NET و Windows. كيف تستخدم Fiddler Everywhere لتصحيح أخطاء الويب عبر أي منصة؟',
+        date: '2026-03-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كان Charles هو معشوق مطوري macOS، فإن Fiddler هو أسطورة Windows.
+                    استحوذت عليه شركة Telerik وطورته ليصبح "Fiddler Everywhere"، الذي يعمل الآن على Linux و Mac أيضاً.
+                    هو ليس مجرد بروكسي، هو "Web Debugging Proxy".
+                </p>
+
+                <h2>السيناريوهات القوية (AutoResponder)</h2>
+                <p>
+                    أقوى ميزة في Fiddler. يمكنك إنشاء قواعد تقول:
+                    <br>
+                    "إذا طلب المتصفح صورة logo.png من السيرفر، لا تذهب للإنترنت، بل أعطه هذه الصورة من جهازي المحلي".
+                    <br>
+                    هذا يسمح لك بتجربة تعديلات على موقع حي (Production) دون رفع أي ملفات للسيرفر!
+                </p>
+
+                <h2>البرمجة النصية (FiddlerScript)</h2>
+                <p>
+                    للمحترفين، يمكنك كتابة سكربتات بـ JScript.NET للتحكم في حركة المرور.
+                    مثلاً: "قم بتلوين كل الطلبات التي تستغرق أكثر من 5 ثوانٍ باللون الأحمر".
+                </p>
+
+                <h2>Composer</h2>
+                <p>
+                    يتيح لك إنشاء طلبات HTTP يدوياً (مثل Postman) لاختبار الـ APIs.
+                    يمكنك سحب أي طلب من القائمة وإفلاته في الـ Composer لتعديله وإعادة إرساله.
+                </p>
+
+                <h2>الخلاصة</h2>
+                <p>
+                    Fiddler أداة جبارة، والنسخة الكلاسيكية (Fiddler Classic) لا تزال مجانية وقوية جداً على Windows.
+                    ينصح باستخدامه عند تطوير تطبيقات الويب المعقدة أو تشخيص مشاكل الأداء.
+                </p>
+            </div>
+        `
     }
 ];
 
