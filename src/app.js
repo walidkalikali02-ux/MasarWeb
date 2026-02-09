@@ -13,6 +13,15 @@ const hpp = require('hpp');
 const path = require('path');
 require('dotenv').config();
 
+// Sentry Error Monitoring
+const Sentry = require('@sentry/node');
+Sentry.init({
+  dsn: "https://e0d21a59fd0857615b5b6f58e9c6af25@o4510857759817728.ingest.de.sentry.io/4510857776005200",
+  sendDefaultPii: true,
+  tracesSampleRate: 1.0,
+  environment: process.env.NODE_ENV || 'development',
+});
+
 const { securityMiddleware, rateLimiters } = require('./security/security');
 const { sessionManager } = require('./session/sessionManager');
 const { proxyRouter } = require('./proxy/proxyRouter');
@@ -28,6 +37,8 @@ const PORT = process.env.PORT || 3000;
 
 // Trust proxy for accurate IP detection
 app.set('trust proxy', 1);
+
+// Sentry middleware disabled due to SDK API changes; using manual capture in error handler
 
 // View engine setup
 app.set('view engine', 'ejs');
@@ -121,7 +132,12 @@ app.use('/tools', toolsRouter);
 
 // Blog Routes
 app.get('/blog', (req, res) => {
-    res.render('blog', { articles });
+    const sorted = [...articles].sort((a, b) => {
+      const da = new Date(a.date);
+      const db = new Date(b.date);
+      return db - da;
+    });
+    res.render('blog', { articles: sorted });
 });
 
 app.get('/blog/:slug', (req, res) => {
@@ -191,6 +207,7 @@ app.use('/', proxyRouter);
 
 // Error handling
 app.use((err, req, res, next) => {
+  try { Sentry.captureException(err); } catch (_) {}
   logger.error('Unhandled error:', err);
   
   const t = res.locals.t || { error: { title_generic: 'Error' } };
