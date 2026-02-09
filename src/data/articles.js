@@ -7371,7 +7371,1690 @@ client pass {
                 </p>
             </div>
         `
+    },
+    {
+        id: 'iphone-proxy-setup',
+        slug: 'iphone-proxy-setup',
+        title: 'تكوين Web Proxy على iPhone بالتفصيل',
+        excerpt: 'شرح مصور لإعداد البروكسي على نظام iOS للواي فاي والبيانات الخلوية.',
+        date: '2026-08-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظام iOS يوفر دعماً مدمجاً ممتازاً للبروكسي، لكنه يقتصر عادةً على شبكات Wi-Fi.
+                    سنشرح كيفية إعداده وكيفية التعامل مع البيانات الخلوية.
+                </p>
+                <h2>إعداد Wi-Fi Proxy</h2>
+                <ol>
+                    <li>اذهب إلى <strong>الإعدادات</strong> > <strong>Wi-Fi</strong>.</li>
+                    <li>اضغط على أيقونة (i) بجوار الشبكة المتصل بها.</li>
+                    <li>انزل للأسفل إلى قسم <strong>تكوين الوكيل (Configure Proxy)</strong>.</li>
+                    <li>اختر <strong>يدوي (Manual)</strong> وأدخل الخادم والمنفذ.</li>
+                    <li>إذا كان البروكسي يتطلب كلمة مرور، فعل خيار <strong>المصادقة (Authentication)</strong>.</li>
+                </ol>
+                <h2>تثبيت الشهادات (SSL Certificates)</h2>
+                <p>
+                    إذا كنت تستخدم <a href="/blog/ssl-inspection-proxy">SSL Inspection</a>، يجب تثبيت شهادة الجذر:
+                    1. أرسل الشهادة (.cer) لنفسك عبر AirDrop أو Email.
+                    2. ثبتها من الإعدادات.
+                    3. اذهب إلى <strong>حول (About)</strong> > <strong>إعدادات ثقة الشهادة (Certificate Trust Settings)</strong> وفعل الشهادة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'android-proxy-apps',
+        slug: 'android-proxy-apps',
+        title: 'أفضل تطبيقات البروكسي للأندرويد',
+        excerpt: 'قائمة بأفضل التطبيقات التي تمنحك تحكماً كاملاً في حركة مرور هاتفك.',
+        date: '2026-08-12',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظام أندرويد يسمح بتطبيقات تتحكم في الشبكة بشكل عميق (VPN Service). إليك الأفضل:
+                </p>
+                <ul>
+                    <li><strong>ProxyDroid (Root):</strong> الأقوى بلا منازع. يدعم HTTP/SOCKS5/NTLM وتخصيص البروكسي لكل تطبيق على حدة.</li>
+                    <li><strong>Drony (No Root):</strong> الخيار الأفضل للأجهزة غير المروّتة. يعمل كـ VPN محلي ليعترض حركة المرور ويوجهها للبروكسي.</li>
+                    <li><strong>Postern:</strong> ممتاز لبروكسيات SOCKS5 و Shadowsocks، ويدعم قواعد توجيه معقدة (Sniffing).</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'ios-proxy-apps',
+        slug: 'ios-proxy-apps',
+        title: 'أفضل تطبيقات البروكسي لنظام iOS',
+        excerpt: 'كيف تتجاوز قيود آبل الصارمة وتدير البروكسي باحترافية؟',
+        date: '2026-08-13',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    آبل لا تسمح بتطبيقات تعدل إعدادات النظام مباشرة، لكنها تسمح بإنشاء تكوينات VPN ذكية (NEPacketTunnelProvider).
+                </p>
+                <h2>Shadowrocket</h2>
+                <p>
+                    التطبيق رقم 1 لمستخدمي الآيفون. يدعم جميع البروتوكولات (V2Ray, Trojan, SOCKS5) ويسمح بقواعد توجيه ذكية (Routing Rules) بناءً على النطاق أو الدولة.
+                </p>
+                <h2>Potatso Lite</h2>
+                <p>
+                    خيار مجاني وبسيط للمبتدئين. يسمح بإضافة بروكسيات متعددة والتبديل بينها بسهولة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'mobile-vs-residential-proxy',
+        slug: 'mobile-vs-residential-proxy',
+        title: 'Mobile Proxy مقابل Residential Proxy',
+        excerpt: 'أيهما أفضل للتسويق وإدارة الحسابات؟ مقارنة شاملة.',
+        date: '2026-08-14',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    كلاهما يستخدم عناوين IP حقيقية، لكن الفرق يكمن في المصدر والسلوك.
+                </p>
+                <h2>Mobile Proxy (4G/5G)</h2>
+                <p>
+                    يأتي من أبراج الاتصالات. يتميز بـ <strong>CGNAT</strong> (مشاركة الـ IP بين آلاف المستخدمين)، مما يجعل حظره شبه مستحيل دون التأثير على أبرياء. هو الأغلى والأكثر موثوقية لإنستجرام وفيسبوك.
+                </p>
+                <h2>Residential Proxy (Wi-Fi)</h2>
+                <p>
+                    يأتي من اتصالات منزلية (DSL/Fiber). أرخص وأسرع، لكنه أقل "حصانة" من الموبايل بروكسي. مناسب لعمليات الويب سكرابينغ (Web Scraping) العامة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-battery-drain',
+        slug: 'proxy-battery-drain',
+        title: 'كيف يؤثر البروكسي على بطارية الهاتف',
+        excerpt: 'هل استخدام البروكسي يقتل بطاريتك؟ الحقائق والأرقام.',
+        date: '2026-08-15',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظرياً، البروكسي يضيف خطوة إضافية للاتصال، فهل يستهلك طاقة أكثر؟
+                </p>
+                <h2>التشفير هو السبب</h2>
+                <p>
+                    بروكسي HTTP العادي لا يستهلك بطارية تذكر.
+                    لكن استخدام بروتوكولات مشفرة ومعقدة (مثل Shadowsocks أو V2Ray) يتطلب معالجة مستمرة (CPU) لتشفير وفك تشفير كل حزمة بيانات، مما يستنزف البطارية بنسبة 10-15% أسرع.
+                </p>
+                <h2>الحفاظ على الاتصال (Keep-Alive)</h2>
+                <p>
+                    تطبيقات البروكسي تمنع راديو الهاتف من الدخول في وضع النوم العميق (Deep Sleep) للحفاظ على نفق الاتصال مفتوحاً، وهذا هو المستهلك الخفي الأكبر للطاقة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'public-wifi-protection',
+        slug: 'public-wifi-protection',
+        title: 'بروكسي لحماية بيانات الهاتف على شبكات عامة',
+        excerpt: 'حول شبكة المقهى غير الآمنة إلى قلعة حصينة باستخدام البروكسي.',
+        date: '2026-08-16',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    شبكات الواي فاي العامة مرتع للمتطفلين (Sniffers).
+                    استخدام بروكسي مشفر (SOCKS5 over TLS) ينشئ نفقاً آمناً يمرر بياناتك بعيداً عن أعين المتواجدين معك في الشبكة.
+                </p>
+                <h2>أفضل من VPN؟</h2>
+                <p>
+                    في بعض الحالات، نعم. البروكسي أخف وزناً ويمكن إعداده للمتصفح فقط، مما يترك تطبيقات البنك تعمل بمسارها الطبيعي (حيث تحظر بعض البنوك الـ VPN).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'mobile-app-testing',
+        slug: 'mobile-app-testing',
+        title: 'Web Proxy لاختبار تطبيقات الموبايل',
+        excerpt: 'كيف يرى المطورون ما يرسله تطبيقهم فعلياً؟',
+        date: '2026-08-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    التطبيق هو "صندوق أسود". البروكسي يفتحه.
+                    عبر توجيه حركة مرور الهاتف إلى جهاز الكمبيوتر (الذي يشغل Charles أو Fiddler)، يمكن للمطور رؤية كل طلب JSON وكل صورة يتم تحميلها.
+                </p>
+                <h2>محاكاة الشبكات الضعيفة</h2>
+                <p>
+                    يمكن للبروكسي خنق السرعة (Throttling) لمحاكاة شبكة 2G أو 3G، للتأكد من أن التطبيق لا ينهار عندما يكون الاتصال سيئاً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'flutter-proxy-config',
+        slug: 'flutter-proxy-config',
+        title: 'استخدام البروكسي في تطوير تطبيقات Flutter',
+        excerpt: 'تجاوز مشاكل اتصال المحاكي وإعداد البروكسي في Dart.',
+        date: '2026-08-18',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تطبيقات Flutter لا تحترم إعدادات بروكسي النظام تلقائياً في بيئة التطوير.
+                    تحتاج لتكوين <code>HttpClient</code> يدوياً.
+                </p>
+                <pre><code class="language-dart">
+// تكوين البروكسي في Flutter
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..findProxy = (uri) {
+        return "PROXY 192.168.1.50:8888;";
+      }
+      ..badCertificateCallback = (X509Certificate cert, String host, int port) => true;
+  }
+}
+                </code></pre>
+                <p>
+                    هذا الكود يوجه كل طلبات التطبيق إلى البروكسي المحلي لديك ويتجاهل أخطاء شهادة SSL (مفيد للتطوير فقط!).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'react-native-debugging',
+        slug: 'react-native-debugging',
+        title: 'بروكسي لتصحيح أخطاء تطبيقات React Native',
+        excerpt: 'فحص طلبات الشبكة في React Native باستخدام Flipper و Proxies.',
+        date: '2026-08-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في React Native، يمكنك استخدام Network Inspector المدمج، لكن البروكسي الخارجي يعطيك قدرات تعديل (Tampering).
+                </p>
+                <h2>مشكلة SSL Pinning</h2>
+                <p>
+                    معظم مكتبات الشبكة (مثل OkHttp في أندرويد) تفعل SSL Pinning افتراضياً.
+                    لتتمكن من رؤية الحركة، ستحتاج لاستخدام فريمويرك مثل Frida لتعطيل الـ Pinning مؤقتاً أثناء التطوير.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'mobile-api-monitoring',
+        slug: 'mobile-api-monitoring',
+        title: 'Web Proxy لمراقبة طلبات API في تطبيقات الموبايل',
+        excerpt: 'اكتشاف الأخطاء الخفية وتحليل استهلاك البيانات.',
+        date: '2026-08-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هل تطبيقك يرسل تحليلات (Analytics) أكثر من اللازم؟ هل يقوم بتحميل صور بحجم 5MB في أيقونة صغيرة؟
+                    البروكسي يكشف هذه الكوارث قبل أن يشتكي المستخدمون من استهلاك الباقة.
+                </p>
+                <h2>إعادة تشغيل الطلبات (Replay)</h2>
+                <p>
+                    يمكنك تسجيل طلب API فشل في التطبيق، وإعادة إرساله من البروكسي مع تعديل البارامترات لتجربة إصلاح الخطأ دون الحاجة لإعادة تشغيل التطبيق في كل مرة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'setup-4g-5g-proxy',
+        slug: 'setup-4g-5g-proxy',
+        title: 'كيفية إعداد بروكسي على شبكة 4G/5G',
+        excerpt: 'بناء مزرعة بروكسي خاصة بك باستخدام مودمات USB و Raspberry Pi.',
+        date: '2026-08-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بدلاً من شراء Mobile Proxy باهظ الثمن، يمكنك صنعه!
+                    تحتاج إلى: Raspberry Pi، ومودم 4G USB (مثل Huawei E3372)، وشريحة بيانات.
+                </p>
+                <h2>البرمجيات</h2>
+                <p>
+                    باستخدام برمجيات مثل 3proxy أو Squid على اللينكس، يمكنك تحويل الـ Raspberry Pi إلى خادم بروكسي، وجعل المودم هو بوابة الخروج (Gateway).
+                    بذلك تحصل على IP موبايل حقيقي خاص بك 100%.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'geo-testing-mobile',
+        slug: 'geo-testing-mobile',
+        title: 'بروكسي لاختبار تطبيقات الموبايل في مناطق مختلفة',
+        excerpt: 'كيف تتأكد أن تطبيقك يعمل بشكل صحيح في اليابان وأنت في مصر؟',
+        date: '2026-08-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    التطبيقات العالمية تظهر محتوى مختلفاً حسب الدولة.
+                    استخدام بروكسي سكني (Residential Proxy) في الدولة المستهدفة هو الطريقة الوحيدة لمحاكاة تجربة المستخدم الحقيقية.
+                </p>
+                <h2>محاكاة GPS</h2>
+                <p>
+                    تذكر أن البروكسي يغير الـ IP فقط. بعض التطبيقات تتحقق من GPS. ستحتاج لاستخدام تطبيق Fake GPS بالتزامن مع البروكسي لتكتمل الخدعة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'mobile-performance-testing',
+        slug: 'mobile-performance-testing',
+        title: 'Web Proxy لفحص أداء تطبيقات الموبايل',
+        excerpt: 'قياس زمن الاستجابة (Latency) واكتشاف عنق الزجاجة.',
+        date: '2026-08-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسي يمكنه قياس "Waterfall" لكل طلب شبكة.
+                    متى بدأ DNS؟ كم استغرق الاتصال؟ كم استغرق تنزيل البيانات؟
+                    هذه التفاصيل تساعد في تحسين أداء التطبيق بشكل كبير.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'charles-proxy-mobile',
+        slug: 'charles-proxy-mobile',
+        title: 'استخدام Charles Proxy مع أجهزة الموبايل',
+        excerpt: 'الدليل القياسي لأي مطور موبايل.',
+        date: '2026-08-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Charles هو السكين السويسري لمطوري الموبايل.
+                </p>
+                <h2>خطوات الربط</h2>
+                <ol>
+                    <li>تأكد أن الهاتف والكمبيوتر (الذي عليه Charles) على نفس شبكة الواي فاي.</li>
+                    <li>في إعدادات واي فاي الهاتف، ضع IP الكمبيوتر كـ Proxy.</li>
+                    <li>افتح المتصفح في الهاتف واذهب إلى <code>chls.pro/ssl</code> لتحميل الشهادة.</li>
+                    <li>وافق على الاتصال في برنامج Charles.</li>
+                </ol>
+            </div>
+        `
+    },
+    {
+        id: 'mobile-traffic-analysis',
+        slug: 'mobile-traffic-analysis',
+        title: 'بروكسي لتحليل حركة مرور تطبيقات الموبايل',
+        excerpt: 'فهم بروتوكولات التطبيقات المغلقة (Reverse Engineering).',
+        date: '2026-08-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هل تريد معرفة كيف يعمل API لتطبيق مشهور؟
+                    البروكسي هو أداتك الأولى. بتحليل الطلبات والردود، يمكنك فهم هيكلية البيانات والـ Endpoints التي يستخدمها التطبيق، حتى لو لم يكن لديك وثائق له.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'push-notification-proxy',
+        slug: 'push-notification-proxy',
+        title: 'Web Proxy لاختبار Push Notifications',
+        excerpt: 'هل تصل إشعاراتك عبر جدار الحماية؟',
+        date: '2026-08-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إشعارات FCM (Android) و APNs (iOS) تتطلب منافذ خاصة (Ports 5228, 5223).
+                    في شبكات الشركات المغلقة، يساعد البروكسي في التأكد من أن هذه المنافذ مفتوحة وأن حركة المرور تصل لخوادم جوجل وآبل دون مشاكل.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'app-proxy-detection',
+        slug: 'app-proxy-detection',
+        title: 'كيف يكتشف التطبيق استخدام بروكسي',
+        excerpt: 'التقنيات التي تستخدمها البنوك والألعاب لمنع البروكسي.',
+        date: '2026-08-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    التطبيقات الأمنية لا تحب البروكسي.
+                    تستخدم تقنيات مثل: فحص إعدادات النظام (<code>System.getProperty("http.proxyHost")</code>)، ومحاولة الاتصال المباشر بـ IP معروف لتجاوز البروكسي ومقارنة النتيجة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'geo-restriction-bypass',
+        slug: 'geo-restriction-bypass',
+        title: 'بروكسي لتجاوز قيود التطبيقات الجغرافية',
+        excerpt: 'فتح المتاجر والتطبيقات المحظورة في منطقتك.',
+        date: '2026-08-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بعض الألعاب والتطبيقات (مثل TikTok في بعض الدول) تعمل فقط في مناطق معينة.
+                    البروكسي على مستوى النظام (System-wide Proxy) يمكنه خداع التطبيق وإيهامه بأنك في دولة أخرى، مما يفتح لك كامل المميزات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'windows-11-proxy-setup',
+        slug: 'windows-11-proxy-setup',
+        title: 'إعداد Web Proxy على Windows 11 بالتفصيل',
+        excerpt: 'شرح واجهة الإعدادات الجديدة في ويندوز 11.',
+        date: '2026-08-29',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    مايكروسوفت حسنت واجهة الشبكة في ويندوز 11.
+                    اذهب إلى <strong>Settings > Network & internet > Proxy</strong>.
+                    ستجد زر "Set up" بجوار "Use a proxy server". الواجهة أصبحت أكثر وضوحاً وتدعم إدخال استثناءات (Excluded URLs) بسهولة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'windows-server-2022-proxy',
+        slug: 'windows-server-2022-proxy',
+        title: 'تكوين بروكسي على Windows Server 2022',
+        excerpt: 'إعدادات البروكسي للخوادم والبيئات المؤسسية.',
+        date: '2026-08-30',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في السيرفرات، نستخدم الأمر <code>netsh winhttp</code> لضبط البروكسي على مستوى النظام (System Context) وليس فقط للمستخدم الحالي، لضمان أن خدمات الويندوز (Windows Update) تعمل عبر البروكسي.
+                </p>
+                <pre><code class="language-powershell">netsh winhttp set proxy proxy-server="192.168.1.10:8080" bypass-list="*.local"</code></pre>
+            </div>
+        `
+    },
+    {
+        id: 'macos-sonoma-proxy',
+        slug: 'macos-sonoma-proxy',
+        title: 'Web Proxy على macOS Sonoma: دليل كامل',
+        excerpt: 'إدارة البروكسي في أحدث أنظمة ماك.',
+        date: '2026-08-31',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في macOS، إعدادات البروكسي موجودة في <strong>System Settings > Network</strong>.
+                    اختر الشبكة (Wi-Fi أو Ethernet) > <strong>Details</strong> > <strong>Proxies</strong>.
+                    ميزة ماك هي سهولة تفعيل/تعطيل بروتوكولات مختلفة (Web, Secure Web, SOCKS) بشكل مستقل بضغطة زر.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'ubuntu-desktop-proxy',
+        slug: 'ubuntu-desktop-proxy',
+        title: 'إعداد بروكسي على Ubuntu Desktop',
+        excerpt: 'ضبط البروكسي عبر واجهة GNOME والطرفية.',
+        date: '2026-09-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في واجهة GNOME: Settings > Network > Network Proxy.
+                    لكن هذا لا يكفي للطرفية (Terminal).
+                    يجب إضافة المتغيرات في ملف <code>/etc/environment</code>:
+                </p>
+                <pre><code class="language-bash">http_proxy="http://proxy:3128/"
+https_proxy="http://proxy:3128/"
+no_proxy="localhost,127.0.0.1,::1"</code></pre>
+            </div>
+        `
+    },
+    {
+        id: 'fedora-linux-proxy',
+        slug: 'fedora-linux-proxy',
+        title: 'تكوين Web Proxy على Fedora Linux',
+        excerpt: 'التعامل مع مدير الحزم DNF والبروكسي.',
+        date: '2026-09-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    لكي يعمل تحديث النظام (DNF Update) خلف بروكسي، يجب تعديل ملف <code>/etc/dnf/dnf.conf</code> وإضافة:
+                    <code>proxy=http://proxy-server:3128</code>.
+                    فيدورا تعتمد بشكل كبير على الشبكة، لذا ضبط البروكسي بشكل صحيح أمر حيوي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'debian-server-proxy',
+        slug: 'debian-server-proxy',
+        title: 'بروكسي على Debian Server: إعداد وتكوين',
+        excerpt: 'ضبط APT للعمل عبر البروكسي في الخوادم.',
+        date: '2026-09-03',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في خوادم دبيان، ننشئ ملفاً في <code>/etc/apt/apt.conf.d/95proxies</code> ونكتب فيه:
+                    <code>Acquire::http::Proxy "http://yourproxy:3128";</code>
+                    هذا يضمن أن أوامر <code>apt-get install</code> تمر بسلاسة عبر البروكسي المؤسسي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'chromeos-proxy',
+        slug: 'chromeos-proxy',
+        title: 'Web Proxy على ChromeOS',
+        excerpt: 'إدارة الشبكة في نظام جوجل السحابي.',
+        date: '2026-09-04',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بما أن ChromeOS يعتمد كلياً على المتصفح، فإن إعدادات البروكسي هي نفسها إعدادات كروم.
+                    لكن بالنسبة لتطبيقات أندرويد التي تعمل داخل ChromeOS، قد تحتاج لتفعيل خيار "Allow proxies for shared networks" لضمان سريان الإعدادات على الحاوية (Container) بالكامل.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'freebsd-proxy',
+        slug: 'freebsd-proxy',
+        title: 'إعداد بروكسي على FreeBSD',
+        excerpt: 'ضبط متغيرات البيئة ومدير الحزم pkg.',
+        date: '2026-09-05',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في FreeBSD، نستخدم ملف <code>/etc/csh.cshrc</code> أو <code>.profile</code> لضبط متغيرات <code>HTTP_PROXY</code>.
+                    تذكر أن الصدفة (Shell) الافتراضية قد تكون csh أو tcsh، وصيغة المتغيرات تختلف قليلاً عن bash (استخدم <code>setenv</code>).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'arch-linux-proxy',
+        slug: 'arch-linux-proxy',
+        title: 'تكوين Web Proxy على Arch Linux',
+        excerpt: 'البروكسي مع Pacman و AUR.',
+        date: '2026-09-06',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    لمدير الحزم Pacman، حرر <code>/etc/pacman.conf</code> وتأكد من تفعيل خيار <code>XferCommand</code> الذي يستخدم curl أو wget، حيث أن كلاهما يحترم متغيرات البيئة الخاصة بالبروكسي بشكل تلقائي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'opensuse-proxy',
+        slug: 'opensuse-proxy',
+        title: 'بروكسي على OpenSUSE: دليل المبتدئين',
+        excerpt: 'استخدام أداة YaST لإدارة البروكسي مركزياً.',
+        date: '2026-09-07',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    ميزة OpenSUSE الكبرى هي YaST. اذهب إلى <strong>Network Services > Proxy</strong>.
+                    من مكان واحد، يمكنك تطبيق البروكسي على النظام بأكمله، بما في ذلك مدير الحزم Zypper، دون الحاجة لتحرير ملفات نصية متفرقة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'windows-vs-linux-proxy',
+        slug: 'windows-vs-linux-proxy',
+        title: 'Web Proxy على Windows مقابل Linux: المقارنة',
+        excerpt: 'كيف تختلف معمارية الشبكة بين النظامين؟',
+        date: '2026-09-08',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في ويندوز، البروكسي هو إعداد مركزي (WinINET/WinHTTP) تحترمه معظم التطبيقات.
+                    في لينكس، البروكسي هو "عرف" (Convention) يعتمد على متغيرات البيئة، وقد تتجاهله بعض التطبيقات التي لا تبرمج لقراءتها، مما يجعل إدارة البروكسي في لينكس أكثر تحدياً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'alpine-linux-proxy',
+        slug: 'alpine-linux-proxy',
+        title: 'إعداد بروكسي على Alpine Linux للحاويات',
+        excerpt: 'أهمية البروكسي في Docker Images الصغيرة.',
+        date: '2026-09-09',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظراً لشيوع Alpine في عالم Docker، غالباً ما تحتاج لتمرير البروكسي أثناء بناء الصورة (Build Time).
+                    <code>apk add</code> لا يقرأ متغيرات البيئة دائماً بشكل افتراضي، لذا يفضل تمريرها مباشرة: <code>http_proxy=... apk add package</code>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'windows-gpo-proxy',
+        slug: 'windows-gpo-proxy',
+        title: 'تكوين Web Proxy في Group Policy لـ Windows',
+        excerpt: 'فرض إعدادات البروكسي على آلاف الأجهزة دفعة واحدة.',
+        date: '2026-09-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في بيئة الدومين، نستخدم GPO لتوزيع البروكسي.
+                    المسار: <strong>User Configuration > Preferences > Control Panel Settings > Internet Settings</strong>.
+                    هذا يضمن أن الموظف لا يستطيع تعطيل البروكسي حتى لو أراد ذلك.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'kali-linux-proxy',
+        slug: 'kali-linux-proxy',
+        title: 'بروكسي على Kali Linux لاختبارات الأمان',
+        excerpt: 'إخفاء هويتك أثناء عمليات Pentesting.',
+        date: '2026-09-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    أداة <strong>ProxyChains</strong> في كالي هي صديقك المفضل.
+                    تسمح لك بتشغيل أي أداة (nmap, metasploit) عبر سلسلة من البروكسيات (Tor -> HTTP -> SOCKS5) لإخفاء المصدر الحقيقي للهجوم تماماً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'android-tv-proxy',
+        slug: 'android-tv-proxy',
+        title: 'Web Proxy على Android TV',
+        excerpt: 'فتح المحتوى المقيد جغرافياً على شاشتك الذكية.',
+        date: '2026-09-12',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظام Android TV يشبه أندرويد الهاتف، لكن الوصول لقوائم الواي فاي قد يكون مختلفاً.
+                    إذا لم تجد خيار البروكسي، يمكنك استخدام تطبيقات مثل "Proxy Toggle" المتاحة في المتجر لتفعيل البروكسي بسهولة ومشاهدة نتفليكس أمريكا مثلاً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'smart-tv-proxy',
+        slug: 'smart-tv-proxy',
+        title: 'إعداد بروكسي على Smart TV',
+        excerpt: 'سامسونج LG WebOS وغيرها.',
+        date: '2026-09-13',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    معظم الشاشات الذكية (Tizen, WebOS) تدعم البروكسي في إعدادات الشبكة المتقدمة.
+                    لكنها غالباً تدعم HTTP Proxy فقط ولا تدعم المصادقة (Username/Password). لذا تأكد من استخدام بروكسي يسمح بالدخول عبر مصادقة الـ IP (IP Whitelisting).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'console-proxy-setup',
+        slug: 'console-proxy-setup',
+        title: 'تكوين Web Proxy على أجهزة الألعاب',
+        excerpt: 'تسريع التنزيلات وتقليل اللاج (Lag) في PS5 و Xbox.',
+        date: '2026-09-14',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    استخدام بروكسي محلي (Caching Proxy) على حاسوبك وتوجيه الكونسول إليه يمكن أن يسرع تنزيل التحديثات بشكل خرافي، حيث يتم سحب البيانات من كاش الحاسوب بدلاً من الإنترنت.
+                    الإعدادات موجودة بوضوح في قائمة Network Settings لكل كونسول.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fire-stick-proxy',
+        slug: 'fire-stick-proxy',
+        title: 'بروكسي على Amazon Fire Stick',
+        excerpt: 'تجاوز الحجب في أجهزة البث الصغيرة.',
+        date: '2026-09-15',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Fire Stick مبني على أندرويد، لكنه لا يظهر إعدادات البروكسي بسهولة.
+                    الحل الأسهل هو تثبيت تطبيق Downloader واستخدامه لتحميل تطبيق بروكسي مخصص (APK) وتثبيته يدوياً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'apple-tv-proxy',
+        slug: 'apple-tv-proxy',
+        title: 'Web Proxy على Apple TV',
+        excerpt: 'إعداد البروكسي في بيئة tvOS.',
+        date: '2026-09-16',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في Apple TV، يمكنك استخدام أداة Apple Configurator على الماك لإنشاء "ملف تعريف" (Profile) يحتوي على إعدادات البروكسي والشهادات، ثم تثبيته على التلفاز. هذه هي الطريقة الرسمية والموثوقة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'wsl-proxy-setup',
+        slug: 'wsl-proxy-setup',
+        title: 'إعداد بروكسي في بيئة WSL (Windows Subsystem for Linux)',
+        excerpt: 'التحدي المزدوج: لينكس داخل ويندوز.',
+        date: '2026-09-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    WSL 2 لديه شبكة افتراضية خاصة. لكي يرى البروكسي الموجود على الويندوز، يجب استخدام IP المحول الافتراضي (vEthernet).
+                    يمكنك كتابة سكربت صغير في <code>.bashrc</code> يستخرج هذا الـ IP تلقائياً ويضعه في متغير <code>http_proxy</code> عند كل تشغيل.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'chrome-proxy-guide',
+        slug: 'chrome-proxy-guide',
+        title: 'إعداد Web Proxy في Google Chrome خطوة بخطوة',
+        excerpt: 'هل تعلم أن كروم يستخدم إعدادات النظام؟',
+        date: '2026-09-18',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    كروم ليس لديه إعدادات بروكسي مستقلة (على عكس فايرفوكس).
+                    عندما تضغط على Change Proxy Settings، سيفتح لك نافذة إعدادات الويندوز أو الماك.
+                    لتجاوز هذا، يجب استخدام <a href="/blog/proxy-extensions-chrome">إضافات المتصفح</a> أو تشغيل كروم من سطر الأوامر مع بارامتر <code>--proxy-server</code>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'firefox-proxy-guide',
+        slug: 'firefox-proxy-guide',
+        title: 'تكوين بروكسي في Mozilla Firefox',
+        excerpt: 'المتصفح الوحيد الذي يحترم استقلاليته.',
+        date: '2026-09-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    فايرفوكس متميز بقدرته على استخدام إعدادات بروكسي منفصلة تماماً عن النظام.
+                    اذهب إلى Settings > Network Settings. يمكنك اختيار "No proxy" حتى لو كان النظام يستخدم بروكسي، أو العكس.
+                    هذا يجعله المفضل للمطورين ومختبري الاختراق.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'edge-proxy-guide',
+        slug: 'edge-proxy-guide',
+        title: 'Web Proxy في Microsoft Edge',
+        excerpt: 'كروم في ثوب مايكروسوفت: كيف يتعامل مع البروكسي؟',
+        date: '2026-09-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    مثل كروم، يعتمد Edge على النظام.
+                    لكنه يدعم سياسات المؤسسات (Group Policies) بشكل ممتاز، مما يسمح لمديري الأنظمة بفرض إعدادات بروكسي معينة ومميزة لـ Edge فقط داخل الشركة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'safari-proxy-guide',
+        slug: 'safari-proxy-guide',
+        title: 'إعداد بروكسي في Safari',
+        excerpt: 'التكامل التام مع macOS.',
+        date: '2026-09-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    سفاري لا يملك أي إعدادات خاصة. هو واجهة لشبكة نظام ماك.
+                    أي تغيير في Network Preferences ينعكس فوراً على سفاري دون الحاجة لإعادة التشغيل.
+                    يدعم سفاري ملفات PAC بشكل ممتاز وسريع جداً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'opera-proxy-guide',
+        slug: 'opera-proxy-guide',
+        title: 'تكوين Web Proxy في Opera Browser',
+        excerpt: 'البروكسي المدمج (VPN) وإعدادات النظام.',
+        date: '2026-09-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    أوبرا يأتي مع "VPN" مجاني مدمج (هو تقنياً Secure Proxy).
+                    إذا فعلته، سيتجاوز أي إعدادات بروكسي أخرى في النظام.
+                    للاستخدام الاحترافي، يجب تعطيل الـ VPN المدمج واستخدام إضافات مثل SwitchyOmega.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'brave-proxy-guide',
+        slug: 'brave-proxy-guide',
+        title: 'بروكسي في Brave Browser',
+        excerpt: 'الخصوصية والبروكسي: هل Tor Tabs تغنيك؟',
+        date: '2026-09-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Brave يتميز بتبويبات Tor المدمجة (Private Window with Tor).
+                    هذا في الواقع بروكسي SOCKS5 يمرر بياناتك عبر شبكة Tor.
+                    للاستخدام العادي، يعتمد Brave على إعدادات كروم والنظام.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'vivaldi-proxy-guide',
+        slug: 'vivaldi-proxy-guide',
+        title: 'Web Proxy في Vivaldi Browser',
+        excerpt: 'للمستخدمين المتقدمين: تخصيص كل شيء.',
+        date: '2026-09-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    فيفالدي، المتصفح القابل للتخصيص، يتبع أيضاً نهج كروم في البروكسي.
+                    لكنه يوفر اختصارات لوحة مفاتيح سريعة يمكن برمجتها لتشغيل وإيقاف إضافات البروكسي بسرعة، مما يجعله مثالياً لمن يتنقل بين البروكسيات كثيراً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'best-chrome-proxy-extensions',
+        slug: 'best-chrome-proxy-extensions',
+        title: 'أفضل إضافات البروكسي لمتصفح Chrome في 2025',
+        excerpt: 'أدوات لا غنى عنها لإدارة البروكسي.',
+        date: '2026-09-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    1. <strong>SwitchyOmega:</strong> الملك المتوج. مفتوح المصدر وقوي.
+                    2. <strong>FoxyProxy:</strong> واجهة حديثة ودعم ممتاز للقواعد.
+                    3. <strong>SmartProxy Extension:</strong> ممتاز إذا كنت مشتركاً في خدماتهم، يوفر واجهة سهلة لاختيار الدولة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'best-firefox-proxy-extensions',
+        slug: 'best-firefox-proxy-extensions',
+        title: 'أفضل إضافات البروكسي لمتصفح Firefox',
+        excerpt: 'حاويات فايرفوكس (Containers) والبروكسي.',
+        date: '2026-09-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    ميزة "Multi-Account Containers" في فايرفوكس تسمح لك بتعيين بروكسي مختلف لكل تبويب!
+                    يمكنك تصفح موقعك الشخصي بـ IP منزلك، وموقع العمل بـ IP الشركة، في نفس النافذة جنباً إلى جنب.
+                    إضافة "Container Proxy" هي الأفضل لهذا الغرض.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'browser-proxy-handling',
+        slug: 'browser-proxy-handling',
+        title: 'كيف يتعامل المتصفح مع إعدادات البروكسي',
+        excerpt: 'ماذا يحدث خلف الكواليس عندما تطلب موقعاً؟',
+        date: '2026-09-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما تطلب google.com:
+                    1. يتحقق المتصفح من ملف PAC (إذا وجد).
+                    2. إذا لم يجد، يتحقق من الإعدادات اليدوية.
+                    3. إذا كان البروكسي SOCKS5، يقرر هل يرسل طلب DNS محلياً أم عبر البروكسي (Remote DNS).
+                    فهم هذه الخطوات يحل 90% من مشاكل الاتصال.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'foxyproxy-guide',
+        slug: 'foxyproxy-guide',
+        title: 'FoxyProxy: شرح واستخدام',
+        excerpt: 'كيفية إعداد القواعد الملونة والتوجيه الذكي.',
+        date: '2026-09-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    قوة FoxyProxy تكمن في الأنماط (Patterns).
+                    يمكنك قول: "استخدم البروكسي الأمريكي فقط لـ netflix.com، واستخدم البروكسي البريطاني لـ bbc.co.uk، واترك الباقي مباشر".
+                    كل قاعدة لها لون، وعندما يضيء شريط الأدوات بهذا اللون، تعرف أي بروكسي يعمل حالياً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'switchyomega-guide',
+        slug: 'switchyomega-guide',
+        title: 'SwitchyOmega: إدارة بروكسيات متعددة',
+        excerpt: 'إنشاء ملفات تعريف (Profiles) والتبديل السريع.',
+        date: '2026-09-29',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    SwitchyOmega هو الخيار المفضل للمطورين.
+                    يتيح لك إنشاء "ملف تعريف" لكل خادم بروكسي، ثم إنشاء "ملف تعريف التبديل" (Switch Profile) الذي يحتوي على القواعد المعقدة.
+                    يدعم استيراد وتصدير الإعدادات، مما يسهل مشاركتها بين أعضاء الفريق.
+                </p>
+            </div>
+        `
     }
+,
+    {
+        id: 'auto-switch-proxy-location',
+        slug: 'auto-switch-proxy-location',
+        title: 'كيفية تبديل البروكسي تلقائيًا حسب الموقع',
+        excerpt: 'استخدم إضافات المتصفح وملفات PAC لتبديل البروكسي تلقائيًا بناءً على النطاق أو عنوان IP.',
+        date: '2026-09-30',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    التبديل اليدوي بين البروكسيات متعب. تخيل أن المتصفح يعرف تلقائيًا: "إذا فتحت موقع الشركة، استخدم بروكسي العمل. إذا فتحت Netflix، استخدم الاتصال المباشر".
+                </p>
+                <h2>استخدام ملفات PAC</h2>
+                <p>
+                    ملفات <a href="/blog/proxy-pac-file-guide">Proxy Auto-Config (PAC)</a> هي الطريقة المعيارية. هي ملفات JavaScript بسيطة.
+                </p>
+                <pre><code class="language-javascript">
+                function FindProxyForURL(url, host) {
+                    if (shExpMatch(host, "*.internal.com")) {
+                        return "PROXY 192.168.1.1:8080";
+                    }
+                    if (isInNet(myIpAddress(), "10.0.0.0", "255.0.0.0")) {
+                        return "DIRECT";
+                    }
+                    return "PROXY 192.168.1.2:8080";
+                }
+                </code></pre>
+            </div>
+        `
+    },
+    {
+        id: 'incognito-mode-proxy',
+        slug: 'incognito-mode-proxy',
+        title: 'Web Proxy في وضع التصفح الخفي: هل يعمل؟',
+        excerpt: 'هل يحميك وضع التصفح الخفي عند استخدام بروكسي؟ وكيف تفعّل الإضافات فيه.',
+        date: '2026-10-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يعتقد الكثيرون أن "التصفح الخفي" (Incognito Mode) يخفي هويتهم عن مزود الخدمة أو البروكسي. هذا خطأ شائع.
+                    التصفح الخفي يمنع المتصفح فقط من حفظ السجل (History) والكوكيز محليًا.
+                </p>
+                <h2>تفعيل البروكسي في Incognito</h2>
+                <p>
+                    بشكل افتراضي، لا تعمل إضافات البروكسي في هذا الوضع. يجب تفعيل خيار "Allow in Incognito" من صفحة إدارة الإضافات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-browser-extensions-impact',
+        slug: 'proxy-browser-extensions-impact',
+        title: 'كيف يؤثر البروكسي على إضافات المتصفح',
+        excerpt: 'بعض الإضافات قد تتوقف عن العمل أو تسرب بياناتك عند تفعيل البروكسي.',
+        date: '2026-10-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما تغير إعدادات البروكسي، فإنك تغير مسار حركة المرور لكل المتصفح. لكن ماذا عن الإضافات الأخرى؟
+                </p>
+                <h2>إضافات VPN vs Proxy</h2>
+                <p>
+                    إذا كنت تشغل إضافة VPN وإضافة Proxy معًا، فمن سيفوز؟ عادةً، الإضافة التي تم تثبيتها أو تفعيلها أخيرًا هي التي تسيطر على الإعدادات.
+                    Chrome لا يسمح لإضافتين بالتحكم في البروكسي في نفس الوقت.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'browser-proxy-vs-system-proxy',
+        slug: 'browser-proxy-vs-system-proxy',
+        title: 'بروكسي المتصفح مقابل بروكسي النظام',
+        excerpt: 'هل يجب أن تضبط البروكسي في إعدادات Windows أم في Chrome؟ ما الفرق؟',
+        date: '2026-10-03',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يمكنك إعداد البروكسي في مكانين: داخل المتصفح (عبر إضافة) أو في إعدادات نظام التشغيل.
+                </p>
+                <h2>بروكسي النظام (System Proxy)</h2>
+                <p>
+                    يؤثر على جميع التطبيقات التي تحترم إعدادات النظام (Chrome, Edge, Spotify, Slack).
+                    هو الخيار الأفضل لبيئات العمل المؤسسية.
+                </p>
+                <h2>بروكسي المتصفح (Browser Proxy)</h2>
+                <p>
+                    يؤثر فقط على حركة مرور المتصفح. مفيد للمطورين أو لتجاوز الحجب لمواقع معينة دون التأثير على بقية الجهاز.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-browser-caching',
+        slug: 'web-proxy-browser-caching',
+        title: 'Web Proxy وتخزين المتصفح المؤقت',
+        excerpt: 'كيف تتفاعل ملفات الكاش في متصفحك مع كاش البروكسي؟',
+        date: '2026-10-04',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هناك مستويان من التخزين المؤقت (Caching): في جهازك (Browser Cache) وفي السيرفر الوسيط (Proxy Cache).
+                </p>
+                <h2>تحديث المحتوى (Cache Invalidation)</h2>
+                <p>
+                    أحيانًا تضغط Refresh لكن الصفحة لا تتحدث. قد يكون السبب أن البروكسي يحتفظ بنسخة قديمة ويصر على إرسالها لك.
+                    استخدم <code>Ctrl + F5</code> لإجبار المتصفح على إرسال طلب <code>Cache-Control: no-cache</code> للبروكسي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'clear-proxy-settings-browser',
+        slug: 'clear-proxy-settings-browser',
+        title: 'كيفية مسح إعدادات البروكسي من المتصفح',
+        excerpt: 'خطوات تنظيف المتصفح من أي إعدادات بروكسي عالقة أو خبيثة.',
+        date: '2026-10-05',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    أحيانًا تتسبب البرمجيات الخبيثة (Adware) في تثبيت بروكسي إجباري لعرض إعلانات.
+                </p>
+                <h2>في Chrome</h2>
+                <ol>
+                    <li>اذهب إلى الإعدادات > النظام.</li>
+                    <li>اضغط على "فتح إعدادات الخادم الوكيل لجهاز الكمبيوتر".</li>
+                    <li>تأكد من إلغاء تفعيل "Use a proxy server".</li>
+                </ol>
+                <h2>في Firefox</h2>
+                <p>
+                    Firefox يتميز بإعدادات بروكسي مستقلة. اذهب إلى Network Settings واختر "No proxy".
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'cross-browser-proxy-testing',
+        slug: 'cross-browser-proxy-testing',
+        title: 'بروكسي لاختبار التوافق عبر المتصفحات',
+        excerpt: 'كيف تتأكد أن موقعك يعمل عبر البروكسي على Safari و Chrome و Firefox؟',
+        date: '2026-10-06',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بعض المتصفحات تتعامل بصرامة أكبر مع شهادات SSL الموقعة ذاتيًا (Self-signed) المستخدمة في البروكسي.
+                    Safari مثلًا يرفض الاتصال فورًا إذا لم تكن الشهادة موثوقة تمامًا في النظام.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-browser-performance',
+        slug: 'proxy-browser-performance',
+        title: 'Web Proxy وأداء المتصفح: تأثيرات وحلول',
+        excerpt: 'هل البروكسي يبطئ التصفح؟ وكيف تحسن الأداء؟',
+        date: '2026-10-07',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نظريًا، البروكسي يضيف خطوة إضافية للاتصال. لكن عمليًا، البروكسي الجيد (Caching Proxy) يسرع التصفح بتخزين الصور والملفات الثقيلة.
+                </p>
+                <h2>حلول البطء</h2>
+                <ul>
+                    <li>استخدم بروتوكول HTTP/2 في البروكسي.</li>
+                    <li>تأكد من أن البروكسي يدعم DNS over HTTPS لتسريع حل الأسماء.</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-vs-vpn-comparison-2025',
+        slug: 'proxy-vs-vpn-comparison-2025',
+        title: 'Web Proxy مقابل VPN: مقارنة شاملة 2025',
+        excerpt: 'الجدل الأزلي: أيهما أفضل لخصوصيتك واحتياجاتك؟',
+        date: '2026-10-08',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الفرق الرئيسي: VPN يغلف كل حركة مرور الجهاز بتشفير (Encryption)، بينما البروكسي يعمل غالبًا على مستوى التطبيق (Application Level) وقد لا يشفر البيانات.
+                </p>
+                <h2>متى تستخدم البروكسي؟</h2>
+                <ul>
+                    <li>لتجاوز قيود جغرافية بسيطة (Netflix, Hulu).</li>
+                    <li>لتحسين السرعة (Caching).</li>
+                    <li>للتحكم في الوصول في الشركات.</li>
+                </ul>
+                <h2>متى تستخدم VPN؟</h2>
+                <ul>
+                    <li>للخصوصية القصوى في شبكات Wi-Fi العامة.</li>
+                    <li>لإخفاء نشاطك عن مزود الخدمة تمامًا.</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'squid-vs-nginx-proxy',
+        slug: 'squid-vs-nginx-proxy',
+        title: 'Squid مقابل Nginx: أيهما أفضل كبروكسي',
+        excerpt: 'مقارنة تقنية بين عملاقي البروكسي مفتوح المصدر.',
+        date: '2026-10-09',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Squid هو "Forward Proxy" متخصص، بينما Nginx هو "Reverse Proxy" و Web Server في الأساس.
+                </p>
+                <h2>Squid</h2>
+                <p>ملك الكاشينج والتحكم في الوصول (ACLs). الخيار الأول للشركات لفلترة الإنترنت للموظفين.</p>
+                <h2>Nginx</h2>
+                <p>ملك الأداء العالي في توزيع الحمل (Load Balancing) وحماية السيرفرات الخلفية. أخف وأسرع في التعامل مع آلاف الاتصالات المتزامنة.</p>
+            </div>
+        `
+    },
+    {
+        id: 'haproxy-vs-nginx',
+        slug: 'haproxy-vs-nginx',
+        title: 'HAProxy مقابل Nginx Reverse Proxy',
+        excerpt: 'عندما تحتاج لأداء عالٍ جدًا، من تختار؟',
+        date: '2026-10-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    HAProxy هو موازن أحمال (Load Balancer) متخصص جدًا. يفتقر لميزات الويب سيرفر الموجودة في Nginx، لكنه يتفوق في خوارزميات التوجيه المعقدة.
+                </p>
+                <p>
+                    استخدم HAProxy إذا كنت تحتاج لتوجيه دقيق جدًا لحركة المرور (TCP/HTTP) في بيئة Microservices ضخمة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'charles-vs-fiddler',
+        slug: 'charles-vs-fiddler',
+        title: 'Charles Proxy مقابل Fiddler: أيهما تختار',
+        excerpt: 'مقارنة بين أشهر أداتين للـ Debugging.',
+        date: '2026-10-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Fiddler (الآن Fiddler Everywhere) هو المعيار في بيئة Windows و .NET.
+                    Charles Proxy هو المفضل لمطوري Mac و iOS.
+                </p>
+                <h2>نقاط القوة</h2>
+                <ul>
+                    <li><strong>Fiddler:</strong> سكريبتات قوية جدًا للتعديل التلقائي (FiddlerScript).</li>
+                    <li><strong>Charles:</strong> واجهة أبسط وأسهل في تتبع جلسات المستخدم (Sessions).</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'burp-suite-vs-owasp-zap',
+        slug: 'burp-suite-vs-owasp-zap',
+        title: 'Burp Suite مقابل OWASP ZAP كبروكسي أمان',
+        excerpt: 'أدوات اختبار الاختراق: المجاني مقابل المدفوع.',
+        date: '2026-10-12',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Burp Suite Pro هو المعيار الصناعي لاختبار الاختراق (Penetration Testing).
+                    OWASP ZAP هو البديل المجاني المفتوح المصدر.
+                </p>
+                <p>
+                    ZAP رائع للأتمتة (Automation) في خطوط CI/CD، بينما Burp يتفوق في الاختبار اليدوي واكتشاف الثغرات المعقدة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'free-vs-paid-proxy',
+        slug: 'free-vs-paid-proxy',
+        title: 'بروكسي مجاني مقابل مدفوع: المقارنة الكاملة',
+        excerpt: 'هل يستحق البروكسي المدفوع سعره؟ وما هي مخاطر المجاني؟',
+        date: '2026-10-13',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسيات المجانية غالبًا ما تكون بطيئة، غير مستقرة، وقد تسرق بياناتك أو تحقن إعلانات.
+                    "إذا لم تدفع ثمن المنتج، فأنت المنتج".
+                </p>
+                <h2>البروكسي المدفوع</h2>
+                <p>
+                    يضمن لك سرعة عالية، عنوان IP نظيف (غير محظور)، ودعم فني. ضروري للأعمال والتسويق.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'residential-vs-datacenter-proxy-2',
+        slug: 'residential-vs-datacenter-proxy-2',
+        title: 'Residential Proxy مقابل Datacenter Proxy',
+        excerpt: 'تحديث 2026: أيهما تختار لمشروعك؟',
+        date: '2026-10-14',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Datacenter Proxies (من خوادم سحابية) سريعة ورخيصة لكن يسهل كشفها.
+                    Residential Proxies (عناوين منزلية حقيقية) أبطأ وأغلى لكنها توفر تخفيًا عاليًا جدًا.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'socks5-vs-http-proxy-diff',
+        slug: 'socks5-vs-http-proxy-diff',
+        title: 'SOCKS5 مقابل HTTP Proxy: الفرق والاستخدامات',
+        excerpt: 'شرح تقني للبروتوكولات ومتى تستخدم كل نوع.',
+        date: '2026-10-15',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    HTTP Proxy يفهم محتوى الويب فقط (صفحات، صور).
+                    SOCKS5 هو "نفق غبي" (Dumb Pipe) ينقل أي نوع من البيانات (TCP/UDP)، مما يجعله مناسبًا للتورنت، الألعاب، والبث المباشر.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-vs-smart-dns',
+        slug: 'web-proxy-vs-smart-dns',
+        title: 'Web Proxy مقابل Smart DNS',
+        excerpt: 'لفتح المحتوى المحجوب: من الأفضل؟',
+        date: '2026-10-16',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Smart DNS لا يغير عنوان IP الخاص بك ولا يشفر البيانات. هو فقط يوجه طلبات DNS لمواقع معينة (مثل Netflix) لخوادم خاصة.
+                    البروكسي يغير عنوان IP بالكامل. Smart DNS أسرع بكثير للبث (Streaming).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'tor-vs-web-proxy',
+        slug: 'tor-vs-web-proxy',
+        title: 'Tor مقابل Web Proxy: متى تستخدم كلاً منهما',
+        excerpt: 'الخصوصية المطلقة مقابل السرعة وسهولة الاستخدام.',
+        date: '2026-10-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Tor يمرر اتصالك عبر 3 عقد (Nodes) مشفرة حول العالم. هذا يوفر مجهولية عالية جدًا لكنه بطيء للغاية.
+                    البروكسي عقدة واحدة فقط. استخدم Tor إذا كانت حياتك تعتمد على الخصوصية. استخدم البروكسي للتصفح اليومي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'forward-vs-reverse-proxy',
+        slug: 'forward-vs-reverse-proxy',
+        title: 'Forward Proxy مقابل Reverse Proxy: مقارنة عملية',
+        excerpt: 'الفرق الجوهري بين حماية العميل وحماية الخادم.',
+        date: '2026-10-18',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    <strong>Forward Proxy:</strong> يجلس أمام المستخدم (Client) ليحميه أو يراقبه أثناء الوصول للإنترنت.
+                    <strong>Reverse Proxy:</strong> يجلس أمام السيرفر (Server) ليحميه ويوزع الحمل عليه.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'transparent-vs-anonymous-proxy',
+        slug: 'transparent-vs-anonymous-proxy',
+        title: 'Transparent Proxy مقابل Anonymous Proxy',
+        excerpt: 'مستويات الخصوصية في البروكسيات.',
+        date: '2026-10-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    <strong>Transparent:</strong> يخبر الموقع بعنوان IP الحقيقي الخاص بك (لا يوفر خصوصية). يستخدم للكاشينج فقط.
+                    <strong>Anonymous:</strong> يخفي عنوان IP الخاص بك لكن يخبر الموقع أنك تستخدم بروكسي.
+                    <strong>Elite (High Anonymity):</strong> يخفي عنوانك ولا يخبر الموقع أنك تستخدم بروكسي أصلاً.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'top-5-residential-proxy-services',
+        slug: 'top-5-residential-proxy-services',
+        title: 'مقارنة بين أفضل 5 خدمات بروكسي سكني',
+        excerpt: 'مراجعة لخدمات Bright Data, Oxylabs, Smartproxy وغيرها.',
+        date: '2026-10-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    السوق مليء بالخيارات. Bright Data (سابقًا Luminati) هي الأقوى والأغلى.
+                    Smartproxy تقدم توازنًا ممتازًا بين السعر والأداء للمطورين المستقلين.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'traefik-vs-envoy-proxy',
+        slug: 'traefik-vs-envoy-proxy',
+        title: 'Traefik مقابل Envoy Proxy: أيهما أنسب',
+        excerpt: 'أدوات العصر الحديث لبيئات Cloud Native و Kubernetes.',
+        date: '2026-10-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Traefik يتميز بالبساطة والتكامل التلقائي السحري مع Docker و Kubernetes.
+                    Envoy (من تطوير Lyft) هو وحش الأداء الذي بني عليه Istio Service Mesh.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'web-proxy-vs-api-gateway',
+        slug: 'web-proxy-vs-api-gateway',
+        title: 'Web Proxy مقابل API Gateway',
+        excerpt: 'هل تحتاج لـ Kong أو Apigee أم يكفي Nginx؟',
+        date: '2026-10-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    API Gateway هو في الأساس Reverse Proxy "ذكي" جدًا. يضيف ميزات مثل إدارة الحصص (Rate Limiting)، المصادقة (OAuth)، وتحويل الطلبات (Request Transformation).
+                    البروكسي العادي يكتفي بتمرير الطلبات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'bluecoat-vs-zscaler',
+        slug: 'bluecoat-vs-zscaler',
+        title: 'مقارنة بين بروكسيات الشركات: Blue Coat vs Zscaler',
+        excerpt: 'الأجهزة التقليدية (Hardware) مقابل السحابة (Cloud Security).',
+        date: '2026-10-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    Blue Coat (الآن Symantec/Broadcom) هو ملك الـ On-premise Appliances.
+                    Zscaler قادت ثورة الانتقال للسحابة (SASE)، حيث يمر اتصال الموظف عبر سحابة Zscaler الأمنية أينما كان، دون الحاجة لـ VPN للعودة لمقر الشركة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'cloudflare-vs-akamai-reverse-proxy',
+        slug: 'cloudflare-vs-akamai-reverse-proxy',
+        title: 'Cloudflare مقابل Akamai كبروكسي عكسي',
+        excerpt: 'عمالقة الـ CDN والحماية من DDoS.',
+        date: '2026-10-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    كلاهما يعمل كـ Reverse Proxy عالمي يوزع المحتوى ويحمي من الهجمات.
+                    Cloudflare أسهل في الإعداد وأرخص للشركات الناشئة. Akamai هي الخيار المفضل للمؤسسات الضخمة والبنوك لأدائها الذي لا يضاهى.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'free-web-proxy-performance-comparison',
+        slug: 'free-web-proxy-performance-comparison',
+        title: 'مقارنة أداء أشهر بروكسيات الويب المجانية',
+        excerpt: 'اختبار عملي لسرعة واستجابة خدمات مثل HideMyAss و KProxy.',
+        date: '2026-10-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    قمنا باختبار زمن الاستجابة (Latency) وسرعة التحميل لـ 10 خدمات مجانية.
+                    النتائج تظهر أن KProxy يتفوق في الثبات، بينما يوفر CroxyProxy دعمًا أفضل لمواقع الفيديو.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'http-vs-https-proxy',
+        slug: 'http-vs-https-proxy',
+        title: 'بروكسي HTTP مقابل بروكسي HTTPS',
+        excerpt: 'الفرق بين البروكسي الآمن وغير الآمن ولماذا يهم ذلك.',
+        date: '2026-10-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بروكسي HTTP يمرر طلباتك نصًا واضحًا (Plain Text) بينك وبينه. يمكن لأي شخص في شبكتك التجسس عليك.
+                    بروكسي HTTPS يشفر الاتصال بينك وبينه، مما يوفر نفقًا آمنًا حتى لو كان الموقع النهائي لا يستخدم HTTPS.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'browser-vs-system-level-proxy',
+        slug: 'browser-vs-system-level-proxy',
+        title: 'Web Proxy على المتصفح مقابل على مستوى النظام',
+        excerpt: 'متى يجب أن تضبط البروكسي للجهاز بالكامل؟',
+        date: '2026-10-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إعداد البروكسي في Chrome يؤثر على التصفح فقط.
+                    لكن ماذا لو أردت تحديث Windows أو استخدام Spotify عبر البروكسي؟ هنا تحتاج لضبطه في إعدادات الشبكة للنظام.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-proxy-connection-failed',
+        slug: 'fix-proxy-connection-failed',
+        title: 'حل مشكلة "Proxy Connection Failed"',
+        excerpt: 'دليل شامل لاستكشاف أخطاء الاتصال بالبروكسي وإصلاحها.',
+        date: '2026-10-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذه الرسالة تعني أن المتصفح لا يستطيع الوصول لخادم البروكسي.
+                    تأكد من عنوان IP والمنفذ (Port)، وتحقق من جدار الحماية (Firewall) الذي قد يمنع الاتصال بالمنفذ 3128 أو 8080.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-407-proxy-authentication',
+        slug: 'fix-407-proxy-authentication',
+        title: 'إصلاح خطأ 407 Proxy Authentication Required',
+        excerpt: 'كيف تتعامل مع مشاكل تسجيل الدخول للبروكسي.',
+        date: '2026-10-29',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الخطأ يعني أن البروكسي يعمل، لكنه يطلب اسم مستخدم وكلمة مرور.
+                    إذا كنت متأكدًا من صحة البيانات، فقد تكون المشكلة في طريقة التشفير (NTLM vs Basic Auth).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-slow-internet-proxy',
+        slug: 'fix-slow-internet-proxy',
+        title: 'حل مشكلة بطء الإنترنت عند استخدام البروكسي',
+        excerpt: 'خطوات عملية لتسريع الاتصال.',
+        date: '2026-10-30',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البطء قد يكون بسبب بعد الخادم الجغرافي، أو ازدحام المستخدمين.
+                    جرب استخدام بروتوكول UDP (عبر SOCKS5) بدلاً من TCP، أو اختر خادماً أقرب لموقعك.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-unable-connect-proxy',
+        slug: 'fix-unable-connect-proxy',
+        title: 'إصلاح خطأ "Unable to Connect to Proxy Server"',
+        excerpt: 'حلول لمستخدمي Windows و Mac.',
+        date: '2026-10-31',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    غالبًا ما يكون السبب "بقايا" إعدادات بروكسي قديم.
+                    استخدم الأمر <code>netsh winhttp reset proxy</code> في Windows لإعادة ضبط الإعدادات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-dns-leak-proxy',
+        slug: 'fix-dns-leak-proxy',
+        title: 'حل مشكلة تسرب DNS أثناء استخدام البروكسي',
+        excerpt: 'كيف تتأكد أن مزود الخدمة لا يرى المواقع التي تزورها.',
+        date: '2026-11-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يحدث تسرب DNS عندما يذهب طلب الموقع عبر البروكسي، لكن طلب "ترجمة الاسم" (DNS Query) يذهب مباشرة لمزود الخدمة.
+                    الحل هو تفعيل "Remote DNS" في إعدادات عميل البروكسي (مثل Firefox أو Proxifier).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-ssl-certificate-proxy-issues',
+        slug: 'fix-ssl-certificate-proxy-issues',
+        title: 'إصلاح مشاكل SSL Certificate مع البروكسي',
+        excerpt: 'لماذا تظهر رسالة "Your connection is not private"؟',
+        date: '2026-11-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عند استخدام HTTPS Proxy يقوم بفك التشفير (SSL Inspection)، يجب تثبيت شهادة الجذر (Root CA) الخاصة بالبروكسي في متصفحك أو نظامك لكي يثق بها.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-sites-not-loading-proxy',
+        slug: 'fix-sites-not-loading-proxy',
+        title: 'حل مشكلة عدم عمل المواقع مع البروكسي',
+        excerpt: 'بعض المواقع تحظر البروكسيات المعروفة.',
+        date: '2026-11-03',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    مواقع البنوك وخدمات البث تمتلك قوائم سوداء لعناوين IP الخاصة بالداتا سنتر.
+                    الحل الوحيد هو استخدام Residential Proxy نظيف.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-err-proxy-connection-failed-chrome',
+        slug: 'fix-err-proxy-connection-failed-chrome',
+        title: 'إصلاح خطأ ERR_PROXY_CONNECTION_FAILED في Chrome',
+        excerpt: 'خطوات محددة لمتصفح جوجل كروم.',
+        date: '2026-11-04',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    امسح ملفات تعريف الارتباط (Cookies)، وعطل الإضافات، وجرب التصفح الخفي.
+                    إذا استمرت المشكلة، أعد تعيين إعدادات Chrome للوضع الافتراضي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-proxy-access-denied',
+        slug: 'fix-proxy-access-denied',
+        title: 'حل مشكلة البروكسي يمنع الوصول لمواقع معينة',
+        excerpt: 'كيف تتجاوز فلاتر البروكسي في العمل أو المدرسة.',
+        date: '2026-11-05',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إذا كانت صفحة "Access Denied" تظهر لك، فهذا يعني أن البروكسي يعمل ويقوم بواجبه!
+                    لتجاوز ذلك، يمكنك استخدام نفق SSH أو VPN عبر المنفذ 443، حيث يصعب على البروكسي تمييزه عن تصفح HTTPS العادي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-websocket-proxy-issues',
+        slug: 'fix-websocket-proxy-issues',
+        title: 'إصلاح مشاكل WebSocket مع البروكسي',
+        excerpt: 'لماذا تفشل تطبيقات الشات والإشعارات الفورية؟',
+        date: '2026-11-06',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بروتوكول WebSocket يحتاج لاتصال دائم ومفتوح، وهو ما قد يقطعه البروكسي إذا لم يُضبط جيداً (Timeout settings).
+                    تأكد من أن البروكسي يدعم ترقية الاتصال (Connection Upgrade) ورأس <code>Upgrade: websocket</code>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-proxy-timeout',
+        slug: 'fix-proxy-timeout',
+        title: 'حل مشكلة Timeout عند استخدام البروكسي',
+        excerpt: 'زيادة مهلة الانتظار للاتصالات البطيئة.',
+        date: '2026-11-07',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في Nginx أو Squid، الإعدادات الافتراضية للـ Timeout قد تكون قصيرة (60 ثانية).
+                    للملفات الكبيرة أو التقارير الطويلة، يجب زيادة <code>proxy_read_timeout</code>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-proxy-cookie-issues',
+        slug: 'fix-proxy-cookie-issues',
+        title: 'إصلاح مشاكل الكوكيز مع البروكسي',
+        excerpt: 'لماذا يتم تسجيل خروجك باستمرار؟',
+        date: '2026-11-08',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بعض البروكسيات (خاصة Reverse Proxies) قد تقوم بحذف أو تعديل رؤوس الكوكيز لأسباب أمنية.
+                    تأكد من إعداد <code>proxy_pass_header Set-Cookie;</code> لتمرير الكوكيز بشكل صحيح.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-cors-proxy-issues',
+        slug: 'fix-cors-proxy-issues',
+        title: 'حل مشكلة CORS عبر البروكسي',
+        excerpt: 'كيف تتعامل مع أخطاء Cross-Origin Resource Sharing.',
+        date: '2026-11-09',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسي يمكنه حل مشاكل CORS بإضافة الرؤوس اللازمة (Access-Control-Allow-Origin) للاستجابة، مما يسمح للفرونت إند بالتحدث مع باك إند في نطاق مختلف.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-proxy-auth-issues',
+        slug: 'fix-proxy-auth-issues',
+        title: 'إصلاح مشاكل المصادقة مع البروكسي',
+        excerpt: 'التعامل مع Kerberos و NTLM و Basic Auth.',
+        date: '2026-11-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في البيئات المؤسسية، قد يفشل البروكسي في تمرير تذكرة Kerberos.
+                    تأكد من تطابق وقت الساعة بين العميل والسيرفر والبروكسي بدقة (NTP sync).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-email-proxy-issues',
+        slug: 'fix-email-proxy-issues',
+        title: 'حل مشكلة عدم عمل البريد الإلكتروني مع البروكسي',
+        excerpt: 'لماذا لا يعمل Outlook أو Thunderbird؟',
+        date: '2026-11-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بروتوكولات البريد (SMTP, IMAP, POP3) لا تعمل عبر HTTP Proxy العادي.
+                    تحتاج لبروكسي SOCKS5 أو ضبط إعدادات خاصة في برنامج البريد لدعم البروكسي (إن وجد).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-502-bad-gateway',
+        slug: 'fix-502-bad-gateway',
+        title: 'إصلاح خطأ 502 Bad Gateway في البروكسي العكسي',
+        excerpt: 'ماذا يعني هذا الخطأ وكيف تصلحه في Nginx.',
+        date: '2026-11-12',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يعني أن البروكسي (Nginx) حاول الاتصال بالسيرفر الخلفي (Backend) وفشل.
+                    قد يكون السيرفر الخلفي متوقفًا، أو يرفض الاتصال، أو بطيئًا جدًا.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-504-gateway-timeout',
+        slug: 'fix-504-gateway-timeout',
+        title: 'حل مشكلة 504 Gateway Timeout مع البروكسي',
+        excerpt: 'الفرق بين 502 و 504 وكيفية الحل.',
+        date: '2026-11-13',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    502: رد سيء أو لا يوجد اتصال.
+                    504: الاتصال تم، لكن السيرفر الخلفي تأخر في الرد أكثر من المهلة المحددة.
+                    الحل هو تحسين أداء السيرفر الخلفي أو زيادة مهلة الانتظار في البروكسي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-file-upload-proxy',
+        slug: 'fix-file-upload-proxy',
+        title: 'إصلاح مشاكل تحميل الملفات عبر البروكسي',
+        excerpt: 'لماذا تفشل المرفقات الكبيرة؟',
+        date: '2026-11-14',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسيات لها حد أقصى لحجم الطلب (client_max_body_size في Nginx).
+                    إذا كنت ترفع ملفات فيديو أو صور كبيرة، يجب زيادة هذا الحد.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-javascript-proxy-issues',
+        slug: 'fix-javascript-proxy-issues',
+        title: 'حل مشكلة عدم عمل JavaScript مع البروكسي',
+        excerpt: 'عندما يقوم البروكسي بتعطيل وظائف الموقع.',
+        date: '2026-11-15',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بعض البروكسيات الأمنية تقوم بـ "تطهير" (Sanitization) للصفحات وتحذف وسوم Script لحماية المستخدم.
+                    تأكد من إعدادات الأمان في البروكسي الخاص بك واستثنِ المواقع الموثوقة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'fix-redirect-loop-proxy',
+        slug: 'fix-redirect-loop-proxy',
+        title: 'إصلاح مشاكل Redirect Loop مع البروكسي',
+        excerpt: 'مشكلة "Too many redirects" الشهيرة.',
+        date: '2026-11-16',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تحدث غالبًا عندما يكون البروكسي ينهي اتصال SSL (SSL Termination) ويتحدث مع الخلفية عبر HTTP، بينما التطبيق الخلفي يعتقد أنه يجب أن يكون آمنًا فيقوم بإعادة التوجيه لـ HTTPS، وتستمر الحلقة.
+                    الحل: مرر رأس <code>X-Forwarded-Proto: https</code>.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'ai-proxy-optimization',
+        slug: 'ai-proxy-optimization',
+        title: 'كيف يستخدم الذكاء الاصطناعي في تحسين أداء البروكسي',
+        excerpt: 'مستقبل البروكسيات الذكية.',
+        date: '2026-11-17',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الذكاء الاصطناعي يمكنه التنبؤ بالصفحات التي ستطلبها لاحقًا ويقوم بتحميلها مسبقًا (Prefetching) في الكاش، مما يجعل التصفح فوريًا.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-for-ai-training-data',
+        slug: 'proxy-for-ai-training-data',
+        title: 'بروكسي لجمع بيانات تدريب نماذج AI',
+        excerpt: 'كيف تجمع ملايين الصفحات لتدريب LLMs دون الحظر.',
+        date: '2026-11-18',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تدريب نماذج مثل GPT يتطلب زحفًا هائلاً للويب.
+                    بدون شبكة بروكسي سكنية ضخمة وتدوير ذكي لعناوين IP، ستقوم المواقع بحظر خوادمك فورًا.
+                </p>
+            </div>
+        `
+    }
+
 ];
 
 module.exports = articles;
