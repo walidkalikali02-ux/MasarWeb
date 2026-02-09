@@ -9055,6 +9055,190 @@ no_proxy="localhost,127.0.0.1,::1"</code></pre>
         `
     }
 
+,
+
+    {
+        id: 'ai-traffic-analysis-proxy',
+        slug: 'ai-traffic-analysis-proxy',
+        title: 'Web Proxy وتحليل حركة المرور بالذكاء الاصطناعي',
+        excerpt: 'كيف يمكن لخوارزميات ML تحليل سجلات البروكسي لاكتشاف الأنماط غير الطبيعية.',
+        date: '2026-11-19',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تحليل سجلات البروكسي (Proxy Logs) يدويًا أصبح مستحيلاً مع حجم البيانات الضخم.
+                    أدوات <a href="/blog/ai-proxy-optimization">الذكاء الاصطناعي</a> يمكنها الآن قراءة الملايين من الأسطر واكتشاف الشذوذ (Anomaly Detection) في الوقت الفعلي.
+                </p>
+                <h2>ماذا يمكن للذكاء الاصطناعي اكتشافه؟</h2>
+                <ul>
+                    <li>محاولات تسريب البيانات (Data Exfiltration) البطيئة التي لا تلاحظها الجدران النارية التقليدية.</li>
+                    <li>أنماط الاتصال الخاصة ببرمجيات التجسس (C2 Servers).</li>
+                    <li>سلوك الموظفين غير المعتاد (User Behavior Analytics).</li>
+                </ul>
+            </div>
+        `
+    },
+    {
+        id: 'ai-detect-proxy-abuse',
+        slug: 'ai-detect-proxy-abuse',
+        title: 'استخدام AI لاكتشاف إساءة استخدام البروكسي',
+        excerpt: 'حماية البنية التحتية من الاستغلال كمنصة للهجمات.',
+        date: '2026-11-20',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    المهاجمون يحاولون دائمًا استخدام البروكسيات المفتوحة (Open Proxies) لإخفاء هويتهم أثناء شن الهجمات.
+                    أنظمة AI الحديثة يمكنها التمييز بين حركة المرور البشرية وحركة الروبوتات الخبيثة بدقة عالية.
+                </p>
+                <h2>بصمة المتصفح (TLS Fingerprinting)</h2>
+                <p>
+                    يستخدم AI تقنيات مثل <a href="/blog/proxy-browser-extensions-impact">JA3 Fingerprinting</a> لتحديد هوية العميل الحقيقي بغض النظر عن الـ User-Agent المزيف الذي يرسله.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'smart-ai-powered-proxy',
+        slug: 'smart-ai-powered-proxy',
+        title: 'بروكسي ذكي: كيف يعمل AI-Powered Proxy',
+        excerpt: 'الجيل الجديد من البروكسيات التي تتعلم وتتطور ذاتيًا.',
+        date: '2026-11-21',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    البروكسي التقليدي يعمل بقواعد ثابتة (Static Rules). البروكسي الذكي يتعلم من حركة المرور.
+                    إذا لاحظ البروكسي أن موقعًا معينًا يستغرق وقتًا طويلاً للتحميل، قد يقوم تلقائيًا بتغيير مسار التوجيه (Routing) لخادم أسرع.
+                </p>
+                <h2>التكيف مع الحظر</h2>
+                <p>
+                    عند اكتشاف حظر لعنوان IP، يقوم البروكسي الذكي فورًا بالتبديل إلى <a href="/blog/residential-vs-datacenter-proxy-2">عنوان سكني</a> جديد دون تدخل بشري، مما يضمن استمرارية الخدمة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-testing-ai-apps',
+        slug: 'proxy-testing-ai-apps',
+        title: 'Web Proxy لاختبار تطبيقات الذكاء الاصطناعي',
+        excerpt: 'ضمان جودة وأمان تطبيقات AI قبل إطلاقها.',
+        date: '2026-11-22',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تطبيقات AI تعتمد بشكل كبير على واجهات برمجة التطبيقات (APIs).
+                    استخدام بروكسي مثل <a href="/blog/charles-proxy-guide">Charles</a> أو Mitmproxy يسمح للمطورين باعتراض الطلبات المرسلة لنماذج الذكاء الاصطناعي وتعديلها لاختبار استجابة التطبيق للأخطاء أو البيانات غير المتوقعة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-monitor-ai-api-calls',
+        slug: 'proxy-monitor-ai-api-calls',
+        title: 'بروكسي لمراقبة API calls لنماذج AI',
+        excerpt: 'حساب التكاليف ومراقبة الأداء لخدمات مثل OpenAI و Anthropic.',
+        date: '2026-11-23',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    كل طلب لنموذج GPT-4 يكلف مالاً. في الشركات الكبيرة، قد تخرج الفواتير عن السيطرة.
+                    وضع بروكسي مركزي لجميع طلبات AI يسمح بمراقبة الاستهلاك لكل فريق، وتطبيق سياسات (Rate Limiting) لضمان عدم تجاوز الميزانية.
+                </p>
+                <h2>Caching Responses</h2>
+                <p>
+                    يمكن للبروكسي تخزين الإجابات للأسئلة المتكررة، مما يوفر التكلفة ويسرع الاستجابة بشكل كبير.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'ai-content-filtering-proxy',
+        slug: 'ai-content-filtering-proxy',
+        title: 'كيف يساعد الذكاء الاصطناعي في تصفية المحتوى عبر البروكسي',
+        excerpt: 'تجاوز القوائم السوداء التقليدية إلى فهم سياق الصفحة.',
+        date: '2026-11-24',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الفلترة التقليدية تعتمد على قوائم النطاقات المحظورة. لكن ماذا لو كان المحتوى الضار داخل موقع إخباري موثوق؟
+                    هنا يأتي دور <a href="/blog/web-proxy-quality-of-service-qos">AI Content Analysis</a>. يقوم البروكسي بتحليل النصوص والصور في الصفحة "أثناء الطيران" (On-the-fly) وحجب المحتوى غير المناسب فقط.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-ml-model-security',
+        slug: 'proxy-ml-model-security',
+        title: 'Web Proxy وأمان نماذج Machine Learning',
+        excerpt: 'حماية النماذج من هجمات Prompt Injection و Data Poisoning.',
+        date: '2026-11-25',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تعريض نموذج ML للإنترنت مباشرة مخاطرة كبيرة.
+                    يجب استخدام <a href="/blog/web-proxy-vs-api-gateway">Reverse Proxy</a> متخصص كجدار حماية للذكاء الاصطناعي (AI Firewall).
+                    يقوم هذا البروكسي بفحص المدخلات (Prompts) بحثًا عن أنماط هجومية قبل وصولها للنموذج.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-scraping-training-data',
+        slug: 'proxy-scraping-training-data',
+        title: 'استخدام البروكسي في Scraping بيانات التدريب',
+        excerpt: 'التحديات التقنية والقانونية في جمع البيانات.',
+        date: '2026-11-26',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    ناقشنا سابقاً <a href="/blog/proxy-for-ai-training-data">أهمية البروكسي لجمع البيانات</a>.
+                    في هذا المقال نركز على الجانب التقني: كيفية إدارة جلسات (Sessions) طويلة الأمد وكيفية التعامل مع اختبارات CAPTCHA التي تظهر أثناء الزحف المكثف.
+                </p>
+                <div class="code-block">
+                    <pre><code class="language-python">
+# تدوير البروكسي عند مواجهة خطأ 403
+if response.status_code == 403:
+    rotate_proxy()
+    time.sleep(random.uniform(1, 3))
+    retry_request()
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-testing-chatgpt-geo',
+        slug: 'proxy-testing-chatgpt-geo',
+        title: 'بروكسي لاختبار ChatGPT API من مناطق مختلفة',
+        excerpt: 'هل تختلف استجابات AI بناءً على موقع المستخدم؟',
+        date: '2026-11-27',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نعم، قد تختلف القيود والسياسات.
+                    استخدام <a href="/blog/top-5-residential-proxy-services">بروكسي سكني</a> في دول مختلفة يسمح لك باختبار سلوك النموذج والتأكد من توافقه مع القوانين المحلية (مثل GDPR في أوروبا).
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'proxy-openai-integrations',
+        slug: 'proxy-openai-integrations',
+        title: 'Web Proxy وتكاملات OpenAI',
+        excerpt: 'كيفية ربط خدماتك بـ OpenAI بشكل آمن عبر بروكسي.',
+        date: '2026-11-28',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في البيئات المؤسسية المغلقة، قد لا يكون للسيرفرات وصول مباشر للإنترنت.
+                    لربط تطبيقك الداخلي بـ OpenAI API، يجب تكوين <code>https_proxy</code> في بيئة التشغيل الخاصة بك.
+                </p>
+                <pre><code class="language-bash">
+export https_proxy=http://proxy.company.local:8080
+python app.py
+                </code></pre>
+            </div>
+        `
+    }
 ];
 
 module.exports = articles;
