@@ -182,8 +182,8 @@
             <!-- URL Section -->
             <div id="url-section" class="vt-section" style="display: none;">
                 <div class="input-group" style="max-width: 600px; margin: 0 auto;">
-                    <input type="url" class="url-input" placeholder="http://example.com" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <button class="vt-button" style="margin-top: 1rem; width: 100%;">
+                    <input type="url" id="url-input" class="url-input" placeholder="http://example.com" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <button class="vt-button" id="scan-url-btn" style="margin-top: 1rem; width: 100%;">
                         <%= currentLang === 'ar' ? 'فحص الرابط' : 'Scan URL' %>
                     </button>
                 </div>
@@ -252,6 +252,52 @@
             if (e.target.files.length > 0) handleFile(e.target.files[0]);
         });
 
+        // URL Scan Handling
+        document.getElementById('scan-url-btn').addEventListener('click', () => {
+            const url = document.getElementById('url-input').value;
+            if (!url) {
+                alert('<%= currentLang === "ar" ? "الرجاء إدخال رابط" : "Please enter a URL" %>');
+                return;
+            }
+            handleUrl(url);
+        });
+
+        function handleUrl(url) {
+            // Show loader
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('results-area').style.display = 'none';
+            document.querySelector('#url-section').style.opacity = '0.5';
+            document.querySelector('#url-section').style.pointerEvents = 'none';
+
+            // Call API
+            fetch('/tools/virus-scanner/scan-url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loader').style.display = 'none';
+                document.querySelector('#url-section').style.opacity = '1';
+                document.querySelector('#url-section').style.pointerEvents = 'auto';
+                
+                if (data.success) {
+                    showResults(data.data);
+                } else {
+                    alert('Error: ' + (data.error || 'Scan failed'));
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error scanning URL');
+                document.getElementById('loader').style.display = 'none';
+                document.querySelector('#url-section').style.opacity = '1';
+                document.querySelector('#url-section').style.pointerEvents = 'auto';
+            });
+        }
+
         function handleFile(file) {
             // Show loader
             document.getElementById('loader').style.display = 'block';
@@ -259,13 +305,14 @@
             document.querySelector('.vt-upload-area').style.opacity = '0.5';
             document.querySelector('.vt-upload-area').style.pointerEvents = 'none';
 
-            // Simulate API call
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // Call API
             fetch('/tools/virus-scanner/scan', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ filename: file.name, size: file.size })
+                body: formData
             })
             .then(response => response.json())
             .then(data => {
@@ -275,6 +322,8 @@
                 
                 if (data.success) {
                     showResults(data.data);
+                } else {
+                    alert('Error: ' + (data.error || 'Scan failed'));
                 }
             })
             .catch(err => {

@@ -32,6 +32,7 @@
     "helmet": "^7.1.0",
     "hpp": "^0.2.3",
     "http-proxy-middleware": "^2.0.6",
+    "multer": "^2.0.2",
     "node-fetch": "^3.3.2",
     "user-agent": "^1.0.0",
     "uuid": "^9.0.1",
