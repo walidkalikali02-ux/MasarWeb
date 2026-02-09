@@ -5876,6 +5876,138 @@ curl -x socks5://127.0.0.1:9050 http://check.torproject.org
                 </p>
             </div>
         `
+    },
+    {
+        id: 'aws-proxy-setup-guide',
+        slug: 'aws-proxy-setup-guide',
+        title: 'Web Proxy في بيئة AWS: دليل شامل',
+        excerpt: 'السحابة تحتاج إلى أمان أيضاً. تعلم كيفية نشر Squid Proxy على EC2 لحماية شبكتك الافتراضية (VPC) في Amazon Web Services.',
+        date: '2026-06-30',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عند بناء بنية تحتية سحابية على AWS، غالباً ما تحتاج لمثيلات (Instances) في شبكة خاصة (Private Subnet) للوصول للإنترنت لتحديث البرمجيات دون أن تكون مكشوفة للعالم.
+                    الحل التقليدي هو NAT Gateway، لكنه مكلف. البديل الاقتصادي والمرن هو إعداد مثيل EC2 يعمل كـ <a href="/blog/squid-proxy-review">Squid Proxy</a>.
+                </p>
+
+                <h2>إعداد مثيل EC2</h2>
+                <p>
+                    <ol>
+                        <li>أطلق مثيل EC2 بنظام Amazon Linux 2023 أو Ubuntu.</li>
+                        <li>تأكد من وضعه في Public Subnet وتعيين Elastic IP له.</li>
+                        <li>قم بتعديل Security Group للسماح بحركة المرور القادمة من الـ VPC CIDR (مثلاً 10.0.0.0/16) على منفذ 3128.</li>
+                    </ol>
+                </p>
+
+                <h2>تثبيت وتكوين Squid</h2>
+                <div class="code-block">
+                    <pre><code class="language-bash">
+# تثبيت Squid
+sudo yum install squid -y
+
+# تعديل الإعدادات
+sudo nano /etc/squid/squid.conf
+# أضف السطر التالي للسماح للشبكة المحلية
+acl vpc_network src 10.0.0.0/16
+http_access allow vpc_network
+
+# تشغيل الخدمة
+sudo systemctl enable squid
+sudo systemctl start squid
+                    </code></pre>
+                </div>
+
+                <h2>توجيه حركة المرور</h2>
+                <p>
+                    في الـ Route Table الخاصة بالـ Private Subnets، قم بتوجيه حركة المرور (0.0.0.0/0) إلى الـ Instance ID الخاص بالبروكسي (قد تحتاج لتعطيل Source/Destination Check على المثيل).
+                    أو ببساطة، قم بإعداد متغيرات البيئة <code>HTTP_PROXY</code> داخل الخوادم الخاصة لتشير إلى IP البروكسي الداخلي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'gcp-reverse-proxy-setup',
+        slug: 'gcp-reverse-proxy-setup',
+        title: 'إعداد بروكسي عكسي على Google Cloud',
+        excerpt: 'كيف تستخدم Google Cloud Load Balancing أو Nginx على Compute Engine لتوزيع الحمل وحماية تطبيقاتك.',
+        date: '2026-07-01',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في Google Cloud Platform (GCP)، يعتبر البروكسي العكسي (Reverse Proxy) حجر الزاوية لأي تطبيق قابل للتوسع.
+                    سواء كنت تستخدم خدمة Cloud Load Balancing المدارة بالكامل أو تفضل إعداد <a href="/blog/nginx-proxy-setup">Nginx</a> بنفسك، الهدف واحد: الأداء والأمان.
+                </p>
+
+                <h2>الخيار الأول: Cloud Load Balancing</h2>
+                <p>
+                    هذا هو الخيار "السحابي" الأصلي. يعمل كبروكسي عكسي عالمي (Global Anycast IP).
+                    <ul>
+                        <li>يدعم إنهاء SSL (SSL Termination) تلقائياً.</li>
+                        <li>يتكامل مع Cloud CDN لتخزين المحتوى مؤقتاً.</li>
+                        <li>يحمي من هجمات DDoS عبر Cloud Armor.</li>
+                    </ul>
+                </p>
+
+                <h2>الخيار الثاني: Nginx على Compute Engine</h2>
+                <p>
+                    إذا كنت بحاجة لتحكم دقيق (مثلاً: قواعد إعادة كتابة معقدة أو وحدات Lua)، فإن نشر Nginx هو الحل.
+                </p>
+                <div class="code-block">
+                    <pre><code class="language-nginx">
+# إعداد Nginx كبروكسي لخدمة Cloud Run
+server {
+    listen 80;
+    server_name myapp.com;
+
+    location / {
+        proxy_pass https://my-cloud-run-service-xyz.a.run.app;
+        proxy_set_header Host my-cloud-run-service-xyz.a.run.app;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+}
+                    </code></pre>
+                </div>
+            </div>
+        `
+    },
+    {
+        id: 'azure-proxy-integration',
+        slug: 'azure-proxy-integration',
+        title: 'Web Proxy في Microsoft Azure',
+        excerpt: 'دليل استخدام Azure Application Gateway و Azure Firewall لتأمين تطبيقات الويب وإدارة حركة المرور.',
+        date: '2026-07-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تقدم Microsoft Azure مجموعة قوية من أدوات البروكسي.
+                    فهم الفرق بين Azure Firewall و Application Gateway و Front Door هو مفتاح تصميم شبكة آمنة وفعالة.
+                </p>
+
+                <h2>Azure Application Gateway</h2>
+                <p>
+                    هو عبارة عن Load Balancer لطبقة الويب (Layer 7). يعمل كبروكسي عكسي ذكي.
+                    أهم ميزاته هي <strong>Web Application Firewall (WAF)</strong> الذي يحمي من الثغرات الشهيرة مثل <a href="/blog/proxy-sql-injection-protection">SQL Injection</a> و XSS.
+                    يجب استخدامه أمام أي تطبيق ويب عام.
+                </p>
+
+                <h2>Azure Front Door</h2>
+                <p>
+                    مشابه لـ Application Gateway لكنه عالمي (Global). يستخدم لتسريع الوصول للتطبيقات من مناطق جغرافية مختلفة وتوجيه المستخدمين لأقرب مركز بيانات.
+                </p>
+
+                <h2>إعداد بروكسي صريح (Explicit Proxy) للخروج</h2>
+                <p>
+                    للتحكم في حركة المرور الخارجة من الـ VNet، يفضل استخدام Azure Firewall.
+                    يمكن تكوينه للعمل كبروكسي شفاف يحلل حركة المرور ويطبق قواعد الفلترة بناءً على الـ FQDN (اسم النطاق) بدلاً من عناوين IP فقط.
+                </p>
+                <div class="code-block">
+                    <pre><code class="language-powershell">
+# مثال: إنشاء قاعدة تطبيق في Azure Firewall
+$rule = New-AzFirewallApplicationRule -Name "Allow-Google" -Protocol "http:80","https:443" -TargetFqdn "*.google.com"
+                    </code></pre>
+                </div>
+            </div>
+        `
     }
 ];
 
