@@ -252,6 +252,7 @@ const locales = {
         },
         nav_home: 'Home',
         nav_blog: 'Blog',
+        nav_tools: 'Tools',
         nav_support: 'User Support',
         nav_terms: 'Terms of Use',
         nav_privacy: 'Privacy Policy',
@@ -358,6 +359,7 @@ const locales = {
             blocked_access: 'El acceso a este sitio está bloqueado'
         },
         nav_home: 'Inicio',
+        nav_tools: 'Herramientas',
         nav_support: 'Soporte al Usuario',
         nav_terms: 'Términos de Uso',
         nav_privacy: 'Política de Privacidad',
@@ -460,6 +462,7 @@ const locales = {
             blocked_access: 'L\'accès à ce site est bloqué'
         },
         nav_home: 'Accueil',
+        nav_tools: 'Outils',
         nav_support: 'Support Utilisateur',
         nav_terms: 'Conditions d\'utilisation',
         nav_privacy: 'Politique de Confidentialité',
@@ -562,6 +565,7 @@ const locales = {
             blocked_access: '访问此网站被阻止'
         },
         nav_home: '首页',
+        nav_tools: '工具',
         nav_support: '用户支持',
         nav_terms: '使用条款',
         nav_privacy: '隐私政策',
@@ -664,6 +668,7 @@ const locales = {
             blocked_access: 'इस साइट तक पहुंच अवरुद्ध है'
         },
         nav_home: 'होम',
+        nav_tools: 'उपकरण',
         nav_support: 'उपयोगकर्ता समर्थन',
         nav_terms: 'उपयोग की शर्तें',
         nav_privacy: 'गोपनीयता नीति',
@@ -766,6 +771,7 @@ const locales = {
             blocked_access: 'O acesso a este site está bloqueado'
         },
         nav_home: 'Início',
+        nav_tools: 'Ferramentas',
         nav_support: 'Suporte ao Usuário',
         nav_terms: 'Termos de Uso',
         nav_privacy: 'Política de Privacidade',
@@ -868,6 +874,7 @@ const locales = {
             blocked_access: 'Доступ к этому сайту заблокирован'
         },
         nav_home: 'Главная',
+        nav_tools: 'Инструменты',
         nav_support: 'Поддержка пользователей',
         nav_terms: 'Условия использования',
         nav_privacy: 'Политика конфиденциальности',
@@ -970,6 +977,7 @@ const locales = {
             blocked_access: 'Der Zugriff auf diese Seite ist gesperrt'
         },
         nav_home: 'Startseite',
+        nav_tools: 'Werkzeuge',
         nav_support: 'Benutzersupport',
         nav_terms: 'Nutzungsbedingungen',
         nav_privacy: 'Datenschutzrichtlinie',
@@ -1072,6 +1080,7 @@ const locales = {
             blocked_access: 'Bu siteye erişim engellendi'
         },
         nav_home: 'Ana Sayfa',
+        nav_tools: 'Araçlar',
         nav_support: 'Kullanıcı Desteği',
         nav_terms: 'Kullanım Şartları',
         nav_privacy: 'Gizlilik Politikası',

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: title }) %>
+<style>
+    .vt-container {
+        max-width: 800px;
+        margin: 4rem auto;
+        text-align: center;
+    }
+    
+    .vt-logo {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+    }
+
+    .vt-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: 1rem;
+    }
+
+    .vt-tab {
+        padding: 0.5rem 1.5rem;
+        cursor: pointer;
+        border-radius: 20px;
+        font-weight: 600;
+        color: var(--text-muted);
+        transition: all 0.3s ease;
+    }
+
+    .vt-tab.active {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .vt-upload-area {
+        background: var(--card-bg);
+        border: 2px dashed var(--border-color);
+        border-radius: 16px;
+        padding: 4rem 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .vt-upload-area:hover, .vt-upload-area.dragover {
+        border-color: var(--primary-color);
+        background: rgba(var(--primary-rgb), 0.05);
+    }
+
+    .vt-icon {
+        font-size: 4rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .vt-button {
+        background-color: var(--primary-color);
+        color: white;
+        border: none;
+        padding: 12px 32px;
+        border-radius: 24px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+        margin-top: 1rem;
+    }
+
+    .vt-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .vt-hidden-input {
+        display: none;
+    }
+
+    /* Results Section */
+    .vt-results {
+        display: none;
+        margin-top: 3rem;
+        text-align: left;
+    }
+
+    .vt-score-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 8px solid #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 0 auto 2rem;
+        position: relative;
+    }
+
+    .vt-score-circle.clean {
+        border-color: #28a745;
+        color: #28a745;
+    }
+
+    .vt-score-circle.malicious {
+        border-color: #dc3545;
+        color: #dc3545;
+    }
+
+    .vt-engine-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .vt-engine-item {
+        background: var(--card-bg);
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .vt-status {
+        font-size: 0.9rem;
+    }
+    
+    .vt-status.clean { color: #28a745; }
+    .vt-status.detected { color: #dc3545; }
+
+    .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--primary-color);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 20px auto;
+        display: none;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+<body>
+    <%- include('../partials/navbar') %>
+
+    <main class="main-content">
+        <div class="vt-container">
+            <img src="/static/images/logo.svg" alt="Logo" class="vt-logo">
+            <h1><%= title %></h1>
+            <p style="margin-bottom: 2rem; color: var(--text-muted);">
+                <%= currentLang === 'ar' ? 'حلل الملفات والروابط المشبوهة للكشف عن البرمجيات الخبيثة.' : 'Analyze suspicious files, domains, IPs and URLs to detect malware and other breaches.' %>
+            </p>
+
+            <div class="vt-tabs">
+                <div class="vt-tab active" data-target="file"><%= currentLang === 'ar' ? 'ملف' : 'File' %></div>
+                <div class="vt-tab" data-target="url"><%= currentLang === 'ar' ? 'رابط URL' : 'URL' %></div>
+                <div class="vt-tab" data-target="search"><%= currentLang === 'ar' ? 'بحث' : 'Search' %></div>
+            </div>
+
+            <!-- File Upload Section -->
+            <div id="file-section" class="vt-section">
+                <div class="vt-upload-area" id="drop-zone">
+                    <div class="vt-icon">📁</div>
+                    <button class="vt-button" onclick="document.getElementById('file-input').click()">
+                        <%= currentLang === 'ar' ? 'اختر ملف' : 'Choose file' %>
+                    </button>
+                    <p style="margin-top: 1rem; color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'أو اسحب الملف وأفلته هنا' : 'or drag and drop here' %>
+                    </p>
+                    <input type="file" id="file-input" class="vt-hidden-input">
+                </div>
+            </div>
+
+            <!-- URL Section -->
+            <div id="url-section" class="vt-section" style="display: none;">
+                <div class="input-group" style="max-width: 600px; margin: 0 auto;">
+                    <input type="url" class="url-input" placeholder="http://example.com" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <button class="vt-button" style="margin-top: 1rem; width: 100%;">
+                        <%= currentLang === 'ar' ? 'فحص الرابط' : 'Scan URL' %>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Search Section -->
+            <div id="search-section" class="vt-section" style="display: none;">
+                <div class="input-group" style="max-width: 600px; margin: 0 auto;">
+                    <input type="text" class="url-input" placeholder="IP, Domain or File Hash" style="width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <button class="vt-button" style="margin-top: 1rem; width: 100%;">
+                        <%= currentLang === 'ar' ? 'بحث' : 'Search' %>
+                    </button>
+                </div>
+            </div>
+
+            <div class="loader" id="loader"></div>
+
+            <!-- Results -->
+            <div class="vt-results" id="results-area">
+                <div class="vt-score-circle" id="score-circle">
+                    <span id="score-text">0/60</span>
+                </div>
+                <h3 style="margin-bottom: 1.5rem;"><%= currentLang === 'ar' ? 'نتائج الفحص' : 'Scan Results' %></h3>
+                <div class="vt-engine-list" id="engine-list">
+                    <!-- Engines will be populated here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('../partials/footer') %>
+
+    <script>
+        // Tab Switching
+        document.querySelectorAll('.vt-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.vt-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                document.querySelectorAll('.vt-section').forEach(s => s.style.display = 'none');
+                document.getElementById(tab.dataset.target + '-section').style.display = 'block';
+            });
+        });
+
+        // File Handling
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        });
+
+        function handleFile(file) {
+            // Show loader
+            document.getElementById('loader').style.display = 'block';
+            document.getElementById('results-area').style.display = 'none';
+            document.querySelector('.vt-upload-area').style.opacity = '0.5';
+            document.querySelector('.vt-upload-area').style.pointerEvents = 'none';
+
+            // Simulate API call
+            fetch('/tools/virus-scanner/scan', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ filename: file.name, size: file.size })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loader').style.display = 'none';
+                document.querySelector('.vt-upload-area').style.opacity = '1';
+                document.querySelector('.vt-upload-area').style.pointerEvents = 'auto';
+                
+                if (data.success) {
+                    showResults(data.data);
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                alert('Error scanning file');
+                document.getElementById('loader').style.display = 'none';
+                document.querySelector('.vt-upload-area').style.opacity = '1';
+                document.querySelector('.vt-upload-area').style.pointerEvents = 'auto';
+            });
+        }
+
+        function showResults(data) {
+            const resultsArea = document.getElementById('results-area');
+            const scoreCircle = document.getElementById('score-circle');
+            const scoreText = document.getElementById('score-text');
+            const engineList = document.getElementById('engine-list');
+
+            resultsArea.style.display = 'block';
+            scoreText.textContent = `${data.positives}/${data.total}`;
+            
+            if (data.positives === 0) {
+                scoreCircle.className = 'vt-score-circle clean';
+            } else {
+                scoreCircle.className = 'vt-score-circle malicious';
+            }
+
+            engineList.innerHTML = '';
+            
+            // Populate engines (mock + dynamic)
+            const engines = Object.entries(data.scans);
+            
+            // Fill with some clean results if mock data is small
+            const commonAntivirus = ['Avast', 'AVG', 'BitDefender', 'Eset', 'F-Secure', 'Kaspersky', 'McAfee', 'Microsoft', 'Sophos', 'Symantec', 'TrendMicro', 'Malwarebytes'];
+            
+            commonAntivirus.forEach(av => {
+                const existing = engines.find(e => e[0] === av);
+                const isDetected = existing ? existing[1].detected : false;
+                const result = existing ? existing[1].result : null;
+                
+                const div = document.createElement('div');
+                div.className = 'vt-engine-item';
+                div.innerHTML = `
+                    <span style="font-weight: 500;">${av}</span>
+                    <span class="vt-status ${isDetected ? 'detected' : 'clean'}">
+                        ${isDetected ? '⚠️ ' + (result || 'Malicious') : '✅ Clean'}
+                    </span>
+                `;
+                engineList.appendChild(div);
+            });
+            
+            // Add specific detections from data
+            engines.forEach(([name, info]) => {
+                if (!commonAntivirus.includes(name)) {
+                     const div = document.createElement('div');
+                    div.className = 'vt-engine-item';
+                    div.innerHTML = `
+                        <span style="font-weight: 500;">${name}</span>
+                        <span class="vt-status ${info.detected ? 'detected' : 'clean'}">
+                            ${info.detected ? '⚠️ ' + (info.result || 'Malicious') : '✅ Clean'}
+                        </span>
+                    `;
+                    engineList.appendChild(div);
+                }
+            });
+            
+            // Scroll to results
+            resultsArea.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

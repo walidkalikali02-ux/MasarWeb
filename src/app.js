@@ -21,6 +21,7 @@ const { config } = require('./utils/config');
 const { setupWebSocketProxy } = require('./proxy/websocketHandler');
 const locales = require('./locales');
 const articles = require('./data/articles');
+const toolsRouter = require('./tools/toolsRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -114,6 +115,9 @@ app.get('/health', (req, res) => {
 app.get('/support', (req, res) => res.render('support'));
 app.get('/terms', (req, res) => res.render('terms'));
 app.get('/privacy', (req, res) => res.render('privacy'));
+
+// Tools Routes
+app.use('/tools', toolsRouter);
 
 // Blog Routes
 app.get('/blog', (req, res) => {
