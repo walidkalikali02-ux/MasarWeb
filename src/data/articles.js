@@ -6008,6 +6008,125 @@ $rule = New-AzFirewallApplicationRule -Name "Allow-Google" -Protocol "http:80","
                 </div>
             </div>
         `
+    },
+    {
+        id: 'kubernetes-proxy-guide',
+        slug: 'kubernetes-proxy-guide',
+        title: 'بروكسي في بيئة Kubernetes السحابية',
+        excerpt: 'كيف تدير حركة المرور داخل وخارج العناقيد (Clusters)؟ شرح لأنماط Sidecar Proxy و Ingress Controller.',
+        date: '2026-07-03',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في عالم الحاويات (Containers)، لم يعد البروكسي مجرد خادم يقف على الحدود.
+                    في Kubernetes، البروكسي موجود في كل مكان: أمام العنقود (Ingress)، وبين الخدمات (Service Mesh)، وحتى داخل الـ Pod نفسه (Sidecar).
+                    فهم هذه الأنماط ضروري لبناء تطبيقات Microservices آمنة وقابلة للمراقبة.
+                </p>
+
+                <h2>نمط Ingress Controller</h2>
+                <p>
+                    هو البوابة الرئيسية للعنقود. بدلاً من استخدام Load Balancer لكل خدمة (مكلف جداً)، نستخدم Ingress Proxy واحد (مثل Nginx أو Traefik) لتوجيه الطلبات بناءً على المسار (Path) أو النطاق.
+                    <br>مثال: <code>api.example.com</code> يذهب لخدمة الـ Backend، و <code>example.com</code> يذهب لخدمة الـ Frontend.
+                </p>
+
+                <h2>نمط Sidecar Proxy</h2>
+                <p>
+                    هنا يتم حقن حاوية بروكسي صغيرة (مثل Envoy) بجانب حاوية التطبيق الرئيسية في نفس الـ Pod.
+                    التطبيق يتحدث مع الـ Sidecar، والـ Sidecar يتحدث مع العالم.
+                    هذا يسمح بـ:
+                    <ul>
+                        <li><strong>تشفير mTLS تلقائي:</strong> دون تعديل كود التطبيق.</li>
+                        <li><strong>مراقبة دقيقة:</strong> تتبع كل طلب HTTP يدخل أو يخرج.</li>
+                        <li><strong>Retries & Circuit Breaking:</strong> حماية النظام من الفشل المتسلسل.</li>
+                    </ul>
+                </p>
+
+                <h2>التحكم في الخروج (Egress Proxy)</h2>
+                <p>
+                    لأسباب أمنية، قد ترغب في منع الـ Pods من الاتصال بالإنترنت مباشرة.
+                    يمكنك إعداد <a href="/blog/squid-proxy-review">Squid Proxy</a> مركزي وتوجيه كل حركة المرور الخارجية عبره لتطبيق سياسات الفلترة ومنع تسرب البيانات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'cloud-load-balancing-proxy',
+        slug: 'cloud-load-balancing-proxy',
+        title: 'Web Proxy و Cloud Load Balancing',
+        excerpt: 'موزعات الحمل السحابية هي في الواقع بروكسيات ذكية. كيف تستفيد منها لتحسين الأداء وتقليل التكلفة؟',
+        date: '2026-07-04',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    عندما نذكر "Load Balancer" في السحابة (AWS ALB, Google Cloud LB)، فنحن نتحدث فعلياً عن Managed Reverse Proxy.
+                    هذه الخدمات لا توزع الحمل فحسب، بل تقوم بمهام كانت تتطلب سابقاً خوادم بروكسي مخصصة ومكلفة.
+                </p>
+
+                <h2>إنهاء التشفير (SSL Offloading)</h2>
+                <p>
+                    فك تشفير HTTPS عملية مكلفة للمعالج (CPU Intensive).
+                    الـ Load Balancer يقوم بهذه المهمة نيابة عن خوادم الويب الخاصة بك، مما يفرغ مواردها لمعالجة منطق التطبيق.
+                    كما أنه يسهل إدارة الشهادات (Certificate Management) وتجديدها تلقائياً.
+                </p>
+
+                <h2>توجيه المحتوى (Content-Based Routing)</h2>
+                <p>
+                    البروكسي الذكي يمكنه فحص الطلب وتوجيهه بناءً على المحتوى:
+                    <ul>
+                        <li>طلبات <code>/images/*</code> تذهب لـ S3 Bucket.</li>
+                        <li>طلبات <code>/api/*</code> تذهب لـ Lambda Functions.</li>
+                        <li>طلبات الهواتف (User-Agent) تذهب لنسخة Mobile-Optimized.</li>
+                    </ul>
+                </p>
+
+                <h2>التكامل مع WAF</h2>
+                <p>
+                    معظم موزعات الحمل السحابية تتكامل بضغطة زر مع <a href="/blog/web-application-firewall">WAF</a>.
+                    هذا يحول الـ Load Balancer إلى جدار حماية قوي يصد هجمات SQL Injection ويحظر العناوين المشبوهة قبل أن تلمس خوادمك.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'serverless-proxy-architecture',
+        slug: 'serverless-proxy-architecture',
+        title: 'استخدام البروكسي في Serverless Architecture',
+        excerpt: 'حوسبة بدون خادم لا تعني بدون مشاكل اتصال. كيف تدير عناوين IP الثابتة والاتصال بقواعد البيانات القديمة؟',
+        date: '2026-07-05',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    دوال Serverless (مثل AWS Lambda) رائعة، لكنها تعاني من مشكلة كبرى: عناوين IP الخاصة بها متغيرة وعشوائية.
+                    هذا يمثل كابوساً إذا كنت تحتاج للاتصال بنظام بنكي أو قاعدة بيانات قديمة تتطلب Whitelisting لعنوان IP محدد.
+                    الحل؟ بناء "Proxy Layer".
+                </p>
+
+                <h2>مشكلة الـ IP المتغير</h2>
+                <p>
+                    عندما تعمل Lambda، قد تأتي من أي IP في مجمع AWS الضخم.
+                    لا يمكنك أن تطلب من الشريك البنكي السماح بـ "كل عناوين AWS".
+                </p>
+
+                <h2>الحل: Forward Proxy عبر NAT Gateway</h2>
+                <p>
+                    الحل الرسمي هو وضع الـ Lambda داخل VPC وتوجيه حركتها عبر NAT Gateway بـ Elastic IP ثابت.
+                    لكن NAT Gateway مكلف.
+                </p>
+
+                <h2>الحل البديل: Proxy Function</h2>
+                <p>
+                    يمكنك استخدام مثيل EC2 صغير (أو حتى حاوية Fargate) يعمل كـ <a href="/blog/build-simple-proxy-nodejs">SOCKS5 Proxy</a>.
+                    تقوم الـ Lambda بإنشاء نفق SSH أو SOCKS عبر هذا المثيل للوصول للخدمة الخارجية.
+                    هذا يوفر IP ثابت بتكلفة أقل بكثير.
+                </p>
+
+                <h2>API Gateway كبروكسي عكسي</h2>
+                <p>
+                    على الجانب الآخر (Ingress)، تعمل API Gateway كبروكسي يحمي دوالك.
+                    يمكنها القيام بـ Rate Limiting، المصادقة (AuthN/AuthZ)، والتحقق من صحة الطلب (Request Validation) قبل تشغيل الدالة، مما يوفر المال (لأنك تدفع مقابل وقت التشغيل).
+                </p>
+            </div>
+        `
     }
 ];
 
