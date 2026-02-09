@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
-<%- include('partials/head', { pageTitle: article.title }) %>
+<%- include('partials/head', { pageTitle: article.title, description: article.excerpt }) %>
 <body>
     <%- include('partials/navbar') %>
 

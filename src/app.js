@@ -132,6 +132,56 @@ app.get('/blog/:slug', (req, res) => {
     res.render('article', { article });
 });
 
+// Sitemap
+app.get('/sitemap.xml', (req, res) => {
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const staticPages = [
+        '/',
+        '/support',
+        '/terms',
+        '/privacy',
+        '/blog'
+    ];
+
+    let xml = '<?xml version="1.0" encoding="UTF-8"?>';
+    xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+
+    // Add static pages
+    staticPages.forEach(page => {
+        xml += '<url>';
+        xml += `<loc>${baseUrl}${page}</loc>`;
+        xml += '<changefreq>monthly</changefreq>';
+        xml += '<priority>0.8</priority>';
+        xml += '</url>';
+    });
+
+    // Add blog articles
+    articles.forEach(article => {
+        xml += '<url>';
+        xml += `<loc>${baseUrl}/blog/${article.slug}</loc>`;
+        xml += `<lastmod>${article.date}</lastmod>`;
+        xml += '<changefreq>weekly</changefreq>';
+        xml += '<priority>0.9</priority>';
+        xml += '</url>';
+    });
+
+    xml += '</urlset>';
+
+    res.header('Content-Type', 'application/xml');
+    res.send(xml);
+});
+
+// Robots.txt
+app.get('/robots.txt', (req, res) => {
+    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const robots = `User-agent: *
+Allow: /
+Sitemap: ${baseUrl}/sitemap.xml`;
+
+    res.header('Content-Type', 'text/plain');
+    res.send(robots);
+});
+
 // Proxy routes (main functionality)
 app.use('/', proxyRouter);
 
