@@ -52,6 +52,17 @@
                         <%= currentLang === 'ar' ? 'إنشاء كلمات مرور آمنة وعشوائية مع خيارات تخصيص متقدمة.' : 'Generate secure random passwords with advanced customization options.' %>
                     </p>
                 </a>
+
+                <!-- Diceware Passphrase Generator Tool Card -->
+                <a href="/tools/diceware-passphrase" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🎲
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد عبارات المرور' : 'Diceware Passphrase' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'إنشاء عبارات مرور سهلة التذكر باستخدام كلمات عشوائية آمنة.' : 'Create memorable passphrases using secure random dictionary words.' %>
+                    </p>
+                </a>
             </div>
         </div>
     </main>

@@ -52,6 +52,13 @@ router.get('/password-generator', (req, res) => {
     });
 });
 
+// Diceware Passphrase Generator
+router.get('/diceware-passphrase', (req, res) => {
+    res.render('tools/diceware-passphrase', {
+        title: req.lang === 'ar' ? 'مولد عبارات المرور Diceware' : 'Diceware Passphrase Generator',
+    });
+});
+
 // Virus Scanner API - Scan Endpoint (Real File Processing)
 router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
     if (!req.file) {

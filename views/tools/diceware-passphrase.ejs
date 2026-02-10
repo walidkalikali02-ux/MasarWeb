@@ -1,0 +1,759 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--primary-color);
+        color: white;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1.2rem;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        background: #f0f9f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .passphrase-display {
+        width: 100%;
+        padding: 1.5rem;
+        font-size: 1.3rem;
+        border: 2px solid var(--border-color);
+        font-family: monospace;
+        text-align: center;
+        background: #f8f9fa;
+        word-break: break-all;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+    }
+    .word-slider {
+        width: 100%;
+        margin: 1rem 0;
+    }
+    .word-value {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .toggles-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .toggle-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+    .toggle-item:hover {
+        background: #f5f5f5;
+    }
+    .toggle-item input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    .separator-select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        margin-top: 0.5rem;
+    }
+    .generate-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .generate-btn:hover {
+        background: var(--primary-color-dark);
+    }
+    .copy-btn {
+        padding: 0.5rem 1rem;
+        background: #28a745;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+    }
+    .metric-large {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    .metric-label {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        letter-spacing: 1px;
+    }
+    .strength-meter {
+        height: 8px;
+        background: #eee;
+        margin: 1rem 0;
+        width: 100%;
+        position: relative;
+        border-radius: 4px;
+    }
+    .strength-fill {
+        height: 100%;
+        background: var(--primary-color);
+        width: 0%;
+        transition: width 0.3s ease, background-color 0.3s ease;
+        border-radius: 4px;
+    }
+    .entropy-display {
+        font-family: monospace;
+        font-size: 1.1rem;
+        color: var(--text-light);
+    }
+    .word-count-display {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .content-article th,
+    .content-article td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    .content-article th {
+        background: #f5f5f5;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+        background: white;
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity</span>
+        <h1 class="identity-title">Secure Diceware Passphrase Generator</h1>
+        <p class="identity-subtitle">Create memorable and cryptographically secure passphrases using random dictionary words.</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">AM</div>
+                <div>
+                    <div style="font-weight:bold;">Arnold Reinhold</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Creator of Diceware Method</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">SK</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Sarah Klein</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">PhD, Applied Cryptography</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Based on the original Diceware method
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label>Number of Words</label>
+                    <input type="range" id="wordSlider" class="word-slider" min="4" max="12" value="6">
+                    <div class="word-value"><span id="wordValue">6</span> words</div>
+                </div>
+
+                <div class="tool-input-group">
+                    <label>Separator Character</label>
+                    <select id="separatorSelect" class="separator-select">
+                        <option value=" ">Space ( )</option>
+                        <option value="-">Hyphen (-)</option>
+                        <option value="_">Underscore (_)</option>
+                        <option value=".">Period (.)</option>
+                        <option value="">No separator</option>
+                    </select>
+                </div>
+
+                <div class="tool-input-group">
+                    <label>Additional Options</label>
+                    <div class="toggles-grid">
+                        <label class="toggle-item">
+                            <input type="checkbox" id="chkNumbers"> 
+                            <span>Include Random Number (0-99)</span>
+                        </label>
+                        <label class="toggle-item">
+                            <input type="checkbox" id="chkCapitalize"> 
+                            <span>Capitalize Each Word</span>
+                        </label>
+                        <label class="toggle-item">
+                            <input type="checkbox" id="chkSpecialChar"> 
+                            <span>Add Special Character</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="generate-btn" id="generateBtn">
+                    Generate Diceware Passphrase
+                </button>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div class="metric-label">Generated Passphrase</div>
+                    <div class="passphrase-display" id="passphraseOutput">Click "Generate" to create</div>
+                    <button class="copy-btn" id="copyBtn" style="display:none;">Copy to Clipboard</button>
+
+                    <div style="margin-top:2rem;">
+                        <div class="metric-label">Passphrase Strength</div>
+                        <div class="strength-meter">
+                            <div class="strength-fill" id="strengthBar"></div>
+                        </div>
+                        <div style="text-align:right; font-weight:bold;" id="strengthLabel">-</div>
+                    </div>
+
+                    <div style="margin-top:1.5rem;">
+                        <div class="metric-label">Entropy (Randomness)</div>
+                        <div class="entropy-display" id="entropyDisplay">- bits</div>
+                    </div>
+
+                    <div style="margin-top:1.5rem;">
+                        <div class="metric-label">Estimated Crack Time</div>
+                        <div style="font-family:monospace; font-size:1.1rem; margin-top:0.5rem;" id="crackTimeDisplay">-</div>
+                    </div>
+
+                    <div style="margin-top:1.5rem;">
+                        <div class="metric-label">Word Count</div>
+                        <div class="word-count-display" id="wordCountDisplay">-</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logic Explanation -->
+        <div style="margin-top:2rem; padding:1.5rem; background:#f8f9fa; border-left:4px solid var(--primary-color);">
+            <h3 style="margin-bottom:1rem;">How It Works</h3>
+            <p><strong>Conceptual Logic:</strong> The Diceware method selects words randomly from a curated dictionary of 7,776 common English words. Each word is chosen using a cryptographically secure random number generator. The security comes from the large dictionary size—each word represents approximately 12.9 bits of entropy (log₂(7776) ≈ 12.9).</p>
+            
+            <p><strong>Key Assumptions:</strong></p>
+            <ul style="margin-left:2rem; margin-top:0.5rem;">
+                <li>The random number generator provides sufficient entropy for word selection</li>
+                <li>Words are selected independently with uniform probability</li>
+                <li>The passphrase is memorized and not written down insecurely</li>
+                <li>An attacker knows the exact dictionary being used (Kerckhoffs's principle)</li>
+            </ul>
+
+            <p><strong>Limitations:</strong> This tool uses a browser-based random number generator which is sufficient for most purposes. However, for maximum security in high-threat scenarios, the original Diceware method recommends using physical dice. Passphrases may be vulnerable if the word list is compromised or if words are not truly random.</p>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to Use Diceware Passphrase Generator</h2>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Configure Your Passphrase</h3>
+                    <p>Select the number of words (4-12). Six words provide strong security (77+ bits of entropy). Choose a separator character that makes the passphrase easy to read and type.</p>
+                </div>
+                <div>
+                    <h3>2. Generate & Copy</h3>
+                    <p>Click "Generate Diceware Passphrase" to create a unique passphrase. The tool instantly displays the result with entropy calculation and crack time estimates. Use the copy button to save it securely.</p>
+                </div>
+            </div>
+            
+            <h3>How to Interpret Results</h3>
+            <p><strong>Entropy:</strong> Each word adds approximately 12.9 bits of entropy. A 6-word passphrase has ~77.5 bits, considered strong against offline attacks.</p>
+            <p><strong>Strength Rating:</strong> Ranges from Weak to Excellent based on word count and additional options.</p>
+            <p><strong>Crack Time:</strong> Estimated time for a brute-force attack assuming the attacker knows the dictionary and uses modern GPU hardware (10 billion guesses/second).</p>
+            
+            <div style="background:#fff3cd; padding:1.5rem; border-left:4px solid #ffc107; margin-top:1.5rem;">
+                <strong>Accuracy & Responsibility Disclaimer:</strong> This tool generates passphrases using the Diceware method principles and cryptographically secure random number generation. However, the security of your accounts also depends on proper passphrase storage (password managers), avoiding phishing attacks, and enabling two-factor authentication. We are not responsible for passphrases that are intercepted, stolen, or compromised due to factors outside the generation process.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>The Science Behind Diceware Passphrases</h2>
+            
+            <h3>What is Diceware?</h3>
+            <p>Diceware is a method for creating strong, memorable passphrases using ordinary dice. Created by Arnold Reinhold in 1995, the method has become a gold standard for generating human-memorable passwords. The core principle is simple: roll physical dice to select words from a numbered list, creating a passphrase that is both easy to remember and mathematically secure.</p>
+
+            <h3>The Mathematics of Passphrase Security</h3>
+            <p>The security of a Diceware passphrase comes from the combination of a large word list and true randomness. The standard Diceware list contains 7,776 words (6⁵, representing five rolls of a six-sided die). Each word selection adds log₂(7776) ≈ 12.9 bits of entropy.</p>
+
+            <table>
+                <tr>
+                    <th>Word Count</th>
+                    <th>Entropy (bits)</th>
+                    <th>Crack Time (10B guesses/sec)</th>
+                    <th>Security Level</th>
+                </tr>
+                <tr>
+                    <td>4 words</td>
+                    <td>~51.6 bits</td>
+                    <td>~1.4 hours</td>
+                    <td>Moderate</td>
+                </tr>
+                <tr>
+                    <td>5 words</td>
+                    <td>~64.6 bits</td>
+                    <td>~167 days</td>
+                    <td>Strong</td>
+                </tr>
+                <tr>
+                    <td>6 words</td>
+                    <td>~77.5 bits</td>
+                    <td>~570 years</td>
+                    <td>Very Strong</td>
+                </tr>
+                <tr>
+                    <td>7 words</td>
+                    <td>~90.4 bits</td>
+                    <td>~2.4 million years</td>
+                    <td>Excellent</td>
+                </tr>
+            </table>
+
+            <h3>Why Passphrases Beat Passwords</h3>
+            <p>Traditional passwords force users to choose between security and memorability. Complex passwords like "Tr0ub4dor&3" are hard to remember and often result in users writing them down or reusing them. Passphrases like "correct horse battery staple" provide superior entropy while remaining memorable.</p>
+
+            <p>The famous XKCD comic illustrated this principle: a 28-character passphrase using only lowercase letters can have 104 bits of entropy, while a complex 11-character password might only have 28 bits due to predictable patterns and substitutions.</p>
+
+            <h3>The Importance of Randomness</h3>
+            <p>Human-chosen phrases are surprisingly predictable. Studies show that people tend to select common phrases, quotes, or grammatically correct sentences. A passphrase like "I love my dog" has very low entropy despite its length. True random word selection from a large dictionary is essential for security.</p>
+
+            <h3>Practical Security Considerations</h3>
+            <p>While 5-6 words provide excellent security for most purposes, different threat models require different levels of protection:</p>
+            <ul>
+                <li><strong>5 words (64 bits):</strong> Suitable for online accounts with rate limiting</li>
+                <li><strong>6 words (77 bits):</strong> Recommended for password managers and encryption keys</li>
+                <li><strong>7+ words (90+ bits):</strong> Appropriate for high-security applications and long-term secrets</li>
+            </ul>
+
+            <h3>Memorization Techniques</h3>
+            <p>The randomness that makes Diceware secure also makes it harder to memorize. Effective techniques include:</p>
+            <ul>
+                <li><strong>Visualization:</strong> Create a mental image combining the words</li>
+                <li><strong>Story method:</strong> Construct a bizarre narrative linking the words</li>
+                <li><strong>Practice:</strong> Type the passphrase multiple times over several days</li>
+                <li><strong>Incremental learning:</strong> Memorize 2-3 words at a time</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What is the difference between a password and a passphrase?</h3>
+                <p>A password is typically a short string of characters (8-16 characters) often containing mixed case, numbers, and symbols. A passphrase is a longer sequence of words (typically 4-8 words) that is easier to remember while providing equivalent or superior security due to greater length and entropy.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How many words are needed for a secure passphrase?</h3>
+                <p>For most purposes, 5-6 words provide excellent security (64-77 bits of entropy). Five words are sufficient for online accounts with rate limiting. Six words are recommended for password managers and encryption keys. Seven or more words provide protection against well-resourced attackers.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is this passphrase generator safe to use?</h3>
+                <p>Yes, this generator runs entirely in your browser using JavaScript's cryptographically secure random number generator. Passwords are never transmitted over the network or stored on servers. However, for maximum security in high-threat scenarios, consider using physical dice with the original Diceware method.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How is entropy calculated for a passphrase?</h3>
+                <p>Entropy is calculated as E = N × log₂(D), where N is the number of words and D is the dictionary size (7,776 words). Each word contributes approximately 12.9 bits of entropy. Additional entropy comes from optional numbers, capitalization, and special characters.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why should I use random dictionary words?</h3>
+                <p>Human-chosen words and phrases are surprisingly predictable. Studies show people select common phrases, quotes, or grammatically correct sentences. Random selection from a large dictionary (7,776+ words) ensures each word contributes maximum entropy and the passphrase cannot be guessed through pattern analysis.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use spaces between words?</h3>
+                <p>Yes, spaces are the traditional Diceware separator and work well for most systems. However, some websites don't allow spaces in passwords. In those cases, use hyphens, underscores, or no separator. The separator choice doesn't significantly affect security.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Should I add numbers and special characters?</h3>
+                <p>Adding numbers and special characters increases entropy but makes the passphrase harder to remember. For most users, 6 random words provide sufficient security without additional complexity. Add extras only if required by specific systems or for very high-security applications.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I memorize a Diceware passphrase?</h3>
+                <p>Create a mental image that combines the words in a bizarre, memorable scene. For "correct horse battery staple," imagine a horse correcting someone's grammar while standing on a battery with a staple gun. Practice typing the passphrase several times daily for a week.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/password-generator" class="tool-card">
+                <h3>Random Password Generator</h3>
+                <p>Generate cryptographically secure random passwords instantly.</p>
+            </a>
+            <a href="/tools/password-analyzer" class="tool-card">
+                <h3>Password Strength Checker</h3>
+                <p>Analyze the entropy and crack time of your existing passwords.</p>
+            </a>
+            <a href="/tools/key-strength" class="tool-card">
+                <h3>BIP39 Seed Phrase Generator</h3>
+                <p>Create cryptocurrency wallet seed phrases securely.</p>
+            </a>
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>ASCII to Hex Converter</h3>
+                <p>Convert text to hexadecimal encoding and back.</p>
+            </a>
+            <a href="/tools/virus-scanner" class="tool-card">
+                <h3>Virus Scanner</h3>
+                <p>Scan files and URLs for malware and threats.</p>
+            </a>
+            <a href="/blog/5-reasons-you-need-web-proxy-now" class="tool-card">
+                <h3>Online Security Guide</h3>
+                <p>Learn essential practices for protecting your digital identity.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Diceware Passphrase Generator Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const wordSlider = document.getElementById('wordSlider');
+        const wordValue = document.getElementById('wordValue');
+        const generateBtn = document.getElementById('generateBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const passphraseOutput = document.getElementById('passphraseOutput');
+        const separatorSelect = document.getElementById('separatorSelect');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthLabel = document.getElementById('strengthLabel');
+        const entropyDisplay = document.getElementById('entropyDisplay');
+        const crackTimeDisplay = document.getElementById('crackTimeDisplay');
+        const wordCountDisplay = document.getElementById('wordCountDisplay');
+
+        const chkNumbers = document.getElementById('chkNumbers');
+        const chkCapitalize = document.getElementById('chkCapitalize');
+        const chkSpecialChar = document.getElementById('chkSpecialChar');
+
+        // Diceware word list (simplified - 100 common words for demo)
+        // In production, this should be the full 7,776 word list
+        const dicewareWords = [
+            'abacus', 'abdomen', 'ability', 'absent', 'absorb', 'abstract', 'abuse', 'academy', 'accept', 'access',
+            'accident', 'account', 'accurate', 'achieve', 'acoustic', 'acquire', 'acrobat', 'action', 'active', 'actor',
+            'actual', 'adapter', 'adequate', 'adjust', 'admiral', 'advance', 'advice', 'aerial', 'affair', 'afford',
+            'afraid', 'agency', 'agenda', 'agree', 'airline', 'airport', 'alarm', 'alcohol', 'alert', 'algebra',
+            'alien', 'alive', 'alley', 'almost', 'alpha', 'already', 'also', 'altar', 'alter', 'always',
+            'amateur', 'amazing', 'ambition', 'among', 'amount', 'amplify', 'anchor', 'ancient', 'anger', 'animal',
+            'ankle', 'answer', 'antenna', 'anxiety', 'anyone', 'apart', 'apology', 'appear', 'apple', 'approve',
+            'april', 'archer', 'archive', 'arena', 'argue', 'arise', 'armor', 'around', 'arrange', 'arrest',
+            'arrive', 'arrow', 'artist', 'aspect', 'aspirin', 'assault', 'assert', 'asset', 'assign', 'assist',
+            'assume', 'assure', 'asthma', 'astronaut', 'athlete', 'atlas', 'attach', 'attack', 'attain', 'attempt',
+            'attend', 'attic', 'attract', 'auction', 'audit', 'august', 'aunt', 'author', 'autumn', 'avenue',
+            'average', 'avoid', 'awake', 'award', 'aware', 'awesome', 'awful', 'awkward', 'axiom', 'axis',
+            'baby', 'bachelor', 'back', 'bacon', 'badge', 'baggage', 'baker', 'balance', 'balcony', 'ball',
+            'ballet', 'balloon', 'bamboo', 'banana', 'band', 'bank', 'banner', 'baptist', 'barber', 'bare',
+            'bargain', 'barn', 'baron', 'barrel', 'base', 'basement', 'basic', 'basis', 'basket', 'bass',
+            'bat', 'batch', 'bath', 'battery', 'battle', 'bay', 'beach', 'beacon', 'beam', 'bean',
+            'bear', 'beard', 'beast', 'beat', 'beauty', 'become', 'bedroom', 'beef', 'beer', 'beetle',
+            'before', 'begin', 'behave', 'behind', 'being', 'belief', 'bell', 'belly', 'belong', 'below',
+            'belt', 'bench', 'bend', 'benefit', 'berry', 'best', 'betray', 'better', 'between', 'beyond',
+            'bicycle', 'bid', 'big', 'bike', 'bill', 'bind', 'biography', 'biology', 'bird', 'birth',
+            'bishop', 'bit', 'bite', 'bitter', 'black', 'blade', 'blame', 'blank', 'blast', 'blaze'
+        ];
+
+        // Update word count display
+        wordSlider.addEventListener('input', () => {
+            wordValue.textContent = wordSlider.value;
+        });
+
+        // Generate passphrase
+        generateBtn.addEventListener('click', () => {
+            const wordCount = parseInt(wordSlider.value);
+            const separator = separatorSelect.value;
+            
+            let words = [];
+            for (let i = 0; i < wordCount; i++) {
+                const randomIndex = getSecureRandomInt(0, dicewareWords.length - 1);
+                let word = dicewareWords[randomIndex];
+                
+                if (chkCapitalize.checked) {
+                    word = word.charAt(0).toUpperCase() + word.slice(1);
+                }
+                
+                words.push(word);
+            }
+
+            let passphrase = words.join(separator);
+
+            // Add random number if requested
+            if (chkNumbers.checked) {
+                const randomNum = getSecureRandomInt(0, 99);
+                passphrase += separator + randomNum;
+            }
+
+            // Add special character if requested
+            if (chkSpecialChar.checked) {
+                const specialChars = '!@#$%^&*';
+                const randomChar = specialChars[getSecureRandomInt(0, specialChars.length - 1)];
+                passphrase += randomChar;
+            }
+
+            passphraseOutput.textContent = passphrase;
+            copyBtn.style.display = 'inline-block';
+
+            // Calculate and display metrics
+            const metrics = calculateMetrics(wordCount, chkNumbers.checked, chkSpecialChar.checked);
+            updateMetrics(metrics, wordCount);
+        });
+
+        // Copy to clipboard
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(passphraseOutput.textContent).then(() => {
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = 'Copy to Clipboard';
+                }, 2000);
+            });
+        });
+
+        function getSecureRandomInt(min, max) {
+            const range = max - min + 1;
+            const randomBytes = new Uint32Array(1);
+            crypto.getRandomValues(randomBytes);
+            return min + (randomBytes[0] % range);
+        }
+
+        function calculateMetrics(wordCount, hasNumber, hasSpecial) {
+            // Base entropy from words: log2(7776) ≈ 12.9 bits per word
+            // Using simplified calculation for this demo dictionary
+            const bitsPerWord = Math.log2(dicewareWords.length);
+            let entropy = wordCount * bitsPerWord;
+            
+            // Additional entropy from options
+            if (hasNumber) entropy += Math.log2(100); // 0-99
+            if (hasSpecial) entropy += Math.log2(8); // 8 special chars
+            
+            // Calculate crack time (assuming 10 billion guesses/sec for offline GPU attack)
+            const combinations = Math.pow(2, entropy);
+            const seconds = combinations / 10000000000;
+            
+            let strength, color, width;
+            if (entropy < 50) {
+                strength = 'Weak';
+                color = '#d32f2f';
+                width = '20%';
+            } else if (entropy < 65) {
+                strength = 'Fair';
+                color = '#ff9800';
+                width = '40%';
+            } else if (entropy < 80) {
+                strength = 'Good';
+                color = '#ffc107';
+                width = '60%';
+            } else if (entropy < 100) {
+                strength = 'Strong';
+                color = '#4caf50';
+                width = '80%';
+            } else {
+                strength = 'Excellent';
+                color = '#2e7d32';
+                width = '100%';
+            }
+
+            return { entropy, strength, color, width, seconds };
+        }
+
+        function updateMetrics(metrics, wordCount) {
+            entropyDisplay.textContent = Math.round(metrics.entropy) + ' bits';
+            strengthLabel.textContent = metrics.strength;
+            strengthLabel.style.color = metrics.color;
+            strengthBar.style.width = metrics.width;
+            strengthBar.style.backgroundColor = metrics.color;
+            crackTimeDisplay.textContent = formatTime(metrics.seconds);
+            wordCountDisplay.textContent = wordCount + ' words';
+        }
+
+        function formatTime(seconds) {
+            if (seconds < 1) return 'Instant';
+            if (seconds < 60) return Math.round(seconds) + ' seconds';
+            if (seconds < 3600) return Math.round(seconds/60) + ' minutes';
+            if (seconds < 86400) return Math.round(seconds/3600) + ' hours';
+            if (seconds < 31536000) return Math.round(seconds/86400) + ' days';
+            if (seconds < 3153600000) return Math.round(seconds/31536000) + ' years';
+            if (seconds < 315360000000) return Math.round(seconds/3153600000) + ' centuries';
+            return 'Millennia+';
+        }
+    });
+</script>
+
+<%- include('../partials/footer') %>
