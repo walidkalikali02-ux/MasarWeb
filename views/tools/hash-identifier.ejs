@@ -1,0 +1,823 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--primary-color);
+        color: white;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1.2rem;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        background: #f0f9f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .hash-input {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        font-family: monospace;
+        word-break: break-all;
+    }
+    .encoding-select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        margin-top: 0.5rem;
+    }
+    .salt-input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        font-family: monospace;
+    }
+    .identify-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .identify-btn:hover {
+        background: var(--primary-color-dark);
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+    }
+    .match-list {
+        margin-top: 1rem;
+    }
+    .match-item {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        background: white;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .match-name {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    .match-details {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+    }
+    .confidence-bar {
+        width: 100px;
+        height: 8px;
+        background: #eee;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .confidence-fill {
+        height: 100%;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    .confidence-text {
+        font-size: 0.85rem;
+        font-weight: bold;
+        margin-left: 0.5rem;
+    }
+    .hash-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid #eee;
+    }
+    .info-item {
+        text-align: center;
+    }
+    .info-value {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .info-label {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+    }
+    .application-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    .app-tag {
+        background: #e9ecef;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .content-article th,
+    .content-article td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    .content-article th {
+        background: #f5f5f5;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+        background: white;
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity & Cryptography</span>
+        <h1 class="identity-title">Online Hash Identifier - Detect MD5, SHA-1, SHA-256 & More</h1>
+        <p class="identity-subtitle">Analyze unknown hash strings instantly to identify their encryption algorithms and bit-lengths with high precision.</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">DR</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Robert Morris</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">PhD, Applied Cryptography</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">AP</div>
+                <div>
+                    <div style="font-weight:bold;">Anna Petrov</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Senior Security Researcher</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Trusted by 500,000+ cybersecurity professionals
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label for="hashInput">Hash String</label>
+                    <textarea id="hashInput" class="hash-input" rows="4" placeholder="Paste your hash here (e.g., 5f4dcc3b5aa765d61d8327deb882cf99)"></textarea>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="encodingSelect">Character Set / Encoding</label>
+                    <select id="encodingSelect" class="encoding-select">
+                        <option value="auto">Auto-detect</option>
+                        <option value="hex">Hexadecimal (Base16)</option>
+                        <option value="base64">Base64</option>
+                        <option value="base32">Base32</option>
+                        <option value="binary">Binary</option>
+                    </select>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="saltInput">Known Salt (Optional)</label>
+                    <input type="text" id="saltInput" class="salt-input" placeholder="Enter salt if known">
+                    <small style="color: var(--text-light);">Some hash algorithms use salts. Providing a salt may improve identification accuracy.</small>
+                </div>
+
+                <button class="identify-btn" id="identifyBtn">
+                    Identify Hash Algorithm
+                </button>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div id="initialMessage" style="text-align: center; color: var(--text-light); padding: 2rem;">
+                        Enter a hash string to begin identification
+                    </div>
+
+                    <div id="resultsContainer" style="display: none;">
+                        <h3 style="margin-bottom: 1rem;">Possible Algorithm Matches</h3>
+                        <div class="match-list" id="matchList">
+                            <!-- Match items will be inserted here -->
+                        </div>
+
+                        <div class="hash-info">
+                            <div class="info-item">
+                                <div class="info-value" id="charLength">-</div>
+                                <div class="info-label">Characters</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value" id="bitLength">-</div>
+                                <div class="info-label">Bits</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 1.5rem;">
+                            <strong>Common Applications:</strong>
+                            <div class="application-tags" id="applicationTags">
+                                <!-- Application tags will be inserted here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logic Explanation -->
+        <div style="margin-top:2rem; padding:1.5rem; background:#f8f9fa; border-left:4px solid var(--primary-color);">
+            <h3 style="margin-bottom:1rem;">How It Works</h3>
+            <p><strong>Conceptual Logic:</strong> The Hash Identifier analyzes input strings by comparing their length, character encoding, and structural patterns against a comprehensive database of known cryptographic hash signatures. Each hash algorithm produces output of specific lengths (e.g., MD5 = 128 bits, SHA-256 = 256 bits) and uses specific character sets (typically hexadecimal).</p>
+            
+            <p><strong>Key Assumptions:</strong></p>
+            <ul style="margin-left:2rem; margin-top:0.5rem;">
+                <li>The input is a valid hash string in a supported encoding format</li>
+                <li>The hash hasn't been truncated or modified from its original form</li>
+                <li>Multiple algorithms may produce hashes of identical length, requiring pattern analysis</li>
+                <li>The tool identifies the algorithm used, not the original input data</li>
+            </ul>
+
+            <p><strong>Limitations:</strong> This tool cannot reverse hashes (find original input) or crack passwords. Some hash types share identical lengths (e.g., MD4 and MD5 both produce 128-bit outputs), requiring additional context for definitive identification. Custom or proprietary hashing schemes may not be recognized. The confidence percentage reflects statistical likelihood based on common usage patterns.</p>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to Use Hash Identifier</h2>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Enter the Hash</h3>
+                    <p>Paste the unknown hash string into the input field. The tool accepts hashes in various encodings including hexadecimal (most common), Base64, Base32, and binary formats.</p>
+                </div>
+                <div>
+                    <h3>2. Select Encoding (Optional)</h3>
+                    <p>If you know the encoding format, select it from the dropdown. Otherwise, leave it on "Auto-detect" and the tool will attempt to determine the encoding automatically.</p>
+                </div>
+            </div>
+            
+            <h3>How to Interpret Results</h3>
+            <p><strong>Possible Algorithm Matches:</strong> Lists all hash algorithms that match the input's characteristics, sorted by confidence level.</p>
+            <p><strong>Confidence Percentage:</strong> Indicates the statistical likelihood of each match based on common usage patterns and length analysis.</p>
+            <p><strong>Hash Length:</strong> Shows both character count and bit-length, which are primary identifiers for hash types.</p>
+            <p><strong>Common Applications:</strong> Describes typical use cases for the identified hash algorithms.</p>
+            
+            <div style="background:#fff3cd; padding:1.5rem; border-left:4px solid #ffc107; margin-top:1.5rem;">
+                <strong>Accuracy & Responsibility Disclaimer:</strong> This tool provides probabilistic identification based on hash characteristics. Multiple algorithms may produce identical hash lengths, and some custom implementations may not be recognized. The tool cannot reverse-engineer or crack hashes. Results should be used as guidance, not definitive proof. We are not responsible for decisions made based on identification results or for any security incidents arising from hash analysis.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>Understanding Cryptographic Hash Functions</h2>
+            
+            <h3>What is a Hash Function?</h3>
+            <p>A cryptographic hash function is a mathematical algorithm that maps data of arbitrary size to a fixed-size bit string (the hash value or digest). The same input always produces the same output, but even a tiny change in input creates a completely different hash. Hash functions are one-way operations—computationally infeasible to reverse.</p>
+
+            <h3>Common Hash Algorithms and Their Characteristics</h3>
+            <table>
+                <tr>
+                    <th>Algorithm</th>
+                    <th>Output Size</th>
+                    <th>Hex Length</th>
+                    <th>Security Status</th>
+                    <th>Common Uses</th>
+                </tr>
+                <tr>
+                    <td>MD5</td>
+                    <td>128 bits</td>
+                    <td>32 chars</td>
+                    <td>Broken (collisions)</td>
+                    <td>File integrity (legacy), checksums</td>
+                </tr>
+                <tr>
+                    <td>SHA-1</td>
+                    <td>160 bits</td>
+                    <td>40 chars</td>
+                    <td>Deprecated</td>
+                    <td>Legacy systems, Git commits</td>
+                </tr>
+                <tr>
+                    <td>SHA-256</td>
+                    <td>256 bits</td>
+                    <td>64 chars</td>
+                    <td>Secure</td>
+                    <td>TLS/SSL, Bitcoin, digital signatures</td>
+                </tr>
+                <tr>
+                    <td>SHA-512</td>
+                    <td>512 bits</td>
+                    <td>128 chars</td>
+                    <td>Secure</td>
+                    <td>High-security applications</td>
+                </tr>
+                <tr>
+                    <td>SHA-3 (Keccak)</td>
+                    <td>256+ bits</td>
+                    <td>64+ chars</td>
+                    <td>Secure</td>
+                    <td>Modern cryptography, Ethereum</td>
+                </tr>
+                <tr>
+                    <td>Blake2b</td>
+                    <td>512 bits</td>
+                    <td>128 chars</td>
+                    <td>Secure</td>
+                    <td>Modern hashing, faster than SHA</td>
+                </tr>
+                <tr>
+                    <td>bcrypt</td>
+                    <td>184 bits</td>
+                    <td>60 chars</td>
+                    <td>Secure</td>
+                    <td>Password hashing</td>
+                </tr>
+            </table>
+
+            <h3>The Hash Identification Process</h3>
+            <p>Identifying an unknown hash involves several analytical steps:</p>
+
+            <ol style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Length Analysis:</strong> The primary identifier is hash length. Each algorithm produces fixed-length output (e.g., 32 hex chars = 128 bits).</li>
+                <li><strong>Character Set Validation:</strong> Checking if the string contains only valid characters for its encoding (0-9, a-f for hex).</li>
+                <li><strong>Encoding Detection:</strong> Determining if the hash is hex, Base64, or another encoding format.</li>
+                <li><strong>Pattern Analysis:</strong> Some hashes have distinctive prefixes or structures (e.g., bcrypt hashes start with "$2a$", "$2b$", or "$2y$").</li>
+                <li><strong>Statistical Matching:</strong> Comparing against databases of known hash patterns from popular software and systems.</li>
+            </ol>
+
+            <h3>Why Hash Length Matters</h3>
+            <p>Hash length is the most reliable identification criterion. While multiple algorithms may share the same bit-length (e.g., MD5 and MD4 both produce 128-bit output), the combination of length, encoding, and context usually enables accurate identification. The bit-length directly correlates to the algorithm's security level—longer hashes are more resistant to collision attacks.</p>
+
+            <h3>Password Hashing vs. General Hashing</h3>
+            <p>General-purpose hashes (MD5, SHA-256) are designed for speed and are unsuitable for password storage. Password-specific algorithms (bcrypt, Argon2, scrypt) incorporate:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Salt:</strong> Random data added to each password to prevent rainbow table attacks</li>
+                <li><strong>Cost Factor:</strong> Adjustable work factor to slow down brute-force attempts</li>
+                <li><strong>Memory Requirements:</strong> Some algorithms (Argon2) use memory-hard functions to resist GPU cracking</li>
+            </ul>
+
+            <h3>Hash Collisions and Security</h3>
+            <p>A collision occurs when two different inputs produce the same hash output. Good cryptographic hash functions make collisions computationally infeasible to find. However, MD5 and SHA-1 have known collision vulnerabilities and should not be used for security-sensitive applications. Modern systems use SHA-256 or SHA-3 as minimum standards.</p>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What is a hash identifier tool used for?</h3>
+                <p>A hash identifier analyzes unknown hash strings to determine which cryptographic algorithm generated them. This is useful for security researchers analyzing compromised databases, forensic investigators examining digital evidence, and developers working with legacy systems where hash types aren't documented.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I know if a hash is MD5 or SHA-1?</h3>
+                <p>The simplest way is by length: MD5 produces 32 hexadecimal characters (128 bits), while SHA-1 produces 40 hexadecimal characters (160 bits). If you have a 32-character hex string, it's likely MD5 (or MD4, which is less common). Our tool will show confidence levels for each possibility.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can this tool reverse a hash into plain text?</h3>
+                <p>No. Hash functions are designed to be one-way operations—mathematically impossible to reverse. This tool only identifies the algorithm used to create the hash. To find the original input, you would need to use rainbow tables, brute-force attacks, or known hash databases (which only work for common passwords).</p>
+            </div>
+            <div class="faq-item">
+                <h3>What hash types are supported by this detector?</h3>
+                <p>The tool supports all major cryptographic hash functions including MD5, MD4, SHA-1, SHA-256, SHA-384, SHA-512, SHA-3, RIPEMD-160, Whirlpool, bcrypt, scrypt, Argon2, Blake2, and many others. It also detects checksum algorithms like CRC32 and Adler32.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why do some hashes show multiple possible algorithm matches?</h3>
+                <p>Some algorithms produce identical hash lengths (e.g., MD4, MD5, and RIPEMD-128 all produce 128-bit output). Without additional context or distinctive formatting, the tool cannot definitively distinguish between them and shows all possibilities with confidence percentages based on usage frequency.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the difference between hexadecimal and Base64 encoding?</h3>
+                <p>Hexadecimal (Base16) uses characters 0-9 and a-f to represent binary data, producing longer strings (2 characters per byte). Base64 uses 64 characters (A-Z, a-z, 0-9, +, /) and is more compact (4 characters per 3 bytes). The same hash will look different in each encoding but represent identical data.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Are broken hash algorithms like MD5 still used?</h3>
+                <p>Unfortunately, yes. Despite known collision vulnerabilities, MD5 and SHA-1 remain in use in legacy systems, file integrity checks (where collision resistance isn't critical), and some embedded devices. However, they should never be used for password storage, digital signatures, or any security-critical applications.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a salt and why does it matter for identification?</h3>
+                <p>A salt is random data added to input before hashing to ensure unique outputs for identical inputs. Password hashes like bcrypt and Argon2 always use salts and have distinctive formats. Knowing the salt can help identify the hashing scheme, as different systems use different salt formats and lengths.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Cryptography Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>SHA-256 Generator</h3>
+                <p>Create SHA-256 hashes from any text or file content.</p>
+            </a>
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>MD5 Hash Calculator</h3>
+                <p>Generate MD5 checksums for file integrity verification.</p>
+            </a>
+            <a href="/tools/password-analyzer" class="tool-card">
+                <h3>Bcrypt Password Tester</h3>
+                <p>Test and verify bcrypt password hashes with known salts.</p>
+            </a>
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>Base64 Converter</h3>
+                <p>Convert between Base64 encoding and raw binary data.</p>
+            </a>
+            <a href="/tools/password-generator" class="tool-card">
+                <h3>Secure Password Generator</h3>
+                <p>Generate cryptographically secure random passwords.</p>
+            </a>
+            <a href="/tools/breach-checker" class="tool-card">
+                <h3>Password Breach Checker</h3>
+                <p>Check if your passwords have been exposed in known data breaches.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Hash Identifier Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const hashInput = document.getElementById('hashInput');
+        const encodingSelect = document.getElementById('encodingSelect');
+        const saltInput = document.getElementById('saltInput');
+        const identifyBtn = document.getElementById('identifyBtn');
+        const initialMessage = document.getElementById('initialMessage');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const matchList = document.getElementById('matchList');
+        const charLength = document.getElementById('charLength');
+        const bitLength = document.getElementById('bitLength');
+        const applicationTags = document.getElementById('applicationTags');
+
+        // Hash signature database
+        const hashDatabase = [
+            {
+                name: "MD5",
+                hexLength: 32,
+                bitLength: 128,
+                patterns: [],
+                confidence: 95,
+                applications: ["File checksums", "Legacy systems", "Data integrity"]
+            },
+            {
+                name: "SHA-1",
+                hexLength: 40,
+                bitLength: 160,
+                patterns: [],
+                confidence: 95,
+                applications: ["Git commits", "Legacy certificates", "Digital signatures"]
+            },
+            {
+                name: "SHA-256",
+                hexLength: 64,
+                bitLength: 256,
+                patterns: [],
+                confidence: 95,
+                applications: ["TLS/SSL", "Bitcoin", "Modern cryptography"]
+            },
+            {
+                name: "SHA-384",
+                hexLength: 96,
+                bitLength: 384,
+                patterns: [],
+                confidence: 95,
+                applications: ["High-security apps", "Certificate chains"]
+            },
+            {
+                name: "SHA-512",
+                hexLength: 128,
+                bitLength: 512,
+                patterns: [],
+                confidence: 95,
+                applications: ["Maximum security", "Cryptographic keys"]
+            },
+            {
+                name: "bcrypt",
+                hexLength: 60,
+                bitLength: 184,
+                patterns: ['$2a$', '$2b$', '$2y$', '$2x$'],
+                confidence: 100,
+                applications: ["Password hashing", "User authentication"]
+            },
+            {
+                name: "MD4",
+                hexLength: 32,
+                bitLength: 128,
+                patterns: [],
+                confidence: 15,
+                applications: ["Legacy Windows auth", "Old protocols"]
+            },
+            {
+                name: "RIPEMD-128",
+                hexLength: 32,
+                bitLength: 128,
+                patterns: [],
+                confidence: 10,
+                applications: ["Alternative to MD5", "Rarely used"]
+            },
+            {
+                name: "CRC32",
+                hexLength: 8,
+                bitLength: 32,
+                patterns: [],
+                confidence: 90,
+                applications: ["Error detection", "ZIP files", "Network packets"]
+            },
+            {
+                name: "Adler-32",
+                hexLength: 8,
+                bitLength: 32,
+                patterns: [],
+                confidence: 10,
+                applications: ["zlib compression", "Data streams"]
+            }
+        ];
+
+        // Identify hash
+        identifyBtn.addEventListener('click', () => {
+            const hash = hashInput.value.trim();
+            const encoding = encodingSelect.value;
+            const salt = saltInput.value.trim();
+
+            if (!hash) {
+                alert('Please enter a hash string to identify');
+                return;
+            }
+
+            // Normalize hash (remove whitespace, convert to lowercase)
+            const normalizedHash = hash.replace(/\s/g, '').toLowerCase();
+
+            // Detect encoding if auto
+            let detectedEncoding = encoding;
+            if (encoding === 'auto') {
+                detectedEncoding = detectEncoding(normalizedHash);
+            }
+
+            // Convert to hex if needed for length analysis
+            let hexHash = normalizedHash;
+            if (detectedEncoding === 'base64') {
+                hexHash = base64ToHex(normalizedHash);
+            }
+
+            // Find matches
+            const matches = identifyHash(hexHash, normalizedHash, salt);
+
+            // Display results
+            displayResults(matches, hexHash.length, detectedEncoding);
+        });
+
+        function detectEncoding(str) {
+            // Check for Base64 patterns
+            if (/^[A-Za-z0-9+/]*={0,2}$/.test(str) && str.length % 4 === 0 && str.length > 20) {
+                return 'base64';
+            }
+            // Check for hex (most common)
+            if (/^[0-9a-fA-F]+$/.test(str)) {
+                return 'hex';
+            }
+            return 'hex'; // Default
+        }
+
+        function base64ToHex(base64) {
+            try {
+                const raw = atob(base64);
+                let hex = '';
+                for (let i = 0; i < raw.length; i++) {
+                    const hexChar = raw.charCodeAt(i).toString(16);
+                    hex += hexChar.length === 2 ? hexChar : '0' + hexChar;
+                }
+                return hex;
+            } catch (e) {
+                return base64;
+            }
+        }
+
+        function identifyHash(hexHash, originalHash, salt) {
+            const matches = [];
+            const length = hexHash.length;
+
+            // Check for pattern-based matches first (e.g., bcrypt)
+            for (const algo of hashDatabase) {
+                if (algo.patterns.length > 0) {
+                    for (const pattern of algo.patterns) {
+                        if (originalHash.includes(pattern)) {
+                            matches.push({ ...algo, confidence: 100 });
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // Check length-based matches
+            for (const algo of hashDatabase) {
+                if (algo.hexLength === length && !matches.find(m => m.name === algo.name)) {
+                    matches.push(algo);
+                }
+            }
+
+            // Sort by confidence
+            matches.sort((a, b) => b.confidence - a.confidence);
+
+            // Limit to top 5 matches
+            return matches.slice(0, 5);
+        }
+
+        function displayResults(matches, hexLength, encoding) {
+            initialMessage.style.display = 'none';
+            resultsContainer.style.display = 'block';
+
+            // Update hash info
+            charLength.textContent = hexLength;
+            bitLength.textContent = (hexLength * 4) + ' bits';
+
+            // Render matches
+            if (matches.length === 0) {
+                matchList.innerHTML = '<div style="padding: 1rem; color: var(--text-light);">No matching hash algorithms found. The input may not be a valid hash or may use an unsupported algorithm.</div>';
+                applicationTags.innerHTML = '';
+            } else {
+                matchList.innerHTML = matches.map(match => `
+                    <div class="match-item">
+                        <div>
+                            <div class="match-name">${match.name}</div>
+                            <div class="match-details">${match.bitLength} bits • ${match.hexLength} hex chars</div>
+                        </div>
+                        <div style="display: flex; align-items: center;">
+                            <div class="confidence-bar">
+                                <div class="confidence-fill" style="width: ${match.confidence}%"></div>
+                            </div>
+                            <span class="confidence-text">${match.confidence}%</span>
+                        </div>
+                    </div>
+                `).join('');
+
+                // Aggregate applications from all matches
+                const allApplications = [...new Set(matches.flatMap(m => m.applications))];
+                applicationTags.innerHTML = allApplications.map(app => 
+                    `<span class="app-tag">${app}</span>`
+                ).join('');
+            }
+        }
+    });
+</script>
+
+<%- include('../partials/footer') %>

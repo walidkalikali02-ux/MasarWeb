@@ -66,6 +66,13 @@ router.get('/breach-checker', (req, res) => {
     });
 });
 
+// Hash Identifier
+router.get('/hash-identifier', (req, res) => {
+    res.render('tools/hash-identifier', {
+        title: req.lang === 'ar' ? 'محدد نوع الهاش' : 'Hash Identifier',
+    });
+});
+
 // Virus Scanner API - Scan Endpoint (Real File Processing)
 router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
     if (!req.file) {

@@ -12849,6 +12849,350 @@ server {
                 </p>
             </div>
         `
+    },
+    {
+        id: 'blue-green-canary-deployments-proxy-2026-02-10',
+        slug: 'blue-green-canary-deployments-proxy-2026-02-10',
+        title: 'نشر Blue/Green وCanary عبر طبقة البروكسي',
+        excerpt: 'تقنيات نشر تدريجية أمامياً لتقليل المخاطر وتحسين زمن التوافر دون انقطاع.',
+        date: '2026-02-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يُعد النشر الآمن دون انقطاع هدفاً أساسياً للفرق الهندسية. عبر طبقة البروكسي، يمكن تطبيق استراتيجيات
+                    <strong>Blue/Green</strong> و<strong>Canary</strong> لتوجية جزء من الحركة إلى الإصدار الجديد تدريجياً،
+                    مع قياس دقيق للأثر قبل التعميم. راجع
+                    <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">نشر Canary</a> و
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">مرئيات البروكسي</a>.
+                </p>
+                <h2>Blue/Green</h2>
+                <p>
+                    احتفظ بنسختين متوازيتين (زرقاء وخضراء)، وبدّل التوجيه أمامياً بسرعة عند نجاح الفحوصات.
+                    استخدم <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a> لتقليل أثر التبديل على المستخدمين البعيدين.
+                </p>
+                <h3>Canary تدريجي</h3>
+                <p>
+                    وجّه نسبة صغيرة من الحركة إلى الإصدار الجديد مع مراقبة الأخطاء وزمن الاستجابة عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المقاييس</a> قبل الرفع التدريجي للنسبة.
+                </p>
+                <h3>السياسات والحماية</h3>
+                <p>
+                    فعّل <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a> لحماية الخلفيات أثناء التجربة،
+                    واستخدم <a href="/blog/reverse-proxy-web-apps-2026-02-10">البروكسي العكسي</a> لتجميع الاستجابات وفلترة الرؤوس.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    نشر تدريجي عبر البروكسي يمنح مرونة عالية ويقلّل المخاطر، مع شفافية قياس واتخاذ قرارات مبنية على البيانات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'header-privacy-user-agent-normalization-proxy-2026-02-10',
+        slug: 'header-privacy-user-agent-normalization-proxy-2026-02-10',
+        title: 'حماية الخصوصية عبر تقليل المعرّفات في الرؤوس',
+        excerpt: 'تقليل بصمة المستخدم عبر فلترة الرؤوس وتطبيع User-Agent أمامياً.',
+        date: '2026-02-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يمكن للرؤوس مثل User-Agent وReferer كشف معلومات حساسة عن الجهاز والسلوك. عبر البروكسي، نطبّق سياسات
+                    لتقليل البصمة الرقمية وحماية الخصوصية. راجع
+                    <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">امتثال GDPR</a> و
+                    <a href="/blog/content-security-policy-via-proxy-headers-2026-02-10">سياسة أمن المحتوى عبر الرؤوس</a>.
+                </p>
+                <h2>تطبيع الرؤوس</h2>
+                <p>
+                    طبّع User-Agent إلى قيم موحّدة، واحذف الحقول غير الضرورية من Referer وX-Client-Hints،
+                    مع احترام <a href="/blog/tls-ssl-testing-through-proxy-2026-02-10">TLS</a> لمنع التلاعب أثناء النقل.
+                </p>
+                <h3>تقليل البيانات</h3>
+                <p>
+                    اتّبع مبدأ أقل قدر من البيانات، وقلّل المعرّفات المرتبطة بالمستخدم. اربط ذلك بسجلات
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a> لتقييم الأثر على التحليلات.
+                </p>
+                <h3>التوافق</h3>
+                <p>
+                    احترم خصوصية المستخدمين مع الحفاظ على وظائف الموقع الأساسية، واستخدم قوائم بيضاء لبعض المسارات الحساسة
+                    كما في <a href="/blog/multi-tenant-routing-quota-proxy-2026-02-10">إدارة المستأجرين</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تقليل المعرّفات في الرؤوس عبر البروكسي يوازن بين الخصوصية والوظائف، مع تحكّم مركزي وشفافية قياس.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'seo-canonical-hreflang-rewrite-proxy-2026-02-10',
+        slug: 'seo-canonical-hreflang-rewrite-proxy-2026-02-10',
+        title: 'إشارات SEO عبر البروكسي: Canonical وHreflang وإعادة الكتابة',
+        excerpt: 'ضبط إشارات الفهرسة أمامياً لتحسين الاكتشاف والاحتفاظ في المواقع متعددة اللغات.',
+        date: '2026-02-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    المواقع متعددة اللغات تحتاج إلى إشارات SEO دقيقة. عبر الحافة، يمكن للبروكسي حقن روابط <strong>canonical</strong> و
+                    <strong>hreflang</strong> وإعادة كتابة الروابط الداخلية إلى النسخ المحلية. راجع
+                    <a href="/blog/edge-localization-ab-testing-proxy-2026-02-10">اختبارات التوطين على الحافة</a> و
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a>.
+                </p>
+                <h2>إعادة الكتابة</h2>
+                <p>
+                    حدّد عناصر قابلة لإعادة الكتابة واحترم البِنى الدلالية. اربط القياس بـ
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المقاييس</a> لضمان عدم كسر المكوّنات الديناميكية.
+                </p>
+                <h3>إشارات الفهرسة</h3>
+                <p>
+                    أضف canonical لمنع التكرار، واضبط hreflang للإشارة إلى النسخ الإقليمية، مع قوائم بيضاء للمسارات الحرجة.
+                </p>
+                <h3>التحسين المستمر</h3>
+                <p>
+                    نفّذ تغييرات تدريجية عبر <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a>،
+                    وتحقق من الأداء عبر <a href="/blog/cache-optimization-proxy-2026-02-10">الكاش</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    إشارات SEO أمامية تمنح تحكّماً أسرع ومرونة أعلى دون تعديل الخلفيات، مع أثر إيجابي على الاكتشاف.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'websocket-backpressure-scaling-proxy-2026-02-10',
+        slug: 'websocket-backpressure-scaling-proxy-2026-02-10',
+        title: 'إدارة Backpressure وتوسعة WebSocket عبر البروكسي',
+        excerpt: 'تحكّم في التدفق، إعادة المحاولة، ومسارات عزل للحفاظ على جلسات مستقرة وقابلة للتوسعة.',
+        date: '2026-02-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    جلسات <strong>WebSocket</strong> تتطلب إدارة دقيقة للتدفق لتجنب الانقطاعات. يمنح البروكسي طبقة تحكّم
+                    للتعامل مع الخلفيات البطيئة، إعادة المحاولة، ومسارات العزل. راجع
+                    <a href="/blog/websocket-proxy-security-performance-2026-02-10">WebSocket عبر البروكسي</a> و
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>.
+                </p>
+                <h2>التحكّم في التدفق</h2>
+                <p>
+                    استخدم حدوداً لحجم الرسائل ومعدّلات الإرسال، مع قوائم سوداء للبوتات كما في
+                    <a href="/blog/bot-management-ml-proxy-2026-02-10">إدارة البوتات</a>.
+                </p>
+                <h3>إعادة المحاولة والعزل</h3>
+                <p>
+                    وفّر إعادة محاولة ذكية ورسائل أخطاء واضحة، وفعّل مسارات عزل للحالات المشكوك بها لتقليل الأثر على الجلسات السليمة.
+                </p>
+                <h3>القياس والتحسين</h3>
+                <p>
+                    اجمع مقاييس تسليم الرسائل والتأخير عبر <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>،
+                    واضبط الحدود تدريجياً عبر <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    إدارة Backpressure أمامياً تحافظ على استقرار الجلسات وتمنح توسعة آمنة وقابلة للرصد.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'file-upload-malware-scanning-proxy-2026-02-10',
+        slug: 'file-upload-malware-scanning-proxy-2026-02-10',
+        title: 'فحص الملفات المرفوعة عبر البروكسي لمنع البرمجيات الخبيثة',
+        excerpt: 'تحليل المرفوعات أمامياً، سياسات منع، وقواعد أمان للرؤوس لوقف الهجمات المبكرة.',
+        date: '2026-02-10',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تمثل الملفات المرفوعة قناة شائعة للهجمات. عبر البروكسي، يمكن فحص الصيغ والميتاداتا، منع الأنواع الخطرة،
+                    وتطبيق سياسات صارمة للرؤوس. راجع
+                    <a href="/blog/content-security-policy-via-proxy-headers-2026-02-10">سياسة أمن المحتوى</a> و
+                    <a href="/blog/tls-ssl-testing-through-proxy-2026-02-10">اختبار TLS/SSL</a>.
+                </p>
+                <h2>الصيغ والقيود</h2>
+                <p>
+                    اسمح بصيغ آمنة فقط، وحدّد حدود الحجم، وفعّل فحص الميتاداتا وإزالة البيانات الحساسة قبل المرور.
+                </p>
+                <h3>الرؤوس والحماية</h3>
+                <p>
+                    طبّق رؤوس أمان مثل Content-Type وContent-Disposition، وفلترة الحقول لتجنّب التنفيذ غير المقصود،
+                    مع قوائم بيضاء لمسارات موثوقة كما في <a href="/blog/reverse-proxy-web-apps-2026-02-10">البروكسي العكسي</a>.
+                </p>
+                <h3>القياس والامتثال</h3>
+                <p>
+                    سجّل حالات الرفض والقبول مع شروحات واضحة، واحترم <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">سياسات الخصوصية</a>
+                    وتقليل البيانات.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    فحص المرفوعات أمامياً يمنح طبقة دفاع مبكرة فعّالة، مع تحكّم مركزي وشفافية تشغيلية عالية.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'http3-quic-acceleration-proxy-2026-02-11',
+        slug: 'http3-quic-acceleration-proxy-2026-02-11',
+        title: 'تسريع HTTP/3 وQUIC عبر طبقة البروكسي',
+        excerpt: 'تقليل زمن الوصول وتحسين الثبات عبر دعم HTTP/3 وQUIC على الحافة مع سياسات ذكية.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يمنح <strong>HTTP/3</strong> و<strong>QUIC</strong> أداءً أفضل عبر اتصالات مبنية على UDP وإدارة ازدحام حديثة.
+                    عبر البروكسي على الحافة، يمكنك تمكين بروتوكولات حديثة لتحسين زمن الوصول والثبات. راجع
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a> و
+                    <a href="/blog/reverse-proxy-web-apps-2026-02-10">البروكسي العكسي</a>.
+                </p>
+                <h2>الفوائد العملية</h2>
+                <p>
+                    جلسات أسرع، إعادة اتصال أكثر موثوقية، وأداء أفضل على الشبكات المتقلبة. اربط القياس بـ
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a> لمقارنة HTTP/1.1 وHTTP/2 وHTTP/3.
+                </p>
+                <h3>التدرّج والجاهزية</h3>
+                <p>
+                    طبّق <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a> لتمكين HTTP/3 تدريجياً، مع سياسات تراجع إلى HTTP/2 عند الحاجة.
+                </p>
+                <h3>الأمان</h3>
+                <p>
+                    احترم تشفير <a href="/blog/tls-ssl-testing-through-proxy-2026-02-10">TLS</a> وممارسات الرؤوس، مع فلترة لتقليل الهجمات عبر UDP.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    دعم HTTP/3 عبر البروكسي يرفع الأداء ويقلّل الانقطاعات مع قياس واضح وتأثير ملموس على تجربة المستخدم.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'geo-blocking-compliance-proxy-2026-02-11',
+        slug: 'geo-blocking-compliance-proxy-2026-02-11',
+        title: 'الحجب الجغرافي والامتثال التنظيمي عبر البروكسي',
+        excerpt: 'تطبيق قواعد الوصول حسب المنطقة واللوائح مع سجلات قابلة للتدقيق وتجربة متوازنة.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تحتاج التطبيقات أحياناً لتقييد الوصول حسب المنطقة أو اللوائح. يمنح البروكسي تحكّماً دقيقاً لتطبيق
+                    الحجب الجغرافي وسياسات الامتثال مع شفافية تشغيلية. راجع
+                    <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">امتثال GDPR</a> و
+                    <a href="/blog/role-based-access-policies-proxy-2026-02-10">سياسات الوصول</a>.
+                </p>
+                <h2>مصادر القرار</h2>
+                <p>
+                    اعتمد على بيانات IP والموقع، مع قوائم بيضاء/سوداء ديناميكية وحالات استثناء للخدمات الحرجة.
+                </p>
+                <h3>التجربة والرسائل</h3>
+                <p>
+                    اعرض صفحات توضيحية وسياسات بديلة، مع اقتراحات قانونية وفق المنطقة.
+                </p>
+                <h3>السجلات والتدقيق</h3>
+                <p>
+                    سجّل قرارات الحجب والسبب، واربطها بـ <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a> لمراجعة الامتثال.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    حجب جغرافي عبر البروكسي يمنح التزاماً تنظيمياً بدون تعقيد داخل الخدمات، مع تجربة مستخدم محترمة وواضحة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'captcha-challenge-proxy-2026-02-11',
+        slug: 'captcha-challenge-proxy-2026-02-11',
+        title: 'تحديات Captcha أمامية عبر البروكسي ضد البوتات',
+        excerpt: 'تفعيل تحديات ذكية عند الاشتباه، تقليل الأثر على المستخدم الحقيقي مع قياس دقيق.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تساعد تحديات Captcha في إيقاف البوتات مع الحفاظ على تجربة المستخدم. عبر البروكسي، يمكن تفعيل التحديات
+                    وفق إشارات سلوكية وقياس الأثر. راجع
+                    <a href="/blog/bot-management-ml-proxy-2026-02-10">إدارة البوتات</a> و
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>.
+                </p>
+                <h2>إشارات التفعيل</h2>
+                <p>
+                    معدّل الطلبات العالي، أنماط رؤوس غير طبيعية، أو فشل المصادقة المتكرر. فعّل التحديات تدريجياً حسب المخاطر.
+                </p>
+                <h3>الشفافية والتوافق</h3>
+                <p>
+                    اعرض أسباب التحدي واحترم الخصوصية عبر <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">تقليل البيانات</a>.
+                </p>
+                <h3>القياس والتحسين</h3>
+                <p>
+                    اربط نتائج التحديات بـ <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المقاييس</a> لضبط العتبات وتقليل الإزعاج.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تحديات أمامية ذكية تقلّل ضجيج البوتات وتحافظ على الأداء وتجربة المستخدم مع تحكّم مركزي.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'content-filtering-parental-controls-proxy-2026-02-11',
+        slug: 'content-filtering-parental-controls-proxy-2026-02-11',
+        title: 'فلترة المحتوى والرقابة الأبوية عبر البروكسي',
+        excerpt: 'قواعد أمامية لتصفية المحتوى غير اللائق، قوائم بيضاء/سوداء، وتوافق مع المدارس والشركات.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تحتاج المدارس والشركات إلى فلترة محتوى فعّالة. يمنح البروكسي أدوات لتطبيق قواعد أمامية، قوائم بيضاء/سوداء،
+                    ورسائل واضحة عند الحجب. انظر
+                    <a href="/blog/header-privacy-user-agent-normalization-proxy-2026-02-10">تقليل المعرّفات</a> و
+                    <a href="/blog/content-security-policy-via-proxy-headers-2026-02-10">سياسة أمن المحتوى</a>.
+                </p>
+                <h2>قواعد الفلترة</h2>
+                <p>
+                    حدّد الفئات غير المسموحة، وفّلتر الكلمات المفتاحية والرؤوس المشبوهة، مع استثناءات للمسارات التعليمية.
+                </p>
+                <h3>الشفافية</h3>
+                <p>
+                    اعرض صفحات تفسيرية وسياسات الطعن، واحترم <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a>.
+                </p>
+                <h3>المرئيات</h3>
+                <p>
+                    راقب معدّلات الحجب والأثر على الأداء عبر <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    فلترة أمامية عبر البروكسي تمنح تحكّماً فعالاً ومتوازنًا للمؤسسات مع تجربة مستخدم محترمة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'circuit-breaker-bulkhead-proxy-2026-02-11',
+        slug: 'circuit-breaker-bulkhead-proxy-2026-02-11',
+        title: 'قواطع الدارات وBulkhead عبر طبقة البروكسي',
+        excerpt: 'عزل الأعطال ومنع الدومينو عبر قواطع أمامية ومسارات بديلة بمراقبة صارمة.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الأعطال المتسلسلة تهدّد الموثوقية. عبر البروكسي، يمكن تطبيق <strong>قواطع الدارات</strong> و
+                    <strong>Bulkhead</strong> لعزل المسارات الفاشلة ومنع تأثيرها على البقية. راجع
+                    <a href="/blog/microservices-performance-gateway-proxy-2026-02-10">أداء المايكروسيرفس</a> و
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>.
+                </p>
+                <h2>الإنفاذ</h2>
+                <p>
+                    أغلق المسارات عند تجاوز عتبات الأخطاء، ووجّه إلى بدائل ذات قدرات محدودة، مع رسائل واضحة للمستهلكين.
+                </p>
+                <h3>القياس</h3>
+                <p>
+                    اربط القواطع بـ <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a> لمراقبة التأثير وضبط العتبات.
+                </p>
+                <h3>التدرّج</h3>
+                <p>
+                    نفّذ تغييرات تدريجية عبر <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a> لتجنّب الانقطاعات المفاجئة.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    قواطع أمامية وBulkhead عبر البروكسي تمنح استقراراً أعلى وقدرة على التعافي مع شفافية تشغيلية.
+                </p>
+            </div>
+        `
     }
 ];
 

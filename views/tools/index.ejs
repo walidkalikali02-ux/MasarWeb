@@ -74,6 +74,17 @@
                         <%= currentLang === 'ar' ? 'تحقق مما إذا كان بريدك الإلكتروني أو كلمات المرور قد تسربت في خرق بيانات معروف.' : 'Check if your email or passwords have been exposed in known data breaches.' %>
                     </p>
                 </a>
+
+                <!-- Hash Identifier Tool Card -->
+                <a href="/tools/hash-identifier" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🧬
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محدد نوع الهاش' : 'Hash Identifier' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'حدد خوارزمية التشفير المستخدمة في سلسلة الهاش بسرعة ودقة.' : 'Identify the cryptographic algorithm used to create a specific hash string.' %>
+                    </p>
+                </a>
             </div>
         </div>
     </main>
