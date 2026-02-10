@@ -73,6 +73,13 @@ router.get('/hash-identifier', (req, res) => {
     });
 });
 
+// 2FA Code Generator
+router.get('/2fa-generator', (req, res) => {
+    res.render('tools/2fa-generator', {
+        title: req.lang === 'ar' ? 'مولد رموز 2FA' : '2FA Code Generator',
+    });
+});
+
 // Virus Scanner API - Scan Endpoint (Real File Processing)
 router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
     if (!req.file) {

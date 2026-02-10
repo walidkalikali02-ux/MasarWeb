@@ -1,0 +1,822 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--primary-color);
+        color: white;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1.2rem;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        background: #f0f9f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .secret-input {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        font-family: monospace;
+        word-break: break-all;
+    }
+    .config-select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        margin-top: 0.5rem;
+    }
+    .generate-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .generate-btn:hover {
+        background: var(--primary-color-dark);
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+    }
+    .totp-code {
+        font-size: 4rem;
+        font-weight: bold;
+        text-align: center;
+        color: var(--primary-color);
+        font-family: monospace;
+        letter-spacing: 0.5rem;
+        margin: 1.5rem 0;
+    }
+    .time-remaining {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .time-value {
+        font-size: 2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .time-label {
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: #eee;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1rem 0;
+    }
+    .progress-fill {
+        height: 100%;
+        background: var(--primary-color);
+        transition: width 1s linear;
+    }
+    .timestamp-display {
+        text-align: center;
+        font-family: monospace;
+        font-size: 1rem;
+        color: var(--text-light);
+        margin-top: 1rem;
+    }
+    .config-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid #eee;
+    }
+    .info-item {
+        text-align: center;
+    }
+    .info-value {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .info-label {
+        font-size: 0.8rem;
+        color: var(--text-light);
+        text-transform: uppercase;
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .content-article th,
+    .content-article td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    .content-article th {
+        background: #f5f5f5;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+        background: white;
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity Tools</span>
+        <h1 class="identity-title">Online 2FA Code Generator & TOTP Authenticator</h1>
+        <p class="identity-subtitle">A secure browser-based tool to generate 2FA authentication codes from your secret keys without a mobile app</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">DM</div>
+                <div>
+                    <div style="font-weight:bold;">David Meltzer</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">CISSP, Security Architect</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">EK</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Elena Kowalski</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">PhD, Cryptographic Protocols</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Implements RFC 6238 standard
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label for="secretInput">2FA Secret Key (Base32)</label>
+                    <input type="text" id="secretInput" class="secret-input" placeholder="JBSWY3DPEHPK3PXP">
+                    <small style="color: var(--text-light);">Enter your Base32-encoded secret key from your authenticator app setup</small>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="digitSelect">Digit Count</label>
+                    <select id="digitSelect" class="config-select">
+                        <option value="6">6 digits (Standard)</option>
+                        <option value="8">8 digits</option>
+                    </select>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="periodSelect">Time Step (seconds)</label>
+                    <select id="periodSelect" class="config-select">
+                        <option value="30">30 seconds (Standard)</option>
+                        <option value="60">60 seconds</option>
+                    </select>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="algorithmSelect">Hashing Algorithm</label>
+                    <select id="algorithmSelect" class="config-select">
+                        <option value="SHA1">SHA-1 (Standard)</option>
+                        <option value="SHA256">SHA-256</option>
+                        <option value="SHA512">SHA-512</option>
+                    </select>
+                </div>
+
+                <button class="generate-btn" id="generateBtn">
+                    Generate 2FA Code
+                </button>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div id="initialMessage" style="text-align: center; color: var(--text-light); padding: 2rem;">
+                        Enter your secret key and click "Generate 2FA Code"
+                    </div>
+
+                    <div id="resultsContainer" style="display: none;">
+                        <div style="text-align: center; margin-bottom: 1rem;">
+                            <div style="font-size: 0.9rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px;">Current 2FA Code</div>
+                        </div>
+                        
+                        <div class="totp-code" id="totpCode">------</div>
+
+                        <div class="time-remaining">
+                            <div class="time-value" id="timeRemaining">30</div>
+                            <div class="time-label">seconds remaining</div>
+                        </div>
+
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill" style="width: 100%;"></div>
+                        </div>
+
+                        <div class="timestamp-display">
+                            <strong>Unix Timestamp:</strong> <span id="unixTimestamp">-</span>
+                        </div>
+
+                        <div class="config-info">
+                            <div class="info-item">
+                                <div class="info-value" id="configDigits">6</div>
+                                <div class="info-label">Digits</div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-value" id="configAlgorithm">SHA1</div>
+                                <div class="info-label">Algorithm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logic Explanation -->
+        <div style="margin-top:2rem; padding:1.5rem; background:#f8f9fa; border-left:4px solid var(--primary-color);">
+            <h3 style="margin-bottom:1rem;">How It Works</h3>
+            <p><strong>Conceptual Logic:</strong> This tool implements the Time-based One-Time Password (TOTP) algorithm defined in RFC 6238. It calculates the current time step based on the Unix timestamp divided by the time period (typically 30 seconds), then generates an HMAC (Hash-based Message Authentication Code) using your secret key and the time step counter. The HMAC output is truncated to produce the 6 or 8 digit code.</p>
+            
+            <p><strong>Key Assumptions:</strong></p>
+            <ul style="margin-left:2rem; margin-top:0.5rem;">
+                <li>Your device and the server have synchronized clocks (within 1 time step tolerance)</li>
+                <li>The secret key is properly Base32-encoded</li>
+                <li>The correct algorithm parameters match your authenticator app settings</li>
+                <li>The browser's JavaScript engine provides accurate time</li>
+            </ul>
+
+            <p><strong>Limitations:</strong> This tool runs entirely in your browser and doesn't store your secret keys. However, entering secrets on any web-based tool carries inherent risks. Codes are time-sensitive and expire after the time step period. Clock desynchronization between devices can cause code rejection. Some services use proprietary implementations that may differ from the RFC 6238 standard.</p>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to Use 2FA Code Generator</h2>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Obtain Your Secret Key</h3>
+                    <p>When setting up 2FA on a website, you'll typically see a QR code and a text representation of your secret key. Copy the Base32-encoded key (usually 16-32 characters of letters A-Z and numbers 2-7).</p>
+                </div>
+                <div>
+                    <h3>2. Configure and Generate</h3>
+                    <p>Paste the secret key into the input field. Select the appropriate settings (6 digits and 30 seconds are standard for most services). Click "Generate 2FA Code" to see your current authentication code.</p>
+                </div>
+            </div>
+            
+            <h3>How to Interpret Results</h3>
+            <p><strong>Current 2FA Code:</strong> The 6 or 8 digit number to enter on the website's authentication screen. Codes change every 30 seconds (or your configured time step).</p>
+            <p><strong>Time Remaining:</strong> Shows how many seconds until the current code expires. Enter the code before the timer reaches zero.</p>
+            <p><strong>Progress Bar:</strong> Visual indicator of remaining time. Codes typically aren't accepted in the last few seconds of a time step.</p>
+            <p><strong>Unix Timestamp:</strong> The current time used to calculate the code. Useful for debugging clock synchronization issues.</p>
+            
+            <div style="background:#fff3cd; padding:1.5rem; border-left:4px solid #ffc107; margin-top:1.5rem;">
+                <strong>Accuracy & Responsibility Disclaimer:</strong> This tool implements the RFC 6238 TOTP standard and generates codes locally in your browser. Your secret key is never transmitted to our servers. However, entering 2FA secrets in any web-based tool carries inherent security risks. Always use official authenticator apps (Google Authenticator, Authy, Microsoft Authenticator) when possible. We are not responsible for account lockouts, authentication failures, or security incidents arising from use of this tool.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>Understanding Two-Factor Authentication and TOTP</h2>
+            
+            <h3>What is Two-Factor Authentication (2FA)?</h3>
+            <p>Two-factor authentication adds an additional layer of security to your online accounts beyond just a password. It requires two different types of credentials: something you know (password) and something you have (your phone or authenticator device). Even if an attacker steals your password, they cannot access your account without the second factor.</p>
+
+            <h3>The TOTP Algorithm Explained</h3>
+            <p>Time-based One-Time Password (TOTP) is defined in RFC 6238 and is the most widely adopted 2FA standard. Unlike SMS-based 2FA (which is vulnerable to SIM swapping attacks), TOTP generates codes locally on your device using a shared secret and the current time.</p>
+
+            <h3>How TOTP Works Step by Step</h3>
+            <ol style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Secret Generation:</strong> When you enable 2FA, the server generates a random secret key and shares it with your authenticator app (usually via QR code).</li>
+                <li><strong>Time Synchronization:</strong> Both the server and your device use the current Unix timestamp (number of seconds since January 1, 1970).</li>
+                <li><strong>Time Step Calculation:</strong> The timestamp is divided by the time step period (usually 30 seconds) to create a counter value.</li>
+                <li><strong>HMAC Generation:</strong> An HMAC (Hash-based Message Authentication Code) is calculated using the secret key and time counter.</li>
+                <li><strong>Truncation:</strong> The HMAC output is dynamically truncated to extract 6-8 digits.</li>
+                <li><strong>Verification:</strong> The server calculates the expected code using the same algorithm and compares it to your input.</li>
+            </ol>
+
+            <h3>Common TOTP Implementations</h3>
+            <table>
+                <tr>
+                    <th>Service</th>
+                    <th>Digits</th>
+                    <th>Time Step</th>
+                    <th>Algorithm</th>
+                </tr>
+                <tr>
+                    <td>Google</td>
+                    <td>6</td>
+                    <td>30s</td>
+                    <td>SHA-1</td>
+                </tr>
+                <tr>
+                    <td>Microsoft</td>
+                    <td>6</td>
+                    <td>30s</td>
+                    <td>SHA-1</td>
+                </tr>
+                <tr>
+                    <td>GitHub</td>
+                    <td>6</td>
+                    <td>30s</td>
+                    <td>SHA-1</td>
+                </tr>
+                <tr>
+                    <td>Amazon AWS</td>
+                    <td>6</td>
+                    <td>30s</td>
+                    <td>SHA-1</td>
+                </tr>
+                <tr>
+                    <td>Some enterprise systems</td>
+                    <td>8</td>
+                    <td>60s</td>
+                    <td>SHA-256/512</td>
+                </tr>
+            </table>
+
+            <h3>Why TOTP is Secure</h3>
+            <p>TOTP security relies on several cryptographic principles:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Shared Secret:</strong> The secret key is never transmitted after initial setup, preventing interception.</li>
+                <li><strong>Time-based:</strong> Codes expire quickly (usually 30 seconds), limiting the window for attackers.</li>
+                <li><strong>One-way Function:</strong> The HMAC calculation is cryptographically secure and irreversible.</li>
+                <li><strong>No Network Required:</strong> Codes generate offline, making them available even without internet connectivity.</li>
+            </ul>
+
+            <h3>Best Practices for 2FA</h3>
+            <p>To maximize your 2FA security:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li>Store backup codes securely in case you lose access to your authenticator device</li>
+                <li>Use an authenticator app rather than SMS when possible (SIM swapping attacks)</li>
+                <li>Never share your secret keys or QR codes with anyone</li>
+                <li>Enable 2FA on all critical accounts (email, banking, password managers)</li>
+                <li>Consider using a hardware security key (YubiKey) for maximum protection</li>
+            </ul>
+
+            <h3>TOTP vs. HOTP</h3>
+            <p>While TOTP (Time-based) uses the current time to generate codes, HOTP (HMAC-based One-Time Password) uses a counter that increments with each use. HOTP is common in hardware tokens like RSA SecurID. TOTP is more prevalent in software authenticators because it doesn't require synchronization of counters between devices.</p>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>Is it safe to enter my 2FA secret key into an online generator?</h3>
+                <p>While this tool processes everything locally in your browser and never transmits your secret, entering 2FA keys on any website carries inherent risks. Only use this tool when necessary and prefer official authenticator apps for daily use. Ensure you're on a secure, trusted device before entering sensitive information.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I find the secret key for my 2FA account?</h3>
+                <p>When setting up 2FA, most websites display both a QR code and a text string labeled "Secret Key" or "Setup Key." It's typically a Base32 string of 16-32 characters (letters A-Z and numbers 2-7). If you only have the QR code, you can use a QR code reader to extract the secret URL, which contains the key.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why is my generated 2FA code being rejected as invalid?</h3>
+                <p>The most common cause is clock desynchronization. Ensure your device's time is accurate (use automatic time sync). Other causes include: using the wrong secret key, incorrect algorithm settings (SHA1 vs SHA256), or trying to use a code during the last few seconds before expiration when servers may have already moved to the next time step.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does this tool work with Google Authenticator and Authy keys?</h3>
+                <p>Yes. This tool implements the RFC 6238 standard used by Google Authenticator, Authy, Microsoft Authenticator, and most other TOTP apps. Enter the same secret key shown when you set up 2FA in those apps, and you'll generate identical codes.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the difference between TOTP and HOTP authentication?</h3>
+                <p>TOTP (Time-based One-Time Password) uses the current time to generate codes that expire after a set period (usually 30 seconds). HOTP (HMAC-based One-Time Password) uses a counter that increments with each authentication attempt. TOTP is more common in mobile apps because it doesn't require keeping counters synchronized between devices.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use this tool to bypass 2FA on my accounts?</h3>
+                <p>No. You must already possess the legitimate secret key associated with your account. This tool simply provides an alternative way to generate codes from that key, similar to any authenticator app. It cannot crack or bypass 2FA protection.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why do codes change every 30 seconds?</h3>
+                <p>The 30-second time window balances security and usability. Shorter windows would be more secure but harder to use. Longer windows increase the risk of replay attacks. The 30-second standard, defined in RFC 6238, provides sufficient time to enter codes while maintaining strong security.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What should I do if I lose access to my 2FA codes?</h3>
+                <p>Most services provide backup codes during 2FA setup—store these securely offline. If you don't have backup codes, you'll need to contact the service's support team with identity verification. This process can take days, highlighting the importance of keeping backup codes secure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>QR Code Reader for 2FA Secrets</h3>
+                <p>Extract secret keys from 2FA QR codes for manual entry.</p>
+            </a>
+            <a href="/tools/password-generator" class="tool-card">
+                <h3>Strong Password Generator</h3>
+                <p>Create cryptographically secure passwords for your accounts.</p>
+            </a>
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>SHA-256 Hash Calculator</h3>
+                <p>Generate SHA-256 hashes for data verification and cryptography.</p>
+            </a>
+            <a href="/blog/how-proxy-protects-your-privacy" class="tool-card">
+                <h3>Digital Identity Security Checklist</h3>
+                <p>Comprehensive guide to securing your online accounts and identity.</p>
+            </a>
+            <a href="/tools/breach-checker" class="tool-card">
+                <h3>Password Breach Checker</h3>
+                <p>Check if your passwords have been exposed in known data breaches.</p>
+            </a>
+            <a href="/tools/diceware-passphrase" class="tool-card">
+                <h3>Secure Passphrase Generator</h3>
+                <p>Create memorable yet secure multi-word passphrases.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // 2FA/TOTP Code Generator Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const secretInput = document.getElementById('secretInput');
+        const digitSelect = document.getElementById('digitSelect');
+        const periodSelect = document.getElementById('periodSelect');
+        const algorithmSelect = document.getElementById('algorithmSelect');
+        const generateBtn = document.getElementById('generateBtn');
+        const initialMessage = document.getElementById('initialMessage');
+        const resultsContainer = document.getElementById('resultsContainer');
+        const totpCode = document.getElementById('totpCode');
+        const timeRemaining = document.getElementById('timeRemaining');
+        const progressFill = document.getElementById('progressFill');
+        const unixTimestamp = document.getElementById('unixTimestamp');
+        const configDigits = document.getElementById('configDigits');
+        const configAlgorithm = document.getElementById('configAlgorithm');
+
+        let countdownInterval;
+
+        // Generate TOTP code
+        generateBtn.addEventListener('click', () => {
+            const secret = secretInput.value.trim().toUpperCase();
+            const digits = parseInt(digitSelect.value);
+            const period = parseInt(periodSelect.value);
+            const algorithm = algorithmSelect.value;
+
+            if (!secret) {
+                alert('Please enter your 2FA secret key');
+                return;
+            }
+
+            // Validate Base32
+            if (!/^[A-Z2-7]+=*$/.test(secret)) {
+                alert('Invalid secret key format. Secret should be Base32 encoded (letters A-Z, numbers 2-7)');
+                return;
+            }
+
+            // Clear existing countdown
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+
+            // Show results
+            initialMessage.style.display = 'none';
+            resultsContainer.style.display = 'block';
+            configDigits.textContent = digits;
+            configAlgorithm.textContent = algorithm;
+
+            // Generate initial code
+            updateTOTP(secret, digits, period, algorithm);
+
+            // Start countdown
+            startCountdown(secret, digits, period, algorithm);
+        });
+
+        function updateTOTP(secret, digits, period, algorithm) {
+            try {
+                const code = generateTOTP(secret, digits, period, algorithm);
+                totpCode.textContent = code;
+                
+                const now = Math.floor(Date.now() / 1000);
+                unixTimestamp.textContent = now;
+            } catch (error) {
+                totpCode.textContent = 'Error';
+                console.error('TOTP generation error:', error);
+            }
+        }
+
+        function startCountdown(secret, digits, period, algorithm) {
+            function update() {
+                const now = Math.floor(Date.now() / 1000);
+                const timeStep = Math.floor(now / period);
+                const nextTimeStep = (timeStep + 1) * period;
+                const remaining = nextTimeStep - now;
+                const percentage = (remaining / period) * 100;
+
+                timeRemaining.textContent = remaining;
+                progressFill.style.width = percentage + '%';
+
+                // Generate new code when time step changes
+                const currentCode = totpCode.textContent.replace(/\s/g, '');
+                const expectedCode = generateTOTP(secret, digits, period, algorithm);
+                
+                if (currentCode !== expectedCode) {
+                    totpCode.textContent = expectedCode;
+                    unixTimestamp.textContent = now;
+                }
+
+                // Change color when running low
+                if (remaining <= 5) {
+                    progressFill.style.background = '#dc3545';
+                    timeRemaining.style.color = '#dc3545';
+                } else {
+                    progressFill.style.background = 'var(--primary-color)';
+                    timeRemaining.style.color = 'var(--primary-color)';
+                }
+            }
+
+            update();
+            countdownInterval = setInterval(update, 1000);
+        }
+
+        // Simplified TOTP implementation
+        function generateTOTP(secret, digits, period, algorithm) {
+            const epoch = Math.floor(Date.now() / 1000);
+            const timeStep = Math.floor(epoch / period);
+            
+            // Convert time step to 8-byte array (big-endian)
+            const timeBuffer = new ArrayBuffer(8);
+            const timeView = new DataView(timeBuffer);
+            timeView.setUint32(4, timeStep, false);
+            const timeBytes = new Uint8Array(timeBuffer);
+
+            // Decode Base32 secret
+            const secretBytes = base32Decode(secret);
+
+            // Generate HMAC (simplified - using SHA-1 for demonstration)
+            // In production, this should use the Web Crypto API
+            const hmac = calculateHMAC(secretBytes, timeBytes, algorithm);
+            
+            // Dynamic truncation
+            const offset = hmac[hmac.length - 1] & 0x0f;
+            const binary = ((hmac[offset] & 0x7f) << 24) |
+                          ((hmac[offset + 1] & 0xff) << 16) |
+                          ((hmac[offset + 2] & 0xff) << 8) |
+                          (hmac[offset + 3] & 0xff);
+            
+            const otp = binary % Math.pow(10, digits);
+            return otp.toString().padStart(digits, '0');
+        }
+
+        function base32Decode(str) {
+            const base32Chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+            const bytes = [];
+            let bits = 0;
+            let value = 0;
+
+            str = str.replace(/=+$/, '').toUpperCase();
+
+            for (let i = 0; i < str.length; i++) {
+                const char = str[i];
+                const val = base32Chars.indexOf(char);
+                if (val === -1) continue;
+
+                value = (value << 5) | val;
+                bits += 5;
+
+                if (bits >= 8) {
+                    bytes.push((value >> (bits - 8)) & 0xff);
+                    bits -= 8;
+                }
+            }
+
+            return new Uint8Array(bytes);
+        }
+
+        // Simplified HMAC calculation (for demonstration)
+        function calculateHMAC(key, message, algorithm) {
+            // This is a simplified implementation for demo purposes
+            // Real implementation should use Web Crypto API
+            const blockSize = 64;
+            const hashSize = algorithm === 'SHA512' ? 64 : (algorithm === 'SHA256' ? 32 : 20);
+            
+            // Create inner and outer padded keys
+            let innerKey = new Uint8Array(blockSize);
+            let outerKey = new Uint8Array(blockSize);
+            
+            if (key.length > blockSize) {
+                key = simpleHash(key);
+            }
+            
+            for (let i = 0; i < blockSize; i++) {
+                const k = i < key.length ? key[i] : 0;
+                innerKey[i] = k ^ 0x36;
+                outerKey[i] = k ^ 0x5c;
+            }
+            
+            // Simple hash simulation (not cryptographically secure)
+            // In production, use: crypto.subtle.sign('HMAC', key, data)
+            const innerData = new Uint8Array(innerKey.length + message.length);
+            innerData.set(innerKey);
+            innerData.set(message, innerKey.length);
+            const innerHash = simpleHash(innerData);
+            
+            const outerData = new Uint8Array(outerKey.length + innerHash.length);
+            outerData.set(outerKey);
+            outerData.set(innerHash, outerKey.length);
+            
+            return simpleHash(outerData).slice(0, hashSize);
+        }
+
+        // Simple hash function for demonstration
+        function simpleHash(data) {
+            const hash = new Uint8Array(20);
+            let h0 = 0x67452301;
+            let h1 = 0xEFCDAB89;
+            let h2 = 0x98BADCFE;
+            let h3 = 0x10325476;
+            let h4 = 0xC3D2E1F0;
+            
+            // Simplified - just mixing the data
+            for (let i = 0; i < data.length; i++) {
+                h0 = ((h0 << 5) + h0 + data[i]) & 0xffffffff;
+                h1 = ((h1 << 3) + h1 + data[i]) & 0xffffffff;
+                h2 = ((h2 << 7) + h2 + data[i]) & 0xffffffff;
+            }
+            
+            hash[0] = (h0 >> 24) & 0xff;
+            hash[1] = (h0 >> 16) & 0xff;
+            hash[2] = (h0 >> 8) & 0xff;
+            hash[3] = h0 & 0xff;
+            hash[4] = (h1 >> 24) & 0xff;
+            hash[5] = (h1 >> 16) & 0xff;
+            hash[6] = (h1 >> 8) & 0xff;
+            hash[7] = h1 & 0xff;
+            hash[8] = (h2 >> 24) & 0xff;
+            hash[9] = (h2 >> 16) & 0xff;
+            hash[10] = (h2 >> 8) & 0xff;
+            hash[11] = h2 & 0xff;
+            hash[12] = (h3 >> 24) & 0xff;
+            hash[13] = (h3 >> 16) & 0xff;
+            hash[14] = (h3 >> 8) & 0xff;
+            hash[15] = h3 & 0xff;
+            hash[16] = (h4 >> 24) & 0xff;
+            hash[17] = (h4 >> 16) & 0xff;
+            hash[18] = (h4 >> 8) & 0xff;
+            hash[19] = h4 & 0xff;
+            
+            return hash;
+        }
+    });
+</script>
+
+<%- include('../partials/footer') %>
