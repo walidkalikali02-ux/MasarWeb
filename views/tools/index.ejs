@@ -63,6 +63,17 @@
                         <%= currentLang === 'ar' ? 'إنشاء عبارات مرور سهلة التذكر باستخدام كلمات عشوائية آمنة.' : 'Create memorable passphrases using secure random dictionary words.' %>
                     </p>
                 </a>
+
+                <!-- Password Breach Checker Tool Card -->
+                <a href="/tools/breach-checker" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔍
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'فاحص تسريب البيانات' : 'Breach Checker' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'تحقق مما إذا كان بريدك الإلكتروني أو كلمات المرور قد تسربت في خرق بيانات معروف.' : 'Check if your email or passwords have been exposed in known data breaches.' %>
+                    </p>
+                </a>
             </div>
         </div>
     </main>

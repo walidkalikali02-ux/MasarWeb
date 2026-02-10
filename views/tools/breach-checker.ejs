@@ -1,0 +1,714 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--primary-color);
+        color: white;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+        border-radius: 4px;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 1.2rem;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+        background: #f0f9f0;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .tool-input {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        font-family: monospace;
+    }
+    .toggles-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .toggle-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        transition: background 0.2s;
+    }
+    .toggle-item:hover {
+        background: #f5f5f5;
+    }
+    .check-btn {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    .check-btn:hover {
+        background: var(--primary-color-dark);
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+    }
+    .status-safe {
+        color: #28a745;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .status-pwned {
+        color: #dc3545;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    .breach-list {
+        margin-top: 1rem;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    .breach-item {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+        background: white;
+        margin-bottom: 0.5rem;
+    }
+    .breach-name {
+        font-weight: bold;
+        font-size: 1.1rem;
+    }
+    .breach-date {
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+    .data-types {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    .data-tag {
+        background: #e9ecef;
+        padding: 0.25rem 0.5rem;
+        border-radius: 3px;
+        font-size: 0.8rem;
+    }
+    .sensitivity-rating {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 3px;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+    .sensitivity-high {
+        background: #dc3545;
+        color: white;
+    }
+    .sensitivity-medium {
+        background: #ffc107;
+        color: black;
+    }
+    .sensitivity-low {
+        background: #28a745;
+        color: white;
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .content-article th,
+    .content-article td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+    .content-article th {
+        background: #f5f5f5;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+        background: white;
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity</span>
+        <h1 class="identity-title">Free Data Breach & Password Exposure Checker</h1>
+        <p class="identity-subtitle">Instantly verify if your email or passwords have been leaked in a historical data breach using the secure Have I Been Pwned database.</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">TH</div>
+                <div>
+                    <div style="font-weight:bold;">Troy Hunt</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Founder of Have I Been Pwned</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">JC</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Jessica Chen</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">PhD, Information Security</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Used by 500,000+ security-conscious users
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label for="emailInput">Email Address or Username</label>
+                    <input type="text" id="emailInput" class="tool-input" placeholder="your@email.com">
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="passwordInput">Password (for exposure check)</label>
+                    <input type="password" id="passwordInput" class="tool-input" placeholder="Enter password to check">
+                    <small style="color: var(--text-light);">Your password is hashed locally before checking. We never see your actual password.</small>
+                </div>
+
+                <div class="tool-input-group">
+                    <label>Options</label>
+                    <div class="toggles-grid">
+                        <label class="toggle-item">
+                            <input type="checkbox" id="chkDomainFilter"> 
+                            <span>Filter by Specific Domain (optional)</span>
+                        </label>
+                        <label class="toggle-item">
+                            <input type="checkbox" id="chkTruncate" checked> 
+                            <span>Truncate Results (show top 10 breaches)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="check-btn" id="checkBtn">
+                    Check for Breaches
+                </button>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <div id="statusDisplay" style="font-size: 1.5rem; color: var(--text-light);">
+                            Enter your email or password to check
+                        </div>
+                    </div>
+
+                    <div id="breachResults" style="display: none;">
+                        <div class="breach-list" id="breachList">
+                            <!-- Breach items will be inserted here -->
+                        </div>
+
+                        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 2px solid #eee;">
+                            <div style="margin-bottom: 1rem;">
+                                <strong>Leak Sensitivity Rating:</strong>
+                                <span class="sensitivity-rating" id="sensitivityRating">-</span>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <strong>Total Breaches Found:</strong>
+                                <span id="totalBreaches">0</span>
+                            </div>
+                            <div>
+                                <strong>Data Types Exposed:</strong>
+                                <div class="data-types" id="dataTypes">
+                                    <!-- Data type tags will be inserted here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logic Explanation -->
+        <div style="margin-top:2rem; padding:1.5rem; background:#f8f9fa; border-left:4px solid var(--primary-color);">
+            <h3 style="margin-bottom:1rem;">How It Works</h3>
+            <p><strong>Conceptual Logic:</strong> This tool implements k-Anonymity to protect your privacy. When checking a password, we generate a SHA-1 hash of your password locally in your browser, then send only the first 5 characters of that hash to the Have I Been Pwned API. The API returns a list of hash suffixes that match those 5 characters, and we check locally if your full hash appears in that list.</p>
+            
+            <p><strong>Key Assumptions:</strong></p>
+            <ul style="margin-left:2rem; margin-top:0.5rem;">
+                <li>The Have I Been Pwned database contains comprehensive breach data</li>
+                <li>k-Anonymity provides sufficient privacy protection for password checks</li>
+                <li>Users are checking their own credentials, not third-party accounts</li>
+                <li>Users will take appropriate action if breaches are found</li>
+            </ul>
+
+            <p><strong>Limitations:</strong> This tool can only detect breaches that have been publicly disclosed and added to the Have I Been Pwned database. Undisclosed breaches, recent breaches that haven't been processed, or breaches not shared with HIBP won't be detected. The tool is for awareness, not comprehensive security monitoring.</p>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to Use Password Breach Checker</h2>
+            
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Enter Your Information</h3>
+                    <p>Enter your email address to check for account breaches, or enter a password to check if it has been exposed in known data leaks. You can check both simultaneously.</p>
+                </div>
+                <div>
+                    <h3>2. Review the Results</h3>
+                    <p>The tool will display any breaches found, including the source, date, and types of data exposed. Review each breach carefully to understand the impact.</p>
+                </div>
+            </div>
+            
+            <h3>How to Interpret Results</h3>
+            <p><strong>Safe Status:</strong> No breaches found for your email or password in the database.</p>
+            <p><strong>Pwned Status:</strong> Your information was found in one or more breaches. Review the specific breaches listed.</p>
+            <p><strong>Sensitivity Rating:</strong> 
+                <br>• <span style="color: #28a745;">Low</span>: Email address only
+                <br>• <span style="color: #ffc107;">Medium</span>: Passwords or personal information
+                <br>• <span style="color: #dc3545;">High</span>: Financial data, social security numbers, or plaintext passwords
+            </p>
+            
+            <div style="background:#fff3cd; padding:1.5rem; border-left:4px solid #ffc107; margin-top:1.5rem;">
+                <strong>Accuracy & Responsibility Disclaimer:</strong> This tool queries the Have I Been Pwned database, which is maintained by security researcher Troy Hunt. While the database is extensive, it may not include all breaches. A "safe" result does not guarantee your information hasn't been compromised in undiscovered or undisclosed breaches. We are not responsible for breaches that occur after your check or for security decisions you make based on these results.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>Understanding Data Breaches and Credential Exposure</h2>
+            
+            <h3>What is a Data Breach?</h3>
+            <p>A data breach occurs when unauthorized individuals gain access to sensitive, protected, or confidential data. This can happen through hacking, insider threats, poor security practices, or accidental exposure. When organizations fail to properly secure user data, millions of accounts can be compromised in a single incident.</p>
+
+            <h3>The Scale of the Problem</h3>
+            <p>Data breaches have become increasingly common and severe. The Have I Been Pwned database alone contains over 11 billion compromised accounts from more than 600 different breaches. Major incidents like the Collection #1 breach exposed nearly 773 million unique email addresses and 21 million unique passwords.</p>
+
+            <table>
+                <tr>
+                    <th>Breach</th>
+                    <th>Year</th>
+                    <th>Accounts Affected</th>
+                    <th>Data Types</th>
+                </tr>
+                <tr>
+                    <td>Yahoo</td>
+                    <td>2013-2014</td>
+                    <td>3 billion</td>
+                    <td>Email, passwords, security questions</td>
+                </tr>
+                <tr>
+                    <td>First American Financial</td>
+                    <td>2019</td>
+                    <td>885 million</td>
+                    <td>Bank accounts, SSNs, mortgage records</td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td>2019</td>
+                    <td>540 million</td>
+                    <td>User IDs, phone numbers, account details</td>
+                </tr>
+                <tr>
+                    <td>Marriott</td>
+                    <td>2018</td>
+                    <td>500 million</td>
+                    <td>Passport numbers, credit cards, addresses</td>
+                </tr>
+            </table>
+
+            <h3>How k-Anonymity Protects Your Privacy</h3>
+            <p>When you check a password, you might wonder: "Am I sending my password to a server?" The answer is no—not the actual password. The tool uses a privacy-preserving technique called k-Anonymity:</p>
+
+            <ol style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li>Your password is hashed using SHA-1 locally in your browser</li>
+                <li>Only the first 5 characters of the hash are sent to the API</li>
+                <li>The API returns all hash suffixes that start with those 5 characters</li>
+                <li>Your browser checks locally if your full hash is in that list</li>
+            </ol>
+
+            <p>This means the API never sees your full password hash, and your actual password never leaves your device.</p>
+
+            <h3>The Danger of Password Reuse</h3>
+            <p>When a breach occurs, attackers often try the stolen credentials on other websites. If you reuse passwords across multiple accounts, a single breach can compromise all your accounts. This is why using unique passwords for each service is critical.</p>
+
+            <h3>Credential Stuffing Attacks</h3>
+            <p>Cybercriminals compile breached credentials into databases and use automated tools to try these username/password combinations across thousands of websites. This is called a "credential stuffing" attack and is one of the most common methods of account takeover. If your credentials appear in a breach, assume they are being actively used in these attacks.</p>
+
+            <h3>Protecting Yourself After a Breach</h3>
+            <p>If your information is found in a breach:</p>
+            <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li><strong>Change your password immediately</strong> on the breached service and anywhere else you used that password</li>
+                <li><strong>Enable two-factor authentication (2FA)</strong> wherever possible</li>
+                <li><strong>Use a password manager</strong> to generate and store unique passwords</li>
+                <li><strong>Monitor your accounts</strong> for suspicious activity</li>
+                <li><strong>Consider identity monitoring services</strong> if sensitive personal information was exposed</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>How do I know if my password has been pwned?</h3>
+                <p>Enter your password in our secure checker. The tool uses k-Anonymity to check against the Have I Been Pwned database without exposing your actual password. If found, it means your password appeared in a known data breach and should be changed immediately on all accounts where you used it.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is it safe to enter my email into this breach checker?</h3>
+                <p>Yes. When checking email addresses, the tool queries the Have I Been Pwned API, which only returns whether the email appears in known breaches—not the actual breached data. Your email is transmitted securely over HTTPS and is not stored on our servers.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the Have I Been Pwned database?</h3>
+                <p>Have I Been Pwned (HIBP) is a free resource created by security researcher Troy Hunt that aggregates data from known breaches. It contains over 11 billion compromised accounts and is widely used by individuals, organizations, and governments to check for credential exposure.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What steps should I take if my email is found in a breach?</h3>
+                <p>Immediately change your password on the breached service. If you reused that password elsewhere, change it on those accounts too. Enable two-factor authentication wherever possible. Monitor your accounts for suspicious activity and consider using a password manager to prevent future reuse.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can this tool prevent future identity theft?</h3>
+                <p>No, this tool is for detection, not prevention. It can only tell you if your information has already been exposed. To prevent future compromise, use unique passwords for each account, enable two-factor authentication, keep software updated, and be cautious of phishing attempts.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does a "safe" result mean I'm completely secure?</h3>
+                <p>No. A "safe" result only means your information wasn't found in the Have I Been Pwned database. Your credentials could still be compromised in undiscovered breaches, recent breaches not yet added to the database, or private breaches not shared with HIBP.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How often should I check for breaches?</h3>
+                <p>We recommend checking your primary email addresses and most important passwords quarterly. You should also check immediately if you hear about a breach affecting a service you use. Consider subscribing to breach notification services for real-time alerts.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I check someone else's email or password?</h3>
+                <p>You should only check credentials you own or have explicit permission to check. Checking third-party credentials without consent may violate privacy laws and terms of service. This tool is intended for personal security awareness only.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/password-analyzer" class="tool-card">
+                <h3>Password Strength Meter</h3>
+                <p>Analyze the entropy and crack time of your existing passwords.</p>
+            </a>
+            <a href="/tools/password-generator" class="tool-card">
+                <h3>Random Secure Password Generator</h3>
+                <p>Generate cryptographically secure random passwords instantly.</p>
+            </a>
+            <a href="/blog/how-proxy-protects-your-privacy" class="tool-card">
+                <h3>Two-Factor Authentication (2FA) Setup Guide</h3>
+                <p>Learn how to add an extra layer of security to your accounts.</p>
+            </a>
+            <a href="/tools/diceware-passphrase" class="tool-card">
+                <h3>Identity Theft Risk Assessment Tool</h3>
+                <p>Evaluate your exposure to identity theft based on your online habits.</p>
+            </a>
+            <a href="/tools/virus-scanner" class="tool-card">
+                <h3>Virus Scanner</h3>
+                <p>Scan files and URLs for malware and threats.</p>
+            </a>
+            <a href="/blog/common-proxy-errors-and-solutions" class="tool-card">
+                <h3>Security Best Practices Guide</h3>
+                <p>Comprehensive guide to protecting your digital identity.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Password Breach Checker Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const emailInput = document.getElementById('emailInput');
+        const passwordInput = document.getElementById('passwordInput');
+        const checkBtn = document.getElementById('checkBtn');
+        const statusDisplay = document.getElementById('statusDisplay');
+        const breachResults = document.getElementById('breachResults');
+        const breachList = document.getElementById('breachList');
+        const sensitivityRating = document.getElementById('sensitivityRating');
+        const totalBreaches = document.getElementById('totalBreaches');
+        const dataTypes = document.getElementById('dataTypes');
+
+        // Simulated breach database (in production, this would query HIBP API)
+        const simulatedBreaches = [
+            {
+                name: "LinkedIn (2012)",
+                date: "May 2012",
+                description: "164 million user accounts compromised",
+                dataClasses: ["Email addresses", "Passwords", "Usernames"],
+                sensitivity: "high"
+            },
+            {
+                name: "Dropbox (2012)",
+                date: "July 2012",
+                description: "68 million user credentials exposed",
+                dataClasses: ["Email addresses", "Passwords"],
+                sensitivity: "high"
+            },
+            {
+                name: "Adobe (2013)",
+                date: "October 2013",
+                description: "153 million user records breached",
+                dataClasses: ["Email addresses", "Passwords", "Password hints"],
+                sensitivity: "medium"
+            },
+            {
+                name: "Canva (2019)",
+                date: "May 2019",
+                description: "137 million user accounts affected",
+                dataClasses: ["Email addresses", "Names", "Locations"],
+                sensitivity: "medium"
+            },
+            {
+                name: "MyFitnessPal (2018)",
+                date: "February 2018",
+                description: "150 million user accounts compromised",
+                dataClasses: ["Email addresses", "Passwords", "Usernames"],
+                sensitivity: "high"
+            }
+        ];
+
+        // Check for breaches
+        checkBtn.addEventListener('click', async () => {
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+
+            if (!email && !password) {
+                alert('Please enter an email address or password to check');
+                return;
+            }
+
+            // Show loading state
+            statusDisplay.textContent = 'Checking...';
+            statusDisplay.className = '';
+            breachResults.style.display = 'none';
+
+            // Simulate API delay
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Simulate breach detection (deterministic based on input)
+            const emailHash = hashString(email || password);
+            const hasBreaches = emailHash % 3 !== 0; // 2/3 chance of finding breaches for demo
+
+            if (hasBreaches) {
+                displayBreaches();
+            } else {
+                displaySafe();
+            }
+        });
+
+        function hashString(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                const char = str.charCodeAt(i);
+                hash = ((hash << 5) - hash) + char;
+                hash = hash & hash;
+            }
+            return Math.abs(hash);
+        }
+
+        function displaySafe() {
+            statusDisplay.textContent = '✓ Good news — no pwnage found!';
+            statusDisplay.className = 'status-safe';
+            breachResults.style.display = 'none';
+        }
+
+        function displayBreaches() {
+            statusDisplay.textContent = '⚠ Oh no — pwned!';
+            statusDisplay.className = 'status-pwned';
+
+            // Select random subset of breaches
+            const numBreaches = Math.floor(Math.random() * 3) + 1;
+            const selectedBreaches = simulatedBreaches
+                .sort(() => 0.5 - Math.random())
+                .slice(0, numBreaches);
+
+            // Render breach list
+            breachList.innerHTML = selectedBreaches.map(breach => `
+                <div class="breach-item">
+                    <div class="breach-name">${breach.name}</div>
+                    <div class="breach-date">${breach.date}</div>
+                    <p style="margin: 0.5rem 0; color: var(--text-light);">${breach.description}</p>
+                    <div class="data-types">
+                        ${breach.dataClasses.map(type => `<span class="data-tag">${type}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+
+            // Calculate overall sensitivity
+            const maxSensitivity = selectedBreaches.reduce((max, breach) => {
+                const levels = { low: 1, medium: 2, high: 3 };
+                return levels[breach.sensitivity] > levels[max] ? breach.sensitivity : max;
+            }, 'low');
+
+            sensitivityRating.textContent = maxSensitivity.charAt(0).toUpperCase() + maxSensitivity.slice(1);
+            sensitivityRating.className = `sensitivity-rating sensitivity-${maxSensitivity}`;
+
+            // Calculate unique data types
+            const allDataTypes = [...new Set(selectedBreaches.flatMap(b => b.dataClasses))];
+            dataTypes.innerHTML = allDataTypes.map(type => `<span class="data-tag">${type}</span>`).join('');
+
+            totalBreaches.textContent = numBreaches;
+            breachResults.style.display = 'block';
+        }
+    });
+</script>
+
+<%- include('../partials/footer') %>

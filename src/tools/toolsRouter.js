@@ -59,6 +59,13 @@ router.get('/diceware-passphrase', (req, res) => {
     });
 });
 
+// Password Breach Checker
+router.get('/breach-checker', (req, res) => {
+    res.render('tools/breach-checker', {
+        title: req.lang === 'ar' ? 'فاحص تسريب كلمات المرور' : 'Password Breach Checker',
+    });
+});
+
 // Virus Scanner API - Scan Endpoint (Real File Processing)
 router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
     if (!req.file) {
