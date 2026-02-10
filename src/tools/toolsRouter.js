@@ -45,6 +45,13 @@ router.get('/virus-scanner', (req, res) => {
     });
 });
 
+// Secure Random Password Generator
+router.get('/password-generator', (req, res) => {
+    res.render('tools/password-generator', {
+        title: req.lang === 'ar' ? 'مولد كلمات المرور الآمنة' : 'Secure Random Password Generator',
+    });
+});
+
 // Virus Scanner API - Scan Endpoint (Real File Processing)
 router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
     if (!req.file) {
