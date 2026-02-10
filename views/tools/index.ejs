@@ -19,6 +19,28 @@
                         <%= currentLang === 'ar' ? 'افحص الملفات والروابط باستخدام محركات مكافحة فيروسات متعددة.' : 'Scan files and URLs with multiple antivirus engines.' %>
                     </p>
                 </a>
+
+                <!-- Password Analyzer Tool Card -->
+                <a href="/tools/password-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔐
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'تحليل كلمة المرور' : 'Password Analyzer' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'قياس قوة كلمة المرور والوقت المقدر لكسرها.' : 'Measure password strength and estimated crack time.' %>
+                    </p>
+                </a>
+
+                <!-- Encryption Key Strength Tool Card -->
+                <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔑
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة قوة التشفير' : 'Key Strength Calc' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'تقييم أمان مفاتيح التشفير ضد هجمات القوة الغاشمة.' : 'Evaluate encryption key resilience against brute-force attacks.' %>
+                    </p>
+                </a>
             </div>
         </div>
     </main>

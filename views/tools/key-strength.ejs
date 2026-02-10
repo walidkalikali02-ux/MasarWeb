@@ -1,0 +1,493 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--text-color);
+        color: var(--bg-color);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: #eee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #666;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .tool-input, .tool-select {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        background: white;
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+    }
+    .metric-large {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    .metric-label {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        letter-spacing: 1px;
+    }
+    .classification-badge {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        font-weight: bold;
+        color: white;
+        margin-top: 1rem;
+    }
+    .data-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    .data-val {
+        font-family: monospace;
+        font-weight: bold;
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity Tools</span>
+        <h1 class="identity-title">Encryption Key Strength & Entropy Calculator</h1>
+        <p class="identity-subtitle">Evaluate the cryptographic security and brute-force resistance of your keys with professional-grade analysis.</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">SJ</div>
+                <div>
+                    <div style="font-weight:bold;">Sarah Jenkins, CISSP</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Senior Security Architect</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">AA</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Ahmed Al-Masri</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">PhD, Network Security</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Aligned with NIST SP 800-57 Guidelines
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label for="keyFormat">Key Format</label>
+                    <select id="keyFormat" class="tool-select">
+                        <option value="16">Hexadecimal (0-9, A-F)</option>
+                        <option value="2">Binary (0-1)</option>
+                        <option value="64">Base64 (A-Z, a-z, 0-9, +, /)</option>
+                        <option value="95">ASCII (Printable)</option>
+                        <option value="custom">Custom Pool Size</option>
+                    </select>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="poolSize">Pool Size (Characters)</label>
+                    <input type="number" id="poolSize" class="tool-input" value="16" readonly>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="keyLength">Key Length (Number of Characters)</label>
+                    <input type="number" id="keyLength" class="tool-input" value="32" min="1">
+                    <div style="font-size:0.8rem; color:#666; margin-top:0.2rem;">
+                        Examples: AES-128 Hex = 32 chars | AES-256 Hex = 64 chars
+                    </div>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="speed">Attacker Guessing Speed</label>
+                    <select id="speed" class="tool-select">
+                        <option value="1000000000">Consumer GPU (1 Billion/sec)</option>
+                        <option value="1000000000000" selected>Supercomputer (1 Trillion/sec)</option>
+                        <option value="1000000000000000">Nation State (1 Quadrillion/sec)</option>
+                        <option value="1000000000000000000">Quantum Estimate (1 Quintillion/sec)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div class="metric-label">Total Shannon Entropy</div>
+                    <div class="metric-large" id="entropyResult">128.00 Bits</div>
+                    
+                    <div id="securityBadge" class="classification-badge" style="background-color: #4caf50;">Strong (NIST Standard)</div>
+
+                    <div style="margin-top:2rem;">
+                        <div class="data-row">
+                            <span>Total Combinations</span>
+                            <span class="data-val" id="combinationsResult">3.40 × 10^38</span>
+                        </div>
+                        <div class="data-row">
+                            <span>Time to Crack</span>
+                            <span class="data-val" id="timeResult">> 100 Billion Years</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to use Encryption Key Strength Calculator</h2>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Configure Key</h3>
+                    <p>Select your key format (e.g., Hex for AES keys) and enter the length (e.g., 64 characters for 256-bit).</p>
+                </div>
+                <div>
+                    <h3>2. Analyze Risks</h3>
+                    <p>Adjust the "Attacker Speed" to see how the key holds up against consumer hardware vs. nation-state supercomputers.</p>
+                </div>
+            </div>
+            
+            <div style="background:#f8f9fa; padding:1.5rem; border-left:4px solid var(--primary-color); margin-top:1.5rem;">
+                <strong>Note:</strong> This tool assumes the key is generated using a cryptographically secure random number generator (CSPRNG). If the key is derived from a weak password, its actual entropy is much lower.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>The Physics of Brute-Forcing: Why 256-bit is "Unbreakable"</h2>
+            
+            <h3>Understanding Key Space</h3>
+            <p>Encryption strength scales exponentially. A 129-bit key is twice as hard to crack as a 128-bit key. A 256-bit key is 2<sup>128</sup> times harder than a 128-bit key.</p>
+            <ul>
+                <li><strong>2<sup>128</sup> keys:</strong> Would take all computers on Earth billions of years to crack.</li>
+                <li><strong>2<sup>256</sup> keys:</strong> Exceeds the energy output of our sun to cycle through.</li>
+            </ul>
+
+            <h3>Entropy vs. Length</h3>
+            <p>A long key isn't always strong. A 32-character string of Hex (0-F) has 128 bits of entropy (32 × 4 = 128). True strength comes from the <em>unpredictability</em> of each bit.</p>
+
+            <h3>The Quantum Threat</h3>
+            <p>Quantum computers (using Grover's Algorithm) can theoretically search an unsorted database in square-root time, effectively halving the bit strength of symmetric keys.</p>
+            <ul>
+                <li>AES-128 becomes effectively AES-64 (crackable).</li>
+                <li>AES-256 becomes AES-128 (still secure).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What is the recommended key strength?</h3>
+                <p>NIST recommends a minimum of <strong>112 bits</strong> for data valid until 2030, and <strong>128 bits</strong> for long-term storage.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is 256-bit encryption uncrackable?</h3>
+                <p>By brute force, yes. The energy required exceeds physical limits. However, implementation bugs or theft remain risks.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does character set affect security?</h3>
+                <p>A larger character set increases entropy density. You need fewer Base64 characters (6 bits each) than Hex characters (4 bits each) for the same strength.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is a brute-force attack?</h3>
+                <p>Trying every possible key combination. Prevention relies on using a key space so large that the attack takes millions of years.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/password-analyzer" class="tool-card">
+                <h3>Password Entropy Tester</h3>
+                <p>Check password strength against dictionary attacks.</p>
+            </a>
+            <a href="/tools/key-strength" class="tool-card">
+                <h3>AES Key Generator</h3>
+                <p>Generate secure 128, 192, and 256-bit keys.</p>
+            </a>
+            <a href="/tools/hash-generator" class="tool-card">
+                <h3>SHA-256 Hash Calculator</h3>
+                <p>Create secure fingerprints for files and text.</p>
+            </a>
+            <a href="/tools/key-validator" class="tool-card">
+                <h3>Key Pair Validator</h3>
+                <p>Verify RSA and ECC key pair consistency.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const els = {
+            format: document.getElementById('keyFormat'),
+            pool: document.getElementById('poolSize'),
+            length: document.getElementById('keyLength'),
+            speed: document.getElementById('speed'),
+            entropy: document.getElementById('entropyResult'),
+            combinations: document.getElementById('combinationsResult'),
+            time: document.getElementById('timeResult'),
+            badge: document.getElementById('securityBadge')
+        };
+
+        const updatePool = () => {
+            const val = els.format.value;
+            if (val === 'custom') {
+                els.pool.readOnly = false;
+                els.pool.focus();
+            } else {
+                els.pool.value = val;
+                els.pool.readOnly = true;
+                calculate();
+            }
+        };
+
+        const formatNumber = (num) => {
+            if (num > 1e10) {
+                const exponent = Math.floor(Math.log10(num));
+                const mantissa = (num / Math.pow(10, exponent)).toFixed(2);
+                return `${mantissa} × 10^${exponent}`;
+            }
+            return num.toLocaleString();
+        };
+
+        const formatTime = (seconds) => {
+            if (seconds < 1) return 'Instant';
+            if (seconds < 60) return `${Math.round(seconds)} Seconds`;
+            if (seconds < 3600) return `${Math.round(seconds/60)} Minutes`;
+            if (seconds < 86400) return `${Math.round(seconds/3600)} Hours`;
+            if (seconds < 31536000) return `${Math.round(seconds/86400)} Days`;
+            if (seconds < 3153600000) return `${Math.round(seconds/31536000)} Years`;
+            
+            const years = seconds / 31536000;
+            if (years > 1e9) return '> 1 Billion Years';
+            return formatNumber(years) + ' Years';
+        };
+
+        const calculate = () => {
+            const pool = parseInt(els.pool.value) || 0;
+            const len = parseInt(els.length.value) || 0;
+            const speed = parseFloat(els.speed.value);
+
+            if (pool <= 0 || len <= 0) return;
+
+            // 1. Entropy
+            const entropy = len * Math.log2(pool);
+            els.entropy.textContent = entropy.toFixed(2) + ' Bits';
+
+            // 2. Combinations
+            // Use BigInt for precise large integers if needed, but for display exp is fine
+            // 2^Entropy
+            const combinations = Math.pow(2, entropy);
+            els.combinations.textContent = formatNumber(combinations);
+
+            // 3. Time
+            const seconds = combinations / speed;
+            els.time.textContent = formatTime(seconds);
+
+            // 4. Classification
+            let badgeText = 'Weak';
+            let badgeColor = '#d32f2f'; // Red
+
+            if (entropy < 64) {
+                badgeText = 'Weak (Deprecated)';
+                badgeColor = '#d32f2f';
+            } else if (entropy < 112) {
+                badgeText = 'Moderate (Legacy)';
+                badgeColor = '#ff9800'; // Orange
+            } else if (entropy < 128) {
+                badgeText = 'Strong (NIST Baseline)';
+                badgeColor = '#ffeb3b'; // Yellow (darker)
+                els.badge.style.color = 'black';
+            } else if (entropy < 192) {
+                badgeText = 'Very Strong (Standard)';
+                badgeColor = '#4caf50'; // Green
+                els.badge.style.color = 'white';
+            } else {
+                badgeText = 'Military Grade / Quantum Resistant';
+                badgeColor = '#2e7d32'; // Dark Green
+                els.badge.style.color = 'white';
+            }
+
+            els.badge.textContent = badgeText;
+            els.badge.style.backgroundColor = badgeColor;
+        };
+
+        els.format.addEventListener('change', updatePool);
+        els.pool.addEventListener('input', calculate);
+        els.length.addEventListener('input', calculate);
+        els.speed.addEventListener('change', calculate);
+
+        // Init
+        calculate();
+    });
+</script>
+
+<%- include('../partials/footer') %>

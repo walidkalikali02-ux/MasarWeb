@@ -24,6 +24,20 @@ router.get('/', (req, res) => {
     });
 });
 
+// Password Strength Analyzer
+router.get('/password-analyzer', (req, res) => {
+    res.render('tools/password-analyzer', {
+        title: req.lang === 'ar' ? 'تحليل قوة كلمة المرور' : 'Password Strength Analyzer',
+    });
+});
+
+// Encryption Key Strength Calculator
+router.get('/key-strength', (req, res) => {
+    res.render('tools/key-strength', {
+        title: req.lang === 'ar' ? 'حاسبة قوة مفتاح التشفير' : 'Encryption Key Strength Calculator',
+    });
+});
+
 // Virus Scanner Interface
 router.get('/virus-scanner', (req, res) => {
     res.render('tools/virus-scanner', {
