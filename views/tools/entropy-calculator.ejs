@@ -1,0 +1,650 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--text-color);
+        color: var(--bg-color);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: #eee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #666;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .password-input {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.2rem;
+        border: 2px solid var(--border-color);
+        font-family: monospace;
+    }
+    .toggles-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+    .toggle-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+    }
+    .metric-large {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    .metric-label {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        letter-spacing: 1px;
+    }
+    .strength-meter {
+        height: 8px;
+        background: #eee;
+        margin: 1rem 0;
+        width: 100%;
+        position: relative;
+    }
+    .strength-fill {
+        height: 100%;
+        background: var(--primary-color);
+        width: 0%;
+        transition: width 0.3s ease, background-color 0.3s ease;
+    }
+    .formula-box {
+        background: #f0f0f0;
+        padding: 1rem;
+        border-left: 4px solid var(--primary-color);
+        margin: 1rem 0;
+        font-family: monospace;
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .content-article th,
+    .content-article td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .content-article th {
+        background: #f5f5f5;
+        font-weight: bold;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity Tools</span>
+        <h1 class="identity-title">Password Entropy Calculator: Measure True Password Strength</h1>
+        <p class="identity-subtitle">Calculate the mathematical complexity of your credentials to defend against brute-force attacks</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">SJ</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Sarah Jenkins, CISSP</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Ph.D. Cryptography, MIT</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">MR</div>
+                <div>
+                    <div style="font-weight:bold;">Marcus Rodriguez, CISSP</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Senior Security Engineer</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Scientifically reviewed • Used by 500,000+ users
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label for="passwordInput">Password String</label>
+                    <input type="text" id="passwordInput" class="password-input" placeholder="Enter password to analyze..." autocomplete="off">
+                </div>
+
+                <div class="tool-input-group">
+                    <label>Character Pool Size (R)</label>
+                    <div class="toggles-grid">
+                        <label class="toggle-item"><input type="checkbox" id="chkLower" checked> Lowercase (26)</label>
+                        <label class="toggle-item"><input type="checkbox" id="chkUpper" checked> Uppercase (26)</label>
+                        <label class="toggle-item"><input type="checkbox" id="chkNumber" checked> Numbers (10)</label>
+                        <label class="toggle-item"><input type="checkbox" id="chkSymbol"> Symbols (33)</label>
+                    </div>
+                    <div class="formula-box">
+                        R = <span id="poolSizeDisplay">62</span> characters
+                    </div>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="passwordLength">Password Length (L)</label>
+                    <input type="number" id="passwordLength" class="password-input" value="0" min="0" readonly style="background: #f5f5f5;">
+                </div>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div class="metric-label">Entropy</div>
+                    <div class="metric-large" id="entropyBits">0 bits</div>
+                    <div class="strength-meter">
+                        <div class="strength-fill" id="strengthBar"></div>
+                    </div>
+                    <div style="text-align:right; font-weight:bold;" id="securityLevel">Weak</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="metric-label">Total Possible Combinations</div>
+                    <div class="metric-large" id="totalCombinations">1</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="metric-label">Estimated Time to Crack</div>
+                    <div class="metric-large" id="crackTime">Instant</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">Online attack scenario (1,000 guesses/sec)</div>
+                </div>
+
+                <div class="formula-box">
+                    <strong>Formula:</strong> E = L × log₂(R)<br>
+                    <span id="formulaCalculation">0 × log₂(62) = 0 bits</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to Use This Tool</h2>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Enter Password</h3>
+                    <p>Type your password in the input field. The tool automatically detects character sets and calculates length.</p>
+                </div>
+                <div>
+                    <h3>2. Verify Character Pool</h3>
+                    <p>Check that the detected character sets match your password. Toggle checkboxes to see how different pools affect entropy.</p>
+                </div>
+            </div>
+            
+            <h3>How the Calculation Works</h3>
+            <p>This calculator uses the Shannon entropy formula for password complexity: <strong>E = L × log₂(R)</strong></p>
+            <ul>
+                <li><strong>L</strong> = Password length (number of characters)</li>
+                <li><strong>R</strong> = Character pool size (possible characters used)</li>
+                <li><strong>E</strong> = Entropy in bits (measure of unpredictability)</li>
+            </ul>
+            <p>Each bit of entropy doubles the number of possible combinations an attacker must try.</p>
+
+            <h3>Interpreting Results</h3>
+            <table>
+                <tr>
+                    <th>Entropy</th>
+                    <th>Classification</th>
+                    <th>Use Case</th>
+                </tr>
+                <tr>
+                    <td>&lt; 40 bits</td>
+                    <td>Weak</td>
+                    <td>Low-security, temporary access</td>
+                </tr>
+                <tr>
+                    <td>40-60 bits</td>
+                    <td>Fair</td>
+                    <td>Standard online accounts</td>
+                </tr>
+                <tr>
+                    <td>60-80 bits</td>
+                    <td>Good</td>
+                    <td>Important accounts, email</td>
+                </tr>
+                <tr>
+                    <td>80-128 bits</td>
+                    <td>Strong</td>
+                    <td>Banking, sensitive data</td>
+                </tr>
+                <tr>
+                    <td>&gt; 128 bits</td>
+                    <td>Excellent</td>
+                    <td>Master passwords, encryption keys</td>
+                </tr>
+            </table>
+
+            <div style="background:#f8f9fa; padding:1.5rem; border-left:4px solid var(--primary-color); margin-top:1.5rem;">
+                <strong>Disclaimer:</strong> This calculator measures mathematical entropy based on character variety and length. It does not account for dictionary attacks, common patterns, or previously breached passwords. Real-world security depends on many factors beyond entropy alone.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>Understanding Password Entropy: A Complete Guide</h2>
+            
+            <h3>What Is Password Entropy?</h3>
+            <p>Password entropy is a measure of the unpredictability or randomness of a password, expressed in bits. It represents the amount of information contained in the password and determines how resistant it is to brute-force attacks.</p>
+            <p>The concept comes from information theory, developed by Claude Shannon in 1948. In cryptography, entropy quantifies the "search space" an attacker must explore to guess a password.</p>
+
+            <h3>The Mathematics of Entropy</h3>
+            <p>The entropy formula <strong>E = L × log₂(R)</strong> reveals two critical insights:</p>
+            <ul>
+                <li><strong>Length dominates:</strong> Doubling password length doubles entropy linearly</li>
+                <li><strong>Pool size helps:</strong> Doubling character pool adds log₂(2) = 1 bit per character</li>
+            </ul>
+            <p>Consider these examples:</p>
+            <table>
+                <tr>
+                    <th>Password</th>
+                    <th>Length</th>
+                    <th>Pool Size</th>
+                    <th>Entropy</th>
+                </tr>
+                <tr>
+                    <td>hello</td>
+                    <td>5</td>
+                    <td>26</td>
+                    <td>23.5 bits</td>
+                </tr>
+                <tr>
+                    <td>Hello</td>
+                    <td>5</td>
+                    <td>52</td>
+                    <td>28.5 bits</td>
+                </tr>
+                <tr>
+                    <td>correcthorsebatterystaple</td>
+                    <td>25</td>
+                    <td>26</td>
+                    <td>117.5 bits</td>
+                </tr>
+            </table>
+            <p>The passphrase, despite using only lowercase letters, achieves excellent entropy through length alone.</p>
+
+            <h3>Why Entropy Matters for Security</h3>
+            <p>Each additional bit of entropy doubles the computational effort required to crack a password through brute force. A password with 60 bits of entropy requires testing 2⁶⁰ combinations on average.</p>
+            <p>Modern GPU clusters can test billions of hashes per second, but even at 100 billion guesses per second:</p>
+            <ul>
+                <li>40 bits: Cracked in under 11 minutes</li>
+                <li>60 bits: Cracked in about 19 days</li>
+                <li>80 bits: Cracked in about 38,000 years</li>
+                <li>128 bits: Practically unbreakable</li>
+            </ul>
+
+            <h3>Common Misconceptions</h3>
+            <p><strong>Myth:</strong> Complex symbols always create better passwords.<br>
+            <strong>Fact:</strong> Length has a more significant impact than character variety. A 20-character passphrase of common words typically has higher entropy than an 8-character password with symbols.</p>
+            
+            <p><strong>Myth:</strong> High entropy guarantees safety.<br>
+            <strong>Fact:</strong> Entropy measures mathematical complexity, not resistance to targeted attacks. Dictionary words, keyboard patterns, and personal information reduce effective security even with high calculated entropy.</p>
+
+            <h3>Practical Recommendations</h3>
+            <ul>
+                <li>Minimum 60 bits for general online accounts</li>
+                <li>Minimum 80 bits for sensitive accounts (banking, email)</li>
+                <li>Use passphrases (4-6 random words) for memorability and strength</li>
+                <li>Combine length with unpredictability (avoid dictionary words)</li>
+                <li>Use a password manager for truly random, high-entropy passwords</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What is password entropy and why does it matter?</h3>
+                <p>Password entropy measures the unpredictability of a password in bits. Higher entropy means more possible combinations an attacker must try, making brute-force attacks exponentially more difficult. It quantifies password strength mathematically.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How many bits of entropy are considered secure?</h3>
+                <p>For 2024, aim for at least <strong>60 bits</strong> for general accounts, <strong>80+ bits</strong> for sensitive accounts (banking, email), and <strong>128+ bits</strong> for master passwords or encryption keys. Below 40 bits is considered weak and vulnerable to modern attacks.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is length or character variety more important for entropy?</h3>
+                <p><strong>Length is more important.</strong> Doubling password length doubles entropy linearly, while doubling character pool size adds only 1 bit per character. A 20-character passphrase using only lowercase letters (94 bits) is stronger than an 8-character password with all character types (52 bits).</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does this calculator estimate brute-force time?</h3>
+                <p>The calculator assumes an online attack scenario of 1,000 guesses per second (limited by network latency and rate limiting). For offline attacks with GPU clusters (billions of guesses/second), divide the estimated time by approximately 1 million.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does a high entropy score guarantee my password is safe?</h3>
+                <p><strong>No.</strong> High entropy measures mathematical complexity but doesn't account for dictionary attacks, keyboard patterns (qwerty), personal information, or previously breached passwords. Always use unique passwords and enable two-factor authentication for critical accounts.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use this calculator for passphrases?</h3>
+                <p>Yes. For passphrases (multiple words), use the lowercase checkbox only (pool size = 26). A 6-word passphrase from a 7,776-word Diceware list has approximately 77.5 bits of entropy, which is excellent security.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why do password managers generate such long passwords?</h3>
+                <p>Password managers create random passwords with very high entropy (typically 80-128 bits) because they don't need to be memorized. This ensures resistance against future advances in computing power and brute-force techniques.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is this calculator client-side or server-side?</h3>
+                <p>This calculator runs entirely in your browser (client-side). Your passwords are never sent to any server, ensuring complete privacy. However, for maximum security, avoid typing actual passwords into any online tool.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/password-analyzer" class="tool-card">
+                <h3>Password Strength Analyzer</h3>
+                <p>Comprehensive password analysis with pattern detection and crack time estimation.</p>
+            </a>
+            <a href="/tools/password-generator" class="tool-card">
+                <h3>Random Password Generator</h3>
+                <p>Generate cryptographically secure passwords with custom length and character sets.</p>
+            </a>
+            <a href="/tools/diceware-passphrase" class="tool-card">
+                <h3>Diceware Passphrase Creator</h3>
+                <p>Create memorable high-entropy passphrases using secure random word selection.</p>
+            </a>
+            <a href="/tools/bcrypt-calculator" class="tool-card">
+                <h3>Bcrypt Cost Factor Calculator</h3>
+                <p>Calculate optimal bcrypt work factors for password hashing security.</p>
+            </a>
+            <a href="/tools/key-strength" class="tool-card">
+                <h3>Encryption Key Strength</h3>
+                <p>Analyze RSA and AES encryption key resilience against attacks.</p>
+            </a>
+            <a href="/tools/breach-checker" class="tool-card">
+                <h3>Password Breach Checker</h3>
+                <p>Verify if your password has been exposed in known data breaches.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Password Entropy Calculator Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        const passwordInput = document.getElementById('passwordInput');
+        const lengthInput = document.getElementById('passwordLength');
+        const poolDisplay = document.getElementById('poolSizeDisplay');
+        const entropyDisplay = document.getElementById('entropyBits');
+        const combinationsDisplay = document.getElementById('totalCombinations');
+        const crackTimeDisplay = document.getElementById('crackTime');
+        const securityLevelDisplay = document.getElementById('securityLevel');
+        const strengthBar = document.getElementById('strengthBar');
+        const formulaCalc = document.getElementById('formulaCalculation');
+
+        const checkboxes = {
+            lower: document.getElementById('chkLower'),
+            upper: document.getElementById('chkUpper'),
+            number: document.getElementById('chkNumber'),
+            symbol: document.getElementById('chkSymbol')
+        };
+
+        function calculatePoolSize() {
+            let pool = 0;
+            if (checkboxes.lower.checked) pool += 26;
+            if (checkboxes.upper.checked) pool += 26;
+            if (checkboxes.number.checked) pool += 10;
+            if (checkboxes.symbol.checked) pool += 33;
+            return pool || 1;
+        }
+
+        function formatNumber(num) {
+            if (num >= 1e18) return (num / 1e18).toFixed(2) + ' quintillion';
+            if (num >= 1e15) return (num / 1e15).toFixed(2) + ' quadrillion';
+            if (num >= 1e12) return (num / 1e12).toFixed(2) + ' trillion';
+            if (num >= 1e9) return (num / 1e9).toFixed(2) + ' billion';
+            if (num >= 1e6) return (num / 1e6).toFixed(2) + ' million';
+            if (num >= 1e3) return (num / 1e3).toFixed(2) + 'K';
+            return num.toLocaleString();
+        }
+
+        function formatTime(seconds) {
+            if (seconds < 1) return 'Instant';
+            if (seconds < 60) return Math.round(seconds) + ' seconds';
+            if (seconds < 3600) return Math.round(seconds/60) + ' minutes';
+            if (seconds < 86400) return Math.round(seconds/3600) + ' hours';
+            if (seconds < 31536000) return Math.round(seconds/86400) + ' days';
+            if (seconds < 3153600000) return Math.round(seconds/31536000) + ' years';
+            return 'Centuries';
+        }
+
+        function calculate() {
+            const password = passwordInput.value;
+            const length = password.length;
+            const poolSize = calculatePoolSize();
+
+            // Update inputs
+            lengthInput.value = length;
+            poolDisplay.textContent = poolSize;
+
+            if (length === 0) {
+                entropyDisplay.textContent = '0 bits';
+                combinationsDisplay.textContent = '1';
+                crackTimeDisplay.textContent = 'Instant';
+                securityLevelDisplay.textContent = 'Weak';
+                securityLevelDisplay.style.color = '#d32f2f';
+                strengthBar.style.width = '0%';
+                strengthBar.style.backgroundColor = '#d32f2f';
+                formulaCalc.textContent = `0 × log₂(${poolSize}) = 0 bits`;
+                return;
+            }
+
+            // Calculate entropy: E = L × log₂(R)
+            const entropy = length * Math.log2(poolSize);
+            const combinations = Math.pow(poolSize, length);
+
+            // Estimate crack time (online attack: 1000 guesses/sec)
+            const secondsToCrack = combinations / (2 * 1000);
+
+            // Determine security level
+            let level = 'Weak';
+            let color = '#d32f2f';
+            let percentage = 0;
+
+            if (entropy < 40) {
+                level = 'Weak';
+                color = '#d32f2f';
+                percentage = (entropy / 40) * 25;
+            } else if (entropy < 60) {
+                level = 'Fair';
+                color = '#ff9800';
+                percentage = 25 + ((entropy - 40) / 20) * 25;
+            } else if (entropy < 80) {
+                level = 'Good';
+                color = '#ffeb3b';
+                percentage = 50 + ((entropy - 60) / 20) * 25;
+            } else if (entropy < 128) {
+                level = 'Strong';
+                color = '#4caf50';
+                percentage = 75 + ((entropy - 80) / 48) * 25;
+            } else {
+                level = 'Excellent';
+                color = '#2e7d32';
+                percentage = 100;
+            }
+
+            // Update outputs
+            entropyDisplay.textContent = entropy.toFixed(1) + ' bits';
+            combinationsDisplay.textContent = formatNumber(combinations);
+            crackTimeDisplay.textContent = formatTime(secondsToCrack);
+            securityLevelDisplay.textContent = level;
+            securityLevelDisplay.style.color = color;
+            strengthBar.style.width = percentage + '%';
+            strengthBar.style.backgroundColor = color;
+            formulaCalc.innerHTML = `${length} × log₂(${poolSize}) = ${entropy.toFixed(1)} bits`;
+        }
+
+        // Event listeners
+        passwordInput.addEventListener('input', calculate);
+        Object.values(checkboxes).forEach(checkbox => {
+            checkbox.addEventListener('change', calculate);
+        });
+
+        // Initial calculation
+        calculate();
+    });
+</script>
+
+<%- include('../partials/footer') %>

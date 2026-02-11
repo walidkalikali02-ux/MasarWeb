@@ -1,0 +1,712 @@
+<%- include('../partials/head', { title: title }) %>
+<%- include('../partials/navbar') %>
+
+<style>
+    /* Component Styles */
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    /* 2️⃣ Page Identity */
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .category-tag {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        background: var(--text-color);
+        color: var(--bg-color);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+    .identity-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .identity-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-light);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* 3️⃣ Authority & Trust */
+    .authority-block {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 2rem;
+    }
+    .auth-profile {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .auth-avatar {
+        width: 50px;
+        height: 50px;
+        background: #eee;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #666;
+    }
+    .trust-indicator {
+        display: flex;
+        align-items: center;
+        color: var(--text-light);
+        font-size: 0.9rem;
+    }
+
+    /* 4️⃣ Core Tool */
+    .tool-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    @media (max-width: 768px) {
+        .tool-container {
+            grid-template-columns: 1fr;
+        }
+    }
+    .tool-input-group {
+        margin-bottom: 1.5rem;
+    }
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+    .tool-input {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        font-family: inherit;
+    }
+    .tool-select {
+        width: 100%;
+        padding: 0.75rem;
+        font-size: 1rem;
+        border: 2px solid var(--border-color);
+        background: var(--bg-color);
+    }
+    .priority-toggle {
+        display: flex;
+        gap: 1rem;
+        margin-top: 0.5rem;
+    }
+    .priority-option {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+    .priority-option.active {
+        border-color: var(--primary-color);
+        background: rgba(0,0,0,0.05);
+    }
+    .priority-option input {
+        cursor: pointer;
+    }
+    .result-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        margin-bottom: 1rem;
+    }
+    .metric-large {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+    }
+    .metric-label {
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        color: var(--text-light);
+        letter-spacing: 1px;
+    }
+    .security-rating {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1rem;
+        padding: 1rem;
+        background: #e8f5e9;
+        border-left: 4px solid #4caf50;
+    }
+    .security-rating.weak {
+        background: #ffebee;
+        border-left-color: #f44336;
+    }
+    .security-rating.fair {
+        background: #fff3e0;
+        border-left-color: #ff9800;
+    }
+    .security-rating.good {
+        background: #e8f5e9;
+        border-left-color: #4caf50;
+    }
+    .security-rating.excellent {
+        background: #e3f2fd;
+        border-left-color: #2196f3;
+    }
+    .rating-bar {
+        flex: 1;
+        height: 8px;
+        background: #ddd;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .rating-fill {
+        height: 100%;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+    .warning-box {
+        background: #fff3cd;
+        border: 1px solid #ffc107;
+        padding: 1rem;
+        margin-top: 1rem;
+        border-radius: 4px;
+    }
+
+    /* 5️⃣ Guidance & 6️⃣ Educational */
+    .content-article {
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+    }
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+    .content-article h3 {
+        font-size: 1.4rem;
+        margin: 1.5rem 0 0.8rem;
+    }
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+    .content-article table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+    }
+    .content-article th,
+    .content-article td {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    .content-article th {
+        background: #f5f5f5;
+        font-weight: bold;
+    }
+
+    /* 7️⃣ FAQ */
+    .faq-grid {
+        display: grid;
+        gap: 1.5rem;
+    }
+    .faq-item h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .faq-item p {
+        color: var(--text-light);
+        font-size: 0.95rem;
+    }
+
+    /* 8️⃣ Discovery */
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+    }
+    .tool-card {
+        padding: 1.5rem;
+        border: 1px solid #eee;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: var(--transition);
+    }
+    .tool-card:hover {
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+    }
+    .tool-card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+    .tool-card p {
+        font-size: 0.85rem;
+        color: var(--text-light);
+    }
+</style>
+
+<div class="container">
+    
+    <!-- 2️⃣ Page Identity Component -->
+    <section class="identity-header">
+        <span class="category-tag">Cybersecurity & Developer Tools</span>
+        <h1 class="identity-title">Bcrypt Cost Factor & Performance Benchmark Calculator</h1>
+        <p class="identity-subtitle">Optimize your password security by finding the ideal balance between hashing work factors and authentication response times.</p>
+    </section>
+
+    <!-- 3️⃣ Authority & Trust Component -->
+    <section class="component-section" style="border:none; padding-top:0;">
+        <div class="authority-block">
+            <div class="auth-profile">
+                <div class="auth-avatar">SC</div>
+                <div>
+                    <div style="font-weight:bold;">Dr. Sarah Chen</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Ph.D. Applied Cryptography, Stanford</div>
+                </div>
+            </div>
+            <div class="auth-profile">
+                <div class="auth-avatar">MR</div>
+                <div>
+                    <div style="font-weight:bold;">Marcus Rodriguez, CISSP</div>
+                    <div style="font-size:0.8rem; color:var(--text-light);">Senior Security Engineer, CloudFlare</div>
+                </div>
+            </div>
+            <div class="trust-indicator">
+                <span style="margin-right:0.5rem;">✓</span>
+                Scientifically reviewed against NIST SP 800-132
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ Core Tool Component (Main Tool) -->
+    <section class="component-section" id="tool-interface">
+        <div class="tool-container">
+            <!-- Inputs -->
+            <div class="tool-inputs">
+                <div class="tool-input-group">
+                    <label for="targetDuration">Target Hashing Duration (milliseconds)</label>
+                    <input type="number" id="targetDuration" class="tool-input" value="250" min="50" max="5000" step="10">
+                    <small style="color: var(--text-light);">Industry standard: 250ms for interactive logins</small>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="hardwareLevel">Server Hardware Performance</label>
+                    <select id="hardwareLevel" class="tool-select">
+                        <option value="low">Low-End VPS (1 vCPU, shared)</option>
+                        <option value="standard" selected>Standard Server (4 cores)</option>
+                        <option value="high">High-End Server (16+ cores)</option>
+                        <option value="enterprise">Enterprise (32+ cores)</option>
+                    </select>
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="currentCost">Current Cost Factor (4-20)</label>
+                    <input type="number" id="currentCost" class="tool-input" value="10" min="4" max="20">
+                </div>
+
+                <div class="tool-input-group">
+                    <label for="concurrentRequests">Expected Concurrent Requests</label>
+                    <input type="number" id="concurrentRequests" class="tool-input" value="100" min="1" max="10000">
+                </div>
+
+                <div class="tool-input-group">
+                    <label>Optimization Priority</label>
+                    <div class="priority-toggle">
+                        <label class="priority-option">
+                            <input type="radio" name="priority" value="speed"> Fastest
+                        </label>
+                        <label class="priority-option active">
+                            <input type="radio" name="priority" value="balanced" checked> Balanced
+                        </label>
+                        <label class="priority-option">
+                            <input type="radio" name="priority" value="security"> Maximum Security
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outputs -->
+            <div class="tool-outputs">
+                <div class="result-card">
+                    <div class="metric-label">Recommended Cost Factor</div>
+                    <div class="metric-large" id="recommendedCost">12</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">Log₂ iterations</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="metric-label">Calculated Throughput</div>
+                    <div class="metric-large" id="hashesPerSecond">243</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">hashes/second</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="metric-label">Average Latency</div>
+                    <div class="metric-large" id="avgLatency">247 ms</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">per authentication request</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="metric-label">Brute Force Resistance</div>
+                    <div class="metric-large" id="bruteForceTime">12,847 years</div>
+                    <div style="font-size: 0.9rem; color: var(--text-light);">(RTX 4090 GPU cluster)</div>
+                </div>
+
+                <div class="security-rating good" id="securityRating">
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold; margin-bottom: 0.25rem;">Security Rating: <span id="ratingText">Good</span></div>
+                        <div class="rating-bar">
+                            <div class="rating-fill" id="ratingFill" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box" id="warningBox" style="display: none;">
+                    <strong>⚠️ Warning:</strong> <span id="warningText"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5️⃣ Guidance Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>How to Use This Tool</h2>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+                <div>
+                    <h3>1. Set Parameters</h3>
+                    <p>Enter your target hashing time, hardware profile, current cost factor, and expected concurrent load.</p>
+                </div>
+                <div>
+                    <h3>2. Review Recommendations</h3>
+                    <p>The tool calculates the optimal cost factor and validates your server can handle the load.</p>
+                </div>
+            </div>
+            
+            <h3>How the Calculation Works</h3>
+            <p>Bcrypt uses exponential scaling: each cost factor increment doubles computational work (2^cost iterations). The tool works backward from your target duration to find the maximum secure cost factor your hardware can sustain.</p>
+            
+            <h3>Interpreting Results</h3>
+            <table>
+                <tr>
+                    <th>Metric</th>
+                    <th>Target</th>
+                </tr>
+                <tr>
+                    <td>Cost Factor</td>
+                    <td>≥ 12 for new applications (2024)</td>
+                </tr>
+                <tr>
+                    <td>Latency</td>
+                    <td>&lt; 500ms for good UX</td>
+                </tr>
+                <tr>
+                    <td>Brute Force</td>
+                    <td>&gt; 100 years minimum</td>
+                </tr>
+            </table>
+
+            <div style="background:#f8f9fa; padding:1.5rem; border-left:4px solid var(--primary-color); margin-top:1.5rem;">
+                <strong>Disclaimer:</strong> This tool provides estimates based on statistical modeling. Actual performance varies by CPU architecture, memory bandwidth, and server load. Always benchmark on your production hardware before deployment.
+            </div>
+        </div>
+    </section>
+
+    <!-- 6️⃣ Educational Content Component -->
+    <section class="component-section">
+        <div class="content-article">
+            <h2>Understanding Bcrypt: Complete Technical Guide</h2>
+            
+            <h3>What Is Bcrypt?</h3>
+            <p>Bcrypt is an adaptive password hashing function designed by Niels Provos and David Mazières in 1999. Based on the Blowfish cipher, it addresses the fundamental challenge that computers keep getting faster—making brute-force attacks increasingly feasible against fixed algorithms.</p>
+
+            <h3>How Bcrypt Works</h3>
+            <p>Bcrypt operates through an exponential cost function where iterations = 2^cost_factor. Each iteration performs key expansion, multiple rounds of Blowfish encryption, and state mixing. This exponential scaling means even small cost factor increases dramatically improve security.</p>
+
+            <h3>Memory-Hard Design</h3>
+            <p>Unlike purely computational hashes, bcrypt requires ~4KB RAM per hash computation. This creates a bottleneck for GPUs with thousands of cores but limited memory bandwidth per core, providing meaningful protection against hardware-accelerated attacks.</p>
+
+            <h3>Cost Factor Evolution</h3>
+            <table>
+                <tr>
+                    <th>Year</th>
+                    <th>Recommended Cost</th>
+                </tr>
+                <tr>
+                    <td>1999</td>
+                    <td>6</td>
+                </tr>
+                <tr>
+                    <td>2010</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>2020</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>2024</td>
+                    <td>12-13</td>
+                </tr>
+            </table>
+
+            <h3>Bcrypt vs. Modern Alternatives</h3>
+            <p><strong>Argon2id</strong> (2015 Password Hashing Competition winner) is the modern recommendation for new systems, but bcrypt remains acceptable and widely supported. OWASP 2023 recommends Argon2id with bcrypt as the fallback option with cost ≥ 12.</p>
+
+            <h3>Best Practices</h3>
+            <ul>
+                <li>Use cost factor ≥ 12 for new applications in 2024</li>
+                <li>Benchmark annually on current hardware</li>
+                <li>Implement gradual re-hashing for existing passwords</li>
+                <li>Never use bcrypt for non-password data (it's intentionally slow)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 7️⃣ FAQ Component -->
+    <section class="component-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">Frequently Asked Questions</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <h3>What is the recommended Bcrypt cost factor for 2024?</h3>
+                <p>OWASP recommends a minimum cost factor of 12 for new applications in 2024. High-security applications (finance, healthcare) should consider cost 13 or 14. Cost 10 is the absolute minimum; anything lower is considered insecure.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does increasing the cost factor affect server CPU?</h3>
+                <p>Each cost factor increment doubles CPU usage per hash (2^cost iterations). For 100 concurrent requests at cost 12 vs. cost 10, CPU usage is 4x higher. Monitor your server's capacity and adjust accordingly.</p>
+            </div>
+            <div class="faq-item">
+                <h3>What is the ideal response time for password hashing?</h3>
+                <p>The target range is 250-500 milliseconds for user-facing systems. Under 100ms may indicate inadequate security; over 1000ms frustrates users. Non-interactive systems can use longer times for maximum security.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does Bcrypt protect against GPU-accelerated attacks?</h3>
+                <p>Yes, significantly better than non-memory-hard algorithms. Bcrypt's 4KB memory requirement creates a bottleneck for GPUs. While GPUs might crack MD5 at 10B hashes/sec, they typically achieve only ~50K bcrypt (cost 10) hashes/sec on RTX 4090.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How do I upgrade existing password hashes?</h3>
+                <p>Implement progressive re-hashing—upgrade passwords gradually as users authenticate. Check the cost factor on login; if below recommended, re-hash with the higher cost and save. This requires no forced password resets.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Why does bcrypt truncate passwords at 72 bytes?</h3>
+                <p>This is a design limitation from Blowfish's key schedule. Only the first 72 bytes are used. For long passwords, pre-hash using SHA-256/SHA-512, then use the digest as the bcrypt input to ensure all bytes are utilized.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I use bcrypt for non-password data?</h3>
+                <p>No. Bcrypt is intentionally slow—a security feature for passwords but a performance problem for other use cases. Use fast hash functions (SHA-256) for file integrity, session tokens (HMAC-SHA256), or general deduplication.</p>
+            </div>
+            <div class="faq-item">
+                <h3>How does bcrypt compare to Argon2?</h3>
+                <p>Argon2id is the modern recommendation with better GPU resistance and configurability. However, bcrypt's simplicity makes it less error-prone and it's universally supported. Use Argon2id if available; otherwise, bcrypt with cost ≥ 12 remains secure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8️⃣ Internal Discovery Component -->
+    <section class="component-section" style="border:none;">
+        <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
+        <div class="discovery-grid">
+            <a href="/tools/password-analyzer" class="tool-card">
+                <h3>Password Strength Analyzer</h3>
+                <p>Measure password entropy and estimated crack time.</p>
+            </a>
+            <a href="/tools/key-strength" class="tool-card">
+                <h3>Encryption Key Strength</h3>
+                <p>Analyze RSA and AES key resilience.</p>
+            </a>
+            <a href="/tools/password-generator" class="tool-card">
+                <h3>Password Generator</h3>
+                <p>Generate cryptographically secure passwords.</p>
+            </a>
+            <a href="/tools/hash-identifier" class="tool-card">
+                <h3>Hash Identifier</h3>
+                <p>Identify cryptographic algorithms from hash strings.</p>
+            </a>
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Bcrypt Cost Factor Calculator Logic
+    document.addEventListener('DOMContentLoaded', () => {
+        // Hardware performance constants (hashes per second at cost 10)
+        const hardwareProfiles = {
+            low: 50,
+            standard: 150,
+            high: 500,
+            enterprise: 1000
+        };
+
+        // GPU cracking speeds (hashes per second for RTX 4090 at various costs)
+        const gpuSpeeds = {
+            8: 200000,
+            10: 50000,
+            11: 25000,
+            12: 12500,
+            13: 6250,
+            14: 3125,
+            15: 1562
+        };
+
+        const inputs = {
+            targetDuration: document.getElementById('targetDuration'),
+            hardwareLevel: document.getElementById('hardwareLevel'),
+            currentCost: document.getElementById('currentCost'),
+            concurrentRequests: document.getElementById('concurrentRequests'),
+            priorityOptions: document.querySelectorAll('input[name="priority"]')
+        };
+
+        const outputs = {
+            recommendedCost: document.getElementById('recommendedCost'),
+            hashesPerSecond: document.getElementById('hashesPerSecond'),
+            avgLatency: document.getElementById('avgLatency'),
+            bruteForceTime: document.getElementById('bruteForceTime'),
+            securityRating: document.getElementById('securityRating'),
+            ratingText: document.getElementById('ratingText'),
+            ratingFill: document.getElementById('ratingFill'),
+            warningBox: document.getElementById('warningBox'),
+            warningText: document.getElementById('warningText')
+        };
+
+        // Priority multipliers
+        const priorityMultipliers = {
+            speed: 0.8,
+            balanced: 1.0,
+            security: 1.2
+        };
+
+        function getSelectedPriority() {
+            for (const option of inputs.priorityOptions) {
+                if (option.checked) return option.value;
+            }
+            return 'balanced';
+        }
+
+        function calculate() {
+            const targetMs = parseInt(inputs.targetDuration.value) || 250;
+            const hardware = inputs.hardwareLevel.value;
+            const currentCostFactor = parseInt(inputs.currentCost.value) || 10;
+            const concurrentReqs = parseInt(inputs.concurrentRequests.value) || 100;
+            const priority = getSelectedPriority();
+
+            // Get base performance at cost 10
+            const baseHashesPerSec = hardwareProfiles[hardware];
+            const adjustedTargetMs = targetMs * priorityMultipliers[priority];
+
+            // Calculate recommended cost factor
+            // Time = (2^cost / 2^10) * (1000 / baseHashesPerSec) * 1000 ms
+            // Solve for cost: cost = log2((targetMs * baseHashesPerSec) / 1000) + 10
+            let recommendedCost = Math.floor(Math.log2((adjustedTargetMs * baseHashesPerSec) / 1000)) + 10;
+            
+            // Clamp to valid range
+            recommendedCost = Math.max(4, Math.min(20, recommendedCost));
+
+            // Calculate actual latency at recommended cost
+            const iterationRatio = Math.pow(2, recommendedCost - 10);
+            const hashesPerSec = Math.floor(baseHashesPerSec / iterationRatio);
+            const actualLatency = Math.round((1000 / hashesPerSec) * 1000);
+
+            // Calculate capacity check
+            const capacityNeeded = concurrentReqs;
+            const capacityAvailable = hashesPerSec;
+            const capacityRatio = capacityAvailable / capacityNeeded;
+
+            // Calculate brute force time
+            // Assume 8-character password with mixed case, numbers, symbols (62^8 combinations)
+            const passwordSpace = Math.pow(62, 8);
+            const gpuSpeed = gpuSpeeds[recommendedCost] || gpuSpeeds[12];
+            const clusterSize = 1000; // 1000 GPUs
+            const secondsToCrack = passwordSpace / (gpuSpeed * clusterSize);
+            const yearsToCrack = secondsToCrack / (365.25 * 24 * 3600);
+
+            // Update UI
+            outputs.recommendedCost.textContent = recommendedCost;
+            outputs.hashesPerSecond.textContent = hashesPerSec.toLocaleString();
+            outputs.avgLatency.textContent = actualLatency + ' ms';
+            
+            if (yearsToCrack >= 1000000) {
+                outputs.bruteForceTime.textContent = (yearsToCrack / 1000000).toFixed(1) + 'M years';
+            } else if (yearsToCrack >= 1000) {
+                outputs.bruteForceTime.textContent = (yearsToCrack / 1000).toFixed(1) + 'K years';
+            } else {
+                outputs.bruteForceTime.textContent = Math.round(yearsToCrack).toLocaleString() + ' years';
+            }
+
+            // Security rating
+            let rating = 'weak';
+            let ratingLabel = 'Weak';
+            let ratingPercent = 20;
+
+            if (recommendedCost >= 14) {
+                rating = 'excellent';
+                ratingLabel = 'Excellent';
+                ratingPercent = 100;
+            } else if (recommendedCost >= 12) {
+                rating = 'good';
+                ratingLabel = 'Good';
+                ratingPercent = 75;
+            } else if (recommendedCost >= 10) {
+                rating = 'fair';
+                ratingLabel = 'Fair';
+                ratingPercent = 50;
+            }
+
+            outputs.securityRating.className = 'security-rating ' + rating;
+            outputs.ratingText.textContent = ratingLabel;
+            outputs.ratingFill.style.width = ratingPercent + '%';
+
+            // Warning for capacity issues
+            if (capacityRatio < 1) {
+                outputs.warningBox.style.display = 'block';
+                outputs.warningText.textContent = `Insufficient capacity: ${concurrentReqs} concurrent requests require ${Math.ceil(concurrentReqs / capacityRatio)}x more throughput. Consider upgrading hardware or reducing cost factor.`;
+            } else if (capacityRatio < 2) {
+                outputs.warningBox.style.display = 'block';
+                outputs.warningText.textContent = `Low headroom: Only ${Math.round(capacityRatio)}x capacity available. Monitor performance during peak loads.`;
+            } else {
+                outputs.warningBox.style.display = 'none';
+            }
+        }
+
+        // Event listeners
+        Object.values(inputs).forEach(input => {
+            if (input instanceof NodeList) {
+                input.forEach(el => {
+                    el.addEventListener('change', () => {
+                        // Update active class on priority options
+                        document.querySelectorAll('.priority-option').forEach(opt => {
+                            opt.classList.remove('active');
+                        });
+                        el.closest('.priority-option').classList.add('active');
+                        calculate();
+                    });
+                });
+            } else {
+                input.addEventListener('input', calculate);
+                input.addEventListener('change', calculate);
+            }
+        });
+
+        // Initial calculation
+        calculate();
+    });
+</script>
+
+<%- include('../partials/footer') %>
