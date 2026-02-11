@@ -96,6 +96,39 @@
                         <%= currentLang === 'ar' ? 'أنشئ رموز مصادقة ثنائية من مفاتيحك السرية بدون تطبيق هاتف.' : 'Generate 2FA authentication codes from your secret keys without a mobile app.' %>
                     </p>
                 </a>
+
+                <!-- Password Expiration Reminder Tool Card -->
+                <a href="/tools/password-expiration" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        ⏰
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'تذكير انتهاء كلمة المرور' : 'Password Expiration' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'تتبع تواريخ انتهاء صلاحية كلمات المرور وتلقي تنبيهات قبل القفل.' : 'Track password expiration dates and receive alerts before account lockouts.' %>
+                    </p>
+                </a>
+
+                <!-- Password Entropy Calculator Tool Card -->
+                <a href="/tools/entropy-calculator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        📊
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة انتروبيا كلمة المرور' : 'Entropy Calculator' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'احسب الانتروبيا الرياضية وقوة كلمة المرور ضد هجمات القوة الغاشمة.' : 'Calculate mathematical entropy and password strength against brute-force attacks.' %>
+                    </p>
+                </a>
+
+                <!-- Bcrypt Cost Factor Calculator Tool Card -->
+                <a href="/tools/bcrypt-calculator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        ⚡
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة عامل Bcrypt' : 'Bcrypt Calculator' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'احسب عامل التكلفة المثالي لـ Bcrypt لموازنة الأمان والأداء.' : 'Calculate the optimal bcrypt cost factor to balance security and performance.' %>
+                    </p>
+                </a>
             </div>
         </div>
     </main>

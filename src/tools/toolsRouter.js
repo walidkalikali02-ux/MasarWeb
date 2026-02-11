@@ -38,45 +38,31 @@ router.get('/key-strength', (req, res) => {
     });
 });
 
+// Password Entropy Calculator
+router.get('/entropy-calculator', (req, res) => {
+    res.render('tools/entropy-calculator', {
+        title: req.lang === 'ar' ? 'حاسبة انتروبيا كلمة المرور' : 'Password Entropy Calculator',
+    });
+});
+
+// Password Expiration Reminder Tool
+router.get('/password-expiration', (req, res) => {
+    res.render('tools/password-expiration', {
+        title: req.lang === 'ar' ? 'تذكير انتهاء صلاحية كلمة المرور' : 'Password Expiration Reminder',
+    });
+});
+
+// Bcrypt Cost Factor Calculator
+router.get('/bcrypt-calculator', (req, res) => {
+    res.render('tools/bcrypt-calculator', {
+        title: req.lang === 'ar' ? 'حاسبة عامل تكلفة Bcrypt' : 'Bcrypt Cost Factor Calculator',
+    });
+});
+
 // Virus Scanner Interface
 router.get('/virus-scanner', (req, res) => {
     res.render('tools/virus-scanner', {
         title: req.lang === 'ar' ? 'فاحص الفيروسات' : 'Virus Scanner',
-    });
-});
-
-// Secure Random Password Generator
-router.get('/password-generator', (req, res) => {
-    res.render('tools/password-generator', {
-        title: req.lang === 'ar' ? 'مولد كلمات المرور الآمنة' : 'Secure Random Password Generator',
-    });
-});
-
-// Diceware Passphrase Generator
-router.get('/diceware-passphrase', (req, res) => {
-    res.render('tools/diceware-passphrase', {
-        title: req.lang === 'ar' ? 'مولد عبارات المرور Diceware' : 'Diceware Passphrase Generator',
-    });
-});
-
-// Password Breach Checker
-router.get('/breach-checker', (req, res) => {
-    res.render('tools/breach-checker', {
-        title: req.lang === 'ar' ? 'فاحص تسريب كلمات المرور' : 'Password Breach Checker',
-    });
-});
-
-// Hash Identifier
-router.get('/hash-identifier', (req, res) => {
-    res.render('tools/hash-identifier', {
-        title: req.lang === 'ar' ? 'محدد نوع الهاش' : 'Hash Identifier',
-    });
-});
-
-// 2FA Code Generator
-router.get('/2fa-generator', (req, res) => {
-    res.render('tools/2fa-generator', {
-        title: req.lang === 'ar' ? 'مولد رموز 2FA' : '2FA Code Generator',
     });
 });
 
