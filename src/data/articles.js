@@ -13731,6 +13731,189 @@ server {
                 </p>
             </div>
         `
+    },
+    {
+        id: 'waf-owasp-top10-proxy-2026-02-11',
+        slug: 'waf-owasp-top10-proxy-2026-02-11',
+        title: 'جدار تطبيقات الويب (WAF) عبر البروكسي لمواجهة OWASP Top 10',
+        excerpt: 'قواعد WAF أمامية للتصدي لحقن SQL، XSS، SSRF، والتجاوزات مع مراقبة دقيقة.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يحدّد <strong>OWASP Top 10</strong> أبرز مخاطر تطبيقات الويب. عبر طبقة البروكسي، يمكن نشر
+                    <em>WAF</em> أمامي يفرض قواعد حماية قبل وصول الطلب للخلفيات. راجع
+                    <a href="/blog/content-security-policy-proxy-2026-02-10">سياسة أمن المحتوى</a>،
+                    <a href="/blog/ssrf-protection-request-filtering-proxy-2026-02-11">حماية SSRF</a>،
+                    و<a href="/blog/tls-ssl-testing-through-proxy-2026-02-10">اختبار TLS</a>.
+                </p>
+                <h2>القواعد الأساسية</h2>
+                <p>
+                    طبّق قواعد ضد حقن SQL وXSS، وقيّد التحويلات الخارجية لمنع SSRF. افحص الرؤوس والحِمل، وفعّل
+                    <strong>التحقق من الإدخال</strong> على الحافة لمنع الاستغلالات الشائعة.
+                </p>
+                <h3>التدرّج والقياس</h3>
+                <p>
+                    ابدأ بوضع رصد ثم انتقل إلى الحجب تدريجياً اعتماداً على
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>. استخدم
+                    <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a> لاختبار قواعد جديدة دون تعطيل.
+                </p>
+                <h3>الشفافية والتوافق</h3>
+                <p>
+                    أعِد ردوداً تشرح سبب الحجب، واحترم <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a>
+                    في السجلات. وفّر مسارات تراجع لحالات الخطأ.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    WAF أمامي عبر البروكسي يقلّل المخاطر بشكل ملحوظ ويمنح طبقة حماية متّسقة قابلة للتحديث السريع.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'ab-testing-feature-flags-proxy-2026-02-11',
+        slug: 'ab-testing-feature-flags-proxy-2026-02-11',
+        title: 'اختبارات A/B وFeature Flags عبر طبقة البروكسي',
+        excerpt: 'تجارب مُحكَمة وتفعيل ميزات تدريجي عبر التوجيه الأمامي والشرائح الديموغرافية.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تسمح اختبارات <strong>A/B</strong> و<strong>Feature Flags</strong> بإطلاق آمن للميزات. عبر البروكسي،
+                    يمكن توجيه الشرائح لواجهات مختلفة أو تفعيل ميزات حسب الهوية والسياق. راجع
+                    <a href="/blog/edge-localization-ab-testing-proxy-2026-02-10">اختبارات التوطين</a> و
+                    <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a>.
+                </p>
+                <h2>التوجيه والشرائح</h2>
+                <p>
+                    قسّم المستخدمين حسب المنطقة، الجهاز، أو الهوية. وجّه كل شريحة لمسار مستقل، مع احترام الأداء عبر
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a>.
+                </p>
+                <h3>القياس والتعلّم</h3>
+                <p>
+                    اربط النتائج بـ <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>، وحدّد
+                    معايير نجاح واضحة قبل التوسيع أو الإلغاء.
+                </p>
+                <h3>الأمان والخصوصية</h3>
+                <p>
+                    لا تجمع أكثر مما تحتاج، وطبّق <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">سياسات الاحتفاظ</a>.
+                    استخدم <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a> لضمان الاتساق.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    اختبارات أمامية ورايات ميزات تمنح إطلاقاً آمناً مدفوعاً بالبيانات دون تعطيل المستخدمين.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'robots-sitemap-seo-control-proxy-2026-02-11',
+        slug: 'robots-sitemap-seo-control-proxy-2026-02-11',
+        title: 'التحكم في Robots.txt وSitemap عبر البروكسي لرفع SEO',
+        excerpt: 'إدارة مركزية للفهرسة عبر إعادة كتابة robots والسيت ماب مع تطبيع الروابط.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يمكن للبروكسي إدارة <strong>robots.txt</strong> و<strong>sitemap.xml</strong> مركزياً لرفع الجودة
+                    والفهرسة. طبّق سياسات زحف متوازنة مع
+                    <a href="/blog/edge-redirects-url-normalization-seo-proxy-2026-02-11">تطبيع الروابط</a> و
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة</a>.
+                </p>
+                <h2>السياسات</h2>
+                <p>
+                    امنع الزحف إلى مسارات حساسة، وأضف خرائط مواقع ديناميكية. اعتمد canonical وhreflang في الصفحات مع
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a>.
+                </p>
+                <h3>القياس والشفافية</h3>
+                <p>
+                    راقب أخطاء الزحف ومعدّله عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>، واعرض صفحات هبوط توضيحية للمحرّكات.
+                </p>
+                <h3>التكامل</h3>
+                <p>
+                    أعد كتابة الردود للسيت ماب وفق التغييرات، ووفّر مسارات تراجع عند التجارب
+                    <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تحكم مركزي في robots والسيت ماب يرفع الجاهزية والدلالة مع اتساق عبر المناطق.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'language-negotiation-accept-language-proxy-2026-02-11',
+        slug: 'language-negotiation-accept-language-proxy-2026-02-11',
+        title: 'التفاوض على اللغة عبر Accept-Language في طبقة البروكسي',
+        excerpt: 'تقديم محتوى مناسب للغة المستخدم عبر التفاوض الأمامي والتخزين المتنوع.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    رأس <strong>Accept-Language</strong> يمكّن التوطين الذكي. عبر البروكسي، يمكن التفاوض على اللغة،
+                    اختيار القوالب، وتخزين نسخ متعددة بحسب المستخدم والمنطقة. راجع
+                    <a href="/blog/edge-localization-ab-testing-proxy-2026-02-10">اختبارات التوطين</a> و
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة</a>.
+                </p>
+                <h2>التقديم والتخزين</h2>
+                <p>
+                    قدّم صفحات بلغات متعددة، وطبّق مفاتيح كاش تشمل اللغة والمنطقة. أعد كتابة الروابط الداخلية لتجنّب
+                    المحتوى المكرر مع
+                    <a href="/blog/edge-redirects-url-normalization-seo-proxy-2026-02-11">تطبيع الروابط</a>.
+                </p>
+                <h3>التجربة والقياس</h3>
+                <p>
+                    راقب الارتداد ومعدّل التحويل حسب اللغة عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>، وغيّر الاختيارات ديناميكياً.
+                </p>
+                <h3>الأمان</h3>
+                <p>
+                    احترم <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a> عند تخزين التفضيلات، واستخدم
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a> لضمان الاتساق.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تفاوض لغوي أمامي يمنح تجربة محلية سريعة ومتناسقة عبر المناطق والأجهزة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'streaming-backpressure-proxy-2026-02-11',
+        slug: 'streaming-backpressure-proxy-2026-02-11',
+        title: 'التدفّق والخلفية: إدارة Backpressure عبر البروكسي',
+        excerpt: 'توازن بين المستهلك والمنتِج في الردود المتدفّقة مع قواطع ومسارات انتظار.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الردود المتدفّقة (Streaming) تتطلّب إدارة <strong>Backpressure</strong> لتفادي الانقطاعات.
+                    عبر البروكسي، يمكن تنظيم السرعات، إيقاف مؤقت، أو تجزئة الردود. راجع
+                    <a href="/blog/circuit-breaker-bulkhead-proxy-2026-02-11">قواطع الدارات</a> و
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>.
+                </p>
+                <h2>الاستراتيجيات</h2>
+                <p>
+                    طبّق حدوداً على التدفق، وأعد التوجيه لمسارات انتظار عند الذروة. استخدم رسائل واضحة،
+                    وفعّل التدرّج عند تغيّر الأحمال.
+                </p>
+                <h3>المراقبة</h3>
+                <p>
+                    راقب زمن الإطار وحجم الدفق عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>، واضبط السياسات بسرعة.
+                </p>
+                <h3>التوافق</h3>
+                <p>
+                    احترم الأجهزة القديمة والمتصفحات، وقدّم بدائل غير متدفّقة عند الحاجة، مع
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    إدارة Backpressure على الطبقة الأمامية تبني تجربة موثوقة ومتوازنة للتطبيقات التفاعلية.
+                </p>
+            </div>
+        `
     }
 ];
 
