@@ -14104,6 +14104,189 @@ server {
                 </p>
             </div>
         `
+    },
+    {
+        id: 'zero-trust-proxy-policies-2026-02-11',
+        slug: 'zero-trust-proxy-policies-2026-02-11',
+        title: 'Zero Trust على طبقة البروكسي: سياسات قائمة على الهوية والسياق',
+        excerpt: 'رفض افتراضي، وصول أدنى، تحقق مستمر على الحافة مع ملاحظة دقيقة.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نموذج <strong>Zero Trust</strong> يفترض انعدام الثقة المسبقة. عبر طبقة البروكسي،
+                    تُطبّق سياسات وصول قائمة على الهوية والسياق، مع رفض افتراضي والتحقق المستمر.
+                    راجع <a href="/blog/role-based-access-control-proxy-2026-02-10">التحكم وفق الأدوار</a> و
+                    <a href="/blog/jwt-validation-token-introspection-proxy-2026-02-11">التحقق من JWT</a>.
+                </p>
+                <h2>السياسات والهوية</h2>
+                <p>
+                    اربط الهوية بالتوكينات والشهادات، وفعّل مصادقة متعددة العوامل. طبّق وصولاً أدنى
+                    لكل مسار، وحدّد زمن صلاحية واضح للتوكينات.
+                </p>
+                <h3>السياق والتكيّف</h3>
+                <p>
+                    قرّر وفق الموقع والجهاز والسرعة، وغيّر السياسات ديناميكياً. استخدم
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a> لتغذية القرارات.
+                </p>
+                <h3>التكامل</h3>
+                <p>
+                    اندمج مع <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a>،
+                    وفعّل <a href="/blog/circuit-breaker-bulkhead-proxy-2026-02-11">قواطع</a> لمسارات تراجع ذكية.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    Zero Trust أمامي يمنح حماية دقيقة ومتكيّفة عبر جميع الخدمات والواجهات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'websocket-security-through-proxy-2026-02-11',
+        slug: 'websocket-security-through-proxy-2026-02-11',
+        title: 'تأمين WebSocket عبر البروكسي: مصادقة، حدود، ومراقبة',
+        excerpt: 'تثبيت توكنات وجلسات، تقييد القنوات، ومراقبة الرسائل لتفادي الاستغلال.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    بروتوكول <strong>WebSocket</strong> يوفّر قنوات ثنائية الاتجاه. عبر البروكسي،
+                    يمكن إنهاء TLS، التحقق من الهوية، وفرض حدود للرسائل والقنوات. راجع
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">التقييد</a> و
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a>.
+                </p>
+                <h2>المصادقة والهوية</h2>
+                <p>
+                    تحقّق من توكنات الدخول وارتبط بالجلسة. امنع الترقيات غير المصرّح بها،
+                    وطبّق سياسات تجديد دورية.
+                </p>
+                <h3>الحدود والمراقبة</h3>
+                <p>
+                    حدّد حجم الرسالة ومعدلها، وراقب الأنماط الشاذة عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h3>التكامل</h3>
+                <p>
+                    وفّر مسارات تراجع إلى <em>Long Polling</em>، وأعد كتابة الرؤوس لحماية الخصوصية
+                    وفق <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الاحتفاظ</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تأمين WebSocket أمامي يمنح تفاعلية موثوقة دون التضحية بالأمان والاتساق.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'graphql-caching-schemas-proxy-2026-02-11',
+        slug: 'graphql-caching-schemas-proxy-2026-02-11',
+        title: 'GraphQL عبر البروكسي: كاش مدرك للمخططات وحدود استعلام',
+        excerpt: 'تجزئة الردود، حدود عمق/تعقيد، ومفاتيح كاش مدروسة مع سياسات حماية.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    استعلامات <strong>GraphQL</strong> مرنة لكن قد تكون مكلفة. عبر البروكسي،
+                    يمكن تطبيق حدود للعمق والتعقيد، وإنشاء كاش مدرك للمخططات. راجع
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">التقييد</a> و
+                    <a href="/blog/stale-while-revalidate-front-proxy-2026-02-11">SWR</a>.
+                </p>
+                <h2>الكاش والمدركية</h2>
+                <p>
+                    جزّئ الردود وفق الحقول، وطبّق مفاتيح كاش للهويات. امنع Stampede عبر
+                    <a href="/blog/stale-while-revalidate-front-proxy-2026-02-11">stale-while-revalidate</a>.
+                </p>
+                <h3>الحدود والحماية</h3>
+                <p>
+                    قيّد العمق والتعقيد لكل هوية، وأعد كتابة الاستعلامات غير الفعّالة،
+                    وراجع السجلات عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h3>التكامل</h3>
+                <p>
+                    وفّر رسائل واضحة عند الرفض، واختبر التغييرات باستخدام
+                    <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    إدارة GraphQL أمامياً تمنح أداءً أفضل مع حماية دقيقة وشفافية للمستهلكين.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'spa-caching-service-worker-proxy-2026-02-11',
+        slug: 'spa-caching-service-worker-proxy-2026-02-11',
+        title: 'كاش تطبيقات SPA وتنسيق Service Worker مع البروكسي',
+        excerpt: 'مفاتيح كاش واضحة، سياسات TTL، وتكامل مع العامل الخادمي لرفع الأداء.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    تطبيقات <strong>SPA</strong> تعتمد على أصول وكاش متقدّم. عبر البروكسي،
+                    يمكن ضبط <code>Cache-Control</code>، مفاتيح الكاش، والتنسيق مع
+                    <em>Service Worker</em> لتقليل الضغط الخلفي. راجع
+                    <a href="/blog/asset-versioning-cache-busting-proxy-2026-02-11">إصدارات الأصول</a> و
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">CDN</a>.
+                </p>
+                <h2>المفاتيح والسياسات</h2>
+                <p>
+                    ضُمّن اللغة والمنطقة والإصدار في المفاتيح، واضبط TTL حسب الحساسية.
+                    امنع المحتوى المكرر عبر
+                    <a href="/blog/edge-redirects-url-normalization-seo-proxy-2026-02-11">تطبيع الروابط</a>.
+                </p>
+                <h3>التكامل مع SW</h3>
+                <p>
+                    نسّق طبقات الكاش بين البروكسي والعامل الخادمي، وقدّم مسارات تراجع
+                    عند انتهاء النسخ أو فشل الشبكة.
+                </p>
+                <h3>القياس</h3>
+                <p>
+                    راقب ضربات الكاش ونِسَب التحديث عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    كاش SPA منسّق أمامياً يمنح سرعة واتساقاً مع ضغط أقل على الخلفيات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'abr-video-streaming-edge-proxy-2026-02-11',
+        slug: 'abr-video-streaming-edge-proxy-2026-02-11',
+        title: 'بث الفيديو التكيفي ABR عبر الحافة والبروكسي',
+        excerpt: 'توجيه الشرائح، كاش الحافة، وسياسات جودة ديناميكية لتحسين التجربة.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    <strong>ABR</strong> يغيّر الجودة بحسب الشبكة. عبر الحافة والبروكسي،
+                    يمكن توجيه الشرائح، تخزينها، وضبط الجودة ديناميكياً. راجع
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a> و
+                    <a href="/blog/streaming-backpressure-proxy-2026-02-11">Backpressure</a>.
+                </p>
+                <h2>الكاش والتوجيه</h2>
+                <p>
+                    خزّن الشرائح الشائعة على الحافة، ووجّه الطلبات لأقرب موقع صحي
+                    وفق <a href="/blog/service-discovery-health-routing-proxy-2026-02-11">التوجيه الصحي</a>.
+                </p>
+                <h3>السياسات</h3>
+                <p>
+                    اضبط حدوداً للزمن والحجم، وقدّم مسارات تراجع عند التعطّل، وراقب الجودة
+                    عبر <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h3>الحماية</h3>
+                <p>
+                    امنع التحميل المفرط وطبّق <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>،
+                    واحترم <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a> في السجلات.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    بث تكيفي أمامي يمنح تجربة فيديو سلسة وعادلة مع تكلفة أقل وأداء أعلى.
+                </p>
+            </div>
+        `
     }
 ];
 
