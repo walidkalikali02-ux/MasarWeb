@@ -76,7 +76,7 @@
                 </a>
 
                 <!-- Hash Identifier Tool Card -->
-                <a href="/tools/hash-identifier" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                <a href="/tools/hash-identifier" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
                         🧬
                     </div>
@@ -87,19 +87,13 @@
                 </a>
 
                 <!-- 2FA Code Generator Tool Card -->
-                <a href="/tools/2fa-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                <a href="/tools/2fa-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔢
+                        📱
                     </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد رموز 2FA' : '2FA Code Generator' %></h2>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد رموز 2FA' : '2FA Generator' %></h2>
                     <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'أنشئ رموز المصادقة الثنائية من مفاتيحك السرية دون تطبيق جوال.' : 'Generate 2FA authentication codes from your secret keys without a mobile app.' %>
-                    </p>
-                </a>
-            </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محدد نوع الهاش' : 'Hash Identifier' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'حدد خوارزمية التشفير المستخدمة في سلسلة الهاش بسرعة ودقة.' : 'Identify the cryptographic algorithm used to create a specific hash string.' %>
+                        <%= currentLang === 'ar' ? 'أنشئ رموز مصادقة ثنائية من مفاتيحك السرية بدون تطبيق هاتف.' : 'Generate 2FA authentication codes from your secret keys without a mobile app.' %>
                     </p>
                 </a>
             </div>
