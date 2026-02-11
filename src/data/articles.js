@@ -1127,6 +1127,15 @@ http_access allow localnet</code></pre>
     return "PROXY proxy1.mycompany.com:8080; PROXY proxy2.mycompany.com:8080; DIRECT";
 }</code></pre>
 
+    // 2. لنطاقات معينة، استخدم بروكسي خاص
+    if (shExpMatch(host, "*.secure-bank.com")) {
+        return "PROXY secure-proxy.mycompany.com:8080";
+    }
+
+    // 3. لباقي الإنترنت، استخدم البروكسي الرئيسي، وإذا فشل استخدم الاحتياطي
+    return "PROXY proxy1.mycompany.com:8080; PROXY proxy2.mycompany.com:8080; DIRECT";
+}</code></pre>
+
                 <h2>كيفية نشره</h2>
                 <p>
                     ارفع الملف على خادم ويب داخلي (Web Server) يمكن لجميع الأجهزة الوصول إليه.
@@ -13911,6 +13920,187 @@ server {
                 <h2>الخلاصة</h2>
                 <p>
                     إدارة Backpressure على الطبقة الأمامية تبني تجربة موثوقة ومتوازنة للتطبيقات التفاعلية.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'api-request-rewrite-canonicalization-proxy-2026-02-11',
+        slug: 'api-request-rewrite-canonicalization-proxy-2026-02-11',
+        title: 'إعادة كتابة الطلبات وتطبيع الروابط عبر طبقة البروكسي',
+        excerpt: 'تنسيق موحّد للروابط والمعايير، إزالة الضوضاء، وتحسين التوجيه والأمان.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إعادة كتابة الطلبات وتطبيع الروابط (<strong>Canonicalization</strong>) في طبقة البروكسي يقلّل
+                    الفوضى ويمنح توجيهاً دقيقاً. يتم حذف المعلمات غير الضرورية، وترتيبها، وتوحيد الحروف والحالة،
+                    مع حماية من الحقن. راجع
+                    <a href="/blog/edge-redirects-url-normalization-seo-proxy-2026-02-11">تطبيع الروابط</a> و
+                    <a href="/blog/content-security-policy-proxy-2026-02-10">CSP</a>.
+                </p>
+                <h2>التصميم</h2>
+                <p>
+                    حدّد قواعد لتوحيد المسارات، وإزالة <em>tracking params</em>، ومنع ازدواجية الروابط.
+                    أعد كتابة الطلبات لمخططات موحّدة كي ترتفع جودة الكاش.
+                </p>
+                <h3>الأمان والاتساق</h3>
+                <p>
+                    امنع الأحرف المحجوزة في المسارات، وطبّق تشفيراً للمعلمات الحساسة. راقب التغييرات عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h3>التكامل</h3>
+                <p>
+                    حافظ على توافق الخلفيات عبر خريطة تحويل، واختبر تحديثات القواعد باستخدام
+                    <a href="/blog/canary-deployments-zero-downtime-proxy-2026-02-10">Canary</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تطبيع أمامي يرفع الأداء والأمان ويبسّط التوجيه مع تجربة متّسقة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'oauth2-client-credentials-proxy-2026-02-11',
+        slug: 'oauth2-client-credentials-proxy-2026-02-11',
+        title: 'تدفق OAuth2 Client Credentials عبر طبقة البروكسي',
+        excerpt: 'اكتساب توكنات خدمة لخدمة، تخزين آمن، وتدوير شفاف مع سياسات حد.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    في نمط خدمة-لخدمة، يمنح <strong>Client Credentials</strong> توكنات وصول للخلفيات.
+                    عبر البروكسي، يمكن إدارة طلبات التوكن، التخزين المؤقت، والتدوير الآمن. راجع
+                    <a href="/blog/oauth2-oidc-integration-proxy-2026-02-10">OAuth2/OIDC</a> و
+                    <a href="/blog/jwt-validation-token-introspection-proxy-2026-02-11">التحقق من JWT</a>.
+                </p>
+                <h2>الاكتساب والتخزين</h2>
+                <p>
+                    اطلب التوكنات بمفاتيح آمنة، خزّنها مؤقتاً مع TTL واضح، واحترم حدود المزود. امنع التسريب عبر
+                    ضبط الرؤوس ومسارات السجلات وفق
+                    <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a>.
+                </p>
+                <h3>التدوير والتجديد</h3>
+                <p>
+                    جرّد الاعتمادات من الخادمات النهائية، وجدد التوكنات قبل الانتهاء، وفعّل مسارات تراجع.
+                </p>
+                <h3>المراقبة</h3>
+                <p>
+                    راقب معدلات الفشل والزمن مع
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">لوحات القياس</a> لضبط السياسات.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    إدارة تدفق الاعتمادات أمامياً تمنح أماناً وتوافقية أعلى عبر الخدمات الداخلية.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'saml-sso-integration-proxy-2026-02-11',
+        slug: 'saml-sso-integration-proxy-2026-02-11',
+        title: 'تكامل SAML SSO عبر طبقة البروكسي لواجهات المؤسسات',
+        excerpt: 'إنهاء Assertions، إعادة كتابة الردود، ومسارات تسجيل دخول موحّدة مع قياس دقيق.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    <strong>SAML SSO</strong> شائع في المؤسسات. عبر البروكسي، يمكن إنهاء التأكيدات، التحقق منها،
+                    وإعادة كتابة الردود لتوحيد مسارات تسجيل الدخول. راجع
+                    <a href="/blog/role-based-access-control-proxy-2026-02-10">التحكم وفق الأدوار</a> و
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a>.
+                </p>
+                <h2>التكامل</h2>
+                <p>
+                    خزّن metadata بشكل آمن، وطبّق توقيعات قوية، وتحقق من الجمهور والجهة المصدِرة.
+                    أعد كتابة المسارات للواجهات المتعددة.
+                </p>
+                <h3>التجربة</h3>
+                <p>
+                    وفّر رسائل توضيحية عند الفشل، ومسارات إعادة محاولة واضحة، واحترم
+                    <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a>.
+                </p>
+                <h3>القياس</h3>
+                <p>
+                    راقب معدلات الدخول والارتداد عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    SSO أمامي يمنح تجربة موحّدة وآمنة مع مرونة للتطبيقات المتعددة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'advanced-rate-limiting-token-bucket-proxy-2026-02-11',
+        slug: 'advanced-rate-limiting-token-bucket-proxy-2026-02-11',
+        title: 'تقييد متقدّم بالمخزن الرمزي عبر البروكسي لكل مسار وهوية',
+        excerpt: 'سياسات متعددة الأبعاد: مسار، هوية، منطقة، مع رسائل شفافة ومسارات تراجع.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    التقييد لا يكفي أن يكون عاماً. عبر البروكسي، طبّق مخزن رموز (<em>Token Bucket</em>) لكل
+                    مسار وهوية ومنطقة، مع حدود متناسقة. راجع
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">التقييد الأساسي</a> و
+                    <a href="/blog/circuit-breaker-bulkhead-proxy-2026-02-11">قواطع الدارات</a>.
+                </p>
+                <h2>التصميم</h2>
+                <p>
+                    خزّن مفاتيح بحسب الهوية والمسار، واضبط معدّلات وBurst، وقدّم رسائل واضحة للمستهلكين.
+                </p>
+                <h3>الحماية</h3>
+                <p>
+                    امنع التحايل عبر البوابات، وادمج مع
+                    <a href="/blog/content-security-policy-proxy-2026-02-10">CSP</a> و
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">رؤوس الأمان</a>.
+                </p>
+                <h3>المراقبة</h3>
+                <p>
+                    راقب معدلات الرفض والتأخير عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">لوحات القياس</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    تقييد متقدّم أمامي يمنح عدالة وحماية مع تجربة قابلة للتنبؤ.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'origin-shielding-load-balancing-proxy-2026-02-11',
+        slug: 'origin-shielding-load-balancing-proxy-2026-02-11',
+        title: 'درع الأصل والتوزيع الذكي للأحمال عبر طبقة البروكسي',
+        excerpt: 'حماية الخلفيات بمستوى درع، توجيه ديناميكي، وكاش مركزي لتقليل الضغط.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    <strong>Origin Shielding</strong> يضع طبقة حماية وكاش أمام الخلفيات، ويقلّل الضغط والطلبات
+                    عند الذروة. عبر البروكسي، يمكن توزيع الأحمال ديناميكياً وتوجيهها لمسارات صحية. راجع
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a> و
+                    <a href="/blog/service-discovery-health-routing-proxy-2026-02-11">التوجيه الصحي</a>.
+                </p>
+                <h2>التصميم</h2>
+                <p>
+                    فعّل كاش مركزي، وأعد كتابة مفاتيح الكاش، وطبّق سياسات TTL حسب الحساسية.
+                    استخدم درعاً إقليمياً لتقليل مسافات الشبكة.
+                </p>
+                <h3>الحماية والمرونة</h3>
+                <p>
+                    أدمج مع <a href="/blog/circuit-breaker-bulkhead-proxy-2026-02-11">قواطع</a> و
+                    <a href="/blog/ddos-mitigation-multi-layer-proxy-2026-02-11">تخفيف DDoS</a> لحماية الأصل.
+                </p>
+                <h3>القياس</h3>
+                <p>
+                    راقب ضغط الخلفيات ونِسَب الكاش عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    درع أصل أمامي مع توزيع ذكي يرفع الأداء ويحمي الخدمات عبر الذروات.
                 </p>
             </div>
         `
