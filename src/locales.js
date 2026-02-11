@@ -144,7 +144,21 @@ const locales = {
             usage_title: 'كيف نستخدم المعلومات',
             usage_text: 'نستخدم البيانات المؤقتة فقط لتسهيل جلسة التصفح الخاصة بك.',
             cookies_title: 'ملفات تعريف الارتباط',
-            cookies_text: 'نستخدم ملفات تعريف الارتباط فقط لإدارة الجلسة وتفضيلات اللغة.'
+            cookies_text: 'نستخدم ملفات تعريف الارتباط فقط لإدارة الجلسة وتفضيلات اللغة.',
+            retention_title: 'الاحتفاظ بالبيانات',
+            retention_text: 'لا نحتفظ بأي محتوى تتصفحه عبر البروكسي. يتم حذف البيانات المؤقتة تلقائياً بعد انتهاء الجلسة أو خلال مدة تشغيلية قصيرة لأغراض التوجيه ومنع إساءة الاستخدام. لا نقوم بإنشاء ملفات تعريف سلوكية.',
+            security_title: 'إجراءات الأمان',
+            security_text: 'نطبق تشفير HTTPS، رؤوس أمان موحّدة، وتنقية للرؤوس الحساسة. نستخدم سياسات تقييد المعدّل ومسارات تراجع لحماية الخدمة من الاستغلال.',
+            third_parties_title: 'المشاركة مع أطراف ثالثة',
+            third_parties_text: 'لا نبيع بياناتك ولا نشاركها مع أطراف ثالثة إلا عند الالتزام القانوني أو لتحسين الخدمة بشكل مجهول الهوية. أي تكاملات خارجية يتم ضبطها لتجنّب التعرف على الهوية.',
+            rights_title: 'حقوقك',
+            rights_items: [
+                'الاطلاع على البيانات التي تخصك إن وجدت',
+                'طلب التصحيح أو الحذف للبيانات المؤقتة',
+                'الاعتراض على أي معالجة لا تتوافق مع الغرض'
+            ],
+            contact_title: 'التواصل',
+            contact_text: 'للاستفسار حول الخصوصية أو ممارسة حقوقك، تواصل معنا عبر صفحة الدعم.'
         }
     },
     en: {
@@ -287,7 +301,21 @@ const locales = {
             usage_title: 'How We Use Information',
             usage_text: 'We use temporary data only to facilitate your browsing session.',
             cookies_title: 'Cookies',
-            cookies_text: 'We use cookies only for session management and language preferences.'
+            cookies_text: 'We use cookies only for session management and language preferences.',
+            retention_title: 'Data Retention',
+            retention_text: 'We do not retain any content you browse through the proxy. Temporary data is automatically cleared after session end or within a short operational window for routing and abuse prevention. We do not build behavioral profiles.',
+            security_title: 'Security Measures',
+            security_text: 'We enforce HTTPS encryption, unified security headers, and sanitize sensitive headers. Rate limits and fallback paths help protect the service from abuse.',
+            third_parties_title: 'Third-Party Sharing',
+            third_parties_text: 'We do not sell your data and do not share it with third parties except when legally required or for anonymous service improvements. External integrations are configured to avoid personal identification.',
+            rights_title: 'Your Rights',
+            rights_items: [
+                'Access data that pertains to you, if any',
+                'Request correction or deletion of temporary data',
+                'Object to processing that does not align with the stated purpose'
+            ],
+            contact_title: 'Contact',
+            contact_text: 'For privacy inquiries or to exercise your rights, contact us via the Support page.'
         }
     },
     es: {

@@ -38,27 +38,6 @@ router.get('/key-strength', (req, res) => {
     });
 });
 
-// Password Entropy Calculator
-router.get('/entropy-calculator', (req, res) => {
-    res.render('tools/entropy-calculator', {
-        title: req.lang === 'ar' ? 'حاسبة انتروبيا كلمة المرور' : 'Password Entropy Calculator',
-    });
-});
-
-// Password Expiration Reminder Tool
-router.get('/password-expiration', (req, res) => {
-    res.render('tools/password-expiration', {
-        title: req.lang === 'ar' ? 'تذكير انتهاء صلاحية كلمة المرور' : 'Password Expiration Reminder',
-    });
-});
-
-// Bcrypt Cost Factor Calculator
-router.get('/bcrypt-calculator', (req, res) => {
-    res.render('tools/bcrypt-calculator', {
-        title: req.lang === 'ar' ? 'حاسبة عامل تكلفة Bcrypt' : 'Bcrypt Cost Factor Calculator',
-    });
-});
-
 // Virus Scanner Interface
 router.get('/virus-scanner', (req, res) => {
     res.render('tools/virus-scanner', {

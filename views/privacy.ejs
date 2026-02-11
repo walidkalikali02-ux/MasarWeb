@@ -24,6 +24,47 @@
                 <p><%= t.privacy_page.cookies_text %></p>
             </section>
             
+            <% if (t.privacy_page.retention_title) { %>
+            <section>
+                <h3><%= t.privacy_page.retention_title %></h3>
+                <p><%= t.privacy_page.retention_text %></p>
+            </section>
+            <% } %>
+            
+            <% if (t.privacy_page.security_title) { %>
+            <section>
+                <h3><%= t.privacy_page.security_title %></h3>
+                <p><%= t.privacy_page.security_text %></p>
+            </section>
+            <% } %>
+            
+            <% if (t.privacy_page.third_parties_title) { %>
+            <section>
+                <h3><%= t.privacy_page.third_parties_title %></h3>
+                <p><%= t.privacy_page.third_parties_text %></p>
+            </section>
+            <% } %>
+            
+            <% if (t.privacy_page.rights_title) { %>
+            <section>
+                <h3><%= t.privacy_page.rights_title %></h3>
+                <% if (t.privacy_page.rights_items && t.privacy_page.rights_items.length) { %>
+                <ul>
+                    <% t.privacy_page.rights_items.forEach(function(item){ %>
+                        <li><%= item %></li>
+                    <% }) %>
+                </ul>
+                <% } %>
+            </section>
+            <% } %>
+            
+            <% if (t.privacy_page.contact_title) { %>
+            <section>
+                <h3><%= t.privacy_page.contact_title %></h3>
+                <p><%= t.privacy_page.contact_text %></p>
+            </section>
+            <% } %>
+            
             <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> <%= t.error.back_home %></a>
         </main>
     </div>
