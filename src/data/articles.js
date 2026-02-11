@@ -804,7 +804,6 @@ http_access allow authenticated</code></pre>
         proxy_set_header Connection 'upgrade';
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
-    }
 }</code></pre>
 
                 <h3>شرح الإعدادات:</h3>
@@ -13563,6 +13562,172 @@ server {
                 <h2>الخلاصة</h2>
                 <p>
                     نهج متعدد الطبقات عبر البروكسي يقلّل أثر DDoS ويحافظ على الخدمة بذكاء وتوازن.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'mtls-backend-auth-proxy-2026-02-11',
+        slug: 'mtls-backend-auth-proxy-2026-02-11',
+        title: 'mTLS بين البروكسي والخلفيات: مصادقة قوية ومسارات آمنة',
+        excerpt: 'تثبيت الثقة الثنائية بين البوابة والخدمات الخلفية عبر شهادات عميل ومخزن جذور موثوق.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    المصادقة المتبادلة <strong>mTLS</strong> تضيف طبقة ثقة بين البوابة الأمامية والخدمات الخلفية.
+                    عبر البروكسي، يمكن إنهاء TLS وإجبار الاتصالات الداخلية على شهادات عميل صالحة. راجع
+                    <a href="/blog/tls-ssl-testing-through-proxy-2026-02-10">اختبار TLS</a> و
+                    <a href="/blog/reverse-proxy-web-apps-2026-02-10">البروكسي العكسي</a>.
+                </p>
+                <h2>التكوين</h2>
+                <p>
+                    خزّن الشهادات بشكل آمن، واستخدم مخزن جذور موثوق لتتحقق من خلفياتك. امنع شهادات منتهية أو غير مطابقة،
+                    وفعّل سياسات تدوير دورية للشهادات.
+                </p>
+                <h3>الهوية والسياسات</h3>
+                <p>
+                    اربط الهوية بشهادة العميل وطبّق سياسات وصول وفق الأدوار،
+                    مع دمج ذلك بـ <a href="/blog/role-based-access-control-proxy-2026-02-10">التحكم وفق الأدوار</a>.
+                </p>
+                <h3>المراقبة</h3>
+                <p>
+                    راقب حالات فشل المصادقة والزمن عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>، واضبط الإنذارات.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    mTLS أمامي يحمي السلسلة بين البوابة والخلفيات ويمنح ثقة مؤسسية قابلة للتوسّع.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'jwt-validation-token-introspection-proxy-2026-02-11',
+        slug: 'jwt-validation-token-introspection-proxy-2026-02-11',
+        title: 'التحقق من JWT على طبقة البروكسي مع Token Introspection',
+        excerpt: 'فحص التوكينات، توقيع وClaim، وإبطال مركزي مع رسائل واضحة ومراقبة دقيقة.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    إدارة <strong>JWT</strong> مركزياً على طبقة البروكسي تمنع تمرير طلبات غير مصرح بها. تحقّق من
+                    التوقيع، الصلاحية، والمطالبات، وفعّل <em>introspection</em> لإبطال التوكينات. راجع
+                    <a href="/blog/oauth2-oidc-integration-proxy-2026-02-10">OAuth2/OIDC</a> و
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>.
+                </p>
+                <h2>الفحص</h2>
+                <p>
+                    تحقّق من خوارزمية التوقيع، الجمهور، والجهة المصدِرة. امنع HMAC غير آمن، واستخدم مفاتيح دوّارة.
+                </p>
+                <h3>الإبطال والشفافية</h3>
+                <p>
+                    اعتمد قائمة إبطال أو نقطة تحقق حيّة، وأعد كتابة الردود برسائل واضحة وروابط دخول جديدة.
+                </p>
+                <h3>المراقبة</h3>
+                <p>
+                    سجّل حالات الفشل والنجاح عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a> لضبط السياسات.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    التحقق أمامي من JWT يرفع الحماية ويوحّد السياسات عبر جميع الخدمات.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'idempotency-keys-request-deduplication-proxy-2026-02-11',
+        slug: 'idempotency-keys-request-deduplication-proxy-2026-02-11',
+        title: 'Idempotency Keys وإلغاء التكرار عبر طبقة البروكسي',
+        excerpt: 'منع التكرار غير المقصود للطلبات الحساسة عبر مفاتيح معرّفة وزمن احتفاظ محسوب.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    الطلبات الحساسة (دفع، إنشاء) تحتاج إلى <strong>Idempotency</strong>. عبر البروكسي،
+                    يمكن التقاط المفتاح ومنع تكرار التنفيذ مع ردود متّسقة. راجع
+                    <a href="/blog/circuit-breaker-bulkhead-proxy-2026-02-11">قواطع الدارات</a> و
+                    <a href="/blog/api-rate-limiting-through-proxy-2026-02-10">تقييد المعدّل</a>.
+                </p>
+                <h2>التصميم</h2>
+                <p>
+                    خزّن بصمة الطلب لفترة قصيرة، ووفّر ردوداً متناسقة للطلبات المكررة. احترم الخصوصية
+                    وفق <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الاحتفاظ</a>.
+                </p>
+                <h3>التكامل</h3>
+                <p>
+                    أعد كتابة الطلبات لتضمين المفتاح، ووفّر مسارات تراجع عند فقدانه. راقب عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    إلغاء التكرار أمامياً يقلّل الأخطاء ويمنح تجربة منسجمة للعمليات الحرجة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'stale-while-revalidate-front-proxy-2026-02-11',
+        slug: 'stale-while-revalidate-front-proxy-2026-02-11',
+        title: 'Stale‑While‑Revalidate عبر البروكسي الأمامي: أداء مع اتساق',
+        excerpt: 'تقديم نسخ قديمة لفترة قصيرة أثناء إعادة التحقق الخلفي لتفادي ضغط الكاش.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    نمط <strong>SWR</strong> يوازن بين الأداء والدقّة. عبر البروكسي، قدّم النسخة القديمة سريعاً
+                    وأعد التحقق بالخلفية لتحديث الكاش دون <em>Cache Stampede</em>. راجع
+                    <a href="/blog/edge-proxy-cdn-performance-2026-02-10">الحافة وCDN</a>.
+                </p>
+                <h2>السياسات</h2>
+                <p>
+                    استخدم <code>Cache-Control</code> مع <code>stale-while-revalidate</code>،
+                    واضبط TTL بحسب الحساسية. اعتمد مفاتيح كاش واضحة وتنوّع حسب اللغة والمنطقة.
+                </p>
+                <h3>الحماية</h3>
+                <p>
+                    احمِ المحتوى عبر <a href="/blog/content-security-policy-proxy-2026-02-10">CSP</a> و
+                    <a href="/blog/hsts-csp-security-headers-bundle-proxy-2026-02-11">حزمة رؤوس الأمان</a>.
+                </p>
+                <h3>القياس</h3>
+                <p>
+                    راقب ضربات الكاش ونِسَب التحديث عبر
+                    <a href="/blog/proxy-observability-logs-metrics-traces-2026-02-10">المرئيات</a>.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    SWR أمامي يمنح سرعة واستقراراً مع تحديثات متوازنة وشفافة.
+                </p>
+            </div>
+        `
+    },
+    {
+        id: 'service-discovery-health-routing-proxy-2026-02-11',
+        slug: 'service-discovery-health-routing-proxy-2026-02-11',
+        title: 'اكتشاف الخدمات والتوجيه الصحي عبر طبقة البروكسي',
+        excerpt: 'توجيه ديناميكي للخدمات بناءً على الفحص الصحي، زمن الاستجابة، والمناطق.',
+        date: '2026-02-11',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    التوجيه الصحي يقلّل الأعطال ويرفع الأداء. عبر البروكسي، يمكن اكتشاف الخدمات،
+                    فحص صحتها، وتوجيه الطلبات ديناميكياً. راجع
+                    <a href="/blog/circuit-breaker-bulkhead-proxy-2026-02-11">قواطع الدارات</a> و
+                    <a href="/blog/edge-localization-ab-testing-proxy-2026-02-10">اختبارات التوطين</a>.
+                </p>
+                <h2>الفحص</h2>
+                <p>
+                    نفّذ فحوصات HTTP/TCPS مع عتبات أخطاء. عطّل العقد الضعيفة مؤقتاً وأعد إدراجها تدريجياً.
+                </p>
+                <h3>السياسات</h3>
+                <p>
+                    وجّه بحسب الزمن، المنطقة، أو التكاليف. أعد كتابة الردود بمسارات تراجع عند التعطّل،
+                    واحترم <a href="/blog/gdpr-compliance-logging-retention-proxy-2026-02-10">الخصوصية</a> في السجلات.
+                </p>
+                <h2>الخلاصة</h2>
+                <p>
+                    اكتشاف صحي أمامي يمنح مرونة وموثوقية أعلى مع شفافية تشغيلية.
                 </p>
             </div>
         `
