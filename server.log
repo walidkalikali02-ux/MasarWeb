@@ -1,0 +1,15 @@
+/Users/macbookair/Desktop/arabic-web-proxy/src/data/articles.js:1127
+            <div class="article-content">
+                 ^^^^^
+
+SyntaxError: Unexpected token 'class'
+    at wrapSafe (node:internal/modules/cjs/loader:1692:18)
+    at Module._compile (node:internal/modules/cjs/loader:1735:20)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.<anonymous> (node:internal/modules/cjs/loader:1504:12)
+    at Module.patchedRequire (/Users/macbookair/Desktop/arabic-web-proxy/node_modules/require-in-the-middle/index.js:209:27)
+    at Hook._require.Module.require (/Users/macbookair/Desktop/arabic-web-proxy/node_modules/require-in-the-middle/index.js:134:27)

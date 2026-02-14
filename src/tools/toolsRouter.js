@@ -38,6 +38,13 @@ router.get('/key-strength', (req, res) => {
     });
 });
 
+// Absence Deduction Calculator
+router.get('/absence-deduction', (req, res) => {
+    res.render('tools/absence-deduction', {
+        title: req.lang === 'ar' ? 'حاسبة خصم الغياب' : 'Absence Deduction Calculator',
+    });
+});
+
 // Virus Scanner Interface
 router.get('/virus-scanner', (req, res) => {
     res.render('tools/virus-scanner', {
@@ -135,6 +142,69 @@ router.post('/virus-scanner/scan-url', express.json(), (req, res) => {
         logger.error('URL scan error:', error);
         res.status(500).json({ success: false, error: 'Internal server error' });
     }
+});
+
+// Team Password Vault
+router.get('/team-password-vault', (req, res) => {
+    res.render('tools/team-password-vault', {
+        title: req.lang === 'ar' ? 'خزنة كلمات المرور للفريق' : 'Team Password Vault',
+    });
+});
+
+// Bcrypt Hash Calculator
+router.get('/bcrypt-calculator', (req, res) => {
+    res.render('tools/bcrypt-calculator', {
+        title: req.lang === 'ar' ? 'حاسبة Bcrypt' : 'Bcrypt Hash Calculator',
+    });
+});
+
+// Password Entropy Calculator
+router.get('/entropy-calculator', (req, res) => {
+    res.render('tools/entropy-calculator', {
+        title: req.lang === 'ar' ? 'حاسبة إنتروبي كلمة المرور' : 'Password Entropy Calculator',
+    });
+});
+
+// Password Expiration Calculator
+router.get('/password-expiration', (req, res) => {
+    res.render('tools/password-expiration', {
+        title: req.lang === 'ar' ? 'حاسبة انتهاء صلاحية كلمة المرور' : 'Password Expiration Calculator',
+    });
+});
+
+// 2FA TOTP Generator
+router.get('/2fa-generator', (req, res) => {
+    res.render('tools/2fa-generator', {
+        title: req.lang === 'ar' ? 'مولد رموز المصادقة الثنائية' : '2FA TOTP Generator',
+    });
+});
+
+// Hash Identifier
+router.get('/hash-identifier', (req, res) => {
+    res.render('tools/hash-identifier', {
+        title: req.lang === 'ar' ? 'محدد نوع التشفير' : 'Hash Algorithm Identifier',
+    });
+});
+
+// Data Breach Checker
+router.get('/breach-checker', (req, res) => {
+    res.render('tools/breach-checker', {
+        title: req.lang === 'ar' ? 'فاحص اختراق البيانات' : 'Data Breach Checker',
+    });
+});
+
+// Diceware Passphrase Generator
+router.get('/diceware-passphrase', (req, res) => {
+    res.render('tools/diceware-passphrase', {
+        title: req.lang === 'ar' ? 'مولد عبارات المرور Diceware' : 'Diceware Passphrase Generator',
+    });
+});
+
+// Advanced Password Generator
+router.get('/password-generator', (req, res) => {
+    res.render('tools/password-generator', {
+        title: req.lang === 'ar' ? 'مولد كلمات المرور المتقدم' : 'Advanced Password Generator',
+    });
 });
 
 module.exports = router;

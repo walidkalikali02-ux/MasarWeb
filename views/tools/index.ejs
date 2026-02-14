@@ -20,6 +20,17 @@
                     </p>
                 </a>
 
+                <!-- Absence Deduction Calculator Tool Card -->
+                <a href="/tools/absence-deduction" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🗓️
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة خصم الغياب' : 'Absence Deduction' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'احسب خصم الغياب وفق معدل يومي = الشهري ÷ 30.' : 'Calculate absence deductions (daily rate = monthly ÷ 30).' %>
+                    </p>
+                </a>
+
                 <!-- Password Analyzer Tool Card -->
                 <a href="/tools/password-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
@@ -98,7 +109,7 @@
                 </a>
 
                 <!-- Password Expiration Reminder Tool Card -->
-                <a href="/tools/password-expiration" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                <a href="/tools/password-expiration" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
                         ⏰
                     </div>
@@ -127,6 +138,17 @@
                     <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة عامل Bcrypt' : 'Bcrypt Calculator' %></h2>
                     <p style="color: var(--text-muted);">
                         <%= currentLang === 'ar' ? 'احسب عامل التكلفة المثالي لـ Bcrypt لموازنة الأمان والأداء.' : 'Calculate the optimal bcrypt cost factor to balance security and performance.' %>
+                    </p>
+                </a>
+
+                <!-- Team Password Vault Tool Card -->
+                <a href="/tools/team-password-vault" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🏢
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'خزنة كلمات المرور للفريق' : 'Team Password Vault' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'إدارة الوصول الآمن للحسابات المشتركة مع التحكم في الأدوار والتشفير.' : 'Securely manage shared accounts with role-based access control and encryption.' %>
                     </p>
                 </a>
             </div>

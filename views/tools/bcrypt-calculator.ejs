@@ -1,6 +1,7 @@
 <%- include('../partials/head', { title: title }) %>
 <%- include('../partials/navbar') %>
 
+<main class="main-content">
 <style>
     /* Component Styles */
     .component-section {
@@ -523,26 +524,27 @@
     <section class="component-section" style="border:none;">
         <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
         <div class="discovery-grid">
-            <a href="/tools/password-analyzer" class="tool-card">
-                <h3>Password Strength Analyzer</h3>
-                <p>Measure password entropy and estimated crack time.</p>
-            </a>
-            <a href="/tools/key-strength" class="tool-card">
-                <h3>Encryption Key Strength</h3>
-                <p>Analyze RSA and AES key resilience.</p>
+            <a href="/tools/team-password-vault" class="tool-card">
+                <h3>Team Password Vault</h3>
+                <p>Securely manage shared accounts with role-based access control.</p>
             </a>
             <a href="/tools/password-generator" class="tool-card">
                 <h3>Password Generator</h3>
                 <p>Generate cryptographically secure passwords.</p>
             </a>
-            <a href="/tools/hash-identifier" class="tool-card">
-                <h3>Hash Identifier</h3>
-                <p>Identify cryptographic algorithms from hash strings.</p>
+            <a href="/tools/breach-checker" class="tool-card">
+                <h3>Breach Checker</h3>
+                <p>Check if your credentials have been exposed in data leaks.</p>
+            </a>
+            <a href="/tools/entropy-calculator" class="tool-card">
+                <h3>Entropy Calculator</h3>
+                <p>Measure the mathematical strength of your passwords.</p>
             </a>
         </div>
     </section>
 
 </div>
+</main>
 
 <script>
     // Bcrypt Cost Factor Calculator Logic

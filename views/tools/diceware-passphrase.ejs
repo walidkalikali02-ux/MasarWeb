@@ -1,5 +1,6 @@
 <%- include('../partials/head', { title: title }) %>
 <%- include('../partials/navbar') %>
+<main class="main-content">
 
 <style>
     /* Component Styles */
@@ -557,29 +558,29 @@
     <section class="component-section" style="border:none;">
         <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
         <div class="discovery-grid">
+            <a href="/tools/team-password-vault" class="tool-card">
+                <h3>Team Password Vault</h3>
+                <p>Securely manage and share team credentials with RBAC.</p>
+            </a>
             <a href="/tools/password-generator" class="tool-card">
-                <h3>Random Password Generator</h3>
-                <p>Generate cryptographically secure random passwords instantly.</p>
+                <h3>Secure Password Generator</h3>
+                <p>Generate cryptographically secure random passwords.</p>
             </a>
-            <a href="/tools/password-analyzer" class="tool-card">
-                <h3>Password Strength Checker</h3>
-                <p>Analyze the entropy and crack time of your existing passwords.</p>
+            <a href="/tools/entropy-calculator" class="tool-card">
+                <h3>Password Entropy Calculator</h3>
+                <p>Calculate the mathematical strength of your passwords.</p>
             </a>
-            <a href="/tools/key-strength" class="tool-card">
-                <h3>BIP39 Seed Phrase Generator</h3>
-                <p>Create cryptocurrency wallet seed phrases securely.</p>
+            <a href="/tools/hash-identifier" class="tool-card">
+                <h3>Hash Identifier</h3>
+                <p>Identify cryptographic hash algorithms.</p>
             </a>
-            <a href="/tools/hash-generator" class="tool-card">
-                <h3>ASCII to Hex Converter</h3>
-                <p>Convert text to hexadecimal encoding and back.</p>
+            <a href="/tools/breach-checker" class="tool-card">
+                <h3>Password Breach Checker</h3>
+                <p>Check if your passwords have been exposed in known data breaches.</p>
             </a>
-            <a href="/tools/virus-scanner" class="tool-card">
-                <h3>Virus Scanner</h3>
-                <p>Scan files and URLs for malware and threats.</p>
-            </a>
-            <a href="/blog/5-reasons-you-need-web-proxy-now" class="tool-card">
-                <h3>Online Security Guide</h3>
-                <p>Learn essential practices for protecting your digital identity.</p>
+            <a href="/tools/2fa-generator" class="tool-card">
+                <h3>2FA Code Generator</h3>
+                <p>Generate TOTP codes for two-factor authentication.</p>
             </a>
         </div>
     </section>

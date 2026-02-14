@@ -1,5 +1,6 @@
 <%- include('../partials/head', { title: title }) %>
 <%- include('../partials/navbar') %>
+<main class="main-content">
 
 <style>
     /* Component Styles */
@@ -492,9 +493,9 @@
     <section class="component-section" style="border:none;">
         <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
         <div class="discovery-grid">
-            <a href="/tools/password-analyzer" class="tool-card">
-                <h3>Password Strength Analyzer</h3>
-                <p>Comprehensive password analysis with pattern detection and crack time estimation.</p>
+            <a href="/tools/team-password-vault" class="tool-card">
+                <h3>Team Password Vault</h3>
+                <p>Securely manage shared accounts with role-based access control.</p>
             </a>
             <a href="/tools/password-generator" class="tool-card">
                 <h3>Random Password Generator</h3>
@@ -508,10 +509,6 @@
                 <h3>Bcrypt Cost Factor Calculator</h3>
                 <p>Calculate optimal bcrypt work factors for password hashing security.</p>
             </a>
-            <a href="/tools/key-strength" class="tool-card">
-                <h3>Encryption Key Strength</h3>
-                <p>Analyze RSA and AES encryption key resilience against attacks.</p>
-            </a>
             <a href="/tools/breach-checker" class="tool-card">
                 <h3>Password Breach Checker</h3>
                 <p>Verify if your password has been exposed in known data breaches.</p>
@@ -520,6 +517,7 @@
     </section>
 
 </div>
+</main>
 
 <script>
     // Password Entropy Calculator Logic

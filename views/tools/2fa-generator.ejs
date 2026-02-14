@@ -1,5 +1,6 @@
 <%- include('../partials/head', { title: title }) %>
 <%- include('../partials/navbar') %>
+<main class="main-content">
 
 <style>
     /* Component Styles */
@@ -551,13 +552,13 @@
     <section class="component-section" style="border:none;">
         <h2 style="margin-bottom:1.5rem;">Related Security Tools</h2>
         <div class="discovery-grid">
+            <a href="/tools/team-password-vault" class="tool-card">
+                <h3>Team Password Vault</h3>
+                <p>Securely manage shared accounts with role-based access control.</p>
+            </a>
             <a href="/tools/password-generator" class="tool-card">
                 <h3>Strong Password Generator</h3>
                 <p>Create cryptographically secure random passwords instantly.</p>
-            </a>
-            <a href="/tools/hash-generator" class="tool-card">
-                <h3>SHA-256 Hash Calculator</h3>
-                <p>Generate SHA-256 hashes from any text or file content.</p>
             </a>
             <a href="/tools/breach-checker" class="tool-card">
                 <h3>Digital Identity Security Checklist</h3>
@@ -567,18 +568,15 @@
                 <h3>Hash Identifier</h3>
                 <p>Identify cryptographic algorithms used in unknown hash strings.</p>
             </a>
-            <a href="/tools/password-analyzer" class="tool-card">
-                <h3>Password Strength Meter</h3>
-                <p>Measure password entropy and estimated crack time.</p>
-            </a>
-            <a href="/blog/how-proxy-protects-your-privacy" class="tool-card">
-                <h3>Privacy Protection Guide</h3>
-                <p>Learn how to protect your online privacy and data.</p>
+            <a href="/tools/entropy-calculator" class="tool-card">
+                <h3>Password Entropy Calculator</h3>
+                <p>Measure the mathematical unpredictability of your passwords in bits.</p>
             </a>
         </div>
     </section>
 
 </div>
+</main>
 
 <script>
     // TOTP / 2FA Code Generator Logic

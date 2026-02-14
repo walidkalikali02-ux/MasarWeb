@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: title }) %>
+<body>
+    <%- include('../partials/navbar') %>
+    <main class="main-content">
+        <div class="container">
+            <h1 class="page-title"><%= title %></h1>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2rem;">
+                <div class="card" style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:1.5rem;">
+                    <div style="margin-bottom:1rem;">
+                        <label for="monthlySalary" style="display:block; margin-bottom:0.5rem;">
+                            <%= currentLang === 'ar' ? 'الراتب الشهري' : 'Monthly Salary' %>
+                        </label>
+                        <input id="monthlySalary" type="number" min="0" step="0.01" placeholder="0.00" style="width:100%; padding:0.75rem; border:1px solid var(--border-color); border-radius:8px;">
+                    </div>
+                    <div style="margin-bottom:1rem;">
+                        <label for="absenceDays" style="display:block; margin-bottom:0.5rem;">
+                            <%= currentLang === 'ar' ? 'أيام الغياب' : 'Absence Days' %>
+                        </label>
+                        <input id="absenceDays" type="number" min="0" step="0.5" placeholder="0" style="width:100%; padding:0.75rem; border:1px solid var(--border-color); border-radius:8px;">
+                    </div>
+                    <button id="calcBtn" class="btn" style="padding:0.75rem 1rem; border:none; border-radius:8px; background:var(--primary-color); color:#fff;">
+                        <%= currentLang === 'ar' ? 'احسب الخصم' : 'Calculate Deduction' %>
+                    </button>
+                </div>
+                <div class="card" style="background:var(--card-bg); border:1px solid var(--border-color); border-radius:12px; padding:1.5rem;">
+                    <h2 style="margin-bottom:1rem;"><%= currentLang === 'ar' ? 'النتائج' : 'Results' %></h2>
+                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
+                        <div>
+                            <div style="color:var(--text-muted);"><%= currentLang === 'ar' ? 'الأجر اليومي' : 'Daily Rate' %></div>
+                            <div id="dailyRate" style="font-weight:600;">0.00</div>
+                        </div>
+                        <div>
+                            <div style="color:var(--text-muted);"><%= currentLang === 'ar' ? 'قيمة الخصم' : 'Deduction' %></div>
+                            <div id="deduction" style="font-weight:600;">0.00</div>
+                        </div>
+                        <div>
+                            <div style="color:var(--text-muted);"><%= currentLang === 'ar' ? 'الراتب بعد الخصم' : 'Net Monthly After Deduction' %></div>
+                            <div id="netMonthly" style="font-weight:600;">0.00</div>
+                        </div>
+                    </div>
+                    <p style="margin-top:1rem; color:var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'المعادلة: الأجر اليومي = الراتب الشهري ÷ 30، الخصم = الأجر اليومي × أيام الغياب.' : 'Formula: daily rate = monthly salary ÷ 30, deduction = daily rate × absence days.' %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('../partials/footer') %>
+    <script>
+        const fmt = (n) => Number.isFinite(n) ? n.toFixed(2) : '0.00';
+        const calc = () => {
+            const monthly = parseFloat(document.getElementById('monthlySalary').value);
+            const days = parseFloat(document.getElementById('absenceDays').value);
+            const daily = (monthly || 0) / 30;
+            const deduction = daily * (days || 0);
+            const net = (monthly || 0) - deduction;
+            document.getElementById('dailyRate').textContent = fmt(daily);
+            document.getElementById('deduction').textContent = fmt(deduction);
+            document.getElementById('netMonthly').textContent = fmt(net);
+        };
+        document.getElementById('calcBtn').addEventListener('click', calc);
+        document.getElementById('monthlySalary').addEventListener('input', calc);
+        document.getElementById('absenceDays').addEventListener('input', calc);
+    </script>
+</body>
+</html>
