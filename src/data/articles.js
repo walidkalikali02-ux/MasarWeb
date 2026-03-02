@@ -23742,6 +23742,7850 @@ HttpOverrides.global = MyHttpOverrides();
                 ${bulkScaleAppendix}
             </div>
         `
+    },
+    {
+        id: 'proxy-enterprise-policy-debt-reduction-program-series2-2026-03-02',
+        slug: 'proxy-enterprise-policy-debt-reduction-program-series2-2026-03-02',
+        title: 'برنامج تقليل ديون سياسات Web Proxy في المؤسسات',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-change-advisory-board-security-network-series2-2026-03-02',
+        slug: 'proxy-change-advisory-board-security-network-series2-2026-03-02',
+        title: 'مواءمة CAB بين الأمن والشبكات لتغييرات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-application-criticality-tiering-model-series2-2026-03-02',
+        slug: 'proxy-application-criticality-tiering-model-series2-2026-03-02',
+        title: 'نموذج تصنيف التطبيقات الحرجة لسياسات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-risk-register-operationalization-guide-series2-2026-03-02',
+        slug: 'proxy-risk-register-operationalization-guide-series2-2026-03-02',
+        title: 'تفعيل سجل المخاطر المرتبط بخدمات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-service-reliability-governance-for-security-series2-2026-03-02',
+        slug: 'proxy-service-reliability-governance-for-security-series2-2026-03-02',
+        title: 'حوكمة موثوقية خدمة البروكسي من منظور أمني',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-policy-simplification-at-scale-series2-2026-03-02',
+        slug: 'proxy-policy-simplification-at-scale-series2-2026-03-02',
+        title: 'تبسيط سياسات البروكسي على نطاق واسع',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-network-segmentation-alignment-series2-2026-03-02',
+        slug: 'proxy-enterprise-network-segmentation-alignment-series2-2026-03-02',
+        title: 'مواءمة تجزئة الشبكة مع سياسات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-cloud-native-egress-control-patterns-series2-2026-03-02',
+        slug: 'proxy-cloud-native-egress-control-patterns-series2-2026-03-02',
+        title: 'أنماط التحكم في Cloud Egress عبر Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-data-loss-drill-execution-playbook-series2-2026-03-02',
+        slug: 'proxy-data-loss-drill-execution-playbook-series2-2026-03-02',
+        title: 'Playbook تنفيذ تمارين تسرب البيانات عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-governance-for-high-privilege-web-access-series2-2026-03-02',
+        slug: 'proxy-governance-for-high-privilege-web-access-series2-2026-03-02',
+        title: 'حوكمة الوصول الويب عالي الامتياز عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-cross-functional-operating-rhythm-model-series2-2026-03-02',
+        slug: 'proxy-cross-functional-operating-rhythm-model-series2-2026-03-02',
+        title: 'نموذج الإيقاع التشغيلي المشترك لخدمات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-and-performance-tradeoff-framework-series2-2026-03-02',
+        slug: 'proxy-security-and-performance-tradeoff-framework-series2-2026-03-02',
+        title: 'إطار موازنة الأمان والأداء في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-control-ownership-raci-implementation-series2-2026-03-02',
+        slug: 'proxy-control-ownership-raci-implementation-series2-2026-03-02',
+        title: 'تطبيق RACI لملكية ضوابط Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-staged-rollout-validation-framework-series2-2026-03-02',
+        slug: 'proxy-staged-rollout-validation-framework-series2-2026-03-02',
+        title: 'إطار التحقق من النشر المرحلي لسياسات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-policy-quality-scorecard-series2-2026-03-02',
+        slug: 'proxy-enterprise-policy-quality-scorecard-series2-2026-03-02',
+        title: 'بطاقة قياس جودة السياسات في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-business-risk-translation-for-technical-controls-series2-2026-03-02',
+        slug: 'proxy-business-risk-translation-for-technical-controls-series2-2026-03-02',
+        title: 'ترجمة المخاطر التجارية إلى ضوابط Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-unified-escalation-matrix-design-series2-2026-03-02',
+        slug: 'proxy-unified-escalation-matrix-design-series2-2026-03-02',
+        title: 'تصميم مصفوفة تصعيد موحدة لحوادث البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-regional-operations-standardization-series2-2026-03-02',
+        slug: 'proxy-regional-operations-standardization-series2-2026-03-02',
+        title: 'توحيد تشغيل Web Proxy بين المناطق الجغرافية',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-configuration-baseline-hardening-series2-2026-03-02',
+        slug: 'proxy-configuration-baseline-hardening-series2-2026-03-02',
+        title: 'تقوية Baseline إعدادات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-guardrail-policy-library-series2-2026-03-02',
+        slug: 'proxy-enterprise-guardrail-policy-library-series2-2026-03-02',
+        title: 'مكتبة Guardrails مؤسسية لسياسات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-intake-triage-queue-optimization-series2-2026-03-02',
+        slug: 'proxy-intake-triage-queue-optimization-series2-2026-03-02',
+        title: 'تحسين طوابير استقبال وفرز طلبات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-risk-informed-maintenance-windows-series2-2026-03-02',
+        slug: 'proxy-risk-informed-maintenance-windows-series2-2026-03-02',
+        title: 'نوافذ صيانة قائمة على المخاطر لخدمات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-decision-log-architecture-governance-series2-2026-03-02',
+        slug: 'proxy-decision-log-architecture-governance-series2-2026-03-02',
+        title: 'حوكمة سجل القرارات المعمارية في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-compliance-evidence-automation-series2-2026-03-02',
+        slug: 'proxy-compliance-evidence-automation-series2-2026-03-02',
+        title: 'أتمتة أدلة الامتثال المرتبطة بسياسات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-controls-lifecycle-retirement-series2-2026-03-02',
+        slug: 'proxy-security-controls-lifecycle-retirement-series2-2026-03-02',
+        title: 'إدارة تقاعد الضوابط الأمنية في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-policy-experimentation-model-series2-2026-03-02',
+        slug: 'proxy-enterprise-policy-experimentation-model-series2-2026-03-02',
+        title: 'نموذج تجارب آمن لتحسين سياسات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-failure-pattern-catalog-and-prevention-series2-2026-03-02',
+        slug: 'proxy-failure-pattern-catalog-and-prevention-series2-2026-03-02',
+        title: 'كتالوج أنماط الفشل والوقاية في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-service-readiness-gates-framework-series2-2026-03-02',
+        slug: 'proxy-service-readiness-gates-framework-series2-2026-03-02',
+        title: 'إطار Readiness Gates قبل نشر سياسات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-corporate-access-pattern-benchmarking-series2-2026-03-02',
+        slug: 'proxy-corporate-access-pattern-benchmarking-series2-2026-03-02',
+        title: 'قياس أنماط الوصول المؤسسي عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operational-risk-heatmap-method-series2-2026-03-02',
+        slug: 'proxy-operational-risk-heatmap-method-series2-2026-03-02',
+        title: 'منهج Heatmap للمخاطر التشغيلية في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-detection-coverage-gap-analysis-series2-2026-03-02',
+        slug: 'proxy-detection-coverage-gap-analysis-series2-2026-03-02',
+        title: 'تحليل فجوات تغطية الكشف في سجلات البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-identity-aware-egress-routing-series2-2026-03-02',
+        slug: 'proxy-identity-aware-egress-routing-series2-2026-03-02',
+        title: 'توجيه Egress معتمد على الهوية عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-branch-policy-convergence-strategy-series2-2026-03-02',
+        slug: 'proxy-branch-policy-convergence-strategy-series2-2026-03-02',
+        title: 'استراتيجية تقارب السياسات بين الفروع',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-go-live-readiness-check-framework-series2-2026-03-02',
+        slug: 'proxy-go-live-readiness-check-framework-series2-2026-03-02',
+        title: 'إطار فحص الجاهزية قبل Go-Live للبروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-incident-learnings-operationalization-series2-2026-03-02',
+        slug: 'proxy-enterprise-incident-learnings-operationalization-series2-2026-03-02',
+        title: 'تفعيل دروس الحوادث في تشغيل Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-control-plane-observability-expansion-series2-2026-03-02',
+        slug: 'proxy-control-plane-observability-expansion-series2-2026-03-02',
+        title: 'توسيع مرئيات Control Plane في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-supplier-security-gating-for-egress-series2-2026-03-02',
+        slug: 'proxy-supplier-security-gating-for-egress-series2-2026-03-02',
+        title: 'بوابات أمن الموردين لمسارات Egress عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-destination-assurance-model-series2-2026-03-02',
+        slug: 'proxy-sensitive-destination-assurance-model-series2-2026-03-02',
+        title: 'نموذج ضمان الوجهات الحساسة في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-hybrid-workforce-access-governance-series2-2026-03-02',
+        slug: 'proxy-hybrid-workforce-access-governance-series2-2026-03-02',
+        title: 'حوكمة وصول القوى العاملة الهجينة عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-rapid-containment-runbook-for-web-threats-series2-2026-03-02',
+        slug: 'proxy-rapid-containment-runbook-for-web-threats-series2-2026-03-02',
+        title: 'Runbook احتواء سريع للتهديدات الويب عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-change-failure-rate-reduction-program-series2-2026-03-02',
+        slug: 'proxy-change-failure-rate-reduction-program-series2-2026-03-02',
+        title: 'برنامج تقليل معدل فشل تغييرات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-technical-debt-burndown-for-security-rules-series2-2026-03-02',
+        slug: 'proxy-technical-debt-burndown-for-security-rules-series2-2026-03-02',
+        title: 'خفض الدين التقني لقواعد أمان البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-traffic-class-based-policy-design-series2-2026-03-02',
+        slug: 'proxy-traffic-class-based-policy-design-series2-2026-03-02',
+        title: 'تصميم السياسات حسب فئات المرور في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-domain-reputation-governance-process-series2-2026-03-02',
+        slug: 'proxy-domain-reputation-governance-process-series2-2026-03-02',
+        title: 'عملية حوكمة سمعة النطاقات عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-support-tier-model-series2-2026-03-02',
+        slug: 'proxy-enterprise-support-tier-model-series2-2026-03-02',
+        title: 'نموذج مستويات الدعم المؤسسي لخدمة البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-audit-remediation-program-tracking-series2-2026-03-02',
+        slug: 'proxy-audit-remediation-program-tracking-series2-2026-03-02',
+        title: 'تتبع برنامج معالجة ملاحظات تدقيق Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-zero-day-response-preparedness-series2-2026-03-02',
+        slug: 'proxy-zero-day-response-preparedness-series2-2026-03-02',
+        title: 'الجاهزية للاستجابة لثغرات اليوم صفر عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-platform-capacity-forecasting-model-series2-2026-03-02',
+        slug: 'proxy-platform-capacity-forecasting-model-series2-2026-03-02',
+        title: 'نموذج التنبؤ بالسعة لمنصة Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-control-exception-risk-scoring-series2-2026-03-02',
+        slug: 'proxy-control-exception-risk-scoring-series2-2026-03-02',
+        title: 'تقييم مخاطر استثناءات الضوابط في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-security-operations-handoff-series2-2026-03-02',
+        slug: 'proxy-enterprise-security-operations-handoff-series2-2026-03-02',
+        title: 'تحسين Handoff بين فرق الأمن والتشغيل للبروكسي',
+        excerpt: 'مقال تنفيذي متقدم يشرح إطاراً عملياً لتصميم وتشغيل وتحسين Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا الدليل يركز على تحويل ممارسات Web Proxy من إجراءات متفرقة إلى نظام تشغيل مؤسسي واضح.
+                    ستجد فيه خطوات تطبيقية قابلة للتنفيذ، وآلية متابعة تمنع تراكم المخاطر بمرور الوقت.
+                </p>
+
+                <h2>إطار التنفيذ العملي</h2>
+                <p>
+                    ابدأ بخط أساس واضح، ثم حدّد أعلى ثلاث فجوات تؤثر على الأمان والاستقرار.
+                    نفّذ تحسينات صغيرة متتابعة مع توثيق السبب والأثر لكل قرار.
+                    هذا يقلل الارتباك ويزيد سرعة التعلم التنظيمي.
+                </p>
+
+                <h2>المواءمة مع الحوكمة المؤسسية</h2>
+                <p>
+                    لا تعمل سياسات البروكسي بمعزل عن بقية المنظومة.
+                    اربطها مع <a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">التدقيق الأمني</a>
+                    ومع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    لضمان الاستدامة وقابلية المراجعة.
+                </p>
+
+                <h2>المرئيات وقياس التحسن</h2>
+                <p>
+                    ركز على مؤشرات تدعم القرار التنفيذي: نجاح الطلبات، زمن الاستجابة، دقة السياسات، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الأمن والتشغيل.
+                </p>
+
+                <h2>الربط مع مخاطر الطرف الثالث</h2>
+                <p>
+                    في البيئات الحديثة، كثير من الحركة يمر عبر خدمات خارجية.
+                    لذلك حافظ على تكامل السياسات مع
+                    <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة مزودي SaaS</a>
+                    ومع <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من الانضباط التشغيلي المستمر، لا من التغييرات الكبيرة المتقطعة.
+                    اجعل كل تعديل قابلاً للقياس والتراجع، وستبني بنية أكثر نضجاً وقدرة على التوسع بثقة.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+    {
+        id: 'proxy-identity-federation-egress-governance-series3-2026-03-02',
+        slug: 'proxy-identity-federation-egress-governance-series3-2026-03-02',
+        title: 'حوكمة Egress مع اتحاد الهوية عبر Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-data-minimization-policy-enforcement-series3-2026-03-02',
+        slug: 'proxy-data-minimization-policy-enforcement-series3-2026-03-02',
+        title: 'إنفاذ سياسات تقليل البيانات عبر Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-change-risk-scoring-automation-series3-2026-03-02',
+        slug: 'proxy-change-risk-scoring-automation-series3-2026-03-02',
+        title: 'أتمتة تقييم مخاطر التغييرات في Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-api-governance-framework-series3-2026-03-02',
+        slug: 'proxy-sensitive-api-governance-framework-series3-2026-03-02',
+        title: 'إطار حوكمة APIs الحساسة عبر Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-operations-kpi-calibration-series3-2026-03-02',
+        slug: 'proxy-security-operations-kpi-calibration-series3-2026-03-02',
+        title: 'معايرة مؤشرات KPI لعمليات أمن Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-regional-compliance-routing-assurance-series3-2026-03-02',
+        slug: 'proxy-regional-compliance-routing-assurance-series3-2026-03-02',
+        title: 'ضمان توجيه الامتثال الإقليمي عبر Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-high-assurance-access-control-patterns-series3-2026-03-02',
+        slug: 'proxy-high-assurance-access-control-patterns-series3-2026-03-02',
+        title: 'أنماط تحكم وصول عالي الموثوقية عبر Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-detection-engineering-workflow-series3-2026-03-02',
+        slug: 'proxy-detection-engineering-workflow-series3-2026-03-02',
+        title: 'سير عمل هندسة الكشف عبر سجلات Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-recovery-readiness-validation-routines-series3-2026-03-02',
+        slug: 'proxy-recovery-readiness-validation-routines-series3-2026-03-02',
+        title: 'روتينات التحقق من جاهزية التعافي لخدمات Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-rule-hygiene-program-series3-2026-03-02',
+        slug: 'proxy-enterprise-rule-hygiene-program-series3-2026-03-02',
+        title: 'برنامج نظافة القواعد الأمنية في Web Proxy',
+        excerpt: 'دليل عملي متقدم لتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية، إطار حوكمة، ومؤشرات قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدّم نموذجاً عملياً لتحسين تشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز واضح على القابلية للتنفيذ، وضوح الملكية، وسرعة التحسين المستمر.
+                </p>
+
+                <h2>بناء خط الأساس</h2>
+                <p>
+                    ابدأ بجمع صورة دقيقة للوضع الحالي: القواعد الفعالة، الاستثناءات، مسارات المرور،
+                    والتكاملات ذات الحساسية العالية. أي تحسين بدون baseline واضح سيكون معرضاً للفشل أو الجدل الداخلي.
+                </p>
+
+                <h2>حوكمة القرار</h2>
+                <p>
+                    طبّق دورة قرار ثابتة: تقييم مخاطر، موافقة، نشر تدريجي، مراجعة أثر، ثم تعديل أو تثبيت.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات والقياس</h2>
+                <p>
+                    استخدم مؤشرات تشغيلية موحدة بين الأمن والتشغيل: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    للتطبيق راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل المؤسسي</h2>
+                <p>
+                    لنجاح طويل المدى، اربط سياسات البروكسي بإدارة المخاطر الطرفية والتكاملات السحابية.
+                    يمكن البدء من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة SaaS</a>
+                    ثم التوسع عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    أفضل نتائج Web Proxy تأتي من انضباط تشغيلي متكرر، لا من تغييرات موسمية كبيرة.
+                    اجعل كل قرار قابلاً للقياس والتراجع والتعلم، وستبني خدمة أكثر نضجاً وقابلية للتوسع.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+    {
+        id: 'proxy-governance-policy-review-cadence-series4-2026-03-02',
+        slug: 'proxy-governance-policy-review-cadence-series4-2026-03-02',
+        title: 'إيقاع مراجعة سياسات Web Proxy على مستوى المؤسسة',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-access-pattern-intelligence-series4-2026-03-02',
+        slug: 'proxy-enterprise-access-pattern-intelligence-series4-2026-03-02',
+        title: 'ذكاء أنماط الوصول المؤسسي عبر Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-web-risk-tiering-and-response-series4-2026-03-02',
+        slug: 'proxy-web-risk-tiering-and-response-series4-2026-03-02',
+        title: 'تصنيف مخاطر الويب وخطة الاستجابة عبر البروكسي',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-policy-testing-lab-operating-model-series4-2026-03-02',
+        slug: 'proxy-policy-testing-lab-operating-model-series4-2026-03-02',
+        title: 'نموذج تشغيل مختبر اختبار سياسات Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-secure-egress-architecture-patterns-series4-2026-03-02',
+        slug: 'proxy-secure-egress-architecture-patterns-series4-2026-03-02',
+        title: 'أنماط معمارية Egress الآمنة عبر Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-incident-priority-calibration-framework-series4-2026-03-02',
+        slug: 'proxy-incident-priority-calibration-framework-series4-2026-03-02',
+        title: 'إطار معايرة أولوية الحوادث المرتبطة بالبروكسي',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-rule-conflict-detection-automation-series4-2026-03-02',
+        slug: 'proxy-rule-conflict-detection-automation-series4-2026-03-02',
+        title: 'أتمتة كشف تعارض القواعد في Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-workload-access-guardrails-series4-2026-03-02',
+        slug: 'proxy-sensitive-workload-access-guardrails-series4-2026-03-02',
+        title: 'Guardrails وصول الأحمال الحساسة عبر Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-operations-readiness-score-series4-2026-03-02',
+        slug: 'proxy-enterprise-operations-readiness-score-series4-2026-03-02',
+        title: 'مؤشر جاهزية عمليات Web Proxy المؤسسية',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-control-verification-routines-series4-2026-03-02',
+        slug: 'proxy-security-control-verification-routines-series4-2026-03-02',
+        title: 'روتينات التحقق المستمر من ضوابط Web Proxy',
+        excerpt: 'مقال تنفيذي متقدم حول حوكمة وتشغيل Web Proxy على نطاق مؤسسي مع روابط داخلية ومؤشرات قياس قابلة للتطبيق.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يقدم هذا المقال منهجاً عملياً لتطوير تشغيل Web Proxy بطريقة مؤسسية منضبطة،
+                    مع التركيز على تحويل السياسات إلى نتائج واضحة في الأمان والاستقرار وسرعة الاستجابة.
+                </p>
+
+                <h2>خط الأساس والتنفيذ</h2>
+                <p>
+                    ابدأ بتحديد الوضع الحالي بدقة، ثم نفّذ تحسينات صغيرة ذات أثر مرتفع.
+                    كل خطوة يجب أن تكون قابلة للقياس والتراجع والتعلم.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اربط قرارات التغيير مع دورة واضحة تشمل التقييم والموافقة والنشر التدريجي والمراجعة.
+                    راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المرئيات ومؤشرات الأداء</h2>
+                <p>
+                    اعتمد مؤشرات تشغيلية موحدة بين الفرق: نجاح الطلبات، زمن الاستجابة، دقة السياسات،
+                    وزمن التعافي من الحوادث.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>.
+                </p>
+
+                <h2>التكامل مع المخاطر الطرفية</h2>
+                <p>
+                    لا تنفصل سياسات البروكسي عن إدارة مزودي SaaS والمسارات السحابية.
+                    استخدم <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>
+                    و<a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a> لرفع النضج.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    النضج الحقيقي في Web Proxy يأتي من الانضباط التشغيلي المستمر والقرار المبني على بيانات.
+                    مع كل دورة تحسين، تتراجع المخاطر وتتحسن قابلية التوسع والجودة التشغيلية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+    {
+        id: 'proxy-enterprise-rule-rationalization-roadmap-series5-2026-03-02',
+        slug: 'proxy-enterprise-rule-rationalization-roadmap-series5-2026-03-02',
+        title: 'خارطة عقلنة قواعد Web Proxy على مستوى المؤسسة',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-policy-rollout-communication-model-series5-2026-03-02',
+        slug: 'proxy-security-policy-rollout-communication-model-series5-2026-03-02',
+        title: 'نموذج تواصل نشر سياسات الأمان عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operational-resilience-pattern-catalog-series5-2026-03-02',
+        slug: 'proxy-operational-resilience-pattern-catalog-series5-2026-03-02',
+        title: 'كتالوج أنماط المرونة التشغيلية لخدمات Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-egress-control-decision-framework-series5-2026-03-02',
+        slug: 'proxy-egress-control-decision-framework-series5-2026-03-02',
+        title: 'إطار اتخاذ قرار التحكم في Egress عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-access-governance-kri-dashboard-series5-2026-03-02',
+        slug: 'proxy-access-governance-kri-dashboard-series5-2026-03-02',
+        title: 'لوحة KRI لحوكمة الوصول عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-advanced-threat-routing-strategy-series5-2026-03-02',
+        slug: 'proxy-advanced-threat-routing-strategy-series5-2026-03-02',
+        title: 'استراتيجية توجيه متقدمة للتهديدات عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-policy-rollback-criteria-series5-2026-03-02',
+        slug: 'proxy-enterprise-policy-rollback-criteria-series5-2026-03-02',
+        title: 'معايير التراجع الآمن لسياسات Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-application-onboarding-control-checklist-series5-2026-03-02',
+        slug: 'proxy-application-onboarding-control-checklist-series5-2026-03-02',
+        title: 'Checklist ضبط انضمام التطبيقات إلى Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-governed-self-service-access-series5-2026-03-02',
+        slug: 'proxy-governed-self-service-access-series5-2026-03-02',
+        title: 'Self-Service محكوم لطلبات الوصول عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-assurance-review-board-series5-2026-03-02',
+        slug: 'proxy-security-assurance-review-board-series5-2026-03-02',
+        title: 'مجلس مراجعة ضمان الأمان لخدمات Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يوضح إطاراً عملياً لتشغيل Web Proxy مع حوكمة واضحة وروابط داخلية ومؤشرات أداء قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يناقش هذا المقال منهجاً عملياً لتطوير Web Proxy كمكوّن تشغيلي مؤسسي ناضج،
+                    مع تركيز على قابلية التطبيق، القياس، والتنسيق بين فرق الأمن والشبكات والتطبيقات.
+                </p>
+
+                <h2>مرحلة الإعداد</h2>
+                <p>
+                    حدد baseline واضحاً، وقم بتوثيق التبعيات الحرجة ومسارات الحركة الحساسة.
+                    بدون هذه الخطوة، تتحول القرارات إلى اجتهادات متباينة يصعب ضبط أثرها.
+                </p>
+
+                <h2>إدارة التغيير والحوكمة</h2>
+                <p>
+                    اعتمد دورة تغيير منضبطة تشمل تقييم المخاطر، اختباراً مسبقاً، نشر Canary، ثم مراجعة أثر.
+                    للمزيد راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والتحسين المستمر</h2>
+                <p>
+                    استخدم مقاييس موحدة تترجم الأداء والأمان إلى قرارات تنفيذية واضحة،
+                    مثل نسبة النجاح، latency، وفعالية السياسات.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل المرئيات</a>.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    اربط نموذج التشغيل مع حوكمة SaaS وإدارة المخاطر والتدقيق الداخلي.
+                    ابدأ من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">مخاطر الطرف الثالث</a>
+                    ووسع التحكم عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    بناء Web Proxy ناضج يتطلب انضباطاً مستمراً أكثر من كونه مشروعاً مؤقتاً.
+                    عندما يصبح القياس والتعلم جزءاً من الإيقاع اليومي، تتحسن الخدمة وتقل المخاطر بشكل تراكمي.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+    {
+        id: 'proxy-control-objectives-mapping-framework-series6-2026-03-02',
+        slug: 'proxy-control-objectives-mapping-framework-series6-2026-03-02',
+        title: 'إطار مواءمة أهداف الضبط في Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-rule-ownership-governance-series6-2026-03-02',
+        slug: 'proxy-enterprise-rule-ownership-governance-series6-2026-03-02',
+        title: 'حوكمة ملكية قواعد Web Proxy المؤسسية',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-architecture-decision-records-series6-2026-03-02',
+        slug: 'proxy-security-architecture-decision-records-series6-2026-03-02',
+        title: 'سجلات قرارات معمارية الأمان في Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-egress-risk-exception-committee-model-series6-2026-03-02',
+        slug: 'proxy-egress-risk-exception-committee-model-series6-2026-03-02',
+        title: 'نموذج لجنة استثناءات مخاطر Egress عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-data-access-path-hardening-series6-2026-03-02',
+        slug: 'proxy-data-access-path-hardening-series6-2026-03-02',
+        title: 'تقوية مسارات الوصول للبيانات عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operational-stability-improvement-loop-series6-2026-03-02',
+        slug: 'proxy-operational-stability-improvement-loop-series6-2026-03-02',
+        title: 'حلقة تحسين الاستقرار التشغيلي لخدمات Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-policy-quality-assurance-pipeline-series6-2026-03-02',
+        slug: 'proxy-policy-quality-assurance-pipeline-series6-2026-03-02',
+        title: 'خط ضمان جودة سياسات Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-domain-control-governance-series6-2026-03-02',
+        slug: 'proxy-sensitive-domain-control-governance-series6-2026-03-02',
+        title: 'حوكمة التحكم في النطاقات الحساسة عبر Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-multi-team-change-coordination-model-series6-2026-03-02',
+        slug: 'proxy-multi-team-change-coordination-model-series6-2026-03-02',
+        title: 'نموذج تنسيق التغيير بين فرق متعددة في Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-long-term-security-posture-tracking-series6-2026-03-02',
+        slug: 'proxy-long-term-security-posture-tracking-series6-2026-03-02',
+        title: 'تتبع وضعية الأمان طويلة المدى في Web Proxy',
+        excerpt: 'مقال مؤسسي متقدم يشرح نموذجاً عملياً لإدارة وتشغيل Web Proxy مع روابط داخلية ومؤشرات متابعة قابلة للقياس.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    يركز هذا المقال على تحويل تشغيل Web Proxy إلى قدرة مؤسسية مستقرة،
+                    عبر حوكمة واضحة، تنفيذ تدريجي، ومراجعات دورية تربط الأمان بالأثر التشغيلي.
+                </p>
+
+                <h2>تحديد خط الأساس</h2>
+                <p>
+                    ابدأ بتوثيق الوضع الحالي بدقة: السياسات الفعالة، الاستثناءات المفتوحة، تبعيات الخدمة،
+                    ونقاط الفشل المحتملة. هذا الأساس ضروري لتقييم أي تحسن لاحق بشكل موضوعي.
+                </p>
+
+                <h2>الحوكمة والتغيير</h2>
+                <p>
+                    اعتمد دورة قرار موحدة: تحليل مخاطر، موافقة واضحة، نشر تدريجي، ثم مراجعة أثر.
+                    للتفاصيل راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>المؤشرات والمرئيات</h2>
+                <p>
+                    استخدم مؤشرات عملية تدعم القرار التنفيذي: دقة السياسة، زمن الاستجابة، نجاح المرور، وزمن التعافي.
+                    راجع <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">دليل SLI/SLO</a>
+                    لبناء لوحة قياس مشتركة بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    ربط Web Proxy مع حوكمة SaaS وإدارة المخاطر يرفع فعالية الضوابط على المدى الطويل.
+                    يمكن الانطلاق من <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">إدارة مخاطر SaaS</a>
+                    ثم أتمتة الحوكمة عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                </p>
+
+                <h2>خلاصة</h2>
+                <p>
+                    النضج في Web Proxy يتحقق بالتكرار المنضبط لا بالتدخلات المؤقتة.
+                    عندما تكون القرارات قابلة للقياس والتراجع والتعلم، تتحسن الخدمة وتتراجع المخاطر بشكل مستمر.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+    {
+        id: 'proxy-enterprise-egress-assurance-framework-series7-2026-03-02',
+        slug: 'proxy-enterprise-egress-assurance-framework-series7-2026-03-02',
+        title: 'إطار ضمان Egress المؤسسي عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-governance-risk-mitigation-operations-series7-2026-03-02',
+        slug: 'proxy-governance-risk-mitigation-operations-series7-2026-03-02',
+        title: 'تشغيل تخفيف المخاطر ضمن حوكمة Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-baseline-enforcement-at-scale-series7-2026-03-02',
+        slug: 'proxy-security-baseline-enforcement-at-scale-series7-2026-03-02',
+        title: 'إنفاذ Baseline الأمان في Web Proxy على نطاق واسع',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-data-handling-control-path-design-series7-2026-03-02',
+        slug: 'proxy-data-handling-control-path-design-series7-2026-03-02',
+        title: 'تصميم مسارات التحكم بمعالجة البيانات عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-identity-context-routing-governance-series7-2026-03-02',
+        slug: 'proxy-identity-context-routing-governance-series7-2026-03-02',
+        title: 'حوكمة التوجيه السياقي المعتمد على الهوية',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-policy-change-safety-rails-series7-2026-03-02',
+        slug: 'proxy-enterprise-policy-change-safety-rails-series7-2026-03-02',
+        title: 'حواجز أمان تغيير السياسات في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-traffic-assurance-operations-series7-2026-03-02',
+        slug: 'proxy-sensitive-traffic-assurance-operations-series7-2026-03-02',
+        title: 'تشغيل ضمان المرور الحساس عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-cross-region-security-control-alignment-series7-2026-03-02',
+        slug: 'proxy-cross-region-security-control-alignment-series7-2026-03-02',
+        title: 'مواءمة ضوابط الأمان عبر المناطق في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operational-recovery-maturity-model-series7-2026-03-02',
+        slug: 'proxy-operational-recovery-maturity-model-series7-2026-03-02',
+        title: 'نموذج نضج التعافي التشغيلي لخدمات البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-risk-based-web-access-standard-series7-2026-03-02',
+        slug: 'proxy-risk-based-web-access-standard-series7-2026-03-02',
+        title: 'معيار وصول ويب قائم على المخاطر عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-control-consistency-program-series7-2026-03-02',
+        slug: 'proxy-enterprise-control-consistency-program-series7-2026-03-02',
+        title: 'برنامج اتساق الضوابط المؤسسية في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-governed-exception-escalation-patterns-series7-2026-03-02',
+        slug: 'proxy-governed-exception-escalation-patterns-series7-2026-03-02',
+        title: 'أنماط تصعيد استثناءات Web Proxy بحوكمة',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-advanced-policy-observability-practice-series7-2026-03-02',
+        slug: 'proxy-advanced-policy-observability-practice-series7-2026-03-02',
+        title: 'ممارسة متقدمة لمرئيات سياسات Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-service-integrity-validation-framework-series7-2026-03-02',
+        slug: 'proxy-service-integrity-validation-framework-series7-2026-03-02',
+        title: 'إطار التحقق من سلامة خدمة Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-central-rule-library-governance-series7-2026-03-02',
+        slug: 'proxy-central-rule-library-governance-series7-2026-03-02',
+        title: 'حوكمة مكتبة القواعد المركزية في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-high-risk-session-control-method-series7-2026-03-02',
+        slug: 'proxy-high-risk-session-control-method-series7-2026-03-02',
+        title: 'منهج التحكم في الجلسات عالية المخاطر عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-compliance-driven-egress-architecture-series7-2026-03-02',
+        slug: 'proxy-compliance-driven-egress-architecture-series7-2026-03-02',
+        title: 'معمارية Egress مدفوعة بالامتثال عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-policy-drift-detection-remediation-series7-2026-03-02',
+        slug: 'proxy-policy-drift-detection-remediation-series7-2026-03-02',
+        title: 'كشف انجراف السياسات ومعالجته في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-access-pattern-risk-matrix-series7-2026-03-02',
+        slug: 'proxy-enterprise-access-pattern-risk-matrix-series7-2026-03-02',
+        title: 'مصفوفة مخاطر أنماط الوصول المؤسسي عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operations-reliability-improvement-rhythm-series7-2026-03-02',
+        slug: 'proxy-operations-reliability-improvement-rhythm-series7-2026-03-02',
+        title: 'إيقاع تحسين موثوقية عمليات Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-governance-cadence-blueprint-series7-2026-03-02',
+        slug: 'proxy-security-governance-cadence-blueprint-series7-2026-03-02',
+        title: 'مخطط إيقاع حوكمة الأمان في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-application-egress-onboarding-governance-series7-2026-03-02',
+        slug: 'proxy-application-egress-onboarding-governance-series7-2026-03-02',
+        title: 'حوكمة انضمام التطبيقات لمسارات Egress عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-resource-access-control-series7-2026-03-02',
+        slug: 'proxy-sensitive-resource-access-control-series7-2026-03-02',
+        title: 'التحكم في الوصول للموارد الحساسة عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-threat-informed-policy-prioritization-series7-2026-03-02',
+        slug: 'proxy-threat-informed-policy-prioritization-series7-2026-03-02',
+        title: 'ترتيب أولويات السياسات بناءً على التهديدات',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-egress-risk-review-board-series7-2026-03-02',
+        slug: 'proxy-enterprise-egress-risk-review-board-series7-2026-03-02',
+        title: 'مجلس مراجعة مخاطر Egress المؤسسي عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-change-impact-assessment-playbook-series7-2026-03-02',
+        slug: 'proxy-change-impact-assessment-playbook-series7-2026-03-02',
+        title: 'Playbook تقييم أثر التغييرات في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-domain-risk-allowance-governance-series7-2026-03-02',
+        slug: 'proxy-domain-risk-allowance-governance-series7-2026-03-02',
+        title: 'حوكمة السماح بنطاقات المخاطر عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-service-level-risk-observability-series7-2026-03-02',
+        slug: 'proxy-service-level-risk-observability-series7-2026-03-02',
+        title: 'مرئيات مخاطر مستوى الخدمة في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-control-plane-failure-prevention-series7-2026-03-02',
+        slug: 'proxy-control-plane-failure-prevention-series7-2026-03-02',
+        title: 'منع فشل Control Plane في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operational-discipline-for-security-rules-series7-2026-03-02',
+        slug: 'proxy-operational-discipline-for-security-rules-series7-2026-03-02',
+        title: 'الانضباط التشغيلي لقواعد الأمان في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-branch-policy-unification-patterns-series7-2026-03-02',
+        slug: 'proxy-branch-policy-unification-patterns-series7-2026-03-02',
+        title: 'أنماط توحيد سياسات الفروع عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-security-incident-reconstruction-method-series7-2026-03-02',
+        slug: 'proxy-security-incident-reconstruction-method-series7-2026-03-02',
+        title: 'منهج إعادة بناء الحوادث الأمنية عبر سجلات البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-egress-governance-kpi-model-series7-2026-03-02',
+        slug: 'proxy-enterprise-egress-governance-kpi-model-series7-2026-03-02',
+        title: 'نموذج KPI لحوكمة Egress المؤسسي عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-audit-ready-policy-traceability-series7-2026-03-02',
+        slug: 'proxy-audit-ready-policy-traceability-series7-2026-03-02',
+        title: 'قابلية تتبع السياسات الجاهزة للتدقيق في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-governance-control-decision-mapping-series7-2026-03-02',
+        slug: 'proxy-governance-control-decision-mapping-series7-2026-03-02',
+        title: 'مواءمة قرارات الضبط مع الحوكمة في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-operational-risk-reduction-sprints-series7-2026-03-02',
+        slug: 'proxy-operational-risk-reduction-sprints-series7-2026-03-02',
+        title: 'Sprintات تقليل المخاطر التشغيلية لخدمات البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-access-assurance-program-series7-2026-03-02',
+        slug: 'proxy-enterprise-access-assurance-program-series7-2026-03-02',
+        title: 'برنامج ضمان الوصول المؤسسي عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-high-sensitivity-data-egress-controls-series7-2026-03-02',
+        slug: 'proxy-high-sensitivity-data-egress-controls-series7-2026-03-02',
+        title: 'ضوابط Egress للبيانات عالية الحساسية عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-policy-release-quality-gates-series7-2026-03-02',
+        slug: 'proxy-policy-release-quality-gates-series7-2026-03-02',
+        title: 'بوابات جودة إصدار السياسات في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-long-horizon-security-planning-for-proxy-series7-2026-03-02',
+        slug: 'proxy-long-horizon-security-planning-for-proxy-series7-2026-03-02',
+        title: 'التخطيط الأمني طويل المدى لخدمات Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-visibility-gap-closure-framework-series7-2026-03-02',
+        slug: 'proxy-enterprise-visibility-gap-closure-framework-series7-2026-03-02',
+        title: 'إطار إغلاق فجوات الرؤية في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-governed-access-request-lifecycle-series7-2026-03-02',
+        slug: 'proxy-governed-access-request-lifecycle-series7-2026-03-02',
+        title: 'دورة حياة طلبات الوصول المحكومة عبر البروكسي',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-sensitive-api-egress-assurance-series7-2026-03-02',
+        slug: 'proxy-sensitive-api-egress-assurance-series7-2026-03-02',
+        title: 'ضمان Egress لواجهات API الحساسة عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-control-execution-reliability-model-series7-2026-03-02',
+        slug: 'proxy-control-execution-reliability-model-series7-2026-03-02',
+        title: 'نموذج موثوقية تنفيذ الضوابط في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-policy-effectiveness-review-loop-series7-2026-03-02',
+        slug: 'proxy-policy-effectiveness-review-loop-series7-2026-03-02',
+        title: 'حلقة مراجعة فعالية السياسات في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-security-operations-synchronization-series7-2026-03-02',
+        slug: 'proxy-enterprise-security-operations-synchronization-series7-2026-03-02',
+        title: 'مزامنة عمليات الأمن المؤسسية مع Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-egress-decision-automation-governance-series7-2026-03-02',
+        slug: 'proxy-egress-decision-automation-governance-series7-2026-03-02',
+        title: 'حوكمة أتمتة قرارات Egress عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-critical-workflow-protection-via-proxy-series7-2026-03-02',
+        slug: 'proxy-critical-workflow-protection-via-proxy-series7-2026-03-02',
+        title: 'حماية سير العمل الحرج عبر Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-assurance-led-change-management-series7-2026-03-02',
+        slug: 'proxy-assurance-led-change-management-series7-2026-03-02',
+        title: 'إدارة التغيير الموجهة بالضمان في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
+    },
+
+    {
+        id: 'proxy-enterprise-control-sustainability-playbook-series7-2026-03-02',
+        slug: 'proxy-enterprise-control-sustainability-playbook-series7-2026-03-02',
+        title: 'Playbook استدامة الضوابط المؤسسية في Web Proxy',
+        excerpt: 'مقال مؤسسي طويل يشرح نموذج تشغيل وحوكمة Web Proxy مع روابط داخلية ومؤشرات قياس قابلة للتنفيذ.',
+        date: '2026-03-02',
+        content: `
+            <div class="article-content">
+                <p class="intro">
+                    هذا المقال يقدم إطاراً عملياً لتشغيل Web Proxy في البيئات المؤسسية المعقدة،
+                    مع تركيز على جودة القرارات، وضوح الحوكمة، وتحسين الأداء الأمني بشكل مستمر.
+                </p>
+
+                <h2>الخطوة الأولى: بناء صورة دقيقة للوضع الحالي</h2>
+                <p>
+                    ابدأ بجرد شامل للقواعد، الاستثناءات، التبعيات، ومسارات المرور الحرجة.
+                    هذه الخطوة تمنع القرارات العشوائية وتبني أساساً موضوعياً لأي تحسين لاحق.
+                </p>
+
+                <h2>إدارة التغيير ضمن ضوابط واضحة</h2>
+                <p>
+                    كل تعديل يجب أن يمر بدورة منضبطة: تقييم، اعتماد، نشر تدريجي، ومراجعة أثر.
+                    للتطبيق العملي راجع <a href="/blog/secure-proxy-change-management-release-process-2026-03-02">إدارة التغيير الآمنة</a>
+                    و<a href="/blog/proxy-security-audit-checklist-enterprise-2026-03-02">قائمة التدقيق الأمني</a>.
+                </p>
+
+                <h2>القياس والمرئيات</h2>
+                <p>
+                    اعتمد لوحة مؤشرات تربط الأمان بالتشغيل: نجاح المرور، P95/P99، دقة القرار، وزمن التعافي.
+                    يمكن استخدام <a href="/blog/proxy-observability-sli-slo-error-budget-guide-2026-03-02">منهج SLI/SLO</a>
+                    كأساس تشغيلي موحد بين الفرق.
+                </p>
+
+                <h2>التكامل مع برامج المؤسسة</h2>
+                <p>
+                    فعالية Web Proxy ترتفع عندما تتكامل مع إدارة مخاطر SaaS، حوكمة الهوية،
+                    وأتمتة السياسات عبر <a href="/blog/proxy-policy-as-code-gitops-governance-guide-2026-03-02">Policy as Code</a>.
+                    لمزيد من الأمثلة راجع <a href="/blog/proxy-third-party-risk-control-saas-vendors-2026-03-02">حوكمة الطرف الثالث</a>.
+                </p>
+
+                <h2>خلاصة تنفيذية</h2>
+                <p>
+                    تحقيق النضج في Web Proxy يتطلب التزاماً بإيقاع تشغيل ثابت قائم على القياس والتعلم.
+                    عندما تتكرر هذه الدورة بوضوح، تتحسن جودة الخدمة وتتراجع المخاطر بطريقة تراكمية.
+                </p>
+
+                ${longEnterpriseAppendix}
+                ${longFaqAppendix}
+                ${finalExpansionAppendix}
+                ${operationalChecklistAppendix}
+                ${bulkScaleAppendix}
+            </div>
+        `
     }
 ];
 
