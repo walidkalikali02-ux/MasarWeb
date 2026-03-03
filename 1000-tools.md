@@ -1,5 +1,4 @@
 
-Shared password vault for small teams
 Temporary password generator with auto-expiry
 Password pattern analyzer (detects common patterns)
 Biometric readiness checker for browsers
