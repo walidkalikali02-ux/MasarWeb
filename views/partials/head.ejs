@@ -1,29 +1,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="<%= typeof description !== 'undefined' ? description : (t.description || t.tagline) %>">
+    <% 
+        const seoTitle = typeof pageTitle !== 'undefined'
+            ? pageTitle
+            : (typeof title !== 'undefined' ? title : t.title);
+        const seoDescription = typeof description !== 'undefined'
+            ? description
+            : (t.description || t.tagline);
+        const canonical = typeof canonicalUrl !== 'undefined'
+            ? canonicalUrl
+            : `https://masarweb.com${currentUrl}`;
+        const ogImageUrl = typeof ogImage !== 'undefined'
+            ? ogImage
+            : 'https://masarweb.com/static/images/logo.svg';
+        const robotsValue = typeof robots !== 'undefined' ? robots : 'index, follow';
+        const ogTypeValue = typeof ogType !== 'undefined' ? ogType : 'website';
+        const schemaItems = Array.isArray(structuredData)
+            ? structuredData
+            : (structuredData ? [structuredData] : []);
+    %>
+    <meta name="description" content="<%= seoDescription %>">
+    <meta name="robots" content="<%= robotsValue %>">
+    <meta name="author" content="MasarWeb">
+    <meta name="theme-color" content="#1a237e">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://masarweb.com<%= currentUrl %>">
+    <link rel="canonical" href="<%= canonical %>">
+    <% if (hreflang) { %>
+        <% Object.keys(hreflang).forEach(function(code) { %>
+            <link rel="alternate" hreflang="<%= code %>" href="<%= hreflang[code] %>">
+        <% }); %>
+        <link rel="alternate" hreflang="x-default" href="<%= canonical %>">
+    <% } %>
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://masarweb.com<%= currentUrl %>">
-    <meta property="og:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : t.title %>">
-    <meta property="og:description" content="<%= typeof description !== 'undefined' ? description : (t.description || t.tagline) %>">
-    <meta property="og:image" content="https://masarweb.com/static/images/logo.svg">
+    <meta property="og:type" content="<%= ogTypeValue %>">
+    <meta property="og:url" content="<%= canonical %>">
+    <meta property="og:title" content="<%= seoTitle %>">
+    <meta property="og:description" content="<%= seoDescription %>">
+    <meta property="og:image" content="<%= ogImageUrl %>">
+    <meta property="og:site_name" content="<%= t.title %>">
+    <% if (articleMeta && articleMeta.publishedTime) { %>
+        <meta property="article:published_time" content="<%= articleMeta.publishedTime %>">
+    <% } %>
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://masarweb.com<%= currentUrl %>">
-    <meta property="twitter:title" content="<%= typeof pageTitle !== 'undefined' ? pageTitle : t.title %>">
-    <meta property="twitter:description" content="<%= typeof description !== 'undefined' ? description : (t.description || t.tagline) %>">
-    <meta property="twitter:image" content="https://masarweb.com/static/images/logo.svg">
+    <meta property="twitter:url" content="<%= canonical %>">
+    <meta property="twitter:title" content="<%= seoTitle %>">
+    <meta property="twitter:description" content="<%= seoDescription %>">
+    <meta property="twitter:image" content="<%= ogImageUrl %>">
 
-    <title><%= typeof pageTitle !== 'undefined' ? pageTitle : t.title %></title>
+    <title><%= seoTitle %></title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌐</text></svg>">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3696807970945038" crossorigin="anonymous"></script>
+
+    <% if (schemaItems.length > 0) { %>
+        <% schemaItems.forEach(function(item) { %>
+            <script type="application/ld+json"><%- JSON.stringify(item) %></script>
+        <% }); %>
+    <% } %>
 </head>

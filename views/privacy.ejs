@@ -6,48 +6,48 @@
 
     <div class="container">
         <main class="content-page">
-            <h2><%= t.privacy_page.title %></h2>
+            <h1><%= t.privacy_page.title %></h1>
             <p class="last-updated"><%= t.privacy_page.last_updated %></p>
             
             <section>
-                <h3><%= t.privacy_page.collection_title %></h3>
+                <h2><%= t.privacy_page.collection_title %></h2>
                 <p><%= t.privacy_page.collection_text %></p>
             </section>
 
             <section>
-                <h3><%= t.privacy_page.usage_title %></h3>
+                <h2><%= t.privacy_page.usage_title %></h2>
                 <p><%= t.privacy_page.usage_text %></p>
             </section>
 
             <section>
-                <h3><%= t.privacy_page.cookies_title %></h3>
+                <h2><%= t.privacy_page.cookies_title %></h2>
                 <p><%= t.privacy_page.cookies_text %></p>
             </section>
             
             <% if (t.privacy_page.retention_title) { %>
             <section>
-                <h3><%= t.privacy_page.retention_title %></h3>
+                <h2><%= t.privacy_page.retention_title %></h2>
                 <p><%= t.privacy_page.retention_text %></p>
             </section>
             <% } %>
             
             <% if (t.privacy_page.security_title) { %>
             <section>
-                <h3><%= t.privacy_page.security_title %></h3>
+                <h2><%= t.privacy_page.security_title %></h2>
                 <p><%= t.privacy_page.security_text %></p>
             </section>
             <% } %>
             
             <% if (t.privacy_page.third_parties_title) { %>
             <section>
-                <h3><%= t.privacy_page.third_parties_title %></h3>
+                <h2><%= t.privacy_page.third_parties_title %></h2>
                 <p><%= t.privacy_page.third_parties_text %></p>
             </section>
             <% } %>
             
             <% if (t.privacy_page.rights_title) { %>
             <section>
-                <h3><%= t.privacy_page.rights_title %></h3>
+                <h2><%= t.privacy_page.rights_title %></h2>
                 <% if (t.privacy_page.rights_items && t.privacy_page.rights_items.length) { %>
                 <ul>
                     <% t.privacy_page.rights_items.forEach(function(item){ %>
@@ -60,7 +60,7 @@
             
             <% if (t.privacy_page.contact_title) { %>
             <section>
-                <h3><%= t.privacy_page.contact_title %></h3>
+                <h2><%= t.privacy_page.contact_title %></h2>
                 <p><%= t.privacy_page.contact_text %></p>
             </section>
             <% } %>

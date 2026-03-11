@@ -12,6 +12,11 @@ const { rateLimiters } = require('../security/security');
 
 const router = express.Router();
 
+router.use((req, res, next) => {
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+  next();
+});
+
 // Simple auth middleware
 const adminAuth = (req, res, next) => {
   const auth = req.headers.authorization;

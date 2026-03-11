@@ -210,6 +210,7 @@ router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, asy
       // Set security headers
       responseHeaders['x-content-type-options'] = 'nosniff';
       responseHeaders['x-frame-options'] = 'SAMEORIGIN';
+      responseHeaders['x-robots-tag'] = 'noindex, nofollow';
 
       // Log the request
       logProxyRequest(req, targetUrl, proxyRes.statusCode);

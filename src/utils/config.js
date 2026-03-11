@@ -12,6 +12,7 @@ const config = {
   // Server settings
   port: parseInt(process.env.PORT) || 3000,
   isProduction: process.env.NODE_ENV === 'production',
+  publicBaseUrl: process.env.PUBLIC_BASE_URL,
   
   // Security
   sessionSecret: process.env.SESSION_SECRET || generateSecret(),

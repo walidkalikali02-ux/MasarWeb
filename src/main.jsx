@@ -4,7 +4,5 @@ import App from "./App";
 import "./sentry"; // تهيئة Sentry
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <App />
 );

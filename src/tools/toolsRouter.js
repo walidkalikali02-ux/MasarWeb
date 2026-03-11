@@ -4,6 +4,115 @@ const multer = require('multer');
 const crypto = require('crypto');
 const { logger } = require('../utils/logger');
 
+const toolMeta = {
+    index: {
+        title: { ar: 'أدوات MasarWeb', en: 'MasarWeb Tools' },
+        description: {
+            ar: 'مجموعة أدوات أمنية وحاسبات قوية لحماية كلمات المرور والتحقق من الروابط والملفات.',
+            en: 'A set of security tools and calculators to protect passwords and check files or links.'
+        }
+    },
+    'password-analyzer': {
+        title: { ar: 'تحليل قوة كلمة المرور', en: 'Password Strength Analyzer' },
+        description: {
+            ar: 'حلّل قوة كلمة المرور عبر حساب الإنتروبي ووقت الكسر المتوقع.',
+            en: 'Analyze password strength with entropy scoring and estimated crack time.'
+        }
+    },
+    'key-strength': {
+        title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
+        description: {
+            ar: 'احسب متانة مفاتيح التشفير ومعايير الأمان المطلوبة.',
+            en: 'Estimate encryption key strength and security requirements.'
+        }
+    },
+    'absence-deduction': {
+        title: { ar: 'حاسبة خصم الغياب', en: 'Absence Deduction Calculator' },
+        description: {
+            ar: 'احسب خصم الغياب بدقة وفق سياسات الموارد البشرية.',
+            en: 'Calculate absence deductions accurately based on HR policies.'
+        }
+    },
+    'virus-scanner': {
+        title: { ar: 'فاحص الفيروسات', en: 'Virus Scanner' },
+        description: {
+            ar: 'افحص الملفات والروابط بحثاً عن مؤشرات خبيثة بسرعة.',
+            en: 'Scan files and URLs for suspicious indicators quickly.'
+        }
+    },
+    'team-password-vault': {
+        title: { ar: 'خزنة كلمات المرور للفريق', en: 'Team Password Vault' },
+        description: {
+            ar: 'نظّم أسرار الفريق ومشاركتها بأمان.',
+            en: 'Organize and share team secrets securely.'
+        }
+    },
+    'bcrypt-calculator': {
+        title: { ar: 'حاسبة Bcrypt', en: 'Bcrypt Hash Calculator' },
+        description: {
+            ar: 'أنشئ تجزئات Bcrypt واختبر عامل التكلفة بسرعة.',
+            en: 'Generate Bcrypt hashes and test cost factors quickly.'
+        }
+    },
+    'entropy-calculator': {
+        title: { ar: 'حاسبة إنتروبي كلمة المرور', en: 'Password Entropy Calculator' },
+        description: {
+            ar: 'احسب إنتروبي كلمة المرور لفهم مستوى القوة الحقيقي.',
+            en: 'Calculate password entropy to understand real strength.'
+        }
+    },
+    'password-expiration': {
+        title: { ar: 'حاسبة انتهاء صلاحية كلمة المرور', en: 'Password Expiration Calculator' },
+        description: {
+            ar: 'حدّد أفضل سياسات انتهاء كلمات المرور بناءً على المخاطر.',
+            en: 'Determine password expiration policies based on risk.'
+        }
+    },
+    '2fa-generator': {
+        title: { ar: 'مولد رموز المصادقة الثنائية', en: '2FA TOTP Generator' },
+        description: {
+            ar: 'أنشئ رموز TOTP للمصادقة الثنائية بسرعة.',
+            en: 'Generate TOTP codes for two-factor authentication.'
+        }
+    },
+    'hash-identifier': {
+        title: { ar: 'محدد نوع التشفير', en: 'Hash Algorithm Identifier' },
+        description: {
+            ar: 'تعرّف على نوع التجزئة وتحليل خصائصها.',
+            en: 'Identify hash types and analyze their characteristics.'
+        }
+    },
+    'breach-checker': {
+        title: { ar: 'فاحص اختراق البيانات', en: 'Data Breach Checker' },
+        description: {
+            ar: 'تحقق من تسرب البيانات باستخدام مدخلات آمنة.',
+            en: 'Check for data breaches using safe inputs.'
+        }
+    },
+    'diceware-passphrase': {
+        title: { ar: 'مولد عبارات المرور Diceware', en: 'Diceware Passphrase Generator' },
+        description: {
+            ar: 'أنشئ عبارات مرور قوية وسهلة التذكر.',
+            en: 'Generate strong and memorable passphrases.'
+        }
+    },
+    'password-generator': {
+        title: { ar: 'مولد كلمات المرور المتقدم', en: 'Advanced Password Generator' },
+        description: {
+            ar: 'ولّد كلمات مرور عشوائية قوية مع إعدادات متقدمة.',
+            en: 'Generate strong random passwords with advanced settings.'
+        }
+    }
+};
+
+const getMeta = (key, lang) => {
+    const meta = toolMeta[key] || toolMeta.index;
+    return {
+        title: lang === 'ar' ? meta.title.ar : meta.title.en,
+        description: lang === 'ar' ? meta.description.ar : meta.description.en
+    };
+};
+
 // Configure Multer (Memory Storage)
 const storage = multer.memoryStorage();
 const upload = multer({ 
@@ -19,36 +128,51 @@ router.use((req, res, next) => {
 
 // Tools Index
 router.get('/', (req, res) => {
+    const meta = getMeta('index', req.lang);
     res.render('tools/index', {
-        title: req.lang === 'ar' ? 'أدوات' : 'Tools',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Password Strength Analyzer
 router.get('/password-analyzer', (req, res) => {
+    const meta = getMeta('password-analyzer', req.lang);
     res.render('tools/password-analyzer', {
-        title: req.lang === 'ar' ? 'تحليل قوة كلمة المرور' : 'Password Strength Analyzer',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Encryption Key Strength Calculator
 router.get('/key-strength', (req, res) => {
+    const meta = getMeta('key-strength', req.lang);
     res.render('tools/key-strength', {
-        title: req.lang === 'ar' ? 'حاسبة قوة مفتاح التشفير' : 'Encryption Key Strength Calculator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Absence Deduction Calculator
 router.get('/absence-deduction', (req, res) => {
+    const meta = getMeta('absence-deduction', req.lang);
     res.render('tools/absence-deduction', {
-        title: req.lang === 'ar' ? 'حاسبة خصم الغياب' : 'Absence Deduction Calculator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Virus Scanner Interface
 router.get('/virus-scanner', (req, res) => {
+    const meta = getMeta('virus-scanner', req.lang);
     res.render('tools/virus-scanner', {
-        title: req.lang === 'ar' ? 'فاحص الفيروسات' : 'Virus Scanner',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
@@ -146,64 +270,91 @@ router.post('/virus-scanner/scan-url', express.json(), (req, res) => {
 
 // Team Password Vault
 router.get('/team-password-vault', (req, res) => {
+    const meta = getMeta('team-password-vault', req.lang);
     res.render('tools/team-password-vault', {
-        title: req.lang === 'ar' ? 'خزنة كلمات المرور للفريق' : 'Team Password Vault',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Bcrypt Hash Calculator
 router.get('/bcrypt-calculator', (req, res) => {
+    const meta = getMeta('bcrypt-calculator', req.lang);
     res.render('tools/bcrypt-calculator', {
-        title: req.lang === 'ar' ? 'حاسبة Bcrypt' : 'Bcrypt Hash Calculator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Password Entropy Calculator
 router.get('/entropy-calculator', (req, res) => {
+    const meta = getMeta('entropy-calculator', req.lang);
     res.render('tools/entropy-calculator', {
-        title: req.lang === 'ar' ? 'حاسبة إنتروبي كلمة المرور' : 'Password Entropy Calculator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Password Expiration Calculator
 router.get('/password-expiration', (req, res) => {
+    const meta = getMeta('password-expiration', req.lang);
     res.render('tools/password-expiration', {
-        title: req.lang === 'ar' ? 'حاسبة انتهاء صلاحية كلمة المرور' : 'Password Expiration Calculator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // 2FA TOTP Generator
 router.get('/2fa-generator', (req, res) => {
+    const meta = getMeta('2fa-generator', req.lang);
     res.render('tools/2fa-generator', {
-        title: req.lang === 'ar' ? 'مولد رموز المصادقة الثنائية' : '2FA TOTP Generator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Hash Identifier
 router.get('/hash-identifier', (req, res) => {
+    const meta = getMeta('hash-identifier', req.lang);
     res.render('tools/hash-identifier', {
-        title: req.lang === 'ar' ? 'محدد نوع التشفير' : 'Hash Algorithm Identifier',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Data Breach Checker
 router.get('/breach-checker', (req, res) => {
+    const meta = getMeta('breach-checker', req.lang);
     res.render('tools/breach-checker', {
-        title: req.lang === 'ar' ? 'فاحص اختراق البيانات' : 'Data Breach Checker',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Diceware Passphrase Generator
 router.get('/diceware-passphrase', (req, res) => {
+    const meta = getMeta('diceware-passphrase', req.lang);
     res.render('tools/diceware-passphrase', {
-        title: req.lang === 'ar' ? 'مولد عبارات المرور Diceware' : 'Diceware Passphrase Generator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 
 // Advanced Password Generator
 router.get('/password-generator', (req, res) => {
+    const meta = getMeta('password-generator', req.lang);
     res.render('tools/password-generator', {
-        title: req.lang === 'ar' ? 'مولد كلمات المرور المتقدم' : 'Advanced Password Generator',
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description
     });
 });
 

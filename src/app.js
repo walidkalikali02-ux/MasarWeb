@@ -35,6 +35,12 @@ const toolsRouter = require('./tools/toolsRouter');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const normalizeBaseUrl = (value) => value.replace(/\/+$/, '');
+const getBaseUrl = (req) => {
+  if (config.publicBaseUrl) return normalizeBaseUrl(config.publicBaseUrl);
+  return `${req.protocol}://${req.get('host')}`;
+};
+
 // Trust proxy for accurate IP detection
 app.set('trust proxy', 1);
 
@@ -103,6 +109,41 @@ app.use((req, res, next) => {
   next();
 });
 
+// SEO defaults
+app.use((req, res, next) => {
+  const baseUrl = getBaseUrl(req);
+  const siteName = res.locals.t?.title || 'MasarWeb';
+  const siteDescription = res.locals.t?.description || res.locals.t?.tagline || 'Secure web proxy';
+  const logoUrl = `${baseUrl}/static/images/logo.svg`;
+
+  res.locals.baseUrl = baseUrl;
+  res.locals.canonicalUrl = `${baseUrl}${req.path}`;
+  res.locals.ogImage = logoUrl;
+  res.locals.robots = 'index, follow';
+  res.locals.hreflang = Object.keys(locales).reduce((acc, code) => {
+    acc[code] = `${baseUrl}${req.path}?lang=${code}`;
+    return acc;
+  }, {});
+  res.locals.structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": siteName,
+      "url": baseUrl,
+      "logo": logoUrl
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": siteName,
+      "url": baseUrl,
+      "description": siteDescription,
+      "inLanguage": res.locals.currentLang
+    }
+  ];
+  next();
+});
+
 // Apply security middleware
 app.use(securityMiddleware);
 
@@ -123,9 +164,18 @@ app.get('/health', (req, res) => {
 });
 
 // Static Pages
-app.get('/support', (req, res) => res.render('support'));
-app.get('/terms', (req, res) => res.render('terms'));
-app.get('/privacy', (req, res) => res.render('privacy'));
+app.get('/support', (req, res) => res.render('support', {
+  pageTitle: `${res.locals.t.support_page.title} - ${res.locals.t.title}`,
+  description: res.locals.t.support_page.desc
+}));
+app.get('/terms', (req, res) => res.render('terms', {
+  pageTitle: `${res.locals.t.terms_page.title} - ${res.locals.t.title}`,
+  description: res.locals.t.terms_page.intro_text
+}));
+app.get('/privacy', (req, res) => res.render('privacy', {
+  pageTitle: `${res.locals.t.privacy_page.title} - ${res.locals.t.title}`,
+  description: res.locals.t.privacy_page.collection_text
+}));
 
 // Tools Routes
 app.use('/tools', toolsRouter);
@@ -137,7 +187,13 @@ app.get('/blog', (req, res) => {
       const db = new Date(b.date);
       return db - da;
     });
-    res.render('blog', { articles: sorted });
+    res.render('blog', {
+      articles: sorted,
+      pageTitle: res.locals.t.blog_title || 'Blog',
+      description: res.locals.currentLang === 'ar'
+        ? 'أحدث مقالات MasarWeb حول الخصوصية والأمان وأدوات الحماية.'
+        : 'Latest MasarWeb articles on privacy, security, and protection tools.'
+    });
 });
 
 app.get('/blog/:slug', (req, res) => {
@@ -149,18 +205,68 @@ app.get('/blog/:slug', (req, res) => {
             code: 404
         });
     }
-    res.render('article', { article });
+    const baseStructuredData = res.locals.structuredData || [];
+    res.render('article', {
+      article,
+      pageTitle: article.title,
+      description: article.excerpt,
+      ogType: 'article',
+      articleMeta: {
+        publishedTime: article.date
+      },
+      structuredData: [
+        ...baseStructuredData,
+        {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": article.title,
+          "datePublished": article.date,
+          "dateModified": article.date,
+          "author": {
+            "@type": "Organization",
+            "name": res.locals.t.title
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": res.locals.t.title,
+            "logo": {
+              "@type": "ImageObject",
+              "url": res.locals.ogImage
+            }
+          },
+          "description": article.excerpt,
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `${res.locals.baseUrl}/blog/${article.slug}`
+          }
+        }
+      ]
+    });
 });
 
 // Sitemap
 app.get('/sitemap.xml', (req, res) => {
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = getBaseUrl(req);
     const staticPages = [
         '/',
         '/support',
         '/terms',
         '/privacy',
-        '/blog'
+        '/blog',
+        '/tools',
+        '/tools/password-analyzer',
+        '/tools/key-strength',
+        '/tools/absence-deduction',
+        '/tools/virus-scanner',
+        '/tools/team-password-vault',
+        '/tools/bcrypt-calculator',
+        '/tools/entropy-calculator',
+        '/tools/password-expiration',
+        '/tools/2fa-generator',
+        '/tools/hash-identifier',
+        '/tools/breach-checker',
+        '/tools/diceware-passphrase',
+        '/tools/password-generator'
     ];
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -193,9 +299,13 @@ app.get('/sitemap.xml', (req, res) => {
 
 // Robots.txt
 app.get('/robots.txt', (req, res) => {
-    const baseUrl = `${req.protocol}://${req.get('host')}`;
+    const baseUrl = getBaseUrl(req);
     const robots = `User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /proxy/
+Disallow: /browse
+Disallow: /health
 Sitemap: ${baseUrl}/sitemap.xml`;
 
     res.header('Content-Type', 'text/plain');
@@ -213,6 +323,7 @@ app.use((err, req, res, next) => {
   const t = res.locals.t || { error: { title_generic: 'Error' } };
 
   if (req.accepts('html')) {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.status(500).render('error', {
       title: t.error.title_generic,
       error: config.isProduction ? t.error.title_generic : err.message,
@@ -231,6 +342,7 @@ app.use((req, res) => {
   const t = res.locals.t || { error: { title_404: 'Not Found' } };
 
   if (req.accepts('html')) {
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
     res.status(404).render('error', {
       title: t.error.title_404,
       error: t.error.title_404,

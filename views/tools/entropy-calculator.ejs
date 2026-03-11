@@ -1,4 +1,7 @@
-<%- include('../partials/head', { title: title }) %>
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
 <%- include('../partials/navbar') %>
 <main class="main-content">
 
@@ -646,3 +649,5 @@
 </script>
 
 <%- include('../partials/footer') %>
+</body>
+</html>
