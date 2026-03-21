@@ -131,6 +131,13 @@ const toolMeta = {
             ar: 'ولّد كلمات مرور عشوائية قوية مع إعدادات متقدمة.',
             en: 'Generate strong random passwords with advanced settings.'
         }
+    },
+    'temporary-password-secret-generator': {
+        title: { ar: 'مولد كلمات المرور المؤقتة والأسرار', en: 'Temporary Password & Secret Generator' },
+        description: {
+            ar: 'أنشئ أسراراً مؤقتة وروابط مشاركة تنتهي صلاحيتها تلقائياً وفق سياسات زمنية وحدود وصول واضحة.',
+            en: 'Generate temporary secrets, expiring share links, and deterministic audit metadata for short-lived credential handoffs.'
+        }
     }
 };
 
@@ -400,6 +407,34 @@ router.get('/password-generator', (req, res) => {
         title: meta.title,
         pageTitle: meta.title,
         description: meta.description
+    });
+});
+
+// Temporary Password & Secret Generator
+router.get('/temporary-password-secret-generator', (req, res) => {
+    const meta = getMeta('temporary-password-secret-generator', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/temporary-password-secret-generator', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Temporary Password & Secret Generator",
+                "applicationCategory": "SecurityApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+        ]
     });
 });
 

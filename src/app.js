@@ -384,7 +384,8 @@ app.get('/sitemap.xml', async (req, res, next) => {
         '/tools/hash-identifier',
         '/tools/breach-checker',
         '/tools/diceware-passphrase',
-        '/tools/password-generator'
+        '/tools/password-generator',
+        '/tools/temporary-password-secret-generator'
     ];
 
     let xml = '<?xml version="1.0" encoding="UTF-8"?>';

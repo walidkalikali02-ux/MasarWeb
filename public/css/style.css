@@ -343,6 +343,17 @@ body {
     align-items: center;
 }
 
+.nav-search-placeholder {
+    min-width: 190px;
+    padding: 8px 14px;
+    border: 2px dashed #000;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
+
 .nav-links a {
     text-decoration: none;
     color: #000;
@@ -983,6 +994,11 @@ body {
         gap: 15px;
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .nav-search-placeholder {
+        min-width: 0;
+        width: 100%;
     }
     
     .logo-text {

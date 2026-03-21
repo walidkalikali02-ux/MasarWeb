@@ -19,6 +19,10 @@
             <a href="/privacy" class="<%= currentUrl === '/privacy' ? 'active' : '' %>"><%= t.nav_privacy %></a>
         </div>
 
+        <div class="nav-search-placeholder" aria-hidden="true">
+            <span><%= currentLang === 'ar' ? 'ابحث في الأدوات قريباً' : 'Search tools soon' %></span>
+        </div>
+
         <div class="lang-dropdown">
             <button class="lang-btn-toggle" id="langBtn" aria-expanded="false" aria-label="Select Language">
                 <i class="fas fa-globe"></i> 
