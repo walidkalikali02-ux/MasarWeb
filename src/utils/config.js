@@ -5,13 +5,31 @@
 
 const crypto = require('crypto');
 
+const parseBoolean = (value, fallback) => {
+  if (typeof value === 'undefined') return fallback;
+  return value === 'true';
+};
+
+const parseOptionalString = (value) => {
+  if (typeof value !== 'string') return null;
+  const normalized = value.trim();
+  return normalized ? normalized : null;
+};
+
 // Generate secure secrets if not provided
 const generateSecret = () => crypto.randomBytes(64).toString('hex');
+const isVercel = Boolean(process.env.VERCEL || process.env.vercel);
+const adminUsername = parseOptionalString(process.env.ADMIN_USERNAME);
+const adminPassword = parseOptionalString(process.env.ADMIN_PASSWORD);
+const adminEnabled = parseBoolean(process.env.ENABLE_ADMIN, false);
+const websocketRuntimeSupported = !isVercel;
+const websocketsRequested = parseBoolean(process.env.ENABLE_WEBSOCKETS, !isVercel);
 
 const config = {
   // Server settings
   port: parseInt(process.env.PORT) || 3000,
   isProduction: process.env.NODE_ENV === 'production',
+  isVercel,
   publicBaseUrl: process.env.PUBLIC_BASE_URL,
   
   // Security
@@ -31,9 +49,17 @@ const config = {
   
   // Session settings
   sessionMaxAge: parseInt(process.env.SESSION_MAX_AGE) || 24 * 60 * 60 * 1000, // 24 hours
+  sessionRolling: parseBoolean(process.env.SESSION_ROLLING, false),
+  sessionCookieName: process.env.SESSION_COOKIE_NAME || 'proxySession',
+  sessionCookieHttpOnly: parseBoolean(process.env.SESSION_COOKIE_HTTP_ONLY, true),
+  sessionCookieSecure: process.env.SESSION_COOKIE_SECURE || (process.env.NODE_ENV === 'production' ? 'auto' : false),
+  sessionCookieSameSite: process.env.SESSION_COOKIE_SAME_SITE || 'lax',
+  sessionStorePrefix: process.env.SESSION_STORE_PREFIX || 'masarweb:sess:',
+  redisUrl: process.env.REDIS_URL,
   
   // Blocked resources
-  blockedDomains: (process.env.BLOCKED_DOMAINS || '').split(',').filter(Boolean),
+  blockedDomains: (process.env.BLOCKED_DOMAINS || '').split(',').map((value) => value.trim().toLowerCase()).filter(Boolean),
+  allowedTargetDomains: (process.env.ALLOWED_TARGET_DOMAINS || '').split(',').map((value) => value.trim().toLowerCase()).filter(Boolean),
   blockedIPs: (process.env.BLOCKED_IPS || '').split(',').filter(Boolean),
   
   // Private IP ranges to block
@@ -73,19 +99,23 @@ const config = {
   
   // Feature toggles
   features: {
-    websockets: process.env.ENABLE_WEBSOCKETS !== 'false',
+    websockets: websocketsRequested && websocketRuntimeSupported,
     mediaStreaming: process.env.ENABLE_MEDIA_STREAMING !== 'false',
     javascriptRewrite: process.env.ENABLE_JS_REWRITE !== 'false',
     cookieSync: process.env.ENABLE_COOKIE_SYNC !== 'false',
   },
+  websocketRuntimeSupported,
+  websocketsRequested,
   
   // Supabase settings
   supabaseUrl: process.env.SUPABASE_URL,
   supabaseKey: process.env.SUPABASE_ANON_KEY,
 
   // Admin settings
-  adminUsername: process.env.ADMIN_USERNAME || 'admin',
-  adminPassword: process.env.ADMIN_PASSWORD || 'admin123',
+  adminEnabled,
+  adminUsername,
+  adminPassword,
+  hasConfiguredAdminAuth: Boolean(adminUsername && adminPassword),
   
   // Monetization
   freeTierBandwidth: parseInt(process.env.FREE_TIER_BANDWIDTH) || 100 * 1024 * 1024, // 100MB

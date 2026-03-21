@@ -9,15 +9,21 @@ const http = require('http');
 const { URL } = require('url');
 const { config } = require('../utils/config');
 const { logger } = require('../utils/logger');
+const { validateAndNormalizeURL } = require('../security/security');
 
 /**
  * Setup WebSocket proxy server
  * إعداد خادم بروكسي WebSocket
  */
 const setupWebSocketProxy = (server) => {
+  if (!config.websocketRuntimeSupported) {
+    logger.warn('WebSocket proxy disabled: runtime does not support upgrade handling');
+    return null;
+  }
+
   if (!config.features.websockets) {
     logger.info('WebSocket proxy disabled');
-    return;
+    return null;
   }
 
   const wss = new WebSocket.Server({ 
@@ -31,7 +37,7 @@ const setupWebSocketProxy = (server) => {
     }
   });
 
-  wss.on('connection', (ws, req) => {
+  wss.on('connection', async (ws, req) => {
     logger.info(`WebSocket connection from ${req.socket.remoteAddress}`);
 
     // Parse target URL from query parameters or headers
@@ -55,18 +61,24 @@ const setupWebSocketProxy = (server) => {
 
     // Convert ws:// to http:// and wss:// to https://
     const httpUrl = targetUrl.replace(/^ws/, 'http');
-    const targetUrlObj = new URL(httpUrl);
-
-    // Check if WebSocket URL is allowed
-    const isAllowed = checkWebSocketAllowed(targetUrlObj);
-    if (!isAllowed) {
+    let validation;
+    try {
+      validation = await validateAndNormalizeURL(httpUrl);
+    } catch (error) {
+      logger.error('WebSocket validation error:', error);
       ws.close(1008, 'Connection not allowed');
       return;
     }
 
+    if (!validation.valid) {
+      ws.close(1008, 'Connection not allowed');
+      return;
+    }
+
+    const targetUrlObj = new URL(validation.url);
+
     // Create connection to target WebSocket
-    const wsProtocol = targetUrlObj.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsTargetUrl = targetUrl.replace(/^http/, 'ws');
+    const wsTargetUrl = validation.url.replace(/^http/, 'ws');
 
     logger.info(`Proxying WebSocket to: ${wsTargetUrl}`);
 
@@ -74,9 +86,12 @@ const setupWebSocketProxy = (server) => {
     try {
       targetWs = new WebSocket(wsTargetUrl, {
         rejectUnauthorized: config.isProduction, // Validate certificates in production
+        servername: targetUrlObj.hostname,
+        lookup: (hostname, options, callback) => callback(null, validation.resolvedAddress, validation.resolvedFamily),
         headers: {
           'User-Agent': config.userAgents[0],
-          'Origin': targetUrlObj.origin
+          'Origin': targetUrlObj.origin,
+          'Host': targetUrlObj.host
         }
       });
     } catch (error) {
@@ -149,37 +164,6 @@ const setupWebSocketProxy = (server) => {
 
   logger.info('WebSocket proxy server initialized');
   return wss;
-};
-
-/**
- * Check if WebSocket connection is allowed
- * التحقق مما إذا كان الاتصال مسموحًا به
- */
-const checkWebSocketAllowed = (urlObj) => {
-  // Check blocked domains
-  if (config.blockedDomains.some(domain => 
-    urlObj.hostname === domain || urlObj.hostname.endsWith('.' + domain)
-  )) {
-    return false;
-  }
-
-  // Check private IPs
-  const isPrivateIP = (ip) => {
-    const privateRanges = [
-      /^10\./,
-      /^172\.(1[6-9]|2[0-9]|3[0-1])\./,
-      /^192\.168\./,
-      /^127\./,
-      /^169\.254\./,
-    ];
-    return privateRanges.some(range => range.test(ip));
-  };
-
-  if (isPrivateIP(urlObj.hostname)) {
-    return false;
-  }
-
-  return true;
 };
 
 module.exports = { setupWebSocketProxy };

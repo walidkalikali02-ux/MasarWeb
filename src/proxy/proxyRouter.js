@@ -12,7 +12,6 @@ const { pipeline } = require('stream');
 const locales = require('../locales');
 
 const { URLRewriter } = require('../rewriter/urlRewriter');
-const { cookieStore } = require('../session/sessionManager');
 const { 
   isBlockedURL, 
   getSanitizedHeaders,
@@ -23,7 +22,7 @@ const { config } = require('../utils/config');
 const { logger, logProxyRequest } = require('../utils/logger');
 
 const router = express.Router();
-const { ensureSession, checkBandwidthLimit } = require('../session/sessionManager');
+const { ensureSession, checkBandwidthLimit, storeProxyCookies, getProxyCookies } = require('../session/sessionManager');
 
 // Helper to translate error keys
 const translateError = (t, key) => {
@@ -60,10 +59,10 @@ router.get('/browse', (req, res) => {
  * Process URL submission
  * معالجة إرسال الرابط
  */
-router.post('/browse', ensureSession, (req, res) => {
+router.post('/browse', ensureSession, async (req, res) => {
   let { url } = req.body;
   
-  const validation = validateAndNormalizeURL(url);
+  const validation = await validateAndNormalizeURL(url);
   if (!validation.valid) {
     const t = res.locals.t;
     return res.render('index', {
@@ -81,7 +80,7 @@ router.post('/browse', ensureSession, (req, res) => {
  * Main proxy handler
  * معالج البروكسي الرئيسي
  */
-router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, async (req, res) => {
+router.get('/proxy/:encodedUrl(*)', ensureSession, rateLimiters.proxy, checkBandwidthLimit, async (req, res) => {
   const encodedUrl = req.params.encodedUrl;
   const t = res.locals.t;
   
@@ -99,7 +98,7 @@ router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, asy
     }
 
     // Validate URL
-    const validation = validateAndNormalizeURL(targetUrl);
+    const validation = await validateAndNormalizeURL(targetUrl);
     if (!validation.valid) {
       return res.status(403).render('error', {
         title: translateError(t, 'error.access_denied'),
@@ -125,11 +124,9 @@ router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, asy
     const headers = getSanitizedHeaders(req, targetUrl);
 
     // Add cookies for this domain
-    if (req.session?.proxySessionId) {
-      const cookies = cookieStore.getCookies(req.session.proxySessionId, targetUrlObj.hostname);
-      if (cookies) {
-        headers['cookie'] = cookies;
-      }
+    const cookies = getProxyCookies(req, targetUrlObj.hostname);
+    if (cookies) {
+      headers['cookie'] = cookies;
     }
 
     // Set accept headers
@@ -141,12 +138,14 @@ router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, asy
     // Make request
     const protocol = targetUrlObj.protocol === 'https:' ? https : http;
     const requestOptions = {
-      hostname: targetUrlObj.hostname,
+      hostname: validation.resolvedAddress,
       port: targetUrlObj.port || (targetUrlObj.protocol === 'https:' ? 443 : 80),
       path: targetUrlObj.pathname + targetUrlObj.search,
       method: req.method,
       headers,
+      family: validation.resolvedFamily,
       timeout: config.proxyTimeout,
+      servername: targetUrlObj.hostname,
       rejectUnauthorized: true // Validate TLS certificates
     };
 
@@ -163,12 +162,8 @@ router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, asy
       }
 
       // Store cookies
-      if (req.session?.proxySessionId && proxyRes.headers['set-cookie']) {
-        cookieStore.storeCookies(
-          req.session.proxySessionId,
-          targetUrlObj.hostname,
-          proxyRes.headers['set-cookie']
-        );
+      if (proxyRes.headers['set-cookie']) {
+        storeProxyCookies(req, targetUrlObj.hostname, proxyRes.headers['set-cookie']);
       }
 
       // Get content type
@@ -334,7 +329,7 @@ router.get('/proxy/:encodedUrl(*)', rateLimiters.proxy, checkBandwidthLimit, asy
  * Handle POST requests through proxy
  * معالجة طلبات POST عبر البروكسي
  */
-router.post('/proxy/:encodedUrl(*)', rateLimiters.proxy, (req, res) => {
+router.post('/proxy/:encodedUrl(*)', ensureSession, rateLimiters.proxy, (req, res) => {
   // Similar to GET but with body forwarding
   // Implementation similar to GET handler
   res.status(501).json({ error: 'POST forwarding in development' });

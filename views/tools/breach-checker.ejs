@@ -40,6 +40,15 @@
         max-width: 800px;
         margin: 0 auto;
     }
+    .simulation-notice {
+        margin: 0 auto 2rem;
+        padding: 1rem 1.25rem;
+        border: 2px solid #f0b429;
+        background: #fff7e6;
+        color: #6b4e00;
+        line-height: 1.7;
+        max-width: 920px;
+    }
 
     /* 3️⃣ Authority & Trust */
     .authority-block {
@@ -280,6 +289,12 @@
 </style>
 
 <div class="container">
+    <div class="simulation-notice">
+        <strong><%= currentLang === 'ar' ? 'تنبيه محاكاة:' : 'Simulation Notice:' %></strong>
+        <%= currentLang === 'ar'
+            ? 'هذه الصفحة تعرض تجربة توضيحية مبنية على بيانات محاكاة داخل المتصفح. لا يتم هنا الاستعلام عن خدمة كشف تسريبات حقيقية.'
+            : 'This page provides an illustrative experience backed by simulated in-browser data. It does not query a real breach-detection service here.' %>
+    </div>
     
     <!-- 2️⃣ Page Identity Component -->
     <section class="identity-header">

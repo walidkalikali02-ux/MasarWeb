@@ -147,6 +147,34 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
+
+    .simulation-banner {
+        margin: 0 auto 2rem;
+        max-width: 760px;
+        text-align: left;
+        background: #fff7e6;
+        color: #6b4e00;
+        border: 2px solid #f0b429;
+        border-radius: 14px;
+        padding: 1rem 1.25rem;
+        line-height: 1.7;
+    }
+
+    [dir="rtl"] .simulation-banner {
+        text-align: right;
+    }
+
+    .simulation-chip {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        padding: 0.3rem 0.7rem;
+        border-radius: 999px;
+        background: #f0b429;
+        color: #1f1f1f;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+    }
 </style>
 <body>
     <%- include('../partials/navbar') %>
@@ -158,6 +186,16 @@
             <p style="margin-bottom: 2rem; color: var(--text-muted);">
                 <%= currentLang === 'ar' ? 'حلل الملفات والروابط المشبوهة للكشف عن البرمجيات الخبيثة.' : 'Analyze suspicious files, domains, IPs and URLs to detect malware and other breaches.' %>
             </p>
+
+            <div class="simulation-banner">
+                <span class="simulation-chip"><%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %></span>
+                <div><%= simulationNotice %></div>
+                <div style="margin-top: 0.5rem;">
+                    <%= currentLang === 'ar'
+                        ? 'تُرسل هذه الصفحة الطلبات إلى مسارات /tools/simulations/... بشكل مقصود لتمييزها عن أي خدمات أمنية حقيقية.'
+                        : 'This page intentionally sends requests to /tools/simulations/... to keep demo behavior separate from any real security services.' %>
+                </div>
+            </div>
 
             <div class="vt-tabs">
                 <div class="vt-tab active" data-target="file"><%= currentLang === 'ar' ? 'ملف' : 'File' %></div>
@@ -270,7 +308,7 @@
             document.querySelector('#url-section').style.pointerEvents = 'none';
 
             // Call API
-            fetch('/tools/virus-scanner/scan-url', {
+            fetch('/tools/simulations/virus-scanner/scan-url', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -310,7 +348,7 @@
             formData.append('file', file);
 
             // Call API
-            fetch('/tools/virus-scanner/scan', {
+            fetch('/tools/simulations/virus-scanner/scan', {
                 method: 'POST',
                 body: formData
             })

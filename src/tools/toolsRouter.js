@@ -4,6 +4,35 @@ const multer = require('multer');
 const crypto = require('crypto');
 const { logger } = require('../utils/logger');
 
+const SIMULATION_NOTICE = {
+    ar: 'هذه الأداة تعرض نتائج محاكاة/عرض تجريبي وليست خدمة فحص أمني حقيقية.',
+    en: 'This tool returns simulation/demo results and is not a real security scanning service.'
+};
+
+const getSimulationNotice = (lang) => lang === 'ar' ? SIMULATION_NOTICE.ar : SIMULATION_NOTICE.en;
+
+const sendSimulationResponse = (res, lang, data) => {
+    res.setHeader('X-Tool-Simulation', 'true');
+    return res.json({
+        success: true,
+        simulation: true,
+        notice: getSimulationNotice(lang),
+        data
+    });
+};
+
+const sendDeprecatedSimulationEndpoint = (res, lang, replacementPath) => {
+    res.setHeader('X-Tool-Simulation', 'true');
+    return res.status(410).json({
+        success: false,
+        simulation: true,
+        error: lang === 'ar'
+            ? 'تم نقل endpoint المحاكاة إلى مسار منفصل لتوضيح أنه ليس فحصاً أمنياً حقيقياً.'
+            : 'This simulation endpoint has moved to a separate path to clarify that it is not a real security scan.',
+        replacementPath
+    });
+};
+
 const toolMeta = {
     index: {
         title: { ar: 'أدوات MasarWeb', en: 'MasarWeb Tools' },
@@ -172,14 +201,28 @@ router.get('/virus-scanner', (req, res) => {
     res.render('tools/virus-scanner', {
         title: meta.title,
         pageTitle: meta.title,
-        description: meta.description
+        description: meta.description,
+        simulationNotice: getSimulationNotice(req.lang)
     });
 });
 
-// Virus Scanner API - Scan Endpoint (Real File Processing)
+// Deprecated simulation endpoints kept only to prevent ambiguity with real security APIs
 router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
+    return sendDeprecatedSimulationEndpoint(res, req.lang, '/tools/simulations/virus-scanner/scan');
+});
+
+router.post('/virus-scanner/scan-url', express.json(), (req, res) => {
+    return sendDeprecatedSimulationEndpoint(res, req.lang, '/tools/simulations/virus-scanner/scan-url');
+});
+
+// Virus Scanner Simulation API - File Scan Endpoint
+router.post('/simulations/virus-scanner/scan', upload.single('file'), (req, res) => {
     if (!req.file) {
-        return res.status(400).json({ success: false, error: 'No file uploaded' });
+        return res.status(400).json({
+            success: false,
+            simulation: true,
+            error: req.lang === 'ar' ? 'لم يتم رفع أي ملف' : 'No file uploaded'
+        });
     }
 
     try {
@@ -196,23 +239,22 @@ router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
         
         // Simulate processing delay to feel like a real scan
         setTimeout(() => {
-            res.json({
-                success: true,
-                data: {
-                    scan_id: fileHash,
-                    permalink: `https://www.virustotal.com/gui/file/${fileHash}`,
-                    resource: fileHash,
-                    response_code: 1,
-                    scan_date: new Date().toISOString(),
-                    verbose_msg: 'Scan finished, scan information embedded in this object',
-                    positives: isSuspicious ? Math.floor(Math.random() * 5) + 1 : 0,
-                    total: 60,
-                    scans: {
-                        "Bkav": { "detected": isSuspicious, "version": "1.3.0.9899", "result": isSuspicious ? "W32.AIDetect.malware" : null, "update": "20240101" },
-                        "Kaspersky": { "detected": isSuspicious, "version": "21.0.1.45", "result": isSuspicious ? "Trojan.Win32.Generic" : null, "update": "20240101" },
-                        "Symantec": { "detected": false, "version": "1.8.0.0", "result": null, "update": "20240101" }
-                        // ... more mock data could be added
-                    }
+            sendSimulationResponse(res, req.lang, {
+                scan_id: fileHash,
+                permalink: `https://www.virustotal.com/gui/file/${fileHash}`,
+                resource: fileHash,
+                response_code: 1,
+                scan_date: new Date().toISOString(),
+                verbose_msg: req.lang === 'ar'
+                    ? 'تم إنشاء نتيجة محاكاة ودمجها في هذا الكائن'
+                    : 'Simulation finished, scan information embedded in this object',
+                positives: isSuspicious ? Math.floor(Math.random() * 5) + 1 : 0,
+                total: 60,
+                scans: {
+                    "Bkav": { "detected": isSuspicious, "version": "1.3.0.9899", "result": isSuspicious ? "W32.AIDetect.malware" : null, "update": "20240101" },
+                    "Kaspersky": { "detected": isSuspicious, "version": "21.0.1.45", "result": isSuspicious ? "Trojan.Win32.Generic" : null, "update": "20240101" },
+                    "Symantec": { "detected": false, "version": "1.8.0.0", "result": null, "update": "20240101" }
+                    // ... more mock data could be added
                 }
             });
         }, 1500);
@@ -223,11 +265,15 @@ router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
     }
 });
 
-// Virus Scanner API - Scan URL Endpoint
-router.post('/virus-scanner/scan-url', express.json(), (req, res) => {
+// Virus Scanner Simulation API - URL Scan Endpoint
+router.post('/simulations/virus-scanner/scan-url', express.json(), (req, res) => {
     const { url } = req.body;
     if (!url) {
-        return res.status(400).json({ success: false, error: 'No URL provided' });
+        return res.status(400).json({
+            success: false,
+            simulation: true,
+            error: req.lang === 'ar' ? 'لم يتم توفير رابط' : 'No URL provided'
+        });
     }
 
     try {
@@ -242,22 +288,21 @@ router.post('/virus-scanner/scan-url', express.json(), (req, res) => {
         
         // Simulate processing delay
         setTimeout(() => {
-            res.json({
-                success: true,
-                data: {
-                    scan_id: urlHash,
-                    permalink: `https://www.virustotal.com/gui/url/${urlHash}`,
-                    resource: url,
-                    response_code: 1,
-                    scan_date: new Date().toISOString(),
-                    verbose_msg: 'Scan finished, scan information embedded in this object',
-                    positives: isSuspicious ? Math.floor(Math.random() * 3) + 1 : 0,
-                    total: 80,
-                    scans: {
-                        "Google Safebrowsing": { "detected": isSuspicious, "result": isSuspicious ? "Malware Site" : "Clean site" },
-                        "PhishTank": { "detected": isSuspicious, "result": isSuspicious ? "Phishing Site" : "Clean site" },
-                        "Opera": { "detected": false, "result": "Clean site" }
-                    }
+            sendSimulationResponse(res, req.lang, {
+                scan_id: urlHash,
+                permalink: `https://www.virustotal.com/gui/url/${urlHash}`,
+                resource: url,
+                response_code: 1,
+                scan_date: new Date().toISOString(),
+                verbose_msg: req.lang === 'ar'
+                    ? 'تم إنشاء نتيجة محاكاة ودمجها في هذا الكائن'
+                    : 'Simulation finished, scan information embedded in this object',
+                positives: isSuspicious ? Math.floor(Math.random() * 3) + 1 : 0,
+                total: 80,
+                scans: {
+                    "Google Safebrowsing": { "detected": isSuspicious, "result": isSuspicious ? "Malware Site" : "Clean site" },
+                    "PhishTank": { "detected": isSuspicious, "result": isSuspicious ? "Phishing Site" : "Clean site" },
+                    "Opera": { "detected": false, "result": "Clean site" }
                 }
             });
         }, 1500);

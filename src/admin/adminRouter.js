@@ -4,13 +4,29 @@
  */
 
 const express = require('express');
+const crypto = require('crypto');
 const { config } = require('../utils/config');
-const { cookieStore } = require('../session/sessionManager');
+const { getSessionRuntimeStats } = require('../session/sessionManager');
 const { getBlockedIPs, getSecurityStats, blockIP, unblockIP } = require('../security/security');
-const { logger, auditLogger } = require('../utils/logger');
+const { logger } = require('../utils/logger');
 const { rateLimiters } = require('../security/security');
 
 const router = express.Router();
+
+const safeEqual = (left, right) => {
+  if (typeof left !== 'string' || typeof right !== 'string') {
+    return false;
+  }
+
+  const leftBuffer = Buffer.from(left, 'utf8');
+  const rightBuffer = Buffer.from(right, 'utf8');
+
+  if (leftBuffer.length !== rightBuffer.length) {
+    return false;
+  }
+
+  return crypto.timingSafeEqual(leftBuffer, rightBuffer);
+};
 
 router.use((req, res, next) => {
   res.setHeader('X-Robots-Tag', 'noindex, nofollow');
@@ -19,6 +35,10 @@ router.use((req, res, next) => {
 
 // Simple auth middleware
 const adminAuth = (req, res, next) => {
+  if (!config.adminEnabled || !config.hasConfiguredAdminAuth) {
+    return res.status(404).send('Not Found');
+  }
+
   const auth = req.headers.authorization;
   
   if (!auth || !auth.startsWith('Basic ')) {
@@ -29,7 +49,7 @@ const adminAuth = (req, res, next) => {
   const credentials = Buffer.from(auth.split(' ')[1], 'base64').toString().split(':');
   const [username, password] = credentials;
 
-  if (username !== config.adminUsername || password !== config.adminPassword) {
+  if (!safeEqual(username, config.adminUsername) || !safeEqual(password, config.adminPassword)) {
     res.setHeader('WWW-Authenticate', 'Basic realm="Admin Area"');
     return res.status(401).send('Invalid credentials');
   }
@@ -48,7 +68,7 @@ router.use(adminAuth);
 router.get('/', (req, res) => {
   const stats = {
     security: getSecurityStats(),
-    cookies: cookieStore.getStats(),
+    sessions: getSessionRuntimeStats(),
     features: config.features,
     uptime: process.uptime(),
     memory: process.memoryUsage(),
@@ -73,10 +93,7 @@ router.get('/api/stats', (req, res) => {
     memory: process.memoryUsage(),
     cpu: process.cpuUsage(),
     timestamp: new Date().toISOString(),
-    connections: {
-      sessions: cookieStore.getStats().sessions,
-      cookies: cookieStore.getStats().totalCookies
-    },
+    connections: getSessionRuntimeStats(),
     security: getSecurityStats()
   };
 

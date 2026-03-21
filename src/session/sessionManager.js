@@ -1,286 +1,295 @@
 /**
- * Session & Cookie Management
- * إدارة الجلسات وملفات تعريف الارتباط
+ * Session & Proxy Cookie Management
+ * إدارة الجلسات وملفات تعريف الارتباط الخاصة بالبروكسي
  */
 
+const session = require('express-session');
 const { v4: uuidv4 } = require('uuid');
 const { config } = require('../utils/config');
 const { logger } = require('../utils/logger');
 
-// In-memory session store (use Redis in production)
-class MemorySessionStore {
-  constructor() {
-    this.sessions = new Map();
-    this.cleanupInterval = setInterval(() => this.cleanup(), 60 * 60 * 1000); // Cleanup every hour
+let RedisStore = null;
+let createRedisClient = null;
+
+try {
+  ({ RedisStore } = require('connect-redis'));
+  ({ createClient: createRedisClient } = require('redis'));
+} catch (error) {
+  if (config.redisUrl) {
+    logger.warn('Redis session dependencies are missing. Run `npm install redis connect-redis` to enable persistent sessions.');
+  }
+}
+
+let redisClient = null;
+let redisStore = null;
+let redisConnectStarted = false;
+
+const getSessionCookieSecure = () => {
+  if (config.sessionCookieSecure === 'auto') {
+    return 'auto';
+  }
+  return config.sessionCookieSecure;
+};
+
+const connectRedis = () => {
+  if (!config.redisUrl || !createRedisClient || redisConnectStarted) {
+    return;
   }
 
-  get(sid) {
-    const session = this.sessions.get(sid);
-    if (session && session.expires > Date.now()) {
-      return session;
-    }
-    if (session) {
-      this.sessions.delete(sid);
-    }
-    return null;
+  redisConnectStarted = true;
+  redisClient = createRedisClient({
+    url: config.redisUrl
+  });
+
+  redisClient.on('error', (error) => {
+    logger.error(`Redis session client error: ${error.message}`);
+  });
+
+  redisClient.on('ready', () => {
+    logger.info('Redis session client is ready');
+  });
+
+  redisClient.connect().catch((error) => {
+    logger.error(`Failed to connect Redis session client: ${error.message}`);
+  });
+};
+
+const getSessionStore = () => {
+  if (!config.redisUrl || !RedisStore || !createRedisClient) {
+    return undefined;
   }
 
-  set(sid, session) {
-    this.sessions.set(sid, {
-      ...session,
-      expires: Date.now() + config.sessionMaxAge
+  if (!redisStore) {
+    connectRedis();
+    redisStore = new RedisStore({
+      client: redisClient,
+      prefix: config.sessionStorePrefix,
+      ttl: Math.ceil(config.sessionMaxAge / 1000)
     });
   }
 
-  destroy(sid) {
-    this.sessions.delete(sid);
+  return redisStore;
+};
+
+const createSessionMiddleware = () => {
+  const store = getSessionStore();
+
+  if (store) {
+    logger.info('Using Redis-backed session store');
+  } else {
+    logger.warn('Using express-session MemoryStore. Configure REDIS_URL for distributed persistent sessions.');
   }
 
-  cleanup() {
-    const now = Date.now();
-    for (const [sid, session] of this.sessions.entries()) {
-      if (session.expires <= now) {
-        this.sessions.delete(sid);
-      }
+  return session({
+    store,
+    secret: config.sessionSecret,
+    resave: false,
+    saveUninitialized: false,
+    rolling: config.sessionRolling,
+    unset: 'destroy',
+    name: config.sessionCookieName,
+    proxy: config.isProduction,
+    cookie: {
+      secure: getSessionCookieSecure(),
+      httpOnly: config.sessionCookieHttpOnly,
+      maxAge: config.sessionMaxAge,
+      sameSite: config.sessionCookieSameSite
     }
-    logger.info(`Session cleanup completed. Active sessions: ${this.sessions.size}`);
-  }
+  });
+};
 
-  getStore() {
-    return {
-      get: (sid, cb) => {
-        const session = this.get(sid);
-        cb(null, session);
-      },
-      set: (sid, session, cb) => {
-        this.set(sid, session);
-        cb(null);
-      },
-      destroy: (sid, cb) => {
-        this.destroy(sid);
-        cb(null);
-      }
-    };
-  }
-}
-
-// Per-target cookie store
-class CookieStore {
-  constructor() {
-    this.cookies = new Map(); // sessionId -> { domain -> [cookies] }
-  }
-
-  /**
-   * Store cookies for a session and domain
-   * تخزين ملفات تعريف الارتباط للجلسة والنطاق
-   */
-  storeCookies(sessionId, domain, setCookieHeaders) {
-    if (!this.cookies.has(sessionId)) {
-      this.cookies.set(sessionId, new Map());
-    }
-    
-    const sessionCookies = this.cookies.get(sessionId);
-    if (!sessionCookies.has(domain)) {
-      sessionCookies.set(domain, new Map());
-    }
-
-    const domainCookies = sessionCookies.get(domain);
-
-    if (!Array.isArray(setCookieHeaders)) {
-      setCookieHeaders = [setCookieHeaders];
-    }
-
-    for (const cookieStr of setCookieHeaders) {
-      if (!cookieStr) continue;
-      
-      const parsed = this.parseCookie(cookieStr);
-      if (parsed.name) {
-        domainCookies.set(parsed.name, {
-          value: parsed.value,
-          domain: parsed.domain || domain,
-          path: parsed.path || '/',
-          expires: parsed.expires,
-          httpOnly: parsed.httpOnly,
-          secure: parsed.secure,
-          sameSite: parsed.sameSite
-        });
-      }
-    }
-  }
-
-  /**
-   * Get cookies for a session and domain
-   * الحصول على ملفات تعريف الارتباط للجلسة والنطاق
-   */
-  getCookies(sessionId, domain) {
-    const sessionCookies = this.cookies.get(sessionId);
-    if (!sessionCookies) return '';
-
-    const domainCookies = sessionCookies.get(domain);
-    if (!domainCookies) return '';
-
-    const cookieStrings = [];
-    const now = new Date();
-
-    for (const [name, cookie] of domainCookies.entries()) {
-      if (cookie.expires && new Date(cookie.expires) < now) {
-        domainCookies.delete(name);
-        continue;
-      }
-      cookieStrings.push(`${name}=${cookie.value}`);
-    }
-
-    return cookieStrings.join('; ');
-  }
-
-  /**
-   * Parse a Set-Cookie header value
-   * تحليل قيمة ترويسة Set-Cookie
-   */
-  parseCookie(cookieStr) {
-    const parts = cookieStr.split(';').map(p => p.trim());
-    const [nameValue, ...attrs] = parts;
-    const [name, value] = nameValue.split('=').map(s => s.trim());
-
-    const cookie = { name, value };
-
-    for (const attr of attrs) {
-      const [key, val] = attr.split('=').map(s => s.trim().toLowerCase());
-      
-      switch (key) {
-        case 'expires':
-          cookie.expires = new Date(val).toISOString();
-          break;
-        case 'max-age':
-          cookie.expires = new Date(Date.now() + parseInt(val) * 1000).toISOString();
-          break;
-        case 'domain':
-          cookie.domain = val;
-          break;
-        case 'path':
-          cookie.path = val;
-          break;
-        case 'httponly':
-          cookie.httpOnly = true;
-          break;
-        case 'secure':
-          cookie.secure = true;
-          break;
-        case 'samesite':
-          cookie.sameSite = val;
-          break;
-      }
-    }
-
-    return cookie;
-  }
-
-  /**
-   * Clear session cookies
-   * مسح ملفات تعريف الارتباط للجلسة
-   */
-  clearSession(sessionId) {
-    this.cookies.delete(sessionId);
-  }
-
-  /**
-   * Get session stats
-   * الحصول على إحصائيات الجلسة
-   */
-  getStats() {
-    let totalCookies = 0;
-    for (const sessionCookies of this.cookies.values()) {
-      for (const domainCookies of sessionCookies.values()) {
-        totalCookies += domainCookies.size;
-      }
-    }
-    return {
-      sessions: this.cookies.size,
-      totalCookies
-    };
-  }
-}
-
-// Session management middleware
-const sessionManager = new MemorySessionStore();
-const cookieStore = new CookieStore();
-
-/**
- * Middleware to ensure session exists
- * وسيط للتأكد من وجود الجلسة
- */
 const ensureSession = (req, res, next) => {
-  if (!req.session) {
-    req.session = {};
-  }
-  
   if (!req.session.proxySessionId) {
     req.session.proxySessionId = uuidv4();
     req.session.createdAt = new Date().toISOString();
     req.session.bandwidthUsed = 0;
     req.session.requestCount = 0;
     req.session.tier = req.session.tier || 'free';
+    req.session.proxyCookies = req.session.proxyCookies || {};
   }
 
   req.session.lastActive = new Date().toISOString();
-  req.session.requestCount++;
+  req.session.requestCount = (req.session.requestCount || 0) + 1;
 
   next();
 };
 
-/**
- * Check bandwidth limits
-   * التحقق من حدود النطاق الترددي
- */
 const checkBandwidthLimit = (req, res, next) => {
-  const tier = req.session.tier || 'free';
+  const tier = req.session?.tier || 'free';
   const limit = tier === 'premium' ? config.premiumTierBandwidth : config.freeTierBandwidth;
-  
-  if (req.session.bandwidthUsed >= limit) {
+  const bandwidthUsed = req.session?.bandwidthUsed || 0;
+
+  if (bandwidthUsed >= limit) {
     return res.status(429).render('error', {
       title: 'تم تجاوز الحد - Limit Exceeded',
       error: 'لقد تجاوزت حد النطاق الترددي. يرجى الترقية إلى الباقة المميزة.',
       code: 429
     });
   }
-  
+
   next();
 };
 
-/**
- * Track bandwidth usage
- * تتبع استخدام النطاق الترددي
- */
-const trackBandwidth = (bytes) => {
+const trackBandwidth = () => {
   return (req, res, next) => {
-    const originalEnd = res.end;
+    const originalWrite = res.write.bind(res);
+    const originalEnd = res.end.bind(res);
     let dataLength = 0;
 
-    res.write = function(chunk) {
+    res.write = function writePatched(chunk, ...args) {
       if (chunk) {
-        dataLength += chunk.length;
+        dataLength += Buffer.isBuffer(chunk) ? chunk.length : Buffer.byteLength(chunk);
       }
-      return originalEnd.apply(this, arguments);
+      return originalWrite(chunk, ...args);
     };
 
-    res.end = function(chunk) {
+    res.end = function endPatched(chunk, ...args) {
       if (chunk) {
-        dataLength += chunk.length;
+        dataLength += Buffer.isBuffer(chunk) ? chunk.length : Buffer.byteLength(chunk);
       }
+
       if (req.session) {
         req.session.bandwidthUsed = (req.session.bandwidthUsed || 0) + dataLength;
       }
-      return originalEnd.apply(this, arguments);
+
+      return originalEnd(chunk, ...args);
     };
 
     next();
   };
 };
 
+const parseCookie = (cookieStr) => {
+  const parts = cookieStr.split(';').map((part) => part.trim());
+  const [nameValue, ...attrs] = parts;
+  const separatorIndex = nameValue.indexOf('=');
+
+  if (separatorIndex === -1) {
+    return {};
+  }
+
+  const cookie = {
+    name: nameValue.slice(0, separatorIndex).trim(),
+    value: nameValue.slice(separatorIndex + 1).trim()
+  };
+
+  for (const attr of attrs) {
+    const attrSeparatorIndex = attr.indexOf('=');
+    const key = (attrSeparatorIndex === -1 ? attr : attr.slice(0, attrSeparatorIndex)).trim().toLowerCase();
+    const value = attrSeparatorIndex === -1 ? '' : attr.slice(attrSeparatorIndex + 1).trim();
+
+    switch (key) {
+      case 'expires':
+        cookie.expires = new Date(value).toISOString();
+        break;
+      case 'max-age':
+        cookie.expires = new Date(Date.now() + parseInt(value, 10) * 1000).toISOString();
+        break;
+      case 'domain':
+        cookie.domain = value.toLowerCase();
+        break;
+      case 'path':
+        cookie.path = value || '/';
+        break;
+      case 'httponly':
+        cookie.httpOnly = true;
+        break;
+      case 'secure':
+        cookie.secure = true;
+        break;
+      case 'samesite':
+        cookie.sameSite = value;
+        break;
+    }
+  }
+
+  return cookie;
+};
+
+const getDomainCookieJar = (req, domain) => {
+  req.session.proxyCookies = req.session.proxyCookies || {};
+
+  if (!req.session.proxyCookies[domain]) {
+    req.session.proxyCookies[domain] = {};
+  }
+
+  return req.session.proxyCookies[domain];
+};
+
+const storeProxyCookies = (req, domain, setCookieHeaders) => {
+  if (!req.session) {
+    return;
+  }
+
+  const headers = Array.isArray(setCookieHeaders) ? setCookieHeaders : [setCookieHeaders];
+  const jar = getDomainCookieJar(req, domain);
+
+  for (const cookieStr of headers) {
+    if (!cookieStr) continue;
+
+    const parsed = parseCookie(cookieStr);
+    if (!parsed.name) continue;
+
+    jar[parsed.name] = {
+      value: parsed.value,
+      domain: parsed.domain || domain,
+      path: parsed.path || '/',
+      expires: parsed.expires,
+      httpOnly: parsed.httpOnly,
+      secure: parsed.secure,
+      sameSite: parsed.sameSite
+    };
+  }
+
+  req.session.proxyCookies = req.session.proxyCookies;
+};
+
+const getProxyCookies = (req, domain) => {
+  const jar = req.session?.proxyCookies?.[domain];
+
+  if (!jar) {
+    return '';
+  }
+
+  const cookieStrings = [];
+  const now = Date.now();
+
+  Object.entries(jar).forEach(([name, cookie]) => {
+    if (cookie.expires && new Date(cookie.expires).getTime() < now) {
+      delete jar[name];
+      return;
+    }
+
+    cookieStrings.push(`${name}=${cookie.value}`);
+  });
+
+  if (Object.keys(jar).length === 0 && req.session?.proxyCookies) {
+    delete req.session.proxyCookies[domain];
+  }
+
+  return cookieStrings.join('; ');
+};
+
+const clearProxyCookies = (req) => {
+  if (req.session) {
+    req.session.proxyCookies = {};
+  }
+};
+
+const getSessionRuntimeStats = () => ({
+  store: config.redisUrl ? 'redis' : 'memory',
+  persistent: Boolean(config.redisUrl),
+  redisConfigured: Boolean(config.redisUrl),
+  redisConnected: Boolean(redisClient?.isOpen)
+});
+
 module.exports = {
-  sessionManager,
-  cookieStore,
+  createSessionMiddleware,
   ensureSession,
   checkBandwidthLimit,
-  trackBandwidth
+  trackBandwidth,
+  storeProxyCookies,
+  getProxyCookies,
+  clearProxyCookies,
+  getSessionRuntimeStats
 };

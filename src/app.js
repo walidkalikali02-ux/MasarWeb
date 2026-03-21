@@ -8,7 +8,6 @@ const helmet = require('helmet');
 const cors = require('cors');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const hpp = require('hpp');
 const path = require('path');
 require('dotenv').config();
@@ -23,13 +22,14 @@ Sentry.init({
 });
 
 const { securityMiddleware, rateLimiters } = require('./security/security');
-const { sessionManager } = require('./session/sessionManager');
+const { createSessionMiddleware } = require('./session/sessionManager');
 const { proxyRouter } = require('./proxy/proxyRouter');
 const { logger } = require('./utils/logger');
 const { config } = require('./utils/config');
+const { adminRouter } = require('./admin/adminRouter');
 const { setupWebSocketProxy } = require('./proxy/websocketHandler');
+const { getArticleIndex, getArticleBySlug } = require('./content/blogContent');
 const locales = require('./locales');
-const articles = require('./data/articles');
 const toolsRouter = require('./tools/toolsRouter');
 
 const app = express();
@@ -86,18 +86,7 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 app.use(cookieParser(config.cookieSecret));
 
 // Session configuration
-app.use(session({
-  secret: config.sessionSecret,
-  resave: false,
-  saveUninitialized: false,
-  name: 'proxySession',
-  cookie: {
-    secure: config.isProduction,
-    httpOnly: true,
-    maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    sameSite: 'strict'
-  }
-}));
+app.use(createSessionMiddleware());
 
 // Language Middleware
 app.use((req, res, next) => {
@@ -282,31 +271,53 @@ app.get('/privacy', (req, res) => res.render('privacy', {
 // Tools Routes
 app.use('/tools', toolsRouter);
 
-// Blog Routes
-app.get('/blog', (req, res) => {
-    const sorted = [...articles].sort((a, b) => {
-      const da = new Date(a.date);
-      const db = new Date(b.date);
-      return db - da;
+// Admin routes stay disabled until explicitly enabled and configured.
+app.use('/admin', (req, res, next) => {
+  if (config.adminEnabled && config.hasConfiguredAdminAuth) {
+    return adminRouter(req, res, next);
+  }
+
+  res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+
+  if (req.accepts('html')) {
+    return res.status(404).render('error', {
+      title: res.locals.t?.error?.title_404 || 'Not Found',
+      error: res.locals.currentLang === 'ar' ? 'الصفحة غير موجودة' : 'Page not found',
+      code: 404
     });
+  }
+
+  return res.status(404).json({ error: 'Not Found' });
+});
+
+// Blog Routes
+app.get('/blog', async (req, res, next) => {
+  try {
+    const articles = await getArticleIndex();
+
     res.render('blog', {
-      articles: sorted,
+      articles,
       pageTitle: res.locals.t.blog_title || 'Blog',
       description: res.locals.currentLang === 'ar'
         ? 'أحدث مقالات MasarWeb حول الخصوصية والأمان وأدوات الحماية.'
         : 'Latest MasarWeb articles on privacy, security, and protection tools.'
     });
+  } catch (error) {
+    next(error);
+  }
 });
 
-app.get('/blog/:slug', (req, res) => {
-    const article = articles.find(a => a.slug === req.params.slug);
+app.get('/blog/:slug', async (req, res, next) => {
+  try {
+    const article = await getArticleBySlug(req.params.slug);
     if (!article) {
-        return res.status(404).render('error', {
-            title: 'Not Found',
-            error: 'Article not found',
-            code: 404
-        });
+      return res.status(404).render('error', {
+        title: 'Not Found',
+        error: 'Article not found',
+        code: 404
+      });
     }
+
     const baseStructuredData = res.locals.structuredData || [];
     res.render('article', {
       article,
@@ -344,10 +355,14 @@ app.get('/blog/:slug', (req, res) => {
         }
       ]
     });
+  } catch (error) {
+    next(error);
+  }
 });
 
 // Sitemap
-app.get('/sitemap.xml', (req, res) => {
+app.get('/sitemap.xml', async (req, res, next) => {
+    try {
     const baseUrl = getBaseUrl(req);
     const staticPages = [
         '/',
@@ -385,6 +400,7 @@ app.get('/sitemap.xml', (req, res) => {
     });
 
     // Add blog articles
+    const articles = await getArticleIndex();
     articles.forEach(article => {
         xml += '<url>';
         xml += `<loc>${baseUrl}/blog/${article.slug}</loc>`;
@@ -398,6 +414,9 @@ app.get('/sitemap.xml', (req, res) => {
 
     res.header('Content-Type', 'application/xml');
     res.send(xml);
+    } catch (error) {
+      next(error);
+    }
 });
 
 // Robots.txt
@@ -461,6 +480,15 @@ if (require.main === module) {
   const server = app.listen(PORT, () => {
     logger.info(`MasarWeb running on port ${PORT}`);
     logger.info(`Environment: ${config.isProduction ? 'production' : 'development'}`);
+    logger.info(`Admin routes: ${config.adminEnabled && config.hasConfiguredAdminAuth ? 'enabled' : 'disabled'}`);
+    if (config.adminEnabled && !config.hasConfiguredAdminAuth) {
+      logger.warn('Admin routes requested but disabled because credentials are not configured');
+    }
+
+    if (config.websocketsRequested && !config.websocketRuntimeSupported) {
+      logger.warn('WebSocket proxy requested but disabled because the current runtime does not support WebSocket upgrades');
+    }
+
     logger.info(`WebSocket proxy: ${config.features.websockets ? 'enabled' : 'disabled'}`);
   });
 

@@ -7,6 +7,11 @@
     <main class="main-content">
         <div class="container">
             <h1 class="page-title"><%= title %></h1>
+            <p style="margin-top: 1rem; color: var(--text-light); max-width: 760px;">
+                <%= currentLang === 'ar'
+                    ? 'الأدوات التي تحمل شارة "محاكاة" تعرض نتائج أو نماذج توضيحية وليست خدمات أمنية تشغيلية حقيقية.'
+                    : 'Tools marked with the "Simulation" badge return demo/sample results and are not operational security services.' %>
+            </p>
             
             <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
                 <!-- Virus Scanner Tool Card -->
@@ -15,8 +20,11 @@
                         🛡️
                     </div>
                     <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'فاحص الفيروسات' : 'Virus Scanner' %></h2>
+                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
+                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
+                    </span>
                     <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'افحص الملفات والروابط باستخدام محركات مكافحة فيروسات متعددة.' : 'Scan files and URLs with multiple antivirus engines.' %>
+                        <%= currentLang === 'ar' ? 'واجهة عرض تجريبي لنتائج فحص ملفات وروابط بشكل محاكى.' : 'Demo interface for simulated file and URL scanning results.' %>
                     </p>
                 </a>
 
@@ -81,8 +89,11 @@
                         🔍
                     </div>
                     <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'فاحص تسريب البيانات' : 'Breach Checker' %></h2>
+                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
+                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
+                    </span>
                     <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'تحقق مما إذا كان بريدك الإلكتروني أو كلمات المرور قد تسربت في خرق بيانات معروف.' : 'Check if your email or passwords have been exposed in known data breaches.' %>
+                        <%= currentLang === 'ar' ? 'نموذج توضيحي لفحص التسريبات باستخدام بيانات محاكاة.' : 'Illustrative breach-checking experience using simulated data.' %>
                     </p>
                 </a>
 
@@ -147,8 +158,11 @@
                         🏢
                     </div>
                     <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'خزنة كلمات المرور للفريق' : 'Team Password Vault' %></h2>
+                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
+                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
+                    </span>
                     <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إدارة الوصول الآمن للحسابات المشتركة مع التحكم في الأدوار والتشفير.' : 'Securely manage shared accounts with role-based access control and encryption.' %>
+                        <%= currentLang === 'ar' ? 'محاكاة معمارية توضّح شكل خزنة فرق العمل وليست مدير أسرار جاهزاً للإنتاج.' : 'Architectural simulation of a team vault, not a production-ready secrets manager.' %>
                     </p>
                 </a>
             </div>
