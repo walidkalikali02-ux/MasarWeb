@@ -40,6 +40,13 @@ const getBaseUrl = (req) => {
   if (config.publicBaseUrl) return normalizeBaseUrl(config.publicBaseUrl);
   return `${req.protocol}://${req.get('host')}`;
 };
+const DEFAULT_LANG = 'ar';
+const buildLocalizedUrl = (baseUrl, path, lang) => {
+  if (lang && lang !== DEFAULT_LANG) {
+    return `${baseUrl}${path}?lang=${lang}`;
+  }
+  return `${baseUrl}${path}`;
+};
 
 // Trust proxy for accurate IP detection
 app.set('trust proxy', 1);
@@ -115,13 +122,15 @@ app.use((req, res, next) => {
   const siteName = res.locals.t?.title || 'MasarWeb';
   const siteDescription = res.locals.t?.description || res.locals.t?.tagline || 'Secure web proxy';
   const logoUrl = `${baseUrl}/static/images/logo.svg`;
+  const currentLang = res.locals.currentLang || DEFAULT_LANG;
 
   res.locals.baseUrl = baseUrl;
-  res.locals.canonicalUrl = `${baseUrl}${req.path}`;
+  res.locals.canonicalUrl = buildLocalizedUrl(baseUrl, req.path, currentLang);
   res.locals.ogImage = logoUrl;
   res.locals.robots = 'index, follow';
+  res.locals.xDefaultUrl = buildLocalizedUrl(baseUrl, req.path, DEFAULT_LANG);
   res.locals.hreflang = Object.keys(locales).reduce((acc, code) => {
-    acc[code] = `${baseUrl}${req.path}?lang=${code}`;
+    acc[code] = buildLocalizedUrl(baseUrl, req.path, code);
     return acc;
   }, {});
   res.locals.structuredData = [

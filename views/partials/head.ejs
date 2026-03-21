@@ -8,12 +8,13 @@
         const seoDescription = typeof description !== 'undefined'
             ? description
             : (t.description || t.tagline);
+        const siteBaseUrl = typeof baseUrl !== 'undefined' ? baseUrl : '';
         const canonical = typeof canonicalUrl !== 'undefined'
             ? canonicalUrl
-            : `https://masarweb.com${currentUrl}`;
+            : `${siteBaseUrl}${currentUrl}`;
         const ogImageUrl = typeof ogImage !== 'undefined'
             ? ogImage
-            : 'https://masarweb.com/static/images/logo.svg';
+            : `${siteBaseUrl}/static/images/logo.svg`;
         const robotsValue = typeof robots !== 'undefined' ? robots : 'index, follow';
         const ogTypeValue = typeof ogType !== 'undefined' ? ogType : 'website';
         const safeArticleMeta = typeof articleMeta !== 'undefined' ? articleMeta : null;
@@ -32,7 +33,7 @@
         <% Object.keys(hreflang).forEach(function(code) { %>
             <link rel="alternate" hreflang="<%= code %>" href="<%= hreflang[code] %>">
         <% }); %>
-        <link rel="alternate" hreflang="x-default" href="<%= canonical %>">
+        <link rel="alternate" hreflang="x-default" href="<%= typeof xDefaultUrl !== 'undefined' ? xDefaultUrl : canonical %>">
     <% } %>
 
     <!-- Open Graph / Facebook -->
