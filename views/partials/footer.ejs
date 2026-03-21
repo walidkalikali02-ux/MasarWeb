@@ -5,6 +5,7 @@
         <% } %>
         <div class="footer-nav">
             <a href="/"><%= t.nav_home %></a>
+            <a href="/about"><%= t.nav_about || (currentLang === 'ar' ? 'من نحن' : 'About') %></a>
             <a href="/blog"><%= t.nav_blog || 'Blog' %></a>
             <a href="/support"><%= t.nav_support %></a>
             <a href="/terms"><%= t.nav_terms %></a>

@@ -11,6 +11,7 @@
         
         <div class="nav-links">
             <a href="/" class="<%= currentUrl === '/' ? 'active' : '' %>"><%= t.nav_home %></a>
+            <a href="/about" class="<%= currentUrl === '/about' ? 'active' : '' %>"><%= t.nav_about || (currentLang === 'ar' ? 'من نحن' : 'About') %></a>
             <a href="/blog" class="<%= currentUrl && currentUrl.startsWith('/blog') ? 'active' : '' %>"><%= t.nav_blog || 'Blog' %></a>
             <a href="/tools" class="<%= currentUrl && currentUrl.startsWith('/tools') ? 'active' : '' %>"><%= t.nav_tools || (currentLang === 'ar' ? 'أدوات' : 'Tools') %></a>
             <a href="/support" class="<%= currentUrl === '/support' ? 'active' : '' %>"><%= t.nav_support %></a>

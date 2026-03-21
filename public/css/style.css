@@ -729,6 +729,207 @@ body {
     transform: scaleX(-1);
 }
 
+/* About Page */
+.about-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px 0 70px;
+}
+
+.about-hero,
+.about-split,
+.about-pillar-section,
+.about-audience,
+.about-proof,
+.about-quotes,
+.about-cta {
+    border: 2px solid #000;
+    background: #fff;
+}
+
+.about-hero,
+.about-pillar-section,
+.about-proof,
+.about-quotes,
+.about-cta {
+    padding: 40px;
+}
+
+.about-kicker {
+    display: inline-block;
+    margin-bottom: 18px;
+    padding: 6px 12px;
+    border: 2px solid #000;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    line-height: 1.05;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.about-intro {
+    max-width: 900px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.about-summary {
+    max-width: 800px;
+    color: #444;
+}
+
+.about-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.about-panel {
+    padding: 36px;
+}
+
+.about-panel:first-child {
+    border-right: 2px solid #000;
+}
+
+[dir="rtl"] .about-panel:first-child {
+    border-right: none;
+    border-left: 2px solid #000;
+}
+
+.about-panel h2,
+.about-pillar-section h2,
+.about-proof h2,
+.about-quotes h2,
+.about-cta h2,
+.about-audience-copy h2 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.about-pillars,
+.about-proof-grid,
+.about-quote-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.about-pillar-card,
+.about-proof-card,
+.about-quote-card,
+.about-stat {
+    border: 2px solid #000;
+    padding: 24px;
+    background: #fff;
+}
+
+.about-pillar-card h3,
+.about-proof-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.15rem;
+}
+
+.about-pillar-card p,
+.about-proof-card p,
+.about-quote-card p,
+.about-audience-copy p,
+.about-cta p,
+.about-panel p {
+    color: #333;
+}
+
+.about-audience {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+}
+
+.about-audience-copy {
+    padding: 36px;
+    border-right: 2px solid #000;
+}
+
+[dir="rtl"] .about-audience-copy {
+    border-right: none;
+    border-left: 2px solid #000;
+}
+
+.about-stats {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+}
+
+.about-stat strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+}
+
+.about-stat span {
+    color: #444;
+}
+
+.about-quote-card {
+    margin: 0;
+}
+
+.about-quote-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.about-quote-card::before {
+    content: '"';
+    display: block;
+    margin-bottom: 8px;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.about-cta {
+    text-align: center;
+}
+
+.about-cta p {
+    max-width: 720px;
+    margin: 0 auto 24px;
+}
+
+.about-cta-actions {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.about-secondary-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 32px;
+    border: 2px solid #000;
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.about-secondary-link:hover {
+    background: #000;
+    color: #fff;
+}
+
 /* Footer Updates */
 .main-footer {
     margin-top: auto;
@@ -821,5 +1022,36 @@ body {
     .step-arrow {
         transform: rotate(90deg);
         margin: 10px 0;
+    }
+
+    .about-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-split,
+    .about-pillars,
+    .about-proof-grid,
+    .about-quote-grid,
+    .about-audience {
+        grid-template-columns: 1fr;
+    }
+
+    .about-panel:first-child,
+    .about-audience-copy,
+    [dir="rtl"] .about-panel:first-child,
+    [dir="rtl"] .about-audience-copy {
+        border-right: none;
+        border-left: none;
+        border-bottom: 2px solid #000;
+    }
+
+    .about-hero,
+    .about-pillar-section,
+    .about-proof,
+    .about-quotes,
+    .about-cta,
+    .about-panel,
+    .about-audience-copy {
+        padding: 26px;
     }
 }

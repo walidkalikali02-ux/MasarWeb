@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('partials/head', { pageTitle, description }) %>
+<body class="about-page">
+    <%- include('partials/navbar') %>
+
+    <div class="container">
+        <main class="about-layout">
+            <section class="about-hero">
+                <p class="about-kicker"><%= currentLang === 'ar' ? 'صفحة تعريف' : 'About Page' %></p>
+                <h1><%= about.title %></h1>
+                <p class="about-intro"><%= about.intro %></p>
+                <p class="about-summary"><%= about.summary %></p>
+            </section>
+
+            <section class="about-split">
+                <div class="about-panel">
+                    <h2><%= about.missionTitle %></h2>
+                    <p><%= about.missionText %></p>
+                </div>
+                <div class="about-panel">
+                    <h2><%= about.storyTitle %></h2>
+                    <p><%= about.storyText %></p>
+                </div>
+            </section>
+
+            <section class="about-pillar-section">
+                <h2><%= about.pillarsTitle %></h2>
+                <div class="about-pillars">
+                    <% about.pillars.forEach(function(pillar) { %>
+                        <article class="about-pillar-card">
+                            <h3><%= pillar.title %></h3>
+                            <p><%= pillar.text %></p>
+                        </article>
+                    <% }) %>
+                </div>
+            </section>
+
+            <section class="about-audience">
+                <div class="about-audience-copy">
+                    <h2><%= about.audienceTitle %></h2>
+                    <p><%= about.audienceText %></p>
+                </div>
+                <div class="about-stats">
+                    <% about.stats.forEach(function(stat) { %>
+                        <div class="about-stat">
+                            <strong><%= stat.value %></strong>
+                            <span><%= stat.label %></span>
+                        </div>
+                    <% }) %>
+                </div>
+            </section>
+
+            <section class="about-proof">
+                <h2><%= about.proofTitle %></h2>
+                <div class="about-proof-grid">
+                    <% about.proofCards.forEach(function(card) { %>
+                        <article class="about-proof-card">
+                            <h3><%= card.title %></h3>
+                            <p><%= card.text %></p>
+                        </article>
+                    <% }) %>
+                </div>
+            </section>
+
+            <section class="about-quotes">
+                <h2><%= about.quotesTitle %></h2>
+                <div class="about-quote-grid">
+                    <% about.quotes.forEach(function(quote) { %>
+                        <blockquote class="about-quote-card">
+                            <p><%= quote %></p>
+                        </blockquote>
+                    <% }) %>
+                </div>
+            </section>
+
+            <section class="about-cta">
+                <h2><%= about.ctaTitle %></h2>
+                <p><%= about.ctaText %></p>
+                <div class="about-cta-actions">
+                    <a href="/" class="cta-button"><%= about.ctaPrimary %></a>
+                    <a href="/tools" class="about-secondary-link"><%= about.ctaSecondary %></a>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

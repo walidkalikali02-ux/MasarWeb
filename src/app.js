@@ -186,6 +186,90 @@ app.get('/support', (req, res) => res.render('support', {
   pageTitle: `${res.locals.t.support_page.title} - ${res.locals.t.title}`,
   description: res.locals.t.support_page.desc
 }));
+app.get('/about', (req, res) => {
+  const isArabic = req.lang === 'ar';
+  const about = isArabic ? {
+    title: 'من نحن',
+    intro: 'نبني MasarWeb ليكون طبقة ويب بسيطة وسريعة تمنح المستخدم وصولاً أوضح وأكثر خصوصية إلى المحتوى والأدوات الأمنية.',
+    summary: 'الصفحة مستوحاة من صفحات "about" التحريرية المباشرة: شرح واضح لما نبنيه، لماذا نبنيه، ولمن هو موجّه.',
+    missionTitle: 'مهمتنا',
+    missionText: 'نريد جعل تصفح الويب والأدوات الأمنية أسهل، أسرع، وأقل تعقيداً. نفضّل الواجهات المباشرة والوظائف الواضحة بدلاً من المنصات المليئة بالتشتت.',
+    storyTitle: 'ماذا نبني؟',
+    storyText: 'MasarWeb يجمع بين وكيل ويب، وصفحات محتوى، وأدوات حماية عملية في تجربة واحدة. الفكرة ليست فقط "فتح موقع"، بل تقديم نقطة انطلاق مفهومة وآمنة للمستخدم.',
+    pillarsTitle: 'كيف نفكر في المنتج',
+    pillars: [
+      { title: 'البساطة أولاً', text: 'الأدوات يجب أن تكون مفهومة من أول استخدام، بدون طبقات غير ضرورية أو تعليمات طويلة.' },
+      { title: 'الخصوصية كافتراض', text: 'نقلل التتبع، نحد من الفوضى، ونحاول أن نبقي المستخدم مسيطراً على ما يرسله وما يراه.' },
+      { title: 'السرعة والوضوح', text: 'كل صفحة وكل أداة يجب أن توصل المستخدم إلى النتيجة بأقل عدد ممكن من الخطوات.' }
+    ],
+    audienceTitle: 'من يستخدم MasarWeb؟',
+    audienceText: 'المستخدمون الذين يحتاجون إلى تصفح أبسط، فرق صغيرة تريد أدوات أمنية عملية، وأشخاص يبحثون عن تجربة مباشرة بدلاً من الخدمات المعقدة والمزدحمة.',
+    stats: [
+      { value: 'Web Proxy', label: 'طبقة وصول مرنة للمحتوى' },
+      { value: 'Security Tools', label: 'أدوات جاهزة للاستعمال اليومي' },
+      { value: 'Multi-language', label: 'تجربة مهيأة لجمهور متنوع' }
+    ],
+    proofTitle: 'ما الذي يميّز التجربة؟',
+    proofCards: [
+      { title: 'واجهة موحّدة', text: 'التنقل والأدوات والصفحات التحريرية تتبع منطقاً واحداً، لذلك لا يحتاج المستخدم إلى إعادة التعلّم كل مرة.' },
+      { title: 'محتوى عملي', text: 'المقالات والأدوات والصفحات القانونية تعمل معاً لتوضيح المنتج بدلاً من أن تكون أقساماً منفصلة بلا رابط.' },
+      { title: 'بناء سريع', text: 'التركيز على التنفيذ السريع يسمح بإطلاق أدوات وتحسينات جديدة دون تعقيد كبير في الواجهة.' }
+    ],
+    quotesTitle: 'ما الذي نطمح أن يقوله المستخدمون؟',
+    quotes: [
+      'هذه بالضبط نوعية الأدوات التي تنجز العمل بدون شرح طويل.',
+      'الواجهة واضحة، والنتيجة سريعة، ولا أشعر أن الموقع يقاتلني.',
+      'يجمع بين التصفح والأدوات الأمنية بشكل عملي وليس شكلياً.'
+    ],
+    ctaTitle: 'جرّب المنتج بنفسك',
+    ctaText: 'ابدأ من الصفحة الرئيسية أو استكشف الأدوات لترى كيف نحاول جعل التجربة مباشرة وقابلة للاستخدام فعلاً.',
+    ctaPrimary: 'ابدأ التصفح',
+    ctaSecondary: 'استكشف الأدوات'
+  } : {
+    title: 'About Us',
+    intro: 'We build MasarWeb as a fast, stripped-down web layer that gives users clearer access to content and practical security tools.',
+    summary: 'This page follows the direct editorial style of strong product about pages: explain what we build, why we build it, and who it serves.',
+    missionTitle: 'Our Mission',
+    missionText: 'We want web access and security utilities to feel simpler, faster, and less bloated. We prefer direct interfaces and obvious workflows over feature noise.',
+    storyTitle: 'What We Build',
+    storyText: 'MasarWeb combines a web proxy, editorial pages, and practical security utilities in one product surface. The goal is not just to open a website, but to provide a clearer and safer starting point for users.',
+    pillarsTitle: 'How We Think About Product',
+    pillars: [
+      { title: 'Simplicity First', text: 'Every tool should make sense on first use, without extra layers, vague labels, or long onboarding.' },
+      { title: 'Privacy by Default', text: 'We reduce noise, limit unnecessary exposure, and keep users closer to the data and actions that matter.' },
+      { title: 'Speed and Clarity', text: 'Every page and workflow should move a user to the result in as few steps as possible.' }
+    ],
+    audienceTitle: 'Who Uses MasarWeb?',
+    audienceText: 'People who want a simpler browsing layer, small teams that need practical security utilities, and users who prefer direct products over crowded platforms.',
+    stats: [
+      { value: 'Web Proxy', label: 'Flexible access layer for sites' },
+      { value: 'Security Tools', label: 'Utilities for everyday checks' },
+      { value: 'Multi-language', label: 'Built for a broader audience' }
+    ],
+    proofTitle: 'What Makes The Experience Different?',
+    proofCards: [
+      { title: 'Unified Interface', text: 'Navigation, utilities, and editorial pages follow one visual and interaction system, so users do not need to relearn the product in each section.' },
+      { title: 'Practical Content', text: 'Articles, tools, and policy pages work together to explain the product instead of existing as disconnected sections.' },
+      { title: 'Fast Shipping', text: 'A lean implementation makes it easier to add tools, improve SEO, and refine the product without heavy UI overhead.' }
+    ],
+    quotesTitle: 'What We Want Users To Say',
+    quotes: [
+      'This is exactly the kind of toolset that gets the job done without ceremony.',
+      'The interface is clear, the result is fast, and the product doesn’t fight me.',
+      'It combines browsing and security tools in a way that feels practical, not decorative.'
+    ],
+    ctaTitle: 'Try The Product',
+    ctaText: 'Start from the homepage or explore the tools section to see how we’re building a more direct experience.',
+    ctaPrimary: 'Start Browsing',
+    ctaSecondary: 'Explore Tools'
+  };
+
+  res.render('about', {
+    pageTitle: `${about.title} - ${res.locals.t.title}`,
+    description: about.intro,
+    about
+  });
+});
 app.get('/terms', (req, res) => res.render('terms', {
   pageTitle: `${res.locals.t.terms_page.title} - ${res.locals.t.title}`,
   description: res.locals.t.terms_page.intro_text
@@ -267,6 +351,7 @@ app.get('/sitemap.xml', (req, res) => {
     const baseUrl = getBaseUrl(req);
     const staticPages = [
         '/',
+        '/about',
         '/support',
         '/terms',
         '/privacy',
