@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #0f3d3e;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2.2rem, 4vw, 3.4rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .tool-input-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .tool-input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    .tool-input-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+    }
+
+    .ua-input,
+    .client-hints-select {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.9rem 1rem;
+        font-size: 0.98rem;
+    }
+
+    .ua-input {
+        min-height: 132px;
+        resize: vertical;
+        font-family: monospace;
+        line-height: 1.5;
+    }
+
+    .toggle-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .toggle-card {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+        padding: 1rem;
+        border: 1px solid #c7d7da;
+        background: #fff;
+    }
+
+    .toggle-card input {
+        margin-top: 0.2rem;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .toggle-card strong {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .toggle-card span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.2rem;
+        border: 1px solid #0f3d3e;
+        background: #0f3d3e;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #0f3d3e;
+    }
+
+    .summary-band {
+        display: grid;
+        grid-template-columns: 132px 1fr;
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+        padding: 1.25rem;
+        background: #102a2f;
+        color: #f3f7f7;
+    }
+
+    .score-ring {
+        width: 132px;
+        height: 132px;
+        border-radius: 50%;
+        background: conic-gradient(#6fd0bb 0deg, rgba(255,255,255,0.12) 0deg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .score-ring::after {
+        content: "";
+        position: absolute;
+        inset: 12px;
+        border-radius: 50%;
+        background: #102a2f;
+    }
+
+    .score-ring-content {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+    }
+
+    .score-value {
+        font-size: 2.1rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .score-caption {
+        margin-top: 0.35rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(243, 247, 247, 0.74);
+    }
+
+    .score-summary h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.35rem;
+    }
+
+    .score-summary p {
+        color: rgba(243, 247, 247, 0.82);
+        line-height: 1.7;
+        margin-bottom: 0.75rem;
+    }
+
+    .status-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .status-card {
+        padding: 1rem 1.1rem;
+        border: 1px solid #d9e5e7;
+        background: #fff;
+    }
+
+    .status-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 0.55rem;
+    }
+
+    .status-title {
+        font-weight: 700;
+    }
+
+    .status-pill {
+        padding: 0.2rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+    }
+
+    .status-pill.ready {
+        background: #dff7ef;
+        color: #0e6a4e;
+    }
+
+    .status-pill.partial {
+        background: #fff1cf;
+        color: #8a6410;
+    }
+
+    .status-pill.blocked {
+        background: #ffe2df;
+        color: #9e2d28;
+    }
+
+    .status-description {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .facts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin-top: 1.25rem;
+    }
+
+    .fact-tile {
+        padding: 0.9rem 1rem;
+        background: #f2f7f7;
+        border: 1px solid #d9e5e7;
+    }
+
+    .fact-label {
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        color: var(--text-light);
+    }
+
+    .fact-value {
+        font-weight: 700;
+        line-height: 1.4;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #0f3d3e;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 {
+        margin-bottom: 0.85rem;
+    }
+
+    .logic-box p,
+    .logic-box li {
+        line-height: 1.7;
+        color: var(--text-light);
+    }
+
+    .logic-box ul {
+        margin: 0.85rem 0 0 1.25rem;
+    }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 0 0 1rem;
+    }
+
+    .content-article h3 {
+        font-size: 1.2rem;
+        margin: 1.35rem 0 0.6rem;
+    }
+
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        margin: 1.2rem 0;
+    }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th,
+    .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th {
+        background: #f2f7f7;
+    }
+
+    .scenario-note {
+        padding: 1rem 1.15rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        margin-top: 1rem;
+    }
+
+    .faq-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.08rem;
+    }
+
+    .faq-item p {
+        margin: 0;
+        color: var(--text-light);
+    }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #0f3d3e;
+    }
+
+    .discovery-card h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.05rem;
+    }
+
+    .discovery-card p {
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    @media (max-width: 920px) {
+        .tool-shell,
+        .authority-grid,
+        .discovery-grid,
+        .guidance-grid,
+        .toggle-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .summary-band {
+            grid-template-columns: 1fr;
+            justify-items: center;
+            text-align: center;
+        }
+
+        .facts-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Cybersecurity &amp; Web Development</div>
+        <h1 class="identity-title">Browser Biometric &amp; WebAuthn Compatibility Checker</h1>
+        <p class="identity-subtitle">Validate your device's readiness for passwordless login, fingerprint scanning, and face recognition via WebAuthn.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">Nadia Rahman</div>
+                <div class="authority-role">Web Authentication Security Analyst with a focus on browser trust models, FIDO2 deployment patterns, and passwordless sign-in risk assessment.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Dr. Elias Morgan</div>
+                <div class="authority-role">Identity Infrastructure Reviewer with domain expertise in WebAuthn enrollment flows, authenticator assurance, and enterprise browser policy controls.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">Reviewed against W3C WebAuthn and FIDO deployment guidance</div>
+                <div class="authority-role">The checker reports browser-exposed capability signals. It is designed as an environment assessment aid rather than a substitute for production authentication testing.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>Biometric readiness inputs</h2>
+                <p class="tool-pane-intro">The checker reads the current browser environment and pre-fills the fields below. You can also override the inputs to inspect a copied user agent string or simulate a different client profile without reloading the page.</p>
+
+                <div class="tool-input-group">
+                    <label for="uaInput">Browser User Agent String</label>
+                    <textarea id="uaInput" class="ua-input" placeholder="Mozilla/5.0 ..."></textarea>
+                    <small>Default value comes from <code>navigator.userAgent</code>. Pasting a different value changes browser-family heuristics immediately.</small>
+                </div>
+
+                <div class="toggle-grid">
+                    <label class="toggle-card" for="webauthnToggle">
+                        <input type="checkbox" id="webauthnToggle">
+                        <span>
+                            <strong>PublicKeyCredential API Detection</strong>
+                            Indicates whether the browser exposes the WebAuthn interface needed for credential registration and assertion requests.
+                        </span>
+                    </label>
+
+                    <label class="toggle-card" for="platformToggle">
+                        <input type="checkbox" id="platformToggle">
+                        <span>
+                            <strong>Platform Authenticator Probe</strong>
+                            Reflects whether the current device reports a user-verifying platform authenticator such as fingerprint or facial recognition.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="tool-input-group" style="margin-top: 1.25rem;">
+                    <label for="clientHintsSelect">User-Agent Client Hints</label>
+                    <select id="clientHintsSelect" class="client-hints-select">
+                        <option value="high">Available with high-entropy values</option>
+                        <option value="basic">Available with basic brands only</option>
+                        <option value="unavailable">Unavailable or blocked</option>
+                    </select>
+                    <small>User-Agent Client Hints can improve browser and platform attribution, but WebAuthn does not depend on them directly. They contribute only to confidence and environment clarity.</small>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="refreshDetection">Refresh from current browser</button>
+                    <button type="button" class="action-btn secondary" id="resetDetected">Restore detected values</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Deterministic results</h2>
+                <p class="tool-pane-intro">The output updates instantly as each input changes. Status messages stay deterministic for the same input combination and do not require a network request or page reload.</p>
+
+                <div class="summary-band">
+                    <div class="score-ring" id="scoreRing">
+                        <div class="score-ring-content">
+                            <div class="score-value" id="readinessScore">0</div>
+                            <div class="score-caption">Readiness</div>
+                        </div>
+                    </div>
+                    <div class="score-summary">
+                        <h3 id="scoreLabel">Pending detection</h3>
+                        <p id="scoreExplanation">The checker is waiting for browser capability signals.</p>
+                        <div class="fact-value" id="environmentSummary">Environment summary unavailable</div>
+                    </div>
+                </div>
+
+                <div class="status-grid">
+                    <article class="status-card">
+                        <div class="status-head">
+                            <div class="status-title">WebAuthn API Support Status</div>
+                            <div class="status-pill blocked" id="webauthnStatusPill">Unavailable</div>
+                        </div>
+                        <div class="status-description" id="webauthnStatusText">No result yet.</div>
+                    </article>
+
+                    <article class="status-card">
+                        <div class="status-head">
+                            <div class="status-title">Platform Biometric Availability</div>
+                            <div class="status-pill blocked" id="platformStatusPill">Unavailable</div>
+                        </div>
+                        <div class="status-description" id="platformStatusText">No result yet.</div>
+                    </article>
+
+                    <article class="status-card">
+                        <div class="status-head">
+                            <div class="status-title">Cross-Platform Security Key Support</div>
+                            <div class="status-pill blocked" id="crossPlatformStatusPill">Unavailable</div>
+                        </div>
+                        <div class="status-description" id="crossPlatformStatusText">No result yet.</div>
+                    </article>
+
+                    <article class="status-card">
+                        <div class="status-head">
+                            <div class="status-title">Passkey (Conditional UI) Readiness Score</div>
+                            <div class="status-pill blocked" id="passkeyStatusPill">Limited</div>
+                        </div>
+                        <div class="status-description" id="passkeyStatusText">No result yet.</div>
+                    </article>
+                </div>
+
+                <div class="facts-grid">
+                    <div class="fact-tile">
+                        <span class="fact-label">Detected browser</span>
+                        <div class="fact-value" id="browserFact">Unknown</div>
+                    </div>
+                    <div class="fact-tile">
+                        <span class="fact-label">Detected platform</span>
+                        <div class="fact-value" id="platformFact">Unknown</div>
+                    </div>
+                    <div class="fact-tile">
+                        <span class="fact-label">Secure context</span>
+                        <div class="fact-value" id="secureContextFact">Unknown</div>
+                    </div>
+                    <div class="fact-tile">
+                        <span class="fact-label">Conditional mediation</span>
+                        <div class="fact-value" id="conditionalFact">Unknown</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> The checker combines four browser-facing inputs with navigator-exposed capability probes. It checks whether <code>PublicKeyCredential</code> exists, whether the browser reports a user-verifying platform authenticator, whether user-agent client hints are available, whether the page is running in a secure context, and whether conditional mediation can be queried for passkey-style autofill experiences.</p>
+            <p><strong>Key assumptions:</strong> The reported platform authenticator state reflects what the browser can access at the time of the check. A supported browser still requires OS-level enrollment, device policy allowance, and relying-party implementation. The readiness score is a weighted compatibility indicator, not a cryptographic assurance level.</p>
+            <p><strong>Limitations and edge cases:</strong> Private browsing, enterprise policy, remote desktop sessions, virtual machines, disabled biometric enrollment, iframe restrictions, and browser privacy defenses can all suppress or distort the observable signals. Some browsers support security keys even when platform biometrics are not available. Client hints can be absent without affecting actual WebAuthn support.</p>
+            <ul>
+                <li>The tool measures what the browser exposes locally; it does not register a credential or contact a server.</li>
+                <li>It cannot confirm whether a specific website has implemented passkeys correctly.</li>
+                <li>It may classify support as partial when the browser is technically capable but the surrounding environment is incomplete.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use Biometric Readiness Checker</h2>
+                    <p>Open the page in the browser you want to validate. The tool auto-populates the current user agent, then checks whether the WebAuthn interface and platform authenticator probe are available. If you are auditing another device, paste its user agent string and adjust the toggles to mirror that environment.</p>
+                    <p>Use the refresh button after changing browsers, enabling biometrics at the OS level, or moving from HTTP to HTTPS so the detection reflects the new state immediately.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the calculation works</h2>
+                    <p>The score combines browser API availability, platform authenticator presence, secure-context status, user-agent hint richness, and conditional mediation support. WebAuthn availability carries the largest weight because it is the minimum requirement for passkey flows. Platform and conditional mediation signals refine the score from basic compatibility toward production readiness.</p>
+                    <p>The calculation remains deterministic: identical inputs always produce the same output labels and the same readiness score.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>A high readiness score means the browser exposes the signals typically required for passwordless authentication. A medium score often means the browser supports WebAuthn but lacks either a platform authenticator or conditional mediation. A low score usually means the environment is missing WebAuthn, secure context, or both.</p>
+                    <p>The detailed status cards matter more than the single score when you are troubleshooting enrollment failures.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This checker is an environment-assessment aid. It does not create or validate a credential, and it does not test server-side origin binding, relying-party identifiers, attestation policy, or account recovery behavior. Use it to narrow down likely compatibility issues, then verify the full sign-in flow in the target application.</p>
+                    <p>Operational decisions should not rely on this page alone when a production authentication rollout or security acceptance review is involved.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>Why biometric readiness is a layered compatibility problem</h2>
+            <p>Biometric login on the web is not a single feature toggle. A successful WebAuthn or passkey experience depends on the browser exposing the relevant interfaces, the operating system allowing access to a credential provider, the device having a usable authenticator, and the application invoking the correct ceremony under a secure origin. When any layer is incomplete, a user can see confusing messages such as "biometrics unavailable" even though the device itself has fingerprint or face recognition.</p>
+
+            <h3>What the browser contributes</h3>
+            <p>The browser decides whether the page can call the Web Authentication API, whether the request is allowed in the current context, and whether convenience features such as conditional mediation are available. Browsers also mediate the dialog that lets users choose between a platform authenticator and a roaming security key.</p>
+
+            <h3>What the operating system contributes</h3>
+            <p>The operating system provides the biometric enrollment, device unlock policy, and authenticator plumbing. A browser may fully support WebAuthn while still reporting no platform authenticator because the user has not enrolled a fingerprint, face profile, or device PIN. For enterprise fleets, policy controls can also disable these paths even when the hardware is present.</p>
+
+            <h2>WebAuthn, passkeys, and biometrics are related but not identical</h2>
+            <p>WebAuthn is the browser API and protocol surface. Passkeys are user-facing discoverable credentials that often use WebAuthn under the hood. Biometrics are one possible local verification method that protects access to the authenticator. This distinction matters because a browser can support passkeys through a security key or synced credential provider without using the device's biometric sensor at all.</p>
+
+            <h3>Platform authenticators</h3>
+            <p>Platform authenticators are bound to the current device. Typical examples include Windows Hello, Touch ID, Face ID, or Android device credentials. They are convenient and usually provide the smoothest passwordless flow because the user can complete the ceremony without picking up another device.</p>
+
+            <h3>Cross-platform authenticators</h3>
+            <p>Cross-platform authenticators are separate from the current device, such as USB, NFC, or Bluetooth security keys. They are useful for administrators, shared workstation environments, and higher-assurance policies because they can be issued, rotated, or required independently of the laptop or phone.</p>
+
+            <h2>How this checker supports developers and administrators</h2>
+            <p>Developers can use the checker early in triage to determine whether a failure is likely rooted in browser capability, secure-context mistakes, or missing local enrollment. System administrators can use it before a rollout to spot which managed browsers expose the required signals for passkey enrollment and which ones will likely need a fallback policy.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Scenario</th>
+                            <th>Expected checker pattern</th>
+                            <th>Likely operational meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Modern browser on a laptop with fingerprint enrolled</td>
+                            <td>WebAuthn supported, platform authenticator available, secure context true, score high</td>
+                            <td>Suitable for passkey enrollment and local biometric sign-in if the site implements WebAuthn correctly</td>
+                        </tr>
+                        <tr>
+                            <td>Modern browser on desktop with a USB security key but no biometrics</td>
+                            <td>WebAuthn supported, platform authenticator unavailable, cross-platform support likely, score medium</td>
+                            <td>Passwordless sign-in is still feasible with a roaming authenticator even without fingerprint or face recognition</td>
+                        </tr>
+                        <tr>
+                            <td>Managed browser with restrictive policy</td>
+                            <td>API or probe appears unavailable despite modern device hardware</td>
+                            <td>Local capability may be suppressed by enterprise configuration, privacy mode, or browser policy</td>
+                        </tr>
+                        <tr>
+                            <td>HTTP page outside localhost</td>
+                            <td>Secure context false, score reduced even when WebAuthn exists</td>
+                            <td>Production passkey flows will be blocked until the relying party runs under HTTPS</td>
+                        </tr>
+                        <tr>
+                            <td>Mobile browser with passkey sync but limited hints</td>
+                            <td>WebAuthn supported, client hints limited or unavailable, score medium to high</td>
+                            <td>Credential flows may work correctly even though environment attribution remains incomplete</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Common reasons results look incomplete</h2>
+            <h3>Missing biometric enrollment</h3>
+            <p>A device can physically include a sensor while still reporting no user-verifying platform authenticator because the operating system has not been configured. Enrolling a fingerprint, face profile, or device PIN often changes the outcome more than changing browsers.</p>
+
+            <h3>Conditional mediation is absent</h3>
+            <p>Conditional mediation is associated with passkey-style account suggestions and autofill-like experiences. Its absence does not always block WebAuthn itself, but it usually means the user experience will be more explicit and less streamlined during sign-in.</p>
+
+            <h3>Client hints are unavailable</h3>
+            <p>User-Agent Client Hints help identify the browser environment more precisely, but they are not a prerequisite for WebAuthn. A browser may intentionally reduce or omit hint data for privacy reasons while still supporting passkeys and security keys.</p>
+
+            <h2>Interpretation guidance for deployment decisions</h2>
+            <p>For developer debugging, prioritize the WebAuthn and secure-context statuses first. For rollout readiness, focus on whether users have at least one reliable authenticator path: platform biometrics for convenience or roaming security keys for fallback and stronger account recovery control. Treat the score as a summary, then read the status notes to understand the exact limiting factor.</p>
+
+            <div class="scenario-note">
+                <strong>Practical rule of thumb:</strong> a medium score with WebAuthn support is usually enough to continue testing. A low score caused by missing secure context or missing API exposure is a blocker that should be resolved before deeper application debugging.
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>How do I enable biometric login in my browser?</h3>
+                <p>Enable fingerprint, face recognition, or device PIN at the operating-system level first, then use a browser and website that support WebAuthn or passkeys under HTTPS.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is the difference between platform and cross-platform authenticators?</h3>
+                <p>Platform authenticators live on the current device, while cross-platform authenticators are separate devices such as USB, NFC, or Bluetooth security keys.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why is my browser reporting that biometrics are unavailable?</h3>
+                <p>The browser may lack WebAuthn support, the device may not have a biometric profile enrolled, the page may not be in a secure context, or policy settings may be blocking the authenticator probe.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Is WebAuthn more secure than traditional passwords?</h3>
+                <p>In most cases, yes. WebAuthn reduces phishing risk and password reuse because private keys stay on the authenticator instead of being shared with the server.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Does this tool work on mobile browsers like Safari or Chrome?</h3>
+                <p>Yes, if the browser exposes the relevant JavaScript interfaces. The final result still depends on device enrollment, operating-system support, and browser behavior.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Do passkeys require biometrics on every device?</h3>
+                <p>No. A passkey can also be protected by a device PIN or unlocked through an external authenticator, depending on the platform and security policy.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can private browsing or enterprise policy affect the checker output?</h3>
+                <p>Yes. Both can restrict available APIs, suppress client hints, or change how authenticator probes behave.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools">
+                <h3>Passkey Health Checker</h3>
+                <p>Review discoverable credential health, synced passkey behavior, and likely account-recovery friction across devices.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <h3>WebAuthn Debugging Tool</h3>
+                <p>Inspect registration and assertion request parameters when a relying party needs lower-level troubleshooting signals.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <h3>Browser Security Header Scanner</h3>
+                <p>Check whether origin security settings such as HTTPS and policy headers are aligned with modern authentication requirements.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <h3>FIDO2 Security Key Tester</h3>
+                <p>Validate whether a roaming authenticator can be detected and used consistently across desktop and mobile clients.</p>
+            </a>
+            <a class="discovery-card" href="/tools/2fa-generator">
+                <h3>2FA Generator</h3>
+                <p>Generate TOTP codes for accounts that still rely on app-based multi-factor authentication instead of passkeys.</p>
+            </a>
+            <a class="discovery-card" href="/tools/hash-identifier">
+                <h3>Hash Identifier</h3>
+                <p>Identify legacy cryptographic digests when investigating authentication stores, migration plans, or password reset pipelines.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const uaInput = document.getElementById('uaInput');
+        const webauthnToggle = document.getElementById('webauthnToggle');
+        const platformToggle = document.getElementById('platformToggle');
+        const clientHintsSelect = document.getElementById('clientHintsSelect');
+        const refreshDetectionBtn = document.getElementById('refreshDetection');
+        const resetDetectedBtn = document.getElementById('resetDetected');
+
+        const readinessScore = document.getElementById('readinessScore');
+        const scoreRing = document.getElementById('scoreRing');
+        const scoreLabel = document.getElementById('scoreLabel');
+        const scoreExplanation = document.getElementById('scoreExplanation');
+        const environmentSummary = document.getElementById('environmentSummary');
+
+        const browserFact = document.getElementById('browserFact');
+        const platformFact = document.getElementById('platformFact');
+        const secureContextFact = document.getElementById('secureContextFact');
+        const conditionalFact = document.getElementById('conditionalFact');
+
+        const detectedState = {
+            ua: '',
+            webauthn: false,
+            platformAuthenticator: false,
+            clientHints: 'unavailable',
+            secureContext: window.isSecureContext,
+            conditionalMediation: false
+        };
+
+        function parseBrowser(ua) {
+            const normalized = (ua || '').toLowerCase();
+            const rules = [
+                { name: 'Microsoft Edge', regex: /edg\/([\d.]+)/ },
+                { name: 'Opera', regex: /opr\/([\d.]+)/ },
+                { name: 'Google Chrome', regex: /chrome\/([\d.]+)/ },
+                { name: 'Mozilla Firefox', regex: /firefox\/([\d.]+)/ },
+                { name: 'Safari', regex: /version\/([\d.]+).*safari/ }
+            ];
+
+            for (const rule of rules) {
+                const match = normalized.match(rule.regex);
+                if (match) {
+                    return {
+                        name: rule.name,
+                        version: match[1]
+                    };
+                }
+            }
+
+            return {
+                name: normalized ? 'Unclassified browser' : 'Unknown browser',
+                version: ''
+            };
+        }
+
+        function parsePlatform(ua) {
+            const normalized = (ua || '').toLowerCase();
+
+            if (normalized.includes('iphone') || normalized.includes('ipad') || normalized.includes('ipod')) {
+                return 'iOS or iPadOS';
+            }
+            if (normalized.includes('android')) {
+                return 'Android';
+            }
+            if (normalized.includes('mac os x') || normalized.includes('macintosh')) {
+                return 'macOS';
+            }
+            if (normalized.includes('windows')) {
+                return 'Windows';
+            }
+            if (normalized.includes('linux')) {
+                return 'Linux';
+            }
+
+            return normalized ? 'Unclassified platform' : 'Unknown platform';
+        }
+
+        function setStatus(pill, textNode, label, tone, description) {
+            pill.textContent = label;
+            pill.className = 'status-pill ' + tone;
+            textNode.textContent = description;
+        }
+
+        function readinessTier(score) {
+            if (score >= 85) {
+                return {
+                    label: 'Ready',
+                    tone: 'ready',
+                    explanation: 'The current environment exposes the key browser signals normally associated with smooth passkey and biometric sign-in flows.'
+                };
+            }
+            if (score >= 65) {
+                return {
+                    label: 'Mostly ready',
+                    tone: 'partial',
+                    explanation: 'Core WebAuthn capability is present, but one or more convenience or confidence signals are incomplete.'
+                };
+            }
+            if (score >= 40) {
+                return {
+                    label: 'Partial',
+                    tone: 'partial',
+                    explanation: 'The environment appears usable for some authentication paths, but it is missing a signal commonly expected for biometric or passkey-first experiences.'
+                };
+            }
+
+            return {
+                label: 'Limited',
+                tone: 'blocked',
+                explanation: 'The current signals indicate that a full passkey or biometric flow is unlikely to work without environment changes.'
+            };
+        }
+
+        function renderResults() {
+            const ua = uaInput.value.trim();
+            const browser = parseBrowser(ua);
+            const platform = parsePlatform(ua);
+            const webauthn = webauthnToggle.checked;
+            const platformAuthenticator = platformToggle.checked;
+            const clientHints = clientHintsSelect.value;
+            const secureContext = detectedState.secureContext;
+            const conditionalMediation = detectedState.conditionalMediation;
+
+            let score = 0;
+
+            if (webauthn) {
+                score += 35;
+            }
+            if (platformAuthenticator) {
+                score += 25;
+            }
+            if (conditionalMediation) {
+                score += 15;
+            }
+            if (secureContext) {
+                score += 10;
+            }
+            if (clientHints !== 'unavailable') {
+                score += 10;
+            }
+            if (browser.name !== 'Unknown browser') {
+                score += 5;
+            }
+
+            if (!webauthn && platformAuthenticator) {
+                score = Math.max(score - 20, 0);
+            }
+
+            score = Math.max(0, Math.min(100, score));
+
+            const tier = readinessTier(score);
+            readinessScore.textContent = String(score);
+            scoreLabel.textContent = tier.label;
+            scoreExplanation.textContent = tier.explanation;
+            environmentSummary.textContent = browser.name + (browser.version ? ' ' + browser.version : '') + ' on ' + platform;
+
+            const degreeValue = Math.round((score / 100) * 360);
+            scoreRing.style.background = 'conic-gradient(#6fd0bb ' + degreeValue + 'deg, rgba(255,255,255,0.12) ' + degreeValue + 'deg)';
+
+            browserFact.textContent = browser.name + (browser.version ? ' ' + browser.version : '');
+            platformFact.textContent = platform;
+            secureContextFact.textContent = secureContext ? 'Secure context detected' : 'Not secure for production WebAuthn';
+            conditionalFact.textContent = conditionalMediation ? 'Conditional UI signal available' : 'Conditional UI not exposed';
+
+            const webauthnDescription = webauthn
+                ? 'The browser exposes PublicKeyCredential, which is the primary API surface required for WebAuthn ceremonies.'
+                : 'PublicKeyCredential is not exposed, so passkey registration and assertion requests cannot be initiated from this page.';
+            setStatus(
+                document.getElementById('webauthnStatusPill'),
+                document.getElementById('webauthnStatusText'),
+                webauthn ? 'Supported' : 'Unavailable',
+                webauthn ? 'ready' : 'blocked',
+                webauthnDescription
+            );
+
+            let platformLabel = 'Unavailable';
+            let platformTone = 'blocked';
+            let platformDescription = 'The browser did not report a user-verifying platform authenticator for the current device.';
+
+            if (webauthn && platformAuthenticator) {
+                platformLabel = 'Available';
+                platformTone = 'ready';
+                platformDescription = 'The browser reports that a platform authenticator can likely verify the user locally through biometrics or another device-bound factor.';
+            } else if (webauthn) {
+                platformLabel = 'Not detected';
+                platformTone = 'partial';
+                platformDescription = 'WebAuthn exists, but no platform authenticator was reported. External keys may still work, or the device may need local enrollment.';
+            }
+
+            setStatus(
+                document.getElementById('platformStatusPill'),
+                document.getElementById('platformStatusText'),
+                platformLabel,
+                platformTone,
+                platformDescription
+            );
+
+            let crossPlatformLabel = 'Unavailable';
+            let crossPlatformTone = 'blocked';
+            let crossPlatformDescription = 'Cross-platform security key usage is unlikely when WebAuthn is not exposed at all.';
+
+            if (webauthn) {
+                crossPlatformLabel = 'Likely supported';
+                crossPlatformTone = clientHints === 'unavailable' ? 'partial' : 'ready';
+                crossPlatformDescription = 'Modern WebAuthn-capable browsers usually support roaming USB, NFC, or Bluetooth authenticators, though final behavior still depends on operating-system mediation and physical transport support.';
+            }
+
+            setStatus(
+                document.getElementById('crossPlatformStatusPill'),
+                document.getElementById('crossPlatformStatusText'),
+                crossPlatformLabel,
+                crossPlatformTone,
+                crossPlatformDescription
+            );
+
+            let passkeyDescription = 'Conditional mediation is part of the readiness calculation because it improves passkey-first sign-in flows and account selection.';
+
+            if (!secureContext) {
+                passkeyDescription = 'The environment is not running in a secure context. Production passkey flows require HTTPS, except for limited localhost development cases.';
+            } else if (webauthn && !conditionalMediation) {
+                passkeyDescription = 'WebAuthn is present, but conditional mediation is not exposed. Passkeys may still work through explicit account-selection dialogs.';
+            } else if (!webauthn) {
+                passkeyDescription = 'Without PublicKeyCredential, passkey UX features cannot be exercised from the current browser context.';
+            }
+
+            setStatus(
+                document.getElementById('passkeyStatusPill'),
+                document.getElementById('passkeyStatusText'),
+                tier.label,
+                tier.tone,
+                passkeyDescription
+            );
+        }
+
+        async function detectEnvironment() {
+            detectedState.ua = navigator.userAgent || '';
+            detectedState.webauthn = typeof window.PublicKeyCredential !== 'undefined';
+            detectedState.platformAuthenticator = false;
+            detectedState.clientHints = 'unavailable';
+            detectedState.secureContext = window.isSecureContext;
+            detectedState.conditionalMediation = false;
+
+            if (navigator.userAgentData) {
+                detectedState.clientHints = typeof navigator.userAgentData.getHighEntropyValues === 'function'
+                    ? 'high'
+                    : 'basic';
+            }
+
+            if (detectedState.webauthn && typeof window.PublicKeyCredential.isConditionalMediationAvailable === 'function') {
+                try {
+                    detectedState.conditionalMediation = await window.PublicKeyCredential.isConditionalMediationAvailable();
+                } catch (error) {
+                    detectedState.conditionalMediation = false;
+                }
+            }
+
+            if (detectedState.webauthn && typeof window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable === 'function') {
+                try {
+                    detectedState.platformAuthenticator = await window.PublicKeyCredential.isUserVerifyingPlatformAuthenticatorAvailable();
+                } catch (error) {
+                    detectedState.platformAuthenticator = false;
+                }
+            }
+
+            uaInput.value = detectedState.ua;
+            webauthnToggle.checked = detectedState.webauthn;
+            platformToggle.checked = detectedState.platformAuthenticator;
+            clientHintsSelect.value = detectedState.clientHints;
+            renderResults();
+        }
+
+        function restoreDetectedValues() {
+            uaInput.value = detectedState.ua;
+            webauthnToggle.checked = detectedState.webauthn;
+            platformToggle.checked = detectedState.platformAuthenticator;
+            clientHintsSelect.value = detectedState.clientHints;
+            renderResults();
+        }
+
+        uaInput.addEventListener('input', renderResults);
+        webauthnToggle.addEventListener('change', renderResults);
+        platformToggle.addEventListener('change', renderResults);
+        clientHintsSelect.addEventListener('change', renderResults);
+        refreshDetectionBtn.addEventListener('click', detectEnvironment);
+        resetDetectedBtn.addEventListener('click', restoreDetectedValues);
+
+        detectEnvironment().catch(function() {
+            restoreDetectedValues();
+        });
+    });
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>

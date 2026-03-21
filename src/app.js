@@ -373,6 +373,8 @@ app.get('/sitemap.xml', async (req, res, next) => {
         '/blog',
         '/tools',
         '/tools/password-analyzer',
+        '/tools/password-pattern-analyzer',
+        '/tools/biometric-readiness-checker',
         '/tools/key-strength',
         '/tools/absence-deduction',
         '/tools/virus-scanner',

@@ -48,6 +48,20 @@ const toolMeta = {
             en: 'Analyze password strength with entropy scoring and estimated crack time.'
         }
     },
+    'password-pattern-analyzer': {
+        title: { ar: 'محلل أنماط كلمات المرور', en: 'Password Pattern Analyzer' },
+        description: {
+            ar: 'اكتشف التسلسلات المتوقعة وأنماط لوحة المفاتيح والكلمات الشائعة التي تضعف كلمات المرور.',
+            en: 'Identify predictable keyboard walks, sequence reuse, and common structure patterns that reduce password security.'
+        }
+    },
+    'biometric-readiness-checker': {
+        title: { ar: 'مدقق جاهزية القياسات الحيوية وWebAuthn', en: 'Browser Biometric & WebAuthn Compatibility Checker' },
+        description: {
+            ar: 'تحقق من دعم WebAuthn والمفاتيح المرورية وبصمة الإصبع أو التعرف على الوجه في متصفحك وجهازك الحالي.',
+            en: 'Check browser WebAuthn, passkey, platform biometric, and security key readiness in your current environment.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -179,6 +193,108 @@ router.get('/password-analyzer', (req, res) => {
         title: meta.title,
         pageTitle: meta.title,
         description: meta.description
+    });
+});
+
+// Password Pattern Analyzer
+router.get('/password-pattern-analyzer', (req, res) => {
+    const meta = getMeta('password-pattern-analyzer', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/password-pattern-analyzer', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Password Pattern Analyzer",
+                "applicationCategory": "SecurityApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            }
+        ]
+    });
+});
+
+// Browser Biometric & WebAuthn Compatibility Checker
+router.get('/biometric-readiness-checker', (req, res) => {
+    const meta = getMeta('biometric-readiness-checker', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/biometric-readiness-checker', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Browser Biometric & WebAuthn Compatibility Checker",
+                "applicationCategory": "SecurityApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I enable biometric login in my browser?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Biometric login usually requires a device with fingerprint or face recognition already enrolled at the operating-system level, a browser with WebAuthn support, and a website that offers passkeys or security key sign-in."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between platform and cross-platform authenticators?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Platform authenticators are built into the current device, such as Touch ID, Windows Hello, or Face ID. Cross-platform authenticators are separate devices such as USB, NFC, or Bluetooth security keys."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why is my browser reporting that biometrics are unavailable?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A browser can report biometrics as unavailable when WebAuthn is missing, the device has no enrolled fingerprint or face profile, the page is not in a secure context, or enterprise policy and browser privacy settings block the authenticator probe."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is WebAuthn more secure than traditional passwords?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "In most deployments, yes. WebAuthn reduces phishing exposure, avoids password reuse, and keeps private keys on the authenticator instead of sending shared secrets to the server."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does this tool work on mobile browsers like Safari or Chrome?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. The checker runs in mobile browsers that allow JavaScript access to WebAuthn-related interfaces, but the final result still depends on the device, operating system, and browser implementation."
+                        }
+                    }
+                ]
+            }
+        ]
     });
 });
 

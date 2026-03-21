@@ -50,6 +50,28 @@
                     </p>
                 </a>
 
+                <!-- Password Pattern Analyzer Tool Card -->
+                <a href="/tools/password-pattern-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🧭
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محلل أنماط كلمات المرور' : 'Password Pattern Analyzer' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'كشف مسارات لوحة المفاتيح والتسلسلات والكلمات المتوقعة داخل كلمة المرور.' : 'Detect keyboard walks, sequences, and structural patterns that make a password predictable.' %>
+                    </p>
+                </a>
+
+                <!-- Browser Biometric & WebAuthn Compatibility Checker Tool Card -->
+                <a href="/tools/biometric-readiness-checker" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🖐️
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مدقق جاهزية القياسات الحيوية' : 'Biometric Readiness Checker' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'تحقق من دعم WebAuthn والمفاتيح المرورية والمصادقة البيومترية والمتصفحات الداعمة لمفاتيح الأمان.' : 'Validate WebAuthn, passkey, platform biometric, and external security key readiness in the current browser.' %>
+                    </p>
+                </a>
+
                 <!-- Encryption Key Strength Tool Card -->
                 <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
