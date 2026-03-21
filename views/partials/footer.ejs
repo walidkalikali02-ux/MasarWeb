@@ -46,7 +46,11 @@
                 link.addEventListener('click', function(e) {
                     const lang = this.getAttribute('data-lang');
                     const url = new URL(window.location.href);
-                    url.searchParams.set('lang', lang);
+                    if (lang === 'ar') {
+                        url.searchParams.delete('lang');
+                    } else {
+                        url.searchParams.set('lang', lang);
+                    }
                     this.href = url.toString();
                 });
             });

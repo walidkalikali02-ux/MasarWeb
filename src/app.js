@@ -103,7 +103,16 @@ app.use(session({
 app.use((req, res, next) => {
   let lang = req.query.lang || req.cookies.lang || 'ar';
   if (!locales[lang]) lang = 'ar';
-  
+
+  if (req.query.lang === DEFAULT_LANG && req.method === 'GET') {
+    res.cookie('lang', DEFAULT_LANG, { maxAge: 365 * 24 * 60 * 60 * 1000, httpOnly: true });
+
+    const query = new URLSearchParams(req.query);
+    query.delete('lang');
+
+    return res.redirect(301, `${req.path}${query.toString() ? `?${query.toString()}` : ''}`);
+  }
+
   if (req.query.lang && locales[req.query.lang]) {
     res.cookie('lang', lang, { maxAge: 365 * 24 * 60 * 60 * 1000, httpOnly: true });
   }
