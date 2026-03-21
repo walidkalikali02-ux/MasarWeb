@@ -16,6 +16,7 @@
             : 'https://masarweb.com/static/images/logo.svg';
         const robotsValue = typeof robots !== 'undefined' ? robots : 'index, follow';
         const ogTypeValue = typeof ogType !== 'undefined' ? ogType : 'website';
+        const safeArticleMeta = typeof articleMeta !== 'undefined' ? articleMeta : null;
         const schemaItems = Array.isArray(structuredData)
             ? structuredData
             : (structuredData ? [structuredData] : []);
@@ -41,8 +42,8 @@
     <meta property="og:description" content="<%= seoDescription %>">
     <meta property="og:image" content="<%= ogImageUrl %>">
     <meta property="og:site_name" content="<%= t.title %>">
-    <% if (articleMeta && articleMeta.publishedTime) { %>
-        <meta property="article:published_time" content="<%= articleMeta.publishedTime %>">
+    <% if (safeArticleMeta && safeArticleMeta.publishedTime) { %>
+        <meta property="article:published_time" content="<%= safeArticleMeta.publishedTime %>">
     <% } %>
 
     <!-- Twitter -->
