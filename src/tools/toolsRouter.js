@@ -62,6 +62,13 @@ const toolMeta = {
             en: 'Instantly verify if your browser and device support Face ID, Touch ID, Windows Hello, and FIDO2 security keys.'
         }
     },
+    'webauthn-debugger': {
+        title: { ar: 'مختبر تصحيح WebAuthn وFIDO2', en: 'WebAuthn & FIDO2 Debugging Playground' },
+        description: {
+            ar: 'محاكاة وتصحيح سير عمل تسجيل واستيثاق WebAuthn في الوقت الفعلي مع فك تشفير CBOR وكائنات بيانات العميل.',
+            en: 'Simulate and debug WebAuthn registration and authentication flows with live CBOR decoding and client data inspection.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -290,6 +297,80 @@ router.get('/biometric-readiness-checker', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "Yes. The checker runs in mobile browsers that allow JavaScript access to WebAuthn-related interfaces, but the final result still depends on the device, operating system, and browser implementation."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// WebAuthn & FIDO2 Debugging Playground
+router.get('/webauthn-debugger', (req, res) => {
+    const meta = getMeta('webauthn-debugger', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/webauthn-debugger', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "WebAuthn & FIDO2 Debugging Playground",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between WebAuthn Attestation and Assertion?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Attestation occurs during registration and proves the authenticator's identity via its attestation certificate. Assertion occurs during authentication and proves possession of the private key for a registered credential."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I debug NotAllowedError in WebAuthn?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "NotAllowedError typically means the ceremony was rejected. Check that the origin matches your expected domain, the RP ID is valid for the current origin, and the user did not cancel the authentication dialog."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I test FIDO2 security keys on localhost?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, localhost is exempt from the HTTPS requirement for WebAuthn. However, the origin must be exactly http://localhost or http://127.0.0.1 with the correct port."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is a Resident Key in FIDO2?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A Resident Key (Discoverable Credential) is stored on the authenticator and can be selected without the relying party providing a credential ID, enabling passwordless flows."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I decode the clientDataJSON from a WebAuthn response?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The clientDataJSON is a UTF-8 encoded JSON string. Decode it using TextDecoder and parse the JSON. It contains type, challenge, origin, and optionally crossOrigin fields."
                         }
                     }
                 ]

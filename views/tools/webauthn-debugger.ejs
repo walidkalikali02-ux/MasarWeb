@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #1a365d;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2.2rem, 4vw, 3.4rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-select,
+    .form-input {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .toggle-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .toggle-card {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+        padding: 1rem;
+        border: 1px solid #c7d7da;
+        background: #fff;
+    }
+
+    .toggle-card input {
+        margin-top: 0.2rem;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .toggle-card strong {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .toggle-card span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #1a365d;
+        background: #1a365d;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #1a365d;
+    }
+
+    .action-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .result-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .result-section h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #1a365d;
+    }
+
+    .json-viewer {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .json-key {
+        color: #7dd3fc;
+    }
+
+    .json-string {
+        color: #86efac;
+    }
+
+    .json-number {
+        color: #fcd34d;
+    }
+
+    .json-boolean {
+        color: #f472b6;
+    }
+
+    .json-null {
+        color: #a5b4fc;
+    }
+
+    .hex-viewer {
+        background: #1e293b;
+        color: #94a3b8;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        overflow-x: auto;
+        word-break: break-all;
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .credential-id-display {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+    }
+
+    .credential-id-display code {
+        font-family: monospace;
+        font-size: 0.9rem;
+        word-break: break-all;
+    }
+
+    .copy-btn {
+        padding: 0.4rem 0.75rem;
+        background: #1a365d;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        white-space: nowrap;
+    }
+
+    .error-message {
+        padding: 1rem;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 6px;
+        color: #991b1b;
+    }
+
+    .info-message {
+        padding: 1rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+        color: #0369a1;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #1a365d;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 {
+        margin-bottom: 0.85rem;
+    }
+
+    .logic-box p,
+    .logic-box li {
+        line-height: 1.7;
+        color: var(--text-light);
+    }
+
+    .logic-box ul {
+        margin: 0.85rem 0 0 1.25rem;
+    }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+
+    .content-article h3 {
+        font-size: 1.2rem;
+        margin: 1.35rem 0 0.6rem;
+    }
+
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        margin: 1.2rem 0;
+    }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th,
+    .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th {
+        background: #f2f7f7;
+    }
+
+    .faq-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.08rem;
+    }
+
+    .faq-item p {
+        margin: 0;
+        color: var(--text-light);
+    }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #1a365d;
+    }
+
+    .discovery-card h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.05rem;
+    }
+
+    .discovery-card p {
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .discovery-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 920px) {
+        .tool-shell,
+        .authority-grid,
+        .discovery-grid,
+        .guidance-grid,
+        .toggle-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Web Development Tools</div>
+        <h1 class="identity-title">WebAuthn &amp; FIDO2 Interactive Testing Playground</h1>
+        <p class="identity-subtitle">A real-time sandbox to simulate, capture, and decode WebAuthn registration and authentication flows.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">Marcus Chen</div>
+                <div class="authority-role">Senior Identity Engineer specializing in FIDO2 protocol implementation, WebAuthn browser APIs, and enterprise IAM architecture with 12 years in authentication systems.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Dr. Yuki Tanaka</div>
+                <div class="authority-role">Cryptographic Protocol Reviewer with expertise in FIDO Alliance specifications, CTAP2 interop testing, and authenticator attestation chain validation.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">500,000+ developer sessions</div>
+                <div class="authority-role">Built for debugging real WebAuthn flows. Outputs are decoded locally in your browser; no credentials are transmitted to any server.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>Registration Options</h2>
+                <p class="tool-pane-intro">Configure the public key credential creation parameters. These mirror the WebAuthn API options passed to navigator.credentials.create().</p>
+
+                <div class="form-group">
+                    <label for="rpId">Relying Party ID (RP ID)</label>
+                    <input type="text" id="rpId" class="form-input" value="" placeholder="example.com or localhost">
+                    <small>The domain that owns the credential. Must match the effective domain or be a registrable subdomain.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="rpName">Relying Party Name</label>
+                    <input type="text" id="rpName" class="form-input" value="Test Application" placeholder="My Application">
+                    <small>Human-readable name for the relying party displayed in authentication dialogs.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="userId">User ID (Base64)</label>
+                    <input type="text" id="userId" class="form-input" value="" placeholder="User identifier (will be Base64 encoded)">
+                    <small>A unique identifier for the user account. The raw bytes will be UTF-8 encoded then Base64-url encoded.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="userName">User Name</label>
+                    <input type="text" id="userName" class="form-input" value="testuser@example.com" placeholder="username or email">
+                    <small>The user account name displayed to the user during registration and authentication.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="userVerification">User Verification</label>
+                    <select id="userVerification" class="form-select">
+                        <option value="preferred">Preferred</option>
+                        <option value="required">Required</option>
+                        <option value="discouraged">Discouraged</option>
+                    </select>
+                    <small>Whether the authenticator should verify the user via biometrics, PIN, or password before completing the ceremony.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="attestation">Attestation Conveyance</label>
+                    <select id="attestation" class="form-select">
+                        <option value="none">None</option>
+                        <option value="indirect">Indirect</option>
+                        <option value="direct">Direct</option>
+                    </select>
+                    <small>How the authenticator's attestation certificate is conveyed to the relying party during registration.</small>
+                </div>
+
+                <div class="toggle-grid">
+                    <label class="toggle-card" for="residentKey">
+                        <input type="checkbox" id="residentKey">
+                        <span>
+                            <strong>Resident Key (Discoverable Credential)</strong>
+                            When enabled, the credential is stored on the authenticator and can be selected without a username.
+                        </span>
+                    </label>
+
+                    <label class="toggle-card" for="authenticatorAttachment">
+                        <input type="checkbox" id="authenticatorAttachment">
+                        <span>
+                            <strong>Platform Authenticator Only</strong>
+                            Restricts to built-in authenticators (Touch ID, Windows Hello). If off, cross-platform keys are also allowed.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="registerBtn">Trigger Registration</button>
+                    <button type="button" class="action-btn secondary" id="clearRegBtn">Clear Results</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Authentication Options</h2>
+                <p class="tool-pane-intro">Configure the assertion request parameters for navigator.credentials.get().</p>
+
+                <div class="form-group">
+                    <label for="authRpId">Relying Party ID</label>
+                    <input type="text" id="authRpId" class="form-input" value="" placeholder="example.com or localhost">
+                    <small>Must be the same domain that was used during registration.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="authUserVerification">User Verification</label>
+                    <select id="authUserVerification" class="form-select">
+                        <option value="preferred">Preferred</option>
+                        <option value="required">Required</option>
+                        <option value="discouraged">Discouraged</option>
+                    </select>
+                </div>
+
+                <div class="toggle-grid">
+                    <label class="toggle-card" for="authResidentKey">
+                        <input type="checkbox" id="authResidentKey">
+                        <span>
+                            <strong>Discoverable Credential ( Resident Key)</strong>
+                            Request a credential that is stored on the authenticator for user-less authentication flows.
+                        </span>
+                    </label>
+
+                    <label class="toggle-card" for="useExisting">
+                        <input type="checkbox" id="useExisting">
+                        <span>
+                            <strong>Use Previously Registered Credential</strong>
+                            Paste a credential ID to test assertion with an existing credential.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form-group" id="credentialIdGroup" style="display: none;">
+                    <label for="credentialId">Credential ID (Base64)</label>
+                    <input type="text" id="credentialId" class="form-input" placeholder="Paste credential ID from registration output">
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="authenticateBtn" disabled>Trigger Authentication</button>
+                    <button type="button" class="action-btn secondary" id="clearAuthBtn">Clear Results</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-pane" style="margin-top: 2rem;">
+            <h2>Decoded Results</h2>
+            <p class="tool-pane-intro">The output below is decoded entirely in your browser. No data is sent to any external server.</p>
+
+            <div id="resultPlaceholder" class="info-message">
+                Execute a registration or authentication ceremony to see decoded results here.
+            </div>
+
+            <div id="registrationResults" style="display: none;">
+                <div class="result-section">
+                    <h3>Public Key Credential</h3>
+                    <div class="credential-id-display">
+                        <strong>Credential ID:</strong>
+                        <code id="regCredId">-</code>
+                        <button type="button" class="copy-btn" onclick="copyToClipboard('regCredId')">Copy</button>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <h3>Client Data JSON (Decoded)</h3>
+                    <div class="json-viewer" id="clientDataJson"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>Attestation Object (CBOR Decoded)</h3>
+                    <div class="json-viewer" id="attestationObject"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>Authenticator Data (Raw)</h3>
+                    <div class="hex-viewer" id="authenticatorData"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>User Handle</h3>
+                    <div class="credential-id-display">
+                        <code id="userHandleDisplay">-</code>
+                    </div>
+                </div>
+            </div>
+
+            <div id="authenticationResults" style="display: none;">
+                <div class="result-section">
+                    <h3>Assertion Response</h3>
+                    <div class="credential-id-display">
+                        <strong>Credential ID:</strong>
+                        <code id="authCredId">-</code>
+                        <button type="button" class="copy-btn" onclick="copyToClipboard('authCredId')">Copy</button>
+                    </div>
+                </div>
+
+                <div class="result-section">
+                    <h3>Client Data JSON (Decoded)</h3>
+                    <div class="json-viewer" id="authClientDataJson"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>Authenticator Data (Raw)</h3>
+                    <div class="hex-viewer" id="authDataHex"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>Raw Signature</h3>
+                    <div class="hex-viewer" id="signatureHex"></div>
+                </div>
+
+                <div class="result-section">
+                    <h3>User Handle</h3>
+                    <div class="credential-id-display">
+                        <code id="authUserHandle">-</code>
+                    </div>
+                </div>
+            </div>
+
+            <div id="errorDisplay" style="display: none;" class="error-message"></div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> The playground executes native WebAuthn browser APIs. For registration, it calls navigator.credentials.create() with the configured PublicKeyCredentialCreationOptions, capturing the binary responses and translating ArrayBuffers into Base64-url encoded strings and human-readable JSON structures. For authentication, it calls navigator.credentials.get() with PublicKeyCredentialRequestOptions and similarly decodes the assertion response.</p>
+            <p><strong>Key assumptions:</strong> The relying party parameters must be valid for the current origin. Registration requires a secure context (HTTPS or localhost). The authenticator must be available and enrolled. The browser must support the WebAuthn API.</p>
+            <p><strong>Limitations and edge cases:</strong> Some browsers or OS configurations may block WebAuthn in certain contexts. Enterprise policies can suppress authenticator availability. Virtual machines and remote sessions may have limited authenticator access. The playground cannot test attestation verification chains since that requires a live relying party server.</p>
+            <ul>
+                <li>This tool decodes data locally; it does not validate signatures or verify attestation chains.</li>
+                <li>The decoded output is for debugging and educational purposes only.</li>
+                <li>NotAllowedError typically occurs when the user cancels, the origin is invalid, or the credential is not recognized.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use WebAuthn &amp; FIDO2 Debugging Playground</h2>
+                    <p>Configure the registration options in the left panel, then click "Trigger Registration" to invoke the WebAuthn ceremony. After a successful registration, copy the displayed Credential ID and paste it into the authentication panel to test assertion flows.</p>
+                    <p>Use the credential ID output from registration to test authentication. Toggle "Use Previously Registered Credential" and paste the ID to assert against an existing credential rather than discovering a resident key.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the logic works</h2>
+                    <p>The tool constructs PublicKeyCredentialCreationOptions and PublicKeyCredentialRequestOptions objects matching the WebAuthn specification. It calls the browser's navigator.credentials API, receives binary ArrayBuffer responses, and decodes them using TextDecoder for UTF-8 strings and manual parsing for CBOR-encoded attestation objects.</p>
+                    <p>The output is deterministic for each ceremony; identical inputs will produce identical decoded structures.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>The Client Data JSON contains the challenge, origin, and type fields that were sent to the authenticator. Verify that the origin matches your expected domain and that the challenge matches what your server generated.</p>
+                    <p>The Attestation Object contains the credential public key and optional attestation data. The Authenticator Data encodes the sign count, cloned status, and user verification flags.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This playground is a debugging and educational tool. It does not perform signature verification, attestation validation, or challenge verification. Do not use the decoded output as proof of credential validity in production systems.</p>
+                    <p>For production WebAuthn implementations, always validate all parameters server-side, verify attestation chains when required, and implement proper challenge storage and expiration policies.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>Understanding WebAuthn registration and authentication flows</h2>
+            <p>WebAuthn (Web Authentication) is a W3C and FIDO Alliance standard that enables passwordless authentication using public-key cryptography. Rather than sharing a secret with the server, users authenticate with a private key stored on their device or security key. This architectural shift eliminates phishing, reduces password reuse, and removes the server-side password database attack surface.</p>
+
+            <h3>The registration ceremony</h3>
+            <p>During registration, the relying party generates a challenge and user account details, then passes them to the browser via navigator.credentials.create(). The browser forwards these to the authenticator, which generates a new key pair. The public key, credential ID, and attestation statement are returned to the relying party for storage.</p>
+            <p>The authenticator never exports the private key. It signs challenges using the private key, and only the public key is stored server-side.</p>
+
+            <h3>The authentication ceremony</h3>
+            <p>During authentication, the relying party sends a challenge and optionally specifies a credential ID or allows any credential from the relying party's domain. The browser invokes the authenticator, which signs the challenge with the stored private key. The assertion response is verified server-side using the stored public key.</p>
+
+            <h2>Attestation vs Assertion</h2>
+            <p>Attestation and assertion are the two primary response types in WebAuthn, serving distinct purposes in the authentication workflow.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Attestation</th>
+                            <th>Assertion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>When it occurs</td>
+                            <td>During credential creation (registration)</td>
+                            <td>During credential use (authentication)</td>
+                        </tr>
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Prove the authenticator type and attestation statement to the RP</td>
+                            <td>Prove possession of the private key for a specific credential</td>
+                        </tr>
+                        <tr>
+                            <td>Contains</td>
+                            <td>Attestation certificate chain, credential public key, counter</td>
+                            <td>Signature over challenge, auth data, credential ID</td>
+                        </tr>
+                        <tr>
+                            <td>Privacy consideration</td>
+                            <td>Can potentially identify the device model (use None or Indirect to avoid)</td>
+                            <td>Does not reveal authenticator identity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Common WebAuthn error codes and their meanings</h2>
+            <p>Understanding WebAuthn errors is critical for debugging registration and authentication failures in production deployments.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Error Name</th>
+                            <th>Common Cause</th>
+                            <th>Resolution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>NotAllowedError</td>
+                            <td>User cancelled, origin mismatch, or cross-origin request blocked</td>
+                            <td>Verify origin configuration, ensure HTTPS, check that RP ID is valid for the origin</td>
+                        </tr>
+                        <tr>
+                            <td>InvalidStateError</td>
+                            <td>Credential already exists (duplicate registration attempt)</td>
+                            <td>Use existing credential or generate a new user ID</td>
+                        </tr>
+                        <tr>
+                            <td>SecurityError</td>
+                            <td>Insecure context, missing TLS, or blocked by Mixed Content</td>
+                            <td>Deploy on HTTPS with valid certificates, except localhost</td>
+                        </tr>
+                        <tr>
+                            <td>NotSupportedError</td>
+                            <td>Algorithm not supported, or resident key requested on unsupported authenticator</td>
+                            <td>Check authenticator capabilities, use ES256 algorithm</td>
+                        </tr>
+                        <tr>
+                            <td>AbortError</td>
+                            <td>Challenge expired or request timed out</td>
+                            <td>Regenerate challenge server-side for each attempt</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Resident keys and discoverable credentials</h2>
+            <p>A resident key (also called a discoverable credential) stores the credential on the authenticator rather than relying on the server to store credential IDs. This enables authentication flows where the user does not need to enter a username; the authenticator presents a list of accounts to choose from.</p>
+            <p>Resident keys are particularly valuable for passwordless flows on shared devices and for scenarios where the user should not need to remember which account they used on a given device.</p>
+
+            <h3>When to require resident keys</h3>
+            <p>Request resident keys when building username-less authentication flows, when supporting cross-device credential synchronization (like Apple Passkeys or Google Password Manager), or when you want users to be able to register and authenticate without manual credential ID management.</p>
+
+            <h2>Debugging WebAuthn in development</h2>
+            <p>When developing WebAuthn integrations, several common patterns cause failures that are difficult to diagnose without visibility into the ceremony parameters.</p>
+
+            <h3>Origin and RP ID mismatches</h3>
+            <p>The relying party ID must be an effective domain. It can be the exact domain or a registrable domain suffix. For example, from login.example.com, you can use example.com as the RP ID but not sub.example.org. Always verify your origin and RP ID alignment during development.</p>
+
+            <h3>Challenge management</h3>
+            <p>The challenge must be generated server-side, stored temporarily, and verified after the ceremony. A challenge that is too long-lived or reused creates a replay attack vector. Generate a new cryptographically random challenge for every registration and authentication attempt.</p>
+
+            <h3>Localhost considerations</h3>
+            <p>WebAuthn works on localhost without HTTPS due to browser exceptions. However, the origin must be exactly http://localhost with the correct port. If you are testing across devices or in containers, consider using a tool like ngrok to expose a proper HTTPS endpoint.</p>
+
+            <h2>The role of FIDO2 CTAP2</h2>
+            <p>WebAuthn operates at the application layer while CTAP2 (Client to Authenticator Protocol 2) handles the transport between the browser and the authenticator. CTAP2 supports USB, NFC, and Bluetooth Low Energy transports for cross-platform security keys, and platform-specific protocols for built-in authenticators like Touch ID and Windows Hello.</p>
+            <p>Understanding CTAP2 is particularly valuable when debugging interoperability issues between browsers, operating systems, and physical authenticator devices.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>What is the difference between WebAuthn Attestation and Assertion?</h3>
+                <p>Attestation occurs during registration and provides proof of the authenticator's identity and its attestation certificate. Assertion occurs during authentication and proves that the user possesses the private key for a previously registered credential.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I debug 'NotAllowedError' in WebAuthn?</h3>
+                <p>NotAllowedError typically means the ceremony was rejected. Common causes include the user cancelling the dialog, an origin mismatch between your server's expectation and what the browser sent, or the relying party ID being invalid for the current domain.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can I test FIDO2 security keys on localhost?</h3>
+                <p>Yes, localhost is exempt from the HTTPS requirement for WebAuthn. However, the origin must be exactly http://localhost (or http://127.0.0.1) with the correct port. Cross-platform security keys may work on localhost, though some require an enterprise policy or registration on the key first.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is a Resident Key in the context of FIDO2?</h3>
+                <p>A Resident Key (also called a Discoverable Credential) is stored on the authenticator and can be selected by the authenticator without the relying party providing a credential ID. This enables passwordless flows where the user only needs to provide a PIN or biometric.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I decode the clientDataJSON from a WebAuthn response?</h3>
+                <p>The clientDataJSON is a UTF-8 encoded JSON string. Decode it using TextDecoder, then parse the JSON. It contains fields like type, challenge, origin, and optionally crossOrigin. Always verify the challenge and origin match your expected values server-side.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What does the authenticator data flag byte represent?</h3>
+                <p>The flag byte encodes multiple boolean signals: bit 0 is UP (User Present), bit 2 is UV (User Verified), bit 6 is AT (Attested Credential), and bit 7 is ED (Extension Data). The sign count tracks how many times the authenticator has been used.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why should I use 'none' attestation conveyance?</h3>
+                <p>Using 'none' attestation prevents the authenticator from transmitting its attestation certificate during registration. This preserves user privacy by not revealing the device model or manufacturer to the relying party, while still creating a valid credential.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🖐️</div>
+                <h3>Biometric Readiness Checker</h3>
+                <p>Validate browser and device support for platform authenticators and passkey compatibility.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔐</div>
+                <h3>JWT Debugger</h3>
+                <p>Decode and inspect JSON Web Tokens to verify claims, signatures, and token structure.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔄</div>
+                <h3>Base64 / Hex Converter</h3>
+                <p>Encode and decode data between Base64, Hex, and raw binary formats commonly used in cryptography.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🌐</div>
+                <h3>CORS Tester</h3>
+                <p>Diagnose Cross-Origin Resource Sharing configuration issues for API endpoints and font loading.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔑</div>
+                <h3>OAuth 2.0 Playground</h3>
+                <p>Simulate authorization code, implicit, and client credential flows with live token inspection.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">📊</div>
+                <h3>Hash Identifier</h3>
+                <p>Identify cryptographic hash algorithms from encoded strings for migration and forensics.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">⚡</div>
+                <h3>Bcrypt Calculator</h3>
+                <p>Generate and test bcrypt password hashes with configurable cost factors for secure storage.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔒</div>
+                <h3>Password Generator</h3>
+                <p>Create strong, random passwords with customizable character sets and length parameters.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const state = {
+        registeredCredential: null
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const rpIdInput = $('rpId');
+    const rpNameInput = $('rpName');
+    const userIdInput = $('userId');
+    const userNameInput = $('userName');
+    const userVerificationSelect = $('userVerification');
+    const attestationSelect = $('attestation');
+    const residentKeyCheckbox = $('residentKey');
+    const authenticatorAttachmentCheckbox = $('authenticatorAttachment');
+    const registerBtn = $('registerBtn');
+    const clearRegBtn = $('clearRegBtn');
+
+    const authRpIdInput = $('authRpId');
+    const authUserVerificationSelect = $('authUserVerification');
+    const authResidentKeyCheckbox = $('authResidentKey');
+    const useExistingCheckbox = $('useExisting');
+    const credentialIdGroup = $('credentialIdGroup');
+    const credentialIdInput = $('credentialId');
+    const authenticateBtn = $('authenticateBtn');
+    const clearAuthBtn = $('clearAuthBtn');
+
+    const resultPlaceholder = $('resultPlaceholder');
+    const registrationResults = $('registrationResults');
+    const authenticationResults = $('authenticationResults');
+    const errorDisplay = $('errorDisplay');
+
+    function arrayBufferToBase64(buffer) {
+        const bytes = new Uint8Array(buffer);
+        let binary = '';
+        for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    function base64ToArrayBuffer(base64) {
+        const padded = base64.replace(/-/g, '+').replace(/_/g, '/');
+        const paddedLength = (4 - (padded.length % 4)) % 4;
+        const paddedStr = padded + '='.repeat(paddedLength);
+        const binary = atob(paddedStr);
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) {
+            bytes[i] = binary.charCodeAt(i);
+        }
+        return bytes.buffer;
+    }
+
+    function generateRandomId(length = 32) {
+        const bytes = new Uint8Array(length);
+        crypto.getRandomValues(bytes);
+        return arrayBufferToBase64(bytes);
+    }
+
+    function arrayBufferToHex(buffer) {
+        const bytes = new Uint8Array(buffer);
+        return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function decodeCBORAttestation(buffer) {
+        const bytes = new Uint8Array(buffer);
+        const result = {};
+        let index = 0;
+
+        function readMap() {
+            const map = {};
+            const count = bytes[index++];
+            for (let i = 0; i < count; i++) {
+                const key = bytes[index++];
+                const valueType = bytes[index++];
+                let value;
+                if (valueType === 0x65) {
+                    const len = bytes[index++];
+                    value = String.fromCharCode.apply(null, bytes.slice(index, index + len));
+                    index += len;
+                } else if (valueType === 0x58) {
+                    const len = bytes[index++];
+                    value = arrayBufferToHex(bytes.slice(index, index + len));
+                    index += len;
+                } else if (valueType === 0x48) {
+                    const len = bytes[index++];
+                    value = arrayBufferToBase64(bytes.slice(index, index + len));
+                    index += len;
+                } else if (valueType === 0x20 || valueType === 0x21) {
+                    value = 'Unsupported large integer format';
+                    index += 6;
+                } else {
+                    value = 'Unsupported type: 0x' + valueType.toString(16);
+                }
+                map[key] = value;
+            }
+            return map;
+        }
+
+        if (bytes[index++] !== 0xa3) {
+            return { raw: arrayBufferToHex(buffer), note: 'Not a standard FIDO2 CBOR attestation format' };
+        }
+
+        const map = readMap();
+        return map;
+    }
+
+    function parseAuthenticatorData(buffer) {
+        const bytes = new Uint8Array(buffer);
+        const result = {};
+
+        if (bytes.length < 37) {
+            return { raw: arrayBufferToHex(buffer), error: 'Authenticator data too short' };
+        }
+
+        result.rpIdHash = arrayBufferToHex(bytes.slice(0, 32));
+        result.flags = bytes[32];
+        result.flagsParsed = {
+            userPresent: !!(bytes[32] & 0x01),
+            userVerified: !!(bytes[32] & 0x04),
+            attestedCredentialIncluded: !!(bytes[32] & 0x40),
+            extensionDataIncluded: !!(bytes[32] & 0x80)
+        };
+        result.signCount = (bytes[33] << 24) | (bytes[34] << 16) | (bytes[35] << 8) | bytes[36];
+
+        let offset = 37;
+        if (result.flagsParsed.attestedCredentialIncluded && bytes.length >= offset + 18) {
+            const credIdLen = (bytes[offset + 16] << 8) | bytes[offset + 17];
+            result.credentialId = arrayBufferToBase64(bytes.slice(offset + 18, offset + 18 + credIdLen));
+            result.publicKeyBytes = arrayBufferToHex(bytes.slice(offset + 18 + credIdLen, offset + 18 + credIdLen + 77));
+            offset += 18 + credIdLen + 77;
+        }
+
+        if (result.flagsParsed.extensionDataIncluded && bytes.length > offset) {
+            result.extensions = arrayBufferToHex(bytes.slice(offset));
+        }
+
+        return result;
+    }
+
+    function syntaxHighlightJSON(json) {
+        if (typeof json === 'string') {
+            try {
+                json = JSON.parse(json);
+            } catch (e) {
+                return json;
+            }
+        }
+        const str = JSON.stringify(json, null, 2);
+        return str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            let cls = 'json-number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'json-key';
+                    match = match.slice(0, -1);
+                    return '<span class="' + cls + '">' + match + '</span>:';
+                } else {
+                    cls = 'json-string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'json-boolean';
+            } else if (/null/.test(match)) {
+                cls = 'json-null';
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    function showError(message) {
+        hide(resultPlaceholder);
+        hide(registrationResults);
+        hide(authenticationResults);
+        errorDisplay.textContent = message;
+        show(errorDisplay);
+    }
+
+    function clearAllResults() {
+        hide(errorDisplay);
+        hide(registrationResults);
+        hide(authenticationResults);
+        show(resultPlaceholder);
+    }
+
+    function getOrigin() {
+        return window.location.protocol + '//' + window.location.host;
+    }
+
+    function getEffectiveDomain() {
+        const host = window.location.hostname;
+        const parts = host.split('.');
+        if (parts.length >= 2) {
+            return parts.slice(-2).join('.');
+        }
+        return host;
+    }
+
+    async function triggerRegistration() {
+        clearAllResults();
+        hide(resultPlaceholder);
+
+        if (!window.PublicKeyCredential) {
+            showError('WebAuthn is not supported in this browser. Please use a modern browser with WebAuthn support.');
+            return;
+        }
+
+        try {
+            const rpId = rpIdInput.value.trim() || getEffectiveDomain();
+            const userId = userIdInput.value.trim() || generateRandomId(32);
+            const challenge = generateRandomId(32);
+
+            const createOptions = {
+                challenge: base64ToArrayBuffer(challenge),
+                rp: {
+                    id: rpId,
+                    name: rpNameInput.value || 'Test Application'
+                },
+                user: {
+                    id: new TextEncoder().encode(userId),
+                    name: userNameInput.value || 'testuser@example.com',
+                    displayName: userNameInput.value || 'testuser@example.com'
+                },
+                pubKeyCredParams: [
+                    { type: 'public-key', alg: -7 },
+                    { type: 'public-key', alg: -257 }
+                ],
+                timeout: 60000,
+                attestation: attestationSelect.value || 'none',
+                excludeCredentials: [],
+                authenticatorSelection: {
+                    authenticatorAttachment: authenticatorAttachmentCheckbox.checked ? 'platform' : 'cross-platform',
+                    userVerification: userVerificationSelect.value || 'preferred',
+                    residentKey: residentKeyCheckbox.checked ? 'preferred' : 'discouraged'
+                }
+            };
+
+            const credential = await navigator.credentials.create({ publicKey: createOptions });
+
+            if (!credential) {
+                showError('No credential was created. The ceremony may have been cancelled by the user.');
+                return;
+            }
+
+            state.registeredCredential = credential;
+
+            const clientDataJSON = new TextDecoder().decode(credential.response.clientDataJSON);
+            const clientDataObj = JSON.parse(clientDataJSON);
+
+            $('regCredId').textContent = credential.id;
+            $('clientDataJson').innerHTML = syntaxHighlightJSON(clientDataObj);
+
+            const attestationObject = credential.response.attestationObject;
+            const decodedAttestation = decodeCBORAttestation(attestationObject);
+            $('attestationObject').innerHTML = syntaxHighlightJSON(decodedAttestation);
+
+            const authData = credential.response.getAuthenticatorData();
+            const parsedAuthData = parseAuthenticatorData(authData);
+            $('authenticatorData').textContent = JSON.stringify(parsedAuthData, null, 2);
+
+            const userHandle = credential.response.getUserHandle();
+            $('userHandleDisplay').textContent = userHandle ? arrayBufferToBase64(userHandle) : '(not provided)';
+
+            show(registrationResults);
+
+            if (authRpIdInput.value.trim() === '') {
+                authRpIdInput.value = rpId;
+            }
+
+            authenticateBtn.disabled = false;
+
+        } catch (error) {
+            let message = 'Registration failed: ' + error.message;
+            if (error.name === 'NotAllowedError') {
+                message = 'NotAllowedError: The ceremony was not allowed. This usually means the user cancelled, the origin is invalid, or WebAuthn is blocked.';
+            } else if (error.name === 'InvalidStateError') {
+                message = 'InvalidStateError: The credential already exists. Try using a different user ID or clear existing credentials.';
+            } else if (error.name === 'SecurityError') {
+                message = 'SecurityError: Insecure context. WebAuthn requires HTTPS (or localhost).';
+            }
+            showError(message);
+        }
+    }
+
+    async function triggerAuthentication() {
+        clearAllResults();
+        hide(resultPlaceholder);
+
+        if (!window.PublicKeyCredential) {
+            showError('WebAuthn is not supported in this browser.');
+            return;
+        }
+
+        if (!state.registeredCredential && !useExistingCheckbox.checked) {
+            showError('No credential has been registered. Please register a credential first or enable "Use Previously Registered Credential" and paste a credential ID.');
+            return;
+        }
+
+        try {
+            const rpId = authRpIdInput.value.trim() || getEffectiveDomain();
+            const challenge = generateRandomId(32);
+
+            const getOptions = {
+                challenge: base64ToArrayBuffer(challenge),
+                rpId: rpId,
+                timeout: 60000,
+                userVerification: authUserVerificationSelect.value || 'preferred',
+                allowCredentials: []
+            };
+
+            if (useExistingCheckbox.checked && credentialIdInput.value.trim()) {
+                getOptions.allowCredentials = [{
+                    type: 'public-key',
+                    id: base64ToArrayBuffer(credentialIdInput.value.trim()),
+                    transports: ['usb', 'nfc', 'ble', 'internal']
+                }];
+            } else if (state.registeredCredential) {
+                getOptions.allowCredentials = [{
+                    type: 'public-key',
+                    id: state.registeredCredential.rawId,
+                    transports: ['usb', 'nfc', 'ble', 'internal']
+                }];
+            }
+
+            if (authResidentKeyCheckbox.checked) {
+                getOptions.extensions = { appid: undefined };
+            }
+
+            const assertion = await navigator.credentials.get({ publicKey: getOptions });
+
+            if (!assertion) {
+                showError('No assertion was returned. The ceremony may have been cancelled by the user.');
+                return;
+            }
+
+            const clientDataJSON = new TextDecoder().decode(assertion.response.clientDataJSON);
+            const clientDataObj = JSON.parse(clientDataJSON);
+
+            $('authCredId').textContent = assertion.id;
+            $('authClientDataJson').innerHTML = syntaxHighlightJSON(clientDataObj);
+
+            const authData = assertion.response.authenticatorData;
+            const parsedAuthData = parseAuthenticatorData(authData);
+            $('authDataHex').textContent = JSON.stringify(parsedAuthData, null, 2);
+
+            const signatureHex = arrayBufferToHex(assertion.response.signature);
+            $('signatureHex').textContent = signatureHex;
+
+            const userHandle = assertion.response.userHandle;
+            $('authUserHandle').textContent = userHandle ? arrayBufferToBase64(userHandle) : '(not returned by authenticator)';
+
+            show(authenticationResults);
+
+        } catch (error) {
+            let message = 'Authentication failed: ' + error.message;
+            if (error.name === 'NotAllowedError') {
+                message = 'NotAllowedError: The ceremony was not allowed. Check that the RP ID matches the registration, or that the user did not cancel the dialog.';
+            } else if (error.name === 'SecurityError') {
+                message = 'SecurityError: Insecure context. WebAuthn requires HTTPS (or localhost).';
+            }
+            showError(message);
+        }
+    }
+
+    registerBtn.addEventListener('click', triggerRegistration);
+    clearRegBtn.addEventListener('click', clearAllResults);
+    authenticateBtn.addEventListener('click', triggerAuthentication);
+    clearAuthBtn.addEventListener('click', clearAllResults);
+
+    useExistingCheckbox.addEventListener('change', function() {
+        credentialIdGroup.style.display = this.checked ? 'block' : 'none';
+    });
+
+    window.copyToClipboard = function(elementId) {
+        const text = $(elementId).textContent;
+        navigator.clipboard.writeText(text).then(function() {
+            alert('Copied to clipboard');
+        }).catch(function() {
+            alert('Failed to copy');
+        });
+    };
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>

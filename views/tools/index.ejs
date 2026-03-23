@@ -72,6 +72,17 @@
                     </p>
                 </a>
 
+                <!-- WebAuthn & FIDO2 Debugging Playground Tool Card -->
+                <a href="/tools/webauthn-debugger" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔐
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مختبر WebAuthn' : 'WebAuthn Debugger' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'محاكاة وتصحيح سير عمل WebAuthn مع فك تشفير CBOR وتفتيش بيانات العميل في الوقت الفعلي.' : 'Simulate and debug WebAuthn registration and authentication flows with live CBOR decoding and client data inspection.' %>
+                    </p>
+                </a>
+
                 <!-- Encryption Key Strength Tool Card -->
                 <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
