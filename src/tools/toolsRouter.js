@@ -90,6 +90,13 @@ const toolMeta = {
             en: 'Create and sign custom JSON Web Tokens for API authentication testing and debugging workflows.'
         }
     },
+    'session-token-analyzer': {
+        title: { ar: 'محلل رموز الجلسة وكلمات المرور', en: 'Session Token Analyzer' },
+        description: {
+            ar: 'فك تشفير بيانات الجلسة والتحقق من التوقيع وفحص سمات أمان ملفات تعريف الارتباط.',
+            en: 'Decode session data, verify signatures, and audit cookie security attributes for unauthorized access prevention.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -614,6 +621,80 @@ router.get('/jwt-generator', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "Add any key-value pairs to the payload JSON. For example, adding 'role': 'admin' creates a custom claim."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// Session Token Analyzer
+router.get('/session-token-analyzer', (req, res) => {
+    const meta = getMeta('session-token-analyzer', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/session-token-analyzer', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Session Token Analyzer",
+                "applicationCategory": "SecurityApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I use a session token analyzer safely?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Use this tool only for debugging and testing with non-production tokens. Never paste actual production session tokens into online tools."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between an opaque token and a JWT?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "An opaque token is a random identifier that maps to server-side session data. A JWT is self-contained with claims encoded in the token itself."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How can I tell if my session token is vulnerable to hijacking?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Indicators include: predictable token generation, missing Secure and HttpOnly flags, tokens in URLs, and missing SameSite attribute."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What does invalid signature mean in a JWT analysis?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Invalid signature means the signature does not match what was computed using the provided secret, indicating tampering or wrong key."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why are HttpOnly and Secure flags critical for session cookies?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "HttpOnly prevents JavaScript access to the cookie, blocking XSS theft. Secure ensures cookies are only transmitted over HTTPS, preventing interception."
                         }
                     }
                 ]

@@ -116,6 +116,17 @@
                     </p>
                 </a>
 
+                <!-- Session Token Analyzer Tool Card -->
+                <a href="/tools/session-token-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔍
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محلل رموز الجلسة' : 'Session Token Analyzer' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'فك تشفير بيانات الجلسة والتحقق من التوقيع وفحص سمات أمان ملفات تعريف الارتباط.' : 'Decode session data, verify signatures, and audit cookie security attributes for unauthorized access prevention.' %>
+                    </p>
+                </a>
+
                 <!-- Encryption Key Strength Tool Card -->
                 <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">

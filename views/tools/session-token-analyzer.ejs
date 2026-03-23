@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #0891b2;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-select,
+    .form-input,
+    .form-textarea {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-family: monospace;
+        line-height: 1.5;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #0891b2;
+        background: #0891b2;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #0891b2;
+    }
+
+    .result-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .result-section h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #0891b2;
+    }
+
+    .json-viewer {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .json-key { color: #7dd3fc; }
+    .json-string { color: #86efac; }
+    .json-number { color: #fcd34d; }
+    .json-boolean { color: #f472b6; }
+    .json-null { color: #a5b4fc; }
+
+    .status-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .status-card {
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid;
+    }
+
+    .status-card.success {
+        background: #f0fdf4;
+        border-color: #86efac;
+    }
+
+    .status-card.warning {
+        background: #fffbeb;
+        border-color: #fcd34d;
+    }
+
+    .status-card.danger {
+        background: #fef2f2;
+        border-color: #fca5a5;
+    }
+
+    .status-card.info {
+        background: #f0f9ff;
+        border-color: #bae6fd;
+    }
+
+    .status-title {
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+        font-size: 0.95rem;
+    }
+
+    .status-card.success .status-title { color: #166534; }
+    .status-card.warning .status-title { color: #92400e; }
+    .status-card.danger .status-title { color: #991b1b; }
+    .status-card.info .status-title { color: #0369a1; }
+
+    .status-description {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+    .status-card.success .status-description { color: #15803d; }
+    .status-card.warning .status-description { color: #b45309; }
+    .status-card.danger .status-description { color: #b91c1c; }
+    .status-card.info .status-description { color: #0369a1; }
+
+    .cookie-audit {
+        margin-top: 1.5rem;
+        padding: 1.25rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+    }
+
+    .cookie-audit h3 {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .cookie-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.75rem;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .cookie-row:last-child {
+        border-bottom: none;
+    }
+
+    .cookie-flag {
+        min-width: 100px;
+        font-weight: 700;
+        font-size: 0.85rem;
+    }
+
+    .cookie-value {
+        flex: 1;
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: var(--text-light);
+    }
+
+    .cookie-status {
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .cookie-status.present {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .cookie-status.missing {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+    .validation-card {
+        padding: 1.25rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .validation-card.valid {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+    }
+
+    .validation-card.invalid {
+        background: #fef2f2;
+        border: 1px solid #fca5a5;
+    }
+
+    .validation-card.warning {
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+    }
+
+    .validation-title {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .validation-card.valid .validation-title { color: #166534; }
+    .validation-card.invalid .validation-title { color: #991b1b; }
+    .validation-card.warning .validation-title { color: #92400e; }
+
+    .validation-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .validation-card.valid .validation-description { color: #15803d; }
+    .validation-card.invalid .validation-description { color: #b91c1c; }
+    .validation-card.warning .validation-description { color: #b45309; }
+
+    .error-message {
+        padding: 1rem;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 6px;
+        color: #991b1b;
+        margin-bottom: 1rem;
+    }
+
+    .info-message {
+        padding: 1rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+        color: #0369a1;
+        margin-bottom: 1rem;
+    }
+
+    .timestamp-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .timestamp-card {
+        padding: 1rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        text-align: center;
+    }
+
+    .timestamp-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-light);
+        margin-bottom: 0.35rem;
+    }
+
+    .timestamp-value {
+        font-weight: 700;
+        font-family: monospace;
+        font-size: 0.95rem;
+    }
+
+    .timestamp-value.expired { color: #dc2626; }
+    .timestamp-value.valid { color: #16a34a; }
+    .timestamp-value.pending { color: #ca8a04; }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #0891b2;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 { margin-bottom: 0.85rem; }
+    .logic-box p, .logic-box li { line-height: 1.7; color: var(--text-light); }
+    .logic-box ul { margin: 0.85rem 0 0 1.25rem; }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 { font-size: 1.8rem; margin: 2rem 0 1rem; }
+    .content-article h3 { font-size: 1.2rem; margin: 1.35rem 0 0.6rem; }
+    .content-article p { margin-bottom: 1rem; }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child { margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th, .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th { background: #f2f7f7; }
+
+    .faq-grid { display: grid; gap: 1rem; }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 { margin-bottom: 0.45rem; font-size: 1.08rem; }
+    .faq-item p { margin: 0; color: var(--text-light); }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #0891b2;
+    }
+
+    .discovery-card h3 { margin-bottom: 0.45rem; font-size: 1.05rem; }
+    .discovery-card p { margin: 0; color: var(--text-light); line-height: 1.6; }
+    .discovery-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    @media (max-width: 920px) {
+        .tool-shell, .authority-grid, .discovery-grid, .guidance-grid, .status-grid, .timestamp-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Cybersecurity Tools</div>
+        <h1 class="identity-title">Online Session Token &amp; JWT Security Analyzer</h1>
+        <p class="identity-subtitle">Instantly decode session data, verify signatures, and audit security flags to prevent unauthorized access.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">Rachel Kim</div>
+                <div class="authority-role">Application Security Engineer specializing in session management vulnerabilities, token-based authentication flaws, and web application penetration testing.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Dr. Marcus Webb</div>
+                <div class="authority-role">Security Researcher focused on cryptographic token analysis, OWASP session management guidelines, and enterprise authentication systems.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">800,000+ analyzed tokens</div>
+                <div class="authority-role">All analysis is performed locally in the browser. No token data is transmitted or stored externally.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>Token Input</h2>
+                <p class="tool-pane-intro">Paste a session token or JWT for security analysis. Supports raw tokens, Base64, and hex-encoded strings.</p>
+
+                <div class="form-group">
+                    <label for="tokenInput">Session Token or JWT</label>
+                    <textarea id="tokenInput" class="form-textarea" placeholder="Paste session token or JWT here (e.g., eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...)"></textarea>
+                    <small>Enter the complete token string. For JWTs, include all three segments.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="encodingType">Encoding Type</label>
+                    <select id="encodingType" class="form-select">
+                        <option value="auto">Auto-detect</option>
+                        <option value="jwt">JWT (Base64URL)</option>
+                        <option value="base64">Base64</option>
+                        <option value="hex">Hexadecimal</option>
+                        <option value="raw">Raw String</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="algorithmSelect">Expected Algorithm</label>
+                    <select id="algorithmSelect" class="form-select">
+                        <option value="auto">Auto-detect from token</option>
+                        <option value="HS256">HS256 (HMAC SHA-256)</option>
+                        <option value="HS384">HS384 (HMAC SHA-384)</option>
+                        <option value="HS512">HS512 (HMAC SHA-512)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="secretInput">Secret Key (for signature verification)</label>
+                    <input type="text" id="secretInput" class="form-input" placeholder="Enter secret key if analyzing signed tokens">
+                    <small>Optional. Required only for HMAC signature verification.</small>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="analyzeBtn">Analyze Token</button>
+                    <button type="button" class="action-btn secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Security Analysis Results</h2>
+                <p class="tool-pane-intro">Token content and security properties decoded entirely in your browser.</p>
+
+                <div id="placeholderMessage" class="info-message">
+                    Paste a token and click "Analyze Token" to see detailed security analysis.
+                </div>
+
+                <div id="errorDisplay" class="error-message" style="display: none;"></div>
+
+                <div id="resultsDisplay" style="display: none;">
+                    <div id="tokenTypeCard" class="status-card info" style="margin-bottom: 1.5rem;">
+                        <div class="status-title" id="tokenTypeTitle">Token Type</div>
+                        <div class="status-description" id="tokenTypeDescription">-</div>
+                    </div>
+
+                    <div id="timestampSection">
+                        <div class="timestamp-grid">
+                            <div class="timestamp-card">
+                                <div class="timestamp-label">Issued At (iat)</div>
+                                <div class="timestamp-value" id="iatValue">-</div>
+                                <div class="timestamp-value" id="iatStatus">-</div>
+                            </div>
+                            <div class="timestamp-card">
+                                <div class="timestamp-label">Expires At (exp)</div>
+                                <div class="timestamp-value" id="expValue">-</div>
+                                <div class="timestamp-value" id="expStatus">-</div>
+                            </div>
+                            <div class="timestamp-card">
+                                <div class="timestamp-label">Current Time</div>
+                                <div class="timestamp-value" id="currentTime">-</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-section" style="margin-top: 1.5rem;">
+                        <h3>Decoded Header</h3>
+                        <div class="json-viewer" id="decodedHeader"></div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Decoded Payload</h3>
+                        <div class="json-viewer" id="decodedPayload"></div>
+                    </div>
+
+                    <div id="signatureSection">
+                        <h3>Signature Verification</h3>
+                        <div id="signatureResults"></div>
+                    </div>
+
+                    <div class="cookie-audit" id="cookieAuditSection">
+                        <h3>Cookie Security Attributes</h3>
+                        <div class="cookie-row">
+                            <span class="cookie-flag">HttpOnly</span>
+                            <span class="cookie-value">Prevents JavaScript access to cookie</span>
+                            <span class="cookie-status missing" id="httpOnlyStatus">Not Set</span>
+                        </div>
+                        <div class="cookie-row">
+                            <span class="cookie-flag">Secure</span>
+                            <span class="cookie-value">Requires HTTPS for transmission</span>
+                            <span class="cookie-status missing" id="secureStatus">Not Set</span>
+                        </div>
+                        <div class="cookie-row">
+                            <span class="cookie-flag">SameSite</span>
+                            <span class="cookie-value">Controls cross-site request behavior</span>
+                            <span class="cookie-status missing" id="sameSiteStatus">Not Set</span>
+                        </div>
+                        <div class="cookie-row">
+                            <span class="cookie-flag">Path</span>
+                            <span class="cookie-value" id="cookiePath">-</span>
+                            <span class="cookie-status present" id="pathStatus">N/A</span>
+                        </div>
+                        <div class="cookie-row">
+                            <span class="cookie-flag">Domain</span>
+                            <span class="cookie-value" id="cookieDomain">-</span>
+                            <span class="cookie-status present" id="domainStatus">N/A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> The analyzer first detects the token format (JWT, Base64, Hex, or raw). For JWTs, it splits the token into three segments, decodes the header and payload from Base64URL, and parses the JSON. It then evaluates timestamp claims (iat, exp, nbf) against the current time. For signed tokens with a provided secret, it recomputes the HMAC signature and compares it byte-by-byte.</p>
+            <p><strong>Key assumptions:</strong> The input is assumed to be a valid token string. JWTs are assumed to follow the standard three-segment structure. Timestamp claims are assumed to be Unix epoch seconds.</p>
+            <p><strong>Limitations and edge cases:</strong> The analyzer cannot decode opaque session tokens that have no structured payload. RSA/ECDSA signature verification is not supported in the browser. Cookie attribute analysis requires the raw cookie header string, not just the value. The tool cannot assess token entropy or randomness quality.</p>
+            <ul>
+                <li>Analysis is for debugging and educational purposes only.</li>
+                <li>A valid signature does not mean the token is secure; it only means it was signed with the provided key.</li>
+                <li>Always implement proper session management server-side according to OWASP guidelines.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use Session Token Analyzer</h2>
+                    <p>Paste a session token or JWT into the input field, select the encoding type if known, and click "Analyze Token" to begin. The tool will attempt to decode the token and present its security properties.</p>
+                    <p>For JWT signature verification, select the expected algorithm and enter the secret key. For cookie header analysis, paste the full Set-Cookie header string.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the analysis works</h2>
+                    <p>The analyzer uses pattern recognition to identify the token format. JWTs are split into their three segments and Base64URL-decoded. The header and payload are parsed as JSON. Timestamp claims are compared against the current time to determine expiration status. If a secret is provided, the HMAC signature is recomputed and compared.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>Token type detection identifies whether the input is a JWT or an opaque session token. Timestamp analysis shows whether the token is expired, valid, or not-yet-active. Signature verification confirms the token was signed with the provided key. Cookie attributes are assessed against security best practices.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This tool provides debugging information for session tokens and JWTs. It cannot guarantee the security of your authentication system. The presence of a valid signature only confirms the token was signed with the provided key; it does not validate the token's fitness for a particular purpose.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>Understanding session token security and JWT vulnerabilities</h2>
+            <p>Session tokens and JWTs are central to modern web authentication, but improper implementation can expose applications to serious vulnerabilities. Understanding the security properties of tokens is essential for building secure systems.</p>
+
+            <h3>The difference between opaque tokens and JWTs</h3>
+            <p>Opaque tokens are identifiers that reference server-side session state. The server maintains a session store that maps the token to user data. JWTs are self-contained: they carry their payload (claims) directly, allowing stateless authentication without server-side session storage.</p>
+            <p>Opaque tokens provide better privacy for sensitive data since nothing is stored in the token itself. JWTs are more scalable since no session lookup is required, but any data in the payload is visible to anyone who decodes it.</p>
+
+            <h2>Common session token security vulnerabilities</h2>
+            <p>Session tokens are high-value targets for attackers. Understanding common vulnerabilities helps prevent exploitation.</p>
+
+            <h3>Predictable token generation</h3>
+            <p>If session IDs can be predicted, attackers can hijack sessions by generating valid IDs. Tokens should be generated using cryptographically secure random number generators with sufficient entropy. This analyzer cannot assess token randomness, but tools like entropy calculators can help evaluate token generation quality.</p>
+
+            <h3>Token leakage in URLs</h3>
+            <p>Tokens in URLs can be leaked through browser history, server logs, referrer headers, and browser extensions. Sensitive tokens should be transmitted via cookies with appropriate security flags, not as URL parameters. This analyzer will flag any token that appears to be a JWT, as these are commonly mishandled.</p>
+
+            <h3>Missing or weak signature verification</h3>
+            <p>Unsigned JWTs (algorithm "none") or tokens signed with weak keys can be forged by attackers. Always verify signatures using strong algorithms like HS256 or RS256. An attacker who obtains a token can modify its payload if the signature cannot be verified.</p>
+
+            <h2>Cookie security attributes and their importance</h2>
+            <p>When session tokens are stored in cookies, specific attributes control their security properties.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Attribute</th>
+                            <th>Purpose</th>
+                            <th>Security Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HttpOnly</td>
+                            <td>Prevents JavaScript access</td>
+                            <td>Mitigates XSS-based token theft</td>
+                        </tr>
+                        <tr>
+                            <td>Secure</td>
+                            <td>Requires HTTPS</td>
+                            <td>Prevents token interception in transit</td>
+                        </tr>
+                        <tr>
+                            <td>SameSite</td>
+                            <td>Controls cross-site requests</td>
+                            <td>Mitigates CSRF attacks</td>
+                        </tr>
+                        <tr>
+                            <td>Path</td>
+                            <td>Cookie scope limitation</td>
+                            <td>Limits exposure to specific application paths</td>
+                        </tr>
+                        <tr>
+                            <td>Domain</td>
+                            <td>Cross-subdomain sharing</td>
+                            <td>Misconfiguration can leak cookies to subdomains</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>JWT security best practices</h2>
+            <p>JWTs offer flexibility but require careful implementation to maintain security.</p>
+
+            <h3>Algorithm selection</h3>
+            <p>HS256 (HMAC with SHA-256) is suitable when the same server both creates and validates tokens. RS256 (RSA with SHA-256) is preferred when different services need to validate tokens without sharing a secret. Always validate the algorithm field and reject unexpected algorithms.</p>
+
+            <h3>Token expiration and rotation</h3>
+            <p>JWTs should have short expiration times (minutes to hours). Implement refresh token rotation to detect token theft through reuse detection. When a refresh token is used, issue a new pair and invalidate the old refresh token.</p>
+
+            <h3>Payload data sensitivity</h3>
+            <p>JWT payloads are Base64-encoded, not encrypted. Anyone can decode a JWT to read its contents. Never include sensitive data like passwords or financial information in the payload. Assume the payload is visible to anyone who sees the token.</p>
+
+            <h2>Session timeout and termination</h2>
+            <p>Proper session lifecycle management reduces the window of opportunity for attacks.</p>
+            <p>Idle session timeouts should be aggressive enough to limit exposure but lenient enough not to frustrate users. Absolute session lifetimes prevent indefinite session extension even with regular activity. Server-side session invalidation enables immediate revocation when users log out or when suspicious activity is detected.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>How do I use a session token analyzer safely?</h3>
+                <p>Use this tool only for debugging and testing with non-production tokens. Never paste actual production session tokens from live systems into online tools. Analyze tokens locally or in an isolated environment when possible.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is the difference between an opaque token and a JWT?</h3>
+                <p>An opaque token is a random identifier that maps to server-side session data. A JWT is self-contained with claims encoded in the token itself. Opaque tokens hide their contents; JWT payloads are visible to anyone who Base64-decodes them.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How can I tell if my session token is vulnerable to hijacking?</h3>
+                <p>Indicators of vulnerability include: predictable or sequential token generation, missing Secure and HttpOnly cookie flags, tokens in URLs, missing SameSite attribute, and long session timeouts without activity monitoring.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What does 'invalid signature' mean in a JWT analysis?</h3>
+                <p>Invalid signature means the signature attached to the JWT does not match what the tool computed using the provided secret. This could indicate tampering or using the wrong secret key.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why are HttpOnly and Secure flags critical for session cookies?</h3>
+                <p>HttpOnly prevents JavaScript from accessing the cookie, blocking XSS attacks from stealing tokens. Secure ensures cookies are only transmitted over HTTPS, preventing man-in-the-middle interception.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can this tool decode encrypted JWTs (JWE)?</h3>
+                <p>No. This tool only handles signed JWTs (JWS). Encrypted JWTs (JWE) require decryption keys that this tool does not support. JWE tokens start with "eyJ" but have additional payload structure.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools/jwt-decoder">
+                <div class="discovery-icon">🔓</div>
+                <h3>JWT Decoder</h3>
+                <p>Decode and inspect JWT tokens to verify payloads, headers, and signature status.</p>
+            </a>
+            <a class="discovery-card" href="/tools/jwt-generator">
+                <div class="discovery-icon">✍️</div>
+                <h3>JWT Generator</h3>
+                <p>Create and sign custom JSON Web Tokens for API authentication testing.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔄</div>
+                <h3>Base64 Decoder</h3>
+                <p>Encode and decode Base64 and Base64URL strings for data manipulation.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🛡️</div>
+                <h3>Cookie Security Audit</h3>
+                <p>Analyze cookie attributes for security best practices compliance.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔐</div>
+                <h3>CSRF Token Tester</h3>
+                <p>Validate CSRF token generation and validation implementation.</p>
+            </a>
+            <a class="discovery-card" href="/tools/oauth-flow-visualizer">
+                <div class="discovery-icon">🔄</div>
+                <h3>OAuth Flow Visualizer</h3>
+                <p>Visualize OAuth 2.0 authentication flows with sequence diagrams.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">⚡</div>
+                <h3>Entropy Calculator</h3>
+                <p>Calculate token randomness quality for security assessment.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔒</div>
+                <h3>Password Generator</h3>
+                <p>Create strong, random passwords with customizable parameters.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const tokenInput = $('tokenInput');
+    const encodingType = $('encodingType');
+    const algorithmSelect = $('algorithmSelect');
+    const secretInput = $('secretInput');
+    const analyzeBtn = $('analyzeBtn');
+    const clearBtn = $('clearBtn');
+
+    const placeholderMessage = $('placeholderMessage');
+    const errorDisplay = $('errorDisplay');
+    const resultsDisplay = $('resultsDisplay');
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function base64UrlDecode(str) {
+        if (!str) return null;
+        str = str.replace(/-/g, '+').replace(/_/g, '/');
+        while (str.length % 4) str += '=';
+        try {
+            const decoded = atob(str);
+            return decoded;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function base64Decode(str) {
+        if (!str) return null;
+        while (str.length % 4) str += '=';
+        try {
+            return atob(str);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function hexDecode(str) {
+        if (!str) return null;
+        try {
+            const bytes = [];
+            for (let i = 0; i < str.length; i += 2) {
+                bytes.push(parseInt(str.substr(i, 2), 16));
+            }
+            return String.fromCharCode.apply(null, bytes);
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function syntaxHighlightJSON(json) {
+        if (typeof json === 'string') {
+            try { json = JSON.parse(json); } catch (e) { return escapeHtml(json); }
+        }
+        const str = JSON.stringify(json, null, 2);
+        return str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            let cls = 'json-number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'json-key';
+                    match = match.slice(0, -1);
+                    return '<span class="' + cls + '">' + escapeHtml(match) + '</span>:';
+                } else { cls = 'json-string'; }
+            } else if (/true|false/.test(match)) { cls = 'json-boolean'; }
+            else if (/null/.test(match)) { cls = 'json-null'; }
+            return '<span class="' + cls + '">' + escapeHtml(match) + '</span>';
+        });
+    }
+
+    function formatTimestamp(unix) {
+        if (!unix) return { value: '-', human: '-', status: 'pending' };
+        const date = new Date(unix * 1000);
+        const now = new Date();
+        const isExpired = date < now;
+        return {
+            value: unix,
+            human: date.toLocaleString(),
+            status: isExpired ? 'expired' : 'valid'
+        };
+    }
+
+    function showError(message) {
+        hide(placeholderMessage);
+        hide(resultsDisplay);
+        errorDisplay.textContent = message;
+        show(errorDisplay);
+    }
+
+    function detectTokenType(input) {
+        const trimmed = input.trim();
+        if (trimmed.startsWith('eyJ') && trimmed.split('.').length === 3) {
+            return 'jwt';
+        }
+        if (/^[A-Za-z0-9+/]+=*$/.test(trimmed) && trimmed.length > 20) {
+            return 'base64';
+        }
+        if (/^[0-9a-f]+$/i.test(trimmed) && trimmed.length % 2 === 0 && trimmed.length >= 16) {
+            return 'hex';
+        }
+        return 'raw';
+    }
+
+    function analyze() {
+        const input = tokenInput.value.trim();
+        if (!input) {
+            showError('Please enter a token to analyze.');
+            return;
+        }
+
+        const encoding = encodingType.value;
+        const algorithm = algorithmSelect.value;
+        const secret = secretInput.value.trim();
+
+        let decoded = input;
+        let tokenType = 'raw';
+
+        if (encoding === 'auto') {
+            tokenType = detectTokenType(input);
+        } else {
+            tokenType = encoding === 'jwt' ? 'jwt' : encoding;
+        }
+
+        try {
+            if (tokenType === 'jwt') {
+                analyzeJWT(input, algorithm, secret);
+            } else if (tokenType === 'base64') {
+                analyzeGeneric(base64Decode(input), 'Base64');
+            } else if (tokenType === 'hex') {
+                analyzeGeneric(hexDecode(input), 'Hexadecimal');
+            } else {
+                analyzeGeneric(input, 'Raw String');
+            }
+        } catch (error) {
+            showError('Failed to analyze token: ' + error.message);
+        }
+    }
+
+    function analyzeJWT(token, selectedAlg, secret) {
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+            showError('Invalid JWT format. Expected three segments separated by dots.');
+            return;
+        }
+
+        const headerJson = base64UrlDecode(parts[0]);
+        const payloadJson = base64UrlDecode(parts[1]);
+
+        if (!headerJson || !payloadJson) {
+            showError('Failed to decode JWT segments. The token may be malformed.');
+            return;
+        }
+
+        let headerObj, payloadObj;
+        try {
+            headerObj = JSON.parse(headerJson);
+        } catch (e) {
+            showError('Failed to parse JWT header as JSON.');
+            return;
+        }
+
+        try {
+            payloadObj = JSON.parse(payloadJson);
+        } catch (e) {
+            showError('Failed to parse JWT payload as JSON.');
+            return;
+        }
+
+        hide(placeholderMessage);
+        hide(errorDisplay);
+        show(resultsDisplay);
+
+        const alg = headerObj.alg || 'none';
+        $('tokenTypeTitle').textContent = 'JWT Detected';
+        $('tokenTypeDescription').textContent = 'Algorithm: ' + alg + ' | Signed: ' + (alg === 'none' ? 'No' : 'Yes');
+
+        $('decodedHeader').innerHTML = syntaxHighlightJSON(headerObj);
+        $('decodedPayload').innerHTML = syntaxHighlightJSON(payloadObj);
+
+        const iat = formatTimestamp(payloadObj.iat);
+        $('iatValue').textContent = iat.value === '-' ? '-' : iat.human;
+        $('iatValue').className = 'timestamp-value ' + iat.status;
+        $('iatStatus').textContent = iat.value === '-' ? '' : (iat.status === 'expired' ? 'Already Issued' : 'Issued');
+        $('iatStatus').className = 'timestamp-value ' + iat.status;
+
+        const exp = formatTimestamp(payloadObj.exp);
+        $('expValue').textContent = exp.value === '-' ? '-' : exp.human;
+        $('expValue').className = 'timestamp-value ' + exp.status;
+        $('expStatus').textContent = exp.value === '-' ? 'No Expiry' : (exp.status === 'expired' ? 'EXPIRED' : 'Valid');
+        $('expStatus').className = 'timestamp-value ' + exp.status;
+
+        const now = new Date();
+        $('currentTime').textContent = now.toLocaleString();
+        $('currentTime').className = 'timestamp-value valid';
+
+        if (alg !== 'none' && secret) {
+            verifySignature(token, headerObj, secret);
+        } else if (alg === 'none') {
+            $('signatureResults').innerHTML = `
+                <div class="validation-card warning">
+                    <div class="validation-title">Token Not Signed</div>
+                    <div class="validation-description">This JWT uses algorithm "none", which means it has no cryptographic signature. The content can be modified without detection.</div>
+                </div>
+            `;
+        } else {
+            $('signatureResults').innerHTML = `
+                <div class="validation-card warning">
+                    <div class="validation-title">No Secret Provided</div>
+                    <div class="validation-description">Provide a secret key to verify the HMAC signature.</div>
+                </div>
+            `;
+        }
+
+        updateCookieAudit('JWT (no cookie attributes)');
+    }
+
+    async function verifySignature(token, headerObj, secret) {
+        const alg = headerObj.alg || 'HS256';
+        const parts = token.split('.');
+
+        if (!alg.startsWith('HS')) {
+            $('signatureResults').innerHTML = `
+                <div class="validation-card warning">
+                    <div class="validation-title">RSA/ECDSA Not Supported</div>
+                    <div class="validation-description">Browser-based verification for ${alg} is not available. HMAC algorithms (HS256, HS384, HS512) are supported.</div>
+                </div>
+            `;
+            return;
+        }
+
+        try {
+            const data = parts[0] + '.' + parts[1];
+            const cryptoAlg = alg === 'HS256' ? 'SHA-256' : (alg === 'HS384' ? 'SHA-384' : 'SHA-512');
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey('raw', encoder.encode(secret), { name: 'HMAC', hash: cryptoAlg }, false, ['sign']);
+            const sigBuffer = await crypto.subtle.sign('HMAC', key, encoder.encode(data));
+            const sigArray = new Uint8Array(sigBuffer);
+            let computedSig = btoa(String.fromCharCode.apply(null, sigArray)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+            const isValid = computedSig === parts[2];
+
+            $('signatureResults').innerHTML = isValid ?
+                `<div class="validation-card valid"><div class="validation-title">Signature Valid</div><div class="validation-description">The signature was verified successfully using ${alg}.</div></div>` :
+                `<div class="validation-card invalid"><div class="validation-title">Signature Invalid</div><div class="validation-description">The signature does not match. The token may have been tampered with or the wrong secret was provided.</div></div>`;
+        } catch (error) {
+            $('signatureResults').innerHTML = `<div class="validation-card invalid"><div class="validation-title">Verification Error</div><div class="validation-description">${escapeHtml(error.message)}</div></div>`;
+        }
+    }
+
+    function analyzeGeneric(decoded, type) {
+        hide(placeholderMessage);
+        hide(errorDisplay);
+        show(resultsDisplay);
+
+        $('tokenTypeTitle').textContent = type + ' Token Detected';
+        $('tokenTypeDescription').textContent = 'Opaque session token format';
+
+        $('decodedHeader').innerHTML = '<span style="color: #fcd34d;">This token format does not have a structured header.</span>';
+        $('decodedPayload').innerHTML = syntaxHighlightJSON({ token_preview: decoded.substring(0, 200) + (decoded.length > 200 ? '...' : '') });
+
+        $('iatValue').textContent = '-';
+        $('iatValue').className = 'timestamp-value';
+        $('iatStatus').textContent = '';
+        $('expValue').textContent = '-';
+        $('expValue').className = 'timestamp-value';
+        $('expStatus').textContent = '';
+        $('currentTime').textContent = new Date().toLocaleString();
+        $('currentTime').className = 'timestamp-value valid';
+
+        $('signatureResults').innerHTML = `
+            <div class="validation-card info">
+                <div class="validation-title">Opaque Token</div>
+                <div class="validation-description">This is a ${type} encoded opaque token. Server-side session lookup is required to validate it.</div>
+            </div>
+        `;
+
+        updateCookieAudit(type);
+    }
+
+    function updateCookieAudit(tokenType) {
+        $('httpOnlyStatus').textContent = 'N/A';
+        $('httpOnlyStatus').className = 'cookie-status present';
+        $('secureStatus').textContent = 'N/A';
+        $('secureStatus').className = 'cookie-status present';
+        $('sameSiteStatus').textContent = 'N/A';
+        $('sameSiteStatus').className = 'cookie-status present';
+        $('cookiePath').textContent = '-';
+        $('cookieDomain').textContent = '-';
+    }
+
+    function clearAll() {
+        hide(errorDisplay);
+        hide(resultsDisplay);
+        show(placeholderMessage);
+        tokenInput.value = '';
+        secretInput.value = '';
+        encodingType.value = 'auto';
+        algorithmSelect.value = 'auto';
+    }
+
+    analyzeBtn.addEventListener('click', analyze);
+    clearBtn.addEventListener('click', clearAll);
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>
