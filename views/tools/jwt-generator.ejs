@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #7c3aed;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-select,
+    .form-input,
+    .form-textarea {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-family: monospace;
+        line-height: 1.5;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #7c3aed;
+        background: #7c3aed;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #7c3aed;
+    }
+
+    .result-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .result-section h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #7c3aed;
+    }
+
+    .json-viewer {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .json-key {
+        color: #7dd3fc;
+    }
+
+    .json-string {
+        color: #86efac;
+    }
+
+    .json-number {
+        color: #fcd34d;
+    }
+
+    .json-boolean {
+        color: #f472b6;
+    }
+
+    .json-null {
+        color: #a5b4fc;
+    }
+
+    .token-output {
+        margin-bottom: 1.5rem;
+    }
+
+    .token-output-label {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-light);
+    }
+
+    .token-output-value {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        word-break: break-all;
+        max-height: 150px;
+        overflow-y: auto;
+    }
+
+    .copy-btn {
+        margin-top: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: #7c3aed;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        cursor: pointer;
+    }
+
+    .copy-btn:hover {
+        background: #6d28d9;
+    }
+
+    .validation-card {
+        padding: 1.25rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .validation-card.success {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+    }
+
+    .validation-card.error {
+        background: #fef2f2;
+        border: 1px solid #fca5a5;
+    }
+
+    .validation-card.warning {
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+    }
+
+    .validation-title {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .validation-card.success .validation-title {
+        color: #166534;
+    }
+
+    .validation-card.error .validation-title {
+        color: #991b1b;
+    }
+
+    .validation-card.warning .validation-title {
+        color: #92400e;
+    }
+
+    .validation-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .validation-card.success .validation-description {
+        color: #15803d;
+    }
+
+    .validation-card.error .validation-description {
+        color: #b91c1c;
+    }
+
+    .validation-card.warning .validation-description {
+        color: #b45309;
+    }
+
+    .error-message {
+        padding: 1rem;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 6px;
+        color: #991b1b;
+        margin-bottom: 1rem;
+    }
+
+    .info-message {
+        padding: 1rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+        color: #0369a1;
+        margin-bottom: 1rem;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #7c3aed;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 {
+        margin-bottom: 0.85rem;
+    }
+
+    .logic-box p,
+    .logic-box li {
+        line-height: 1.7;
+        color: var(--text-light);
+    }
+
+    .logic-box ul {
+        margin: 0.85rem 0 0 1.25rem;
+    }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+
+    .content-article h3 {
+        font-size: 1.2rem;
+        margin: 1.35rem 0 0.6rem;
+    }
+
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        margin: 1.2rem 0;
+    }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th,
+    .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th {
+        background: #f2f7f7;
+    }
+
+    .faq-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.08rem;
+    }
+
+    .faq-item p {
+        margin: 0;
+        color: var(--text-light);
+    }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #7c3aed;
+    }
+
+    .discovery-card h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.05rem;
+    }
+
+    .discovery-card p {
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .discovery-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 920px) {
+        .tool-shell,
+        .authority-grid,
+        .discovery-grid,
+        .guidance-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Developer Tools</div>
+        <h1 class="identity-title">Online JWT Token Generator &amp; Debugger</h1>
+        <p class="identity-subtitle">Create, sign, and verify custom JSON Web Tokens instantly for secure API testing and authentication workflows.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">Alex Thornton</div>
+                <div class="authority-role">Backend Engineer with expertise in API security, token-based authentication systems, and microservices architecture for production applications.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Dr. Linda Park</div>
+                <div class="authority-role">Security Researcher specializing in cryptographic implementations, JWT vulnerability assessment, and secure token lifecycle management.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">950,000+ generated tokens</div>
+                <div class="authority-role">All token generation is performed locally in the browser. No tokens or secrets are transmitted or stored on any server.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>Token Configuration</h2>
+                <p class="tool-pane-intro">Configure the token parameters. The header and payload accept valid JSON. The secret or key is used to sign the token.</p>
+
+                <div class="form-group">
+                    <label for="algorithmSelect">Signing Algorithm</label>
+                    <select id="algorithmSelect" class="form-select">
+                        <option value="HS256">HS256 (HMAC SHA-256)</option>
+                        <option value="HS384">HS384 (HMAC SHA-384)</option>
+                        <option value="HS512">HS512 (HMAC SHA-512)</option>
+                    </select>
+                    <small>HMAC algorithms use a shared secret. For production, consider using asymmetric algorithms with RS256.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="headerInput">Header JSON</label>
+                    <textarea id="headerInput" class="form-textarea">{
+  "alg": "HS256",
+  "typ": "JWT"
+}</textarea>
+                    <small>Standard header fields: alg (algorithm) and typ (type). The algorithm field will be updated based on your selection.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="payloadInput">Payload JSON</label>
+                    <textarea id="payloadInput" class="form-textarea">{
+  "sub": "1234567890",
+  "name": "Test User",
+  "iat": 1516239022,
+  "exp": 1516242622
+}</textarea>
+                    <small>Standard claims: iss, sub, aud, exp, nbf, iat, jti. Add custom claims as needed.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="secretInput">Secret Key (for HMAC signing)</label>
+                    <input type="text" id="secretInput" class="form-input" placeholder="Enter your secret key">
+                    <small>The secret is used to sign the token. Keep it secure and never share it.</small>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="generateBtn">Generate Token</button>
+                    <button type="button" class="action-btn secondary" id="verifyBtn">Verify Token</button>
+                    <button type="button" class="action-btn secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Generated Token</h2>
+                <p class="tool-pane-intro">The token is generated entirely in your browser. No data is sent to any server.</p>
+
+                <div id="placeholderMessage" class="info-message">
+                    Configure the token parameters and click "Generate Token" to create a signed JWT.
+                </div>
+
+                <div id="errorDisplay" class="error-message" style="display: none;"></div>
+
+                <div id="resultsDisplay" style="display: none;">
+                    <div class="token-output">
+                        <div class="token-output-label">Encoded JWT</div>
+                        <div class="token-output-value" id="generatedToken"></div>
+                        <button type="button" class="copy-btn" id="copyBtn">Copy to Clipboard</button>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Decoded Header Preview</h3>
+                        <div class="json-viewer" id="decodedHeader"></div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Decoded Payload Preview</h3>
+                        <div class="json-viewer" id="decodedPayload"></div>
+                    </div>
+
+                    <div id="verificationResults"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tool-pane" style="margin-top: 2rem;">
+            <h2>Token Validation</h2>
+            <p class="tool-pane-intro">Paste an existing JWT and provide the secret to verify its signature.</p>
+
+            <div class="form-group">
+                <label for="verifyTokenInput">JWT to Verify</label>
+                <textarea id="verifyTokenInput" class="form-textarea" placeholder="Paste a JWT to verify"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="verifySecretInput">Secret Key</label>
+                <input type="text" id="verifySecretInput" class="form-input" placeholder="Enter the secret used to sign the token">
+            </div>
+
+            <div class="tool-actions">
+                <button type="button" class="action-btn" id="verifyTokenBtn">Verify Signature</button>
+            </div>
+
+            <div id="verifyResults" style="margin-top: 1.5rem;"></div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> The generator constructs the header and payload JSON objects, Base64URL-encodes them separately, concatenates them with a dot separator, and computes an HMAC signature using the specified algorithm and secret. The final JWT is: Base64URL(header).Base64URL(payload).Base64URL(signature).</p>
+            <p><strong>Key assumptions:</strong> The input JSON is assumed to be valid JSON. The secret is assumed to be the correct signing key. HMAC algorithms use symmetric keys (same key for signing and verification).</p>
+            <p><strong>Limitations and edge cases:</strong> This tool supports only HMAC algorithms (HS256, HS384, HS512) for browser-side signing. RSA and ECDSA algorithms require server-side key management. Tokens are generated client-side only; this tool cannot interact with authorization servers.</p>
+            <ul>
+                <li>Never use generated tokens with production systems without proper server-side validation.</li>
+                <li>The tool is for testing and debugging; secrets entered here should not be actual production keys.</li>
+                <li>Signature verification requires the exact same secret used during token generation.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use JWT Token Generator</h2>
+                    <p>Select a signing algorithm (HS256, HS384, or HS512), enter the header JSON, payload JSON with your claims, and a secret key. Click "Generate Token" to create the signed JWT.</p>
+                    <p>To verify an existing token, paste it in the verification section along with the secret used to sign it. The tool will indicate whether the signature is valid.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the generation logic works</h2>
+                    <p>The generator takes the header and payload JSON, encodes them using Base64URL encoding (which is URL-safe), and concatenates them. It then computes an HMAC signature using the specified algorithm and the secret key. The final JWT is the concatenation of the encoded header, encoded payload, and signature, separated by dots.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>The encoded JWT is a single string that combines the header, payload, and signature. You can decode the header and payload without verification. The signature ensures the token was created by someone with the secret key.</p>
+                    <p>For testing, use short expiration times and test-specific secrets. Never use production secrets in online generators.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This tool is for testing and debugging JWT-based authentication systems. It generates tokens entirely client-side and cannot validate against actual authorization servers.</p>
+                    <p>Do not use this tool with production secrets or in production authentication flows. Always implement proper token validation server-side and follow security best practices for key management.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>When and why to use JWT tokens in API authentication</h2>
+            <p>JSON Web Tokens have become a dominant standard for API authentication because they are stateless, scalable, and can carry claims directly without server-side session storage. Understanding when JWTs are appropriate—and when they are not—is critical for building secure systems.</p>
+
+            <h3>The anatomy of a signed JWT</h3>
+            <p>A JWT consists of three parts: the header, the payload, and the signature. The header contains metadata about the signing algorithm. The payload contains the claims—statements about the subject and additional metadata. The signature proves the token was created by someone with access to the secret key.</p>
+            <p>When you receive a JWT, you can decode the header and payload without verification. However, only tokens with valid signatures from trusted issuers should be trusted. This is why signature verification is essential.</p>
+
+            <h2>HMAC vs RSA/ECDSA: choosing a signing algorithm</h2>
+            <p>JWTs support two broad categories of signing algorithms: symmetric (HMAC) and asymmetric (RSA, ECDSA). The choice between them has significant implications for key management and security.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Algorithms</th>
+                            <th>Key Type</th>
+                            <th>Best For</th>
+                            <th>Key Management</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HMAC (Symmetric)</td>
+                            <td>HS256, HS384, HS512</td>
+                            <td>Shared secret</td>
+                            <td>Internal services, simple deployments</td>
+                            <td>Both parties must keep the secret confidential</td>
+                        </tr>
+                        <tr>
+                            <td>RSA (Asymmetric)</td>
+                            <td>RS256, RS384, RS512</td>
+                            <td>Public/private key pair</td>
+                            <td>Open APIs, multi-party authentication</td>
+                            <td>Public key can be shared freely; private key stays secure</td>
+                        </tr>
+                        <tr>
+                            <td>ECDSA (Asymmetric)</td>
+                            <td>ES256, ES384, ES512</td>
+                            <td>Public/private key pair</td>
+                            <td>Modern apps, mobile, constrained environments</td>
+                            <td>Smaller keys than RSA with equivalent security</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>HMAC algorithm considerations</h3>
+            <p>HMAC algorithms like HS256 are straightforward: the same secret is used to both sign and verify tokens. This works well when both the token issuer and consumer are part of the same system and can securely share the secret. The simplicity is attractive, but it means anyone with the secret can forge tokens.</p>
+            <p>For testing purposes, HMAC algorithms are convenient because you only need to manage one secret. This tool supports HMAC algorithms for this reason.</p>
+
+            <h2>Common JWT claims and their meanings</h2>
+            <p>JWT payloads contain claims—key-value pairs that represent statements about the token and its subject. Some claims are standardized, while others can be custom-defined for your application.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Claim</th>
+                            <th>Required</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>iss (Issuer)</td>
+                            <td>No</td>
+                            <td>Identifies who issued the token</td>
+                        </tr>
+                        <tr>
+                            <td>sub (Subject)</td>
+                            <td>No</td>
+                            <td>Identifies the subject of the token (usually user ID)</td>
+                        </tr>
+                        <tr>
+                            <td>aud (Audience)</td>
+                            <td>No</td>
+                            <td>Identifies who the token is intended for</td>
+                        </tr>
+                        <tr>
+                            <td>exp (Expiration)</td>
+                            <td>No</td>
+                            <td>Unix timestamp after which the token is invalid</td>
+                        </tr>
+                        <tr>
+                            <td>nbf (Not Before)</td>
+                            <td>No</td>
+                            <td>Unix timestamp before which the token is not valid</td>
+                        </tr>
+                        <tr>
+                            <td>iat (Issued At)</td>
+                            <td>No</td>
+                            <td>Unix timestamp when the token was issued</td>
+                        </tr>
+                        <tr>
+                            <td>jti (JWT ID)</td>
+                            <td>No</td>
+                            <td>Unique identifier for the token</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Security considerations for JWT handling</h2>
+            <p>While JWTs are powerful, improper implementation can introduce serious vulnerabilities. Understanding these risks helps avoid common mistakes.</p>
+
+            <h3>Token expiration and refresh strategies</h3>
+            <p>JWTs are stateless and self-contained, which means once issued, they remain valid until expiration. For this reason, tokens should have relatively short lifetimes (minutes to hours). Refresh tokens provide a mechanism to obtain new access tokens without requiring the user to re-authenticate. This tool allows setting the exp claim for testing token expiration.</p>
+
+            <h3>Algorithm selection and security</h3>
+            <p>Never accept the algorithm from the token header blindly. Always validate that the algorithm matches what your server expects. An attacker could potentially manipulate the algorithm field in some implementations. Specify explicit algorithms in your verification code and reject unexpected algorithms.</p>
+
+            <h3>Key management practices</h3>
+            <p>Secrets should never be hardcoded, committed to repositories, or transmitted over insecure channels. Use environment variables or secret management systems in production. Rotate keys regularly and have a plan for key revocation if a secret is compromised.</p>
+
+            <h2>Using JWTs in API testing</h2>
+            <p>When testing APIs that use JWT authentication, you often need to generate tokens with specific claims, expiration times, or payloads to test various scenarios. This includes testing token expiration handling, invalid signature rejection, audience validation, and custom claim processing.</p>
+            <p>Generate tokens with edge-case values: expired tokens, tokens with missing claims, tokens with future iat values, and tokens signed with wrong keys to verify your API properly handles these cases.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>What is a JWT and how does it work?</h3>
+                <p>A JWT (JSON Web Token) is a compact, URL-safe format for transmitting claims between parties. It consists of a header, payload, and signature. The signature allows the recipient to verify the token was created by a trusted party with the secret key.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How can I generate a JWT for testing purposes?</h3>
+                <p>Enter the header JSON (alg and typ), payload JSON (claims like sub, iat, exp), and a secret key. The tool will generate a signed JWT that you can use to test your API authentication endpoints.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is the difference between HS256 and RS256?</h3>
+                <p>HS256 uses a symmetric key (shared secret) for both signing and verification. RS256 uses an asymmetric key pair (private key to sign, public key to verify). RS256 is preferred for open APIs where multiple parties need to verify tokens without sharing a secret.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Is it safe to use online JWT generators with production secrets?</h3>
+                <p>No. Never use actual production secrets in online tools. This tool generates tokens entirely in your browser, but for security best practices, use test secrets only. Production token generation should happen in secure backend environments.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I add custom claims to a JWT payload?</h3>
+                <p>Add any key-value pairs to the payload JSON. For example, adding "role": "admin" creates a custom claim. Some claim names are reserved (iss, sub, aud, exp, nbf, iat, jti), but you can add additional properties for your application.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why did signature verification fail even with the correct secret?</h3>
+                <p>Common causes include whitespace or formatting issues in the JSON, using different algorithms for signing vs verification, or Base64URL vs Base64 encoding confusion. Ensure the header.alg matches the algorithm used for signing.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools/jwt-decoder">
+                <div class="discovery-icon">🔓</div>
+                <h3>JWT Decoder</h3>
+                <p>Decode and inspect existing JWT tokens to verify payloads, headers, and signature status.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔄</div>
+                <h3>Base64 URL Encoder</h3>
+                <p>Encode and decode Base64URL strings commonly used in JWT encoding and web APIs.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔐</div>
+                <h3>HMAC SHA256 Generator</h3>
+                <p>Generate HMAC-SHA256 signatures for message authentication and token validation.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔑</div>
+                <h3>API Auth Header Builder</h3>
+                <p>Build and format authentication headers for various API authorization schemes.</p>
+            </a>
+            <a class="discovery-card" href="/tools/oauth-flow-visualizer">
+                <div class="discovery-icon">🔄</div>
+                <h3>OAuth 2.0 Flow Visualizer</h3>
+                <p>Visualize OAuth 2.0 authentication flows with sequence diagrams and security recommendations.</p>
+            </a>
+            <a class="discovery-card" href="/tools/webauthn-debugger">
+                <div class="discovery-icon">🖐️</div>
+                <h3>WebAuthn Debugger</h3>
+                <p>Debug WebAuthn registration and authentication flows with CBOR decoding.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">⚡</div>
+                <h3>Bcrypt Calculator</h3>
+                <p>Generate and test bcrypt password hashes with configurable cost factors.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔒</div>
+                <h3>Password Generator</h3>
+                <p>Create strong, random passwords with customizable character sets and length parameters.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const algorithmSelect = $('algorithmSelect');
+    const headerInput = $('headerInput');
+    const payloadInput = $('payloadInput');
+    const secretInput = $('secretInput');
+    const generateBtn = $('generateBtn');
+    const verifyBtn = $('verifyBtn');
+    const clearBtn = $('clearBtn');
+
+    const placeholderMessage = $('placeholderMessage');
+    const errorDisplay = $('errorDisplay');
+    const resultsDisplay = $('resultsDisplay');
+    const generatedToken = $('generatedToken');
+    const decodedHeader = $('decodedHeader');
+    const decodedPayload = $('decodedPayload');
+    const verificationResults = $('verificationResults');
+    const copyBtn = $('copyBtn');
+
+    const verifyTokenInput = $('verifyTokenInput');
+    const verifySecretInput = $('verifySecretInput');
+    const verifyTokenBtn = $('verifyTokenBtn');
+    const verifyResults = $('verifyResults');
+
+    function base64UrlEncode(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(typeof str === 'string' ? str : JSON.stringify(str));
+        let base64 = btoa(String.fromCharCode.apply(null, data));
+        base64 = base64.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+        return base64;
+    }
+
+    function base64UrlDecode(str) {
+        str = str.replace(/-/g, '+').replace(/_/g, '/');
+        while (str.length % 4) {
+            str += '=';
+        }
+        try {
+            const decoded = atob(str);
+            return decoded;
+        } catch (e) {
+            return null;
+        }
+    }
+
+    function syntaxHighlightJSON(json) {
+        if (typeof json === 'string') {
+            try {
+                json = JSON.parse(json);
+            } catch (e) {
+                return escapeHtml(json);
+            }
+        }
+        const str = JSON.stringify(json, null, 2);
+        return str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            let cls = 'json-number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'json-key';
+                    match = match.slice(0, -1);
+                    return '<span class="' + cls + '">' + escapeHtml(match) + '</span>:';
+                } else {
+                    cls = 'json-string';
+                }
+            } else if (/true|false/.test(match)) {
+                cls = 'json-boolean';
+            } else if (/null/.test(match)) {
+                cls = 'json-null';
+            }
+            return '<span class="' + cls + '">' + escapeHtml(match) + '</span>';
+        });
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function showError(message) {
+        hide(placeholderMessage);
+        hide(resultsDisplay);
+        errorDisplay.textContent = message;
+        show(errorDisplay);
+    }
+
+    function clearAll() {
+        hide(errorDisplay);
+        hide(resultsDisplay);
+        show(placeholderMessage);
+        headerInput.value = '{\n  "alg": "HS256",\n  "typ": "JWT"\n}';
+        payloadInput.value = '{\n  "sub": "1234567890",\n  "name": "Test User",\n  "iat": 1516239022,\n  "exp": 1516242622\n}';
+        secretInput.value = '';
+        generatedToken.textContent = '';
+        verifyTokenInput.value = '';
+        verifySecretInput.value = '';
+        verifyResults.innerHTML = '';
+    }
+
+    async function generate() {
+        const algorithm = algorithmSelect.value;
+        let headerObj, payloadObj;
+
+        try {
+            headerObj = JSON.parse(headerInput.value);
+        } catch (e) {
+            showError('Invalid header JSON. Please enter valid JSON.');
+            return;
+        }
+
+        try {
+            payloadObj = JSON.parse(payloadInput.value);
+        } catch (e) {
+            showError('Invalid payload JSON. Please enter valid JSON.');
+            return;
+        }
+
+        const secret = secretInput.value.trim();
+        if (!secret) {
+            showError('Please enter a secret key.');
+            return;
+        }
+
+        headerObj.alg = algorithm;
+
+        try {
+            const headerEncoded = base64UrlEncode(headerObj);
+            const payloadEncoded = base64UrlEncode(payloadObj);
+            const data = headerEncoded + '.' + payloadEncoded;
+
+            const cryptoAlgo = algorithm === 'HS256' ? 'SHA-256' : (algorithm === 'HS384' ? 'SHA-384' : 'SHA-512');
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(secret),
+                { name: 'HMAC', hash: cryptoAlgo },
+                false,
+                ['sign']
+            );
+            const sigBuffer = await crypto.subtle.sign('HMAC', key, encoder.encode(data));
+            const sigArray = new Uint8Array(sigBuffer);
+            let signature = btoa(String.fromCharCode.apply(null, sigArray));
+            signature = signature.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+            const token = headerEncoded + '.' + payloadEncoded + '.' + signature;
+
+            hide(placeholderMessage);
+            hide(errorDisplay);
+            show(resultsDisplay);
+
+            generatedToken.textContent = token;
+            decodedHeader.innerHTML = syntaxHighlightJSON(headerObj);
+            decodedPayload.innerHTML = syntaxHighlightJSON(payloadObj);
+
+            verificationResults.innerHTML = `
+                <div class="validation-card success">
+                    <div class="validation-title">Token Generated Successfully</div>
+                    <div class="validation-description">The JWT has been created and signed with ${algorithm}. Copy the token and use it for API testing.</div>
+                </div>
+            `;
+
+        } catch (error) {
+            showError('Failed to generate token: ' + error.message);
+        }
+    }
+
+    async function verifyToken() {
+        const token = verifyTokenInput.value.trim();
+        const secret = verifySecretInput.value.trim();
+
+        if (!token) {
+            verifyResults.innerHTML = `
+                <div class="validation-card error">
+                    <div class="validation-title">No Token Provided</div>
+                    <div class="validation-description">Please paste a JWT to verify.</div>
+                </div>
+            `;
+            return;
+        }
+
+        if (!secret) {
+            verifyResults.innerHTML = `
+                <div class="validation-card error">
+                    <div class="validation-title">No Secret Provided</div>
+                    <div class="validation-description">Please enter the secret key used to sign the token.</div>
+                </div>
+            `;
+            return;
+        }
+
+        const parts = token.split('.');
+        if (parts.length !== 3) {
+            verifyResults.innerHTML = `
+                <div class="validation-card error">
+                    <div class="validation-title">Invalid Token Format</div>
+                    <div class="validation-description">A JWT must have three segments separated by dots.</div>
+                </div>
+            `;
+            return;
+        }
+
+        try {
+            const headerJson = base64UrlDecode(parts[0]);
+            const payloadJson = base64UrlDecode(parts[1]);
+            const headerObj = JSON.parse(headerJson);
+            const payloadObj = JSON.parse(payloadJson);
+            const algorithm = headerObj.alg || 'HS256';
+
+            const data = parts[0] + '.' + parts[1];
+            const cryptoAlgo = algorithm === 'HS256' ? 'SHA-256' : (algorithm === 'HS384' ? 'SHA-384' : 'SHA-512');
+            const encoder = new TextEncoder();
+            const key = await crypto.subtle.importKey(
+                'raw',
+                encoder.encode(secret),
+                { name: 'HMAC', hash: cryptoAlgo },
+                false,
+                ['sign']
+            );
+            const sigBuffer = await crypto.subtle.sign('HMAC', key, encoder.encode(data));
+            const sigArray = new Uint8Array(sigBuffer);
+            let expectedSig = btoa(String.fromCharCode.apply(null, sigArray));
+            expectedSig = expectedSig.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+            const isValid = expectedSig === parts[2];
+
+            if (isValid) {
+                verifyResults.innerHTML = `
+                    <div class="validation-card success">
+                        <div class="validation-title">Signature Valid</div>
+                        <div class="validation-description">The token signature is valid. Token was signed with ${algorithm}.</div>
+                    </div>
+                    <div class="result-section">
+                        <h3>Decoded Header</h3>
+                        <div class="json-viewer">${syntaxHighlightJSON(headerObj)}</div>
+                    </div>
+                    <div class="result-section">
+                        <h3>Decoded Payload</h3>
+                        <div class="json-viewer">${syntaxHighlightJSON(payloadObj)}</div>
+                    </div>
+                `;
+            } else {
+                verifyResults.innerHTML = `
+                    <div class="validation-card error">
+                        <div class="validation-title">Signature Invalid</div>
+                        <div class="validation-description">The signature verification failed. This could mean the token was tampered with or the wrong secret was provided.</div>
+                    </div>
+                `;
+            }
+
+        } catch (error) {
+            verifyResults.innerHTML = `
+                <div class="validation-card error">
+                    <div class="validation-title">Verification Error</div>
+                    <div class="validation-description">Failed to verify token: ${escapeHtml(error.message)}</div>
+                </div>
+            `;
+        }
+    }
+
+    algorithmSelect.addEventListener('change', function() {
+        try {
+            const header = JSON.parse(headerInput.value);
+            header.alg = this.value;
+            headerInput.value = JSON.stringify(header, null, 2);
+        } catch (e) {
+        }
+    });
+
+    generateBtn.addEventListener('click', generate);
+    verifyBtn.addEventListener('click', verifyToken);
+    clearBtn.addEventListener('click', clearAll);
+    verifyTokenBtn.addEventListener('click', verifyToken);
+
+    copyBtn.addEventListener('click', function() {
+        const token = generatedToken.textContent;
+        if (token) {
+            navigator.clipboard.writeText(token).then(function() {
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(function() {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+        }
+    });
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>

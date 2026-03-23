@@ -83,6 +83,13 @@ const toolMeta = {
             en: 'Decode and inspect JWT tokens to verify payloads, headers, and signature status without a secret key.'
         }
     },
+    'jwt-generator': {
+        title: { ar: 'مولد رموز JWT للاختبار', en: 'JWT Token Generator for Testing' },
+        description: {
+            ar: 'إنشاء وتوقيع رموز JWT المخصصة لاختبار واجهات برمجة التطبيقات workflows للمصادقة.',
+            en: 'Create and sign custom JSON Web Tokens for API authentication testing and debugging workflows.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -533,6 +540,80 @@ router.get('/jwt-decoder', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "The header contains metadata about the token: the signing algorithm and token type. The payload contains the claims: statements about the user plus metadata like expiration and issuer."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// JWT Token Generator for Testing
+router.get('/jwt-generator', (req, res) => {
+    const meta = getMeta('jwt-generator', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/jwt-generator', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "JWT Token Generator for Testing",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is a JWT and how does it work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A JWT (JSON Web Token) is a compact, URL-safe format for transmitting claims between parties. It consists of a header, payload, and signature. The signature allows the recipient to verify the token was created by a trusted party."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How can I generate a JWT for testing purposes?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Enter the header JSON, payload JSON with your claims, and a secret key. The tool will generate a signed JWT that you can use to test your API authentication endpoints."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between HS256 and RS256?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "HS256 uses a symmetric key (shared secret) for signing and verification. RS256 uses an asymmetric key pair. RS256 is preferred for open APIs where multiple parties need to verify tokens without sharing a secret."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is it safe to use online JWT generators with production secrets?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. Never use actual production secrets in online tools. This tool generates tokens entirely in your browser, but for security best practices, use test secrets only."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I add custom claims to a JWT payload?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Add any key-value pairs to the payload JSON. For example, adding 'role': 'admin' creates a custom claim."
                         }
                     }
                 ]
