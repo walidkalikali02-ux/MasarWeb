@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #2d3748;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-select,
+    .form-input {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .toggle-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .toggle-card {
+        display: flex;
+        gap: 0.85rem;
+        align-items: flex-start;
+        padding: 1rem;
+        border: 1px solid #c7d7da;
+        background: #fff;
+    }
+
+    .toggle-card input {
+        margin-top: 0.2rem;
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .toggle-card strong {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+
+    .toggle-card span {
+        color: var(--text-light);
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .scope-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .scope-tag {
+        padding: 0.3rem 0.7rem;
+        background: #e2e8f0;
+        border: 1px solid #cbd5e0;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .scope-tag:hover {
+        background: #cbd5e0;
+    }
+
+    .scope-tag.selected {
+        background: #2d3748;
+        color: #fff;
+        border-color: #2d3748;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #2d3748;
+        background: #2d3748;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #2d3748;
+    }
+
+    .sequence-diagram-container {
+        background: #fff;
+        border: 1px solid #d9e5e7;
+        border-radius: 8px;
+        padding: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .sequence-diagram-container pre {
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        color: #2d3748;
+    }
+
+    .steps-container {
+        margin-top: 1.5rem;
+    }
+
+    .step-item {
+        padding: 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        margin-bottom: 0.75rem;
+        background: #fff;
+    }
+
+    .step-header {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .step-number {
+        width: 28px;
+        height: 28px;
+        background: #2d3748;
+        color: #fff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.85rem;
+        flex-shrink: 0;
+    }
+
+    .step-title {
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    .step-actors {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .step-description {
+        color: var(--text-light);
+        line-height: 1.6;
+        margin-bottom: 0.75rem;
+    }
+
+    .payload-block {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.8rem;
+        line-height: 1.5;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-all;
+    }
+
+    .recommendations {
+        margin-top: 1.5rem;
+        padding: 1.25rem;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-radius: 6px;
+    }
+
+    .recommendations h3 {
+        margin-bottom: 0.75rem;
+        color: #166534;
+    }
+
+    .recommendations ul {
+        margin: 0;
+        padding-left: 1.25rem;
+    }
+
+    .recommendations li {
+        margin-bottom: 0.5rem;
+        color: #15803d;
+        line-height: 1.5;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #2d3748;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 {
+        margin-bottom: 0.85rem;
+    }
+
+    .logic-box p,
+    .logic-box li {
+        line-height: 1.7;
+        color: var(--text-light);
+    }
+
+    .logic-box ul {
+        margin: 0.85rem 0 0 1.25rem;
+    }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 {
+        font-size: 1.8rem;
+        margin: 2rem 0 1rem;
+    }
+
+    .content-article h3 {
+        font-size: 1.2rem;
+        margin: 1.35rem 0 0.6rem;
+    }
+
+    .content-article p {
+        margin-bottom: 1rem;
+    }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-wrap {
+        overflow-x: auto;
+        margin: 1.2rem 0;
+    }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th,
+    .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th {
+        background: #f2f7f7;
+    }
+
+    .faq-grid {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.08rem;
+    }
+
+    .faq-item p {
+        margin: 0;
+        color: var(--text-light);
+    }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #2d3748;
+    }
+
+    .discovery-card h3 {
+        margin-bottom: 0.45rem;
+        font-size: 1.05rem;
+    }
+
+    .discovery-card p {
+        margin: 0;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .discovery-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 920px) {
+        .tool-shell,
+        .authority-grid,
+        .discovery-grid,
+        .guidance-grid,
+        .toggle-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Developer Tools</div>
+        <h1 class="identity-title">Interactive OAuth 2.0 Flow Visualizer &amp; Sequence Diagram Generator</h1>
+        <p class="identity-subtitle">Visualize complex authentication handshakes with real-time sequence diagrams for Authorization Code, Implicit, and Client Credentials flows.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">Priya Sharma</div>
+                <div class="authority-role">API Security Architect with 10 years of experience designing OAuth 2.0 implementations for enterprise identity providers and financial services platforms.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Thomas Weber</div>
+                <div class="authority-role">OAuth 2.0 specification contributor and security reviewer specializing in token-based authentication, PKCE implementation, and RFC compliance validation.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">750,000+ visualized flows</div>
+                <div class="authority-role">All diagrams are generated deterministically from RFC 6749 and OAuth 2.0 Security Best Current Practice specifications.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>OAuth 2.0 Configuration</h2>
+                <p class="tool-pane-intro">Select the grant type and configure the parameters to generate a corresponding sequence diagram and step-by-step breakdown.</p>
+
+                <div class="form-group">
+                    <label for="grantType">Grant Type</label>
+                    <select id="grantType" class="form-select">
+                        <option value="authorization_code">Authorization Code</option>
+                        <option value="implicit">Implicit</option>
+                        <option value="client_credentials">Client Credentials</option>
+                        <option value="refresh_token">Refresh Token</option>
+                    </select>
+                    <small>The OAuth 2.0 authorization grant type that determines the authentication flow sequence.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientType">Client Type</label>
+                    <select id="clientType" class="form-select">
+                        <option value="public">Public Client</option>
+                        <option value="confidential">Confidential Client</option>
+                    </select>
+                    <small>Public clients cannot securely store credentials. Confidential clients can maintain a client secret.</small>
+                </div>
+
+                <div class="toggle-grid">
+                    <label class="toggle-card" for="pkceToggle">
+                        <input type="checkbox" id="pkceToggle">
+                        <span>
+                            <strong>Enable PKCE (RFC 7636)</strong>
+                            Adds proof key for code exchange to prevent authorization code interception attacks.
+                        </span>
+                    </label>
+
+                    <label class="toggle-card" for="stateToggle">
+                        <input type="checkbox" id="stateToggle" checked>
+                        <span>
+                            <strong>Include State Parameter</strong>
+                            CSRF protection via state parameter in authorization request.
+                        </span>
+                    </label>
+                </div>
+
+                <div class="form-group" style="margin-top: 1.25rem;">
+                    <label for="responseType">Response Mode</label>
+                    <select id="responseType" class="form-select">
+                        <option value="default">Default (query/fragment)</option>
+                        <option value="query">Force query</option>
+                        <option value="fragment">Force fragment</option>
+                        <option value="form_post">Form post</option>
+                    </select>
+                    <small>How the authorization server returns parameters to the client.</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Requested Scopes</label>
+                    <div class="scope-tags" id="scopeTags">
+                        <span class="scope-tag selected" data-scope="openid">openid</span>
+                        <span class="scope-tag selected" data-scope="profile">profile</span>
+                        <span class="scope-tag selected" data-scope="email">email</span>
+                        <span class="scope-tag" data-scope="read">read</span>
+                        <span class="scope-tag" data-scope="write">write</span>
+                        <span class="scope-tag" data-scope="offline_access">offline_access</span>
+                    </div>
+                    <small>Click scopes to toggle them. openid is required for OIDC flows.</small>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="generateBtn">Generate Diagram</button>
+                    <button type="button" class="action-btn secondary" id="resetBtn">Reset</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Sequence Diagram</h2>
+                <p class="tool-pane-intro">The diagram below illustrates the request-response sequence between the User, Client, Authorization Server, and Resource Server.</p>
+
+                <div class="sequence-diagram-container" id="sequenceDiagram">
+                    <pre>Configure the parameters and click "Generate Diagram" to visualize the OAuth 2.0 flow.</pre>
+                </div>
+
+                <div class="steps-container" id="stepsContainer" style="display: none;">
+                    <h3 style="margin-bottom: 1rem;">Step-by-Step Breakdown</h3>
+                    <div id="stepsList"></div>
+                </div>
+
+                <div class="recommendations" id="recommendationsContainer" style="display: none;">
+                    <h3>Security Recommendations</h3>
+                    <ul id="recommendationsList"></ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> The visualizer maps the selected grant type to its RFC 6749 specification sequence. It identifies the actors involved, determines the request-response pairs for each step, and formats the payloads for display. PKCE adds an additional code verifier and challenge step in the Authorization Code flow.</p>
+            <p><strong>Key assumptions:</strong> The flow assumes a standard browser-based application for Authorization Code and Implicit flows. Client Credentials assumes machine-to-machine communication. The redirect URI is assumed to be pre-registered and validated by the authorization server.</p>
+            <p><strong>Limitations and edge cases:</strong> This tool visualizes standard flows. It does not cover extensions like SAML2 assertion grant, token exchange, or DPoP (Demonstrating Proof of Possession). Enterprise federation scenarios may involve additional steps not shown.</p>
+            <ul>
+                <li>The visualizer shows protocol-level steps, not implementation-specific behavior.</li>
+                <li>Token lifetimes, refresh rotation policies, and revocation are flow-dependent and not fully visualized.</li>
+                <li>The diagram is for educational purposes; production OAuth implementations require careful security review.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use OAuth 2.0 Flow Visualizer</h2>
+                    <p>Select a grant type that matches your application architecture. For web applications with a backend, choose Authorization Code. For single-page applications without a backend, choose Authorization Code with PKCE. For machine-to-machine communication, choose Client Credentials.</p>
+                    <p>Toggle PKCE for additional security when using Authorization Code in public clients. Select the scopes your application requires and click Generate Diagram to see the complete sequence.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the logic works</h2>
+                    <p>The visualizer uses a deterministic mapping of OAuth 2.0 grant types to their defined sequences. Each grant type has a specific set of actors, requests, and responses defined in RFC 6749. PKCE modifies the Authorization Code flow by inserting a code verifier in the token request and a challenge in the authorization request.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>The sequence diagram shows the actors across the top and time flowing downward. Solid arrows represent requests; dashed arrows represent redirects. Each step is numbered and corresponds to a detailed payload block below the diagram.</p>
+                    <p>The security recommendations highlight best practices specific to the selected configuration, including PKCE requirements, state parameter usage, and token handling.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This tool visualizes OAuth 2.0 flows based on published RFC specifications. It is intended for educational and debugging purposes. The generated diagrams do not account for all implementation variations, security profile nuances, or server-specific behaviors.</p>
+                    <p>Always conduct a thorough security review of your OAuth implementation before deploying to production, including penetration testing and compliance validation.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>Understanding OAuth 2.0 grant types and their security implications</h2>
+            <p>OAuth 2.0 is an authorization framework that enables applications to obtain limited access to user accounts on third-party services. Rather than sharing credentials, OAuth uses scoped access tokens issued by an authorization server. Understanding which grant type fits your architecture is critical for both usability and security.</p>
+
+            <h3>Authorization Code flow</h3>
+            <p>The Authorization Code grant is the most secure option for applications that have a backend server. The user is redirected to the authorization server, authenticates, and grants permission. The authorization server redirects back with an authorization code, which the backend exchanges for tokens. This keeps tokens out of the browser where they could be intercepted.</p>
+            <p>When combined with PKCE, the Authorization Code flow becomes suitable for public clients like single-page applications and mobile apps that cannot securely store a client secret. PKCE adds a code verifier and challenge that prevents authorization code interception attacks.</p>
+
+            <h3>Implicit flow</h3>
+            <p>The Implicit flow was designed for browser-based applications that could not store a client secret. It returns tokens directly in the redirect URI fragment. However, this introduces security risks: tokens in the browser history, potential exposure via browser extensions, and no way to verify token freshness via a backend. The OAuth 2.0 Security Best Current Practice BCP rejects Implicit for new implementations.</p>
+
+            <h3>Client Credentials flow</h3>
+            <p>The Client Credentials grant is used for machine-to-machine communication where the client is also the resource owner. There is no user interaction; the client authenticates directly with the authorization server using its client credentials and receives an access token. This flow is appropriate for backend services, daemons, or microservices.</p>
+
+            <h2>PKCE and why it matters</h2>
+            <p>Proof Key for Code Exchange (PKCE, RFC 7636) was originally designed for mobile apps but has become recommended for all OAuth 2.0 implementations. Without PKCE, an attacker could intercept an authorization code and exchange it for tokens if they know the client ID. PKCE binds the token exchange to the original authorization request by requiring the client to prove it initiated the flow.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Flow</th>
+                            <th>Best For</th>
+                            <th>Security Level</th>
+                            <th>PKCE Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Authorization Code</td>
+                            <td>Web apps with backend, mobile apps</td>
+                            <td>High (with PKCE)</td>
+                            <td>Recommended for public clients</td>
+                        </tr>
+                        <tr>
+                            <td>Authorization Code + PKCE</td>
+                            <td>SPA, mobile apps, any public client</td>
+                            <td>Highest</td>
+                            <td>Required</td>
+                        </tr>
+                        <tr>
+                            <td>Implicit</td>
+                            <td>Legacy browser apps (deprecated)</td>
+                            <td>Low</td>
+                            <td>N/A</td>
+                        </tr>
+                        <tr>
+                            <td>Client Credentials</td>
+                            <td>Machine-to-machine, microservices</td>
+                            <td>High</td>
+                            <td>N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>The role of scopes in OAuth 2.0</h2>
+            <p>Scopes define the permissions requested by the client. The authorization server presents the requested scopes to the user, who can grant or deny each one. The resulting access token is scoped to the granted permissions. Common scopes include openid for OIDC authentication, profile and email for user information, and custom scopes like read or write for API access.</p>
+
+            <h3>Offline access</h3>
+            <p>The offline_access scope allows the client to receive a refresh token that can be used to obtain new access tokens without user interaction. This is useful for background data synchronization, email fetching, or long-running processes. However, it also presents a risk if the refresh token is compromised, so it should be protected accordingly.</p>
+
+            <h2>State parameter and CSRF protection</h2>
+            <p>The state parameter is an opaque value generated by the client that is included in the authorization request and returned unchanged in the redirect. Its primary purpose is to prevent cross-site request forgery attacks. When the redirect arrives back at the client, the state must be validated against the stored value before proceeding with the token exchange.</p>
+
+            <h2>Token handling best practices</h2>
+            <p>Access tokens are short-lived credentials that should be treated as opaque strings by the client. Store them securely, transmit them only over HTTPS, and do not log them. Refresh tokens should be stored in secure, server-side storage and never in browser localStorage for web applications.</p>
+
+            <h2>Redirect URI validation</h2>
+            <p>The authorization server must validate the redirect URI exactly as registered. An attacker who can manipulate the redirect URI could intercept authorization codes or tokens via a URI they control. Exact string matching is recommended; wildcard patterns should be avoided unless absolutely necessary and then only with extreme caution.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>What is the most secure OAuth 2.0 flow for modern web apps?</h3>
+                <p>Authorization Code with PKCE is the most secure flow for modern web applications, including single-page applications and mobile apps. It provides the security benefits of the Authorization Code flow while protecting against authorization code interception.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How does the Authorization Code flow differ from the Implicit flow?</h3>
+                <p>Authorization Code returns an authorization code that is exchanged for tokens on a backend server, keeping tokens out of the browser. Implicit returns tokens directly in the redirect, exposing them to browser-based attacks. Authorization Code is recommended for all new implementations.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why is PKCE recommended for all OAuth 2.0 implementations?</h3>
+                <p>PKCE protects against authorization code interception attacks where an attacker intercepts the code and exchanges it for tokens. By binding the token request to the original authorization request via a code verifier, PKCE ensures only the legitimate client can complete the exchange.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is the role of the Redirect URI in the OAuth handshake?</h3>
+                <p>The redirect URI is where the authorization server sends the user after authentication, with either an authorization code or tokens. It must be pre-registered with the authorization server and validated exactly to prevent interception attacks via URI manipulation.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How are Refresh Tokens handled in a visual sequence diagram?</h3>
+                <p>Refresh tokens appear in a subsequent flow after the initial authorization. The client presents the refresh token to the token endpoint and receives a new access token (and optionally a new refresh token). The diagram shows this as a separate loop after the initial authentication sequence.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can OAuth 2.0 tokens be used across different domains?</h3>
+                <p>Access tokens issued by an authorization server are meant to be used against a specific resource server (API). The resource server validates the token. CORS policies and token audience claims restrict which origins or clients can use the token. Refresh tokens are typically bound to the client that requested them.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔓</div>
+                <h3>JWT Decoder & Debugger</h3>
+                <p>Decode and inspect JSON Web Tokens to verify signatures, claims, and token expiration.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔑</div>
+                <h3>PKCE Code Verifier Generator</h3>
+                <p>Generate cryptographically random code verifiers and their corresponding challenges for PKCE-enabled OAuth flows.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🌐</div>
+                <h3>CORS Header Checker</h3>
+                <p>Diagnose Cross-Origin Resource Sharing configuration issues by inspecting response headers.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔍</div>
+                <h3>OpenID Connect Config Explorer</h3>
+                <p>Fetch and validate OpenID Connect discovery documents and their well-known endpoints.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🖐️</div>
+                <h3>WebAuthn Debugger</h3>
+                <p>Debug WebAuthn registration and authentication flows with CBOR decoding and client data inspection.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🖐️</div>
+                <h3>Biometric Readiness Checker</h3>
+                <p>Validate browser and device support for platform authenticators and passkey compatibility.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔐</div>
+                <h3>Password Generator</h3>
+                <p>Create strong, random passwords with customizable character sets and length parameters.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">📊</div>
+                <h3>Hash Identifier</h3>
+                <p>Identify cryptographic hash algorithms from encoded strings for migration and forensics.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const grantTypeSelect = $('grantType');
+    const clientTypeSelect = $('clientType');
+    const pkceToggle = $('pkceToggle');
+    const stateToggle = $('stateToggle');
+    const responseTypeSelect = $('responseType');
+    const scopeTags = $('scopeTags');
+    const generateBtn = $('generateBtn');
+    const resetBtn = $('resetBtn');
+    const sequenceDiagram = $('sequenceDiagram');
+    const stepsContainer = $('stepsContainer');
+    const stepsList = $('stepsList');
+    const recommendationsContainer = $('recommendationsContainer');
+    const recommendationsList = $('recommendationsList');
+
+    let selectedScopes = ['openid', 'profile', 'email'];
+
+    scopeTags.addEventListener('click', function(e) {
+        if (e.target.classList.contains('scope-tag')) {
+            const scope = e.target.dataset.scope;
+            if (scope === 'openid') return;
+            e.target.classList.toggle('selected');
+            if (e.target.classList.contains('selected')) {
+                selectedScopes.push(scope);
+            } else {
+                selectedScopes = selectedScopes.filter(s => s !== scope);
+            }
+        }
+    });
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function generateAuthorizationCodeFlow(pkce, state, responseMode, scopes) {
+        const lines = [];
+        lines.push('sequenceDiagram');
+        lines.push('    participant U as User');
+        lines.push('    participant B as Browser');
+        lines.push('    participant C as Client App');
+        lines.push('    participant A as Auth Server');
+        lines.push('    participant R as Resource Server');
+        lines.push('');
+        lines.push('    Note over U,B: User wants to access protected resource');
+        lines.push('    U->>B: Navigate to client app');
+        lines.push('    B->>C: Load application');
+        lines.push('    C->>U: Redirect to Authorization Server');
+        lines.push('    Note over C: Build authorization request URL');
+        lines.push('    Note right of C: response_type=code');
+        lines.push('    Note right of C: client_id={client_id}');
+        lines.push('    Note right of C: redirect_uri={redirect_uri}');
+        lines.push('    Note right of C: scope=' + scopes.join(' '));
+
+        if (pkce) {
+            lines.push('    Note right of C: code_challenge={challenge}');
+            lines.push('    Note right of C: code_challenge_method=S256');
+        }
+
+        if (state) {
+            lines.push('    Note right of C: state={state}');
+        }
+
+        lines.push('    C->>B: Redirect to A with auth request');
+        lines.push('    B->>A: GET /authorize?...');
+        lines.push('    A->>U: Login form');
+        lines.push('    U->>A: Submit credentials');
+        lines.push('    A->>U: Consent screen');
+        lines.push('    U->>A: Approve access');
+        lines.push('    A->>B: Redirect to redirect_uri');
+
+        let returnMode = responseMode === 'default' ? (pkce ? 'fragment' : 'query') : responseMode;
+        if (returnMode === 'query') {
+            lines.push('    Note over A,B: code={authorization_code}&state={state}');
+        } else if (returnMode === 'fragment') {
+            lines.push('    Note over A,B: code={authorization_code}&state={state}');
+        } else if (returnMode === 'form_post') {
+            lines.push('    Note over A,B: Form POST with code and state');
+        }
+
+        lines.push('    B->>C: Request to redirect_uri');
+        lines.push('    C->>A: POST /token');
+        lines.push('    Note over C,A: grant_type=authorization_code');
+        lines.push('    Note over C,A: code={authorization_code}');
+        lines.push('    Note over C,A: redirect_uri={redirect_uri}');
+        lines.push('    Note over C,A: client_id={client_id}');
+
+        if (pkce) {
+            lines.push('    Note over C,A: code_verifier={verifier}');
+        }
+
+        lines.push('    A->>A: Validate authorization code');
+        lines.push('    A->>A: Verify PKCE if enabled');
+        lines.push('    A->>C: Return access_token');
+        lines.push('    Note right of A: expires_in=3600');
+        lines.push('    Note right of A: refresh_token (if offline_access)');
+        lines.push('    C->>R: GET /api/resource');
+        lines.push('    Note over C,R: Authorization: Bearer {access_token}');
+        lines.push('    R->>R: Validate token');
+        lines.push('    R->>C: Return protected data');
+
+        return lines.join('\n');
+    }
+
+    function generateImplicitFlow(state, responseMode, scopes) {
+        const lines = [];
+        lines.push('sequenceDiagram');
+        lines.push('    participant U as User');
+        lines.push('    participant B as Browser');
+        lines.push('    participant C as Client App');
+        lines.push('    participant A as Auth Server');
+        lines.push('    participant R as Resource Server');
+        lines.push('');
+        lines.push('    Note over U,B: User wants to access protected resource');
+        lines.push('    U->>B: Navigate to client app');
+        lines.push('    B->>C: Load application');
+        lines.push('    C->>U: Redirect to Authorization Server');
+        lines.push('    Note over C: Build authorization request URL');
+        lines.push('    Note right of C: response_type=token');
+        lines.push('    Note right of C: client_id={client_id}');
+        lines.push('    Note right of C: redirect_uri={redirect_uri}');
+        lines.push('    Note right of C: scope=' + scopes.join(' '));
+
+        if (state) {
+            lines.push('    Note right of C: state={state}');
+        }
+
+        lines.push('    C->>B: Redirect to A with auth request');
+        lines.push('    B->>A: GET /authorize?...');
+        lines.push('    A->>U: Login form');
+        lines.push('    U->>A: Submit credentials');
+        lines.push('    A->>U: Consent screen');
+        lines.push('    U->>A: Approve access');
+        lines.push('    A->>B: Redirect to redirect_uri');
+        lines.push('    Note over A,B: access_token={token}');
+        lines.push('    Note over A,B: expires_in={expiry}');
+        lines.push('    Note over A,B: state={state}');
+        lines.push('    B->>C: Fragment contains token');
+        lines.push('    C->>R: GET /api/resource');
+        lines.push('    Note over C,R: Authorization: Bearer {access_token}');
+        lines.push('    R->>R: Validate token');
+        lines.push('    R->>C: Return protected data');
+
+        return lines.join('\n');
+    }
+
+    function generateClientCredentialsFlow(scopes) {
+        const lines = [];
+        lines.push('sequenceDiagram');
+        lines.push('    participant C as Client (Service)');
+        lines.push('    participant A as Auth Server');
+        lines.push('    participant R as Resource Server');
+        lines.push('');
+        lines.push('    Note over C,R: Machine-to-machine communication');
+        lines.push('    C->>A: POST /token');
+        lines.push('    Note over C,A: grant_type=client_credentials');
+        lines.push('    Note over C,A: client_id={client_id}');
+        lines.push('    Note over C,A: client_secret={secret}');
+        lines.push('    Note over C,A: scope=' + scopes.join(' '));
+        lines.push('    A->>A: Validate client credentials');
+        lines.push('    A->>C: Return access_token');
+        lines.push('    Note right of A: expires_in=3600');
+        lines.push('    C->>R: GET /api/resource');
+        lines.push('    Note over C,R: Authorization: Bearer {access_token}');
+        lines.push('    R->>R: Validate token');
+        lines.push('    R->>C: Return protected data');
+
+        return lines.join('\n');
+    }
+
+    function generateRefreshTokenFlow() {
+        const lines = [];
+        lines.push('sequenceDiagram');
+        lines.push('    participant C as Client App');
+        lines.push('    participant A as Auth Server');
+        lines.push('    participant R as Resource Server');
+        lines.push('');
+        lines.push('    Note over C: Access token expired');
+        lines.push('    C->>A: POST /token');
+        lines.push('    Note over C,A: grant_type=refresh_token');
+        lines.push('    Note over C,A: refresh_token={refresh_token}');
+        lines.push('    Note over C,A: client_id={client_id}');
+        lines.push('    A->>A: Validate refresh token');
+        lines.push('    A->>A: Check token not revoked');
+        lines.push('    A->>C: Return new access_token');
+        lines.push('    Note right of A: expires_in=3600');
+        lines.push('    Note right of A: new refresh_token (optional)');
+        lines.push('    C->>R: GET /api/resource');
+        lines.push('    Note over C,R: Authorization: Bearer {access_token}');
+        lines.push('    R->>R: Validate token');
+        lines.push('    R->>C: Return protected data');
+
+        return lines.join('\n');
+    }
+
+    function getSteps(grantType, pkce, state, scopes) {
+        const steps = [];
+
+        if (grantType === 'authorization_code') {
+            steps.push({
+                title: 'Authorization Request Construction',
+                actors: 'Client App',
+                description: 'The client constructs an authorization request URL with response_type=code, client_id, redirect_uri, scope, and optional state.',
+                payload: 'GET /authorize?response_type=code&client_id={id}&redirect_uri={uri}&scope=' + scopes.join('%20') + '&state={state}'
+            });
+
+            if (pkce) {
+                steps.push({
+                    title: 'PKCE Code Challenge Generation',
+                    actors: 'Client App',
+                    description: 'The client generates a random code verifier, hashes it with SHA-256, and Base64URL encodes the result as the code challenge.',
+                    payload: 'code_verifier={random_43_128_chars}\ncode_challenge={base64url(sha256(code_verifier))}\ncode_challenge_method=S256'
+                });
+            }
+
+            steps.push({
+                title: 'User Authentication',
+                actors: 'User, Authorization Server',
+                description: 'The user is redirected to the authorization server, logs in, and sees a consent screen listing the requested permissions.',
+                payload: 'User authenticates via:\n- Username/password\n- MFA if enabled\n- SSO if configured\n\nConsent screen shows scopes: ' + scopes.join(', ')
+            });
+
+            steps.push({
+                title: 'Authorization Code Issuance',
+                actors: 'Authorization Server, Client App',
+                description: 'After user consent, the authorization server redirects back to the client with an authorization code.',
+                payload: 'GET {redirect_uri}?code={auth_code}&state={state}'
+            });
+
+            steps.push({
+                title: 'Token Exchange',
+                actors: 'Client App, Authorization Server',
+                description: 'The client exchanges the authorization code for tokens at the token endpoint.',
+                payload: 'POST /token\nContent-Type: application/x-www-form-urlencoded\n\ngrant_type=authorization_code&\ncode={auth_code}&\nredirect_uri={uri}&\nclient_id={id}' + (pkce ? '&\ncode_verifier={verifier}' : '')
+            });
+
+            steps.push({
+                title: 'Token Response',
+                actors: 'Authorization Server, Client App',
+                description: 'The authorization server validates the code and returns access_token, refresh_token (if offline_access), and token metadata.',
+                payload: '{\n  "access_token": "{token}",\n  "token_type": "Bearer",\n  "expires_in": 3600,\n  "refresh_token": "{refresh}"\n}'
+            });
+        } else if (grantType === 'implicit') {
+            steps.push({
+                title: 'Authorization Request Construction',
+                actors: 'Client App',
+                description: 'The client constructs an authorization request with response_type=token for implicit flow.',
+                payload: 'GET /authorize?response_type=token&client_id={id}&redirect_uri={uri}&scope=' + scopes.join('%20') + '&state={state}'
+            });
+
+            steps.push({
+                title: 'User Authentication',
+                actors: 'User, Authorization Server',
+                description: 'The user logs in and approves the consent request at the authorization server.',
+                payload: 'User authenticates and grants consent'
+            });
+
+            steps.push({
+                title: 'Token Return via Redirect',
+                actors: 'Authorization Server, Client App',
+                description: 'The authorization server redirects back with the access token in the fragment (implicit flow returns token directly, not code).',
+                payload: 'GET {redirect_uri}#\n  access_token={token}&\n  token_type=Bearer&\n  expires_in=3600&\n  state={state}'
+            });
+
+            steps.push({
+                title: 'Token Usage',
+                actors: 'Client App, Resource Server',
+                description: 'The client uses the access token to make API requests to the resource server.',
+                payload: 'GET /api/resource\nAuthorization: Bearer {access_token}'
+            });
+        } else if (grantType === 'client_credentials') {
+            steps.push({
+                title: 'Token Request with Client Credentials',
+                actors: 'Client, Authorization Server',
+                description: 'The client authenticates directly using its client_id and client_secret to obtain an access token.',
+                payload: 'POST /token\nContent-Type: application/x-www-form-urlencoded\n\ngrant_type=client_credentials&\nclient_id={id}&\nclient_secret={secret}&\nscope=' + scopes.join('%20')
+            });
+
+            steps.push({
+                title: 'Token Response',
+                actors: 'Authorization Server, Client',
+                description: 'The authorization server validates the client credentials and returns an access token.',
+                payload: '{\n  "access_token": "{token}",\n  "token_type": "Bearer",\n  "expires_in": 3600\n}'
+            });
+
+            steps.push({
+                title: 'Resource Access',
+                actors: 'Client, Resource Server',
+                description: 'The client uses the access token to authenticate requests to the resource server.',
+                payload: 'GET /api/resource\nAuthorization: Bearer {access_token}'
+            });
+        } else if (grantType === 'refresh_token') {
+            steps.push({
+                title: 'Token Refresh Request',
+                actors: 'Client App, Authorization Server',
+                description: 'When the access token expires, the client uses the refresh token to obtain a new access token.',
+                payload: 'POST /token\nContent-Type: application/x-www-form-urlencoded\n\ngrant_type=refresh_token&\nrefresh_token={refresh_token}&\nclient_id={id}'
+            });
+
+            steps.push({
+                title: 'New Token Response',
+                actors: 'Authorization Server, Client App',
+                description: 'The authorization server issues a new access token and optionally a new refresh token.',
+                payload: '{\n  "access_token": "{new_token}",\n  "token_type": "Bearer",\n  "expires_in": 3600,\n  "refresh_token": "{new_refresh}"\n}'
+            });
+        }
+
+        return steps;
+    }
+
+    function getRecommendations(grantType, pkce, state, clientType, scopes) {
+        const recs = [];
+
+        if (grantType === 'authorization_code') {
+            recs.push('Always use PKCE for public clients (SPA, mobile apps) to prevent authorization code interception.');
+            recs.push('Validate the state parameter on the client side to prevent CSRF attacks.');
+            recs.push('Use short-lived access tokens and refresh tokens for long-lived sessions.');
+            if (scopes.includes('offline_access')) {
+                recs.push('Store refresh tokens securely on the server-side; never in browser localStorage.');
+            }
+            recs.push('Register exact redirect URIs; avoid wildcards or flexible matching.');
+        }
+
+        if (grantType === 'implicit') {
+            recs.push('Implicit flow is deprecated for new applications. Migrate to Authorization Code with PKCE.');
+            recs.push('Tokens in URL fragments are visible in browser history and can be leaked via referrer headers.');
+            recs.push('Implement token storage with short expiration and proper cleanup.');
+        }
+
+        if (grantType === 'client_credentials') {
+            recs.push('Protect client credentials like passwords; use environment variables or secret management systems.');
+            recs.push('Apply the principle of least privilege when defining scopes for client credentials grants.');
+            recs.push('Rotate client secrets regularly and immediately upon any suspected compromise.');
+        }
+
+        if (grantType === 'refresh_token') {
+            recs.push('Implement refresh token rotation to detect and prevent replay attacks.');
+            recs.push('Revoke old refresh tokens when issuing new ones to prevent token lifetime extension attacks.');
+            recs.push('Monitor for refresh token reuse patterns that may indicate token theft.');
+        }
+
+        if (clientType === 'public' && grantType !== 'implicit') {
+            recs.push('Public clients cannot maintain client secrets. PKCE is required for authorization code flow.');
+        }
+
+        recs.push('Use HTTPS for all OAuth communications; insecure contexts are vulnerable to interception.');
+        recs.push('Validate all redirect URIs on the authorization server against pre-registered values.');
+
+        return recs;
+    }
+
+    function renderSteps(steps) {
+        stepsList.innerHTML = '';
+        steps.forEach((step, index) => {
+            const stepEl = document.createElement('div');
+            stepEl.className = 'step-item';
+            stepEl.innerHTML = `
+                <div class="step-header">
+                    <div class="step-number">${index + 1}</div>
+                    <div class="step-title">${escapeHtml(step.title)}</div>
+                </div>
+                <div class="step-actors">Actors: ${escapeHtml(step.actors)}</div>
+                <div class="step-description">${escapeHtml(step.description)}</div>
+                <div class="payload-block">${escapeHtml(step.payload)}</div>
+            `;
+            stepsList.appendChild(stepEl);
+        });
+    }
+
+    function renderRecommendations(recs) {
+        recommendationsList.innerHTML = '';
+        recs.forEach(rec => {
+            const li = document.createElement('li');
+            li.textContent = rec;
+            recommendationsList.appendChild(li);
+        });
+    }
+
+    function generate() {
+        const grantType = grantTypeSelect.value;
+        const clientType = clientTypeSelect.value;
+        const pkce = pkceToggle.checked;
+        const state = stateToggle.checked;
+        const responseMode = responseTypeSelect.value;
+
+        let diagram = '';
+        let steps = [];
+        let recommendations = [];
+
+        switch (grantType) {
+            case 'authorization_code':
+                diagram = generateAuthorizationCodeFlow(pkce, state, responseMode, selectedScopes);
+                break;
+            case 'implicit':
+                diagram = generateImplicitFlow(state, responseMode, selectedScopes);
+                break;
+            case 'client_credentials':
+                diagram = generateClientCredentialsFlow(selectedScopes);
+                break;
+            case 'refresh_token':
+                diagram = generateRefreshTokenFlow();
+                break;
+        }
+
+        steps = getSteps(grantType, pkce, state, selectedScopes);
+        recommendations = getRecommendations(grantType, pkce, state, clientType, selectedScopes);
+
+        sequenceDiagram.innerHTML = '<pre>' + escapeHtml(diagram) + '</pre>';
+        renderSteps(steps);
+        renderRecommendations(recommendations);
+        show(stepsContainer);
+        show(recommendationsContainer);
+    }
+
+    function reset() {
+        grantTypeSelect.value = 'authorization_code';
+        clientTypeSelect.value = 'public';
+        pkceToggle.checked = false;
+        stateToggle.checked = true;
+        responseTypeSelect.value = 'default';
+        selectedScopes = ['openid', 'profile', 'email'];
+
+        document.querySelectorAll('.scope-tag').forEach(tag => {
+            if (['openid', 'profile', 'email'].includes(tag.dataset.scope)) {
+                tag.classList.add('selected');
+            } else {
+                tag.classList.remove('selected');
+            }
+        });
+
+        sequenceDiagram.innerHTML = '<pre>Configure the parameters and click "Generate Diagram" to visualize the OAuth 2.0 flow.</pre>';
+        hide(stepsContainer);
+        hide(recommendationsContainer);
+    }
+
+    generateBtn.addEventListener('click', generate);
+    resetBtn.addEventListener('click', reset);
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>

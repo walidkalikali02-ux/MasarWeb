@@ -69,6 +69,13 @@ const toolMeta = {
             en: 'Simulate and debug WebAuthn registration and authentication flows with live CBOR decoding and client data inspection.'
         }
     },
+    'oauth-flow-visualizer': {
+        title: { ar: 'عارض تدفق OAuth 2.0', en: 'OAuth 2.0 Flow Visualizer' },
+        description: {
+            ar: 'تصور وتتبع تسلسل طلبات واستجابات OAuth 2.0 مع رسوم تخطيطية للسلاسل وقائمة بتوصيات الأمان.',
+            en: 'Visualize and trace OAuth 2.0 request-response sequences with flow diagrams and security recommendations.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -371,6 +378,80 @@ router.get('/webauthn-debugger', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "The clientDataJSON is a UTF-8 encoded JSON string. Decode it using TextDecoder and parse the JSON. It contains type, challenge, origin, and optionally crossOrigin fields."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// OAuth 2.0 Flow Visualizer
+router.get('/oauth-flow-visualizer', (req, res) => {
+    const meta = getMeta('oauth-flow-visualizer', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/oauth-flow-visualizer', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "OAuth 2.0 Flow Visualizer",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is the most secure OAuth 2.0 flow for modern web apps?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Authorization Code with PKCE is the most secure flow for modern web applications. It provides the security benefits of the Authorization Code flow while protecting against authorization code interception attacks."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the Authorization Code flow differ from the Implicit flow?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Authorization Code returns an authorization code that is exchanged for tokens on a backend server, keeping tokens out of the browser. Implicit returns tokens directly in the redirect, exposing them to browser-based attacks."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why is PKCE recommended for all OAuth 2.0 implementations?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "PKCE protects against authorization code interception attacks where an attacker intercepts the code and exchanges it for tokens. By binding the token request to the original authorization request via a code verifier, PKCE ensures only the legitimate client can complete the exchange."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the role of the Redirect URI in the OAuth handshake?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The redirect URI is where the authorization server sends the user after authentication, with either an authorization code or tokens. It must be pre-registered and validated exactly to prevent interception attacks."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How are Refresh Tokens handled in a visual sequence diagram?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Refresh tokens appear in a subsequent flow after the initial authorization. The client presents the refresh token to the token endpoint and receives a new access token (and optionally a new refresh token)."
                         }
                     }
                 ]
