@@ -56,10 +56,10 @@ const toolMeta = {
         }
     },
     'biometric-readiness-checker': {
-        title: { ar: 'مدقق جاهزية القياسات الحيوية وWebAuthn', en: 'Browser Biometric & WebAuthn Compatibility Checker' },
+        title: { ar: 'مدقق جاهزية القياسات الحيوية ومفاتيح المرور', en: 'Browser Biometric Capability & Passkey Readiness Checker' },
         description: {
-            ar: 'تحقق من دعم WebAuthn والمفاتيح المرورية وبصمة الإصبع أو التعرف على الوجه في متصفحك وجهازك الحالي.',
-            en: 'Check browser WebAuthn, passkey, platform biometric, and security key readiness in your current environment.'
+            ar: 'تحقق فوراً مما إذا كان متصفحك وجهازك يدعمان Face ID وTouch ID وWindows Hello ومفاتيح الأمان FIDO2.',
+            en: 'Instantly verify if your browser and device support Face ID, Touch ID, Windows Hello, and FIDO2 security keys.'
         }
     },
     'key-strength': {
@@ -238,7 +238,7 @@ router.get('/biometric-readiness-checker', (req, res) => {
             {
                 "@context": "https://schema.org",
                 "@type": "SoftwareApplication",
-                "name": "Browser Biometric & WebAuthn Compatibility Checker",
+                "name": "Browser Biometric Capability & Passkey Readiness Checker",
                 "applicationCategory": "SecurityApplication",
                 "operatingSystem": "Web",
                 "description": meta.description,
