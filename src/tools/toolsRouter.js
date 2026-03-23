@@ -76,6 +76,13 @@ const toolMeta = {
             en: 'Visualize and trace OAuth 2.0 request-response sequences with flow diagrams and security recommendations.'
         }
     },
+    'jwt-decoder': {
+        title: { ar: 'محلل وفك تشفير JWT', en: 'JWT Decoder & Inspector' },
+        description: {
+            ar: 'فك تشفير وتحليل رموز JWT للتحقق من المحتوى والتوقيع والمطالبات دون الحاجة إلى مفتاح سري.',
+            en: 'Decode and inspect JWT tokens to verify payloads, headers, and signature status without a secret key.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -452,6 +459,80 @@ router.get('/oauth-flow-visualizer', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "Refresh tokens appear in a subsequent flow after the initial authorization. The client presents the refresh token to the token endpoint and receives a new access token (and optionally a new refresh token)."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// JWT Decoder & Inspector
+router.get('/jwt-decoder', (req, res) => {
+    const meta = getMeta('jwt-decoder', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/jwt-decoder', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "JWT Decoder & Inspector",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is a JWT and how do I decode it?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "A JWT (JSON Web Token) is a Base64URL-encoded string containing a header, payload, and signature. To decode it, split by the dot separator and Base64URL-decode the first two segments."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is it safe to paste my JWT into an online decoder?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "This tool decodes entirely in your browser; no token data is transmitted to any server. However, for production credentials, avoid pasting them into any online tool out of caution."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I decode a JWT without having the secret key?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. The header and payload can always be decoded without the key. Signature verification requires the correct secret or public key."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I check if my JWT has expired?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Look at the exp claim in the payload. It is a Unix timestamp. If the current time exceeds exp, the token is expired."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between the header and the payload in a JWT?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The header contains metadata about the token: the signing algorithm and token type. The payload contains the claims: statements about the user plus metadata like expiration and issuer."
                         }
                     }
                 ]

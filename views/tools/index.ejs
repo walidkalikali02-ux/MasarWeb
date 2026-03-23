@@ -94,6 +94,17 @@
                     </p>
                 </a>
 
+                <!-- JWT Decoder & Inspector Tool Card -->
+                <a href="/tools/jwt-decoder" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔓
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محلل JWT' : 'JWT Decoder' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'فك تشفير وتحليل رموز JWT للتحقق من المحتوى والتوقيع.' : 'Decode and inspect JWT tokens to verify payloads, headers, and signature status.' %>
+                    </p>
+                </a>
+
                 <!-- Encryption Key Strength Tool Card -->
                 <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
