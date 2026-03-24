@@ -149,6 +149,17 @@
                     </p>
                 </a>
 
+                <!-- SSO Tester Tool Card -->
+                <a href="/tools/sso-tester" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
+                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
+                        🔐
+                    </div>
+                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'اختبار SSO' : 'SSO Tester' %></h2>
+                    <p style="color: var(--text-muted);">
+                        <%= currentLang === 'ar' ? 'فك تشفير والتحقق من تأكيدات SAML ورموز OIDC.' : 'Decode and validate SAML assertions and OIDC tokens to eliminate authentication errors.' %>
+                    </p>
+                </a>
+
                 <!-- Encryption Key Strength Tool Card -->
                 <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
                     <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">

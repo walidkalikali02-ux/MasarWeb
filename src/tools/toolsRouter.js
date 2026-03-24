@@ -107,8 +107,15 @@ const toolMeta = {
     'scoped-api-key-generator': {
         title: { ar: 'مولد مفاتيح API المحدودة النطاق', en: 'Scoped API Key Generator' },
         description: {
-            ar: 'إنشاء رموز API آمنة مع تحكم دقيق في الأذونات وعناوين البادئة المخصصة.',
+            ar: 'إنشاء مفاتيح API آمنة مع تحكم دقيق في الأذونات وعناوين البادئة المخصصة.',
             en: 'Generate secure, permission-restricted API keys for application integration with custom prefixes and scopes.'
+        }
+    },
+    'sso-tester': {
+        title: { ar: 'اختبار تكوين SSO و SAML/OIDC', en: 'SSO Configuration & SAML/OIDC Tester' },
+        description: {
+            ar: 'فك تشفير والتحقق من تأكيدات SAML ورموز OIDC لتحديد أخطاء المصادقة وثغرات الأمان.',
+            en: 'Decode and validate SAML assertions, OIDC tokens, and metadata to eliminate authentication errors and security risks.'
         }
     },
     'key-strength': {
@@ -857,6 +864,80 @@ router.get('/scoped-api-key-generator', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "256 bits (32 bytes) of entropy provides sufficient security for most production API keys. Higher entropy is recommended for high-security or long-lived tokens."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// SSO Configuration & SAML/OIDC Tester
+router.get('/sso-tester', (req, res) => {
+    const meta = getMeta('sso-tester', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/sso-tester', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "SSO Configuration & SAML/OIDC Tester",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "How do I troubleshoot a SAML 'Invalid Signature' error?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Verify you have the correct IdP certificate configured in your SP. Check that the certificate hasn't expired or been rotated. Ensure the XML was not modified after signing."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What information is extracted from a SAML assertion?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Common extractions include: NameID, attributes (email, name, groups), Issuer, Conditions (timestamps, audience), and signature status."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why is my OIDC ID token failing validation?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Common causes: expired token, issuer mismatch, audience mismatch, or malformed JWT structure. Check that issuer and audience values match your OIDC provider configuration."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Is my SSO data stored or logged during testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No. All processing happens entirely in your browser. No SAML responses, OIDC tokens, certificates, or validation results are transmitted or stored externally."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I check if my SAML response contains the correct attributes?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Paste the SAML response in the tool and examine the Decoded Attributes section. Verify that required attributes are present and contain expected values."
                         }
                     }
                 ]
