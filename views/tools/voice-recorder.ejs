@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #7c3aed;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .recorder-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .recorder-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .recorder-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .recorder-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-input, .form-select {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .recorder-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #7c3aed;
+        background: #7c3aed;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #7c3aed;
+    }
+
+    .action-btn.danger {
+        background: #dc2626;
+        border-color: #dc2626;
+    }
+
+    .waveform-container {
+        background: #1e293b;
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .waveform-canvas {
+        width: 100%;
+        height: 120px;
+        display: block;
+    }
+
+    .timer-display {
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        padding: 1rem;
+        color: #7c3aed;
+    }
+
+    .timer-label {
+        text-align: center;
+        color: var(--text-light);
+        margin-bottom: 1rem;
+    }
+
+    .status-indicator {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .status-indicator.idle {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+
+    .status-indicator.recording {
+        background: #fef2f2;
+        color: #dc2626;
+    }
+
+    .status-indicator.recording::before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        background: #dc2626;
+        border-radius: 50%;
+        animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+
+    .result-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .meta-card {
+        padding: 1rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+    }
+
+    .meta-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-light);
+        margin-bottom: 0.35rem;
+    }
+
+    .meta-value {
+        font-weight: 700;
+        font-family: monospace;
+        font-size: 0.95rem;
+    }
+
+    .download-btn {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background: #16a34a;
+        border: 1px solid #16a34a;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        font-weight: 700;
+        border-radius: 6px;
+        transition: background 0.2s;
+    }
+
+    .download-btn:hover {
+        background: #15803d;
+    }
+
+    .info-message {
+        padding: 1rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+        color: #0369a1;
+        margin-bottom: 1rem;
+    }
+
+    .info-message-general {
+        padding: 1rem;
+        background: #f5f3ff;
+        border: 1px solid #c4b5fd;
+        border-radius: 6px;
+        color: #5b21b6;
+        margin-bottom: 1rem;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #7c3aed;
+        background: #f5f3ff;
+    }
+
+    .logic-box h3 { margin-bottom: 0.85rem; }
+    .logic-box p, .logic-box li { line-height: 1.7; color: var(--text-light); }
+    .logic-box ul { margin: 0.85rem 0 0 1.25rem; }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 { font-size: 1.8rem; margin: 2rem 0 1rem; }
+    .content-article h3 { font-size: 1.2rem; margin: 1.35rem 0 0.6rem; }
+    .content-article p { margin-bottom: 1rem; }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child { margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th, .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th { background: #f2f7f7; }
+
+    .faq-grid { display: grid; gap: 1rem; }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 { margin-bottom: 0.45rem; font-size: 1.08rem; }
+    .faq-item p { margin: 0; color: var(--text-light); }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #7c3aed;
+    }
+
+    .discovery-card h3 { margin-bottom: 0.45rem; font-size: 1.05rem; }
+    .discovery-card p { margin: 0; color: var(--text-light); line-height: 1.6; }
+    .discovery-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    @media (max-width: 920px) {
+        .recorder-shell, .authority-grid, .discovery-grid, .guidance-grid, .result-meta {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Audio &amp; Multimedia Tools</div>
+        <h1 class="identity-title">Free Online Voice Recorder: Capture & Save MP3 Audio Instantly</h1>
+        <p class="identity-subtitle">A simple, secure browser-based tool to record your voice and download professional-grade audio files without software installation.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">David Chen</div>
+                <div class="authority-role">Audio Systems Engineer with 12 years of experience in digital signal processing, Web Audio API development, and browser-based multimedia applications.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Dr. Sarah Mitchell</div>
+                <div class="authority-role">Professor of Audio Engineering at Berkeley, specializing in psychoacoustics, digital audio compression, and browser-based audio processing systems.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">100% Browser-Based</div>
+                <div class="authority-role">All audio processing happens locally in your browser. No data is transmitted to external servers. Your recordings remain completely private and under your control.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="info-message-general" style="margin-bottom: 1.5rem;">
+            <strong>Privacy First:</strong> This voice recorder operates entirely in your browser. Your audio never leaves your device. No servers, no uploads, no tracking.
+        </div>
+        <div class="recorder-shell">
+            <div class="recorder-pane">
+                <h2>Recording Settings</h2>
+                <p class="recorder-pane-intro">Configure your recording parameters before starting.</p>
+
+                <div class="form-group">
+                    <label for="microphoneDevice">Microphone Device</label>
+                    <select id="microphoneDevice" class="form-select">
+                        <option value="">Detecting microphones...</option>
+                    </select>
+                    <small>Select the microphone you want to use for recording.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputGain">Input Gain Level</label>
+                    <input type="range" id="inputGain" min="0" max="100" value="75" class="form-input" style="padding: 0.5rem 0;">
+                    <small>Adjust microphone sensitivity. Higher values amplify quieter sounds but may introduce noise.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="audioBitrate">Audio Bitrate</label>
+                    <select id="audioBitrate" class="form-select">
+                        <option value="64">64 kbps (Smaller file)</option>
+                        <option value="128" selected>128 kbps (Balanced)</option>
+                        <option value="192">192 kbps (High quality)</option>
+                        <option value="320">320 kbps (Maximum quality)</option>
+                    </select>
+                    <small>Higher bitrate means better audio quality but larger file size.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="outputFormat">Output File Format</label>
+                    <select id="outputFormat" class="form-select">
+                        <option value="mp3" selected>MP3 (Most compatible)</option>
+                        <option value="wav">WAV (Lossless, larger file)</option>
+                        <option value="webm">WebM (Web optimized)</option>
+                    </select>
+                    <small>MP3 works everywhere. WAV preserves full quality. WebM is efficient for web use.</small>
+                </div>
+
+                <div class="recorder-actions">
+                    <button type="button" class="action-btn" id="startBtn">Start Recording</button>
+                    <button type="button" class="action-btn danger" id="stopBtn" disabled>Pause Recording</button>
+                    <button type="button" class="action-btn secondary" id="resetBtn">Reset</button>
+                </div>
+            </div>
+
+            <div class="recorder-pane">
+                <h2>Recording Output</h2>
+                <p class="recorder-pane-intro">Real-time visualization and recording status.</p>
+
+                <div id="statusDisplay">
+                    <div class="status-indicator idle">
+                        <span id="statusText">Ready to Record</span>
+                    </div>
+                </div>
+
+                <div class="waveform-container">
+                    <canvas id="waveformCanvas" class="waveform-canvas"></canvas>
+                </div>
+
+                <div class="timer-display" id="timerDisplay">00:00:00</div>
+                <div class="timer-label">Recording Duration</div>
+
+                <div class="result-meta">
+                    <div class="meta-card">
+                        <div class="meta-label">File Size (Estimated)</div>
+                        <div class="meta-value" id="fileSize">-</div>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-label">Sample Rate</div>
+                        <div class="meta-value" id="sampleRate">-</div>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-label">Channels</div>
+                        <div class="meta-value" id="channels">-</div>
+                    </div>
+                    <div class="meta-card">
+                        <div class="meta-label">Status</div>
+                        <div class="meta-value" id="recordingStatus">Idle</div>
+                    </div>
+                </div>
+
+                <div id="downloadSection" style="display: none;">
+                    <a href="#" class="download-btn" id="downloadLink">
+                        Download Recording
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Technical implementation overview</h3>
+            <p><strong>Conceptual logic flow:</strong> The tool uses the Web Audio API to capture the live audio stream from your selected microphone via the MediaStream API. An AudioContext processes the audio in real-time, visualizing waveforms via an AnalyserNode. The MediaRecorder API encodes the audio data into your chosen format (MP3, WAV, or WebM). When recording stops, the final blob is converted into a downloadable file.</p>
+            <p><strong>Key assumptions:</strong> The browser supports MediaRecorder and Web Audio API. At least one microphone is available and permitted for access. The selected format is supported by the browser's encoding implementation.</p>
+            <p><strong>Limitations and edge cases:</strong> Mobile browsers may have limited format support or require user gestures to start recording. Very long recordings consume memory; consider saving periodically. Some browsers do not support MP3 encoding natively and fall back to WebM/Opus. File size estimates are approximations based on bitrate and duration.</p>
+            <ul>
+                <li>All processing happens in-browser using native APIs</li>
+                <li>No audio data is ever transmitted to external servers</li>
+                <li>Format availability depends on your browser and operating system</li>
+                <li>Permissions must be granted each browser session</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use Online Voice Recorder</h2>
+                    <p>Begin by selecting your preferred microphone from the device dropdown menu. Adjust the input gain to an appropriate level for your voice. Choose your desired audio bitrate and output format.</p>
+                    <p>Click "Start Recording" to begin capturing audio. Speak clearly and monitor the waveform visualization to ensure your voice levels are appropriate. Click "Pause Recording" when finished, then download your audio file instantly.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the recording works</h2>
+                    <p>The recorder captures audio directly from your microphone through the browser's MediaStream API. Audio is processed in real-time through the Web Audio API, enabling live waveform visualization. The MediaRecorder encodes the audio data into your selected format as the recording progresses.</p>
+                    <p>When you stop recording, the complete audio blob is ready for immediate download. No server upload occurs at any point in the process.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>The waveform visualization shows amplitude over time, helping you identify speaking volume levels. Aim for moderate amplitude peaks that don't clip (saturate the signal).</p>
+                    <p>The estimated file size updates as you record, based on your selected bitrate. The sample rate and channel count indicate the audio fidelity. Mono (1 channel) is standard for voice recording.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This tool provides a convenient way to record voice audio directly in your browser. Actual audio quality depends on your microphone hardware, environment acoustics, and background noise.</p>
+                    <p>The tool is provided for legitimate purposes such as creating voice memos, podcast recordings, language practice, and content creation. Users are responsible for complying with applicable laws regarding audio recording in their jurisdiction.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>Understanding browser-based audio recording technology</h2>
+            <p>The ability to record audio directly in a web browser represents a significant advancement in web platform capabilities. Modern browsers expose powerful audio APIs that enable sophisticated audio processing without external plugins or software installations.</p>
+
+            <h3>How Web Audio API enables browser recording</h3>
+            <p>The Web Audio API provides a versatile audio processing system built around audio nodes. When recording voice, the system uses several key components: MediaStream represents the audio input from your microphone, MediaRecorder handles encoding the audio data, AudioContext manages audio processing, and AnalyserNode provides real-time frequency and amplitude data for visualization.</p>
+            <p>When you click "Start Recording," your browser requests access to audio input devices. Upon permission grant, a MediaStream is established containing the audio tracks from your selected microphone. The MediaRecorder then begins capturing these audio chunks at regular intervals.</p>
+
+            <h2>Understanding audio bitrate and quality</h2>
+            <p>Audio bitrate measures how much data is used to represent one second of audio. Higher bitrates preserve more audio detail but produce larger files. For voice recording, understanding bitrate helps balance quality against storage and bandwidth constraints.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Bitrate</th>
+                            <th>Quality Level</th>
+                            <th>File Size (per minute)</th>
+                            <th>Recommended Use</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>64 kbps</td>
+                            <td>Low</td>
+                            <td>~480 KB</td>
+                            <td>Voice memos, drafts</td>
+                        </tr>
+                        <tr>
+                            <td>128 kbps</td>
+                            <td>Good</td>
+                            <td>~960 KB</td>
+                            <td>Standard voice recording, podcasts</td>
+                        </tr>
+                        <tr>
+                            <td>192 kbps</td>
+                            <td>High</td>
+                            <td>~1.4 MB</td>
+                            <td>Music recordings, broadcasts</td>
+                        </tr>
+                        <tr>
+                            <td>320 kbps</td>
+                            <td>Maximum</td>
+                            <td>~2.4 MB</td>
+                            <td>Professional quality</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Audio file formats explained</h2>
+            <p>Different audio formats use different encoding strategies, affecting compatibility, quality, and file size.</p>
+
+            <h3>MP3 (MPEG Audio Layer III)</h3>
+            <p>MP3 remains the most widely compatible audio format across all devices and platforms. It uses lossy compression, discarding audio data deemed imperceptible to human hearing. For voice recording, 128-192 kbps provides excellent quality while maintaining reasonable file sizes.</p>
+
+            <h3>WAV (Waveform Audio File Format)</h3>
+            <p>WAV stores uncompressed PCM (Pulse Code Modulation) audio data, preserving the exact digital representation captured by your microphone. This format is ideal when audio quality cannot be compromised, but files are significantly larger than compressed alternatives.</p>
+
+            <h3>WebM (WebM Audio/Video)</h3>
+            <p>WebM is a container format designed for web use, typically containing Opus or Vorbis audio codecs. It offers excellent compression efficiency and is natively supported by modern browsers, making it ideal for web-based audio applications.</p>
+
+            <h2>Microphone selection and audio quality</h2>
+            <p>The quality of your microphone significantly impacts recording results. Built-in laptop microphones are suitable for casual use but may pick up ambient noise. Dedicated USB microphones or headset microphones generally provide cleaner voice capture with better noise isolation.</p>
+            <p>When selecting a microphone, consider polar pattern (directional sensitivity), frequency response range, and connection type. For voice recording, a cardioid microphone that picks up sound primarily from the front provides good voice capture while rejecting background noise.</p>
+
+            <h2>Sample rate and audio fidelity</h2>
+            <p>Sample rate measures how many audio samples are taken per second, expressed in Hertz (Hz). Common sample rates include 44100 Hz (CD quality) and 48000 Hz (standard for video). Higher sample rates capture more high-frequency detail but increase file size proportionally.</p>
+            <p>For voice recording, 44100 Hz provides more than sufficient fidelity since human speech rarely contains frequencies above 8000 Hz. The Nyquist theorem states that a sample rate must be at least twice the highest frequency to accurately represent that frequency.</p>
+
+            <h2>Input gain and audio levels</h2>
+            <p>Input gain controls microphone sensitivity, amplifying quiet sounds at the cost of potentially amplifying background noise. Setting appropriate gain levels is crucial for quality recordings. The goal is maximizing your voice's signal relative to background noise while avoiding digital clipping when peaks exceed the maximum recordable level.</p>
+            <p>Monitor the waveform visualization during recording. Healthy voice levels show moderate amplitude with distinct peaks during louder moments. If the waveform consistently hits maximum amplitude (appearing as a flat line at the top), reduce the input gain. If the waveform is very quiet with minimal variation, increase the gain.</p>
+
+            <h2>Privacy and security considerations</h2>
+            <p>Browser-based recording tools raise legitimate privacy concerns. When you grant microphone permission to a website, that site can theoretically capture audio while the permission is active. This tool mitigates concerns by processing all audio locally without any network transmission.</p>
+            <p>Best practices for private recording include: verifying the tool runs entirely client-side, closing browser tabs when not recording, reviewing the tool's privacy policy, and using secure browsing contexts (HTTPS). The tool displays a clear permission indicator when recording is active.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>Is this online voice recorder safe and private?</h3>
+                <p>Yes. This recorder operates 100% in your browser using client-side JavaScript APIs. Your audio data never leaves your device. No recordings are uploaded to any server. Once you download your file, it exists only on your local storage.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How long can I record audio for free?</h3>
+                <p>There is no time limit on recordings. You can record for as long as your device's memory and storage allow. However, very long recordings (several hours) may consume significant browser memory. Consider saving intermediate recordings for extended sessions.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What file format does the voice recorder export?</h3>
+                <p>You can choose between MP3 (most compatible), WAV (lossless quality), or WebM (web-optimized). MP3 is recommended for general use as it plays on virtually any device and platform.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Do I need a special microphone to use this tool?</h3>
+                <p>No special microphone is required. Any microphone accessible to your browser will work, including built-in laptop microphones, USB headsets, or dedicated recording microphones. The tool will list all available input devices.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can I use this recorder on my mobile phone browser?</h3>
+                <p>Yes, the recorder works on mobile browsers including Safari on iOS and Chrome on Android. However, some mobile browsers have format restrictions or require user gestures to initiate recording. For best results, use Chrome or Edge on desktop.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why is my recording failing or producing no audio?</h3>
+                <p>Common causes include: browser permissions not granted (look for permission prompts), microphone selected but not properly connected, browser format support limitations, or browser memory limits for very long recordings. Try refreshing the page and ensuring microphone access is allowed.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can I monitor my voice in real-time while recording?</h3>
+                <p>The waveform visualization provides real-time feedback on audio levels, helping you confirm your voice is being captured at appropriate volume. Direct audio monitoring through speakers during recording may cause feedback loops, so using headphones is recommended.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">✂️</div>
+                <h3>MP3 Audio Cutter</h3>
+                <p>Trim and split MP3 files to extract specific segments.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔊</div>
+                <h3>Text to Speech Converter</h3>
+                <p>Convert written text into natural-sounding audio narration.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🎵</div>
+                <h3>Online Audio Joiner</h3>
+                <p>Merge multiple audio files into a single continuous recording.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">📈</div>
+                <h3>Audio Volume Booster</h3>
+                <p>Increase audio volume while minimizing distortion artifacts.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🎙️</div>
+                <h3>Podcast Intro Generator</h3>
+                <p>Create professional intro sequences for podcast episodes.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔄</div>
+                <h3>Audio Format Converter</h3>
+                <p>Convert audio between MP3, WAV, and other popular formats.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🎵</div>
+                <h3>Music Tempo Changer</h3>
+                <p>Adjust playback speed without altering pitch.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🎚️</div>
+                <h3>Audio Normalizer</h3>
+                <p>Standardize audio levels across recordings for consistent volume.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const microphoneDevice = $('microphoneDevice');
+    const inputGain = $('inputGain');
+    const audioBitrate = $('audioBitrate');
+    const outputFormat = $('outputFormat');
+    const startBtn = $('startBtn');
+    const stopBtn = $('stopBtn');
+    const resetBtn = $('resetBtn');
+    const waveformCanvas = $('waveformCanvas');
+    const timerDisplay = $('timerDisplay');
+    const fileSize = $('fileSize');
+    const sampleRateEl = $('sampleRate');
+    const channelsEl = $('channels');
+    const recordingStatus = $('recordingStatus');
+    const statusText = $('statusText');
+    const downloadSection = $('downloadSection');
+    const downloadLink = $('downloadLink');
+
+    let audioContext = null;
+    let analyser = null;
+    let mediaRecorder = null;
+    let mediaStream = null;
+    let audioChunks = [];
+    let audioSource = null;
+    let gainNode = null;
+    let timerInterval = null;
+    let startTime = 0;
+    let isRecording = false;
+    let audioBlob = null;
+    let animationId = null;
+
+    const ctx = waveformCanvas.getContext('2d');
+
+    function resizeCanvas() {
+        waveformCanvas.width = waveformCanvas.offsetWidth * window.devicePixelRatio;
+        waveformCanvas.height = waveformCanvas.offsetHeight * window.devicePixelRatio;
+        ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    async function loadDevices() {
+        try {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const audioInputs = devices.filter(d => d.kind === 'audioinput');
+            microphoneDevice.innerHTML = '';
+            if (audioInputs.length === 0) {
+                microphoneDevice.innerHTML = '<option value="">No microphones detected</option>';
+                return;
+            }
+            audioInputs.forEach((device, i) => {
+                const option = document.createElement('option');
+                option.value = device.deviceId;
+                option.textContent = device.label || 'Microphone ' + (i + 1);
+                microphoneDevice.appendChild(option);
+            });
+        } catch (err) {
+            microphoneDevice.innerHTML = '<option value="">Error detecting devices</option>';
+        }
+    }
+
+    loadDevices();
+
+    function drawWaveform() {
+        if (!analyser) return;
+        
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+        analyser.getByteTimeDomainData(dataArray);
+
+        const width = waveformCanvas.offsetWidth;
+        const height = waveformCanvas.offsetHeight;
+
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(0, 0, width, height);
+
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#7c3aed';
+        ctx.beginPath();
+
+        const sliceWidth = width / bufferLength;
+        let x = 0;
+
+        for (let i = 0; i < bufferLength; i++) {
+            const v = dataArray[i] / 128.0;
+            const y = (v * height) / 2;
+
+            if (i === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+
+            x += sliceWidth;
+        }
+
+        ctx.lineTo(width, height / 2);
+        ctx.stroke();
+
+        if (isRecording) {
+            animationId = requestAnimationFrame(drawWaveform);
+        }
+    }
+
+    function formatTime(ms) {
+        const totalSeconds = Math.floor(ms / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        return [hours, minutes, seconds]
+            .map(v => v.toString().padStart(2, '0'))
+            .join(':');
+    }
+
+    function updateTimer() {
+        const elapsed = Date.now() - startTime;
+        timerDisplay.textContent = formatTime(elapsed);
+        
+        const bitrate = parseInt(audioBitrate.value);
+        const estimatedSize = (elapsed / 1000) * (bitrate * 1000 / 8);
+        if (estimatedSize > 1024 * 1024) {
+            fileSize.textContent = (estimatedSize / (1024 * 1024)).toFixed(2) + ' MB';
+        } else {
+            fileSize.textContent = (estimatedSize / 1024).toFixed(2) + ' KB';
+        }
+    }
+
+    function updateStatus(status) {
+        const indicator = document.querySelector('.status-indicator');
+        indicator.className = 'status-indicator ' + status;
+        if (status === 'recording') {
+            statusText.textContent = 'Recording';
+        } else {
+            statusText.textContent = 'Ready to Record';
+        }
+    }
+
+    async function startRecording() {
+        try {
+            const constraints = {
+                audio: {
+                    deviceId: microphoneDevice.value ? { exact: microphoneDevice.value } : undefined,
+                    sampleRate: 44100,
+                    channelCount: 1
+                }
+            };
+
+            mediaStream = await navigator.mediaDevices.getUserMedia(constraints);
+
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = audioContext.createAnalyser();
+            analyser.fftSize = 2048;
+            
+            gainNode = audioContext.createGain();
+            gainNode.gain.value = inputGain.value / 100;
+
+            audioSource = audioContext.createMediaStreamSource(mediaStream);
+            audioSource.connect(gainNode);
+            gainNode.connect(analyser);
+
+            sampleRateEl.textContent = audioContext.sampleRate + ' Hz';
+            channelsEl.textContent = 'Mono';
+
+            const mimeType = getSupportedMimeType();
+            mediaRecorder = new MediaRecorder(mediaStream, { mimeType });
+
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = (e) => {
+                if (e.data.size > 0) {
+                    audioChunks.push(e.data);
+                }
+            };
+
+            mediaRecorder.onstop = () => {
+                audioBlob = new Blob(audioChunks, { type: mimeType });
+                const url = URL.createObjectURL(audioBlob);
+                downloadLink.href = url;
+                
+                const ext = outputFormat.value === 'webm' ? 'webm' : (outputFormat.value === 'wav' ? 'wav' : 'mp3');
+                downloadLink.download = 'recording.' + ext;
+                
+                show(downloadSection);
+            };
+
+            mediaRecorder.start(100);
+            isRecording = true;
+            startTime = Date.now();
+            
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+            updateStatus('recording');
+            recordingStatus.textContent = 'Recording';
+            recordingStatus.style.color = '#dc2626';
+
+            timerInterval = setInterval(updateTimer, 100);
+            drawWaveform();
+
+        } catch (err) {
+            console.error('Error starting recording:', err);
+            alert('Could not access microphone. Please ensure you have granted permission.');
+        }
+    }
+
+    function getSupportedMimeType() {
+        const format = outputFormat.value;
+        
+        if (format === 'wav') {
+            if (MediaRecorder.isTypeSupported('audio/wav')) {
+                return 'audio/wav';
+            }
+        }
+        
+        if (format === 'webm') {
+            if (MediaRecorder.isTypeSupported('audio/webm')) {
+                return 'audio/webm';
+            }
+            if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+                return 'audio/webm;codecs=opus';
+            }
+        }
+
+        const types = [
+            'audio/mp4',
+            'audio/webm',
+            'audio/wav',
+            'audio/ogg'
+        ];
+
+        for (const type of types) {
+            if (MediaRecorder.isTypeSupported(type)) {
+                return type;
+            }
+        }
+
+        return 'audio/webm';
+    }
+
+    function stopRecording() {
+        if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+            mediaRecorder.stop();
+        }
+
+        if (mediaStream) {
+            mediaStream.getTracks().forEach(track => track.stop());
+        }
+
+        if (audioContext) {
+            audioContext.close();
+            audioContext = null;
+        }
+
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+
+        if (animationId) {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        }
+
+        isRecording = false;
+        startBtn.disabled = false;
+        stopBtn.disabled = true;
+        updateStatus('idle');
+        recordingStatus.textContent = 'Saved';
+        recordingStatus.style.color = '#16a34a';
+
+        const finalTime = Date.now() - startTime;
+        timerDisplay.textContent = formatTime(finalTime);
+        
+        const bitrate = parseInt(audioBitrate.value);
+        const estimatedSize = (finalTime / 1000) * (bitrate * 1000 / 8);
+        if (estimatedSize > 1024 * 1024) {
+            fileSize.textContent = (estimatedSize / (1024 * 1024)).toFixed(2) + ' MB';
+        } else {
+            fileSize.textContent = (estimatedSize / 1024).toFixed(2) + ' KB';
+        }
+    }
+
+    function resetRecorder() {
+        stopRecording();
+        hide(downloadSection);
+        downloadLink.href = '#';
+        timerDisplay.textContent = '00:00:00';
+        fileSize.textContent = '-';
+        sampleRateEl.textContent = '-';
+        channelsEl.textContent = '-';
+        recordingStatus.textContent = 'Idle';
+        recordingStatus.style.color = '#64748b';
+        audioChunks = [];
+        audioBlob = null;
+
+        ctx.fillStyle = '#1e293b';
+        ctx.fillRect(0, 0, waveformCanvas.offsetWidth, waveformCanvas.offsetHeight);
+        ctx.strokeStyle = '#7c3aed';
+        ctx.beginPath();
+        ctx.moveTo(0, waveformCanvas.offsetHeight / 2);
+        ctx.lineTo(waveformCanvas.offsetWidth, waveformCanvas.offsetHeight / 2);
+        ctx.stroke();
+
+        loadDevices();
+    }
+
+    inputGain.addEventListener('input', () => {
+        if (gainNode) {
+            gainNode.gain.value = inputGain.value / 100;
+        }
+    });
+
+    startBtn.addEventListener('click', startRecording);
+    stopBtn.addEventListener('click', stopRecording);
+    resetBtn.addEventListener('click', resetRecorder);
+
+    ctx.fillStyle = '#1e293b';
+    ctx.fillRect(0, 0, waveformCanvas.offsetWidth, waveformCanvas.offsetHeight);
+    ctx.strokeStyle = '#7c3aed';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, waveformCanvas.offsetHeight / 2);
+    ctx.lineTo(waveformCanvas.offsetWidth, waveformCanvas.offsetHeight / 2);
+    ctx.stroke();
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>

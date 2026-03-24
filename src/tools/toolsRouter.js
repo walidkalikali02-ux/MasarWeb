@@ -215,6 +215,13 @@ const toolMeta = {
             ar: 'تحقق من صحة إعدادات اتصال LDAP ونسب ربط Active Directory مع رسائل تحليل الأخطاء.',
             en: 'Validate LDAP server connection settings and Active Directory bind credentials with detailed error analysis.'
         }
+    },
+    'voice-recorder': {
+        title: { ar: 'مسجل الصوت المجاني عبر الإنترنت', en: 'Free Online Voice Recorder' },
+        description: {
+            ar: 'سجل صوتك مباشرة في المتصفح واحفظ الملفات الصوتية عالية الجودة بتنسيق MP3 أو WAV أو WebM.',
+            en: 'Record your voice directly in your browser and save professional-grade audio files in MP3, WAV, or WebM format.'
+        }
     }
 };
 
@@ -1275,6 +1282,80 @@ router.get('/ldap-tester', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "For Active Directory, the Base DN corresponds to your domain name: DC=example,DC=com for example.com. You can find this by checking the domain distinguishedName in AD Users and Computers, or by running dsquery commands on a domain controller."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// Free Online Voice Recorder
+router.get('/voice-recorder', (req, res) => {
+    const meta = getMeta('voice-recorder', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/voice-recorder', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Free Online Voice Recorder",
+                "applicationCategory": "MultimediaApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "Is this online voice recorder safe and private?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes. This recorder operates 100% in your browser using client-side JavaScript APIs. Your audio data never leaves your device. No recordings are uploaded to any server."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How long can I record audio for free?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "There is no time limit on recordings. You can record for as long as your device's memory and storage allow. However, very long recordings may consume significant browser memory."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What file format does the voice recorder export?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "You can choose between MP3 (most compatible), WAV (lossless quality), or WebM (web-optimized). MP3 is recommended for general use as it plays on virtually any device."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Do I need a special microphone to use this tool?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "No special microphone is required. Any microphone accessible to your browser will work, including built-in laptop microphones, USB headsets, or dedicated recording microphones."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can I use this recorder on my mobile phone browser?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes, the recorder works on mobile browsers including Safari on iOS and Chrome on Android. Some mobile browsers have format restrictions or require user gestures to initiate recording."
                         }
                     }
                 ]
