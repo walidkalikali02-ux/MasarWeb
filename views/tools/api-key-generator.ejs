@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #059669;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-select,
+    .form-input {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .scope-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .scope-tag {
+        padding: 0.35rem 0.75rem;
+        background: #e2e8f0;
+        border: 1px solid #cbd5e0;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        user-select: none;
+    }
+
+    .scope-tag:hover {
+        background: #cbd5e0;
+    }
+
+    .scope-tag.selected {
+        background: #059669;
+        color: #fff;
+        border-color: #059669;
+    }
+
+    .scope-input-group {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+    }
+
+    .scope-input-group input {
+        flex: 1;
+    }
+
+    .scope-input-group button {
+        padding: 0.75rem 1rem;
+        background: #059669;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #059669;
+        background: #059669;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #059669;
+    }
+
+    .result-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .result-section h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #059669;
+    }
+
+    .output-block {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        word-break: break-all;
+        position: relative;
+        margin-bottom: 0.75rem;
+    }
+
+    .output-block .copy-btn {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.35rem 0.75rem;
+        background: #059669;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        cursor: pointer;
+    }
+
+    .json-viewer {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+    }
+
+    .json-key { color: #7dd3fc; }
+    .json-string { color: #86efac; }
+    .json-number { color: #fcd34d; }
+
+    .result-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .meta-card {
+        padding: 1rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+    }
+
+    .meta-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-light);
+        margin-bottom: 0.35rem;
+    }
+
+    .meta-value {
+        font-weight: 700;
+        font-family: monospace;
+        font-size: 0.95rem;
+    }
+
+    .warning-card {
+        padding: 1rem;
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+        border-radius: 6px;
+        margin-top: 1rem;
+    }
+
+    .warning-card h4 {
+        margin-bottom: 0.5rem;
+        color: #92400e;
+        font-size: 0.95rem;
+    }
+
+    .warning-card p {
+        margin: 0;
+        color: #b45309;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #059669;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 { margin-bottom: 0.85rem; }
+    .logic-box p, .logic-box li { line-height: 1.7; color: var(--text-light); }
+    .logic-box ul { margin: 0.85rem 0 0 1.25rem; }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 { font-size: 1.8rem; margin: 2rem 0 1rem; }
+    .content-article h3 { font-size: 1.2rem; margin: 1.35rem 0 0.6rem; }
+    .content-article p { margin-bottom: 1rem; }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child { margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th, .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th { background: #f2f7f7; }
+
+    .faq-grid { display: grid; gap: 1rem; }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 { margin-bottom: 0.45rem; font-size: 1.08rem; }
+    .faq-item p { margin: 0; color: var(--text-light); }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #059669;
+    }
+
+    .discovery-card h3 { margin-bottom: 0.45rem; font-size: 1.05rem; }
+    .discovery-card p { margin: 0; color: var(--text-light); line-height: 1.6; }
+    .discovery-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    @media (max-width: 920px) {
+        .tool-shell, .authority-grid, .discovery-grid, .guidance-grid, .result-meta {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">Developer Tools</div>
+        <h1 class="identity-title">Secure API Key Generator with Granular Scoping</h1>
+        <p class="identity-subtitle">Instantly generate cryptographically secure API tokens with custom permissions, TTL, and resource-level access control.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">David Chen</div>
+                <div class="authority-role">API Security Architect specializing in token-based access control, OAuth 2.0 implementations, and enterprise API gateway design patterns.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Sarah Okonkwo</div>
+                <div class="authority-role">Cloud Security Engineer with expertise in AWS IAM policies, GCP service accounts, and Azure AD application permissions.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">1.5M+ generated keys</div>
+                <div class="authority-role">All generation uses cryptographically secure random number generation in your browser. No keys are transmitted or stored externally.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>Key Configuration</h2>
+                <p class="tool-pane-intro">Configure the API key parameters. Keys are generated using cryptographically secure random number generation.</p>
+
+                <div class="form-group">
+                    <label for="keyPrefix">Resource Prefix</label>
+                    <input type="text" id="keyPrefix" class="form-input" value="sk_live_" placeholder="sk_live_, api_, tok_">
+                    <small>Optional prefix for key identification. Common prefixes: sk_live_, sk_test_, api_, tok_.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="keyLength">Key Length (characters)</label>
+                    <select id="keyLength" class="form-select">
+                        <option value="16">16 characters</option>
+                        <option value="24">24 characters</option>
+                        <option value="32" selected>32 characters</option>
+                        <option value="48">48 characters</option>
+                        <option value="64">64 characters</option>
+                        <option value="128">128 characters</option>
+                    </select>
+                    <small>Longer keys provide more entropy. 32 characters is suitable for most API keys.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="encodingFormat">Encoding Format</label>
+                    <select id="encodingFormat" class="form-select">
+                        <option value="base64url" selected>Base64URL (URL-safe)</option>
+                        <option value="hex">Hexadecimal</option>
+                        <option value="uuid">UUID v4</option>
+                        <option value="alphanumeric">Alphanumeric</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="expirationDays">Expiration (TTL)</label>
+                    <select id="expirationDays" class="form-select">
+                        <option value="0">No expiration</option>
+                        <option value="7">7 days</option>
+                        <option value="30" selected>30 days</option>
+                        <option value="90">90 days</option>
+                        <option value="180">180 days</option>
+                        <option value="365">1 year</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Permission Scopes</label>
+                    <div class="scope-tags" id="scopeTags">
+                        <span class="scope-tag" data-scope="read:users">read:users</span>
+                        <span class="scope-tag" data-scope="write:users">write:users</span>
+                        <span class="scope-tag" data-scope="read:orders">read:orders</span>
+                        <span class="scope-tag" data-scope="write:orders">write:orders</span>
+                        <span class="scope-tag" data-scope="read:products">read:products</span>
+                        <span class="scope-tag" data-scope="write:products">write:products</span>
+                        <span class="scope-tag" data-scope="admin">admin</span>
+                    </div>
+                    <div class="scope-input-group">
+                        <input type="text" id="customScope" class="form-input" placeholder="custom:scope">
+                        <button type="button" id="addScopeBtn">Add</button>
+                    </div>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="generateBtn">Generate API Key</button>
+                    <button type="button" class="action-btn secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Generated Key</h2>
+                <p class="tool-pane-intro">The key and its associated metadata are generated entirely in your browser.</p>
+
+                <div id="placeholderMessage" class="info-message" style="background: #f0fdf4; border-color: #86efac; color: #166534;">
+                    Configure the parameters and click "Generate API Key" to create a secure key with scoped permissions.
+                </div>
+
+                <div id="resultsDisplay" style="display: none;">
+                    <div class="result-section">
+                        <h3>Plaintext API Key</h3>
+                        <div class="output-block">
+                            <span id="generatedKey">-</span>
+                            <button type="button" class="copy-btn" onclick="copyToClipboard('generatedKey')">Copy</button>
+                        </div>
+                    </div>
+
+                    <div class="result-meta">
+                        <div class="meta-card">
+                            <div class="meta-label">Key ID (truncated)</div>
+                            <div class="meta-value" id="keyId">-</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">Encoding</div>
+                            <div class="meta-value" id="keyEncoding">-</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">Entropy (bits)</div>
+                            <div class="meta-value" id="keyEntropy">-</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">Scopes</div>
+                            <div class="meta-value" id="keyScopes">-</div>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Secure Hash (SHA-256)</h3>
+                        <div class="output-block">
+                            <span id="keyHash">-</span>
+                            <button type="button" class="copy-btn" onclick="copyToClipboard('keyHash')">Copy</button>
+                        </div>
+                        <small style="color: var(--text-light); display: block; margin-top: 0.5rem;">Store this hash in your database. Never store the plaintext key.</small>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Expiration Timestamp</h3>
+                        <div class="meta-card" style="background: #fff;">
+                            <div class="meta-value" id="expirationTimestamp" style="color: #059669;">-</div>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Scope Policy JSON</h3>
+                        <div class="json-viewer" id="scopePolicy"></div>
+                    </div>
+
+                    <div class="warning-card">
+                        <h4>Security Notice</h4>
+                        <p>This key was generated in your browser and has not been transmitted or stored anywhere. Copy and store it securely now. The plaintext key cannot be recovered from the hash.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> The generator uses the Web Crypto API's crypto.getRandomValues() function to produce cryptographically secure random bytes. These bytes are then encoded into the selected format (Base64URL, Hex, UUID, or Alphanumeric). The key prefix is prepended, and the scopes are assembled into a JSON policy object.</p>
+            <p><strong>Key assumptions:</strong> The browser's CSPRNG is assumed to be properly implemented according to the Web Crypto API specification. The generated key is assumed to be unique per generation. The hash is computed using SHA-256 as a one-way representation.</p>
+            <p><strong>Limitations and edge cases:</strong> UUID v4 format produces keys with a fixed structure that includes fixed bits. Very long keys may exceed database column limits. The tool cannot verify whether a generated key conflicts with existing keys in your system.</p>
+            <ul>
+                <li>Keys are generated client-side only. No key is transmitted or stored by this tool.</li>
+                <li>The plaintext key cannot be recovered from the SHA-256 hash.</li>
+                <li>Always implement proper key rotation and revocation procedures in production.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use API Key Generator</h2>
+                    <p>Configure the key length, encoding format, and expiration. Select or add permission scopes to define what actions the key can authorize. Click "Generate API Key" to create a new cryptographically secure key.</p>
+                    <p>Copy the plaintext key immediately and store it securely. Use the SHA-256 hash for database storage. The key ID (first 8 characters) can be stored for display purposes without exposing the full key.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the generation works</h2>
+                    <p>The generator uses the browser's crypto.getRandomValues() CSPRNG to produce random bytes. These bytes are encoded into your selected format. The prefix is prepended for identification. The scopes are serialized into a JSON policy object alongside metadata like creation time and expiration.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>The plaintext key is the credential to provide to API consumers. The SHA-256 hash is what you store server-side for verification. The scope policy defines the authorized actions. The expiration timestamp indicates when the key becomes invalid.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This tool generates keys for testing and development. For production systems, use dedicated secrets management services like AWS Secrets Manager, HashiCorp Vault, or Azure Key Vault. Implement key rotation, revocation, and monitoring according to your security policies.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>API key security: scoping, rotation, and storage best practices</h2>
+            <p>API keys are a common method for authenticating requests to web services. Unlike session tokens, API keys typically identify a project or application rather than an individual user. Proper API key management is essential for maintaining security without sacrificing usability.</p>
+
+            <h3>Why API key scoping matters</h3>
+            <p>Unscoped API keys grant full access to an API. If such a key is leaked, an attacker gains complete control. Scoped keys limit what actions can be performed, reducing the impact of a potential compromise. For example, a key scoped to read:users cannot be used to delete user accounts or modify data.</p>
+            <p>Follow the principle of least privilege: grant only the permissions necessary for the key's intended purpose. A reporting service needs read access, not write access. A backup service needs write access to the backup endpoint but not administrative functions.</p>
+
+            <h2>Cryptographic strength and key entropy</h2>
+            <p>API key security depends on the difficulty of guessing or brute-forcing the key. The entropy of a key is measured in bits and represents the logarithm base 2 of the key space. A 32-character Base64URL key has approximately 192 bits of entropy (6 bits per character), making brute-force attacks computationally infeasible.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Key Length</th>
+                            <th>Encoding</th>
+                            <th>Entropy (bits)</th>
+                            <th>Collision Probability</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>16 chars</td>
+                            <td>Base64URL</td>
+                            <td>~96 bits</td>
+                            <td>Negligible for most uses</td>
+                        </tr>
+                        <tr>
+                            <td>32 chars</td>
+                            <td>Base64URL</td>
+                            <td>~192 bits</td>
+                            <td>Virtually impossible</td>
+                        </tr>
+                        <tr>
+                            <td>64 chars</td>
+                            <td>Hex</td>
+                            <td>256 bits</td>
+                            <td>Computationally infeasible</td>
+                        </tr>
+                        <tr>
+                            <td>UUID v4</td>
+                            <td>UUID</td>
+                            <td>122 bits</td>
+                            <td>Extremely unlikely</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Secure storage of API keys</h2>
+            <p>Never store API keys in plaintext. Store only a one-way hash (SHA-256 or better) in your database. When a request arrives with an API key, hash it and compare against the stored hash. This way, even if your database is compromised, attackers cannot recover the original keys.</p>
+
+            <h3>Hashing vs encryption</h3>
+            <p>Hashing is one-way: you cannot reverse a hash to obtain the original key. Encryption is two-way: with the key, you can decrypt to obtain the original. For API keys, hashing is preferred because there is no need to ever retrieve the original key after creation. If you lose the plaintext key, you should revoke it and generate a new one.</p>
+
+            <h2>Key rotation and expiration</h2>
+            <p>API keys should have limited lifespans to reduce the window of exposure if a key is compromised. Implement key expiration and rotation policies appropriate to your use case. Short-lived keys (days to weeks) are safer but require more rotation effort. Longer expiration (months to a year) is acceptable for low-risk internal services.</p>
+
+            <h3>Implementing key revocation</h3>
+            <p>Even with expiration, some situations require immediate key revocation: a key is accidentally committed to a repository, an employee with key access leaves the company, or suspicious activity is detected. Maintain a revocation list (or use a database flag) to reject keys immediately upon revocation, regardless of expiration time.</p>
+
+            <h2>API key vs OAuth token</h2>
+            <p>API keys and OAuth tokens serve different purposes and have different security properties.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>API Key</th>
+                            <th>OAuth Token</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Purpose</td>
+                            <td>Identify application/project</td>
+                            <td>Delegate user authorization</td>
+                        </tr>
+                        <tr>
+                            <td>User context</td>
+                            <td>Usually not user-specific</td>
+                            <td>Associated with user grant</td>
+                        </tr>
+                        <tr>
+                            <td>Expiration</td>
+                            <td>Typically long-lived</td>
+                            <td>Usually short-lived</td>
+                        </tr>
+                        <tr>
+                            <td>Refresh mechanism</td>
+                            <td>Manual rotation</td>
+                            <td>Refresh token flow</td>
+                        </tr>
+                        <tr>
+                            <td>Scope control</td>
+                            <td>Static per key</td>
+                            <td>Dynamic per grant</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Rate limiting with API keys</h2>
+            <p>API keys are commonly used as the basis for rate limiting. When a request arrives, extract the API key, look up its associated quota, and check whether the limit has been exceeded. If so, return a 429 Too Many Requests response with a Retry-After header. This prevents abuse while allowing fair access distribution across API consumers.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>What is API key scoping and why is it important?</h3>
+                <p>API key scoping limits what actions a key can authorize. For example, a key scoped to read:products cannot modify products. Scoping reduces the impact of key compromise by ensuring each key has only the permissions it needs.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I securely store API keys in my database?</h3>
+                <p>Never store the plaintext key. Compute a SHA-256 hash of the key and store only the hash. When a request arrives, hash the provided key and compare against the stored hash. The original key cannot be recovered from the hash.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Should I use UUID or a random string for my API tokens?</h3>
+                <p>UUID v4 provides 122 bits of entropy with a standardized format, making it easy to parse and display. Random strings with Base64URL encoding can provide higher entropy density. Both are suitable; choose based on your display and parsing requirements.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is the difference between an API key and an OAuth token?</h3>
+                <p>API keys identify an application or project and typically do not carry user context. OAuth tokens represent a user's authorization grant and include user-specific permissions. API keys are static; OAuth tokens expire and can be refreshed.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I implement rate limiting based on these generated keys?</h3>
+                <p>Extract the API key from incoming requests, look up its usage record, increment the counter, and check against limits. If exceeded, return 429 with Retry-After. Use sliding window or token bucket algorithms for accurate limiting.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why is 32 characters the recommended key length?</h3>
+                <p>32 characters in Base64URL provides approximately 192 bits of entropy, which is computationally infeasible to brute force. It balances security with convenience for display and storage while fitting within most database column sizes.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔐</div>
+                <h3>HMAC Signature Generator</h3>
+                <p>Generate HMAC-SHA256 signatures for message authentication and webhook verification.</p>
+            </a>
+            <a class="discovery-card" href="/tools/jwt-decoder">
+                <div class="discovery-icon">🔓</div>
+                <h3>JWT Decoder</h3>
+                <p>Decode and inspect JWT tokens to verify payloads, headers, and signature status.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🌐</div>
+                <h3>CORS Policy Builder</h3>
+                <p>Build and configure Cross-Origin Resource Sharing headers for API access.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔑</div>
+                <h3>SHA-256 Hasher</h3>
+                <p>Generate SHA-256 hashes for secure password and key storage comparison.</p>
+            </a>
+            <a class="discovery-card" href="/tools/session-token-analyzer">
+                <div class="discovery-icon">🔍</div>
+                <h3>Session Token Analyzer</h3>
+                <p>Analyze session tokens and JWTs for security properties and vulnerability detection.</p>
+            </a>
+            <a class="discovery-card" href="/tools/oauth-flow-visualizer">
+                <div class="discovery-icon">🔄</div>
+                <h3>OAuth 2.0 Visualizer</h3>
+                <p>Visualize OAuth 2.0 flows with sequence diagrams and security recommendations.</p>
+            </a>
+            <a class="discovery-card" href="/tools/jwt-generator">
+                <div class="discovery-icon">✍️</div>
+                <h3>JWT Generator</h3>
+                <p>Create and sign custom JSON Web Tokens for API authentication testing.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔒</div>
+                <h3>Password Generator</h3>
+                <p>Create strong, random passwords with customizable character sets and length.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const keyPrefix = $('keyPrefix');
+    const keyLength = $('keyLength');
+    const encodingFormat = $('encodingFormat');
+    const expirationDays = $('expirationDays');
+    const scopeTags = $('scopeTags');
+    const customScope = $('customScope');
+    const addScopeBtn = $('addScopeBtn');
+    const generateBtn = $('generateBtn');
+    const clearBtn = $('clearBtn');
+
+    const placeholderMessage = $('placeholderMessage');
+    const resultsDisplay = $('resultsDisplay');
+
+    const generatedKey = $('generatedKey');
+    const keyId = $('keyId');
+    const keyEncoding = $('keyEncoding');
+    const keyEntropy = $('keyEntropy');
+    const keyScopes = $('keyScopes');
+    const keyHash = $('keyHash');
+    const expirationTimestamp = $('expirationTimestamp');
+    const scopePolicy = $('scopePolicy');
+
+    let selectedScopes = [];
+
+    function generateSecureRandom(length) {
+        const bytes = new Uint8Array(length);
+        crypto.getRandomValues(bytes);
+        return bytes;
+    }
+
+    function toBase64Url(bytes) {
+        let str = '';
+        for (let i = 0; i < bytes.length; i++) {
+            str += String.fromCharCode(bytes[i]);
+        }
+        return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    function toHex(bytes) {
+        return Array.from(bytes).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    function toAlphanumeric(bytes) {
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = '';
+        for (let i = 0; i < bytes.length; i++) {
+            result += chars[bytes[i] % chars.length];
+        }
+        return result;
+    }
+
+    function toUUID(bytes) {
+        const hex = toHex(bytes);
+        return [
+            hex.slice(0, 8),
+            hex.slice(8, 12),
+            hex.slice(12, 16),
+            hex.slice(16, 20),
+            hex.slice(20, 32)
+        ].join('-');
+    }
+
+    async function computeSHA256(text) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(text);
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = new Uint8Array(hashBuffer);
+        return toHex(hashArray);
+    }
+
+    function syntaxHighlightJSON(json) {
+        const str = JSON.stringify(json, null, 2);
+        return str.replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g, function (match) {
+            let cls = 'json-number';
+            if (/^"/.test(match)) {
+                if (/:$/.test(match)) {
+                    cls = 'json-key';
+                    match = match.slice(0, -1);
+                    return '<span class="' + cls + '">' + match + '</span>:';
+                } else {
+                    cls = 'json-string';
+                }
+            }
+            return '<span class="' + cls + '">' + match + '</span>';
+        });
+    }
+
+    function calculateEntropy(length, format) {
+        let bitsPerChar;
+        switch (format) {
+            case 'hex': bitsPerChar = 4; break;
+            case 'base64url': bitsPerChar = 6; break;
+            case 'alphanumeric': bitsPerChar = Math.log2(62); break;
+            case 'uuid': return 122;
+            default: bitsPerChar = 6;
+        }
+        return Math.round(length * bitsPerChar);
+    }
+
+    function generate() {
+        const prefix = keyPrefix.value.trim();
+        const length = parseInt(keyLength.value, 10);
+        const format = encodingFormat.value;
+        const expiration = parseInt(expirationDays.value, 10);
+
+        const randomBytes = generateSecureRandom(length);
+        let randomPart;
+
+        switch (format) {
+            case 'hex':
+                randomPart = toHex(randomBytes);
+                break;
+            case 'uuid':
+                const uuidBytes = new Uint8Array(16);
+                crypto.getRandomValues(uuidBytes);
+                uuidBytes[6] = (uuidBytes[6] & 0x0f) | 0x40;
+                uuidBytes[8] = (uuidBytes[8] & 0x3f) | 0x80;
+                randomPart = toUUID(uuidBytes);
+                break;
+            case 'alphanumeric':
+                randomPart = toAlphanumeric(randomBytes);
+                break;
+            default:
+                randomPart = toBase64Url(randomBytes);
+        }
+
+        if (format === 'uuid') {
+            randomPart = prefix + randomPart;
+        } else {
+            randomPart = prefix + randomPart.substring(0, length);
+        }
+
+        const entropy = calculateEntropy(length, format);
+        const createdAt = Math.floor(Date.now() / 1000);
+        const expiresAt = expiration > 0 ? createdAt + (expiration * 86400) : null;
+
+        const policy = {
+            key_id: randomPart.substring(prefix.length, prefix.length + 8),
+            prefix: prefix,
+            created_at: createdAt,
+            expires_at: expiresAt,
+            scopes: selectedScopes.length > 0 ? selectedScopes : ['full_access'],
+            encoding: format,
+            entropy_bits: entropy
+        };
+
+        generatedKey.textContent = randomPart;
+        keyId.textContent = prefix + randomPart.substring(prefix.length, prefix.length + 8) + '...';
+        keyEncoding.textContent = format.toUpperCase();
+        keyEntropy.textContent = entropy + ' bits';
+        keyScopes.textContent = selectedScopes.length > 0 ? selectedScopes.join(', ') : 'full_access';
+
+        if (expiresAt) {
+            const expDate = new Date(expiresAt * 1000);
+            expirationTimestamp.textContent = expDate.toLocaleString() + ' (Unix: ' + expiresAt + ')';
+            expirationTimestamp.style.color = '#059669';
+        } else {
+            expirationTimestamp.textContent = 'No expiration';
+            expirationTimestamp.style.color = '#dc2626';
+        }
+
+        scopePolicy.innerHTML = syntaxHighlightJSON(policy);
+
+        computeSHA256(randomPart).then(hash => {
+            keyHash.textContent = hash;
+        });
+
+        hide(placeholderMessage);
+        show(resultsDisplay);
+    }
+
+    function clearAll() {
+        hide(resultsDisplay);
+        show(placeholderMessage);
+        selectedScopes = [];
+        document.querySelectorAll('.scope-tag').forEach(tag => {
+            tag.classList.remove('selected');
+        });
+        keyPrefix.value = 'sk_live_';
+        keyLength.value = '32';
+        encodingFormat.value = 'base64url';
+        expirationDays.value = '30';
+        customScope.value = '';
+    }
+
+    scopeTags.addEventListener('click', function(e) {
+        if (e.target.classList.contains('scope-tag')) {
+            const scope = e.target.dataset.scope;
+            e.target.classList.toggle('selected');
+            if (e.target.classList.contains('selected')) {
+                if (!selectedScopes.includes(scope)) {
+                    selectedScopes.push(scope);
+                }
+            } else {
+                selectedScopes = selectedScopes.filter(s => s !== scope);
+            }
+        }
+    });
+
+    addScopeBtn.addEventListener('click', function() {
+        const scope = customScope.value.trim();
+        if (scope && !selectedScopes.includes(scope)) {
+            selectedScopes.push(scope);
+            const tag = document.createElement('span');
+            tag.className = 'scope-tag selected';
+            tag.dataset.scope = scope;
+            tag.textContent = scope;
+            scopeTags.appendChild(tag);
+            customScope.value = '';
+        }
+    });
+
+    generateBtn.addEventListener('click', generate);
+    clearBtn.addEventListener('click', clearAll);
+
+    window.copyToClipboard = function(elementId) {
+        const text = $(elementId).textContent;
+        navigator.clipboard.writeText(text).then(function() {
+        }).catch(function() {
+        });
+    };
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>

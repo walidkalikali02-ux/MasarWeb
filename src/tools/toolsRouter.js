@@ -97,6 +97,13 @@ const toolMeta = {
             en: 'Decode session data, verify signatures, and audit cookie security attributes for unauthorized access prevention.'
         }
     },
+    'api-key-generator': {
+        title: { ar: 'مولد مفاتيح API مع النطاقات', en: 'API Key Scoping & Security Generator' },
+        description: {
+            ar: 'إنشاء رموز API آمنة مع أذونات مخصصة وعمر افتراضي ومتطلبات وصول دقيقة للموارد.',
+            en: 'Generate secure API tokens with custom permissions, TTL, and granular resource-level access control.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -695,6 +702,80 @@ router.get('/session-token-analyzer', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "HttpOnly prevents JavaScript access to the cookie, blocking XSS theft. Secure ensures cookies are only transmitted over HTTPS, preventing interception."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// API Key Scoping & Security Generator
+router.get('/api-key-generator', (req, res) => {
+    const meta = getMeta('api-key-generator', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/api-key-generator', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "API Key Scoping & Security Generator",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is API key scoping and why is it important?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "API key scoping limits what actions a key can authorize, reducing the impact of key compromise by ensuring each key has only the permissions it needs."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I securely store API keys in my database?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Never store the plaintext key. Compute a SHA-256 hash of the key and store only the hash. When a request arrives, hash the provided key and compare against the stored hash."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Should I use UUID or a random string for my API tokens?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "UUID v4 provides 122 bits of entropy with a standardized format. Random strings with Base64URL encoding can provide higher entropy density. Both are suitable; choose based on your requirements."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between an API key and an OAuth token?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "API keys identify an application or project. OAuth tokens represent a user's authorization grant and include user-specific permissions. API keys are typically static; OAuth tokens expire and can be refreshed."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I implement rate limiting based on these generated keys?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Extract the API key from incoming requests, look up its usage record, increment the counter, and check against limits. Return 429 with Retry-After if exceeded."
                         }
                     }
                 ]
