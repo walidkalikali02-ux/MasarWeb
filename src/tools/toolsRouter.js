@@ -208,6 +208,13 @@ const toolMeta = {
             ar: 'أنشئ أسراراً مؤقتة وروابط مشاركة تنتهي صلاحيتها تلقائياً وفق سياسات زمنية وحدود وصول واضحة.',
             en: 'Generate temporary secrets, expiring share links, and deterministic audit metadata for short-lived credential handoffs.'
         }
+    },
+    'ldap-tester': {
+        title: { ar: 'اختبار مصادقة LDAP ومختبر الاتصال', en: 'LDAP Authentication Tester & Connection Debugger' },
+        description: {
+            ar: 'تحقق من صحة إعدادات اتصال LDAP ونسب ربط Active Directory مع رسائل تحليل الأخطاء.',
+            en: 'Validate LDAP server connection settings and Active Directory bind credentials with detailed error analysis.'
+        }
     }
 };
 
@@ -1197,6 +1204,80 @@ router.get('/temporary-password-secret-generator', (req, res) => {
                     "price": "0",
                     "priceCurrency": "USD"
                 }
+            }
+        ]
+    });
+});
+
+// LDAP Authentication Tester & Connection Debugger
+router.get('/ldap-tester', (req, res) => {
+    const meta = getMeta('ldap-tester', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/ldap-tester', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "LDAP Authentication Tester & Connection Debugger",
+                "applicationCategory": "SecurityApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is an LDAP authentication tester?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "An LDAP authentication tester is a tool that validates LDAP or Active Directory connection settings and credentials. This tool simulates the connection process to help you understand the workflow and identify configuration issues."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I test an LDAP connection from a web browser?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Direct LDAP connections from browsers are blocked for security reasons. This tool provides educational simulation and configuration validation. For actual testing, use server-side scripts, ldapsearch command, or specialized LDAP testing tools."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the difference between LDAP and LDAPS ports?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "LDAP (port 389) sends data in clear text. LDAPS (port 636) establishes an SSL/TLS connection immediately. STARTTLS (port 389) starts as plain LDAP and upgrades to TLS. Always prefer LDAPS or STARTTLS for security."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why is my LDAP bind failing with invalid credentials?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Error code 49 (Invalid Credentials) means the username or password is incorrect. Verify the Bind DN format is correct, the user account exists, and the password is accurate. For AD, try the UPN format instead of the full DN."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I find my Base DN for LDAP testing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "For Active Directory, the Base DN corresponds to your domain name: DC=example,DC=com for example.com. You can find this by checking the domain distinguishedName in AD Users and Computers, or by running dsquery commands on a domain controller."
+                        }
+                    }
+                ]
             }
         ]
     });

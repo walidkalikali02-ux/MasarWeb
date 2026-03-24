@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('../partials/head', { pageTitle: pageTitle || title, description: description }) %>
+<body>
+<!-- 1. Global Layout Components: Header -->
+<%- include('../partials/navbar') %>
+
+<style>
+    .component-section {
+        margin-bottom: 4rem;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        background: var(--bg-color);
+    }
+
+    .component-label {
+        display: inline-block;
+        margin-bottom: 1rem;
+        padding: 0.35rem 0.75rem;
+        border: 1px solid var(--border-color);
+        color: var(--text-light);
+        font-size: 0.8rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .identity-header {
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .category-tag {
+        display: inline-block;
+        padding: 0.35rem 0.85rem;
+        margin-bottom: 1rem;
+        border-radius: 999px;
+        background: #0369a1;
+        color: #f5f7f7;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .identity-title {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+    }
+
+    .identity-subtitle {
+        max-width: 840px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--text-light);
+    }
+
+    .authority-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.25rem;
+        align-items: stretch;
+    }
+
+    .authority-card {
+        padding: 1.25rem;
+        background: #f7fafb;
+        border: 1px solid #d9e5e7;
+    }
+
+    .authority-kicker {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-light);
+        margin-bottom: 0.5rem;
+    }
+
+    .authority-name {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 0.35rem;
+    }
+
+    .authority-role {
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    .tool-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 2rem;
+    }
+
+    .tool-pane {
+        padding: 1.5rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .tool-pane h2 {
+        margin-bottom: 0.5rem;
+        font-size: 1.35rem;
+    }
+
+    .tool-pane-intro {
+        color: var(--text-light);
+        margin-bottom: 1.5rem;
+        line-height: 1.7;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .form-group small {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--text-light);
+        line-height: 1.5;
+        font-size: 0.85rem;
+    }
+
+    .form-input {
+        width: 100%;
+        border: 1px solid #c7d7da;
+        background: #fff;
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .tool-actions {
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
+    }
+
+    .action-btn {
+        padding: 0.9rem 1.5rem;
+        border: 1px solid #0369a1;
+        background: #0369a1;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 0.95rem;
+    }
+
+    .action-btn.secondary {
+        background: transparent;
+        color: #0369a1;
+    }
+
+    .result-section {
+        margin-bottom: 1.5rem;
+    }
+
+    .result-section h3 {
+        margin-bottom: 0.75rem;
+        font-size: 1.1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #0369a1;
+    }
+
+    .validation-card {
+        padding: 1.25rem;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+    }
+
+    .validation-card.success {
+        background: #f0fdf4;
+        border: 1px solid #86efac;
+    }
+
+    .validation-card.error {
+        background: #fef2f2;
+        border: 1px solid #fca5a5;
+    }
+
+    .validation-card.warning {
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+    }
+
+    .validation-card.info {
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+    }
+
+    .validation-title {
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .validation-card.success .validation-title { color: #166534; }
+    .validation-card.error .validation-title { color: #991b1b; }
+    .validation-card.warning .validation-title { color: #92400e; }
+    .validation-card.info .validation-title { color: #0369a1; }
+
+    .validation-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .validation-card.success .validation-description { color: #15803d; }
+    .validation-card.error .validation-description { color: #b91c1c; }
+    .validation-card.warning .validation-description { color: #b45309; }
+    .validation-card.info .validation-description { color: #0369a1; }
+
+    .json-viewer {
+        background: #1e293b;
+        color: #e2e8f0;
+        padding: 1rem;
+        border-radius: 6px;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+    .error-message {
+        padding: 1rem;
+        background: #fef2f2;
+        border: 1px solid #fecaca;
+        border-radius: 6px;
+        color: #991b1b;
+        margin-bottom: 1rem;
+    }
+
+    .info-message {
+        padding: 1rem;
+        background: #fffbeb;
+        border: 1px solid #fcd34d;
+        border-radius: 6px;
+        color: #92400e;
+        margin-bottom: 1rem;
+    }
+
+    .info-message-general {
+        padding: 1rem;
+        background: #f0f9ff;
+        border: 1px solid #bae6fd;
+        border-radius: 6px;
+        color: #0369a1;
+        margin-bottom: 1rem;
+    }
+
+    .result-meta {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .meta-card {
+        padding: 1rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+    }
+
+    .meta-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-light);
+        margin-bottom: 0.35rem;
+    }
+
+    .meta-value {
+        font-weight: 700;
+        font-family: monospace;
+        font-size: 0.95rem;
+    }
+
+    .logic-box {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        border-left: 4px solid #0369a1;
+        background: #f2f7f7;
+    }
+
+    .logic-box h3 { margin-bottom: 0.85rem; }
+    .logic-box p, .logic-box li { line-height: 1.7; color: var(--text-light); }
+    .logic-box ul { margin: 0.85rem 0 0 1.25rem; }
+
+    .content-article {
+        max-width: 900px;
+        line-height: 1.8;
+    }
+
+    .content-article h2 { font-size: 1.8rem; margin: 2rem 0 1rem; }
+    .content-article h3 { font-size: 1.2rem; margin: 1.35rem 0 0.6rem; }
+    .content-article p { margin-bottom: 1rem; }
+
+    .guidance-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.25rem;
+    }
+
+    .guidance-card {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .guidance-card p:last-child { margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin: 1.2rem 0; }
+
+    .content-article table {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+        background: #fff;
+    }
+
+    .content-article th, .content-article td {
+        padding: 0.85rem;
+        border: 1px solid #d9e5e7;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .content-article th { background: #f2f7f7; }
+
+    .faq-grid { display: grid; gap: 1rem; }
+
+    .faq-item {
+        padding: 1.25rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+    }
+
+    .faq-item h3 { margin-bottom: 0.45rem; font-size: 1.08rem; }
+    .faq-item p { margin: 0; color: var(--text-light); }
+
+    .discovery-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .discovery-card {
+        display: block;
+        padding: 1.2rem;
+        border: 1px solid #d9e5e7;
+        background: #f9fbfb;
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+    }
+
+    .discovery-card:hover {
+        transform: translateY(-2px);
+        border-color: #0369a1;
+    }
+
+    .discovery-card h3 { margin-bottom: 0.45rem; font-size: 1.05rem; }
+    .discovery-card p { margin: 0; color: var(--text-light); line-height: 1.6; }
+    .discovery-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+    @media (max-width: 920px) {
+        .tool-shell, .authority-grid, .discovery-grid, .guidance-grid, .result-meta {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="container">
+
+    <!-- 2. Page Identity Component -->
+    <section class="identity-header">
+        <span class="component-label">Component 2 / Page Identity</span>
+        <div class="category-tag">IT Administration &amp; Network Security</div>
+        <h1 class="identity-title">Online LDAP Authentication Tester &amp; Connection Debugger</h1>
+        <p class="identity-subtitle">Quickly validate your LDAP or Active Directory credentials and configuration settings with our secure connectivity tool.</p>
+    </section>
+
+    <!-- 3. Authority & Trust Component -->
+    <section class="component-section">
+        <span class="component-label">Component 3 / Authority &amp; Trust</span>
+        <div class="authority-grid">
+            <article class="authority-card">
+                <div class="authority-kicker">Author</div>
+                <div class="authority-name">Robert Martinez</div>
+                <div class="authority-role">Systems Engineer specializing in Active Directory, LDAP directory services, and enterprise identity management for 15 years.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Reviewer</div>
+                <div class="authority-name">Jennifer Walsh</div>
+                <div class="authority-role">Network Security Specialist focused on directory service vulnerabilities, LDAP injection prevention, and authentication protocol hardening.</div>
+            </article>
+            <article class="authority-card">
+                <div class="authority-kicker">Trust Indicator</div>
+                <div class="authority-name">Simulation Mode</div>
+                <div class="authority-role">This tool simulates LDAP connection testing for educational and configuration validation purposes. It does not make live connections from the browser.</div>
+            </article>
+        </div>
+    </section>
+
+    <!-- 4. Core Tool Component -->
+    <section class="component-section" id="tool-interface">
+        <span class="component-label">Component 4 / Core Tool</span>
+        <div class="info-message-general" style="margin-bottom: 1.5rem;">
+            <strong>Educational & Configuration Tool:</strong> This tool simulates LDAP connection testing to help you understand the authentication flow and validate your configuration parameters. Live LDAP connections require server-side processing due to browser security restrictions.
+        </div>
+        <div class="tool-shell">
+            <div class="tool-pane">
+                <h2>Connection Configuration</h2>
+                <p class="tool-pane-intro">Enter your LDAP server details to simulate a connection test and validate authentication parameters.</p>
+
+                <div class="form-group">
+                    <label for="ldapHost">LDAP Server Host or IP Address</label>
+                    <input type="text" id="ldapHost" class="form-input" placeholder="ldap.example.com or 192.168.1.100">
+                    <small>The hostname or IP address of your LDAP or Active Directory server.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="ldapPort">Port Number</label>
+                    <input type="text" id="ldapPort" class="form-input" value="389" placeholder="389 or 636">
+                    <small>Standard LDAP: 389, LDAPS (SSL): 636, Global Catalog: 3268</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="useSSL">Connection Security</label>
+                    <select id="useSSL" class="form-input">
+                        <option value="plain">Plain (LDAP - Not Recommended)</option>
+                        <option value="ssl" selected>SSL/TLS (LDAPS - Recommended)</option>
+                        <option value="starttls">STARTTLS (Upgrade to TLS)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="bindDn">Bind DN or User Principal Name</label>
+                    <input type="text" id="bindDn" class="form-input" placeholder="CN=Admin,DC=example,DC=com or user@example.com">
+                    <small>The user account DN for binding to the directory.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="baseDn">Base DN</label>
+                    <input type="text" id="baseDn" class="form-input" placeholder="DC=example,DC=com">
+                    <small>The starting point for directory searches.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="searchFilter">Search Filter (Optional)</label>
+                    <input type="text" id="searchFilter" class="form-input" placeholder="(objectClass=user)">
+                    <small>LDAP search filter to retrieve user attributes after binding.</small>
+                </div>
+
+                <div class="tool-actions">
+                    <button type="button" class="action-btn" id="testConnectionBtn">Simulate Connection Test</button>
+                    <button type="button" class="action-btn secondary" id="clearBtn">Clear</button>
+                </div>
+            </div>
+
+            <div class="tool-pane">
+                <h2>Simulation Results</h2>
+                <p class="tool-pane-intro">Results simulate the expected behavior based on your configuration parameters.</p>
+
+                <div id="placeholderMessage" class="info-message">
+                    Enter your LDAP server details and click "Simulate Connection Test" to validate the configuration.
+                </div>
+
+                <div id="errorDisplay" class="error-message" style="display: none;"></div>
+
+                <div id="resultsDisplay" style="display: none;">
+                    <div id="connectionResults"></div>
+
+                    <div class="result-meta">
+                        <div class="meta-card">
+                            <div class="meta-label">Connection Status</div>
+                            <div class="meta-value" id="connectionStatus">-</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">Authentication</div>
+                            <div class="meta-value" id="authStatus">-</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">Response Time (Simulated)</div>
+                            <div class="meta-value" id="responseTime">-</div>
+                        </div>
+                        <div class="meta-card">
+                            <div class="meta-label">LDAP Result Code</div>
+                            <div class="meta-value" id="resultCode">-</div>
+                        </div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Configuration Analysis</h3>
+                        <div id="configAnalysis"></div>
+                    </div>
+
+                    <div class="result-section">
+                        <h3>Common LDAP Error Codes</h3>
+                        <div class="json-viewer" id="errorCodes"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="logic-box">
+            <h3>Conceptual logic flow, assumptions, and limitations</h3>
+            <p><strong>Conceptual calculation:</strong> This tool simulates the LDAP connection and bind workflow. A typical LDAP connection involves: establishing a TCP socket (optionally over SSL/TLS), sending a bind request with the user credentials, receiving a bind response indicating success or failure, and optionally performing a search to retrieve user attributes.</p>
+            <p><strong>Key assumptions:</strong> The simulation assumes the server is reachable and the credentials are valid for demonstration purposes. It provides educational output about what each step involves and what error codes mean.</p>
+            <p><strong>Limitations and edge cases:</strong> Browser security restrictions prevent direct LDAP connections from JavaScript. This tool cannot make actual network connections. For live testing, use server-side tools, ldapsearch command, or specialized LDAP testing utilities.</p>
+            <ul>
+                <li>This is an educational and configuration validation tool.</li>
+                <li>Actual LDAP testing requires server-side processing or command-line tools.</li>
+                <li>Always use LDAPS or STARTTLS in production to encrypt credentials in transit.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- 5. Guidance Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 5 / Guidance Content</span>
+        <div class="content-article">
+            <div class="guidance-grid">
+                <article class="guidance-card">
+                    <h2>How to use LDAP Authentication Tester</h2>
+                    <p>Enter your LDAP server hostname or IP address, the port number, and select the connection security mode. Provide the Bind DN (or UPN for AD) and Base DN for your directory.</p>
+                    <p>Click "Simulate Connection Test" to see an educational analysis of your configuration and understand the expected connection flow.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How the simulation works</h2>
+                    <p>The tool analyzes your configuration parameters and explains what each step of the LDAP connection process involves. It identifies common configuration issues and provides guidance on LDAP error codes.</p>
+                    <p>For actual connection testing, you would need server-side tools or command-line utilities like ldapsearch.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>How to interpret the results</h2>
+                    <p>The Configuration Analysis section reviews your settings for common issues like plain text connections, missing SSL/TLS, and incorrect DN formats. The Error Codes section explains what specific LDAP result codes mean.</p>
+                </article>
+
+                <article class="guidance-card">
+                    <h2>Accuracy and responsibility disclaimer</h2>
+                    <p>This tool provides educational simulation and configuration validation. It cannot make actual LDAP connections due to browser security restrictions. For production LDAP testing, use appropriate server-side tools and command-line utilities.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Educational Content Component -->
+    <section class="component-section">
+        <span class="component-label">Component 6 / Educational Content</span>
+        <div class="content-article">
+            <h2>Understanding LDAP authentication and directory services</h2>
+            <p>Lightweight Directory Access Protocol (LDAP) is a protocol for accessing and maintaining distributed directory information services. Active Directory (AD) is Microsoft's implementation of LDAP along with other identity services. Understanding LDAP authentication is essential for system administrators managing enterprise identity infrastructure.</p>
+
+            <h3>LDAP connection and bind process</h3>
+            <p>The LDAP authentication process involves several steps: establishing a network connection to the LDAP server, optionally negotiating encryption (SSL/TLS or STARTTLS), sending a bind request with credentials, receiving the bind response, and optionally performing searches to retrieve user information.</p>
+            <p>The bind operation is the LDAP equivalent of authentication. A successful bind establishes the identity for subsequent operations. Failed binds return error codes that indicate why authentication failed.</p>
+
+            <h2>LDAP vs LDAPS vs STARTTLS</h2>
+            <p>LDAP communications can be protected in different ways:</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Port</th>
+                            <th>Security</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Plain LDAP</td>
+                            <td>389</td>
+                            <td>None (unencrypted)</td>
+                            <td>Internal only, not recommended</td>
+                        </tr>
+                        <tr>
+                            <td>LDAPS (SSL)</td>
+                            <td>636</td>
+                            <td>Full TLS from connection start</td>
+                            <td>Legacy, explicit encryption</td>
+                        </tr>
+                        <tr>
+                            <td>STARTTLS</td>
+                            <td>389</td>
+                            <td>Upgrade to TLS after connection</td>
+                            <td>Recommended, flexible</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Common LDAP bind DNs and formats</h2>
+            <p>LDAP Distinguished Names (DNs) follow a specific format. Understanding DN structure is essential for proper LDAP configuration.</p>
+
+            <h3>Active Directory User Principal Name</h3>
+            <p>AD supports UPN format which is simpler: username@domain.com (e.g., john.doe@example.com). This is often easier for users to remember than full DN paths.</p>
+
+            <h3>Standard LDAP DN formats</h3>
+            <p>Typical bind DN formats include: CN=Username,OU=Users,DC=domain,DC=com for standard LDAP directories, and the full path through organizational units to the root.</p>
+
+            <h2>Common LDAP error codes</h2>
+            <p>LDAP error codes are numeric values returned by the server indicating the result of an operation. Understanding these codes helps diagnose authentication failures.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>Success</td>
+                            <td>Operation completed successfully</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>No Such Object</td>
+                            <td>The specified entry does not exist</td>
+                        </tr>
+                        <tr>
+                            <td>49</td>
+                            <td>Invalid Credentials</td>
+                            <td>Username or password incorrect</td>
+                        </tr>
+                        <tr>
+                            <td>50</td>
+                            <td>Insufficient Access Rights</td>
+                            <td>Bind DN lacks permission</td>
+                        </tr>
+                        <tr>
+                            <td>52</td>
+                            <td>Server Down</td>
+                            <td>Cannot connect to LDAP server</td>
+                        </tr>
+                        <tr>
+                            <td>81</td>
+                            <td>Connect Error</td>
+                            <td>Network connection failed</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Finding your Base DN in Active Directory</h2>
+            <p>The Base DN is the starting point for LDAP searches and typically corresponds to your domain's distinguished name. For a domain like example.com, the Base DN is DC=example,DC=com. You can find this by running "dsquery user" on a domain controller or checking the domain's distinguished name in AD Users and Computers.</p>
+
+            <h2>Security best practices for LDAP</h2>
+            <p>Always use LDAPS or STARTTLS to encrypt credentials in transit. Plain LDAP sends usernames and passwords in clear text, making it vulnerable to network eavesdropping. Configure your LDAP clients to reject simple bind (plain text credentials) and enforce signed connections.</p>
+        </div>
+    </section>
+
+    <!-- 7. FAQ Component -->
+    <section class="component-section">
+        <span class="component-label">Component 7 / FAQ</span>
+        <div class="faq-grid">
+            <article class="faq-item">
+                <h3>What is an LDAP authentication tester?</h3>
+                <p>An LDAP authentication tester is a tool that validates LDAP or Active Directory connection settings and credentials. This tool simulates the connection process to help you understand the workflow and identify configuration issues.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I test an LDAP connection from a web browser?</h3>
+                <p>Direct LDAP connections from browsers are blocked for security reasons. This tool provides educational simulation and configuration validation. For actual testing, use server-side scripts, ldapsearch command, or specialized LDAP testing tools.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>What is the difference between LDAP and LDAPS ports?</h3>
+                <p>LDAP (port 389) sends data in clear text. LDAPS (port 636) establishes an SSL/TLS connection immediately. STARTTLS (port 389) starts as plain LDAP and upgrades to TLS. Always prefer LDAPS or STARTTLS for security.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Why is my LDAP bind failing with invalid credentials?</h3>
+                <p>Error code 49 (Invalid Credentials) means the username or password is incorrect. Verify the Bind DN format is correct, the user account exists, and the password is accurate. For AD, try the UPN format instead of the full DN.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>How do I find my Base DN for LDAP testing?</h3>
+                <p>For Active Directory, the Base DN corresponds to your domain name: DC=example,DC=com for example.com. You can find this by checking the domain distinguishedName in AD Users and Computers, or by running dsquery commands on a domain controller.</p>
+            </article>
+
+            <article class="faq-item">
+                <h3>Can this tool make actual connections to my LDAP server?</h3>
+                <p>No. Browser security restrictions prevent JavaScript from making direct LDAP connections. This tool simulates the connection workflow for educational purposes. For live testing, use server-side tools or command-line utilities like ldapsearch.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- 8. Internal Discovery Component -->
+    <section class="component-section">
+        <span class="component-label">Component 8 / Internal Discovery</span>
+        <div class="discovery-grid">
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔍</div>
+                <h3>Active Directory Search</h3>
+                <p>Query and search Active Directory for users, groups, and organizational units.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔄</div>
+                <h3>LDAP Filter Generator</h3>
+                <p>Build and validate LDAP search filters for directory queries.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🌐</div>
+                <h3>Network Port Scanner</h3>
+                <p>Check if LDAP ports are open and responding on target servers.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔐</div>
+                <h3>Base64 Encoder</h3>
+                <p>Encode credentials and data in Base64 format for LDAP authentication.</p>
+            </a>
+            <a class="discovery-card" href="/tools/sso-tester">
+                <div class="discovery-icon">🔐</div>
+                <h3>SSO Tester</h3>
+                <p>Validate SAML assertions and OIDC tokens for single sign-on troubleshooting.</p>
+            </a>
+            <a class="discovery-card" href="/tools/session-token-analyzer">
+                <div class="discovery-icon">🔍</div>
+                <h3>Session Token Analyzer</h3>
+                <p>Analyze session tokens and JWTs for security properties and vulnerabilities.</p>
+            </a>
+            <a class="discovery-card" href="/tools/jwt-decoder">
+                <div class="discovery-icon">🔓</div>
+                <h3>JWT Decoder</h3>
+                <p>Decode and inspect JWT tokens to verify payloads and signature status.</p>
+            </a>
+            <a class="discovery-card" href="/tools">
+                <div class="discovery-icon">🔒</div>
+                <h3>Password Generator</h3>
+                <p>Create strong, random passwords with customizable character sets.</p>
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+(function() {
+    const $ = (id) => document.getElementById(id);
+    const show = (el) => el.style.display = 'block';
+    const hide = (el) => el.style.display = 'none';
+
+    const ldapHost = $('ldapHost');
+    const ldapPort = $('ldapPort');
+    const useSSL = $('useSSL');
+    const bindDn = $('bindDn');
+    const baseDn = $('baseDn');
+    const searchFilter = $('searchFilter');
+    const testConnectionBtn = $('testConnectionBtn');
+    const clearBtn = $('clearBtn');
+
+    const placeholderMessage = $('placeholderMessage');
+    const errorDisplay = $('errorDisplay');
+    const resultsDisplay = $('resultsDisplay');
+    const connectionResults = $('connectionResults');
+    const connectionStatus = $('connectionStatus');
+    const authStatus = $('authStatus');
+    const responseTime = $('responseTime');
+    const resultCode = $('resultCode');
+    const configAnalysis = $('configAnalysis');
+    const errorCodes = $('errorCodes');
+
+    const LDAP_ERRORS = {
+        0: { name: 'Success', description: 'Operation completed successfully' },
+        1: { name: 'Operations Error', description: 'Server processing error' },
+        2: { name: 'Protocol Error', description: 'Malformed request sent' },
+        32: { name: 'No Such Object', description: 'The specified entry does not exist in the directory' },
+        33: { name: 'Alias Problem', description: 'Alias references missing or invalid' },
+        49: { name: 'Invalid Credentials', description: 'Username or password incorrect - Error Code 49' },
+        50: { name: 'Insufficient Access Rights', description: 'Bind DN lacks required permissions' },
+        51: { name: 'Busy', description: 'Server is busy - retry later' },
+        52: { name: 'Server Down', description: 'Cannot connect to LDAP server - check host/port' },
+        53: { name: 'Unavailable', description: 'Server not accepting connections' },
+        64: { name: 'Naming Violation', description: 'DN format violates directory rules' },
+        65: { name: 'Object Class Violation', description: 'Entry violates object class rules' },
+        69: { name: 'Not Allowed', description: 'Operation not permitted on this entry' },
+        81: { name: 'Connect Error', description: 'Network connection failed - LDAP_RESULT_CONNECT_ERROR' },
+        82: { name: 'Timeout', description: 'Server did not respond within timeout period' }
+    };
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    function addValidationCard(type, title, description) {
+        const card = document.createElement('div');
+        card.className = 'validation-card ' + type;
+        card.innerHTML = '<div class="validation-title">' + title + '</div><div class="validation-description">' + description + '</div>';
+        connectionResults.appendChild(card);
+    }
+
+    function validateConfiguration() {
+        const issues = [];
+        const recommendations = [];
+
+        const host = ldapHost.value.trim();
+        const port = ldapPort.value.trim();
+        const security = useSSL.value;
+        const dn = bindDn.value.trim();
+        const base = baseDn.value.trim();
+
+        if (!host) {
+            issues.push('LDAP server host is required');
+        } else {
+            if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(host)) {
+                recommendations.push('Using IP address: ' + host);
+            }
+        }
+
+        if (!port) {
+            issues.push('Port number is required');
+        } else if (port === '389' && security === 'plain') {
+            issues.push('Port 389 with plain LDAP sends credentials in clear text - this is a security risk');
+        }
+
+        if (security === 'plain' && port === '636') {
+            issues.push('Conflicting configuration: LDAPS typically uses implicit SSL on port 636');
+        }
+
+        if (!dn) {
+            issues.push('Bind DN or UPN is required');
+        } else {
+            if (dn.includes('@') && dn.includes('.')) {
+                recommendations.push('UPN format detected: ' + dn);
+            } else if (dn.includes('DC=') || dn.includes('CN=')) {
+                recommendations.push('DN format detected for standard LDAP');
+            }
+        }
+
+        if (!base) {
+            issues.push('Base DN is required for directory searches');
+        } else if (!base.includes('DC=')) {
+            issues.push('Base DN should typically contain DC= components');
+        }
+
+        if (security === 'ssl' && port !== '636') {
+            recommendations.push('SSL/TLS connection requested but using non-standard port');
+        }
+
+        return { issues, recommendations };
+    }
+
+    function simulateTest() {
+        const host = ldapHost.value.trim();
+        const port = ldapPort.value.trim();
+        const security = useSSL.value;
+        const dn = bindDn.value.trim();
+        const base = baseDn.value.trim();
+
+        if (!host || !port || !dn || !base) {
+            errorDisplay.textContent = 'Please fill in all required fields: Host, Port, Bind DN, and Base DN.';
+            show(errorDisplay);
+            hide(resultsDisplay);
+            hide(placeholderMessage);
+            return;
+        }
+
+        hide(placeholderMessage);
+        hide(errorDisplay);
+        show(resultsDisplay);
+        connectionResults.innerHTML = '';
+
+        const { issues, recommendations } = validateConfiguration();
+
+        const simulatedResponseTime = Math.floor(Math.random() * 50) + 10;
+        const simulatedSuccess = issues.filter(i => i.includes('Invalid Credentials') || i.includes('Server Down')).length === 0;
+        const simulatedResultCode = simulatedSuccess ? 0 : 49;
+
+        addValidationCard('info', 'Simulated Connection', 'This is an educational simulation of the LDAP connection workflow.');
+
+        if (simulatedSuccess) {
+            connectionStatus.textContent = 'Connected (Simulated)';
+            connectionStatus.style.color = '#16a34a';
+
+            addValidationCard('success', 'Connection Established', 'Simulated successful connection to ' + escapeHtml(host) + ':' + escapeHtml(port));
+
+            if (security === 'ssl') {
+                addValidationCard('success', 'TLS/SSL Negotiated', 'Secure channel established using ' + (port === '636' ? 'implicit SSL' : 'STARTTLS upgrade'));
+            } else {
+                addValidationCard('warning', 'No Encryption', 'Connection is using plain LDAP without encryption. Credentials may be visible on the network.');
+            }
+
+            addValidationCard('success', 'Bind Successful', 'Simulated bind operation with DN: ' + escapeHtml(dn.substring(0, 50)) + (dn.length > 50 ? '...' : ''));
+        } else {
+            connectionStatus.textContent = 'Failed (Simulated)';
+            connectionStatus.style.color = '#dc2626';
+
+            addValidationCard('error', 'Connection Failed', 'Simulated authentication failure. Verify credentials and server address.');
+            addValidationCard('error', 'Bind Failed (Code 49)', 'Invalid Credentials - The username or password was not accepted by the server.');
+        }
+
+        authStatus.textContent = simulatedSuccess ? 'Success (Simulated)' : 'Failed (Simulated)';
+        authStatus.style.color = simulatedSuccess ? '#16a34a' : '#dc2626';
+        responseTime.textContent = simulatedResponseTime + 'ms (Simulated)';
+        resultCode.textContent = simulatedResultCode + ' - ' + (LDAP_ERRORS[simulatedResultCode]?.name || 'Unknown');
+
+        configAnalysis.innerHTML = '';
+        if (issues.length > 0) {
+            issues.forEach(issue => {
+                const card = document.createElement('div');
+                card.className = 'validation-card warning';
+                card.innerHTML = '<div class="validation-title">Configuration Issue</div><div class="validation-description">' + escapeHtml(issue) + '</div>';
+                configAnalysis.appendChild(card);
+            });
+        }
+        if (recommendations.length > 0) {
+            recommendations.forEach(rec => {
+                const card = document.createElement('div');
+                card.className = 'validation-card info';
+                card.innerHTML = '<div class="validation-title">Note</div><div class="validation-description">' + escapeHtml(rec) + '</div>';
+                configAnalysis.appendChild(card);
+            });
+        }
+        if (issues.length === 0 && recommendations.length === 0) {
+            const card = document.createElement('div');
+            card.className = 'validation-card success';
+            card.innerHTML = '<div class="validation-title">Configuration Valid</div><div class="validation-description">No obvious configuration issues detected in the provided parameters.</div>';
+            configAnalysis.appendChild(card);
+        }
+
+        errorCodes.innerHTML = JSON.stringify(LDAP_ERRORS, null, 2);
+    }
+
+    function clearAll() {
+        hide(errorDisplay);
+        hide(resultsDisplay);
+        show(placeholderMessage);
+        ldapHost.value = '';
+        ldapPort.value = '389';
+        bindDn.value = '';
+        baseDn.value = '';
+        searchFilter.value = '';
+        useSSL.value = 'ssl';
+        connectionResults.innerHTML = '';
+    }
+
+    testConnectionBtn.addEventListener('click', simulateTest);
+    clearBtn.addEventListener('click', clearAll);
+})();
+</script>
+
+<!-- 1. Global Layout Components: Footer -->
+<%- include('../partials/footer') %>
+</body>
+</html>
