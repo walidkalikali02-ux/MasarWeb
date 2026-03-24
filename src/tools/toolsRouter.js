@@ -104,6 +104,13 @@ const toolMeta = {
             en: 'Generate secure API tokens with custom permissions, TTL, and granular resource-level access control.'
         }
     },
+    'scoped-api-key-generator': {
+        title: { ar: 'مولد مفاتيح API المحدودة النطاق', en: 'Scoped API Key Generator' },
+        description: {
+            ar: 'إنشاء رموز API آمنة مع تحكم دقيق في الأذونات وعناوين البادئة المخصصة.',
+            en: 'Generate secure, permission-restricted API keys for application integration with custom prefixes and scopes.'
+        }
+    },
     'key-strength': {
         title: { ar: 'حاسبة قوة مفتاح التشفير', en: 'Encryption Key Strength Calculator' },
         description: {
@@ -776,6 +783,80 @@ router.get('/api-key-generator', (req, res) => {
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": "Extract the API key from incoming requests, look up its usage record, increment the counter, and check against limits. Return 429 with Retry-After if exceeded."
+                        }
+                    }
+                ]
+            }
+        ]
+    });
+});
+
+// Scoped API Key Generator
+router.get('/scoped-api-key-generator', (req, res) => {
+    const meta = getMeta('scoped-api-key-generator', req.lang);
+    const baseStructuredData = res.locals.structuredData || [];
+
+    res.render('tools/scoped-api-key-generator', {
+        title: meta.title,
+        pageTitle: meta.title,
+        description: meta.description,
+        structuredData: [
+            ...baseStructuredData,
+            {
+                "@context": "https://schema.org",
+                "@type": "SoftwareApplication",
+                "name": "Scoped API Key Generator",
+                "applicationCategory": "DeveloperApplication",
+                "operatingSystem": "Web",
+                "description": meta.description,
+                "offers": {
+                    "@type": "Offer",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is an API key scope?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "An API key scope defines what actions a key can authorize. For example, a key scoped to read can only perform read operations, not write or delete."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Are these API keys safe to use in production?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The keys generated use cryptographically secure random number generation and meet entropy requirements for production use. Always use proper secrets management for enterprise deployments."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Why should I use a prefix like sk_live for my keys?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Prefixes help identify key type and environment at a glance, aid in key rotation management, and prevent accidental use of test keys in production systems."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How do I implement scope validation on my server?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Extract the API key from requests, look up its stored hash and scope policy, verify expiration and revocation status, then check if the requested action matches the granted scopes."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is the recommended length for a secure API token?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "256 bits (32 bytes) of entropy provides sufficient security for most production API keys. Higher entropy is recommended for high-security or long-lived tokens."
                         }
                     }
                 ]
