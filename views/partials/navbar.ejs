@@ -3,43 +3,232 @@
         langCode === 'ar' ? currentUrl : `${currentUrl}?lang=${langCode}`
     );
 %>
-<nav class="navbar">
+<nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-        <a href="/" class="nav-logo">
-            <img src="/static/images/logo.svg" alt="<%= t.title %>" class="logo-img">
-        </a>
         
-        <div class="nav-links">
-            <a href="/" class="<%= currentUrl === '/' ? 'active' : '' %>"><%= t.nav_home %></a>
-            <a href="/about" class="<%= currentUrl === '/about' ? 'active' : '' %>"><%= t.nav_about || (currentLang === 'ar' ? 'من نحن' : 'About') %></a>
-            <a href="/blog" class="<%= currentUrl && currentUrl.startsWith('/blog') ? 'active' : '' %>"><%= t.nav_blog || 'Blog' %></a>
-            <a href="/tools" class="<%= currentUrl && currentUrl.startsWith('/tools') ? 'active' : '' %>"><%= t.nav_tools || (currentLang === 'ar' ? 'أدوات' : 'Tools') %></a>
-            <a href="/support" class="<%= currentUrl === '/support' ? 'active' : '' %>"><%= t.nav_support %></a>
-            <a href="/terms" class="<%= currentUrl === '/terms' ? 'active' : '' %>"><%= t.nav_terms %></a>
-            <a href="/privacy" class="<%= currentUrl === '/privacy' ? 'active' : '' %>"><%= t.nav_privacy %></a>
-        </div>
+        <!-- Logo -->
+        <a href="/" class="nav-logo" aria-label="<%= t.title %> - Home">
+            <div class="logo-wrapper">
+                <img src="/static/images/logo.svg" alt="" class="logo-img" width="40" height="40">
+                <span class="logo-text"><%= t.title %></span>
+            </div>
+        </a>
 
-        <div class="nav-search-placeholder" aria-hidden="true">
-            <span><%= currentLang === 'ar' ? 'ابحث في الأدوات قريباً' : 'Search tools soon' %></span>
-        </div>
+        <!-- Mobile Menu Toggle -->
+        <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-label="Toggle navigation menu" aria-controls="navMenu">
+            <span class="hamburger">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </span>
+        </button>
 
-        <div class="lang-dropdown">
-            <button class="lang-btn-toggle" id="langBtn" aria-expanded="false" aria-label="Select Language">
-                <i class="fas fa-globe"></i> 
-                <span><%= currentLang.toUpperCase() %></span>
-            </button>
-            <div class="lang-menu" id="langMenu">
-                <a href="<%= buildLangHref('ar') %>" class="<%= currentLang === 'ar' ? 'active' : '' %>" data-lang="ar">العربية</a>
-                <a href="<%= buildLangHref('en') %>" class="<%= currentLang === 'en' ? 'active' : '' %>" data-lang="en">English</a>
-                <a href="<%= buildLangHref('es') %>" class="<%= currentLang === 'es' ? 'active' : '' %>" data-lang="es">Español</a>
-                <a href="<%= buildLangHref('fr') %>" class="<%= currentLang === 'fr' ? 'active' : '' %>" data-lang="fr">Français</a>
-                <a href="<%= buildLangHref('zh') %>" class="<%= currentLang === 'zh' ? 'active' : '' %>" data-lang="zh">中文</a>
-                <a href="<%= buildLangHref('hi') %>" class="<%= currentLang === 'hi' ? 'active' : '' %>" data-lang="hi">हिन्दी</a>
-                <a href="<%= buildLangHref('pt') %>" class="<%= currentLang === 'pt' ? 'active' : '' %>" data-lang="pt">Português</a>
-                <a href="<%= buildLangHref('ru') %>" class="<%= currentLang === 'ru' ? 'active' : '' %>" data-lang="ru">Русский</a>
-                <a href="<%= buildLangHref('de') %>" class="<%= currentLang === 'de' ? 'active' : '' %>" data-lang="de">Deutsch</a>
-                <a href="<%= buildLangHref('tr') %>" class="<%= currentLang === 'tr' ? 'active' : '' %>" data-lang="tr">Türkçe</a>
+        <!-- Navigation Links -->
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="/" class="nav-link <%= currentUrl === '/' ? 'active' : '' %>" <%= currentUrl === '/' ? 'aria-current="page"' : '' %>>
+                        <span class="nav-icon" aria-hidden="true">⌂</span>
+                        <span class="nav-label"><%= t.nav_home %></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/about" class="nav-link <%= currentUrl === '/about' ? 'active' : '' %>" <%= currentUrl === '/about' ? 'aria-current="page"' : '' %>>
+                        <span class="nav-icon" aria-hidden="true">ℹ</span>
+                        <span class="nav-label"><%= t.nav_about || (currentLang === 'ar' ? 'من نحن' : 'About') %></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/blog" class="nav-link <%= currentUrl && currentUrl.startsWith('/blog') ? 'active' : '' %>" <%= currentUrl && currentUrl.startsWith('/blog') ? 'aria-current="page"' : '' %>>
+                        <span class="nav-icon" aria-hidden="true">📝</span>
+                        <span class="nav-label"><%= t.nav_blog || 'Blog' %></span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/tools" class="nav-link <%= currentUrl && currentUrl.startsWith('/tools') ? 'active' : '' %>" <%= currentUrl && currentUrl.startsWith('/tools') ? 'aria-current="page"' : '' %>>
+                        <span class="nav-icon" aria-hidden="true">🛠</span>
+                        <span class="nav-label"><%= t.nav_tools || (currentLang === 'ar' ? 'أدوات' : 'Tools') %></span>
+                        <span class="nav-badge">30+</span>
+                    </a>
+                </li>
+                <li class="nav-item nav-item-more">
+                    <button class="nav-link nav-more-btn" id="moreBtn" aria-expanded="false" aria-label="More pages">
+                        <span class="nav-icon" aria-hidden="true">⋯</span>
+                        <span class="nav-label"><%= currentLang === 'ar' ? 'المزيد' : 'More' %></span>
+                    </button>
+                    <ul class="nav-submenu" id="moreMenu">
+                        <li><a href="/support" class="nav-sublink <%= currentUrl === '/support' ? 'active' : '' %>"><%= t.nav_support %></a></li>
+                        <li><a href="/terms" class="nav-sublink <%= currentUrl === '/terms' ? 'active' : '' %>"><%= t.nav_terms %></a></li>
+                        <li><a href="/privacy" class="nav-sublink <%= currentUrl === '/privacy' ? 'active' : '' %>"><%= t.nav_privacy %></a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!-- Search Placeholder -->
+            <div class="nav-search" aria-hidden="true">
+                <span class="search-icon">🔍</span>
+                <span class="search-text"><%= currentLang === 'ar' ? 'البحث قريباً...' : 'Search coming soon...' %></span>
             </div>
         </div>
+
+        <!-- Language Selector -->
+        <div class="lang-dropdown">
+            <button class="lang-btn-toggle" id="langBtn" aria-expanded="false" aria-label="Select Language: <%= currentLang.toUpperCase() %>">
+                <span class="lang-flag" aria-hidden="true">🌐</span>
+                <span class="lang-code"><%= currentLang.toUpperCase() %></span>
+                <span class="lang-chevron" aria-hidden="true">▼</span>
+            </button>
+            <div class="lang-menu" id="langMenu" role="menu">
+                <a href="<%= buildLangHref('ar') %>" class="lang-option <%= currentLang === 'ar' ? 'active' : '' %>" data-lang="ar" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇸🇦</span>
+                    <span class="lang-name">العربية</span>
+                </a>
+                <a href="<%= buildLangHref('en') %>" class="lang-option <%= currentLang === 'en' ? 'active' : '' %>" data-lang="en" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+                    <span class="lang-name">English</span>
+                </a>
+                <a href="<%= buildLangHref('es') %>" class="lang-option <%= currentLang === 'es' ? 'active' : '' %>" data-lang="es" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+                    <span class="lang-name">Español</span>
+                </a>
+                <a href="<%= buildLangHref('fr') %>" class="lang-option <%= currentLang === 'fr' ? 'active' : '' %>" data-lang="fr" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇫🇷</span>
+                    <span class="lang-name">Français</span>
+                </a>
+                <a href="<%= buildLangHref('zh') %>" class="lang-option <%= currentLang === 'zh' ? 'active' : '' %>" data-lang="zh" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇨🇳</span>
+                    <span class="lang-name">中文</span>
+                </a>
+                <a href="<%= buildLangHref('hi') %>" class="lang-option <%= currentLang === 'hi' ? 'active' : '' %>" data-lang="hi" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇮🇳</span>
+                    <span class="lang-name">हिन्दी</span>
+                </a>
+                <a href="<%= buildLangHref('pt') %>" class="lang-option <%= currentLang === 'pt' ? 'active' : '' %>" data-lang="pt" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇵🇹</span>
+                    <span class="lang-name">Português</span>
+                </a>
+                <a href="<%= buildLangHref('ru') %>" class="lang-option <%= currentLang === 'ru' ? 'active' : '' %>" data-lang="ru" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇷🇺</span>
+                    <span class="lang-name">Русский</span>
+                </a>
+                <a href="<%= buildLangHref('de') %>" class="lang-option <%= currentLang === 'de' ? 'active' : '' %>" data-lang="de" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇩🇪</span>
+                    <span class="lang-name">Deutsch</span>
+                </a>
+                <a href="<%= buildLangHref('tr') %>" class="lang-option <%= currentLang === 'tr' ? 'active' : '' %>" data-lang="tr" role="menuitem">
+                    <span class="lang-flag" aria-hidden="true">🇹🇷</span>
+                    <span class="lang-name">Türkçe</span>
+                </a>
+            </div>
+        </div>
+
     </div>
 </nav>
+
+<script>
+(function() {
+    // Mobile menu toggle
+    var navToggle = document.getElementById('navToggle');
+    var navMenu = document.getElementById('navMenu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            var isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+            navToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('is-open');
+            navToggle.classList.toggle('is-active');
+            document.body.classList.toggle('nav-open');
+        });
+    }
+    
+    // "More" submenu toggle
+    var moreBtn = document.getElementById('moreBtn');
+    var moreMenu = document.getElementById('moreMenu');
+    
+    if (moreBtn && moreMenu) {
+        moreBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isExpanded = moreBtn.getAttribute('aria-expanded') === 'true';
+            moreBtn.setAttribute('aria-expanded', !isExpanded);
+            moreMenu.classList.toggle('is-visible');
+        });
+        
+        // Close submenu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!moreBtn.contains(e.target) && !moreMenu.contains(e.target)) {
+                moreBtn.setAttribute('aria-expanded', 'false');
+                moreMenu.classList.remove('is-visible');
+            }
+        });
+    }
+    
+    // Language dropdown toggle
+    var langBtn = document.getElementById('langBtn');
+    var langMenu = document.getElementById('langMenu');
+    
+    if (langBtn && langMenu) {
+        langBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var isExpanded = langBtn.getAttribute('aria-expanded') === 'true';
+            langBtn.setAttribute('aria-expanded', !isExpanded);
+            langMenu.classList.toggle('is-visible');
+            langBtn.classList.toggle('is-active');
+        });
+        
+        // Close language menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!langBtn.contains(e.target) && !langMenu.contains(e.target)) {
+                langBtn.setAttribute('aria-expanded', 'false');
+                langMenu.classList.remove('is-visible');
+                langBtn.classList.remove('is-active');
+            }
+        });
+        
+        // Preserve query parameters when switching language
+        var langLinks = langMenu.querySelectorAll('.lang-option');
+        langLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var lang = this.getAttribute('data-lang');
+                var url = new URL(window.location.href);
+                if (lang === 'ar') {
+                    url.searchParams.delete('lang');
+                } else {
+                    url.searchParams.set('lang', lang);
+                }
+                this.href = url.toString();
+            });
+        });
+    }
+    
+    // Close mobile menu on window resize (if going to desktop)
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && navMenu && navMenu.classList.contains('is-open')) {
+            navMenu.classList.remove('is-open');
+            navToggle.classList.remove('is-active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.classList.remove('nav-open');
+        }
+    });
+    
+    // Close menus on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (navMenu && navMenu.classList.contains('is-open')) {
+                navMenu.classList.remove('is-open');
+                navToggle.classList.remove('is-active');
+                navToggle.setAttribute('aria-expanded', 'false');
+                document.body.classList.remove('nav-open');
+            }
+            if (moreMenu && moreMenu.classList.contains('is-visible')) {
+                moreBtn.setAttribute('aria-expanded', 'false');
+                moreMenu.classList.remove('is-visible');
+            }
+            if (langMenu && langMenu.classList.contains('is-visible')) {
+                langBtn.setAttribute('aria-expanded', 'false');
+                langMenu.classList.remove('is-visible');
+                langBtn.classList.remove('is-active');
+            }
+        }
+    });
+})();
+</script>
