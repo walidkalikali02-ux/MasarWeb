@@ -4,10 +4,10 @@
 <body class="homepage">
     <%- include('partials/navbar') %>
 
-    <div class="container">
+    <main class="container">
         
         <!-- Hero Section -->
-        <header class="hero hero-geo">
+        <header class="hero hero-geo" role="banner">
             <div class="geo-bg" aria-hidden="true">
                 <div class="geo-shape geo-1"></div>
                 <div class="geo-shape geo-2"></div>
@@ -16,20 +16,24 @@
                 <div class="geo-line geo-line-2"></div>
                 <div class="geo-accent"></div>
             </div>
-            <div class="hero-content">
+            <div class="hero-content animate-on-scroll">
                 <p class="hero-eyebrow">MasarWeb Proxy</p>
                 <h1 class="hero-headline"><%= t.title %></h1>
                 <p class="hero-subhead"><%= t.tagline %></p>
                 <div class="hero-cta-group">
-                    <a href="#search" class="btn-solid">ابدأ التصفح الآن</a>
-                    <a href="#features" class="btn-geo-outline">اكتشف المزيد</a>
+                    <a href="#search" class="btn-solid">
+                        <span>ابدأ التصفح الآن</span>
+                    </a>
+                    <a href="#features" class="btn-geo-outline">
+                        <span>اكتشف المزيد</span>
+                    </a>
                 </div>
             </div>
         </header>
 
         <!-- Search Section -->
-        <section id="search" class="search-wrap">
-            <div class="search-container">
+        <section id="search" class="search-wrap" aria-label="بحث المواقع">
+            <div class="search-container animate-on-scroll">
                 <div class="search-hint">
                     <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="8"/>
@@ -49,13 +53,14 @@
                             autocomplete="off"
                             required
                             aria-label="عنوان الموقع"
+                            inputmode="url"
                         >
                         <button type="submit" class="search-btn-pill" aria-label="<%= t.browse %>">
-                            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M5 12h14"/>
                                 <path d="m12 5 7 7-7 7"/>
                             </svg>
-                            <svg class="btn-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <svg class="btn-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                                 <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
                                 <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
                             </svg>
@@ -64,7 +69,7 @@
                 </form>
 
                 <% if (typeof error !== 'undefined' && error) { %>
-                    <div class="error-clean" role="alert">
+                    <div class="error-clean" role="alert" aria-live="polite">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M12 8v4M12 16h.01"/>
@@ -76,12 +81,12 @@
         </section>
 
         <!-- Features Section -->
-        <section id="features" class="features-section">
-            <h2 class="features-title"><%= t.features_title %></h2>
-            <div class="features-list">
+        <section id="features" class="features-section" aria-labelledby="features-title">
+            <h2 id="features-title" class="features-title animate-on-scroll"><%= t.features_title %></h2>
+            <div class="features-list stagger-children">
                 
-                <div class="feature-card-h">
-                    <div class="feature-icon-h">
+                <article class="feature-card-h">
+                    <div class="feature-icon-h" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
                             <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -91,10 +96,10 @@
                         <h3><%= t.privacy_title %></h3>
                         <p><%= t.privacy_desc %></p>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature-card-h">
-                    <div class="feature-icon-h">
+                <article class="feature-card-h">
+                    <div class="feature-icon-h" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
                         </svg>
@@ -103,10 +108,10 @@
                         <h3><%= t.speed_title %></h3>
                         <p><%= t.speed_desc %></p>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature-card-h">
-                    <div class="feature-icon-h">
+                <article class="feature-card-h">
+                    <div class="feature-icon-h" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                         </svg>
@@ -115,10 +120,10 @@
                         <h3><%= t.protection_title %></h3>
                         <p><%= t.protection_desc %></p>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature-card-h">
-                    <div class="feature-icon-h">
+                <article class="feature-card-h">
+                    <div class="feature-icon-h" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
                             <path d="M12 18h.01"/>
@@ -128,10 +133,10 @@
                         <h3><%= t.devices_title %></h3>
                         <p><%= t.devices_desc %></p>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature-card-h">
-                    <div class="feature-icon-h">
+                <article class="feature-card-h">
+                    <div class="feature-icon-h" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             <path d="m9 12 2 2 4-4"/>
@@ -141,10 +146,10 @@
                         <h3><%= t.encryption_title %></h3>
                         <p><%= t.encryption_desc %></p>
                     </div>
-                </div>
+                </article>
 
-                <div class="feature-card-h">
-                    <div class="feature-icon-h">
+                <article class="feature-card-h">
+                    <div class="feature-icon-h" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
@@ -154,23 +159,23 @@
                         <h3><%= t.support_title %></h3>
                         <p><%= t.support_desc %></p>
                     </div>
-                </div>
+                </article>
 
             </div>
         </section>
 
         <!-- How It Works Section -->
-        <section class="how-it-works">
-            <h2 class="how-title"><%= t.how_it_works_title %></h2>
-            <div class="timeline">
+        <section class="how-it-works" aria-labelledby="how-title">
+            <h2 id="how-title" class="how-title animate-on-scroll"><%= t.how_it_works_title %></h2>
+            <div class="timeline stagger-children">
                 
                 <div class="timeline-item">
-                    <div class="timeline-marker">
+                    <div class="timeline-marker" aria-hidden="true">
                         <div class="timeline-dot"></div>
                         <div class="timeline-line"></div>
                     </div>
                     <div class="timeline-content">
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="11" cy="11" r="8"/>
                                 <path d="m21 21-4.35-4.35"/>
@@ -182,12 +187,12 @@
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-marker">
+                    <div class="timeline-marker" aria-hidden="true">
                         <div class="timeline-dot"></div>
                         <div class="timeline-line"></div>
                     </div>
                     <div class="timeline-content">
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
@@ -198,11 +203,11 @@
                 </div>
 
                 <div class="timeline-item timeline-item-last">
-                    <div class="timeline-marker">
+                    <div class="timeline-marker" aria-hidden="true">
                         <div class="timeline-dot"></div>
                     </div>
                     <div class="timeline-content">
-                        <div class="timeline-icon">
+                        <div class="timeline-icon" aria-hidden="true">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                                 <path d="m9 11 3 3L22 4"/>
@@ -218,14 +223,14 @@
 
         <!-- Why Use Section -->
         <% if (t.why_use_title) { %>
-        <section class="info-section why-use">
-            <h2><%= t.why_use_title %></h2>
-            <div class="info-grid">
+        <section class="info-section why-use" aria-labelledby="why-title">
+            <h2 id="why-title" class="animate-on-scroll"><%= t.why_use_title %></h2>
+            <div class="info-grid stagger-children">
                 <% t.why_use_items.forEach(function(item) { %>
-                    <div class="info-card">
+                    <article class="info-card">
                         <h3><%= item.title %></h3>
                         <p><%= item.desc %></p>
-                    </div>
+                    </article>
                 <% }); %>
             </div>
         </section>
@@ -233,8 +238,8 @@
 
         <!-- How Proxy Works Section -->
         <% if (t.how_proxy_works_title) { %>
-        <section class="info-section how-proxy-works">
-            <h2><%= t.how_proxy_works_title %></h2>
+        <section class="info-section how-proxy-works" aria-labelledby="proxy-title">
+            <h2 id="proxy-title" class="animate-on-scroll"><%= t.how_proxy_works_title %></h2>
             <div class="text-content">
                 <p><%= t.how_proxy_works_desc %></p>
             </div>
@@ -243,15 +248,15 @@
 
         <!-- Security & Privacy Section -->
         <% if (t.security_privacy_title) { %>
-        <section class="info-section security-privacy">
-            <h2><%= t.security_privacy_title %></h2>
-            <div class="security-grid">
+        <section class="info-section security-privacy" aria-labelledby="security-title">
+            <h2 id="security-title" class="animate-on-scroll"><%= t.security_privacy_title %></h2>
+            <div class="security-grid stagger-children">
                 <% t.security_privacy_items.forEach(function(item) { %>
-                    <div class="security-card">
-                        <div class="security-icon"><%= item.icon %></div>
+                    <article class="security-card">
+                        <div class="security-icon" aria-hidden="true"><%= item.icon %></div>
                         <h3><%= item.title %></h3>
                         <p><%= item.desc %></p>
-                    </div>
+                    </article>
                 <% }); %>
             </div>
         </section>
@@ -259,12 +264,12 @@
 
         <!-- Use Cases Section -->
         <% if (t.use_cases_title) { %>
-        <section class="info-section use-cases">
-            <h2><%= t.use_cases_title %></h2>
-            <ul class="use-cases-list">
+        <section class="info-section use-cases" aria-labelledby="usecases-title">
+            <h2 id="usecases-title" class="animate-on-scroll"><%= t.use_cases_title %></h2>
+            <ul class="use-cases-list stagger-children">
                 <% t.use_cases_items.forEach(function(item) { %>
                     <li>
-                        <span class="check-icon">✓</span>
+                        <span class="check-icon" aria-hidden="true">✓</span>
                         <span><%= item %></span>
                     </li>
                 <% }); %>
@@ -274,45 +279,48 @@
 
         <!-- FAQ Section -->
         <% if (t.faq_title) { %>
-        <section class="info-section faq-section">
-            <h2><%= t.faq_title %></h2>
-            <div class="faq-grid">
+        <section class="info-section faq-section" aria-labelledby="faq-title">
+            <h2 id="faq-title" class="animate-on-scroll"><%= t.faq_title %></h2>
+            <div class="faq-grid stagger-children">
                 <% t.faq_items.forEach(function(item) { %>
-                    <div class="faq-item">
-                        <div class="faq-question"><%= item.q %></div>
-                        <div class="faq-answer"><%= item.a %></div>
-                    </div>
+                    <article class="faq-item">
+                        <h3 class="faq-question"><%= item.q %></h3>
+                        <p class="faq-answer"><%= item.a %></p>
+                    </article>
                 <% }); %>
             </div>
         </section>
         <% } %>
 
         <!-- Popular Sites Section -->
-        <section class="popular-sites">
-            <h2><%= t.popular_sites_title %></h2>
-            <div class="sites-grid">
+        <section class="popular-sites" aria-labelledby="sites-title">
+            <h2 id="sites-title" class="animate-on-scroll"><%= t.popular_sites_title %></h2>
+            <div class="sites-grid stagger-children">
                 <% if (t.popular_sites && t.popular_sites.length > 0) { %>
                     <% t.popular_sites.forEach(function(site) { %>
                         <a href="#" onclick="event.preventDefault(); document.getElementById('url-input').value='<%= site.url %>'; document.getElementById('search-form').submit();" class="site-btn">
-                            <span><%= site.icon %></span> <%= site.name %>
+                            <span aria-hidden="true"><%= site.icon %></span> 
+                            <span><%= site.name %></span>
                         </a>
                     <% }); %>
                 <% } %>
             </div>
         </section>
         
-    </div>
+    </main>
 
     <%- include('partials/footer') %>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Auto-focus search input
             var input = document.getElementById('url-input');
             var form = document.getElementById('search-form');
             var btn = form ? form.querySelector('.search-btn-pill') : null;
             
             if (input) input.focus();
             
+            // Form submission handling
             if (form) {
                 form.addEventListener('submit', function(e) {
                     if (!input.value.trim()) {
@@ -325,6 +333,7 @@
                 });
             }
             
+            // Popular sites button handling
             var popularBtns = document.querySelectorAll('.site-btn');
             popularBtns.forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
@@ -333,6 +342,49 @@
                         form.classList.add('submitting');
                         var submitBtn = form.querySelector('.search-btn-pill');
                         if (submitBtn) submitBtn.classList.add('loading');
+                    }
+                });
+            });
+            
+            // Scroll animation observer
+            var animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-children');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    var targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                     }
                 });
             });
