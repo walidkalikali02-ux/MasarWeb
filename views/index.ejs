@@ -5,105 +5,200 @@
     <%- include('partials/navbar') %>
 
     <div class="container">
-        <header class="main-header">
-            <div class="logo">
-                <img src="/static/images/logo.svg" alt="<%= t.title %>" class="main-logo">
+        <header class="hero hero-geo">
+            <div class="geo-bg" aria-hidden="true">
+                <div class="geo-shape geo-1"></div>
+                <div class="geo-shape geo-2"></div>
+                <div class="geo-shape geo-3"></div>
+                <div class="geo-line geo-line-1"></div>
+                <div class="geo-line geo-line-2"></div>
+                <div class="geo-accent"></div>
             </div>
-            <h1><%= t.title %></h1>
-            <p class="tagline"><%= t.tagline %></p>
+            <div class="hero-content">
+                <p class="hero-eyebrow">MasarWeb Proxy</p>
+                <h1 class="hero-headline"><%= t.title %></h1>
+                <p class="hero-subhead"><%= t.tagline %></p>
+                <div class="hero-cta-group">
+                    <a href="#search" class="btn-solid">ابدأ التصفح الآن</a>
+                    <a href="#features" class="btn-geo-outline">اكتشف المزيد</a>
+                </div>
+            </div>
         </header>
 
-        <main class="main-content">
+        <section id="search" class="search-wrap">
             <div class="search-container">
-                <form action="/browse" method="POST" class="url-form">
-                    <div class="input-group">
+                <div class="search-hint">
+                    <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"/>
+                        <path d="m21 21-4.35-4.35"/>
+                    </svg>
+                    <span>أدخل عنوان الموقع للتصفح</span>
+                </div>
+                <form action="/browse" method="POST" class="search-form-pill" id="search-form">
+                    <div class="search-field-pill">
                         <input 
                             type="url" 
                             name="url" 
                             id="url-input"
-                            class="url-input"
+                            class="search-input-pill"
                             placeholder="<%= t.placeholder %>"
                             value="<%= currentUrl || '' %>"
                             autocomplete="off"
                             required
+                            aria-label="عنوان الموقع"
                         >
-                        <button type="submit" class="browse-btn">
-                            <span><%= t.browse %></span>
-                            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"/>
-                                <path d="m21 21-4.35-4.35"/>
+                        <button type="submit" class="search-btn-pill" aria-label="<%= t.browse %>">
+                            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"/>
+                                <path d="m12 5 7 7-7 7"/>
+                            </svg>
+                            <svg class="btn-loader" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <circle cx="12" cy="12" r="10" stroke-opacity="0.25"/>
+                                <path d="M12 2a10 10 0 0 1 10 10" stroke-linecap="round"/>
                             </svg>
                         </button>
                     </div>
                 </form>
 
                 <% if (typeof error !== 'undefined' && error) { %>
-                    <div class="error-message">
-                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <div class="error-clean" role="alert">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                             <circle cx="12" cy="12" r="10"/>
-                            <line x1="12" y1="8" x2="12" y2="12"/>
-                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                            <path d="M12 8v4M12 16h.01"/>
                         </svg>
                         <span><%= error %></span>
                     </div>
                 <% } %>
             </div>
+        </section>
 
-            <div class="features">
-                <h2><%= t.features_title %></h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔒</div>
-                        <h3><%= t.privacy_title %></h3>
-                        <p><%= t.privacy_desc %></p>
+            <section id="features" class="features-section">
+                <h2 class="features-title"><%= t.features_title %></h2>
+                <div class="features-list">
+                    <div class="feature-card-h">
+                        <div class="feature-icon-h">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content-h">
+                            <h3><%= t.privacy_title %></h3>
+                            <p><%= t.privacy_desc %></p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🚀</div>
-                        <h3><%= t.speed_title %></h3>
-                        <p><%= t.speed_desc %></p>
+                    <div class="feature-card-h">
+                        <div class="feature-icon-h">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content-h">
+                            <h3><%= t.speed_title %></h3>
+                            <p><%= t.speed_desc %></p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🛡️</div>
-                        <h3><%= t.protection_title %></h3>
-                        <p><%= t.protection_desc %></p>
+                    <div class="feature-card-h">
+                        <div class="feature-icon-h">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content-h">
+                            <h3><%= t.protection_title %></h3>
+                            <p><%= t.protection_desc %></p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📱</div>
-                        <h3><%= t.devices_title %></h3>
-                        <p><%= t.devices_desc %></p>
+                    <div class="feature-card-h">
+                        <div class="feature-icon-h">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                                <path d="M12 18h.01"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content-h">
+                            <h3><%= t.devices_title %></h3>
+                            <p><%= t.devices_desc %></p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🔐</div>
-                        <h3><%= t.encryption_title %></h3>
-                        <p><%= t.encryption_desc %></p>
+                    <div class="feature-card-h">
+                        <div class="feature-icon-h">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="m9 12 2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content-h">
+                            <h3><%= t.encryption_title %></h3>
+                            <p><%= t.encryption_desc %></p>
+                        </div>
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">🌍</div>
-                        <h3><%= t.support_title %></h3>
-                        <p><%= t.support_desc %></p>
+                    <div class="feature-card-h">
+                        <div class="feature-icon-h">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                            </svg>
+                        </div>
+                        <div class="feature-content-h">
+                            <h3><%= t.support_title %></h3>
+                            <p><%= t.support_desc %></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="how-it-works">
-                <h2><%= t.how_it_works_title %></h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <p><%= t.step1 %></p>
+            <section class="how-it-works">
+                <h2 class="how-title"><%= t.how_it_works_title %></h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                            </div>
+                            <h3>1</h3>
+                            <p><%= t.step1 %></p>
+                        </div>
                     </div>
-                    <div class="step-arrow">→</div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <p><%= t.step2 %></p>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-line"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                </svg>
+                            </div>
+                            <h3>2</h3>
+                            <p><%= t.step2 %></p>
+                        </div>
                     </div>
-                    <div class="step-arrow">→</div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <p><%= t.step3 %></p>
+                    <div class="timeline-item timeline-item-last">
+                        <div class="timeline-marker">
+                            <div class="timeline-dot"></div>
+                        </div>
+                        <div class="timeline-content">
+                            <div class="timeline-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <path d="m9 11 3 3L22 4"/>
+                                </svg>
+                            </div>
+                            <h3>3</h3>
+                            <p><%= t.step3 %></p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <% if (t.why_use_title) { %>
             <div class="info-section why-use">
@@ -176,29 +271,46 @@
                 <div class="sites-grid">
                     <% if (t.popular_sites && t.popular_sites.length > 0) { %>
                         <% t.popular_sites.forEach(function(site) { %>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('url-input').value='<%= site.url %>'; document.querySelector('.url-form').submit();" class="site-btn">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('url-input').value='<%= site.url %>'; document.getElementById('search-form').submit();" class="site-btn">
                                 <span><%= site.icon %></span> <%= site.name %>
                             </a>
                         <% }); %>
                     <% } %>
                 </div>
             </div>
-        </main>
+        
     </div>
 
     <%- include('partials/footer') %>
 
     <script>
-        // Auto-focus on input
-        document.getElementById('url-input').focus();
-        
-        // Handle form submission
-        document.querySelector('.url-form').addEventListener('submit', function(e) {
-            const input = document.getElementById('url-input');
-            if (!input.value.trim()) {
-                e.preventDefault();
-                input.focus();
+        document.addEventListener('DOMContentLoaded', function() {
+            var input = document.getElementById('url-input');
+            var form = document.getElementById('search-form');
+            var btn = form ? form.querySelector('.search-btn-pill') : null;
+            if (input) input.focus();
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    if (!input.value.trim()) {
+                        e.preventDefault();
+                        input.focus();
+                        return;
+                    }
+                    form.classList.add('submitting');
+                    if (btn) btn.classList.add('loading');
+                });
             }
+            var popularBtns = document.querySelectorAll('.site-btn');
+            popularBtns.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    var form = document.getElementById('search-form');
+                    if (form) {
+                        form.classList.add('submitting');
+                        var submitBtn = form.querySelector('.search-btn-pill');
+                        if (submitBtn) submitBtn.classList.add('loading');
+                    }
+                });
+            });
         });
     </script>
 </body>

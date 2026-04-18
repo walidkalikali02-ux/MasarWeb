@@ -1,15 +1,5 @@
 
-Temporary password generator with auto-expiry
-Password pattern analyzer (detects common patterns)
-Biometric readiness checker for browsers
-WebAuthn/FIDO2 demo and testing playground
-OAuth 2.0 flow visualizer
-JWT (JSON Web Token) decoder and inspector
-JWT token generator for testing
-Session token analyzer
-API key generator with scoping options
-Single Sign-On (SSO) configuration tester
-LDAP authentication tester
+
 Kerberos ticket decoder
 SAML assertion viewer and validator
 OpenID Connect discovery endpoint tester

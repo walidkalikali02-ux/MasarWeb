@@ -31,6 +31,7 @@ const { setupWebSocketProxy } = require('./proxy/websocketHandler');
 const { getArticleIndex, getArticleBySlug } = require('./content/blogContent');
 const locales = require('./locales');
 const toolsRouter = require('./tools/toolsRouter');
+const { getAffiliateOffers } = require('./utils/affiliateOffers');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -111,6 +112,11 @@ app.use((req, res, next) => {
   res.locals.currentLang = lang;
   res.locals.currentUrl = req.path;
   res.locals.dir = locales[lang].dir;
+  next();
+});
+
+app.use((req, res, next) => {
+  res.locals.affiliateOffers = getAffiliateOffers(req.lang || DEFAULT_LANG);
   next();
 });
 

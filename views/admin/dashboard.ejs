@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#8a2be2">
     <title><%= title %></title>
+    <link rel="stylesheet" href="/static/css/tokens.css">
     <link rel="stylesheet" href="/static/css/admin.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
@@ -37,11 +39,21 @@
 
         <main class="main-content">
             <header class="content-header">
-                <h1>لوحة التحكم</h1>
+                <div class="header-title-group">
+                    <h1>لوحة التحكم</h1>
+                    <p class="header-subtitle">إدارة النظام</p>
+                </div>
                 <div class="header-actions">
-                    <span class="status-badge online">● النظام يعمل</span>
-                    <button onclick="refreshStats()" class="refresh-btn">
-                        <span>🔄</span> تحديث
+                    <span class="kbd-hint">
+                        <span class="kbd">Alt</span>+<span class="kbd">1-4</span> للتنقل
+                    </span>
+                    <span class="status-badge online">
+                        <span class="status-dot"></span>
+                        النظام يعمل
+                    </span>
+                    <span class="last-updated" id="last-updated"></span>
+                    <button onclick="refreshStats()" class="refresh-btn" id="refresh-btn">
+                        <span class="refresh-icon">↻</span> <span class="refresh-text">تحديث</span>
                     </button>
                 </div>
             </header>
@@ -49,26 +61,29 @@
             <!-- Overview Section -->
             <section id="overview" class="section active">
                 <div class="stats-grid">
-                    <div class="stat-card">
+                    <div class="stat-card stat-card-featured">
+                        <div class="stat-accent-line"></div>
                         <div class="stat-icon uptime">⏱️</div>
                         <div class="stat-info">
-                            <h3>وقت التشغيل</h3>
-                            <p class="stat-value" id="uptime"><%= Math.floor(stats.uptime / 3600) %> ساعة</p>
+                            <span class="stat-label">وقت التشغيل</span>
+                            <p class="stat-value" id="uptime"><%= Math.floor(stats.uptime / 3600) %></p>
+                            <span class="stat-unit">ساعة</span>
                         </div>
                     </div>
                     
-                    <div class="stat-card">
+                    <div class="stat-card stat-card-highlight">
                         <div class="stat-icon memory">💾</div>
                         <div class="stat-info">
-                            <h3>استخدام الذاكرة</h3>
-                            <p class="stat-value" id="memory"><%= Math.round(stats.memory.heapUsed / 1024 / 1024) %> MB</p>
+                            <span class="stat-label">استخدام الذاكرة</span>
+                            <p class="stat-value" id="memory"><%= Math.round(stats.memory.heapUsed / 1024 / 1024) %></p>
+                            <span class="stat-unit">MB</span>
                         </div>
                     </div>
                     
                     <div class="stat-card">
                         <div class="stat-icon sessions">👥</div>
                         <div class="stat-info">
-                            <h3>الجلسات النشطة</h3>
+                            <span class="stat-label">الجلسات النشطة</span>
                             <p class="stat-value" id="sessions-count"><%= stats.cookies.sessions %></p>
                         </div>
                     </div>
@@ -76,45 +91,48 @@
                     <div class="stat-card">
                         <div class="stat-icon cookies">🍪</div>
                         <div class="stat-info">
-                            <h3>إجمالي ملفات التعريف</h3>
+                            <span class="stat-label">إجمالي ملفات التعريف</span>
                             <p class="stat-value" id="cookies-count"><%= stats.cookies.totalCookies %></p>
                         </div>
                     </div>
                     
-                    <div class="stat-card">
+                    <div class="stat-card stat-card-blocked">
                         <div class="stat-icon blocked">🚫</div>
                         <div class="stat-info">
-                            <h3>عناوين IP المحظورة</h3>
+                            <span class="stat-label">IP محظور</span>
                             <p class="stat-value" id="blocked-ips"><%= stats.security.blockedIPs %></p>
                         </div>
                     </div>
                     
-                    <div class="stat-card">
+                    <div class="stat-card stat-card-blocked">
                         <div class="stat-icon domains">🌐</div>
                         <div class="stat-info">
-                            <h3>النطاقات المحظورة</h3>
+                            <span class="stat-label">نطاق محظور</span>
                             <p class="stat-value" id="blocked-domains"><%= stats.security.blockedDomains %></p>
                         </div>
                     </div>
                 </div>
 
-                <div class="features-status">
-                    <h3>حالة الميزات</h3>
+                <div class="features-section">
+                    <h2 class="section-title">
+                        <span class="title-accent"></span>
+                        حالة الميزات
+                    </h2>
                     <div class="features-grid">
                         <div class="feature-item <%= stats.features.websockets ? 'enabled' : 'disabled' %>">
-                            <span class="feature-status"><%= stats.features.websockets ? '✅' : '❌' %></span>
+                            <span class="feature-icon" aria-hidden="true"><%= stats.features.websockets ? '◉' : '○' %></span>
                             <span>WebSockets</span>
                         </div>
                         <div class="feature-item <%= stats.features.mediaStreaming ? 'enabled' : 'disabled' %>">
-                            <span class="feature-status"><%= stats.features.mediaStreaming ? '✅' : '❌' %></span>
+                            <span class="feature-icon" aria-hidden="true"><%= stats.features.mediaStreaming ? '◉' : '○' %></span>
                             <span>بث الوسائط</span>
                         </div>
                         <div class="feature-item <%= stats.features.javascriptRewrite ? 'enabled' : 'disabled' %>">
-                            <span class="feature-status"><%= stats.features.javascriptRewrite ? '✅' : '❌' %></span>
+                            <span class="feature-icon" aria-hidden="true"><%= stats.features.javascriptRewrite ? '◉' : '○' %></span>
                             <span>إعادة كتابة JS</span>
                         </div>
                         <div class="feature-item <%= stats.features.cookieSync ? 'enabled' : 'disabled' %>">
-                            <span class="feature-status"><%= stats.features.cookieSync ? '✅' : '❌' %></span>
+                            <span class="feature-icon" aria-hidden="true"><%= stats.features.cookieSync ? '◉' : '○' %></span>
                             <span>مزامنة ملفات التعريف</span>
                         </div>
                     </div>
@@ -125,49 +143,80 @@
             <section id="security" class="section">
                 <div class="section-grid">
                     <div class="panel">
-                        <h3>العناوين المحظورة</h3>
+                        <div class="panel-header">
+                            <h3>العناوين المحظورة</h3>
+                            <span class="help-icon" data-tooltip="حظر عناوين IP محددة من استخدام الخدمة">?</span>
+                        </div>
                         <div class="ip-management">
                             <form onsubmit="return blockIP(event)">
                                 <div class="form-group">
-                                    <input type="text" id="block-ip-input" placeholder="أدخل عنوان IP" required>
-                                    <input type="text" id="block-reason-input" placeholder="السبب (اختياري)">
-                                    <button type="submit" class="btn btn-danger">حظر</button>
+                                    <label for="block-ip-input" class="form-label">عنوان IP</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="block-ip-input" placeholder="أدخل عنوان IP" required aria-describedby="block-ip-help">
+                                        <span class="input-help" id="block-ip-help">?</span>
+                                    </div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="block-reason-input" class="form-label">السبب (اختياري)</label>
+                                    <input type="text" id="block-reason-input" placeholder="سبب الحظر">
+                                </div>
+                                <button type="submit" class="btn btn-danger">حظر</button>
                             </form>
                             
                             <div class="list-container">
                                 <h4>القائمة الحالية:</h4>
                                 <ul id="blocked-ips-list" class="item-list">
-                                    <% blockedIPs.forEach(function(ip) { %>
-                                        <li>
-                                            <span><%= ip %></span>
-                                            <button onclick="unblockIP('<%= ip %>')" class="btn btn-small">إلغاء الحظر</button>
+                                    <% if (blockedIPs.length === 0) { %>
+                                        <li class="empty-state">
+                                            <span class="empty-icon">○</span>
+                                            <span>لا توجد عناوين محظورة</span>
                                         </li>
-                                    <% }); %>
+                                    <% } else { %>
+                                        <% blockedIPs.forEach(function(ip) { %>
+                                            <li>
+                                                <span><%= ip %></span>
+                                                <button onclick="unblockIP('<%= ip %>')" class="btn btn-small">إلغاء الحظر</button>
+                                            </li>
+                                        <% }); %>
+                                    <% } %>
                                 </ul>
                             </div>
                         </div>
                     </div>
 
                     <div class="panel">
-                        <h3>النطاقات المحظورة</h3>
+                        <div class="panel-header">
+                            <h3>النطاقات المحظورة</h3>
+                            <span class="help-icon" data-tooltip="حظر نطاقات كاملة من الوصول">?</span>
+                        </div>
                         <div class="domain-management">
                             <form onsubmit="return blockDomain(event)">
                                 <div class="form-group">
-                                    <input type="text" id="block-domain-input" placeholder="أدخل النطاق (مثال: example.com)" required>
-                                    <button type="submit" class="btn btn-danger">حظر</button>
+                                    <label for="block-domain-input" class="form-label">النطاق</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="block-domain-input" placeholder="أدخل النطاق (مثال: example.com)" required aria-describedby="block-domain-help">
+                                        <span class="input-help" id="block-domain-help">?</span>
+                                    </div>
                                 </div>
+                                <button type="submit" class="btn btn-danger">حظر</button>
                             </form>
                             
                             <div class="list-container">
                                 <h4>القائمة الحالية:</h4>
                                 <ul id="blocked-domains-list" class="item-list">
-                                    <% blockedDomains.forEach(function(domain) { %>
-                                        <li>
-                                            <span><%= domain %></span>
-                                            <button onclick="unblockDomain('<%= domain %>')" class="btn btn-small">إلغاء الحظر</button>
+                                    <% if (blockedDomains.length === 0) { %>
+                                        <li class="empty-state">
+                                            <span class="empty-icon">○</span>
+                                            <span>لا توجد نطاقات محظورة</span>
                                         </li>
-                                    <% }); %>
+                                    <% } else { %>
+                                        <% blockedDomains.forEach(function(domain) { %>
+                                            <li>
+                                                <span><%= domain %></span>
+                                                <button onclick="unblockDomain('<%= domain %>')" class="btn btn-small">إلغاء الحظر</button>
+                                            </li>
+                                        <% }); %>
+                                    <% } %>
                                 </ul>
                             </div>
                         </div>
@@ -178,7 +227,10 @@
             <!-- Sessions Section -->
             <section id="sessions" class="section">
                 <div class="panel">
-                    <h3>إدارة الجلسات</h3>
+                    <div class="panel-header">
+                        <h3>إدارة الجلسات</h3>
+                        <span class="help-icon" data-tooltip="إدارة جلسات المستخدمين النشطة">?</span>
+                    </div>
                     <div class="sessions-info">
                         <div class="info-row">
                             <span>الجلسات النشطة:</span>
@@ -188,6 +240,10 @@
                             <span>إجمالي ملفات التعريف:</span>
                             <strong id="total-cookies"><%= stats.cookies.totalCookies %></strong>
                         </div>
+                    </div>
+                    <div class="action-warning">
+                        <span class="warning-icon">⚠</span>
+                        <span>مسح الجلسات سيؤدي إلى تسجيل خروج جميع المستخدمين</span>
                     </div>
                     <button onclick="clearAllSessions()" class="btn btn-danger">
                         <span>🗑️</span> مسح جميع الجلسات
@@ -202,25 +258,25 @@
                         <h3>إعدادات الميزات</h3>
                         <div class="settings-list">
                             <div class="setting-item">
-                                <label>WebSockets</label>
+                                <label>WebSockets <span class="help-icon" data-tooltip="تفعيل دعم الاتصالات الفورية">?</span></label>
                                 <button onclick="toggleFeature('websockets')" class="toggle-btn <%= stats.features.websockets ? 'on' : 'off' %>">
                                     <%= stats.features.websockets ? 'مفعّل' : 'معطّل' %>
                                 </button>
                             </div>
                             <div class="setting-item">
-                                <label>بث الوسائط</label>
+                                <label>بث الوسائط <span class="help-icon" data-tooltip="تفعيل بث الفيديو والصوت">?</span></label>
                                 <button onclick="toggleFeature('mediaStreaming')" class="toggle-btn <%= stats.features.mediaStreaming ? 'on' : 'off' %>">
                                     <%= stats.features.mediaStreaming ? 'مفعّل' : 'معطّل' %>
                                 </button>
                             </div>
                             <div class="setting-item">
-                                <label>إعادة كتابة JavaScript</label>
+                                <label>إعادة كتابة JS <span class="help-icon" data-tooltip="إعادة كتابة JavaScript للصفحات">?</span></label>
                                 <button onclick="toggleFeature('javascriptRewrite')" class="toggle-btn <%= stats.features.javascriptRewrite ? 'on' : 'off' %>">
                                     <%= stats.features.javascriptRewrite ? 'مفعّل' : 'معطّل' %>
                                 </button>
                             </div>
                             <div class="setting-item">
-                                <label>مزامنة ملفات التعريف</label>
+                                <label>مزامنة ملفات التعريف <span class="help-icon" data-tooltip="مزامنة ملفات تعريف الارتباط">?</span></label>
                                 <button onclick="toggleFeature('cookieSync')" class="toggle-btn <%= stats.features.cookieSync ? 'on' : 'off' %>">
                                     <%= stats.features.cookieSync ? 'مفعّل' : 'معطّل' %>
                                 </button>
@@ -229,7 +285,10 @@
                     </div>
 
                     <div class="panel">
-                        <h3>معلومات النظام</h3>
+                        <div class="panel-header">
+                            <h3>معلومات النظام</h3>
+                            <span class="help-icon" data-tooltip="معلومات تقنية عن الخادم">?</span>
+                        </div>
                         <div class="system-info">
                             <div class="info-row">
                                 <span>إصدار Node.js:</span>
@@ -251,18 +310,188 @@
     </div>
 
     <script>
-        // Section navigation
+        // State
+        let lastRefreshTime = Date.now();
+        let refreshTimer = null;
+        const REFRESH_INTERVAL = 30000;
+        const MAX_TOASTS = 3;
+
+        // Format relative time in Arabic
+        function formatRelativeTime(timestamp) {
+            const seconds = Math.floor((Date.now() - timestamp) / 1000);
+            if (seconds < 60) return 'الآن';
+            const minutes = Math.floor(seconds / 60);
+            if (minutes < 60) return `منذ ${minutes} د`;
+            return 'قديم';
+        }
+
+        // Update last updated display
+        function updateLastUpdated() {
+            const el = document.getElementById('last-updated');
+            if (el) {
+                el.textContent = formatRelativeTime(lastRefreshTime);
+            }
+        }
+
+        // Tooltip system
+        document.querySelectorAll('[data-tooltip]').forEach(el => {
+            el.addEventListener('mouseenter', showTooltip);
+            el.addEventListener('focus', showTooltip);
+            el.addEventListener('blur', hideTooltip);
+            el.addEventListener('mouseleave', hideTooltip);
+        });
+
+        function showTooltip(e) {
+            const text = e.target.dataset.tooltip;
+            if (!text) return;
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip';
+            tooltip.textContent = text;
+            tooltip.id = 'active-tooltip';
+            document.body.appendChild(tooltip);
+            const rect = e.target.getBoundingClientRect();
+            tooltip.style.top = rect.bottom + 8 + 'px';
+            tooltip.style.left = rect.left + 'px';
+            requestAnimationFrame(() => tooltip.classList.add('show'));
+        }
+
+        function hideTooltip() {
+            const tooltip = document.getElementById('active-tooltip');
+            if (tooltip) {
+                tooltip.classList.remove('show');
+                setTimeout(() => tooltip.remove(), 200);
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', e => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+            if (e.altKey) {
+                switch(e.key.toLowerCase()) {
+                    case '1': e.preventDefault(); navigateTo('overview'); break;
+                    case '2': e.preventDefault(); navigateTo('security'); break;
+                    case '3': e.preventDefault(); navigateTo('sessions'); break;
+                    case '4': e.preventDefault(); navigateTo('settings'); break;
+                    case 'r': e.preventDefault(); refreshStats(); break;
+                }
+            }
+        });
+
+        function navigateTo(sectionId) {
+            const currentSection = document.querySelector('.section.active');
+            const targetSection = document.getElementById(sectionId);
+            
+            if (currentSection && targetSection && currentSection.id !== sectionId) {
+                currentSection.classList.remove('active');
+                currentSection.classList.add('section-exit');
+                setTimeout(() => currentSection.classList.remove('section-exit'), 200);
+            }
+            
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            targetSection?.classList.add('active');
+            targetSection?.classList.add('section-enter');
+            setTimeout(() => targetSection?.classList.remove('section-enter'), 200);
+            
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
+            history.replaceState(null, '', `#${sectionId}`);
+        }
+
+        // Toast notification system with stacking limit
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container') || createToastContainer();
+            
+            // Remove oldest toast if at max
+            const toasts = container.querySelectorAll('.toast');
+            if (toasts.length >= MAX_TOASTS) {
+                toasts[0].remove();
+            }
+            
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.setAttribute('role', 'alert');
+            toast.setAttribute('aria-live', 'polite');
+            toast.innerHTML = `
+                <span class="toast-icon">${type === 'success' ? '✓' : type === 'error' ? '✕' : type === 'warning' ? '⚠' : 'ℹ'}</span>
+                <span class="toast-message">${message}</span>
+                <button class="toast-close" onclick="this.parentElement.remove()" aria-label="إغلاق">×</button>
+            `;
+            container.appendChild(toast);
+            requestAnimationFrame(() => toast.classList.add('show'));
+            
+            // Auto dismiss
+            const dismissTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+            
+            toast.querySelector('.toast-close').addEventListener('click', () => {
+                clearTimeout(dismissTimeout);
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            });
+        }
+
+        function createToastContainer() {
+            const container = document.createElement('div');
+            container.id = 'toast-container';
+            container.setAttribute('aria-label', 'الإشعارات');
+            document.body.appendChild(container);
+            return container;
+        }
+
+        // Set button loading state
+        function setButtonLoading(btn, loading) {
+            if (!btn) return;
+            const icon = btn.querySelector('.refresh-icon') || btn.querySelector('.spinner');
+            if (loading) {
+                btn.disabled = true;
+                btn.dataset.originalHtml = btn.innerHTML;
+                btn.innerHTML = '<span class="spinner"></span>';
+                btn.classList.add('loading');
+            } else {
+                btn.disabled = false;
+                btn.innerHTML = btn.dataset.originalHtml || btn.innerHTML;
+                btn.classList.remove('loading');
+            }
+        }
+
+        // Section navigation with URL hash support
         function showSection(sectionId) {
+            const target = event ? event.target : document.querySelector(`[href="#${sectionId}"]`);
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
-            event.target.classList.add('active');
+            if (target) {
+                target.classList.add('active');
+                history.replaceState(null, '', `#${sectionId}`);
+            }
         }
 
-        // Refresh stats
+        // Handle browser back/forward
+        window.addEventListener('hashchange', () => {
+            const sectionId = location.hash.slice(1) || 'overview';
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(sectionId)?.classList.add('active');
+            document.querySelector(`.nav-link[href="#${sectionId}"]`)?.classList.add('active');
+        });
+
+        // Initialize section from URL hash
+        if (location.hash) {
+            window.addEventListener('DOMContentLoaded', () => showSection(location.hash.slice(1)));
+        }
+
+        // Refresh stats with debounce
+        let isRefreshing = false;
         async function refreshStats() {
+            if (isRefreshing) return;
+            isRefreshing = true;
+            
+            const btn = document.getElementById('refresh-btn');
             try {
+                if (btn) setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/stats');
+                if (!response.ok) throw new Error('فشل في جلب البيانات');
                 const data = await response.json();
                 
                 document.getElementById('uptime').textContent = Math.floor(data.uptime / 3600) + ' ساعة';
@@ -272,19 +501,42 @@
                 document.getElementById('blocked-ips').textContent = data.security.blockedIPs;
                 document.getElementById('blocked-domains').textContent = data.security.blockedDomains;
                 
-                alert('تم تحديث الإحصائيات');
+                lastRefreshTime = Date.now();
+                updateLastUpdated();
+                showToast('تم تحديث الإحصائيات', 'success');
             } catch (error) {
-                alert('خطأ في تحديث الإحصائيات');
+                showToast('خطأ في تحديث الإحصائيات', 'error');
+            } finally {
+                if (btn) setButtonLoading(btn, false);
+                isRefreshing = false;
             }
         }
+
+        // Auto refresh with timer
+        function startAutoRefresh() {
+            updateLastUpdated();
+            setInterval(updateLastUpdated, 10000);
+            refreshTimer = setInterval(refreshStats, REFRESH_INTERVAL);
+        }
+
+        startAutoRefresh();
 
         // Block IP
         async function blockIP(event) {
             event.preventDefault();
-            const ip = document.getElementById('block-ip-input').value;
-            const reason = document.getElementById('block-reason-input').value;
+            const form = event.target;
+            const ip = document.getElementById('block-ip-input').value.trim();
+            const reason = document.getElementById('block-reason-input').value.trim();
+            const btn = form.querySelector('button[type="submit"]');
+            
+            // Validate IP format (basic)
+            if (!ip) {
+                showToast('يرجى إدخال عنوان IP', 'warning');
+                return false;
+            }
             
             try {
+                setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/block-ip', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -293,22 +545,27 @@
                 
                 const data = await response.json();
                 if (data.success) {
-                    alert('تم حظر العنوان بنجاح');
-                    location.reload();
+                    showToast(`تم حظر ${ip} بنجاح`, 'success');
+                    form.reset();
+                    setTimeout(() => location.reload(), 1500);
                 } else {
-                    alert(data.error || 'حدث خطأ');
+                    showToast(data.error || 'حدث خطأ', 'error');
                 }
             } catch (error) {
-                alert('خطأ في الاتصال');
+                showToast('خطأ في الاتصال', 'error');
+            } finally {
+                setButtonLoading(btn, false);
             }
             return false;
         }
 
-        // Unblock IP
+        // Unblock IP with inline confirmation
         async function unblockIP(ip) {
-            if (!confirm('هل أنت متأكد من إلغاء حظر ' + ip + '؟')) return;
+            const item = event.target.closest('.item-list li');
+            const btn = event.target;
             
             try {
+                setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/unblock-ip', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -317,20 +574,33 @@
                 
                 const data = await response.json();
                 if (data.success) {
-                    alert('تم إلغاء الحظر بنجاح');
-                    location.reload();
+                    showToast(`تم إلغاء حظر ${ip}`, 'success');
+                    if (item) item.style.opacity = '0.5';
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    showToast(data.error || 'حدث خطأ', 'error');
+                    setButtonLoading(btn, false);
                 }
             } catch (error) {
-                alert('خطأ في الاتصال');
+                showToast('خطأ في الاتصال', 'error');
+                setButtonLoading(btn, false);
             }
         }
 
         // Block domain
         async function blockDomain(event) {
             event.preventDefault();
-            const domain = document.getElementById('block-domain-input').value;
+            const form = event.target;
+            const domain = document.getElementById('block-domain-input').value.trim();
+            const btn = form.querySelector('button[type="submit"]');
+            
+            if (!domain) {
+                showToast('يرجى إدخال النطاق', 'warning');
+                return false;
+            }
             
             try {
+                setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/block-domain', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -339,20 +609,27 @@
                 
                 const data = await response.json();
                 if (data.success) {
-                    alert('تم حظر النطاق بنجاح');
-                    location.reload();
+                    showToast(`تم حظر ${domain} بنجاح`, 'success');
+                    form.reset();
+                    setTimeout(() => location.reload(), 1500);
+                } else {
+                    showToast(data.error || 'حدث خطأ', 'error');
                 }
             } catch (error) {
-                alert('خطأ في الاتصال');
+                showToast('خطأ في الاتصال', 'error');
+            } finally {
+                setButtonLoading(btn, false);
             }
             return false;
         }
 
-        // Unblock domain
+        // Unblock domain with inline confirmation
         async function unblockDomain(domain) {
-            if (!confirm('هل أنت متأكد من إلغاء حظر ' + domain + '؟')) return;
+            const item = event.target.closest('.item-list li');
+            const btn = event.target;
             
             try {
+                setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/unblock-domain', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -361,11 +638,16 @@
                 
                 const data = await response.json();
                 if (data.success) {
-                    alert('تم إلغاء الحظر بنجاح');
-                    location.reload();
+                    showToast(`تم إلغاء حظر ${domain}`, 'success');
+                    if (item) item.style.opacity = '0.5';
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    showToast(data.error || 'حدث خطأ', 'error');
+                    setButtonLoading(btn, false);
                 }
             } catch (error) {
-                alert('خطأ في الاتصال');
+                showToast('خطأ في الاتصال', 'error');
+                setButtonLoading(btn, false);
             }
         }
 
@@ -375,6 +657,7 @@
             const currentState = btn.classList.contains('on');
             
             try {
+                setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/toggle-feature', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -383,29 +666,44 @@
                 
                 const data = await response.json();
                 if (data.success) {
-                    location.reload();
+                    showToast(`تم ${!currentState ? 'تفعيل' : 'تعطيل'} الميزة`, 'success');
+                    setTimeout(() => location.reload(), 1000);
+                } else {
+                    showToast(data.error || 'حدث خطأ', 'error');
+                    setButtonLoading(btn, false);
                 }
             } catch (error) {
-                alert('خطأ في الاتصال');
+                showToast('خطأ في الاتصال', 'error');
+                setButtonLoading(btn, false);
             }
         }
 
-        // Clear all sessions
+        // Clear all sessions with hardened confirmation
         async function clearAllSessions() {
-            if (!confirm('هل أنت متأكد من مسح جميع الجلسات؟')) return;
+            const btn = event.target.closest('.btn-danger');
+            const sessionCount = document.getElementById('active-sessions')?.textContent || '0';
+            
+            // Custom confirmation with count
+            const confirmed = confirm(`هل أنت متأكد من مسح جميع ${sessionCount} الجلسات النشطة؟\n\nلا يمكن التراجع عن هذا الإجراء.`);
+            if (!confirmed) return;
             
             try {
+                setButtonLoading(btn, true);
                 const response = await fetch('/admin/api/clear-sessions', {
                     method: 'POST'
                 });
                 
                 const data = await response.json();
                 if (data.success) {
-                    alert('تم مسح جميع الجلسات');
-                    location.reload();
+                    showToast('تم مسح جميع الجلسات بنجاح', 'success');
+                    setTimeout(() => location.reload(), 1500);
+                } else {
+                    showToast(data.error || 'حدث خطأ', 'error');
+                    setButtonLoading(btn, false);
                 }
             } catch (error) {
-                alert('خطأ في الاتصال');
+                showToast('خطأ في الاتصال', 'error');
+                setButtonLoading(btn, false);
             }
         }
 

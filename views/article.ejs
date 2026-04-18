@@ -19,6 +19,8 @@
                     <%- article.content %>
                 </div>
 
+                <%- include('partials/affiliate-offers', { affiliateContext: 'blog' }) %>
+
                 <div class="article-footer">
                     <a href="/" class="cta-button"><%= t.start_browsing || 'Start Browsing Now' %></a>
                 </div>
