@@ -5,6 +5,8 @@
     <%- include('partials/navbar') %>
 
     <div class="container">
+        
+        <!-- Hero Section -->
         <header class="hero hero-geo">
             <div class="geo-bg" aria-hidden="true">
                 <div class="geo-shape geo-1"></div>
@@ -25,6 +27,7 @@
             </div>
         </header>
 
+        <!-- Search Section -->
         <section id="search" class="search-wrap">
             <div class="search-container">
                 <div class="search-hint">
@@ -72,212 +75,231 @@
             </div>
         </section>
 
-            <section id="features" class="features-section">
-                <h2 class="features-title"><%= t.features_title %></h2>
-                <div class="features-list">
-                    <div class="feature-card-h">
-                        <div class="feature-icon-h">
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <h2 class="features-title"><%= t.features_title %></h2>
+            <div class="features-list">
+                
+                <div class="feature-card-h">
+                    <div class="feature-icon-h">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content-h">
+                        <h3><%= t.privacy_title %></h3>
+                        <p><%= t.privacy_desc %></p>
+                    </div>
+                </div>
+
+                <div class="feature-card-h">
+                    <div class="feature-icon-h">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content-h">
+                        <h3><%= t.speed_title %></h3>
+                        <p><%= t.speed_desc %></p>
+                    </div>
+                </div>
+
+                <div class="feature-card-h">
+                    <div class="feature-icon-h">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content-h">
+                        <h3><%= t.protection_title %></h3>
+                        <p><%= t.protection_desc %></p>
+                    </div>
+                </div>
+
+                <div class="feature-card-h">
+                    <div class="feature-icon-h">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                            <path d="M12 18h.01"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content-h">
+                        <h3><%= t.devices_title %></h3>
+                        <p><%= t.devices_desc %></p>
+                    </div>
+                </div>
+
+                <div class="feature-card-h">
+                    <div class="feature-icon-h">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content-h">
+                        <h3><%= t.encryption_title %></h3>
+                        <p><%= t.encryption_desc %></p>
+                    </div>
+                </div>
+
+                <div class="feature-card-h">
+                    <div class="feature-icon-h">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <div class="feature-content-h">
+                        <h3><%= t.support_title %></h3>
+                        <p><%= t.support_desc %></p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-it-works">
+            <h2 class="how-title"><%= t.how_it_works_title %></h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                                <circle cx="11" cy="11" r="8"/>
+                                <path d="m21 21-4.35-4.35"/>
                             </svg>
                         </div>
-                        <div class="feature-content-h">
-                            <h3><%= t.privacy_title %></h3>
-                            <p><%= t.privacy_desc %></p>
-                        </div>
+                        <h3>1</h3>
+                        <p><%= t.step1 %></p>
                     </div>
-                    <div class="feature-card-h">
-                        <div class="feature-icon-h">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-content-h">
-                            <h3><%= t.speed_title %></h3>
-                            <p><%= t.speed_desc %></p>
-                        </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line"></div>
                     </div>
-                    <div class="feature-card-h">
-                        <div class="feature-icon-h">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                             </svg>
                         </div>
-                        <div class="feature-content-h">
-                            <h3><%= t.protection_title %></h3>
-                            <p><%= t.protection_desc %></p>
-                        </div>
+                        <h3>2</h3>
+                        <p><%= t.step2 %></p>
                     </div>
-                    <div class="feature-card-h">
-                        <div class="feature-icon-h">
+                </div>
+
+                <div class="timeline-item timeline-item-last">
+                    <div class="timeline-marker">
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-                                <path d="M12 18h.01"/>
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                <path d="m9 11 3 3L22 4"/>
                             </svg>
                         </div>
-                        <div class="feature-content-h">
-                            <h3><%= t.devices_title %></h3>
-                            <p><%= t.devices_desc %></p>
-                        </div>
-                    </div>
-                    <div class="feature-card-h">
-                        <div class="feature-icon-h">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                <path d="m9 12 2 2 4-4"/>
-                            </svg>
-                        </div>
-                        <div class="feature-content-h">
-                            <h3><%= t.encryption_title %></h3>
-                            <p><%= t.encryption_desc %></p>
-                        </div>
-                    </div>
-                    <div class="feature-card-h">
-                        <div class="feature-icon-h">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                            </svg>
-                        </div>
-                        <div class="feature-content-h">
-                            <h3><%= t.support_title %></h3>
-                            <p><%= t.support_desc %></p>
-                        </div>
+                        <h3>3</h3>
+                        <p><%= t.step3 %></p>
                     </div>
                 </div>
-            </section>
 
-            <section class="how-it-works">
-                <h2 class="how-title"><%= t.how_it_works_title %></h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"/>
-                                    <path d="m21 21-4.35-4.35"/>
-                                </svg>
-                            </div>
-                            <h3>1</h3>
-                            <p><%= t.step1 %></p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                            <div class="timeline-line"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                                </svg>
-                            </div>
-                            <h3>2</h3>
-                            <p><%= t.step2 %></p>
-                        </div>
-                    </div>
-                    <div class="timeline-item timeline-item-last">
-                        <div class="timeline-marker">
-                            <div class="timeline-dot"></div>
-                        </div>
-                        <div class="timeline-content">
-                            <div class="timeline-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                    <path d="m9 11 3 3L22 4"/>
-                                </svg>
-                            </div>
-                            <h3>3</h3>
-                            <p><%= t.step3 %></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
+        </section>
 
-            <% if (t.why_use_title) { %>
-            <div class="info-section why-use">
-                <h2><%= t.why_use_title %></h2>
-                <div class="info-grid">
-                    <% t.why_use_items.forEach(function(item) { %>
-                        <div class="info-card">
-                            <h3><%= item.title %></h3>
-                            <p><%= item.desc %></p>
-                        </div>
+        <!-- Why Use Section -->
+        <% if (t.why_use_title) { %>
+        <section class="info-section why-use">
+            <h2><%= t.why_use_title %></h2>
+            <div class="info-grid">
+                <% t.why_use_items.forEach(function(item) { %>
+                    <div class="info-card">
+                        <h3><%= item.title %></h3>
+                        <p><%= item.desc %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- How Proxy Works Section -->
+        <% if (t.how_proxy_works_title) { %>
+        <section class="info-section how-proxy-works">
+            <h2><%= t.how_proxy_works_title %></h2>
+            <div class="text-content">
+                <p><%= t.how_proxy_works_desc %></p>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- Security & Privacy Section -->
+        <% if (t.security_privacy_title) { %>
+        <section class="info-section security-privacy">
+            <h2><%= t.security_privacy_title %></h2>
+            <div class="security-grid">
+                <% t.security_privacy_items.forEach(function(item) { %>
+                    <div class="security-card">
+                        <div class="security-icon"><%= item.icon %></div>
+                        <h3><%= item.title %></h3>
+                        <p><%= item.desc %></p>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- Use Cases Section -->
+        <% if (t.use_cases_title) { %>
+        <section class="info-section use-cases">
+            <h2><%= t.use_cases_title %></h2>
+            <ul class="use-cases-list">
+                <% t.use_cases_items.forEach(function(item) { %>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <span><%= item %></span>
+                    </li>
+                <% }); %>
+            </ul>
+        </section>
+        <% } %>
+
+        <!-- FAQ Section -->
+        <% if (t.faq_title) { %>
+        <section class="info-section faq-section">
+            <h2><%= t.faq_title %></h2>
+            <div class="faq-grid">
+                <% t.faq_items.forEach(function(item) { %>
+                    <div class="faq-item">
+                        <div class="faq-question"><%= item.q %></div>
+                        <div class="faq-answer"><%= item.a %></div>
+                    </div>
+                <% }); %>
+            </div>
+        </section>
+        <% } %>
+
+        <!-- Popular Sites Section -->
+        <section class="popular-sites">
+            <h2><%= t.popular_sites_title %></h2>
+            <div class="sites-grid">
+                <% if (t.popular_sites && t.popular_sites.length > 0) { %>
+                    <% t.popular_sites.forEach(function(site) { %>
+                        <a href="#" onclick="event.preventDefault(); document.getElementById('url-input').value='<%= site.url %>'; document.getElementById('search-form').submit();" class="site-btn">
+                            <span><%= site.icon %></span> <%= site.name %>
+                        </a>
                     <% }); %>
-                </div>
+                <% } %>
             </div>
-            <% } %>
-
-            <% if (t.how_proxy_works_title) { %>
-            <div class="info-section how-proxy-works">
-                <h2><%= t.how_proxy_works_title %></h2>
-                <div class="text-content">
-                    <p><%= t.how_proxy_works_desc %></p>
-                </div>
-            </div>
-            <% } %>
-
-            <% if (t.security_privacy_title) { %>
-            <div class="info-section security-privacy">
-                <h2><%= t.security_privacy_title %></h2>
-                <div class="security-grid">
-                    <% t.security_privacy_items.forEach(function(item) { %>
-                        <div class="security-card">
-                            <div class="security-icon"><%= item.icon %></div>
-                            <h3><%= item.title %></h3>
-                            <p><%= item.desc %></p>
-                        </div>
-                    <% }); %>
-                </div>
-            </div>
-            <% } %>
-
-            <% if (t.use_cases_title) { %>
-            <div class="info-section use-cases">
-                <h2><%= t.use_cases_title %></h2>
-                <ul class="use-cases-list">
-                    <% t.use_cases_items.forEach(function(item) { %>
-                        <li>
-                            <span class="check-icon">✓</span>
-                            <span><%= item %></span>
-                        </li>
-                    <% }); %>
-                </ul>
-            </div>
-            <% } %>
-
-            <% if (t.faq_title) { %>
-            <div class="info-section faq-section">
-                <h2><%= t.faq_title %></h2>
-                <div class="faq-grid">
-                    <% t.faq_items.forEach(function(item) { %>
-                        <div class="faq-item">
-                            <div class="faq-question"><%= item.q %></div>
-                            <div class="faq-answer"><%= item.a %></div>
-                        </div>
-                    <% }); %>
-                </div>
-            </div>
-            <% } %>
-
-            <div class="popular-sites">
-                <h2><%= t.popular_sites_title %></h2>
-                <div class="sites-grid">
-                    <% if (t.popular_sites && t.popular_sites.length > 0) { %>
-                        <% t.popular_sites.forEach(function(site) { %>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('url-input').value='<%= site.url %>'; document.getElementById('search-form').submit();" class="site-btn">
-                                <span><%= site.icon %></span> <%= site.name %>
-                            </a>
-                        <% }); %>
-                    <% } %>
-                </div>
-            </div>
+        </section>
         
     </div>
 
@@ -288,7 +310,9 @@
             var input = document.getElementById('url-input');
             var form = document.getElementById('search-form');
             var btn = form ? form.querySelector('.search-btn-pill') : null;
+            
             if (input) input.focus();
+            
             if (form) {
                 form.addEventListener('submit', function(e) {
                     if (!input.value.trim()) {
@@ -300,6 +324,7 @@
                     if (btn) btn.classList.add('loading');
                 });
             }
+            
             var popularBtns = document.querySelectorAll('.site-btn');
             popularBtns.forEach(function(btn) {
                 btn.addEventListener('click', function(e) {
