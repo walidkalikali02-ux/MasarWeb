@@ -1,28 +1,66 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('partials/head', { pageTitle: t.blog_title || 'Blog' }) %>
-<body>
+<body class="blog-page">
     <%- include('partials/navbar') %>
 
     <main class="main-content">
         <div class="container">
-            <h1 class="page-title"><%= t.blog_title || 'Blog' %></h1>
             
-            <div class="blog-grid">
+            <header class="page-header animate-on-scroll">
+                <h1 class="page-title"><%= t.blog_title || 'Blog' %></h1>
+            </header>
+            
+            <section class="blog-grid stagger-children" aria-label="Blog Articles">
                 <% articles.forEach(function(article) { %>
                     <article class="blog-card">
                         <div class="blog-card-content">
-                            <span class="blog-date"><%= article.date %></span>
-                            <h2><a href="/blog/<%= article.slug %>"><%= article.title %></a></h2>
+                            <time class="blog-date" datetime="<%= article.date %>"><%= article.date %></time>
+                            <h2>
+                                <a href="/blog/<%= article.slug %>"><%= article.title %></a>
+                            </h2>
                             <p><%= article.excerpt %></p>
-                            <a href="/blog/<%= article.slug %>" class="read-more"><%= t.read_more || 'Read More' %> &rarr;</a>
+                            <a href="/blog/<%= article.slug %>" class="read-more">
+                                <%= t.read_more || 'Read More' %>
+                            </a>
                         </div>
                     </article>
                 <% }); %>
-            </div>
+            </section>
+
         </div>
     </main>
 
     <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll animation observer
+            var animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-children');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

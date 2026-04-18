@@ -4,16 +4,19 @@
 <body class="about-page">
     <%- include('partials/navbar') %>
 
-    <div class="container">
-        <main class="about-layout">
-            <section class="about-hero">
+    <main class="container">
+        <article class="about-layout">
+            
+            <!-- Hero Section -->
+            <header class="about-hero animate-on-scroll">
                 <p class="about-kicker"><%= currentLang === 'ar' ? 'صفحة تعريف' : 'About Page' %></p>
                 <h1><%= about.title %></h1>
                 <p class="about-intro"><%= about.intro %></p>
                 <p class="about-summary"><%= about.summary %></p>
-            </section>
+            </header>
 
-            <section class="about-split">
+            <!-- Mission & Story Split -->
+            <section class="about-split stagger-children" aria-label="Mission and Story">
                 <div class="about-panel">
                     <h2><%= about.missionTitle %></h2>
                     <p><%= about.missionText %></p>
@@ -24,9 +27,10 @@
                 </div>
             </section>
 
-            <section class="about-pillar-section">
-                <h2><%= about.pillarsTitle %></h2>
-                <div class="about-pillars">
+            <!-- Pillars Section -->
+            <section class="about-pillar-section" aria-labelledby="pillars-title">
+                <h2 id="pillars-title" class="animate-on-scroll"><%= about.pillarsTitle %></h2>
+                <div class="about-pillars stagger-children">
                     <% about.pillars.forEach(function(pillar) { %>
                         <article class="about-pillar-card">
                             <h3><%= pillar.title %></h3>
@@ -36,12 +40,13 @@
                 </div>
             </section>
 
-            <section class="about-audience">
-                <div class="about-audience-copy">
-                    <h2><%= about.audienceTitle %></h2>
+            <!-- Audience Section -->
+            <section class="about-audience" aria-labelledby="audience-title">
+                <div class="about-audience-copy animate-on-scroll">
+                    <h2 id="audience-title"><%= about.audienceTitle %></h2>
                     <p><%= about.audienceText %></p>
                 </div>
-                <div class="about-stats">
+                <div class="about-stats stagger-children">
                     <% about.stats.forEach(function(stat) { %>
                         <div class="about-stat">
                             <strong><%= stat.value %></strong>
@@ -51,9 +56,10 @@
                 </div>
             </section>
 
-            <section class="about-proof">
-                <h2><%= about.proofTitle %></h2>
-                <div class="about-proof-grid">
+            <!-- Proof Section -->
+            <section class="about-proof" aria-labelledby="proof-title">
+                <h2 id="proof-title" class="animate-on-scroll"><%= about.proofTitle %></h2>
+                <div class="about-proof-grid stagger-children">
                     <% about.proofCards.forEach(function(card) { %>
                         <article class="about-proof-card">
                             <h3><%= card.title %></h3>
@@ -63,9 +69,10 @@
                 </div>
             </section>
 
-            <section class="about-quotes">
-                <h2><%= about.quotesTitle %></h2>
-                <div class="about-quote-grid">
+            <!-- Quotes Section -->
+            <section class="about-quotes" aria-labelledby="quotes-title">
+                <h2 id="quotes-title" class="animate-on-scroll"><%= about.quotesTitle %></h2>
+                <div class="about-quote-grid stagger-children">
                     <% about.quotes.forEach(function(quote) { %>
                         <blockquote class="about-quote-card">
                             <p><%= quote %></p>
@@ -74,17 +81,49 @@
                 </div>
             </section>
 
-            <section class="about-cta">
-                <h2><%= about.ctaTitle %></h2>
+            <!-- CTA Section -->
+            <section class="about-cta animate-on-scroll" aria-labelledby="cta-title">
+                <h2 id="cta-title"><%= about.ctaTitle %></h2>
                 <p><%= about.ctaText %></p>
                 <div class="about-cta-actions">
                     <a href="/" class="cta-button"><%= about.ctaPrimary %></a>
                     <a href="/tools" class="about-secondary-link"><%= about.ctaSecondary %></a>
                 </div>
             </section>
-        </main>
-    </div>
+
+        </article>
+    </main>
 
     <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll animation observer
+            var animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-children');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

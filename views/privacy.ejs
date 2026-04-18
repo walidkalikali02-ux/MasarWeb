@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('partials/head', { pageTitle: t.privacy_page.title + ' - ' + t.title }) %>
-<body>
+<body class="utility-page">
     <%- include('partials/navbar') %>
 
-    <div class="container">
-        <main class="content-page">
-            <h1><%= t.privacy_page.title %></h1>
-            <p class="last-updated"><%= t.privacy_page.last_updated %></p>
+    <main class="container">
+        <article class="utility-content animate-on-scroll">
             
-            <section>
-                <h2><%= t.privacy_page.collection_title %></h2>
+            <header>
+                <h1><%= t.privacy_page.title %></h1>
+                <p class="last-updated"><%= t.privacy_page.last_updated %></p>
+            </header>
+            
+            <section aria-labelledby="collection-heading">
+                <h2 id="collection-heading"><%= t.privacy_page.collection_title %></h2>
                 <p><%= t.privacy_page.collection_text %></p>
             </section>
 
-            <section>
-                <h2><%= t.privacy_page.usage_title %></h2>
+            <section aria-labelledby="usage-heading">
+                <h2 id="usage-heading"><%= t.privacy_page.usage_title %></h2>
                 <p><%= t.privacy_page.usage_text %></p>
             </section>
 
-            <section>
-                <h2><%= t.privacy_page.cookies_title %></h2>
+            <section aria-labelledby="cookies-heading">
+                <h2 id="cookies-heading"><%= t.privacy_page.cookies_title %></h2>
                 <p><%= t.privacy_page.cookies_text %></p>
             </section>
             
             <% if (t.privacy_page.retention_title) { %>
-            <section>
-                <h2><%= t.privacy_page.retention_title %></h2>
+            <section aria-labelledby="retention-heading">
+                <h2 id="retention-heading"><%= t.privacy_page.retention_title %></h2>
                 <p><%= t.privacy_page.retention_text %></p>
             </section>
             <% } %>
             
             <% if (t.privacy_page.security_title) { %>
-            <section>
-                <h2><%= t.privacy_page.security_title %></h2>
+            <section aria-labelledby="security-heading">
+                <h2 id="security-heading"><%= t.privacy_page.security_title %></h2>
                 <p><%= t.privacy_page.security_text %></p>
             </section>
             <% } %>
             
             <% if (t.privacy_page.third_parties_title) { %>
-            <section>
-                <h2><%= t.privacy_page.third_parties_title %></h2>
+            <section aria-labelledby="thirdparties-heading">
+                <h2 id="thirdparties-heading"><%= t.privacy_page.third_parties_title %></h2>
                 <p><%= t.privacy_page.third_parties_text %></p>
             </section>
             <% } %>
             
             <% if (t.privacy_page.rights_title) { %>
-            <section>
-                <h2><%= t.privacy_page.rights_title %></h2>
+            <section aria-labelledby="rights-heading">
+                <h2 id="rights-heading"><%= t.privacy_page.rights_title %></h2>
                 <% if (t.privacy_page.rights_items && t.privacy_page.rights_items.length) { %>
                 <ul>
                     <% t.privacy_page.rights_items.forEach(function(item){ %>
@@ -59,16 +62,47 @@
             <% } %>
             
             <% if (t.privacy_page.contact_title) { %>
-            <section>
-                <h2><%= t.privacy_page.contact_title %></h2>
+            <section aria-labelledby="contact-heading">
+                <h2 id="contact-heading"><%= t.privacy_page.contact_title %></h2>
                 <p><%= t.privacy_page.contact_text %></p>
             </section>
             <% } %>
             
-            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> <%= t.error.back_home %></a>
-        </main>
-    </div>
+            <footer class="page-footer">
+                <a href="/" class="back-link">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> 
+                    <%= t.error.back_home %>
+                </a>
+            </footer>
+
+        </article>
+    </main>
 
     <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

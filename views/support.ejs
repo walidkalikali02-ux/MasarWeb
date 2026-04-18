@@ -1,39 +1,81 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('partials/head', { pageTitle: t.support_page.title + ' - ' + t.title }) %>
-<body>
+<body class="utility-page">
     <%- include('partials/navbar') %>
 
-    <div class="container">
-        <main class="content-page">
-            <h1><%= t.support_page.title %></h1>
-            <p><%= t.support_page.desc %></p>
+    <main class="container">
+        <article class="utility-content animate-on-scroll">
             
-            <div class="contact-info">
-                <h2><%= t.support_page.contact_info %></h2>
-                <p><i class="fas fa-envelope"></i> support@masarweb.com</p>
-            </div>
+            <header>
+                <h1><%= t.support_page.title %></h1>
+                <p class="lead-text"><%= t.support_page.desc %></p>
+            </header>
+            
+            <section class="contact-info" aria-labelledby="contact-heading">
+                <h2 id="contact-heading"><%= t.support_page.contact_info %></h2>
+                <p>
+                    <i class="fas fa-envelope" aria-hidden="true"></i> 
+                    <a href="mailto:support@masarweb.com">support@masarweb.com</a>
+                </p>
+            </section>
 
-            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');">
-                <div class="form-group">
-                    <label><%= t.support_page.form_name %></label>
-                    <input type="text" required>
-                </div>
-                <div class="form-group">
-                    <label><%= t.support_page.form_email %></label>
-                    <input type="email" required>
-                </div>
-                <div class="form-group">
-                    <label><%= t.support_page.form_message %></label>
-                    <textarea required></textarea>
-                </div>
-                <button type="submit" class="btn"><%= t.support_page.form_send %></button>
-            </form>
+            <section aria-labelledby="form-heading">
+                <h2 id="form-heading" class="sr-only">Contact Form</h2>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Message sent!');" aria-label="Contact support form">
+                    <div class="form-group">
+                        <label for="contact-name"><%= t.support_page.form_name %></label>
+                        <input type="text" id="contact-name" name="name" class="form-input" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email"><%= t.support_page.form_email %></label>
+                        <input type="email" id="contact-email" name="email" class="form-input" required aria-required="true">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message"><%= t.support_page.form_message %></label>
+                        <textarea id="contact-message" name="message" class="form-input" rows="5" required aria-required="true"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <%= t.support_page.form_send %>
+                    </button>
+                </form>
+            </section>
             
-            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> <%= t.error.back_home %></a>
-        </main>
-    </div>
+            <footer class="page-footer">
+                <a href="/" class="back-link">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> 
+                    <%= t.error.back_home %>
+                </a>
+            </footer>
+
+        </article>
+    </main>
 
     <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

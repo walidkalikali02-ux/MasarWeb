@@ -1,322 +1,245 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('../partials/head', { pageTitle: title, description: description }) %>
-<body>
+<body class="tools-page">
     <%- include('../partials/navbar') %>
 
     <main class="main-content">
         <div class="container">
-            <h1 class="page-title"><%= title %></h1>
-            <p style="margin-top: 1rem; color: var(--text-light); max-width: 760px;">
-                <%= currentLang === 'ar'
-                    ? 'الأدوات التي تحمل شارة "محاكاة" تعرض نتائج أو نماذج توضيحية وليست خدمات أمنية تشغيلية حقيقية.'
-                    : 'Tools marked with the "Simulation" badge return demo/sample results and are not operational security services.' %>
-            </p>
             
-            <div class="tools-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <header class="page-header animate-on-scroll">
+                <h1 class="page-title"><%= title %></h1>
+                <p class="tools-intro">
+                    <%= currentLang === 'ar'
+                        ? 'الأدوات التي تحمل شارة "محاكاة" تعرض نتائج أو نماذج توضيحية وليست خدمات أمنية تشغيلية حقيقية.'
+                        : 'Tools marked with the "Simulation" badge return demo/sample results and are not operational security services.' %>
+                </p>
+            </header>
+            
+            <section class="tools-grid stagger-children" aria-label="Available Tools">
+                
                 <!-- Virus Scanner Tool Card -->
-                <a href="/tools/virus-scanner" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🛡️
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'فاحص الفيروسات' : 'Virus Scanner' %></h2>
-                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
-                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
-                    </span>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'واجهة عرض تجريبي لنتائج فحص ملفات وروابط بشكل محاكى.' : 'Demo interface for simulated file and URL scanning results.' %>
-                    </p>
+                <a href="/tools/virus-scanner" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🛡️</div>
+                    <h2><%= currentLang === 'ar' ? 'فاحص الفيروسات' : 'Virus Scanner' %></h2>
+                    <span class="sim-badge"><%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %></span>
+                    <p><%= currentLang === 'ar' ? 'واجهة عرض تجريبي لنتائج فحص ملفات وروابط بشكل محاكى.' : 'Demo interface for simulated file and URL scanning results.' %></p>
                 </a>
 
                 <!-- Absence Deduction Calculator Tool Card -->
-                <a href="/tools/absence-deduction" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🗓️
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة خصم الغياب' : 'Absence Deduction' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'احسب خصم الغياب وفق معدل يومي = الشهري ÷ 30.' : 'Calculate absence deductions (daily rate = monthly ÷ 30).' %>
-                    </p>
+                <a href="/tools/absence-deduction" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🗓️</div>
+                    <h2><%= currentLang === 'ar' ? 'حاسبة خصم الغياب' : 'Absence Deduction' %></h2>
+                    <p><%= currentLang === 'ar' ? 'احسب خصم الغياب وفق معدل يومي = الشهري ÷ 30.' : 'Calculate absence deductions (daily rate = monthly ÷ 30).' %></p>
                 </a>
 
                 <!-- Password Analyzer Tool Card -->
-                <a href="/tools/password-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔐
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'تحليل كلمة المرور' : 'Password Analyzer' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'قياس قوة كلمة المرور والوقت المقدر لكسرها.' : 'Measure password strength and estimated crack time.' %>
-                    </p>
+                <a href="/tools/password-analyzer" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔐</div>
+                    <h2><%= currentLang === 'ar' ? 'تحليل كلمة المرور' : 'Password Analyzer' %></h2>
+                    <p><%= currentLang === 'ar' ? 'قياس قوة كلمة المرور والوقت المقدر لكسرها.' : 'Measure password strength and estimated crack time.' %></p>
                 </a>
 
                 <!-- Password Pattern Analyzer Tool Card -->
-                <a href="/tools/password-pattern-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🧭
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محلل أنماط كلمات المرور' : 'Password Pattern Analyzer' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'كشف مسارات لوحة المفاتيح والتسلسلات والكلمات المتوقعة داخل كلمة المرور.' : 'Detect keyboard walks, sequences, and structural patterns that make a password predictable.' %>
-                    </p>
+                <a href="/tools/password-pattern-analyzer" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🧭</div>
+                    <h2><%= currentLang === 'ar' ? 'محلل أنماط كلمات المرور' : 'Password Pattern Analyzer' %></h2>
+                    <p><%= currentLang === 'ar' ? 'كشف مسارات لوحة المفاتيح والتسلسلات والكلمات المتوقعة داخل كلمة المرور.' : 'Detect keyboard walks, sequences, and structural patterns that make a password predictable.' %></p>
                 </a>
 
                 <!-- Browser Biometric & WebAuthn Compatibility Checker Tool Card -->
-                <a href="/tools/biometric-readiness-checker" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🖐️
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مدقق جاهزية القياسات الحيوية' : 'Biometric Readiness Checker' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'تحقق من دعم WebAuthn والمفاتيح المرورية والمصادقة البيومترية والمتصفحات الداعمة لمفاتيح الأمان.' : 'Validate WebAuthn, passkey, platform biometric, and external security key readiness in the current browser.' %>
-                    </p>
+                <a href="/tools/biometric-readiness-checker" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🖐️</div>
+                    <h2><%= currentLang === 'ar' ? 'مدقق جاهزية القياسات الحيوية' : 'Biometric Readiness Checker' %></h2>
+                    <p><%= currentLang === 'ar' ? 'تحقق من دعم WebAuthn والمفاتيح المرورية والمصادقة البيومترية والمتصفحات الداعمة لمفاتيح الأمان.' : 'Validate WebAuthn, passkey, platform biometric, and external security key readiness in the current browser.' %></p>
                 </a>
 
                 <!-- WebAuthn & FIDO2 Debugging Playground Tool Card -->
-                <a href="/tools/webauthn-debugger" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔐
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مختبر WebAuthn' : 'WebAuthn Debugger' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'محاكاة وتصحيح سير عمل WebAuthn مع فك تشفير CBOR وتفتيش بيانات العميل في الوقت الفعلي.' : 'Simulate and debug WebAuthn registration and authentication flows with live CBOR decoding and client data inspection.' %>
-                    </p>
+                <a href="/tools/webauthn-debugger" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔐</div>
+                    <h2><%= currentLang === 'ar' ? 'مختبر WebAuthn' : 'WebAuthn Debugger' %></h2>
+                    <p><%= currentLang === 'ar' ? 'محاكاة وتصحيح سير عمل WebAuthn مع فك تشفير CBOR وتفتيش بيانات العميل في الوقت الفعلي.' : 'Simulate and debug WebAuthn registration and authentication flows with live CBOR decoding and client data inspection.' %></p>
                 </a>
 
                 <!-- OAuth 2.0 Flow Visualizer Tool Card -->
-                <a href="/tools/oauth-flow-visualizer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔄
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'عارض تدفق OAuth 2.0' : 'OAuth Flow Visualizer' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'تصور وتسلسل طلبات واستجابات OAuth 2.0 مع رسوم بيانية وتوصيات أمان.' : 'Visualize OAuth 2.0 authentication flows with sequence diagrams and security recommendations.' %>
-                    </p>
+                <a href="/tools/oauth-flow-visualizer" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔄</div>
+                    <h2><%= currentLang === 'ar' ? 'عارض تدفق OAuth 2.0' : 'OAuth Flow Visualizer' %></h2>
+                    <p><%= currentLang === 'ar' ? 'تصور وتسلسل طلبات واستجابات OAuth 2.0 مع رسوم بيانية وتوصيات أمان.' : 'Visualize OAuth 2.0 authentication flows with sequence diagrams and security recommendations.' %></p>
                 </a>
 
                 <!-- JWT Decoder & Inspector Tool Card -->
-                <a href="/tools/jwt-decoder" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔓
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محلل JWT' : 'JWT Decoder' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'فك تشفير وتحليل رموز JWT للتحقق من المحتوى والتوقيع.' : 'Decode and inspect JWT tokens to verify payloads, headers, and signature status.' %>
-                    </p>
+                <a href="/tools/jwt-decoder" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔓</div>
+                    <h2><%= currentLang === 'ar' ? 'محلل JWT' : 'JWT Decoder' %></h2>
+                    <p><%= currentLang === 'ar' ? 'فك تشفير وتحليل رموز JWT للتحقق من المحتوى والتوقيع.' : 'Decode and inspect JWT tokens to verify payloads, headers, and signature status.' %></p>
                 </a>
 
                 <!-- JWT Token Generator Tool Card -->
-                <a href="/tools/jwt-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        ✍️
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد JWT' : 'JWT Generator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إنشاء وتوقيع رموز JWT المخصصة لاختبار واجهات برمجة التطبيقات.' : 'Create and sign custom JSON Web Tokens for API testing and authentication workflows.' %>
-                    </p>
+                <a href="/tools/jwt-generator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">✍️</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد JWT' : 'JWT Generator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'إنشاء وتوقيع رموز JWT المخصصة لاختبار واجهات برمجة التطبيقات.' : 'Create and sign custom JSON Web Tokens for API testing and authentication workflows.' %></p>
                 </a>
 
                 <!-- Session Token Analyzer Tool Card -->
-                <a href="/tools/session-token-analyzer" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔍
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محلل رموز الجلسة' : 'Session Token Analyzer' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'فك تشفير بيانات الجلسة والتحقق من التوقيع وفحص سمات أمان ملفات تعريف الارتباط.' : 'Decode session data, verify signatures, and audit cookie security attributes for unauthorized access prevention.' %>
-                    </p>
+                <a href="/tools/session-token-analyzer" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔍</div>
+                    <h2><%= currentLang === 'ar' ? 'محلل رموز الجلسة' : 'Session Token Analyzer' %></h2>
+                    <p><%= currentLang === 'ar' ? 'فك تشفير بيانات الجلسة والتحقق من التوقيع وفحص سمات أمان ملفات تعريف الارتباط.' : 'Decode session data, verify signatures, and audit cookie security attributes for unauthorized access prevention.' %></p>
                 </a>
 
                 <!-- API Key Generator Tool Card -->
-                <a href="/tools/api-key-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔑
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد مفاتيح API' : 'API Key Generator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إنشاء رموز API آمنة مع أذونات مخصصة ومتطلبات وصول للموارد.' : 'Generate secure API tokens with custom permissions, TTL, and granular resource-level access control.' %>
-                    </p>
+                <a href="/tools/api-key-generator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔑</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد مفاتيح API' : 'API Key Generator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'إنشاء رموز API آمنة مع أذونات مخصصة ومتطلبات وصول للموارد.' : 'Generate secure API tokens with custom permissions, TTL, and granular resource-level access control.' %></p>
                 </a>
 
                 <!-- Scoped API Key Generator Tool Card -->
-                <a href="/tools/scoped-api-key-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🎯
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد المفاتيح محدودة النطاق' : 'Scoped API Key Generator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إنشاء مفاتيح API آمنة مع تحكم دقيق في الأذونات والبادئات المخصصة.' : 'Generate secure, permission-restricted API keys for application integration with custom prefixes and scopes.' %>
-                    </p>
+                <a href="/tools/scoped-api-key-generator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🎯</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد المفاتيح محدودة النطاق' : 'Scoped API Key Generator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'إنشاء مفاتيح API آمنة مع تحكم دقيق في الأذونات والبادئات المخصصة.' : 'Generate secure, permission-restricted API keys for application integration with custom prefixes and scopes.' %></p>
                 </a>
 
                 <!-- SSO Tester Tool Card -->
-                <a href="/tools/sso-tester" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔐
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'اختبار SSO' : 'SSO Tester' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'فك تشفير والتحقق من تأكيدات SAML ورموز OIDC.' : 'Decode and validate SAML assertions and OIDC tokens to eliminate authentication errors.' %>
-                    </p>
+                <a href="/tools/sso-tester" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔐</div>
+                    <h2><%= currentLang === 'ar' ? 'اختبار SSO' : 'SSO Tester' %></h2>
+                    <p><%= currentLang === 'ar' ? 'فك تشفير والتحقق من تأكيدات SAML ورموز OIDC.' : 'Decode and validate SAML assertions and OIDC tokens to eliminate authentication errors.' %></p>
                 </a>
 
                 <!-- LDAP Authentication Tester Tool Card -->
-                <a href="/tools/ldap-tester" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔌
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'اختبار LDAP' : 'LDAP Tester' %></h2>
-                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
-                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
-                    </span>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'تحقق من صحة إعدادات اتصال LDAP مع تحليل الأخطاء.' : 'Validate LDAP connection settings with simulated authentication testing and error analysis.' %>
-                    </p>
+                <a href="/tools/ldap-tester" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔌</div>
+                    <h2><%= currentLang === 'ar' ? 'اختبار LDAP' : 'LDAP Tester' %></h2>
+                    <span class="sim-badge"><%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %></span>
+                    <p><%= currentLang === 'ar' ? 'تحقق من صحة إعدادات اتصال LDAP مع تحليل الأخطاء.' : 'Validate LDAP connection settings with simulated authentication testing and error analysis.' %></p>
                 </a>
 
                 <!-- Voice Recorder Tool Card -->
-                <a href="/tools/voice-recorder" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow: 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🎙️
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مسجل الصوت' : 'Voice Recorder' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'سجل صوتك مباشرة في المتصفح واحفظ ملفات MP3 أو WAV.' : 'Record your voice directly in your browser and save MP3 or WAV audio files.' %>
-                    </p>
+                <a href="/tools/voice-recorder" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🎙️</div>
+                    <h2><%= currentLang === 'ar' ? 'مسجل الصوت' : 'Voice Recorder' %></h2>
+                    <p><%= currentLang === 'ar' ? 'سجل صوتك مباشرة في المتصفح واحفظ ملفات MP3 أو WAV.' : 'Record your voice directly in your browser and save MP3 or WAV audio files.' %></p>
                 </a>
 
                 <!-- Encryption Key Strength Tool Card -->
-                <a href="/tools/key-strength" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔑
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة قوة التشفير' : 'Key Strength Calc' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'تقييم أمان مفاتيح التشفير ضد هجمات القوة الغاشمة.' : 'Evaluate encryption key resilience against brute-force attacks.' %>
-                    </p>
+                <a href="/tools/key-strength" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔑</div>
+                    <h2><%= currentLang === 'ar' ? 'حاسبة قوة التشفير' : 'Key Strength Calc' %></h2>
+                    <p><%= currentLang === 'ar' ? 'تقييم أمان مفاتيح التشفير ضد هجمات القوة الغاشمة.' : 'Evaluate encryption key resilience against brute-force attacks.' %></p>
                 </a>
 
                 <!-- Secure Password Generator Tool Card -->
-                <a href="/tools/password-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔒
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد كلمات المرور' : 'Password Generator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إنشاء كلمات مرور آمنة وعشوائية مع خيارات تخصيص متقدمة.' : 'Generate secure random passwords with advanced customization options.' %>
-                    </p>
+                <a href="/tools/password-generator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔒</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد كلمات المرور' : 'Password Generator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'إنشاء كلمات مرور آمنة وعشوائية مع خيارات تخصيص متقدمة.' : 'Generate secure random passwords with advanced customization options.' %></p>
                 </a>
 
                 <!-- Temporary Password & Secret Generator Tool Card -->
-                <a href="/tools/temporary-password-secret-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🧷
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد الأسرار المؤقتة' : 'Temporary Secret Generator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إنشاء كلمات مرور وروابط مشاركة قصيرة العمر مع تاريخ انتهاء وحدود مشاهدة واضحة.' : 'Create expiring secrets, short-lived credential links, and deterministic audit fingerprints.' %>
-                    </p>
+                <a href="/tools/temporary-password-secret-generator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🧷</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد الأسرار المؤقتة' : 'Temporary Secret Generator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'إنشاء كلمات مرور وروابط مشاركة قصيرة العمر مع تاريخ انتهاء وحدود مشاهدة واضحة.' : 'Create expiring secrets, short-lived credential links, and deterministic audit fingerprints.' %></p>
                 </a>
 
                 <!-- Diceware Passphrase Generator Tool Card -->
-                <a href="/tools/diceware-passphrase" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🎲
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد عبارات المرور' : 'Diceware Passphrase' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'إنشاء عبارات مرور سهلة التذكر باستخدام كلمات عشوائية آمنة.' : 'Create memorable passphrases using secure random dictionary words.' %>
-                    </p>
+                <a href="/tools/diceware-passphrase" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🎲</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد عبارات المرور' : 'Diceware Passphrase' %></h2>
+                    <p><%= currentLang === 'ar' ? 'إنشاء عبارات مرور سهلة التذكر باستخدام كلمات عشوائية آمنة.' : 'Create memorable passphrases using secure random dictionary words.' %></p>
                 </a>
 
                 <!-- Password Breach Checker Tool Card -->
-                <a href="/tools/breach-checker" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🔍
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'فاحص تسريب البيانات' : 'Breach Checker' %></h2>
-                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
-                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
-                    </span>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'نموذج توضيحي لفحص التسريبات باستخدام بيانات محاكاة.' : 'Illustrative breach-checking experience using simulated data.' %>
-                    </p>
+                <a href="/tools/breach-checker" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🔍</div>
+                    <h2><%= currentLang === 'ar' ? 'فاحص تسريب البيانات' : 'Breach Checker' %></h2>
+                    <span class="sim-badge"><%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %></span>
+                    <p><%= currentLang === 'ar' ? 'نموذج توضيحي لفحص التسريبات باستخدام بيانات محاكاة.' : 'Illustrative breach-checking experience using simulated data.' %></p>
                 </a>
 
                 <!-- Hash Identifier Tool Card -->
-                <a href="/tools/hash-identifier" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🧬
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'محدد نوع الهاش' : 'Hash Identifier' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'حدد خوارزمية التشفير المستخدمة في سلسلة الهاش بسرعة ودقة.' : 'Identify the cryptographic algorithm used to create a specific hash string.' %>
-                    </p>
+                <a href="/tools/hash-identifier" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🧬</div>
+                    <h2><%= currentLang === 'ar' ? 'محدد نوع الهاش' : 'Hash Identifier' %></h2>
+                    <p><%= currentLang === 'ar' ? 'حدد خوارزمية التشفير المستخدمة في سلسلة الهاش بسرعة ودقة.' : 'Identify the cryptographic algorithm used to create a specific hash string.' %></p>
                 </a>
 
                 <!-- 2FA Code Generator Tool Card -->
-                <a href="/tools/2fa-generator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        📱
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'مولد رموز 2FA' : '2FA Generator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'أنشئ رموز مصادقة ثنائية من مفاتيحك السرية بدون تطبيق هاتف.' : 'Generate 2FA authentication codes from your secret keys without a mobile app.' %>
-                    </p>
+                <a href="/tools/2fa-generator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">📱</div>
+                    <h2><%= currentLang === 'ar' ? 'مولد رموز 2FA' : '2FA Generator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'أنشئ رموز مصادقة ثنائية من مفاتيحك السرية بدون تطبيق هاتف.' : 'Generate 2FA authentication codes from your secret keys without a mobile app.' %></p>
                 </a>
 
                 <!-- Password Expiration Reminder Tool Card -->
-                <a href="/tools/password-expiration" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        ⏰
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'تذكير انتهاء كلمة المرور' : 'Password Expiration' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'تتبع تواريخ انتهاء صلاحية كلمات المرور وتلقي تنبيهات قبل القفل.' : 'Track password expiration dates and receive alerts before account lockouts.' %>
-                    </p>
+                <a href="/tools/password-expiration" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">⏰</div>
+                    <h2><%= currentLang === 'ar' ? 'تذكير انتهاء كلمة المرور' : 'Password Expiration' %></h2>
+                    <p><%= currentLang === 'ar' ? 'تتبع تواريخ انتهاء صلاحية كلمات المرور وتلقي تنبيهات قبل القفل.' : 'Track password expiration dates and receive alerts before account lockouts.' %></p>
                 </a>
 
                 <!-- Password Entropy Calculator Tool Card -->
-                <a href="/tools/entropy-calculator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        📊
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة انتروبيا كلمة المرور' : 'Entropy Calculator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'احسب الانتروبيا الرياضية وقوة كلمة المرور ضد هجمات القوة الغاشمة.' : 'Calculate mathematical entropy and password strength against brute-force attacks.' %>
-                    </p>
+                <a href="/tools/entropy-calculator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">📊</div>
+                    <h2><%= currentLang === 'ar' ? 'حاسبة انتروبيا كلمة المرور' : 'Entropy Calculator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'احسب الانتروبيا الرياضية وقوة كلمة المرور ضد هجمات القوة الغاشمة.' : 'Calculate mathematical entropy and password strength against brute-force attacks.' %></p>
                 </a>
 
                 <!-- Bcrypt Cost Factor Calculator Tool Card -->
-                <a href="/tools/bcrypt-calculator" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        ⚡
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'حاسبة عامل Bcrypt' : 'Bcrypt Calculator' %></h2>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'احسب عامل التكلفة المثالي لـ Bcrypt لموازنة الأمان والأداء.' : 'Calculate the optimal bcrypt cost factor to balance security and performance.' %>
-                    </p>
+                <a href="/tools/bcrypt-calculator" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">⚡</div>
+                    <h2><%= currentLang === 'ar' ? 'حاسبة عامل Bcrypt' : 'Bcrypt Calculator' %></h2>
+                    <p><%= currentLang === 'ar' ? 'احسب عامل التكلفة المثالي لـ Bcrypt لموازنة الأمان والأداء.' : 'Calculate the optimal bcrypt cost factor to balance security and performance.' %></p>
                 </a>
 
                 <!-- Team Password Vault Tool Card -->
-                <a href="/tools/team-password-vault" class="tool-card" style="display: block; text-decoration: none; color: inherit; background: var(--card-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color); transition: transform 0.2s, box-shadow 0.2s;">
-                    <div class="tool-icon" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary-color);">
-                        🏢
-                    </div>
-                    <h2 style="margin-bottom: 0.5rem;"><%= currentLang === 'ar' ? 'خزنة كلمات المرور للفريق' : 'Team Password Vault' %></h2>
-                    <span style="display:inline-block; margin-bottom:0.75rem; padding:0.2rem 0.6rem; background:#f0b429; color:#1f1f1f; border-radius:999px; font-size:0.8rem; font-weight:700;">
-                        <%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %>
-                    </span>
-                    <p style="color: var(--text-muted);">
-                        <%= currentLang === 'ar' ? 'محاكاة معمارية توضّح شكل خزنة فرق العمل وليست مدير أسرار جاهزاً للإنتاج.' : 'Architectural simulation of a team vault, not a production-ready secrets manager.' %>
-                    </p>
+                <a href="/tools/team-password-vault" class="tool-card">
+                    <div class="tool-icon" aria-hidden="true">🏢</div>
+                    <h2><%= currentLang === 'ar' ? 'خزنة كلمات المرور للفريق' : 'Team Password Vault' %></h2>
+                    <span class="sim-badge"><%= currentLang === 'ar' ? 'محاكاة' : 'Simulation' %></span>
+                    <p><%= currentLang === 'ar' ? 'محاكاة معمارية توضّح شكل خزنة فرق العمل وليست مدير أسرار جاهزاً للإنتاج.' : 'Architectural simulation of a team vault, not a production-ready secrets manager.' %></p>
                 </a>
-            </div>
+
+            </section>
 
             <%- include('../partials/affiliate-offers', { affiliateContext: 'tools' }) %>
         </div>
     </main>
 
     <%- include('../partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll animation observer
+            var animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-children');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

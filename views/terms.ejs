@@ -1,33 +1,67 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('partials/head', { pageTitle: t.terms_page.title + ' - ' + t.title }) %>
-<body>
+<body class="utility-page">
     <%- include('partials/navbar') %>
 
-    <div class="container">
-        <main class="content-page">
-            <h1><%= t.terms_page.title %></h1>
-            <p class="last-updated"><%= t.terms_page.last_updated %></p>
+    <main class="container">
+        <article class="utility-content animate-on-scroll">
             
-            <section>
-                <h2><%= t.terms_page.intro_title %></h2>
+            <header>
+                <h1><%= t.terms_page.title %></h1>
+                <p class="last-updated"><%= t.terms_page.last_updated %></p>
+            </header>
+            
+            <section aria-labelledby="intro-heading">
+                <h2 id="intro-heading"><%= t.terms_page.intro_title %></h2>
                 <p><%= t.terms_page.intro_text %></p>
             </section>
 
-            <section>
-                <h2><%= t.terms_page.usage_title %></h2>
+            <section aria-labelledby="usage-heading">
+                <h2 id="usage-heading"><%= t.terms_page.usage_title %></h2>
                 <p><%= t.terms_page.usage_text %></p>
             </section>
 
-            <section>
-                <h2><%= t.terms_page.disclaimer_title %></h2>
+            <section aria-labelledby="disclaimer-heading">
+                <h2 id="disclaimer-heading"><%= t.terms_page.disclaimer_title %></h2>
                 <p><%= t.terms_page.disclaimer_text %></p>
             </section>
             
-            <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> <%= t.error.back_home %></a>
-        </main>
-    </div>
+            <footer class="page-footer">
+                <a href="/" class="back-link">
+                    <i class="fas fa-arrow-left" aria-hidden="true"></i> 
+                    <%= t.error.back_home %>
+                </a>
+            </footer>
+
+        </article>
+    </main>
 
     <%- include('partials/footer') %>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                animatedElements.forEach(function(el) {
+                    observer.observe(el);
+                });
+            } else {
+                animatedElements.forEach(function(el) {
+                    el.classList.add('visible');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
