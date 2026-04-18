@@ -795,32 +795,18 @@ body {
 }
 
 .nav-logo:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
 }
 
-.logo-wrapper {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
+.nav-logo:active {
+    transform: scale(0.98);
 }
 
 .logo-img {
-    height: 40px;
-    width: 40px;
+    height: 42px;
+    width: 42px;
     object-fit: contain;
-}
-
-.logo-text {
-    font-size: var(--text-lg);
-    font-weight: var(--weight-bold);
-    color: var(--color-primary);
-    letter-spacing: -0.02em;
-}
-
-@media (max-width: 768px) {
-    .logo-text {
-        font-size: var(--text-base);
-    }
+    border-radius: var(--radius-sm);
 }
 
 /* ============================================
