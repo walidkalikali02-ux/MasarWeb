@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="<%= currentLang %>" dir="rtl">
-<%- include('partials/head', { pageTitle: t.blog_title || 'Blog' }) %>
+<%- include('partials/head', { pageTitle: t.blog_title || 'المدونة' }) %>
 <body class="blog-page">
     <%- include('partials/navbar') %>
 
@@ -8,7 +8,7 @@
         <div class="container">
             
             <header class="page-header">
-                <h1 class="page-title"><%= t.blog_title || 'Blog' %></h1>
+                <h1 class="page-title"><%= t.blog_title || 'المدونة' %></h1>
             </header>
             
             <section class="blog-grid" aria-label="Blog Articles">
@@ -21,7 +21,7 @@
                             </h2>
                             <p><%= article.excerpt %></p>
                             <a href="/blog/<%= article.slug %>" class="read-more">
-                                <%= t.read_more || 'Read More' %>
+                                <%= t.read_more || 'اقرأ المزيد' %>
                             </a>
                         </div>
                     </article>
