@@ -1,38 +1,38 @@
 :root {
     /* ============================================
-     * COLOR PALETTE - Modern Arabic (Emerald, Gold, Sand)
+     * COLOR PALETTE - Minimalist Arabic (Ink, Copper, Pearl)
      * ============================================ */
     
-    /* Primary - Deep Emerald */
-    --color-primary: oklch(28% 0.06 160);
-    --color-primary-light: oklch(38% 0.08 160);
-    --color-primary-dark: oklch(18% 0.04 160);
+    /* Primary - Deep Ink / Charcoal */
+    --color-primary: oklch(20% 0.01 250);
+    --color-primary-light: oklch(35% 0.01 250);
+    --color-primary-dark: oklch(15% 0.01 250);
     
-    /* Accent - Desert Gold */
-    --color-accent: oklch(65% 0.14 70);
-    --color-accent-hover: oklch(58% 0.14 70);
-    --color-accent-subtle: oklch(94% 0.04 70);
+    /* Accent - Elegant Copper / Terracotta */
+    --color-accent: oklch(55% 0.12 35);
+    --color-accent-hover: oklch(48% 0.12 35);
+    --color-accent-subtle: oklch(95% 0.03 35);
     
-    /* Secondary - Terracotta */
-    --color-secondary: oklch(55% 0.14 35);
-    --color-secondary-hover: oklch(48% 0.14 35);
-    --color-secondary-subtle: oklch(94% 0.03 35);
+    /* Secondary - Warm Sand */
+    --color-secondary: oklch(75% 0.08 75);
+    --color-secondary-hover: oklch(65% 0.08 75);
+    --color-secondary-subtle: oklch(96% 0.02 75);
     
-    /* Neutral - Warm Sand / Pearl */
-    --color-bg: oklch(98% 0.01 75);
-    --color-bg-subtle: oklch(95% 0.02 75);
+    /* Neutral - Pearl White */
+    --color-bg: oklch(99% 0.01 85);
+    --color-bg-subtle: oklch(97% 0.01 85);
     --color-bg-elevated: oklch(100% 0 0);
     --color-surface: oklch(100% 0 0);
     
     /* Text hierarchy */
-    --color-text: oklch(20% 0.02 160);
-    --color-text-secondary: oklch(45% 0.02 160);
-    --color-text-tertiary: oklch(60% 0.01 160);
+    --color-text: oklch(20% 0.01 250);
+    --color-text-secondary: oklch(45% 0.01 250);
+    --color-text-tertiary: oklch(65% 0.01 250);
     --color-text-inverse: oklch(99% 0 0);
     
     /* Border */
-    --color-border: oklch(90% 0.02 75);
-    --color-border-strong: oklch(75% 0.04 75);
+    --color-border: oklch(92% 0.01 85);
+    --color-border-strong: oklch(80% 0.02 85);
     --color-border-focus: var(--color-accent);
     
     /* Status colors */
