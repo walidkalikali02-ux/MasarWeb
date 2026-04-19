@@ -44,6 +44,9 @@ const getProxyBaseUrl = (req) => {
  */
 router.get('/', (req, res) => {
   res.render('index', {
+    t: locales.ar,
+    currentLang: 'ar',
+    dir: 'rtl',
     currentUrl: ''
   });
 });
@@ -64,9 +67,11 @@ router.post('/browse', ensureSession, async (req, res) => {
   
   const validation = await validateAndNormalizeURL(url);
   if (!validation.valid) {
-    const t = res.locals.t;
     return res.render('index', {
-      error: translateError(t, validation.error),
+      t: locales.ar,
+      currentLang: 'ar',
+      dir: 'rtl',
+      error: translateError(locales.ar, validation.error),
       currentUrl: url
     });
   }

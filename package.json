@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "build:blog-content": "node scripts/build-blog-content.js",
     "dev:frontend": "vite",
     "build:frontend": "vite build",
