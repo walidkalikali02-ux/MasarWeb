@@ -2043,6 +2043,33 @@ body {
  * TOOLS PAGE
  * ============================================ */
 
+/* ============================================
+ * GENERIC LAYOUT
+ * ============================================ */
+
+.main-content {
+    min-height: 100vh;
+    padding: var(--space-8) 0;
+}
+
+.main-content .container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.page-header {
+    margin-bottom: var(--space-10);
+    text-align: center;
+}
+
+.page-title {
+    color: var(--color-primary);
+    font-size: var(--text-3xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-4);
+}
+
 .tools-page .main-content {
     padding: var(--space-8) 0;
 }

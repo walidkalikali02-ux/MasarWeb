@@ -7,11 +7,11 @@
     <main class="main-content">
         <div class="container">
             
-            <header class="page-header animate-on-scroll">
+            <header class="page-header">
                 <h1 class="page-title"><%= t.blog_title || 'Blog' %></h1>
             </header>
             
-            <section class="blog-grid stagger-children" aria-label="Blog Articles">
+            <section class="blog-grid" aria-label="Blog Articles">
                 <% articles.forEach(function(article) { %>
                     <article class="blog-card">
                         <div class="blog-card-content">
@@ -32,35 +32,5 @@
     </main>
 
     <%- include('partials/footer') %>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Scroll animation observer
-            var animatedElements = document.querySelectorAll('.animate-on-scroll, .stagger-children');
-            
-            if ('IntersectionObserver' in window) {
-                var observer = new IntersectionObserver(function(entries) {
-                    entries.forEach(function(entry) {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -50px 0px'
-                });
-                
-                animatedElements.forEach(function(el) {
-                    observer.observe(el);
-                });
-            } else {
-                // Fallback for browsers without IntersectionObserver
-                animatedElements.forEach(function(el) {
-                    el.classList.add('visible');
-                });
-            }
-        });
-    </script>
 </body>
 </html>
