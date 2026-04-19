@@ -2,18 +2,14 @@
     const offers = Array.isArray(affiliateOffers) ? affiliateOffers : [];
     const context = typeof affiliateContext !== 'undefined' ? affiliateContext : 'general';
     const hasConfiguredAffiliateLinks = offers.some((offer) => offer.configured);
-    const blockTitle = currentLang === 'ar'
-        ? (context === 'tools' ? 'عروض نوصي بها لمستخدمي الأدوات' : context === 'blog' ? 'خدمات مرتبطة بالمقال' : 'خدمات موصى بها')
-        : (context === 'tools' ? 'Recommended for tool users' : context === 'blog' ? 'Related services' : 'Recommended services');
-    const blockIntro = currentLang === 'ar'
-        ? 'هذه العروض مرتبطة بموضوع الخصوصية، كلمات المرور، وبيئات التطوير. استبدل الروابط الحالية بروابطك التابعة الفعلية عبر متغيرات البيئة.'
-        : 'These offers match the site’s privacy, password, and developer audiences. Replace the current links with your actual affiliate URLs through environment variables.';
-    const disclosure = currentLang === 'ar'
-        ? 'إفصاح: قد نحصل على عمولة إذا اشتريت عبر بعض الروابط.'
-        : 'Disclosure: we may earn a commission if you buy through some links.';
-    const statusLabel = currentLang === 'ar'
-        ? (hasConfiguredAffiliateLinks ? 'روابط تابعة مفعلة' : 'روابط افتراضية تحتاج استبدال')
-        : (hasConfiguredAffiliateLinks ? 'Affiliate links active' : 'Default links need replacement');
+    const blockTitle = context === 'tools'
+        ? 'عروض نوصي بها لمستخدمي الأدوات'
+        : context === 'blog'
+            ? 'خدمات مرتبطة بالمقال'
+            : 'خدمات موصى بها';
+    const blockIntro = 'هذه العروض مرتبطة بموضوع الخصوصية، كلمات المرور، وبيئات التطوير. استبدل الروابط الحالية بروابطك التابعة الفعلية عبر متغيرات البيئة.';
+    const disclosure = 'إفصاح: قد نحصل على عمولة إذا اشتريت عبر بعض الروابط.';
+    const statusLabel = hasConfiguredAffiliateLinks ? 'روابط تابعة مفعلة' : 'روابط افتراضية تحتاج استبدال';
 %>
 <section class="affiliate-section affiliate-section-<%= context %>">
     <div class="affiliate-section-head">
