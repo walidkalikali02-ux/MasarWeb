@@ -41,7 +41,7 @@ const getBaseUrl = (req) => {
   if (config.publicBaseUrl) return normalizeBaseUrl(config.publicBaseUrl);
   return `${req.protocol}://${req.get('host')}`;
 };
-const DEFAULT_LANG = 'ar';
+const DEFAULT_LANG = 'en';
 const buildLocalizedUrl = (baseUrl, path, lang) => {
   if (lang && lang !== DEFAULT_LANG) {
     return `${baseUrl}${path}?lang=${lang}`;
@@ -91,8 +91,8 @@ app.use(createSessionMiddleware());
 
 // Language Middleware
 app.use((req, res, next) => {
-  let lang = req.query.lang || req.cookies.lang || 'ar';
-  if (!locales[lang]) lang = 'ar';
+  let lang = req.query.lang || req.cookies.lang || DEFAULT_LANG;
+  if (!locales[lang]) lang = DEFAULT_LANG;
 
   if (req.query.lang === DEFAULT_LANG && req.method === 'GET') {
     res.cookie('lang', DEFAULT_LANG, { maxAge: 365 * 24 * 60 * 60 * 1000, httpOnly: true });
@@ -110,6 +110,7 @@ app.use((req, res, next) => {
   req.lang = lang;
   res.locals.t = locales[lang];
   res.locals.currentLang = lang;
+  res.locals.defaultLang = DEFAULT_LANG;
   res.locals.currentUrl = req.path;
   res.locals.dir = locales[lang].dir;
   next();
@@ -182,7 +183,7 @@ app.get('/support', (req, res) => res.render('support', {
   description: res.locals.t.support_page.desc
 }));
 app.get('/about', (req, res) => {
-  const isArabic = req.lang === 'ar';
+  const isArabic = res.locals.currentLang === 'ar';
   const about = isArabic ? {
     title: 'من نحن',
     intro: 'نبني MasarWeb ليكون طبقة ويب بسيطة وسريعة تمنح المستخدم وصولاً أوضح وأكثر خصوصية إلى المحتوى والأدوات الأمنية.',
@@ -299,7 +300,7 @@ app.use('/admin', (req, res, next) => {
 // Blog Routes
 app.get('/blog', async (req, res, next) => {
   try {
-    const articles = await getArticleIndex();
+    const articles = await getArticleIndex(res.locals.currentLang);
 
     res.render('blog', {
       articles,
@@ -315,7 +316,7 @@ app.get('/blog', async (req, res, next) => {
 
 app.get('/blog/:slug', async (req, res, next) => {
   try {
-    const article = await getArticleBySlug(req.params.slug);
+    const article = await getArticleBySlug(req.params.slug, res.locals.currentLang);
     if (!article) {
       return res.status(404).render('error', {
         title: 'Not Found',

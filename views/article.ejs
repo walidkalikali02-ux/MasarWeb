@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= currentLang %>" dir="rtl">
+<html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('partials/head', { pageTitle: article.title, description: article.excerpt }) %>
 <body class="article-page">
     <%- include('partials/navbar') %>
@@ -10,7 +10,7 @@
                 
                 <header class="article-header">
                     <a href="/blog" class="back-link">
-                        <%= t.back_to_blog || 'العودة إلى المدونة' %>
+                        <%= t.back_to_blog %>
                     </a>
                     <h1 class="article-title"><%= article.title %></h1>
                     <div class="article-meta">
@@ -29,7 +29,7 @@
 
                 <footer class="article-footer">
                     <a href="/" class="cta-button">
-                        <%= t.start_browsing || 'ابدأ التصفح الآن' %>
+                        <%= t.start_browsing %>
                     </a>
                 </footer>
 

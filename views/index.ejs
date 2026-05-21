@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="<%= currentLang %>" dir="<%= dir %>">
 <%- include('partials/head') %>
 <body class="homepage">
     <%- include('partials/navbar') %>
@@ -16,26 +16,26 @@
                 </svg>
             </div>
             <div class="hero-content animate-on-scroll">
-                <p class="hero-eyebrow-minimal">مسار ويب</p>
+                <p class="hero-eyebrow-minimal"><%= t.title %></p>
                 <h1 class="hero-headline"><%= t.title %></h1>
                 <p class="hero-subhead"><%= t.tagline %></p>
                 <div class="hero-cta-group">
                     <a href="#search" class="btn-minimal-primary">
-                        <span>ابدأ التصفح الآن</span>
+                        <span><%= t.start_browsing || (currentLang === 'ar' ? 'ابدأ التصفح الآن' : 'Start Browsing Now') %></span>
                     </a>
                 </div>
             </div>
         </header>
 
         <!-- Search Section -->
-        <section id="search" class="search-wrap" aria-label="بحث المواقع">
+        <section id="search" class="search-wrap" aria-label="<%= currentLang === 'ar' ? 'بحث المواقع' : 'Search Sites' %>">
             <div class="search-container animate-on-scroll">
                 <div class="search-hint">
                     <svg class="hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <circle cx="11" cy="11" r="8"/>
                         <path d="m21 21-4.35-4.35"/>
                     </svg>
-                    <span>أدخل عنوان الموقع للتصفح</span>
+                    <span><%= currentLang === 'ar' ? 'أدخل عنوان الموقع للتصفح' : 'Enter URL to browse' %></span>
                 </div>
                 <form action="/browse" method="POST" class="search-form-pill" id="search-form">
                     <div class="search-field-pill">
@@ -48,7 +48,7 @@
                             value="<%= currentUrl || '' %>"
                             autocomplete="off"
                             required
-                            aria-label="عنوان الموقع"
+                            aria-label="<%= currentLang === 'ar' ? 'عنوان الموقع' : 'Website URL' %>"
                             inputmode="url"
                         >
                         <button type="submit" class="search-btn-pill" aria-label="<%= t.browse %>">

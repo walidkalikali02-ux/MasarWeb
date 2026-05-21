@@ -109,13 +109,15 @@ const locales = {
             blocked_access: 'الوصول إلى هذا الموقع محظور'
         },
         nav_home: 'الرئيسية',
+        nav_about: 'من نحن',
         nav_blog: 'المدونة',
+        nav_tools: 'الأدوات',
         nav_support: 'دعم المستخدم',
         nav_terms: 'شروط الاستخدام',
         nav_privacy: 'سياسة الخصوصية',
-        blog_title: 'مدونة MasarWeb',
+        blog_title: 'المدونة',
         read_more: 'اقرأ المزيد',
-        back_to_blog: 'العودة للمدونة',
+        back_to_blog: 'العودة إلى المدونة',
         start_browsing: 'ابدأ التصفح الآن',
         support_page: {
             title: 'دعم المستخدم',
@@ -265,6 +267,7 @@ const locales = {
             blocked_access: 'Access to this site is blocked'
         },
         nav_home: 'Home',
+        nav_about: 'About Us',
         nav_blog: 'Blog',
         nav_tools: 'Tools',
         nav_support: 'User Support',
@@ -387,6 +390,8 @@ const locales = {
             blocked_access: 'El acceso a este sitio está bloqueado'
         },
         nav_home: 'Inicio',
+        nav_about: 'Sobre nosotros',
+        nav_blog: 'Blog',
         nav_tools: 'Herramientas',
         nav_support: 'Soporte al Usuario',
         nav_terms: 'Términos de Uso',
@@ -490,6 +495,8 @@ const locales = {
             blocked_access: 'L\'accès à ce site est bloqué'
         },
         nav_home: 'Accueil',
+        nav_about: 'À propos',
+        nav_blog: 'Blog',
         nav_tools: 'Outils',
         nav_support: 'Support Utilisateur',
         nav_terms: 'Conditions d\'utilisation',
@@ -593,6 +600,8 @@ const locales = {
             blocked_access: '访问此网站被阻止'
         },
         nav_home: '首页',
+        nav_about: '关于我们',
+        nav_blog: '博客',
         nav_tools: '工具',
         nav_support: '用户支持',
         nav_terms: '使用条款',
@@ -696,6 +705,8 @@ const locales = {
             blocked_access: 'इस साइट तक पहुंच अवरुद्ध है'
         },
         nav_home: 'होम',
+        nav_about: 'हमारे बारे में',
+        nav_blog: 'ब्लॉग',
         nav_tools: 'उपकरण',
         nav_support: 'उपयोगकर्ता समर्थन',
         nav_terms: 'उपयोग की शर्तें',
@@ -799,6 +810,8 @@ const locales = {
             blocked_access: 'O acesso a este site está bloqueado'
         },
         nav_home: 'Início',
+        nav_about: 'Sobre nós',
+        nav_blog: 'Blog',
         nav_tools: 'Ferramentas',
         nav_support: 'Suporte ao Usuário',
         nav_terms: 'Termos de Uso',
@@ -902,6 +915,8 @@ const locales = {
             blocked_access: 'Доступ к этому сайту заблокирован'
         },
         nav_home: 'Главная',
+        nav_about: 'О нас',
+        nav_blog: 'Блог',
         nav_tools: 'Инструменты',
         nav_support: 'Поддержка пользователей',
         nav_terms: 'Условия использования',
@@ -1005,6 +1020,8 @@ const locales = {
             blocked_access: 'Der Zugriff auf diese Seite ist gesperrt'
         },
         nav_home: 'Startseite',
+        nav_about: 'Über uns',
+        nav_blog: 'Blog',
         nav_tools: 'Werkzeuge',
         nav_support: 'Benutzersupport',
         nav_terms: 'Nutzungsbedingungen',
@@ -1108,6 +1125,8 @@ const locales = {
             blocked_access: 'Bu siteye erişim engellendi'
         },
         nav_home: 'Ana Sayfa',
+        nav_about: 'Hakkımızda',
+        nav_blog: 'Blog',
         nav_tools: 'Araçlar',
         nav_support: 'Kullanıcı Desteği',
         nav_terms: 'Kullanım Şartları',
