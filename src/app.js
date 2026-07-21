@@ -2,6 +2,16 @@
  * MasarWeb - Advanced Web Proxy
  * Main Application Entry Point
  */
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-X5RKE4L8C7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-X5RKE4L8C7');
+</script>
+
 
 const express = require('express');
 const helmet = require('helmet');
