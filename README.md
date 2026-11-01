@@ -235,7 +235,15 @@ cp .env.example .env
 npm start
 ```
 
-Visit `http://localhost:3000` to start using the proxy.
+Visit `http://localhost:3000` to use the tools and articles. Public proxy browsing is disabled by default.
+
+### Deceptive-page containment
+
+Keep `ENABLE_PROXY=false` on the public deployment. `/browse` and `/proxy` return `410 Gone`, and the homepage does not offer browsing. The simulated virus scanner and its APIs are retired with `410 Gone`.
+
+For a reviewed, restricted deployment only, set `ENABLE_PROXY=true` and configure `ALLOWED_TARGET_DOMAINS` with exact trusted HTTPS hostnames. Empty lists deny access; subdomains require separate entries. Responses are sandboxed without script/form permissions and downloads are blocked. This intentionally limits compatibility.
+
+After deployment, verify the flagged URLs return 410, clear previously cached proxy content, and request a Search Console security review. Source changes alone do not remove Google's warning.
 
 ### Admin Dashboard
 

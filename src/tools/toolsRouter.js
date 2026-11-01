@@ -1,37 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
-const crypto = require('crypto');
 const { logger } = require('../utils/logger');
-
-const SIMULATION_NOTICE = {
-    ar: 'هذه الأداة تعرض نتائج محاكاة/عرض تجريبي وليست خدمة فحص أمني حقيقية.',
-    en: 'This tool returns simulation/demo results and is not a real security scanning service.'
-};
-
-const getSimulationNotice = (lang) => lang === 'ar' ? SIMULATION_NOTICE.ar : SIMULATION_NOTICE.en;
-
-const sendSimulationResponse = (res, lang, data) => {
-    res.setHeader('X-Tool-Simulation', 'true');
-    return res.json({
-        success: true,
-        simulation: true,
-        notice: getSimulationNotice(lang),
-        data
-    });
-};
-
-const sendDeprecatedSimulationEndpoint = (res, lang, replacementPath) => {
-    res.setHeader('X-Tool-Simulation', 'true');
-    return res.status(410).json({
-        success: false,
-        simulation: true,
-        error: lang === 'ar'
-            ? 'تم نقل endpoint المحاكاة إلى مسار منفصل لتوضيح أنه ليس فحصاً أمنياً حقيقياً.'
-            : 'This simulation endpoint has moved to a separate path to clarify that it is not a real security scan.',
-        replacementPath
-    });
-};
 
 const toolMeta = {
     index: {
@@ -233,14 +202,6 @@ const getMeta = (key, lang) => {
     };
 };
 
-// Configure Multer (Memory Storage)
-const storage = multer.memoryStorage();
-const upload = multer({ 
-    storage: storage,
-    limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
-});
-
-// Middleware to set local variables for the tools section
 router.use((req, res, next) => {
     res.locals.activeSection = 'tools';
     next();
@@ -980,122 +941,11 @@ router.get('/absence-deduction', (req, res) => {
     });
 });
 
-// Virus Scanner Interface
-router.get('/virus-scanner', (req, res) => {
-    const meta = getMeta('virus-scanner', req.lang);
-    res.render('tools/virus-scanner', {
-        title: meta.title,
-        pageTitle: meta.title,
-        description: meta.description,
-        simulationNotice: getSimulationNotice(req.lang)
-    });
-});
-
-// Deprecated simulation endpoints kept only to prevent ambiguity with real security APIs
-router.post('/virus-scanner/scan', upload.single('file'), (req, res) => {
-    return sendDeprecatedSimulationEndpoint(res, req.lang, '/tools/simulations/virus-scanner/scan');
-});
-
-router.post('/virus-scanner/scan-url', express.json(), (req, res) => {
-    return sendDeprecatedSimulationEndpoint(res, req.lang, '/tools/simulations/virus-scanner/scan-url');
-});
-
-// Virus Scanner Simulation API - File Scan Endpoint
-router.post('/simulations/virus-scanner/scan', upload.single('file'), (req, res) => {
-    if (!req.file) {
-        return res.status(400).json({
-            success: false,
-            simulation: true,
-            error: req.lang === 'ar' ? 'لم يتم رفع أي ملف' : 'No file uploaded'
-        });
-    }
-
-    try {
-        // Calculate SHA-256 hash of the file
-        const hashSum = crypto.createHash('sha256');
-        hashSum.update(req.file.buffer);
-        const fileHash = hashSum.digest('hex');
-
-        // Deterministic simulation based on hash
-        // If the hash ends with a digit 0-2, we mark it as "suspicious" for demo purposes
-        // Otherwise, it's clean. This makes the result consistent for the same file.
-        const lastChar = fileHash.slice(-1);
-        const isSuspicious = ['0', '1', '2'].includes(lastChar);
-        
-        // Simulate processing delay to feel like a real scan
-        setTimeout(() => {
-            sendSimulationResponse(res, req.lang, {
-                scan_id: fileHash,
-                permalink: `https://www.virustotal.com/gui/file/${fileHash}`,
-                resource: fileHash,
-                response_code: 1,
-                scan_date: new Date().toISOString(),
-                verbose_msg: req.lang === 'ar'
-                    ? 'تم إنشاء نتيجة محاكاة ودمجها في هذا الكائن'
-                    : 'Simulation finished, scan information embedded in this object',
-                positives: isSuspicious ? Math.floor(Math.random() * 5) + 1 : 0,
-                total: 60,
-                scans: {
-                    "Bkav": { "detected": isSuspicious, "version": "1.3.0.9899", "result": isSuspicious ? "W32.AIDetect.malware" : null, "update": "20240101" },
-                    "Kaspersky": { "detected": isSuspicious, "version": "21.0.1.45", "result": isSuspicious ? "Trojan.Win32.Generic" : null, "update": "20240101" },
-                    "Symantec": { "detected": false, "version": "1.8.0.0", "result": null, "update": "20240101" }
-                    // ... more mock data could be added
-                }
-            });
-        }, 1500);
-
-    } catch (error) {
-        logger.error('Virus scan error:', error);
-        res.status(500).json({ success: false, error: 'Internal server error' });
-    }
-});
-
-// Virus Scanner Simulation API - URL Scan Endpoint
-router.post('/simulations/virus-scanner/scan-url', express.json(), (req, res) => {
-    const { url } = req.body;
-    if (!url) {
-        return res.status(400).json({
-            success: false,
-            simulation: true,
-            error: req.lang === 'ar' ? 'لم يتم توفير رابط' : 'No URL provided'
-        });
-    }
-
-    try {
-        // Calculate SHA-256 hash of the URL for deterministic simulation
-        const hashSum = crypto.createHash('sha256');
-        hashSum.update(url);
-        const urlHash = hashSum.digest('hex');
-
-        // Deterministic simulation based on hash
-        const lastChar = urlHash.slice(-1);
-        const isSuspicious = ['0', '1', '2'].includes(lastChar);
-        
-        // Simulate processing delay
-        setTimeout(() => {
-            sendSimulationResponse(res, req.lang, {
-                scan_id: urlHash,
-                permalink: `https://www.virustotal.com/gui/url/${urlHash}`,
-                resource: url,
-                response_code: 1,
-                scan_date: new Date().toISOString(),
-                verbose_msg: req.lang === 'ar'
-                    ? 'تم إنشاء نتيجة محاكاة ودمجها في هذا الكائن'
-                    : 'Simulation finished, scan information embedded in this object',
-                positives: isSuspicious ? Math.floor(Math.random() * 3) + 1 : 0,
-                total: 80,
-                scans: {
-                    "Google Safebrowsing": { "detected": isSuspicious, "result": isSuspicious ? "Malware Site" : "Clean site" },
-                    "PhishTank": { "detected": isSuspicious, "result": isSuspicious ? "Phishing Site" : "Clean site" },
-                    "Opera": { "detected": false, "result": "Clean site" }
-                }
-            });
-        }, 1500);
-
-    } catch (error) {
-        logger.error('URL scan error:', error);
-        res.status(500).json({ success: false, error: 'Internal server error' });
-    }
+// Retired: fabricated security verdicts must never be presented as scans.
+router.use(['/virus-scanner', '/simulations/virus-scanner'], (req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('X-Robots-Tag', 'noindex, nofollow');
+    return res.status(410).type('text/plain').send('Scanner retired. MasarWeb does not provide antivirus scan results.');
 });
 
 // Team Password Vault

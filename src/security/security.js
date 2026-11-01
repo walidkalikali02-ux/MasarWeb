@@ -123,10 +123,10 @@ const classifyIp = (ip) => {
 
 const isHostnameAllowlisted = (hostname) => {
   if (!config.allowedTargetDomains.length) {
-    return true;
+    return false;
   }
 
-  return config.allowedTargetDomains.some((domain) => hostname === domain || hostname.endsWith(`.${domain}`));
+  return config.allowedTargetDomains.some((domain) => hostname === normalizeHostname(domain));
 };
 
 const evaluateHostnamePolicy = (hostname) => {
@@ -152,9 +152,9 @@ const evaluateHostnamePolicy = (hostname) => {
     return { blocked: true, reason: 'error.blocked_domain' };
   }
 
-  const ipClassification = classifyIp(normalizedHostname);
-  if (ipClassification.blocked) {
-    return ipClassification;
+  if (net.isIP(normalizedHostname)) {
+    const ipClassification = classifyIp(normalizedHostname);
+    if (ipClassification.blocked) return ipClassification;
   }
 
   return { blocked: false };
@@ -215,7 +215,7 @@ const isBlockedURL = (url) => {
       return { blocked: true, reason: 'error.file_protocol' };
     }
 
-    if (!['http:', 'https:'].includes(urlObj.protocol)) {
+    if (urlObj.protocol !== 'https:' || urlObj.username || urlObj.password || (urlObj.port && urlObj.port !== '443')) {
       return { blocked: true, reason: 'error.invalid_protocol' };
     }
 

@@ -15,3 +15,5 @@ Modules: proxy/proxyRouter.js handles HTTP/HTTPS proxy. security/security.js han
 Blog rendering: `views/blog.ejs` and `views/article.ejs` always use `dir="rtl"` so blog index and article detail pages are consistently right-to-left for all languages.
 
 Homepage rendering: `/` always renders using Arabic locale (`currentLang: 'ar'`, `dir: 'rtl'`) so the homepage UI is Arabic.
+
+Proxy access: [[proxy-safety]] documents the default shutdown, exact destination allowlist, sandboxed responses, and retired scanner endpoints.

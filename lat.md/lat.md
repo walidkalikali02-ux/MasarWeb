@@ -4,3 +4,4 @@ Knowledge graph for MasarWeb Arabic web proxy project. This knowledge base docum
 
 Entries:
 - [[overview]] - Project overview and structure
+- [[proxy-safety]] - Proxy containment and retired scanner behavior

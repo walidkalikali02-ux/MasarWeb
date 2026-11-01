@@ -22,6 +22,8 @@ const { config } = require('../utils/config');
 const { logger, logProxyRequest } = require('../utils/logger');
 
 const router = express.Router();
+const { isProxyAvailable, requireProxyAccess } = require('../security/proxyAccess');
+router.use(['/browse', '/proxy'], requireProxyAccess);
 const { ensureSession, checkBandwidthLimit, storeProxyCookies, getProxyCookies } = require('../session/sessionManager');
 
 // Helper to translate error keys
@@ -43,10 +45,11 @@ const getProxyBaseUrl = (req) => {
  * صفحة البداية
  */
 router.get('/', (req, res) => {
-  res.render('index', {
+  res.render(isProxyAvailable() ? 'index' : 'proxy-unavailable', {
     t: locales.ar,
     currentLang: 'ar',
     dir: 'rtl',
+    proxyAvailable: isProxyAvailable(),
     currentUrl: ''
   });
 });
@@ -71,6 +74,7 @@ router.post('/browse', ensureSession, async (req, res) => {
       t: locales.ar,
       currentLang: 'ar',
       dir: 'rtl',
+      proxyAvailable: isProxyAvailable(),
       error: translateError(locales.ar, validation.error),
       currentUrl: url
     });
@@ -159,8 +163,15 @@ router.get('/proxy/:encodedUrl(*)', ensureSession, rateLimiters.proxy, checkBand
       if ([301, 302, 303, 307, 308].includes(proxyRes.statusCode)) {
         let location = proxyRes.headers.location;
         if (location) {
+          // Never redirect to an unapproved host or an active URL scheme.
+          const destination = new URL(location, targetUrl).toString();
+          if (isBlockedURL(destination).blocked) {
+            proxyRes.resume();
+            return res.status(403).type('text/plain').send('Proxy destination not permitted.');
+          }
           const rewriter = new URLRewriter(getProxyBaseUrl(req));
-          const rewrittenLocation = rewriter.rewriteURL(location, targetUrl);
+          const rewrittenLocation = rewriter.rewriteURL(destination, targetUrl);
+          proxyRes.resume();
           res.redirect(proxyRes.statusCode, rewrittenLocation);
           return;
         }
@@ -173,6 +184,12 @@ router.get('/proxy/:encodedUrl(*)', ensureSession, rateLimiters.proxy, checkBand
 
       // Get content type
       const contentType = proxyRes.headers['content-type'] || '';
+      const mediaType = contentType.split(';')[0].trim().toLowerCase();
+      const permittedTypes = ['text/html', 'text/plain', 'text/css', 'image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/avif', 'image/x-icon', 'font/woff', 'font/woff2'];
+      if (!permittedTypes.includes(mediaType) || /attachment/i.test(proxyRes.headers['content-disposition'] || '')) {
+        proxyRes.resume();
+        return res.status(403).type('text/plain').send('Proxy downloads and active resources are not permitted.');
+      }
       
       // Prepare response headers
       const responseHeaders = {};
@@ -211,6 +228,7 @@ router.get('/proxy/:encodedUrl(*)', ensureSession, rateLimiters.proxy, checkBand
       responseHeaders['x-content-type-options'] = 'nosniff';
       responseHeaders['x-frame-options'] = 'SAMEORIGIN';
       responseHeaders['x-robots-tag'] = 'noindex, nofollow';
+      responseHeaders['cache-control'] = 'no-store';
 
       // Log the request
       logProxyRequest(req, targetUrl, proxyRes.statusCode);

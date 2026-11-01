@@ -10,6 +10,7 @@ const { URL } = require('url');
 const { config } = require('../utils/config');
 const { logger } = require('../utils/logger');
 const { validateAndNormalizeURL } = require('../security/security');
+const { isProxyAvailable } = require('../security/proxyAccess');
 
 /**
  * Setup WebSocket proxy server
@@ -21,7 +22,7 @@ const setupWebSocketProxy = (server) => {
     return null;
   }
 
-  if (!config.features.websockets) {
+  if (!config.features.websockets || !isProxyAvailable()) {
     logger.info('WebSocket proxy disabled');
     return null;
   }

@@ -99,6 +99,7 @@ const config = {
   
   // Feature toggles
   features: {
+    proxy: parseBoolean(process.env.ENABLE_PROXY, false),
     websockets: websocketsRequested && websocketRuntimeSupported,
     mediaStreaming: process.env.ENABLE_MEDIA_STREAMING !== 'false',
     javascriptRewrite: process.env.ENABLE_JS_REWRITE !== 'false',

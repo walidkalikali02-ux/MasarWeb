@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="<%= currentLang %>" dir="<%= dir %>">
+<%- include('partials/head', { pageTitle: 'MasarWeb', description: currentLang === 'ar' ? 'أدوات ومقالات MasarWeb' : 'MasarWeb tools and articles' }) %>
+<body>
+    <%- include('partials/navbar') %>
+    <main class="container">
+        <h1>MasarWeb</h1>
+        <p role="status"><%= currentLang === 'ar' ? 'تصفح المواقع الخارجية غير متاح حالياً. لا تدخل بيانات تسجيل الدخول الخاصة بمواقع أخرى في هذا الموقع.' : 'Third-party browsing is currently unavailable. Do not enter other websites’ login details on this site.' %></p>
+        <p><a href="/tools"><%= currentLang === 'ar' ? 'استكشف الأدوات' : 'Explore tools' %></a></p>
+        <p><a href="/blog"><%= currentLang === 'ar' ? 'اقرأ المقالات' : 'Read articles' %></a></p>
+    </main>
+    <%- include('partials/footer') %>
+</body>
+</html>
