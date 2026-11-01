@@ -1,14 +1,41 @@
+<% const ar = currentLang === 'ar'; const text = (a, e) => ar ? a : e;
+const tools = [
+  ['password-generator', '↗', text('كلمة مرور أقوى. بداية أفضل.', 'A stronger password. A better start.'), text('أنشئ كلمات مرور عشوائية واختر الطول والرموز المناسبة لك.', 'Generate random passwords with the length and characters you choose.'), '01'],
+  ['password-analyzer', '✳', text('تعرّف على قوة كلمة مرورك', 'Understand password strength'), text('استكشف عوامل القوة ونقاط الضعف في كلمات المرور.', 'Explore the factors that make passwords stronger or weaker.'), '02'],
+  ['jwt-decoder', '{ }', text('افهم ما بداخل الرمز', 'See inside your token'), text('اقرأ محتوى JWT وافهم حقوله بسهولة.', 'Read a JWT payload and understand its fields.'), '03'],
+  ['entropy-calculator', '∑', text('حوّل التعقيد إلى رقم', 'Put a number on complexity'), text('احسب إنتروبيا كلمة المرور واستكشف أثر طولها وتنوعها.', 'Calculate password entropy and explore length and character variety.'), '04']
+]; %>
 <!DOCTYPE html>
-<html lang="<%= currentLang %>" dir="<%= dir %>">
-<%- include('partials/head', { pageTitle: 'MasarWeb', description: currentLang === 'ar' ? 'أدوات ومقالات MasarWeb' : 'MasarWeb tools and articles' }) %>
-<body>
-    <%- include('partials/navbar') %>
-    <main class="container">
-        <h1>MasarWeb</h1>
-        <p role="status"><%= currentLang === 'ar' ? 'تصفح المواقع الخارجية غير متاح حالياً. لا تدخل بيانات تسجيل الدخول الخاصة بمواقع أخرى في هذا الموقع.' : 'Third-party browsing is currently unavailable. Do not enter other websites’ login details on this site.' %></p>
-        <p><a href="/tools"><%= currentLang === 'ar' ? 'استكشف الأدوات' : 'Explore tools' %></a></p>
-        <p><a href="/blog"><%= currentLang === 'ar' ? 'اقرأ المقالات' : 'Read articles' %></a></p>
-    </main>
-    <%- include('partials/footer') %>
-</body>
-</html>
+<html lang="<%= currentLang %>" dir="<%= ar ? 'rtl' : 'ltr' %>">
+<%- include('partials/head', { pageStylesheet: '/static/css/home.css', pageTitle: text('مسار ويب — أدوات بسيطة لوعي رقمي أفضل', 'MasarWeb — Practical tools for your digital life'), description: text('أدوات كلمات المرور وفك الرموز ومقالات عملية في مكان واحد.', 'Password utilities, token tools, and practical reading in one place.') }) %>
+<body class="masar-home">
+<a class="mh-skip" href="#main"><%= text('انتقل إلى المحتوى', 'Skip to content') %></a>
+<header class="mh-header mh-wrap">
+  <a class="mh-brand" href="/" aria-label="MasarWeb"><span class="mh-mark" aria-hidden="true">م</span><span><%= text('مسار ويب', 'MasarWeb') %><small>DIGITAL CLARITY</small></span></a>
+  <nav aria-label="<%= text('التنقل الرئيسي', 'Main navigation') %>"><a href="#tools"><%= text('الأدوات', 'Tools') %></a><a href="#learn"><%= text('تعلّم', 'Learn') %></a><a href="/about"><%= text('عن مسار', 'About') %></a></nav>
+  <a class="mh-language" href="<%= ar ? '/?lang=en' : '/?lang=ar' %>" lang="<%= ar ? 'en' : 'ar' %>"><%= ar ? 'English ↗' : 'العربية ↗' %></a>
+</header>
+<main id="main">
+<section class="mh-hero mh-wrap">
+  <div class="mh-intro"><p class="mh-eyebrow"><span></span><%= text('مساحة صغيرة. فائدة كبيرة.', 'SMALL TOOLS. EVERYDAY CLARITY.') %></p>
+  <h1><%= text('حياتك الرقمية،', 'Your digital life,') %><br><em><%= text('أوضح وأبسط.', 'a little clearer.') %></em></h1>
+  <p class="mh-lead"><%= text('أدوات عملية ومحتوى مفهوم يساعدانك على اتخاذ خطوات أفضل. ابدأ بكلمة مرور، أو فكّ رمزًا، أو تعلّم شيئًا جديدًا.', 'Practical tools and clear explanations for your next step. Start with a password, decode a token, or learn something new.') %></p>
+  <div class="mh-actions"><a class="mh-button" href="#tools"><%= text('اكتشف الأدوات', 'Explore the tools') %><span aria-hidden="true">↗</span></a><a class="mh-text-link" href="/blog"><%= text('خذ فكرة جديدة', 'Find a fresh perspective') %><span aria-hidden="true">←</span></a></div>
+  <div class="mh-hero-note"><span aria-hidden="true">✳</span><%= text('اختر أداة. افهم النتيجة. أكمل يومك.', 'Pick a tool. Understand the result. Get on with your day.') %></div></div>
+  <div class="mh-visual" aria-label="<%= text('معاينة توضيحية لأداة إنشاء كلمات المرور', 'Illustrative password generator preview') %>">
+    <div class="mh-orbit" aria-hidden="true"></div><span class="mh-orbit-label" aria-hidden="true">A CLEARER WAY FORWARD</span>
+    <div class="mh-preview"><div class="mh-preview-top"><span class="mh-mini-icon" aria-hidden="true">✳</span><span><%= text('بداية أكثر قوة', 'A stronger beginning') %></span><span class="mh-preview-dot" aria-hidden="true"></span></div>
+      <p class="mh-preview-label"><%= text('مثال توضيحي لكلمة مرور', 'ILLUSTRATIVE PASSWORD EXAMPLE') %></p><div class="mh-password" dir="ltr" aria-hidden="true">•••• •••• •••• ••••<span>↗</span></div>
+      <div class="mh-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="mh-preview-bottom"><span><%= text('طول أكبر. احتمالات أكثر.', 'More length. More possibilities.') %></span><span dir="ltr">16 →</span></div>
+    </div><div class="mh-floating"><span aria-hidden="true">↗</span><div><strong><%= text('خطوات صغيرة', 'Small steps') %></strong><small><%= text('تصنع فرقًا كل يوم', 'make an everyday difference') %></small></div></div>
+  </div>
+</section>
+<div class="mh-divider mh-wrap"><span>MASARWEB / <%= text('أدوات للحياة الرقمية', 'TOOLS FOR DIGITAL LIFE') %></span><span><%= text('صُمّم ليكون مفهومًا', 'BUILT TO MAKE SENSE') %> ✳</span></div>
+<section id="tools" class="mh-tools mh-wrap"><div class="mh-section-heading"><div><p class="mh-eyebrow"><%= text('صندوق أدواتك', 'YOUR EVERYDAY TOOLKIT') %></p><h2><%= text('ماذا تريد أن تنجز اليوم؟', 'What would you like to do today?') %></h2></div><a class="mh-text-link" href="/tools"><%= text('كل الأدوات', 'All tools') %> <span aria-hidden="true">↗</span></a></div>
+<div class="mh-grid"><% tools.forEach((tool, i) => { %><a class="mh-card <%= i === 0 ? 'mh-card-featured' : '' %>" href="/tools/<%= tool[0] %>"><div class="mh-card-top"><span class="mh-tool-icon" aria-hidden="true"><%= tool[1] %></span><span class="mh-card-number"><%= tool[4] %> /</span></div><h3><%= tool[2] %></h3><p><%= tool[3] %></p><span class="mh-card-action"><%= text('افتح الأداة', 'Open tool') %><span aria-hidden="true">↗</span></span></a><% }); %></div></section>
+<section id="learn" class="mh-learn mh-wrap"><div class="mh-learn-art" aria-hidden="true"><span>م</span><p>LESS NOISE.<br>MORE KNOW-HOW.</p></div><div class="mh-learn-copy"><p class="mh-eyebrow"><%= text('المعرفة جزء من الأداة', 'KNOWLEDGE IS PART OF THE TOOLKIT') %></p><h2><%= text('افهم أكثر.', 'Understand more.') %><br><%= text('قرّر بثقة.', 'Decide with confidence.') %></h2><p><%= text('من أساسيات كلمات المرور إلى مفاهيم الخصوصية: استكشف مقالات تساعدك على فهم الأدوات والتقنيات التي تستخدمها.', 'From password basics to privacy concepts, explore articles that help you understand the tools and technology you use.') %></p><a class="mh-button" href="/blog"><%= text('استكشف المقالات', 'Explore the journal') %><span aria-hidden="true">↗</span></a></div></section>
+<section class="mh-notice mh-wrap"><span aria-hidden="true">ⓘ</span><p><strong><%= text('حول خدمة التصفح', 'About web browsing') %></strong> <%= text('تصفح مواقع الطرف الثالث غير متاح حاليًا. الأدوات والمقالات متاحة للاستكشاف.', 'Third-party web browsing is currently unavailable. Tools and articles are available to explore.') %></p></section>
+</main>
+<footer class="mh-footer mh-wrap"><a class="mh-brand" href="/"><span class="mh-mark" aria-hidden="true">م</span><span><%= text('مسار ويب', 'MasarWeb') %></span></a><p><%= text('خطوة أوضح في عالم رقمي.', 'A clearer step in a digital world.') %></p><nav aria-label="<%= text('روابط الموقع', 'Site links') %>"><a href="/privacy"><%= text('الخصوصية', 'Privacy') %></a><a href="/terms"><%= text('الشروط', 'Terms') %></a><a href="/support"><%= text('تواصل معنا', 'Contact') %></a></nav><small>© <%= new Date().getFullYear() %> MasarWeb</small></footer>
+</body></html>

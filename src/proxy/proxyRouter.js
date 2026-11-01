@@ -46,9 +46,9 @@ const getProxyBaseUrl = (req) => {
  */
 router.get('/', (req, res) => {
   res.render(isProxyAvailable() ? 'index' : 'proxy-unavailable', {
-    t: locales.ar,
-    currentLang: 'ar',
-    dir: 'rtl',
+    t: locales[req.lang] || locales.en,
+    currentLang: req.lang || 'en',
+    dir: (locales[req.lang] || locales.en).dir,
     proxyAvailable: isProxyAvailable(),
     currentUrl: ''
   });

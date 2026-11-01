@@ -14,6 +14,6 @@ Modules: proxy/proxyRouter.js handles HTTP/HTTPS proxy. security/security.js han
 
 Blog rendering: `views/blog.ejs` and `views/article.ejs` always use `dir="rtl"` so blog index and article detail pages are consistently right-to-left for all languages.
 
-Homepage rendering: `/` always renders using Arabic locale (`currentLang: 'ar'`, `dir: 'rtl'`) so the homepage UI is Arabic.
+Homepage rendering: `/` follows the selected locale. With proxy access disabled, a responsive tools-and-articles landing page uses a warm off-white and green palette, an illustrative password card, four direct tool links, and a journal section.
 
 Proxy access: [[proxy-safety]] documents the default shutdown, exact destination allowlist, sandboxed responses, and retired scanner endpoints.
